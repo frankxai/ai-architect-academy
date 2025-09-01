@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="280" viewBox="0 0 720 280">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="280" viewBox="0 0 720 280" role="img" aria-label="Start Here">
   <rect width="720" height="280" fill="#f8fafc"/>
   <g font-family="Inter,Arial" font-size="14" fill="#111827">
     <rect x="24" y="24" width="190" height="80" rx="10" fill="#e0f2fe" stroke="#38bdf8"/>

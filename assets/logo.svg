@@ -1,25 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="560" height="120" viewBox="0 0 560 120" role="img" aria-label="AI Architect Academy">
   <defs>
-    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+    <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0%" stop-color="#06b6d4"/>
       <stop offset="50%" stop-color="#22c55e"/>
       <stop offset="100%" stop-color="#0ea5e9"/>
     </linearGradient>
-    <linearGradient id="glow" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0%" stop-color="#a5f3fc" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#bbf7d0" stop-opacity="0.35"/>
-    </linearGradient>
-    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="b"/>
-      <feMerge>
-        <feMergeNode in="b"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
-  <rect x="10" y="20" rx="14" ry="14" width="100" height="80" fill="url(#g)" filter="url(#s)"/>
-  <path d="M40 50 h40 v20 h-40 z" fill="white" opacity="0.15"/>
-  <circle cx="60" cy="60" r="18" fill="white" opacity="0.2"/>
-  <rect x="16" y="26" rx="14" ry="14" width="88" height="68" fill="url(#glow)"/>
-  <text x="130" y="73" font-family="Inter,Segoe UI,Arial" font-size="34" font-weight="800" fill="url(#g)">AI Architect Academy</text>
+  <!-- Monogram: stylized A made of two beams and a crossbar -->
+  <g transform="translate(20,18)">
+    <path d="M0,84 L28,0 L56,84" fill="none" stroke="url(#grad)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="14" y1="48" x2="42" y2="48" stroke="url(#grad)" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <text x="100" y="78" font-family="Inter,Segoe UI,Arial" font-size="34" font-weight="800" fill="url(#grad)">AI Architect Academy</text>
 </svg>
