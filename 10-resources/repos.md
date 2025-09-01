@@ -14,3 +14,12 @@
 - promptfoo/promptfoo — Prompt evals in CI
 - microsoft/autogen — Multi‑agent framework
 - joaomdmoura/crewai — Agent teams & workflows
+
+## Meta Aggregators
+- sindresorhus/awesome — Canonical index of awesome lists
+- awesome-machine-learning/awesome-machine-learning — Broad ML resources
+- visenger/awesome-mlops — MLOps resources
+- eugeneyan/applied-ml — Applied ML reading list
+- papers-we-love/papers-we-love — Foundational papers
+- f/awesome-chatgpt-prompts — Prompts collection
+- e2b-dev/awesome-ai-agents — Agents frameworks/tools
