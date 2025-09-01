@@ -72,3 +72,9 @@ Live Catalog (GitHub Pages)
 - Enable Pages → Source: /docs in repo settings, then visit:
 
   - Org: https://ai-architect-academy.github.io/ai-architect-academy/
+
+## Local Use & Collaboration
+- Serve Pages locally: `scripts/serve.sh` → http://localhost:8080
+- Pair with AI tools: see `14-ai-tools/` (Aider, Continue, Claude Code, Gemini, Codex CLI)
+- Use prompt packs in `prompt-packs/` for code review, tests, refactors, docs
+- Follow `15-workflows/` for pairing, PR review, and maintenance with AI
