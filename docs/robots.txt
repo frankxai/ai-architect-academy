@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ai-architect-academy.github.io/ai-architect-academy/sitemap.xml

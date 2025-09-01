@@ -1,5 +1,6 @@
 <p align="center"><img src="assets/logo.svg" width="420" alt="AI Architect Academy"></p>
 
+[![Stars](https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square)](https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square)](https://github.com/AI-Architect-Academy/ai-architect-academy/pulls) [![Pages](https://img.shields.io/badge/Pages-live-green?style=flat-square)](https://ai-architect-academy.github.io/ai-architect-academy/)
 # AI Architect Academy — Open Playbook for Builders
 
 Become the architect who can design, ship, and operate AI systems that matter. This repo is a high‑signal, living guide: patterns, projects, and the best open resources — curated and connected so you can move fast with confidence.
@@ -69,5 +70,5 @@ Explore all: [Design Pattern Library](01-design-patterns/README.md)
 
 Live Catalog (GitHub Pages)
 - Enable Pages → Source: /docs in repo settings, then visit:
-  - User: https://frankxai.github.io/ai-architect-academy/
+
   - Org: https://ai-architect-academy.github.io/ai-architect-academy/

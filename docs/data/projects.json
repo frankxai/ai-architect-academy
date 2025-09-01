@@ -589,5 +589,291 @@
       "repo": "https://github.com/langfuse/langfuse"
     },
     "description": "Monitor latency, error, and cost SLOs; send alerts."
+  },
+  {
+    "id": "finance-kyc-docs",
+    "title": "Finance: KYC Document Processing",
+    "category": "industry-finance",
+    "difficulty": "intermediate",
+    "est_hours": 10,
+    "tags": [
+      "ocr",
+      "ner",
+      "rag"
+    ],
+    "links": {
+      "repo": "https://github.com/huggingface/transformers"
+    },
+    "description": "Extract entities from KYC documents and ground answers with citations."
+  },
+  {
+    "id": "healthcare-ner",
+    "title": "Healthcare: Clinical NER and Summarization",
+    "category": "industry-healthcare",
+    "difficulty": "advanced",
+    "est_hours": 16,
+    "tags": [
+      "ner",
+      "privacy"
+    ],
+    "links": {
+      "repo": "https://github.com/huggingface/transformers"
+    },
+    "description": "De-identify PHI and summarize clinical notes responsibly."
+  },
+  {
+    "id": "energy-forecast",
+    "title": "Energy: Short-term Price Forecasting",
+    "category": "industry-energy",
+    "difficulty": "intermediate",
+    "est_hours": 12,
+    "tags": [
+      "forecast",
+      "timeseries"
+    ],
+    "links": {
+      "repo": "https://github.com/facebookresearch/Kats"
+    },
+    "description": "Forecast prices and evaluate trading strategies."
+  },
+  {
+    "id": "gov-foia",
+    "title": "Gov: FOIA Document Q&A",
+    "category": "industry-gov",
+    "difficulty": "intermediate",
+    "est_hours": 12,
+    "tags": [
+      "rag",
+      "gov"
+    ],
+    "links": {
+      "guide": "05-projects/rag-on-supabase.md"
+    },
+    "description": "RAG over public records with strict citations."
+  },
+  {
+    "id": "retail-search",
+    "title": "Retail: Semantic Product Search",
+    "category": "industry-retail",
+    "difficulty": "intermediate",
+    "est_hours": 10,
+    "tags": [
+      "search",
+      "vectors"
+    ],
+    "links": {
+      "repo": "https://github.com/weaviate/weaviate"
+    },
+    "description": "Vector + keyword search over catalog and reviews."
+  },
+  {
+    "id": "legal-briefs",
+    "title": "Legal: Brief Drafting Assistant",
+    "category": "industry-legal",
+    "difficulty": "advanced",
+    "est_hours": 18,
+    "tags": [
+      "rag",
+      "safety"
+    ],
+    "links": {
+      "repo": "https://github.com/openai/openai-cookbook"
+    },
+    "description": "Grounded drafting with sources and risk checks."
+  },
+  {
+    "id": "manufacturing-predictive",
+    "title": "Mfg: Predictive Maintenance Assistant",
+    "category": "industry-mfg",
+    "difficulty": "advanced",
+    "est_hours": 16,
+    "tags": [
+      "timeseries",
+      "anomaly"
+    ],
+    "links": {
+      "repo": "https://github.com/pycaret/pycaret"
+    },
+    "description": "Forecast failures, suggest parts and procedures."
+  },
+  {
+    "id": "education-tutor",
+    "title": "Education: Course Tutor with Citations",
+    "category": "industry-education",
+    "difficulty": "intermediate",
+    "est_hours": 12,
+    "tags": [
+      "rag",
+      "evals"
+    ],
+    "links": {
+      "guide": "05-projects/rag-on-supabase.md"
+    },
+    "description": "Tutor aligned to course materials with evals."
+  },
+  {
+    "id": "news-summarizer",
+    "title": "Media: Multi-source News Summarizer",
+    "category": "industry-media",
+    "difficulty": "intermediate",
+    "est_hours": 10,
+    "tags": [
+      "summarization"
+    ],
+    "links": {
+      "repo": "https://github.com/openai/openai-cookbook"
+    },
+    "description": "Summarize multiple sources; show sources and stance."
+  },
+  {
+    "id": "travel-itinerary",
+    "title": "Travel: Personalized Itinerary Planner",
+    "category": "industry-travel",
+    "difficulty": "intermediate",
+    "est_hours": 10,
+    "tags": [
+      "agents",
+      "tools"
+    ],
+    "links": {
+      "repo": "https://github.com/langchain-ai/langgraph"
+    },
+    "description": "Agents with tools: maps, flights, hotels; budget-aware."
+  },
+  {
+    "id": "supply-chain-qna",
+    "title": "Supply Chain: Policy Q&A",
+    "category": "industry-supply",
+    "difficulty": "intermediate",
+    "est_hours": 10,
+    "tags": [
+      "rag",
+      "policy"
+    ],
+    "links": {
+      "guide": "05-projects/rag-on-supabase.md"
+    },
+    "description": "Grounded answers over SOPs and contracts."
+  },
+  {
+    "id": "banking-chat",
+    "title": "Banking: Customer Support Chat",
+    "category": "industry-finance",
+    "difficulty": "intermediate",
+    "est_hours": 12,
+    "tags": [
+      "chat",
+      "guardrails"
+    ],
+    "links": {
+      "repo": "https://github.com/langfuse/langfuse"
+    },
+    "description": "Policy-aware chat with redaction and escalation."
+  },
+  {
+    "id": "health-risk-score",
+    "title": "Healthcare: Readmission Risk Scoring",
+    "category": "industry-healthcare",
+    "difficulty": "advanced",
+    "est_hours": 18,
+    "tags": [
+      "ml",
+      "risk"
+    ],
+    "links": {
+      "repo": "https://github.com/scikit-learn/scikit-learn"
+    },
+    "description": "Model risk and generate patient-friendly summaries."
+  },
+  {
+    "id": "ins-underwriting",
+    "title": "Insurance: Underwriting Assistant",
+    "category": "industry-insurance",
+    "difficulty": "advanced",
+    "est_hours": 16,
+    "tags": [
+      "ocr",
+      "rag"
+    ],
+    "links": {
+      "repo": "https://github.com/tesseract-ocr/tesseract"
+    },
+    "description": "Extract from PDFs and ground recommendations."
+  },
+  {
+    "id": "gis-routing",
+    "title": "GIS: Optimal Routing Assistant",
+    "category": "industry-energy",
+    "difficulty": "advanced",
+    "est_hours": 16,
+    "tags": [
+      "gis",
+      "routing"
+    ],
+    "links": {
+      "repo": "https://github.com/Project-OSRM/osrm-backend"
+    },
+    "description": "Route planning with constraints and explanations."
+  },
+  {
+    "id": "cyber-triage",
+    "title": "Cyber: Incident Triage Assistant",
+    "category": "industry-cyber",
+    "difficulty": "advanced",
+    "est_hours": 16,
+    "tags": [
+      "security",
+      "triage"
+    ],
+    "links": {
+      "repo": "https://github.com/owasp/",
+      "guide": "08-governance/model-risk.md"
+    },
+    "description": "Triage incidents and suggest next steps; log evidence."
+  },
+  {
+    "id": "hr-policy",
+    "title": "HR: Policy Q&A with Approvals",
+    "category": "industry-hr",
+    "difficulty": "intermediate",
+    "est_hours": 10,
+    "tags": [
+      "rag",
+      "approvals"
+    ],
+    "links": {
+      "repo": "https://github.com/temporalio/sdk-typescript"
+    },
+    "description": "Grounded answers with Temporal approval workflow."
+  },
+  {
+    "id": "sales-rfp",
+    "title": "Sales: RFP Assistant",
+    "category": "industry-sales",
+    "difficulty": "intermediate",
+    "est_hours": 12,
+    "tags": [
+      "rag",
+      "composer"
+    ],
+    "links": {
+      "repo": "https://github.com/openai/openai-cookbook"
+    },
+    "description": "Answer RFPs grounded on product docs and policies."
+  },
+  {
+    "id": "marketing-optimizer",
+    "title": "Marketing: Content Optimizer",
+    "category": "industry-marketing",
+    "difficulty": "intermediate",
+    "est_hours": 10,
+    "tags": [
+      "genai",
+      "evals"
+    ],
+    "links": {
+      "repo": "https://github.com/promptfoo/promptfoo"
+    },
+    "description": "Test and optimize prompts, styles, and metrics."
   }
 ]

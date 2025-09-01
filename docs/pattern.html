@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pattern Viewer — AI Architect Academy</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <main class="max-w-3xl mx-auto px-4 py-10">
+    <div id="content" class="prose max-w-none"></div>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const file = params.get('file') || '01-design-patterns/content-generation.md';
+    const raw = 'https://raw.githubusercontent.com/AI-Architect-Academy/ai-architect-academy/main/' + file;
+    fetch(raw).then(r=>r.text()).then(md=>{ document.getElementById('content').innerHTML = marked.parse(md); });
+  </script>
+</body></html>
