@@ -1,5 +1,6 @@
 # Project: Vector Search with pgvector
-- Enable pgvector
-- Compute embeddings
-- Similarity search
-- Benchmarks & tuning
+
+- Install extension and schema
+- Choose embedding model; test cosine vs. inner product
+- Indexing and performance tuning (IVFFlat)
+- Benchmarks: recall/latency tradeoffs; hybrid search

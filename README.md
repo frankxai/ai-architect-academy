@@ -1,38 +1,30 @@
 # AI Architect Academy — The Open Playbook
 
-The best resource on the web to become an AI Architect who builds AI Centers of Excellence.
+Build as an AI Architect. This repo is your practical, open, and constantly‑updated playbook to design, ship, and operate AI systems — from first principles to production.
 
-Top-tier, open-source learning repository for AI Architects. Patterns, learning paths, projects, templates, and curated resources — all in one place.
+- Patterns: Enterprise design patterns with value, architecture, discovery, and BoM
+- Paths: Beginner → Professional → Expert; 100‑Hour plan; Bootcamp (AI CoE inspired)
+- Projects: RAG on Supabase, Agents & Orchestration, Evals & Observability
+- Awesome: High‑signal OSS repos, tools, papers — why they matter
+- Templates: Discovery, solution docs, tech architecture, BoM, workshops
 
-## Highlights
-- Design Pattern Library: Enterprise-grade patterns with value, architecture, discovery, and BoM
-- Learning Paths: Beginner → Professional → Expert with projects and assessments
-- Hands-on Projects: RAG, agents, evals, observability, and MLOps
-- Templates & Playbooks: Discovery, solution docs, architecture diagrams, and workshops
-- Awesome Lists: Curated repos, tools, and research for production AI
+[Start Here →](START-HERE.md)
 
-## Quick Start
-- Pick a path: `02-learning-paths/beginner.md` or `02-learning-paths/professional.md`
-- Study patterns: `01-design-patterns/`
-- Build a project: `05-projects/rag-on-supabase.md`
-- Evaluate and harden: `07-evaluation/`
-
-## Contents
-- 00-roadmap — goals, milestones
-- 01-design-patterns — enterprise patterns (with templates)
-- 02-learning-paths — structured curricula
-- 03-awesome — curated open-source lists
-- 04-templates — documents and guides
-- 05-projects — hands-on builds
-- 06-toolchains — stacks and reference implementations
-- 07-evaluation — metrics, eval harness, guardrails
-- 08-governance — privacy, risk, compliance
-- 09-articles — deep dives and essays
-- 10-resources — videos, repos, papers
+## Table of Contents
+- 00‑roadmap — goals, milestones
+- 01‑design‑patterns — enterprise patterns (with templates)
+- 02‑learning‑paths — 100‑hour plan, beginner, professional, bootcamp
+- 03‑awesome — curated open‑source lists with one‑liners
+- 04‑templates — documents and guides
+- 05‑projects — hands‑on builds (step‑by‑step)
+- 06‑toolchains — stack references
+- 07‑evaluation — metrics, eval harness, guardrails
+- 08‑governance — privacy, risk, compliance
+- 09‑articles — deep dives and essays
+- 10‑resources — videos, repos, papers
 - data/seed — JSON/YAML indices consumed by apps
 
 ## Contributing
-PRs welcome! See `CONTRIBUTING.md`. Please keep sources open, cite authors, and prefer permissive licenses.
+PRs welcome! See `CONTRIBUTING.md`. Please add context (why it matters), prefer OSS, and use clear titles.
 
-## Star & Share
-If this helps you, please star the repo and share it so others can learn faster.
+If this helps you, star the repo and share it so others can learn faster.

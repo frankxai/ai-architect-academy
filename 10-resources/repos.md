@@ -1,7 +1,16 @@
-# Repositories to Know
-- huggingface/transformers — model and tokenizer stack
-- langchain-ai/langchain — LLM app framework
-- langfuse/langfuse — LLM observability
-- supabase/pgvector — vector similarity extension
-- weaviate/weaviate — vector database
-- pinecone-io — vector search resources
+# Repositories to Know (Why they matter)
+- huggingface/transformers — Models/tokenizers: foundation for NLP/LLM
+- langchain-ai/langchain — RAG/tools: fast prototyping to production
+- run-llama/llama_index — Data framework for LLM apps
+- vllm-project/vllm — High‑throughput serving for scale
+- ggerganov/llama.cpp — Local inference; edge/dev
+- ollama/ollama — Local model runner; packaging
+- pgvector/pgvector — Vector similarity in Postgres
+- qdrant/qdrant — Production OSS vector DB
+- weaviate/weaviate — Vector DB with hybrid search
+- milvus-io/milvus — Distributed vector DB
+- langfuse/langfuse — Observability for LLM apps
+- arize-ai/phoenix — Observability & analysis
+- promptfoo/promptfoo — Prompt evals in CI
+- microsoft/autogen — Multi‑agent framework
+- joaomdmoura/crewai — Agent teams & workflows
