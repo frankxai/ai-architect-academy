@@ -43,7 +43,7 @@
   </main>
   <script>
     async function load(){
-      const res = await fetch('../data/seed/projects.json');
+      const res = await fetch('./data/projects.json');
       const projects = await res.json();
       const grid = document.getElementById('grid');
       const q = document.getElementById('q');
@@ -69,12 +69,14 @@
         for(const p of filtered){
           const card = document.createElement('a');
           card.className = 'block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow';
-          card.href = p.links?.guide?.startsWith('http') ? p.links.guide : ('../' + (p.links?.guide || ''));
+          const base='https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/';
+          const rel=(p.links?.guide||'');
+          card.href = p.links?.guide?.startsWith('http') ? p.links.guide : (base + rel);
           card.innerHTML = `
             <div class="text-xs text-slate-500">${p.category} • ${p.difficulty} • ~${p.est_hours}h</div>
             <div class="mt-1 font-semibold">${p.title}</div>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${p.description || ''}</p>
-            <div class="mt-2 text-xs text-cyan-600">Links: ${Object.values(p.links||{}).map(l=>`<a class='underline' href='${l.startsWith('http')?l:('../'+l)}' target='_blank'>${l}</a>`).join(' • ')}</div>
+            <div class="mt-2 text-xs text-cyan-600">Links: ${Object.values(p.links||{}).map(l=>{const base='https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/'; const href=l.startsWith('http')?l:(base+l); return `<a class='underline' href='${href}' target='_blank'>${href}</a>`;}).join(' • ')}</div>
           `;
           grid.appendChild(card);
         }

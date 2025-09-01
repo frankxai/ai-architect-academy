@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="280" viewBox="0 0 720 280">
+  <rect width="720" height="280" fill="#f8fafc"/>
+  <g font-family="Inter,Arial" font-size="14" fill="#111827">
+    <rect x="24" y="24" width="190" height="80" rx="10" fill="#e0f2fe" stroke="#38bdf8"/>
+    <text x="40" y="56">1) Choose a Path</text>
+    <text x="40" y="78">100‑Hour • Beginner • Pro • Bootcamp</text>
+
+    <rect x="266" y="24" width="190" height="80" rx="10" fill="#ecfeff" stroke="#06b6d4"/>
+    <text x="282" y="56">2) Learn Patterns</text>
+    <text x="282" y="78">CX • Decision • MLOps</text>
+
+    <rect x="508" y="24" width="190" height="80" rx="10" fill="#dcfce7" stroke="#22c55e"/>
+    <text x="524" y="56">3) Build Projects</text>
+    <text x="524" y="78">RAG • Vectors • Evals</text>
+
+    <rect x="24" y="152" width="190" height="80" rx="10" fill="#fef9c3" stroke="#eab308"/>
+    <text x="40" y="184">4) Ship & Operate</text>
+    <text x="40" y="206">Stack • SLOs • Guardrails</text>
+
+    <rect x="266" y="152" width="190" height="80" rx="10" fill="#fae8ff" stroke="#d946ef"/>
+    <text x="282" y="184">5) Go Deeper</text>
+    <text x="282" y="206">Awesome • Articles</text>
+  </g>
+</svg>
