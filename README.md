@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo.svg" width="420" alt="AI Architect Academy"></p>
+
 # AI Architect Academy — Open Playbook for Builders
 
 Become the architect who can design, ship, and operate AI systems that matter. This repo is a high‑signal, living guide: patterns, projects, and the best open resources — curated and connected so you can move fast with confidence.

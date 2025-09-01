@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Pattern: Orchestration Workflow — expand Value/Architecture/Discovery/BoM/Risks",
+    "labels": ["good first issue","patterns","enhancement"],
+    "body": "Expand 01-design-patterns/orchestration-workflow.md with full sections: business value, technical architecture (engine, AI tasks, human approvals, retries/compensation), discovery questions, bill of materials, and risks/controls. Add links to reference OSS (Temporal, Prefect)."
+  },
+  {
+    "title": "Pattern: Governance & Compliance — add end-to-end content",
+    "labels": ["good first issue","patterns","docs"],
+    "body": "Fill 01-design-patterns/governance-compliance.md with privacy/GDPR, model risk, audit logs, data retention, approval flows. Include a checklist and BoM."
+  },
+  {
+    "title": "Pattern: Performance Optimization — write architecture & tuning guide",
+    "labels": ["good first issue","patterns","enhancement"],
+    "body": "Document latency budgets, caching (embedding & retrieval), batching, model choice tradeoffs, vector index tuning (IVFFlat), and cost controls."
+  },
+  {
+    "title": "Curate: Awesome LLMs — add 10 high-signal links with one-liners",
+    "labels": ["good first issue","awesome","docs"],
+    "body": "Update 03-awesome/awesome-llms.md with 10 additional repos (serve, fine-tune, eval). Keep table format; add 1–2 line context."
+  },
+  {
+    "title": "Curate: Awesome RAG — add 10 high-signal links with one-liners",
+    "labels": ["good first issue","awesome","docs"],
+    "body": "Update 03-awesome/awesome-rag.md with top repos/resources (retrievers, rerankers, chunkers, eval tools). Keep table format."
+  },
+  {
+    "title": "Add: 100 Projects catalog with tags and JSON index",
+    "labels": ["good first issue","projects","enhancement"],
+    "body": "Create 05-projects/100-projects.md and data/seed/projects.json with fields: title, difficulty, est_time, tags, link. Seed at least 20 starter items."
+  },
+  {
+    "title": "Docs: Embed Start Here diagram and add section banners",
+    "labels": ["good first issue","docs"],
+    "body": "Embed assets/start-here.svg in README sections; add small emoji banners for Patterns/Projects/Awesome to improve scannability."
+  },
+  {
+    "title": "Add: Case Studies page with 5 public exemplars",
+    "labels": ["good first issue","docs"],
+    "body": "Create 10-resources/case-studies.md with 5 public posts/demos, each with a 2–3 sentence takeaway." 
+  }
+]
