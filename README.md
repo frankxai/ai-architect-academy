@@ -64,3 +64,10 @@ Explore all: [Design Pattern Library](01-design-patterns/README.md)
 - PRs welcome — add links with a 1‑line “why it matters”.
 - Use templates for patterns/projects; keep quality high.
 - Good first issues coming soon; star and share if helpful.
+
+---
+
+Live Catalog (GitHub Pages)
+- Enable Pages → Source: /docs in repo settings, then visit:
+  - User: https://frankxai.github.io/ai-architect-academy/
+  - Org: https://ai-architect-academy.github.io/ai-architect-academy/

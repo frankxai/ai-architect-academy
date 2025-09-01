@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Architect Academy — Open Playbook</title>
+  <meta name="description" content="Open, high-signal playbook for AI Architects: patterns, projects, and curated resources." />
+  <link rel="icon" href="https://fav.farm/🧠" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class'}</script>
+  <script>
+    (function(){const t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')})();
+    function toggleTheme(){const e=document.documentElement;const d=e.classList.toggle('dark');try{localStorage.setItem('theme',d?'dark':'light')}catch{}}
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="../assets/logo.svg" alt="AI Architect Academy" class="h-8" />
+      </div>
+      <nav class="flex items-center gap-6 text-sm">
+        <a class="hover:text-cyan-600" href="./projects.html">Projects</a>
+        <a class="hover:text-cyan-600" href="../01-design-patterns/README.md">Patterns</a>
+        <a class="hover:text-cyan-600" href="../03-awesome/awesome-aggregators.md">Awesome</a>
+        <a class="hover:text-cyan-600" href="../START-HERE.md">Start Here</a>
+        <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
+      </nav>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <section class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Build as an AI Architect</h1>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Patterns, projects, and the best open resources to design, ship, and operate AI systems with confidence.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="../START-HERE.md" class="px-5 py-3 rounded-md bg-cyan-500 text-white hover:bg-cyan-600">Start Now</a>
+          <a href="./projects.html" class="px-5 py-3 rounded-md border">Browse Projects</a>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-xl p-4">
+        <img src="../assets/start-here.svg" alt="Start Here" class="w-full" />
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-xl font-semibold">Top Resources</h2>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/huggingface/transformers" target="_blank">huggingface/transformers</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/langchain-ai/langchain" target="_blank">langchain-ai/langchain</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/vllm-project/vllm" target="_blank">vllm-project/vllm</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/pgvector/pgvector" target="_blank">pgvector/pgvector</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/langfuse/langfuse" target="_blank">langfuse/langfuse</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="../03-awesome/awesome-aggregators.md">Meta Aggregators →</a>
+      </div>
+    </section>
+  </main>
+  <footer class="py-8 text-center text-sm text-slate-500">© AI Architect Academy — Open Playbook</footer>
+</body>
+</html>

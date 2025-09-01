@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — AI Architect Academy</title>
+  <meta name="description" content="Filterable catalog of projects for AI Architects." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class'}</script>
+  <script>
+    (function(){const t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')})();
+    function toggleTheme(){const e=document.documentElement;const d=e.classList.toggle('dark');try{localStorage.setItem('theme',d?'dark':'light')}catch{}}
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="./index.html" class="font-semibold">AI Architect Academy</a>
+      <nav class="flex items-center gap-6 text-sm">
+        <a class="hover:text-cyan-600" href="./index.html">Home</a>
+        <a class="hover:text-cyan-600" href="../START-HERE.md">Start Here</a>
+        <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
+      </nav>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-2xl font-bold">Projects Catalog</h1>
+    <p class="text-slate-600 dark:text-slate-300">Filter by category, difficulty, or search by text. Click a project for guides and repos.</p>
+
+    <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <input id="q" placeholder="Search..." class="border rounded-md p-2 dark:bg-slate-800 dark:border-slate-700" />
+      <select id="cat" class="border rounded-md p-2 dark:bg-slate-800 dark:border-slate-700"><option value="">All Categories</option></select>
+      <select id="diff" class="border rounded-md p-2 dark:bg-slate-800 dark:border-slate-700">
+        <option value="">All Difficulty</option>
+        <option>beginner</option>
+        <option>intermediate</option>
+        <option>advanced</option>
+      </select>
+      <button id="reset" class="border rounded-md p-2">Reset</button>
+    </div>
+
+    <div id="grid" class="mt-6 grid md:grid-cols-2 gap-4"></div>
+  </main>
+  <script>
+    async function load(){
+      const res = await fetch('../data/seed/projects.json');
+      const projects = await res.json();
+      const grid = document.getElementById('grid');
+      const q = document.getElementById('q');
+      const cat = document.getElementById('cat');
+      const diff = document.getElementById('diff');
+      const reset = document.getElementById('reset');
+
+      // categories
+      const cats = Array.from(new Set(projects.map(p=>p.category))).sort();
+      for(const c of cats){ const opt=document.createElement('option'); opt.textContent=c; opt.value=c; cat.appendChild(opt); }
+
+      function render(){
+        const term = (q.value||'').toLowerCase();
+        const c = cat.value; const d = diff.value;
+        const filtered = projects.filter(p => {
+          const t = (p.title + ' ' + (p.description||'') + ' ' + (p.tags||[]).join(' ')).toLowerCase();
+          const matchTerm = !term || t.includes(term);
+          const matchCat = !c || p.category === c;
+          const matchDiff = !d || p.difficulty === d;
+          return matchTerm && matchCat && matchDiff;
+        });
+        grid.innerHTML = '';
+        for(const p of filtered){
+          const card = document.createElement('a');
+          card.className = 'block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow';
+          card.href = p.links?.guide?.startsWith('http') ? p.links.guide : ('../' + (p.links?.guide || ''));
+          card.innerHTML = `
+            <div class="text-xs text-slate-500">${p.category} • ${p.difficulty} • ~${p.est_hours}h</div>
+            <div class="mt-1 font-semibold">${p.title}</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${p.description || ''}</p>
+            <div class="mt-2 text-xs text-cyan-600">Links: ${Object.values(p.links||{}).map(l=>`<a class='underline' href='${l.startsWith('http')?l:('../'+l)}' target='_blank'>${l}</a>`).join(' • ')}</div>
+          `;
+          grid.appendChild(card);
+        }
+      }
+      [q,cat,diff].forEach(el=>el.addEventListener('input', render));
+      reset.addEventListener('click', ()=>{ q.value=''; cat.value=''; diff.value=''; render(); });
+      render();
+    }
+    load();
+  </script>
+</body>
+</html>

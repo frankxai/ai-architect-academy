@@ -28,3 +28,24 @@ Contribute: PR new projects with a short description, difficulty, est. hours, an
 | 20 | Retrieval + Fine-tune Comparison | Research | Advanced | 16–24 | [Cookbook](https://github.com/openai/openai-cookbook) |
 
 More coming — targeting 100 curated builds. Open an issue to request priorities.
+
+| 21 | Citation Enforcement Prompt Patterns | RAG | Intermediate | 6–8 | [Guide](rag-on-supabase.md) |
+| 22 | Reranker Integration (cross-encoder) | Retrieval | Intermediate | 8–10 | [Weaviate](https://github.com/weaviate/weaviate) |
+| 23 | pgvector Index Tuning (IVFFlat) | Retrieval | Intermediate | 6–8 | [pgvector](https://github.com/pgvector/pgvector) |
+| 24 | Data Contamination Checks | Evaluation | Advanced | 10–12 | [Cookbook](https://github.com/openai/openai-cookbook) |
+| 25 | Synthetic Data Pipeline | Platform | Advanced | 12–16 | [Transformers](https://github.com/huggingface/transformers) |
+| 26 | Notes & Personal KB Integration | Systems | Intermediate | 8–10 | Guide |
+| 27 | Risk & Compliance Dashboard | Governance | Intermediate | 8–10 | [Model Risk](../08-governance/model-risk.md) |
+| 28 | LLM Gateway: Fallbacks & Retries | Ops | Intermediate | 8–10 | [Cookbook](https://github.com/openai/openai-cookbook) |
+| 29 | LLM Cost Simulator | Ops | Beginner | 5–6 | Cookbook |
+| 30 | Semantic Cache with Hashing | Systems | Intermediate | 8–10 | Cookbook |
+| 31 | Multilingual RAG | RAG | Advanced | 14–16 | [Transformers](https://github.com/huggingface/transformers) |
+| 32 | Fine-tune vs Retrieval Study | Research | Advanced | 18–24 | Cookbook |
+| 33 | Prompt Injection Defenses | Security | Intermediate | 8–10 | OWASP LLM Top 10 |
+| 34 | Content Moderation Pipeline | Security | Intermediate | 8–10 | Cookbook |
+| 35 | Explainable Retrieval | Evaluation | Intermediate | 8–10 | RAGAS |
+| 36 | Knowledge Graph Enrichment | Systems | Advanced | 14–16 | Neo4j |
+| 37 | Human Approval Workflows (Temporal) | Orchestration | Intermediate | 10–12 | Temporal |
+| 38 | Canary Deployment for LLM Apps | MLOps | Intermediate | 8–10 | Ray |
+| 39 | Blue/Green Serving (vLLM) | Serving | Intermediate | 8–10 | vLLM |
+| 40 | SLA Monitoring & Alerts | Ops | Intermediate | 8–10 | Langfuse |
