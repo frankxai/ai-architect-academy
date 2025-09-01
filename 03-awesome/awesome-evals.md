@@ -1,6 +1,9 @@
-# Awesome Evals & Observability
-- langfuse/langfuse — LLM observability: traces, evals, cost
-- arize-ai/phoenix — model/LLM observability and analysis
-- promptfoo/promptfoo — prompt testing & evals in CI
-- openai/evals — eval framework and datasets
-- microsoft/promptflow — evaluation and tracking for flows
+# Awesome Evals TITLE Observability
+
+| Link | Why it matters |
+|---|---|
+| [langfuse/langfuse](https://github.com/langfuse/langfuse) | Traces, evals, costs |
+| [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) | Model/LLM analysis |
+| [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | Prompt evals in CI |
+| [openai/evals](https://github.com/openai/evals) | Evaluation framework & datasets |
+| [microsoft/promptflow](https://github.com/microsoft/promptflow) | Flow evaluation & tracking |

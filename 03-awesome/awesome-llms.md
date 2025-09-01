@@ -1,8 +1,10 @@
 # Awesome LLMs
-- huggingface/transformers — the standard library for models/tokenizers
-- ggerganov/llama.cpp — efficient inference of LLMs on CPU/edge
-- vllm-project/vllm — high‑throughput serving with paged attention
-- ollama/ollama — simple local model runner & packaging
-- openai/openai-python — official Python SDK for OpenAI APIs
-- openai/openai-cookbook — production patterns and examples
-- run-llama/llama_index — data framework for LLM apps (indexing, RAG)
+
+| Link | Why it matters |
+|---|---|
+| [huggingface/transformers](https://github.com/huggingface/transformers) | Models/tokenizers: foundation for NLP/LLM |
+| [ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) | Local CPU/edge inference |
+| [vllm-project/vllm](https://github.com/vllm-project/vllm) | High‑throughput serving |
+| [ollama/ollama](https://github.com/ollama/ollama) | Local model runner & packaging |
+| [openai/openai-python](https://github.com/openai/openai-python) | Official Python SDK |
+| [openai/openai-cookbook](https://github.com/openai/openai-cookbook) | Production patterns & examples |
