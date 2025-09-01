@@ -42,6 +42,7 @@ Become the architect who can design, ship, and operate AI systems that matter. T
 ➡ See curated topic lists: [Awesome LLMs](03-awesome/awesome-llms.md), [RAG](03-awesome/awesome-rag.md), [Agents](03-awesome/awesome-agents.md), [Evals](03-awesome/awesome-evals.md), [MLOps](03-awesome/awesome-mlops.md), [Vector DBs](03-awesome/awesome-vector-dbs.md), and [Meta Aggregators](03-awesome/awesome-aggregators.md).
 
 ## Projects (Ship Value Fast)
+- 100 Projects catalog: [100 Projects](05-projects/100-projects.md)
 - RAG on Supabase + OpenAI: [Guide](05-projects/rag-on-supabase.md) • [pgvector](https://github.com/pgvector/pgvector)
 - Vector Search Benchmarks: [Guide](05-projects/vector-search-pgvector.md) • [qdrant](https://github.com/qdrant/qdrant) • [weaviate](https://github.com/weaviate/weaviate)
 - Evals with Langfuse: [Guide](05-projects/evals-langfuse.md) • [Langfuse](https://github.com/langfuse/langfuse)
