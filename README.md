@@ -78,3 +78,9 @@ Live Catalog (GitHub Pages)
 - Pair with AI tools: see `14-ai-tools/` (Aider, Continue, Claude Code, Gemini, Codex CLI)
 - Use prompt packs in `prompt-packs/` for code review, tests, refactors, docs
 - Follow `15-workflows/` for pairing, PR review, and maintenance with AI
+
+
+## Collaborate with AI
+- Read: `16-collaboration/working-with-ai.md`, `16-collaboration/prompting-guide.md`
+- Use: `prompt-packs/` and `15-workflows/` with Aider/Continue/Claude Code
+- Diagram: `assets/collaborate.svg`
