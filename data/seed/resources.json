@@ -1,0 +1,12 @@
+{
+  "videos": [
+    {"title": "LLMs 101", "channel": "Karpathy", "url": "https://www.youtube.com/"},
+    {"title": "RAG with pgvector", "channel": "LangChain", "url": "https://www.youtube.com/"}
+  ],
+  "articles": [
+    {"title": "RAG in Production", "slug": "rag-in-production"}
+  ],
+  "patterns": [
+    {"id": "content-generation", "title": "Content Generation", "category": "Customer Experience"}
+  ]
+}
