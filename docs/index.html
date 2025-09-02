@@ -6,15 +6,29 @@
   <title>AI Architect Academy — Open Playbook</title>
   <meta property="og:title" content="AI Architect Academy — Open Playbook"/>
   <meta property="og:description" content="Open, high-signal playbook for AI Architects: patterns, projects, and curated resources."/>
-  <meta property="og:image" content="https://raw.githubusercontent.com/AI-Architect-Academy/ai-architect-academy/main/assets/start-here.svg"/>
+  <meta property="og:image" content="https://ai-architect-academy.github.io/ai-architect-academy/assets/social-card.svg"/>
   <meta name="description" content="Open, high-signal playbook for AI Architects: patterns, projects, and curated resources." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AI Architect Academy",
+    "url": "https://ai-architect-academy.github.io/ai-architect-academy/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://ai-architect-academy.github.io/ai-architect-academy/"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
   <link rel="icon" href="https://fav.farm/🧠" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={darkMode:'class'}</script>
-  <script>
-    (function(){const t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')})();
-    function toggleTheme(){const e=document.documentElement;const d=e.classList.toggle('dark');try{localStorage.setItem('theme',d?'dark':'light')}catch{}}
-  </script>
+  <script src="./assets/site.js"></script>
+  <script src="./assets/search.js" defer></script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
   <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
@@ -23,10 +37,11 @@
         <img src="./assets/logo.svg" alt="AI Architect Academy" class="h-8" />
       </div>
       <nav class="flex items-center gap-6 text-sm">
-        <a class="hover:text-cyan-600" href="./projects.html">Projects</a> <a class="hover:text-cyan-600" href="./collaborate.html">Collaborate</a> <a class="hover:text-cyan-600" href="./clouds.html">Clouds</a> <a class="hover:text-cyan-600" href="./concepts.html">Concepts</a> <a class="hover:text-cyan-600" href="./platforms.html">Platforms</a> <a class="hover:text-cyan-600" href="./patterns.html">Patterns</a> <a class="hover:text-cyan-600" href="./resources.html">Resources</a> <a class="hover:text-cyan-600" href="./topics/rag.html">RAG</a>
-        <a class="hover:text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/tree/main/01-design-patterns">Patterns</a>
-        <a class="hover:text-cyan-600" href="../03-awesome/awesome-aggregators.md">Awesome</a>
-        <a class="hover:text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md">Start Here</a>
+        <a class="hover:text-cyan-600" href="./projects.html">Projects</a> <a class="hover:text-cyan-600" href="./collaborate.html">Collaborate</a> <a class="hover:text-cyan-600" href="./clouds.html">Clouds</a> <a class="hover:text-cyan-600" href="./concepts.html">Concepts</a> <a class="hover:text-cyan-600" href="./platforms.html">Platforms</a> <a class="hover:text-cyan-600" href="./patterns.html">Patterns</a> <a class="hover:text-cyan-600" href="./resources.html">Resources</a> <a class="hover:text-cyan-600" href="./topics/index.html">Topics</a> <a class="hover:text-cyan-600" href="./start-here.html">Start Here</a>
+        <a class="hover:text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/tree/main/01-design-patterns" target="_blank" rel="noopener">Repo Patterns ↗</a>
+        <a class="hover:text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-aggregators.md" target="_blank" rel="noopener">Awesome ↗</a>
+        <button onclick="document.dispatchEvent(new KeyboardEvent('keydown',{key:'/'}))" class="px-2 py-1 border rounded text-xs">Search /</button>
+        <a class="px-2 py-1 border rounded text-xs" href="https://github.com/AI-Architect-Academy/ai-architect-academy" target="_blank" rel="noopener">GitHub</a>
         <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
       </nav>
     </div>
@@ -37,7 +52,7 @@
         <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Build as an AI Architect</h1>
         <p class="mt-3 text-slate-600 dark:text-slate-300">Patterns, projects, and the best open resources to design, ship, and operate AI systems with confidence.</p>
         <div class="mt-6 flex gap-3">
-          <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md" class="px-5 py-3 rounded-md bg-cyan-500 text-white hover:bg-cyan-600">Start Now</a>
+          <a href="./start-here.html" class="px-5 py-3 rounded-md bg-cyan-500 text-white hover:bg-cyan-600">Start Now</a>
           <a href="./projects.html" class="px-5 py-3 rounded-md border">Browse Projects</a> <a class="hover:text-cyan-600" href="./collaborate.html">Collaborate</a> <a class="hover:text-cyan-600" href="./clouds.html">Clouds</a> <a class="hover:text-cyan-600" href="./concepts.html">Concepts</a> <a class="hover:text-cyan-600" href="./platforms.html">Platforms</a>
         </div>
       </div>
@@ -47,15 +62,142 @@
     </section>
 
     <section class="mt-12">
-      <h2 class="text-xl font-semibold">Top Resources</h2>
+      <h2 class="text-xl font-semibold">Top 10 Repos (Why They Matter)</h2>
       <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/huggingface/transformers" target="_blank">huggingface/transformers</a>
-        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/langchain-ai/langchain" target="_blank">langchain-ai/langchain</a>
-        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/vllm-project/vllm" target="_blank">vllm-project/vllm</a>
-        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/pgvector/pgvector" target="_blank">pgvector/pgvector</a>
-        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="https://github.com/langfuse/langfuse" target="_blank">langfuse/langfuse</a>
-        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="../03-awesome/awesome-aggregators.md">Meta Aggregators →</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">
+           <div class="font-semibold">huggingface/transformers</div>
+           <div class="text-sm text-slate-500">Models & tokenizers: standard LLM toolkit</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/openai/openai-cookbook" target="_blank" rel="noopener">
+           <div class="font-semibold">openai/openai-cookbook</div>
+           <div class="text-sm text-slate-500">Production patterns: prompts, evals, ops</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener">
+           <div class="font-semibold">langchain-ai/langchain</div>
+           <div class="text-sm text-slate-500">Framework: RAG/agents from prototype→prod</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">
+           <div class="font-semibold">langchain-ai/langgraph</div>
+           <div class="text-sm text-slate-500">Graph orchestration: deterministic workflows</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener">
+           <div class="font-semibold">run-llama/llama_index</div>
+           <div class="text-sm text-slate-500">Data framework: indexing & retrieval</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">
+           <div class="font-semibold">vllm-project/vllm</div>
+           <div class="text-sm text-slate-500">Serving: high throughput, low latency</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/ggerganov/llama.cpp" target="_blank" rel="noopener">
+           <div class="font-semibold">ggerganov/llama.cpp</div>
+           <div class="text-sm text-slate-500">Local inference: CPU/edge portability</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/ollama/ollama" target="_blank" rel="noopener">
+           <div class="font-semibold">ollama/ollama</div>
+           <div class="text-sm text-slate-500">Local runtime: run & package models</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">
+           <div class="font-semibold">pgvector/pgvector</div>
+           <div class="text-sm text-slate-500">Vector search in Postgres</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow"
+           href="https://github.com/langfuse/langfuse" target="_blank" rel="noopener">
+           <div class="font-semibold">langfuse/langfuse</div>
+           <div class="text-sm text-slate-500">Observability: traces, evals, cost</div>
+        </a>
       </div>
+      <div class="mt-3 text-sm">
+        See more curated lists:
+        <a class="text-cyan-600 underline" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-llms.md" target="_blank" rel="noopener">LLMs ↗</a>,
+        <a class="text-cyan-600 underline" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-rag.md" target="_blank" rel="noopener">RAG ↗</a>,
+        <a class="text-cyan-600 underline" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-agents.md" target="_blank" rel="noopener">Agents ↗</a>,
+        <a class="text-cyan-600 underline" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-evals.md" target="_blank" rel="noopener">Evals ↗</a>,
+        <a class="text-cyan-600 underline" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-mlops.md" target="_blank" rel="noopener">MLOps ↗</a>,
+        <a class="text-cyan-600 underline" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-vector-dbs.md" target="_blank" rel="noopener">Vector DBs ↗</a>.
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-xl font-semibold">Quick Links</h2>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./topics/observability.html">Observability</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./topics/guardrails.html">Guardrails</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./topics/hybrid-search.html">Hybrid Search</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./topics/chunking.html">Chunking</a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./topics/costs.html">Costs</a>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-xl font-semibold">Featured Topics</h2>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./topics/observability.html">
+          <div class="font-semibold">Observability</div>
+          <div class="text-sm text-slate-500">Trace, measure, and control costs</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./topics/guardrails.html">
+          <div class="font-semibold">Guardrails</div>
+          <div class="text-sm text-slate-500">Safety filters and policies</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./topics/hybrid-search.html">
+          <div class="font-semibold">Hybrid Search</div>
+          <div class="text-sm text-slate-500">BM25 + vectors + reranking</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-xl font-semibold">Featured Patterns</h2>
+      <div class="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./pattern.html?file=01-design-patterns/content-generation.md">
+          <div class="font-semibold">Content Generation</div>
+          <div class="text-sm text-slate-500">Value framing, architecture, BoM, risks</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./pattern.html?file=01-design-patterns/decision-support.md">
+          <div class="font-semibold">Decision Support</div>
+          <div class="text-sm text-slate-500">Assist decisions with citations and guardrails</div>
+        </a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" href="./pattern.html?file=01-design-patterns/model-lifecycle-management.md">
+          <div class="font-semibold">Model Lifecycle Management</div>
+          <div class="text-sm text-slate-500">From training to monitoring in production</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-xl font-semibold">Featured Projects</h2>
+      <div id="proj" class="mt-4 grid md:grid-cols-2 gap-4"></div>
+      <script>
+        (async function(){
+          try{
+            const r = await fetch('./data/projects.json');
+            const all = await r.json();
+            const featured = all.slice(0,6);
+            const el = document.getElementById('proj');
+            for(const p of featured){
+              const a = document.createElement('a');
+              a.className='block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow';
+              const base='https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/';
+              const href = p.links?.guide?.startsWith('http')?p.links.guide:(base+(p.links?.guide||''));
+              a.href=href; a.target='_blank'; a.rel='noopener';
+              a.innerHTML = `
+                <div class=\\"text-xs text-slate-500\\">${p.category} • ${p.difficulty} • ~${p.est_hours}h</div>
+                <div class=\\"mt-1 font-semibold\\">${p.title}</div>
+                <p class=\\"mt-2 text-sm text-slate-600 dark:text-slate-300\\">${p.description||''}</p>`;
+              el.appendChild(a);
+            }
+          }catch{}
+        })();
+      </script>
     </section>
   </main>
   <footer class="py-8 text-center text-sm text-slate-500">© AI Architect Academy — Open Playbook</footer>
