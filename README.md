@@ -1,22 +1,55 @@
 <p align="center"><img src="assets/logo.svg" width="420" alt="AI Architect Academy"></p>
 
-[![Stars](https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square)](https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square)](https://github.com/AI-Architect-Academy/ai-architect-academy/pulls) [![Pages](https://img.shields.io/badge/Pages-live-green?style=flat-square)](https://ai-architect-academy.github.io/ai-architect-academy/)
-# AI Architect Academy — Open Playbook for Builders
+<p align="center">
+  <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square"></a>
+  <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/pulls"><img alt="PRs" src="https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square"></a>
+  <a href="https://ai-architect-academy.github.io/ai-architect-academy/"><img alt="Pages" src="https://img.shields.io/badge/Pages-live-green?style=flat-square"></a>
+</p>
 
-Become the architect who can design, ship, and operate AI systems that matter. This repo is a high‑signal, living guide: patterns, projects, and the best open resources — curated and connected so you can move fast with confidence.
+# AI Architect Academy — Build Real AI Value
 
-![Start Here](assets/start-here.svg)
+Design, ship, and operate AI systems with confidence. A high‑signal, living playbook: proven patterns, hands‑on projects, and curated resources — connected so you can move fast and deliver value.
 
-## Your Learning Journey
-- Orient: Read Start‑Here and pick a path (100‑Hour, Beginner, Pro, Bootcamp)
-- Ground: Learn Enterprise Patterns (value, architecture, discovery, BoM)
-- Build: Ship hands‑on projects (RAG, Agents, Evals, Observability)
-- Operate: Add SLOs, guardrails, governance, and cost controls
-- Specialize: Choose an industry pattern and publish a portfolio PoC
+<p align="center">
+  <a href="START-HERE.md"><img alt="Start Here" src="https://img.shields.io/badge/Start-Here-cyan?style=for-the-badge"></a>
+  <a href="https://ai-architect-academy.github.io/ai-architect-academy/"><img alt="Live Catalog" src="https://img.shields.io/badge/Live-Catalog-slate?style=for-the-badge"></a>
+  <a href="05-projects/100-projects.md"><img alt="Projects" src="https://img.shields.io/badge/Projects-100+-indigo?style=for-the-badge"></a>
+</p>
 
-[Start Here →](START-HERE.md) • [100‑Hour Plan →](02-learning-paths/100-hour-ai-architect.md) • [Patterns →](01-design-patterns/README.md) • [Projects →](05-projects/rag-on-supabase.md)
+<p align="center"><img src="assets/start-here.svg" alt="Start Here" width="720"></p>
 
-## Top 20 Repos Every AI Architect Should Know
+## TL;DR — Get Value Fast
+- Pick a goal (RAG, Agents, Evals) and open the matching project.
+- Use a pattern to shape value, architecture, BoM, and risks.
+- Ship the smallest useful version with evals + observability from day one.
+
+Quick links: [Start Here](START-HERE.md) • [RAG on Supabase](05-projects/rag-on-supabase.md) • [Design Patterns](01-design-patterns/README.md) • [Live Catalog](https://ai-architect-academy.github.io/ai-architect-academy/)
+
+## What You’ll Get
+- Practical patterns: value framing, solution architecture, discovery Qs, BoM, risks
+- Battle‑tested projects: RAG, agents, evals, observability, vector search
+- Curated resources: the best repos, papers, talks, and tools — no fluff
+- Operate in prod: cost/latency SLOs, guardrails, governance, and monitoring
+
+## Starter Stack (Opinionated)
+- Data + Vectors: Postgres + `pgvector` or Qdrant
+- Framework: LangChain (RAG/agents) or LlamaIndex (data-centric)
+- Reranking: `bge-reranker` or Cohere Rerank for quality boosts
+- Observability: Langfuse (traces, evals, costs)
+- Evals: promptfoo (CI-friendly), plus RAGAS for RAG quality
+- Guardrails: policy filtering + prompt-injection defenses
+
+## Fast Paths
+- RAG (citations, abstention, caching): [Guide](05-projects/rag-on-supabase.md)
+- Evals (faithfulness, coverage): [Guide](05-projects/evals-langfuse.md)
+- Vector Search Benchmarks: [Guide](05-projects/vector-search-pgvector.md)
+
+## Quick Start
+1) Read the short [Start Here](START-HERE.md)
+2) Pick the [100‑Hour Plan](02-learning-paths/100-hour-ai-architect.md) or a focused project
+3) Ship value: choose a pattern + project, then instrument with evals/observability
+
+## Top Repos Every AI Architect Should Know
 | Repo | What | Why it matters |
 |---|---|---|
 | [huggingface/transformers](https://github.com/huggingface/transformers) | Models & tokenizers | Standard toolkit for LLM/NLP foundations |
@@ -48,8 +81,8 @@ Become the architect who can design, ship, and operate AI systems that matter. T
 - Vector Search Benchmarks: [Guide](05-projects/vector-search-pgvector.md) • [qdrant](https://github.com/qdrant/qdrant) • [weaviate](https://github.com/weaviate/weaviate)
 - Evals with Langfuse: [Guide](05-projects/evals-langfuse.md) • [Langfuse](https://github.com/langfuse/langfuse)
 
-## Enterprise Patterns (Learn by Architecture)
-Read pattern docs for value, solution architecture, discovery questions, BoM, and risks:
+## Enterprise Patterns (Design by Value)
+Each pattern covers value framing, solution architecture, discovery questions, Bill of Materials, and risks:
 - [Content Generation](01-design-patterns/content-generation.md)
 - [Decision Support](01-design-patterns/decision-support.md)
 - [Model Lifecycle Management](01-design-patterns/model-lifecycle-management.md)
@@ -68,10 +101,31 @@ Explore all: [Design Pattern Library](01-design-patterns/README.md)
 
 ---
 
-Live Catalog (GitHub Pages)
-- Enable Pages → Source: /docs in repo settings, then visit:
+## Live Catalog (GitHub Pages)
+- Visit: https://ai-architect-academy.github.io/ai-architect-academy/
+- Source: `/docs` (already configured)
 
-  - Org: https://ai-architect-academy.github.io/ai-architect-academy/
+### Site Features
+- Site-wide search: press `/` on any page
+- Dark mode: persists across visits
+- ToC + source links on long docs (Start Here, Patterns)
+- Featured Repos, Featured Projects, Quick Topic Links
+- Link checking in CI to prevent regressions
+
+### Maintainer Tips
+- Update section search index: `python3 scripts/generate-sections.py`
+- Serve locally: `scripts/serve.sh` → http://localhost:8080
+
+## Who This Is For
+- Builders shipping real features under time and budget constraints
+- Tech leads aligning value, architecture, and operations
+- Learners who prefer pragmatic, high-signal guidance over fluff
+
+## How to Use This Repo
+- Start with [Start Here](START-HERE.md) for orientation and path selection
+- Pick a project and ship an MVP with evals + observability
+- Read the matching pattern to refine value, design, and risks
+- Use topics (RAG, Agents, Evals, Observability, Guardrails) for quick wins
 
 ## Local Use & Collaboration
 - Serve Pages locally: `scripts/serve.sh` → http://localhost:8080
