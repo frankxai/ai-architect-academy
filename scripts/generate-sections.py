@@ -93,6 +93,26 @@ for fn in sorted(os.listdir(condir)):
                     'tags': ['concept']
                 })
 
+# Selected docs pages (HTML): platforms, clouds
+for name in ['platforms.html', 'clouds.html']:
+    path = os.path.join(repo_root, 'docs', name)
+    if not os.path.exists(path):
+        continue
+    with open(path, 'r', encoding='utf-8') as f:
+        html = f.read()
+    heads = re.findall(r'<h([23])[^>]*>(.*?)</h[23]>', html, flags=re.I|re.S)
+    for level, inner in heads:
+        text = re.sub('<[^<]+?>', '', inner).strip()
+        if not text:
+            continue
+        slug = slugify(text)
+        entries.append({
+            'title': f"{name.replace('.html','').title()}: {text}",
+            'page': name.replace('.html',''),
+            'url': f'./{name}#' + slug,
+            'tags': ['docs']
+        })
+
 out = os.path.join(repo_root, 'docs', 'data', 'sections.json')
 os.makedirs(os.path.dirname(out), exist_ok=True)
 with open(out, 'w', encoding='utf-8') as f:
