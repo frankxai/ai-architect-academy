@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects — AI Architect Academy</title>
   <meta name="description" content="Filterable catalog of projects for AI Architects." />
+  <link rel="icon" href="https://fav.farm/🤖" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={darkMode:'class'}</script>
   <script>
@@ -18,8 +19,8 @@
       <a href="./index.html" class="font-semibold">AI Architect Academy</a>
       <nav class="flex items-center gap-6 text-sm">
         <a class="hover:text-cyan-600" href="./index.html">Home</a>
-        <a class="hover:text-cyan-600" href="../START-HERE.md">Start Here</a>
-        <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
+        <a class="hover:text-cyan-600" target="_blank" rel="noopener" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md">Start Here</a>
+        <button aria-label="Toggle theme" onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
       </nav>
     </div>
   </header>
@@ -72,11 +73,12 @@
           const base='https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/';
           const rel=(p.links?.guide||'');
           card.href = p.links?.guide?.startsWith('http') ? p.links.guide : (base + rel);
+          card.target = '_blank'; card.rel = 'noopener';
           card.innerHTML = `
             <div class="text-xs text-slate-500">${p.category} • ${p.difficulty} • ~${p.est_hours}h</div>
             <div class="mt-1 font-semibold">${p.title}</div>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${p.description || ''}</p>
-            <div class="mt-2 text-xs text-cyan-600">Links: ${Object.values(p.links||{}).map(l=>{const base='https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/'; const href=l.startsWith('http')?l:(base+l); return `<a class='underline' href='${href}' target='_blank'>${href}</a>`;}).join(' • ')}</div>
+            <div class="mt-2 text-xs text-cyan-600">Links: ${Object.values(p.links||{}).map(l=>{const base='https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/'; const href=l.startsWith('http')?l:(base+l); return `<a class='underline' href='${href}' target='_blank' rel='noopener'>${href}</a>`;}).join(' • ')}</div>
           `;
           grid.appendChild(card);
         }
@@ -89,3 +91,4 @@
   </script>
 </body>
 </html>
+
