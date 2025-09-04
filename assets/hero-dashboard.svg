@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="AI Architects Dashboard">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef2ff"/>
+    </linearGradient>
+    <style>
+      .title{font:700 36px 'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;fill:#0f172a}
+      .sub{font:400 16px 'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;fill:#334155}
+      .card-title{font:600 16px 'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;fill:#0f172a}
+      .card-sub{font:400 13px 'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;fill:#475569}
+    </style>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="560" fill="url(#bg)"/>
+  <g transform="translate(72,80)">
+    <text class="title">AI Architects Dashboard</text>
+    <text class="sub" y="26" dy="20">Projects • Patterns • Topics • Search</text>
+  </g>
+  <g transform="translate(72,150)" filter="url(#shadow)">
+    <rect width="500" height="320" rx="18" fill="#ffffff"/>
+    <!-- Grid mock -->
+    <g transform="translate(24,24)">
+      <rect x="0" y="0" width="220" height="88" rx="12" fill="#f1f5f9"/>
+      <text class="card-title" x="14" y="30">Featured Project</text>
+      <text class="card-sub" x="14" y="54">RAG on Supabase • pgvector</text>
+
+      <rect x="240" y="0" width="220" height="88" rx="12" fill="#f1f5f9"/>
+      <text class="card-title" x="254" y="30">Vector Bench</text>
+      <text class="card-sub" x="254" y="54">Qdrant • Weaviate • Milvus</text>
+
+      <rect x="0" y="104" width="220" height="88" rx="12" fill="#f1f5f9"/>
+      <text class="card-title" x="14" y="134">Agents</text>
+      <text class="card-sub" x="14" y="158">Orchestration & tools</text>
+
+      <rect x="240" y="104" width="220" height="88" rx="12" fill="#f1f5f9"/>
+      <text class="card-title" x="254" y="134">Evals</text>
+      <text class="card-sub" x="254" y="158">Quality & guardrails</text>
+
+      <rect x="0" y="208" width="460" height="64" rx="12" fill="#e0f2fe"/>
+      <text class="card-title" x="14" y="248">Press “/” to search the catalog</text>
+    </g>
+  </g>
+  <g transform="translate(596,150)" filter="url(#shadow)">
+    <rect width="532" height="320" rx="18" fill="#ffffff"/>
+    <!-- Pattern panel -->
+    <g transform="translate(24,24)">
+      <text class="card-title" x="0" y="0" dy="18">Design Pattern: Decision Support</text>
+      <text class="card-sub" x="0" y="24" dy="18">Value • Architecture • Risks • BoM</text>
+      <rect x="0" y="60" width="484" height="200" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+      <text class="card-sub" x="16" y="92">• Ingest knowledge • Retrieve • Rerank • Cite</text>
+      <text class="card-sub" x="16" y="120">• Evals: faithfulness, coverage, toxicity</text>
+      <text class="card-sub" x="16" y="148">• Operate: tracing, cost SLOs, policy</text>
+      <rect x="0" y="270" width="180" height="30" rx="8" fill="#dcfce7"/>
+      <text class="card-title" x="12" y="291">Open Guide →</text>
+    </g>
+  </g>
+</svg>
+
