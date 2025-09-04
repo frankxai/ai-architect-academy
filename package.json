@@ -1,0 +1,12 @@
+{
+  "name": "ai-architect-academy-site",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "screenshots": "node ./scripts/capture-screenshots.mjs"
+  },
+  "devDependencies": {
+    "puppeteer": "^22.12.1"
+  }
+}
+
