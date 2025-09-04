@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Awesome Evals TITLE Observability
 
 | Link | Why it matters |
@@ -7,3 +8,8 @@
 | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | Prompt evals in CI |
 | [openai/evals](https://github.com/openai/evals) | Evaluation framework & datasets |
 | [microsoft/promptflow](https://github.com/microsoft/promptflow) | Flow evaluation & tracking |
+=======
+# Awesome Evals
+- Link • Why it matters
+- Link • Why it matters
+>>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)

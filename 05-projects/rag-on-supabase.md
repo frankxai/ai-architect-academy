@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Project: RAG on Supabase + OpenAI (Step‑by‑Step)
 
 1) Setup
@@ -24,3 +25,10 @@
 6) Hardening
 - Rate limits per user/tier; cache frequent queries
 - Cost guardrails and alerts
+=======
+# Project: RAG on Supabase + OpenAI
+- Ingest transcripts → chunk → embeddings (pgvector)
+- Semantic search + hybrid re-rank
+- Tutor answer with citations
+- Evals: faithfulness, answer quality
+>>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)

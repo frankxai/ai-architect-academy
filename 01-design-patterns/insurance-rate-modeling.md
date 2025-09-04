@@ -1,6 +1,7 @@
 # Pattern: Insurance Rate Modeling
 
 ## Business Value
+<<<<<<< HEAD
 - Improve pricing accuracy and risk segmentation; reduce loss ratios while staying compliant.
 
 ## Technical Architecture
@@ -20,3 +21,18 @@
 ## Risks & Controls
 - Bias and fairness → constraints and audits; holdout by segment
 - Data quality → validation and SLAs; incident playbooks
+=======
+- 
+
+## Technical Architecture
+- 
+
+## Discovery Questions
+- 
+
+## Bill of Materials
+- 
+
+## Risks & Controls
+- 
+>>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)

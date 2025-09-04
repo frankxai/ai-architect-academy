@@ -1,6 +1,7 @@
 # Pattern: Decision Support
 
 ## Business Value
+<<<<<<< HEAD
 - Faster, higher‑quality decisions with transparent evidence and what‑if analysis.
 
 ## Technical Architecture
@@ -21,3 +22,18 @@
 - Over‑trust → show citations and confidence; require approval
 - Data drift → monitor inputs and accuracy; scheduled recalibration
 - Compliance → retain decisions and rationale with access controls
+=======
+- 
+
+## Technical Architecture
+- 
+
+## Discovery Questions
+- 
+
+## Bill of Materials
+- 
+
+## Risks & Controls
+- 
+>>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)

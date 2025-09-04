@@ -1,6 +1,7 @@
 # Pattern: Content Generation
 
 ## Business Value
+<<<<<<< HEAD
 - Scale on‑brand content across channels while reducing cycle time and review burden.
 - Personalize by segment/user with measurable uplift and clear governance.
 
@@ -24,3 +25,18 @@
 - Hallucinations → strict grounding; mandatory citations; abstain when low confidence
 - Brand drift → style constraints; reviewer gates; A/B tests
 - PII leakage → redaction; policy enforcement; logging & access controls
+=======
+- 
+
+## Technical Architecture
+- 
+
+## Discovery Questions
+- 
+
+## Bill of Materials
+- 
+
+## Risks & Controls
+- 
+>>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)

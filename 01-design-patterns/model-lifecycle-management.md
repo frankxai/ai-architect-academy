@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pattern: Model Lifecycle Management (MLOps)
 
 ## Business Value
@@ -20,3 +21,21 @@
 - Regression risk → eval gates in CI; prompt/model versioning
 - Cost creep → budget alerts; autoscaling; caching
 - Compliance → audit logs; signed artifacts; access policies
+=======
+# Pattern: Model Lifecycle Management
+
+## Business Value
+- 
+
+## Technical Architecture
+- 
+
+## Discovery Questions
+- 
+
+## Bill of Materials
+- 
+
+## Risks & Controls
+- 
+>>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)

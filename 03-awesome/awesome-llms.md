@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Awesome LLMs
 
 | Link | Why it matters |
@@ -8,3 +9,8 @@
 | [ollama/ollama](https://github.com/ollama/ollama) | Local model runner & packaging |
 | [openai/openai-python](https://github.com/openai/openai-python) | Official Python SDK |
 | [openai/openai-cookbook](https://github.com/openai/openai-cookbook) | Production patterns & examples |
+=======
+# Awesome Llms
+- Link • Why it matters
+- Link • Why it matters
+>>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)

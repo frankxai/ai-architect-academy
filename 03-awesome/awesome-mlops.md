@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Awesome MLOps TITLE Orchestration
 
 | Link | Why it matters |
@@ -9,3 +10,8 @@
 | [dagster-io/dagster](https://github.com/dagster-io/dagster) | Data/ML orchestrator |
 | [mlflow/mlflow](https://github.com/mlflow/mlflow) | Experiment tracking & registry |
 | [bentoml/BentoML](https://github.com/bentoml/BentoML) | Packaging & serving |
+=======
+# Awesome Mlops
+- Link • Why it matters
+- Link • Why it matters
+>>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)
