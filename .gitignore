@@ -1,5 +1,5 @@
 node_modules/
-assets/screenshots/*.tmp
 .pnpm-store/
 .DS_Store
+assets/screenshots/*.tmp
 
