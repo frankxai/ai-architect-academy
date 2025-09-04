@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Repositories to Know (With Links)
 
 | Link | Why it matters |
@@ -28,3 +29,12 @@
 | [papers-we-love/papers-we-love](https://github.com/papers-we-love/papers-we-love) | Foundational papers |
 | [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | Prompts collection |
 | [e2b-dev/awesome-ai-agents](https://github.com/e2b-dev/awesome-ai-agents) | Agents frameworks/tools |
+=======
+# Repositories to Know
+- huggingface/transformers — model and tokenizer stack
+- langchain-ai/langchain — LLM app framework
+- langfuse/langfuse — LLM observability
+- supabase/pgvector — vector similarity extension
+- weaviate/weaviate — vector database
+- pinecone-io — vector search resources
+>>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)
