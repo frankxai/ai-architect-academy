@@ -30,10 +30,10 @@
       <text class="card-sub" x="254" y="54">Qdrant • Weaviate • Milvus</text>
       <rect x="0" y="104" width="220" height="88" rx="12" fill="#f1f5f9"/>
       <text class="card-title" x="14" y="134">Agents</text>
-      <text class="card-sub" x="14" y="158">Orchestration & tools</text>
+      <text class="card-sub" x="14" y="158">Orchestration &amp; tools</text>
       <rect x="240" y="104" width="220" height="88" rx="12" fill="#f1f5f9"/>
       <text class="card-title" x="254" y="134">Evals</text>
-      <text class="card-sub" x="254" y="158">Quality & guardrails</text>
+      <text class="card-sub" x="254" y="158">Quality &amp; guardrails</text>
       <rect x="0" y="208" width="460" height="64" rx="12" fill="#e0f2fe"/>
       <text class="card-title" x="14" y="248">Press “/” to search the catalog</text>
     </g>
@@ -52,4 +52,3 @@
     </g>
   </g>
 </svg>
-

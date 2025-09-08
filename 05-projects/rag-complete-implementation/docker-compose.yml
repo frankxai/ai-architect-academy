@@ -1,0 +1,150 @@
+version: '3.8'
+
+services:
+  # PostgreSQL with pgvector extension (alternative to Supabase for local dev)
+  postgres:
+    image: pgvector/pgvector:pg15
+    container_name: rag_postgres
+    environment:
+      - POSTGRES_DB=rag_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - rag_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d rag_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # RAG Application
+  rag_app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag_app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # Database connection
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=rag_db
+      - DB_USER=postgres
+      - DB_PASSWORD=password123
+      
+      # Supabase (override these for production)
+      - SUPABASE_URL=${SUPABASE_URL:-http://localhost:3000}
+      - SUPABASE_KEY=${SUPABASE_KEY:-your-supabase-key}
+      
+      # OpenAI
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-your-openai-key}
+      - OPENAI_EMBEDDING_MODEL=${OPENAI_EMBEDDING_MODEL:-text-embedding-3-small}
+      - OPENAI_CHAT_MODEL=${OPENAI_CHAT_MODEL:-gpt-4o-mini}
+      - OPENAI_MAX_TOKENS=${OPENAI_MAX_TOKENS:-1000}
+      - OPENAI_TEMPERATURE=${OPENAI_TEMPERATURE:-0.1}
+      
+      # Chunking
+      - CHUNK_SIZE=${CHUNK_SIZE:-1000}
+      - CHUNK_OVERLAP=${CHUNK_OVERLAP:-200}
+      
+      # Retrieval
+      - RETRIEVAL_TOP_K=${RETRIEVAL_TOP_K:-5}
+      - RETRIEVAL_SIMILARITY_THRESHOLD=${RETRIEVAL_SIMILARITY_THRESHOLD:-0.7}
+      - RETRIEVAL_MAX_CHARS=${RETRIEVAL_MAX_CHARS:-4000}
+      
+      # Langfuse (optional)
+      - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY:-}
+      - LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY:-}
+      - LANGFUSE_HOST=${LANGFUSE_HOST:-https://cloud.langfuse.com}
+      - LANGFUSE_ENABLED=${LANGFUSE_ENABLED:-true}
+      
+      # App
+      - DEBUG=${DEBUG:-false}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - rag_temp:/app/temp_uploads
+    networks:
+      - rag_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+  # Redis for caching (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: rag_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - rag_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  # Prometheus for metrics (optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: rag_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - rag_network
+    restart: unless-stopped
+
+  # Grafana for visualization (optional)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: rag_grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./docker/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./docker/grafana/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - rag_network
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  rag_temp:
+    driver: local
+
+networks:
+  rag_network:
+    driver: bridge

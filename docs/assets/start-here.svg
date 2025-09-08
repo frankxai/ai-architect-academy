@@ -71,7 +71,7 @@
     <g filter="url(#shadow)"><rect x="0" y="0" width="260" height="140" rx="16" fill="#ffffff"/></g>
     <circle cx="28" cy="28" r="14" fill="#fef9c3" stroke="#eab308"/>
     <text class="num" x="23" y="34">4</text>
-    <text class="step-title" x="56" y="32">Operate & Govern</text>
+    <text class="step-title" x="56" y="32">Operate &amp; Govern</text>
     <text class="step-desc" x="56" y="60">SLOs • Guardrails • Observability</text>
     <rect x="56" y="76" width="128" height="24" rx="6" fill="#fff7cc"/>
     <text class="badge" x="66" y="92">Evals + SLOs</text>

@@ -1,0 +1,227 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install black pylint mypy pytest pytest-cov
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    
+    - name: Format check with Black
+      run: black --check --diff .
+    
+    - name: Lint with Pylint
+      run: pylint **/*.py --exit-zero
+    
+    - name: Type check with MyPy
+      run: mypy . --ignore-missing-imports
+    
+    - name: Run tests with coverage
+      run: |
+        pytest tests/ --cov=src --cov-report=xml --cov-report=html
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: quality-checks
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Build Docker images
+      run: |
+        for project in 05-projects/*/; do
+          if [ -f "$project/Dockerfile" ]; then
+            echo "Building Docker image for $project"
+            docker build -t ai-architect-academy/$(basename $project):latest $project
+          fi
+        done
+    
+    - name: Run Docker Compose validation
+      run: |
+        for project in 05-projects/*/; do
+          if [ -f "$project/docker-compose.yml" ]; then
+            echo "Validating docker-compose for $project"
+            docker-compose -f $project/docker-compose.yml config
+          fi
+        done
+
+  documentation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Check markdown links
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'yes'
+        config-file: '.github/markdown-link-check-config.json'
+    
+    - name: Spell check
+      uses: streetsidesoftware/cspell-action@v2
+      with:
+        files: '**/*.md'
+    
+    - name: Generate documentation
+      run: |
+        python scripts/generate-sections.py
+    
+    - name: Validate HTML
+      run: |
+        pip install html5validator
+        html5validator --root docs/ --ignore-re "Use CSS" --also-check-css
+
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run Trivy security scan
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+    
+    - name: Upload Trivy results to GitHub Security
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
+    
+    - name: Check for secrets
+      uses: trufflesecurity/trufflehog@main
+      with:
+        path: ./
+        base: ${{ github.event.repository.default_branch }}
+
+  performance-benchmark:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Run performance benchmarks
+      run: |
+        pip install -r requirements.txt
+        python scripts/run_benchmarks.py
+    
+    - name: Store benchmark results
+      uses: benchmark-action/github-action-benchmark@v1
+      with:
+        tool: 'pytest'
+        output-file-path: benchmark_results.json
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        auto-push: true
+
+  deploy-pages:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [quality-checks, documentation]
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+    
+    - name: Build documentation
+      run: |
+        python scripts/generate-sections.py
+        python scripts/generate-search-index.py
+    
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: './docs'
+    
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+  release:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [quality-checks, docker-build, security-scan]
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    
+    - name: Generate changelog
+      run: |
+        git log --pretty=format:"- %s" $(git describe --tags --abbrev=0)..HEAD > CHANGELOG_LATEST.md
+    
+    - name: Create release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        body_path: CHANGELOG_LATEST.md
+        files: |
+          dist/*
+          docs/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [quality-checks, docker-build, documentation, security-scan]
+    if: always()
+    
+    steps:
+    - name: Notify on success
+      if: success()
+      run: echo "✅ All checks passed!"
+    
+    - name: Notify on failure
+      if: failure()
+      run: echo "❌ Some checks failed. Please review."
