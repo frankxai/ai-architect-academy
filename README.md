@@ -29,7 +29,18 @@ Homepage and Projects from the GitHub Pages site.
 - Operate: Add SLOs, guardrails, governance, and cost controls
 - Specialize: Choose an industry pattern and publish a portfolio PoC
 
-[Start Here](START-HERE.md) · [100‑Hour Plan](02-learning-paths/100-hour-ai-architect.md) · [Patterns](01-design-patterns/README.md) · [Projects](05-projects/rag-on-supabase.md)
+[Start Here](START-HERE.md) · [100‑Hour Plan](02-learning-paths/100-hour-ai-architect.md) · [Agentic Code Swarms](agentic-swarms/README.md) · [Patterns](01-design-patterns/README.md) · [Projects](05-projects/rag-on-supabase.md)
+
+## Agentic Code Swarms — Quickstart
+
+```bash
+cd agentic-swarms
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python examples/hello_swarm.py --goal "Create a tiny function to add two numbers"
+# Optional UI (requires open port):
+streamlit run ui/streamlit_app.py --server.port 8501
+```
 
 ## What’s Inside
 - 00-roadmap: goals, milestones
