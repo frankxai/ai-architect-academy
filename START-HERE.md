@@ -16,6 +16,7 @@
 - RAG on Supabase — `05-projects/rag-on-supabase.md`
 - Vector Search (pgvector) — `05-projects/vector-search-pgvector.md`
 - Evals with Langfuse — `05-projects/evals-langfuse.md`
+ - Agentic Code Swarms — `agentic-swarms/README.md`
 
 4) Ship and Operate
 - Stack reference — `06-toolchains/stack-reference.md`

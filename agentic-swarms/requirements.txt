@@ -1,0 +1,7 @@
+pydantic>=2.6
+typer[all]>=0.12
+rich>=13.7
+python-dotenv>=1.0
+streamlit>=1.32
+litellm>=1.35
+jupyter>=1.0
