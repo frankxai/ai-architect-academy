@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "screenshots": "node ./scripts/capture-screenshots.mjs"
+    "screenshots": "node ./scripts/capture-screenshots.mjs",
+    "build:index": "node ./scripts/build-search-index.mjs"
   },
   "devDependencies": {
     "puppeteer": "^22.12.1"
