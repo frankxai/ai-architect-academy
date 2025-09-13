@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Search — AI Architect Academy</title>
+  <meta name="description" content="Search the AI Architect Academy playbook across patterns, projects, and resources." />
+  <link rel="icon" href="https://fav.farm/🤖" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class'}</script>
+  <script>
+    (function(){const t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')})();
+    function toggleTheme(){const e=document.documentElement;const d=e.classList.toggle('dark');try{localStorage.setItem('theme',d?'dark':'light')}catch{}}
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="./index.html" class="font-semibold">AI Architect Academy</a>
+      <nav class="flex items-center gap-6 text-sm">
+        <a class="hover:text-cyan-600" href="./index.html">Home</a>
+        <a class="hover:text-cyan-600" href="./projects.html">Projects</a>
+        <a class="hover:text-cyan-600" href="./patterns.html">Patterns</a>
+        <a class="hover:text-cyan-600" href="./resources.html">Resources</a>
+        <a class="hover:text-cyan-600" target="_blank" rel="noopener" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md">Start Here</a>
+        <button aria-label="Toggle theme" onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
+      </nav>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-2xl font-bold">Search</h1>
+    <p class="text-slate-600 dark:text-slate-300">Find patterns, projects, templates, and resources across the playbook.</p>
+
+    <div class="mt-4 grid md:grid-cols-6 gap-3">
+      <input id="q" placeholder="Search keywords..." class="md:col-span-3 border rounded-md p-2 dark:bg-slate-800 dark:border-slate-700" />
+      <select id="section" class="md:col-span-2 border rounded-md p-2 dark:bg-slate-800 dark:border-slate-700">
+        <option value="">All Sections</option>
+      </select>
+      <button id="reset" class="border rounded-md p-2">Reset</button>
+    </div>
+
+    <div id="results" class="mt-6 grid md:grid-cols-2 gap-4"></div>
+  </main>
+  <footer class="py-8 text-center text-sm text-slate-500">© AI Architect Academy — Open Playbook</footer>
+
+  <script>
+    async function loadIndex(){
+      const res = await fetch('./data/search-index.json');
+      if(!res.ok) throw new Error('Index not found. Run build:index.');
+      return res.json();
+    }
+
+    function highlight(text, term){
+      if(!term) return text;
+      const esc = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp('(' + esc + ')', 'ig');
+      return text.replace(re, '<mark class="bg-yellow-200 dark:bg-yellow-600">$1</mark>');
+    }
+
+    function scoreRecord(rec, term){
+      if(!term) return 0;
+      const t = term.toLowerCase();
+      let s = 0;
+      if(rec.title.toLowerCase().includes(t)) s += 5;
+      if((rec.excerpt||'').toLowerCase().includes(t)) s += 2;
+      const h = Array.isArray(rec.headings) ? rec.headings.map(x=>x.text.toLowerCase()) : [];
+      if(h.some(x=>x.includes(t))) s += 3;
+      return s;
+    }
+
+    async function main(){
+      const data = await loadIndex();
+      const q = document.getElementById('q');
+      const section = document.getElementById('section');
+      const results = document.getElementById('results');
+      const reset = document.getElementById('reset');
+
+      // populate sections
+      const sections = Array.from(new Set(data.map(r=>r.section))).sort();
+      for(const s of sections){ const opt=document.createElement('option'); opt.value=s; opt.textContent=s; section.appendChild(opt); }
+
+      function render(){
+        const term = (q.value||'').trim();
+        const sec = section.value;
+        const filtered = data
+          .filter(r => !sec || r.section === sec)
+          .map(r => ({ rec: r, score: scoreRecord(r, term) }))
+          .filter(x => !term || x.score > 0)
+          .sort((a,b)=> b.score - a.score || a.rec.title.localeCompare(b.rec.title))
+          .slice(0, 100);
+
+        results.innerHTML = '';
+        for(const {rec} of filtered){
+          const a = document.createElement('a');
+          a.className = 'block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow';
+          a.href = rec.href; a.target = '_blank'; a.rel='noopener';
+          const sub = rec.headings && rec.headings.length ? rec.headings.slice(0,3).map(h=>h.text).join(' • ') : '';
+          a.innerHTML = `
+            <div class="text-xs text-slate-500">${rec.section}</div>
+            <div class="mt-1 font-semibold">${highlight(rec.title, term)}</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${highlight((rec.excerpt||'').slice(0,180), term)}...</p>
+            <div class="mt-2 text-xs text-slate-500">${sub}</div>
+          `;
+          results.appendChild(a);
+        }
+        if(results.children.length === 0){
+          results.innerHTML = '<div class="text-sm text-slate-500">No results. Try different keywords.</div>';
+        }
+      }
+
+      [q, section].forEach(el=> el.addEventListener('input', render));
+      reset.addEventListener('click', ()=>{ q.value=''; section.value=''; render(); });
+
+      render();
+    }
+
+    main().catch(err=>{
+      document.getElementById('results').innerHTML = `<div class="text-sm text-red-600">${err.message}</div>`;
+    });
+  </script>
+</body>
+</html>
+
