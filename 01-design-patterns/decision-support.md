@@ -1,39 +1,23 @@
-# Pattern: Decision Support
+﻿# Pattern: Decision Support
 
 ## Business Value
-<<<<<<< HEAD
-- Faster, higher‑quality decisions with transparent evidence and what‑if analysis.
+- Deliver faster, higher-quality decisions with transparent evidence and what-if analysis.
 
 ## Technical Architecture
-- Data pipelines → feature store → retrieval over facts/policies
-- LLM reasoning with tools (simulation, scenario analysis)
-- Explanation layer: citations, assumptions, confidence scoring
-- Feedback loop: capture outcomes to improve future recommendations
+- Data pipelines -> feature store -> retrieval over facts and policies
+- LLM reasoning augmented with tools for simulation and scenario analysis
+- Explanation layer with citations, stated assumptions, and confidence scoring
+- Feedback loop that captures outcomes to improve future recommendations
 
 ## Discovery Questions
-- Decision cadence, owners, and tolerable risk levels?
-- Policies, regulations, and source systems of record?
-- Required auditability and sign‑off processes?
+- What decision cadence, owners, and tolerable risk levels are in play?
+- Which policies, regulations, and source systems of record apply?
+- What auditability, sign-off, and retention processes are required?
 
 ## Bill of Materials
-- Data warehouse + feature store; pgvector; OpenAI; tool runner (for sims); UI; logging/tracing; approval workflow
+- Data warehouse plus feature store, pgvector, OpenAI, tool runner for simulations, user interface, logging and tracing, approval workflow
 
 ## Risks & Controls
-- Over‑trust → show citations and confidence; require approval
-- Data drift → monitor inputs and accuracy; scheduled recalibration
-- Compliance → retain decisions and rationale with access controls
-=======
-- 
-
-## Technical Architecture
-- 
-
-## Discovery Questions
-- 
-
-## Bill of Materials
-- 
-
-## Risks & Controls
-- 
->>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)
+- Over-trust -> show citations and confidence; require human approval
+- Data drift -> monitor inputs and accuracy; schedule recalibration
+- Compliance -> retain decisions and rationale with strict access controls

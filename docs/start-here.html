@@ -1,17 +1,21 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Pattern Viewer — AI Architect Academy</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<meta property="og:title" content="Pattern Viewer — AI Architect Academy"/>
-<meta property="og:description" content="View pattern pages from the repository with rich formatting and dark mode."/>
-<meta property="og:image" content="https://ai-architect-academy.github.io/ai-architect-academy/assets/social-card.svg"/>
-<link rel="icon" href="https://fav.farm/🧠" />
-<script>tailwind.config={darkMode:'class'}</script>
-<script src="./assets/site.js"></script>
-<script src="./assets/search.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Start Here — AI Architect Academy</title>
+  <meta name="description" content="Start here to get oriented: learning paths, patterns, and projects." />
+  <link rel="icon" href="https://fav.farm/🧠" />
+  <meta property="og:title" content="Start Here — AI Architect Academy"/>
+  <meta property="og:description" content="Start here to get oriented: learning paths, patterns, and projects."/>
+  <meta property="og:image" content="https://ai-architect-academy.github.io/ai-architect-academy/assets/social-card.svg"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class'}</script>
+  <script src="./assets/site.js"></script>
+  <script src="./assets/search.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
   <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
@@ -26,31 +30,23 @@
     </div>
   </header>
   <main class="max-w-6xl mx-auto px-4 py-10 grid lg:grid-cols-[220px_1fr] gap-8">
-    <div class="lg:col-span-2 mb-2 text-sm text-slate-500"><a class="text-cyan-600" href="./index.html">Home</a> / <a class="text-cyan-600" href="./patterns.html">Patterns</a> / <span id="crumbTitle">Pattern</span></div>
     <aside>
       <div class="text-sm font-semibold">On this page</div>
       <nav id="toc" class="mt-2 text-sm space-y-1"></nav>
       <div class="mt-6">
-        <a id="sourceLink" class="text-cyan-600 underline text-sm" target="_blank" rel="noopener">View source on GitHub ↗</a>
+        <a id="sourceLink" class="text-cyan-600 underline text-sm" target="_blank" rel="noopener"
+           href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md">View source on GitHub ↗</a>
       </div>
     </aside>
     <article id="content" class="prose prose-slate dark:prose-invert max-w-none"></article>
   </main>
   <footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400">© AI Architect Academy — Open Playbook</footer>
   <script>
-    const params = new URLSearchParams(location.search);
-    const file = params.get('file') || '01-design-patterns/content-generation.md';
-    const raw = 'https://raw.githubusercontent.com/AI-Architect-Academy/ai-architect-academy/main/' + file;
-    const blob = 'https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/' + file;
-    document.getElementById('sourceLink').href = blob;
+    const raw = 'https://raw.githubusercontent.com/AI-Architect-Academy/ai-architect-academy/main/START-HERE.md';
     fetch(raw).then(r=>r.text()).then(md=>{
-      const html = marked.parse(md);
       const el = document.getElementById('content');
-      el.innerHTML = html;
+      el.innerHTML = marked.parse(md);
       try { hljs.highlightAll(); } catch {}
-      const h1 = el.querySelector('h1'); if(h1){ document.title = h1.textContent + ' — Pattern'; }
-      if(h1){ document.getElementById('crumbTitle').textContent = h1.textContent; }
-      // Build ToC from h2/h3 and inject ids
       const toc = document.getElementById('toc');
       function slugify(s){return s.toLowerCase().replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-');}
       const headers = el.querySelectorAll('h2, h3');
@@ -63,4 +59,5 @@
       });
     });
   </script>
-</body></html>
+</body>
+</html>
