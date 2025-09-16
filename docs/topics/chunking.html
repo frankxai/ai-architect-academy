@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>RAG — AI Architect Academy</title>
-<link rel="icon" href="https://fav.farm/🧠" />
-<meta name="description" content="Retrieval Augmented Generation best practices, links, and quick wins."/>
-<meta property="og:title" content="RAG — AI Architect Academy"/>
-<meta property="og:description" content="Retrieval Augmented Generation best practices, links, and quick wins."/>
+<title>Chunking — AI Architect Academy</title>
+<meta name="description" content="Chunking strategies for RAG: semantic boundaries and token targets."/>
+<meta property="og:title" content="Chunking — AI Architect Academy"/>
+<meta property="og:description" content="Chunking strategies for RAG: semantic boundaries and token targets."/>
 <meta property="og:image" content="https://ai-architect-academy.github.io/ai-architect-academy/assets/social-card.svg"/>
+<link rel="icon" href="https://fav.farm/🧠" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={darkMode:'class'}</script>
 <script src="../assets/site.js"></script>
@@ -21,24 +21,20 @@
     <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
   </div>
 </header><main class="max-w-6xl mx-auto px-4 py-10">
-<h1 class="text-2xl font-bold">Retrieval Augmented Generation (RAG)</h1>
-<p class="text-slate-600">Top links and quick wins to get production‑ready.</p>
+<h1 class="text-2xl font-bold">Chunking</h1>
+<p class="text-slate-600 dark:text-slate-300">Segment content at semantic boundaries; balance recall and precision.</p>
+
 <h2 class="mt-6 font-semibold">Quick Wins</h2>
 <ul class="list-disc list-inside text-sm">
-<li>Chunk at semantic boundaries; target 200–400 tokens</li>
-<li>Hybrid search: BM25 + vectors; re‑rank where needed</li>
-<li>Require citations and allow abstention on low confidence</li>
-<li>Measure faithfulness and coverage; cache frequent queries</li>
+  <li>Target ~200–400 tokens; adjust per corpus</li>
+  <li>Use heading-aware or semantic chunkers</li>
+  <li>Store overlaps; avoid cutting references mid-sentence</li>
+  <li>Log retrieval hit-rate; iterate with evals</li>
 </ul>
+
 <h2 class="mt-6 font-semibold">Top Links</h2>
 <ul class="list-disc list-inside">
-<li><a class="text-cyan-600" href="https://github.com/langchain-ai/langchain" target="_blank">langchain-ai/langchain</a></li>
-<li><a class="text-cyan-600" href="https://github.com/langchain-ai/langgraph" target="_blank">langchain-ai/langgraph</a></li>
-<li><a class="text-cyan-600" href="https://github.com/run-llama/llama_index" target="_blank">run-llama/llama_index</a></li>
-<li><a class="text-cyan-600" href="https://github.com/explodinggradients/ragas" target="_blank">explodinggradients/ragas</a></li>
-<li><a class="text-cyan-600" href="https://github.com/pgvector/pgvector" target="_blank">pgvector/pgvector</a></li>
-<li><a class="text-cyan-600" href="https://github.com/qdrant/qdrant" target="_blank">qdrant/qdrant</a> • <a class="text-cyan-600" href="https://github.com/weaviate/weaviate" target="_blank">weaviate/weaviate</a></li>
-<li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/rag-on-supabase.md" target="_blank">Project: RAG on Supabase</a></li>
-<li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-rag.md" target="_blank">Awesome RAG (curated)</a></li>
+  <li><a class="text-cyan-600" href="https://github.com/explodinggradients/ragas" target="_blank">explodinggradients/ragas</a></li>
+  <li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/embeddings-and-chunking.md" target="_blank">Embeddings & Chunking (repo)</a></li>
 </ul>
 </main><footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400">© AI Architect Academy — Open Playbook</footer></body></html>

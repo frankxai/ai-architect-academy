@@ -1,38 +1,22 @@
-# Pattern: Insurance Rate Modeling
+﻿# Pattern: Insurance Rate Modeling
 
 ## Business Value
-<<<<<<< HEAD
-- Improve pricing accuracy and risk segmentation; reduce loss ratios while staying compliant.
+- Improve pricing accuracy and risk segmentation, reduce loss ratios, and stay compliant.
 
 ## Technical Architecture
-- Data ingestion (policies, claims, external data) → feature store
-- Modeling: gradient boosting / GLMs + LLM for document understanding (optional)
+- Data ingestion (policies, claims, external data) -> feature store
+- Modeling: gradient boosting or GLMs plus optional LLM document understanding
 - Monitoring: drift, performance, and fairness metrics
 - Governance: audit trails, explainability (SHAP), approval workflows
 
 ## Discovery Questions
 - Which lines of business and regulatory constraints apply?
-- Data freshness and external sources (credit, weather, telematics)?
-- Explainability requirements and rate filing process?
+- What data freshness and external sources (credit, weather, telematics) are required?
+- What explainability requirements and rate filing processes must be supported?
 
 ## Bill of Materials
-- Data warehouse + feature store, model registry, monitoring/evals, explainability toolkit
+- Data warehouse plus feature store, model registry, monitoring and evaluations, explainability toolkit
 
 ## Risks & Controls
-- Bias and fairness → constraints and audits; holdout by segment
-- Data quality → validation and SLAs; incident playbooks
-=======
-- 
-
-## Technical Architecture
-- 
-
-## Discovery Questions
-- 
-
-## Bill of Materials
-- 
-
-## Risks & Controls
-- 
->>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)
+- Bias and fairness -> add constraints, audits, and segment holdouts
+- Data quality -> enforce validation, SLAs, and incident playbooks

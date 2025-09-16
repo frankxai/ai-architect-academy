@@ -1,13 +1,6 @@
-# Project: Vector Search with pgvector
-<<<<<<< HEAD
+﻿# Project: Vector Search with pgvector
 
-- Install extension and schema
-- Choose embedding model; test cosine vs. inner product
-- Indexing and performance tuning (IVFFlat)
-- Benchmarks: recall/latency tradeoffs; hybrid search
-=======
-- Enable pgvector
-- Compute embeddings
-- Similarity search
-- Benchmarks & tuning
->>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)
+- Install the extension and prepare schema
+- Choose embedding model; test cosine versus inner product
+- Tune indexing (IVFFlat) and storage parameters
+- Benchmark recall and latency trade-offs, including hybrid search

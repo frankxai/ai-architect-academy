@@ -1,0 +1,20 @@
+[
+  {"title":"Home","description":"Open playbook for AI Architects","url":"./index.html","tags":["patterns","projects","resources"]},
+  {"title":"Projects","description":"Filterable catalog of projects","url":"./projects.html","tags":["rag","agents","evals","vector","benchmarks"]},
+  {"title":"Patterns","description":"Enterprise and industry patterns","url":"./patterns.html","tags":["architecture","design","value"]},
+  {"title":"Resources","description":"Curated channels, talks, platforms, aggregators","url":"./resources.html","tags":["learning","videos","tools"]},
+  {"title":"Collaborate","description":"How to pair effectively with AI","url":"./collaborate.html","tags":["playbook","prompting","workflows"]},
+  {"title":"Clouds","description":"Cloud platform guides","url":"./clouds.html","tags":["aws","gcp","azure","oci"]},
+  {"title":"Concepts","description":"Core concepts for AI systems","url":"./concepts.html","tags":["rag","embeddings","evals","security","slos"]},
+  {"title":"Platforms","description":"Data and vector platforms","url":"./platforms.html","tags":["databricks","snowflake","neo4j","qdrant"]},
+  {"title":"Start Here","description":"Orientation and learning paths","url":"./start-here.html","tags":["beginner","learning-path"]},
+  {"title":"RAG","description":"Retrieval Augmented Generation best practices","url":"./topics/rag.html","tags":["retrieval","reranking","citations"]},
+  {"title":"Agents","description":"Agent frameworks and orchestration","url":"./topics/agents.html","tags":["tools","multi-agent","workflows"]},
+  {"title":"Evals","description":"LLM evaluation frameworks and metrics","url":"./topics/evals.html","tags":["faithfulness","coverage","quality"]},
+  {"title":"Observability","description":"Tracing, metrics, and cost control","url":"./topics/observability.html","tags":["langfuse","phoenix","telemetry"]},
+  {"title":"Guardrails","description":"Safety filters and policies","url":"./topics/guardrails.html","tags":["safety","pii","injection"]},
+  {"title":"Hybrid Search","description":"BM25 + vectors + reranking","url":"./topics/hybrid-search.html","tags":["bm25","vectors","rerank"]},
+  {"title":"Chunking","description":"Semantic boundaries and token targets","url":"./topics/chunking.html","tags":["chunks","embeddings","rag"]},
+  {"title":"Costs","description":"Caching, batching, timeouts, SLOs","url":"./topics/costs.html","tags":["cost","latency","budget"]}
+]
+

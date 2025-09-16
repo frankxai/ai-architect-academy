@@ -1,12 +1,6 @@
-# Project: Evals with Langfuse
-<<<<<<< HEAD
+﻿# Project: Evals with Langfuse
 
-- Instrument API endpoints with traces and spans
-- Create eval dataset (Q/A with citations)
+- Instrument API endpoints with traces, latency, and cost spans
+- Create an evaluation dataset (Q/A with citations)
 - Implement scoring for faithfulness and helpfulness
-- Add CI job to fail on regressions
-=======
-- Trace prompts/latency/cost
-- Build eval datasets
-- Track versions & regressions
->>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)
+- Track versions and regressions with CI that fails on quality drops

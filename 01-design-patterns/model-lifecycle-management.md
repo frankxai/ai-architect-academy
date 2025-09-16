@@ -1,41 +1,22 @@
-<<<<<<< HEAD
-# Pattern: Model Lifecycle Management (MLOps)
+﻿# Pattern: Model Lifecycle Management (MLOps)
 
 ## Business Value
-- Reliable deployments with traceability, faster iteration, and controlled risk/cost.
+- Ship reliable models and prompts with traceability, faster iteration, and controlled risk and cost.
 
 ## Technical Architecture
-- Data/versioning → training/eval → model/prompt registry → deploy → monitor
-- LLM apps: prompt registry, RAG datasets, eval harness integrated in CI
-- Release strategies: canary, shadow, rollback; budget and latency SLOs
+- Data and versioning -> training and evaluation -> model or prompt registry -> deploy -> monitor
+- LLM applications: prompt registry, RAG datasets, evaluation harness wired into CI
+- Release strategies: canary, shadow, rollback, with budget and latency SLOs
 
 ## Discovery Questions
-- Release cadence, rollback strategy, and ownership?
-- Data lineage and retention policies? Redaction?
-- SLOs (latency, cost, quality) and budgets per tier?
+- What release cadence, rollback strategy, and ownership model exist?
+- What data lineage, retention, and redaction policies apply?
+- Which latency, cost, and quality SLOs or budgets govern each tier?
 
 ## Bill of Materials
-- Registry (MLflow/Weights & Biases), CI runner, deployment targets, tracing (Langfuse), metrics
+- Model or prompt registry (MLflow, Weights & Biases), CI runner, deployment targets, tracing (Langfuse), metrics stack
 
 ## Risks & Controls
-- Regression risk → eval gates in CI; prompt/model versioning
-- Cost creep → budget alerts; autoscaling; caching
-- Compliance → audit logs; signed artifacts; access policies
-=======
-# Pattern: Model Lifecycle Management
-
-## Business Value
-- 
-
-## Technical Architecture
-- 
-
-## Discovery Questions
-- 
-
-## Bill of Materials
-- 
-
-## Risks & Controls
-- 
->>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)
+- Regression risk -> evaluation gates in CI plus prompt/model versioning
+- Cost creep -> budget alerts, autoscaling, caching
+- Compliance -> audit logs, signed artifacts, access policies
