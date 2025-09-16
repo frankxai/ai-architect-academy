@@ -1,7 +1,29 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Clouds — AI Architect Academy</title><script src="https://cdn.tailwindcss.com"></script></head>
-<body class="bg-slate-50 text-slate-900"><main class="max-w-5xl mx-auto px-4 py-10">
+<title>Clouds — AI Architect Academy</title>
+<meta name="description" content="Cloud platform guides: AWS, GCP, Azure, OCI with practical links."/>
+<meta property="og:title" content="Clouds — AI Architect Academy"/>
+<meta property="og:description" content="Cloud platform guides: AWS, GCP, Azure, OCI with practical links."/>
+<meta property="og:image" content="https://ai-architect-academy.github.io/ai-architect-academy/assets/social-card.svg"/>
+<link rel="icon" href="https://fav.farm/🧠" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<script src="./assets/site.js"></script>
+<script src="./assets/search.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+<header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="./index.html" class="flex items-center gap-3"><img src="./assets/logo.svg" alt="AI Architect Academy" class="h-8" /><span class="sr-only">AI Architect Academy</span></a>
+    <nav class="flex items-center gap-6 text-sm">
+      <a class="hover:text-cyan-600" href="./projects.html">Projects</a> <a class="hover:text-cyan-600" href="./collaborate.html">Collaborate</a> <a class="hover:text-cyan-600" href="./clouds.html">Clouds</a> <a class="hover:text-cyan-600" href="./concepts.html">Concepts</a> <a class="hover:text-cyan-600" href="./platforms.html">Platforms</a> <a class="hover:text-cyan-600" href="./patterns.html">Patterns</a> <a class="hover:text-cyan-600" href="./resources.html">Resources</a> <a class="hover:text-cyan-600" href="./topics/index.html">Topics</a> <a class="hover:text-cyan-600" href="./start-here.html">Start Here</a>
+    </nav>
+    <button onclick="document.dispatchEvent(new KeyboardEvent('keydown',{key:'/'}))" class="px-2 py-1 border rounded text-xs mr-2">Search /</button>
+    <a class="px-2 py-1 border rounded text-xs mr-2" href="https://github.com/AI-Architect-Academy/ai-architect-academy" target="_blank" rel="noopener">GitHub</a>
+    <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
+  </div>
+</header>
+<main class="max-w-6xl mx-auto px-4 py-10">
 <h1 class="text-2xl font-bold">Cloud Guides</h1>
 <ul class="list-disc list-inside">
   <li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/oci/README.md">OCI</a></li>
@@ -10,4 +32,6 @@
   <li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/azure/README.md">Azure</a></li>
   <li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/choose-platform.md">Choose a Platform</a></li>
 </ul>
-</main></body></html>
+</main>
+<footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400">© AI Architect Academy — Open Playbook</footer>
+</body></html>

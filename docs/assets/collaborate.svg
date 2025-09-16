@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="200" viewBox="0 0 720 200" role="img" aria-label="Collaborate with AI">
+  <rect width="720" height="200" fill="#f8fafc"/>
+  <g font-family="Inter,Arial" font-size="14" fill="#111827">
+    <rect x="24" y="24" width="160" height="60" rx="10" fill="#e0f2fe" stroke="#38bdf8"/>
+    <text x="40" y="56">1) Define Success</text>
+    <text x="40" y="76">Goals + Criteria</text>
+
+    <rect x="204" y="24" width="160" height="60" rx="10" fill="#ecfeff" stroke="#06b6d4"/>
+    <text x="220" y="56">2) Provide Context</text>
+    <text x="220" y="76">Files • Errors • Env</text>
+
+    <rect x="384" y="24" width="160" height="60" rx="10" fill="#dcfce7" stroke="#22c55e"/>
+    <text x="400" y="56">3) Ask for Plan</text>
+    <text x="400" y="76">Review • Refine</text>
+
+    <rect x="564" y="24" width="160" height="60" rx="10" fill="#fef9c3" stroke="#eab308"/>
+    <text x="580" y="56">4) Patch & Verify</text>
+    <text x="580" y="76">Tests • Docs</text>
+  </g>
+</svg>

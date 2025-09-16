@@ -1,34 +1,26 @@
-<<<<<<< HEAD
-# Project: RAG on Supabase + OpenAI (Step‑by‑Step)
+﻿# Project: RAG on Supabase + OpenAI (Step-by-Step)
 
-1) Setup
-- Create Supabase (EU); enable `pgvector`
-- Create tables: Resource, TranscriptChunk
-- Get OpenAI + YouTube API keys
+1. **Setup**
+   - Create a Supabase project (EU recommended) and enable `pgvector`
+   - Create tables: `resource`, `transcript_chunk`
+   - Secure OpenAI and YouTube API keys
 
-2) Ingest
-- Fetch video transcripts → clean → segment (200–400 tokens; semantic boundaries)
-- Compute embeddings (small model) → store vectors in pgvector
+2. **Ingest**
+   - Fetch video transcripts, clean them, and segment into 200-400 token chunks at semantic boundaries
+   - Compute embeddings (small model) and store vectors in `pgvector`
 
-3) Retrieval API
-- Hybrid search: vector similarity + keyword; re‑rank
-- Return chunks with timestamps and resource info
+3. **Retrieval API**
+   - Combine vector similarity with keyword search and re-ranking
+   - Return chunks with timestamps and resource metadata
 
-4) Tutor Endpoint
-- Compose system prompt with rules (citations required; abstain on low‑confidence)
-- Retrieve top‑k; call OpenAI; return answer + citations
+4. **Tutor Endpoint**
+   - Compose a system prompt with rules (require citations, abstain on low confidence)
+   - Retrieve top-k chunks, call OpenAI, and return answers with citations
 
-5) Evals & Observability
-- Add Langfuse traces; build a small eval dataset (questions + expected sources)
-- Track faithfulness and citation coverage
+5. **Evals and Observability**
+   - Add Langfuse traces and build a small evaluation dataset (questions plus expected sources)
+   - Track faithfulness and citation coverage
 
-6) Hardening
-- Rate limits per user/tier; cache frequent queries
-- Cost guardrails and alerts
-=======
-# Project: RAG on Supabase + OpenAI
-- Ingest transcripts → chunk → embeddings (pgvector)
-- Semantic search + hybrid re-rank
-- Tutor answer with citations
-- Evals: faithfulness, answer quality
->>>>>>> 38b1dfe (feat: initial release of AI Architect Academy open playbook)
+6. **Hardening**
+   - Apply rate limits per user or tier and cache frequent queries
+   - Add cost guardrails and alerts
