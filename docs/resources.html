@@ -4,39 +4,77 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Resources — AI Architect Academy</title>
+  <meta name="description" content="Curated channels, videos, platforms, and aggregators for AI architects." />
+  <meta property="og:title" content="Resources — AI Architect Academy"/>
+  <meta property="og:description" content="Curated channels, videos, platforms, and aggregators for AI architects."/>
+  <meta property="og:image" content="https://ai-architect-academy.github.io/ai-architect-academy/assets/social-card.svg"/>
+  <link rel="icon" href="https://fav.farm/🧠" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class'}</script>
+  <script src="./assets/site.js"></script>
+  <script src="./assets/search.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-900">
-  <main class="max-w-4xl mx-auto px-4 py-10">
-    <h1 class="text-2xl font-bold">Resources</h1>
-    <h2 class="mt-6 font-semibold">YouTube Channels</h2>
-    <ul class="list-disc list-inside">
-      <li><a class="text-cyan-600" href="https://www.youtube.com/@AndrejKarpathy" target="_blank">Karpathy</a></li>
-      <li><a class="text-cyan-600" href="https://www.youtube.com/@SebastianRaschka" target="_blank">Sebastian Raschka</a></li>
-      <li><a class="text-cyan-600" href="https://www.youtube.com/@HuggingFace" target="_blank">Hugging Face</a></li>
-      <li><a class="text-cyan-600" href="https://www.youtube.com/@LangChain" target="_blank">LangChain</a></li>
-      <li><a class="text-cyan-600" href="https://www.youtube.com/@OpenAI" target="_blank">OpenAI</a></li>
-      <li><a class="text-cyan-600" href="https://www.youtube.com/@MLOps" target="_blank">MLOps Community</a></li>
-    </ul>
-    <h2 class="mt-6 font-semibold">Selected Videos</h2>
-    <ul class="list-disc list-inside">
-      <li><a class="text-cyan-600" href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank">Karpathy: Intro to LLMs</a></li>
-      <li><a class="text-cyan-600" href="https://www.youtube.com/watch?v=Rr8a8Y3G9Vw" target="_blank">Sebastian Raschka: LLM Evaluation</a></li>
-      <li><a class="text-cyan-600" href="https://www.youtube.com/watch?v=b8bXqSxTq0E" target="_blank">LangChain: RAG with pgvector</a></li>
-      <li><a class="text-cyan-600" href="https://www.youtube.com/watch?v=G5RY_SUJih4" target="_blank">Hugging Face: Transformers Intro</a></li>
-      <li><a class="text-cyan-600" href="https://www.youtube.com/watch?v=U9mJuUkhUzk" target="_blank">OpenAI: Dev Day Highlights</a></li>
-    </ul>
-    <h2 class="mt-6 font-semibold">Platforms & Tools</h2>
-    <ul class="list-disc list-inside">
-      <li><a class="text-cyan-600" href="https://supabase.com/" target="_blank">Supabase</a>, <a class="text-cyan-600" href="https://vercel.com/" target="_blank">Vercel</a>, <a class="text-cyan-600" href="https://railway.app/" target="_blank">Railway</a>, <a class="text-cyan-600" href="https://fly.io/" target="_blank">Fly.io</a></li>
-      <li><a class="text-cyan-600" href="https://stripe.com/" target="_blank">Stripe</a>, <a class="text-cyan-600" href="https://sentry.io/" target="_blank">Sentry</a>, <a class="text-cyan-600" href="https://langfuse.com/" target="_blank">Langfuse</a></li>
-    </ul>
-    <h2 class="mt-6 font-semibold">Aggregators</h2>
-    <ul class="list-disc list-inside">
-      <li><a class="text-cyan-600" href="https://github.com/sindresorhus/awesome" target="_blank">sindresorhus/awesome</a></li>
-      <li><a class="text-cyan-600" href="https://github.com/awesome-machine-learning/awesome-machine-learning" target="_blank">awesome-machine-learning</a></li>
-      <li><a class="text-cyan-600" href="https://github.com/visenger/awesome-mlops" target="_blank">awesome-mlops</a></li>
-    </ul>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="./index.html" class="flex items-center gap-3"><img src="./assets/logo.svg" alt="AI Architect Academy" class="h-8" /><span class="sr-only">AI Architect Academy</span></a>
+      <nav class="flex items-center gap-6 text-sm">
+        <a class="hover:text-cyan-600" href="./projects.html">Projects</a> <a class="hover:text-cyan-600" href="./collaborate.html">Collaborate</a> <a class="hover:text-cyan-600" href="./clouds.html">Clouds</a> <a class="hover:text-cyan-600" href="./concepts.html">Concepts</a> <a class="hover:text-cyan-600" href="./platforms.html">Platforms</a> <a class="hover:text-cyan-600" href="./patterns.html">Patterns</a> <a class="hover:text-cyan-600" href="./resources.html">Resources</a> <a class="hover:text-cyan-600" href="./topics/index.html">Topics</a> <a class="hover:text-cyan-600" href="./start-here.html">Start Here</a>
+      </nav>
+      <button onclick="document.dispatchEvent(new KeyboardEvent('keydown',{key:'/'}))" class="px-2 py-1 border rounded text-xs mr-2">Search /</button>
+      <a class="px-2 py-1 border rounded text-xs mr-2" href="https://github.com/AI-Architect-Academy/ai-architect-academy" target="_blank" rel="noopener">GitHub</a>
+      <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-extrabold tracking-tight">Resources</h1>
+    <p class="mt-2 text-slate-600 dark:text-slate-300">High-signal channels, talks, platforms, and aggregators — no fluff.</p>
+
+    <section class="mt-8">
+      <h2 class="text-lg font-semibold">YouTube Channels</h2>
+      <div class="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/@AndrejKarpathy"><div class="font-semibold">Andrej Karpathy</div><div class="text-sm text-slate-500">Foundations, minimals, reasoning</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/@SebastianRaschka"><div class="font-semibold">Sebastian Raschka</div><div class="text-sm text-slate-500">Evals, fine-tuning, research</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/@HuggingFace"><div class="font-semibold">Hugging Face</div><div class="text-sm text-slate-500">Transformers, demos, OSS</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/@LangChain"><div class="font-semibold">LangChain</div><div class="text-sm text-slate-500">RAG and agent workflows</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/@OpenAI"><div class="font-semibold">OpenAI</div><div class="text-sm text-slate-500">Product and stack updates</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/@MLOps"><div class="font-semibold">MLOps Community</div><div class="text-sm text-slate-500">Ops, reliability, production</div></a>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold">Selected Talks</h2>
+      <div class="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=zjkBMFhNj_g"><div class="font-semibold">Intro to LLMs (Karpathy)</div><div class="text-sm text-slate-500">Foundational mental models</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Rr8a8Y3G9Vw"><div class="font-semibold">LLM Evaluation (Raschka)</div><div class="text-sm text-slate-500">Build evals that matter</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=b8bXqSxTq0E"><div class="font-semibold">RAG with pgvector (LangChain)</div><div class="text-sm text-slate-500">Practical patterns</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=G5RY_SUJih4"><div class="font-semibold">Transformers Intro (Hugging Face)</div><div class="text-sm text-slate-500">From zero to working</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=U9mJuUkhUzk"><div class="font-semibold">OpenAI Dev Day Highlights</div><div class="text-sm text-slate-500">Platform changes</div></a>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold">Platforms & Tools</h2>
+      <div class="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://supabase.com/"><div class="font-semibold">Supabase</div><div class="text-sm text-slate-500">Postgres + Auth + Storage</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://vercel.com/"><div class="font-semibold">Vercel</div><div class="text-sm text-slate-500">Serverless + edge deploys</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://railway.app/"><div class="font-semibold">Railway</div><div class="text-sm text-slate-500">Managed infra, fast</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://fly.io/"><div class="font-semibold">Fly.io</div><div class="text-sm text-slate-500">Global app runtime</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://stripe.com/"><div class="font-semibold">Stripe</div><div class="text-sm text-slate-500">Payments at scale</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://sentry.io/"><div class="font-semibold">Sentry</div><div class="text-sm text-slate-500">Error monitoring</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://langfuse.com/"><div class="font-semibold">Langfuse</div><div class="text-sm text-slate-500">Traces and evals</div></a>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold">Aggregators</h2>
+      <div class="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://github.com/sindresorhus/awesome"><div class="font-semibold">sindresorhus/awesome</div><div class="text-sm text-slate-500">The meta list of lists</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://github.com/awesome-machine-learning/awesome-machine-learning"><div class="font-semibold">awesome-machine-learning</div><div class="text-sm text-slate-500">Classic ML resources</div></a>
+        <a class="block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow" target="_blank" rel="noopener" href="https://github.com/visenger/awesome-mlops"><div class="font-semibold">awesome-mlops</div><div class="text-sm text-slate-500">MLOps tools and guides</div></a>
+      </div>
+    </section>
   </main>
+  <footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400">© AI Architect Academy — Open Playbook</footer>
 </body>
 </html>

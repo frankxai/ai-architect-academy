@@ -1,7 +1,9 @@
-import fs from 'node:fs/promises';
+﻿import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const repoRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(__dirname, '..');
 const docsDataDir = path.join(repoRoot, 'docs', 'data');
 const outFile = path.join(docsDataDir, 'search-index.json');
 
@@ -44,7 +46,6 @@ async function* walkMarkdownFiles(dir) {
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      // Skip generated or irrelevant directories
       if (['.git', 'node_modules', 'docs', 'assets', '.github'].includes(entry.name)) continue;
       yield* walkMarkdownFiles(fullPath);
     } else if (entry.isFile() && entry.name.toLowerCase().endsWith('.md')) {
@@ -71,11 +72,8 @@ function extractHeadings(markdownText) {
 
 function stripCodeFences(text) {
   return text
-    // Remove fenced code blocks
     .replace(/```[\s\S]*?```/g, ' ')
-    // Remove inline code
     .replace(/`[^`]*`/g, ' ')
-    // Collapse multiple spaces
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -90,8 +88,8 @@ async function ensureDir(dir) {
 
 async function collectFiles() {
   const files = [];
-  for (const d of includeDirs) {
-    const abs = path.join(repoRoot, d);
+  for (const dirName of includeDirs) {
+    const abs = path.join(repoRoot, dirName);
     try {
       const stat = await fs.stat(abs);
       if (!stat.isDirectory()) continue;
@@ -102,14 +100,13 @@ async function collectFiles() {
       // ignore missing dirs
     }
   }
-  for (const f of singleFiles) {
-    const abs = path.join(repoRoot, f);
+  for (const fileName of singleFiles) {
+    const abs = path.join(repoRoot, fileName);
     try {
       const stat = await fs.stat(abs);
       if (stat.isFile()) files.push(abs);
     } catch {}
   }
-  // De-duplicate and sort
   return Array.from(new Set(files)).sort();
 }
 
@@ -137,13 +134,11 @@ async function buildIndex() {
         content,
       });
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.warn('Failed to index', rel, err?.message);
     }
   }
   await ensureDir(docsDataDir);
   await fs.writeFile(outFile, JSON.stringify(records, null, 2), 'utf8');
-  // eslint-disable-next-line no-console
   console.log(`Indexed ${records.length} markdown files -> ${path.relative(repoRoot, outFile)}`);
 }
 
@@ -151,4 +146,3 @@ buildIndex().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-

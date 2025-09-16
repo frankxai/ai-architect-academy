@@ -1,28 +1,66 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projects — AI Architect Academy</title>
+  <title>Projects - AI Architect Academy</title>
   <meta name="description" content="Filterable catalog of projects for AI Architects." />
-  <link rel="icon" href="https://fav.farm/🤖" />
+  <meta property="og:title" content="Projects - AI Architect Academy"/>
+  <meta property="og:description" content="Filterable catalog of projects for AI Architects." />
+  <meta property="og:image" content="https://ai-architect-academy.github.io/ai-architect-academy/assets/social-card.svg"/>
+  <link rel="icon" href="https://fav.farm/%F0%9F%A4%96" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class'}</script>
+  <script>tailwind.config={darkMode:'class'};</script>
   <script>
-    (function(){const t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')})();
-    function toggleTheme(){const e=document.documentElement;const d=e.classList.toggle('dark');try{localStorage.setItem('theme',d?'dark':'light')}catch{}}
+    (function(){
+      try{
+        const theme = localStorage.getItem('theme');
+        if(theme==='dark'||(!theme&&window.matchMedia('(prefers-color-scheme: dark)').matches)){
+          document.documentElement.classList.add('dark');
+        }
+      }catch{}
+    })();
+    function toggleTheme(){
+      const root=document.documentElement;
+      const enabled=root.classList.toggle('dark');
+      try{localStorage.setItem('theme',enabled?'dark':'light');}catch{}
+    }
+  </script>
+  <script src="./assets/site.js"></script>
+  <script src="./assets/search.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Projects - AI Architect Academy",
+    "url": "https://ai-architect-academy.github.io/ai-architect-academy/projects.html"
+  }
   </script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
   <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="./index.html" class="font-semibold">AI Architect Academy</a>
-      <nav class="flex items-center gap-6 text-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center gap-4 flex-wrap justify-between">
+      <a href="./index.html" class="flex items-center gap-3"><img src="./assets/logo.svg" alt="AI Architect Academy" class="h-8" /><span class="sr-only">AI Architect Academy</span></a>
+      <nav class="flex flex-wrap items-center gap-4 text-sm">
         <a class="hover:text-cyan-600" href="./index.html">Home</a>
+        <a class="hover:text-cyan-600" href="./projects.html">Projects</a>
         <a class="hover:text-cyan-600" href="./search.html">Search</a>
-        <a class="hover:text-cyan-600" target="_blank" rel="noopener" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md">Start Here</a>
-        <button aria-label="Toggle theme" onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
+        <a class="hover:text-cyan-600" href="./collaborate.html">Collaborate</a>
+        <a class="hover:text-cyan-600" href="./clouds.html">Clouds</a>
+        <a class="hover:text-cyan-600" href="./concepts.html">Concepts</a>
+        <a class="hover:text-cyan-600" href="./platforms.html">Platforms</a>
+        <a class="hover:text-cyan-600" href="./patterns.html">Patterns</a>
+        <a class="hover:text-cyan-600" href="./resources.html">Resources</a>
+        <a class="hover:text-cyan-600" href="./topics/index.html">Topics</a>
+        <a class="hover:text-cyan-600" href="./start-here.html">Start Here</a>
+        <a class="hover:text-cyan-600" target="_blank" rel="noopener" href="https://github.com/AI-Architect-Academy/ai-architect-academy/tree/main/01-design-patterns">Repo Patterns</a>
+        <a class="hover:text-cyan-600" target="_blank" rel="noopener" href="https://github.com/AI-Architect-Academy/ai-architect-academy/tree/main/03-awesome">Awesome</a>
       </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="document.dispatchEvent(new KeyboardEvent('keydown',{key:'/'}))" class="px-2 py-1 border rounded text-xs">Search /</button>
+        <a class="px-2 py-1 border rounded text-xs" href="https://github.com/AI-Architect-Academy/ai-architect-academy" target="_blank" rel="noopener">GitHub</a>
+        <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
+      </div>
     </div>
   </header>
   <main class="max-w-6xl mx-auto px-4 py-10">
@@ -41,55 +79,80 @@
       <button id="reset" class="border rounded-md p-2">Reset</button>
     </div>
 
-    <div id="grid" class="mt-6 grid md:grid-cols-2 gap-4"></div>
+    <div class="mt-2 text-sm text-slate-500" id="count"></div>
+    <div id="grid" class="mt-4 grid md:grid-cols-2 gap-4"></div>
   </main>
+  <section class="max-w-6xl mx-auto px-4 pb-10">
+    <div class="mt-10 p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg">
+      <div class="font-semibold">Contribute a Project</div>
+      <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Share a hands-on guide with clear outcomes, steps, and links to repos. Keep focus on delivering value fast.</p>
+      <div class="mt-3 flex flex-wrap gap-3 text-sm">
+        <a class="px-3 py-2 border rounded" target="_blank" rel="noopener" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/100-projects.md">Project Catalog</a>
+        <a class="px-3 py-2 border rounded" target="_blank" rel="noopener" href="https://github.com/AI-Architect-Academy/ai-architect-academy/pulls">Open a PR</a>
+        <a class="px-3 py-2 border rounded" target="_blank" rel="noopener" href="https://github.com/AI-Architect-Academy/ai-architect-academy/issues/new">Open an Issue</a>
+      </div>
+    </div>
+  </section>
   <script>
     async function load(){
-      const res = await fetch('./data/projects.json');
-      const projects = await res.json();
+      let projects = [];
+      try {
+        const res = await fetch('./data/projects.json');
+        projects = await res.json();
+      } catch (error) {
+        document.getElementById('grid').innerHTML = '<div class="p-4 border rounded bg-white dark:bg-slate-800 dark:border-slate-700">Failed to load projects. Please refresh.</div>';
+        return;
+      }
       const grid = document.getElementById('grid');
+      const count = document.getElementById('count');
       const q = document.getElementById('q');
       const cat = document.getElementById('cat');
       const diff = document.getElementById('diff');
       const reset = document.getElementById('reset');
 
-      // categories
-      const cats = Array.from(new Set(projects.map(p=>p.category))).sort();
-      for(const c of cats){ const opt=document.createElement('option'); opt.textContent=c; opt.value=c; cat.appendChild(opt); }
+      const categories = Array.from(new Set(projects.map(p => p.category))).sort();
+      for(const category of categories){
+        const opt = document.createElement('option');
+        opt.textContent = category;
+        opt.value = category;
+        cat.appendChild(opt);
+      }
 
       function render(){
-        const term = (q.value||'').toLowerCase();
-        const c = cat.value; const d = diff.value;
-        const filtered = projects.filter(p => {
-          const t = (p.title + ' ' + (p.description||'') + ' ' + (p.tags||[]).join(' ')).toLowerCase();
-          const matchTerm = !term || t.includes(term);
-          const matchCat = !c || p.category === c;
-          const matchDiff = !d || p.difficulty === d;
+        const term = (q.value || '').toLowerCase();
+        const selectedCat = cat.value;
+        const selectedDiff = diff.value;
+        const filtered = projects.filter(project => {
+          const text = (project.title + ' ' + (project.description || '') + ' ' + (project.tags || []).join(' ')).toLowerCase();
+          const matchTerm = !term || text.includes(term);
+          const matchCat = !selectedCat || project.category === selectedCat;
+          const matchDiff = !selectedDiff || project.difficulty === selectedDiff;
           return matchTerm && matchCat && matchDiff;
         });
         grid.innerHTML = '';
-        for(const p of filtered){
+        count.textContent = `${filtered.length} project${filtered.length === 1 ? '' : 's'} shown`;
+        for(const project of filtered){
           const card = document.createElement('a');
           card.className = 'block p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg hover:shadow';
           const base='https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/';
-          const rel=(p.links?.guide||'');
-          card.href = p.links?.guide?.startsWith('http') ? p.links.guide : (base + rel);
-          card.target = '_blank'; card.rel = 'noopener';
+          const relative=(project.links?.guide||'');
+          card.href = project.links?.guide?.startsWith('http') ? project.links.guide : (base + relative);
+          card.target = '_blank';
+          card.rel = 'noopener';
           card.innerHTML = `
-            <div class="text-xs text-slate-500">${p.category} • ${p.difficulty} • ~${p.est_hours}h</div>
-            <div class="mt-1 font-semibold">${p.title}</div>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${p.description || ''}</p>
-            <div class="mt-2 text-xs text-cyan-600">Links: ${Object.values(p.links||{}).map(l=>{const base='https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/'; const href=l.startsWith('http')?l:(base+l); return `<a class='underline' href='${href}' target='_blank' rel='noopener'>${href}</a>`;}).join(' • ')}</div>
+            <div class="text-xs text-slate-500">${project.category} &bull; ${project.difficulty} &bull; ~${project.est_hours}h</div>
+            <div class="mt-1 font-semibold">${project.title}</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${project.description || ''}</p>
+            <div class="mt-2 text-xs text-cyan-600">Links: ${Object.values(project.links||{}).map(link=>{const base='https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/'; const href=link.startsWith('http')?link:(base+link); return `<a class='underline' href='${href}' target='_blank' rel='noopener'>${href}</a>`;}).join(' &bull; ')}</div>
           `;
           grid.appendChild(card);
         }
       }
-      [q,cat,diff].forEach(el=>el.addEventListener('input', render));
-      reset.addEventListener('click', ()=>{ q.value=''; cat.value=''; diff.value=''; render(); });
+      [q,cat,diff].forEach(el => el.addEventListener('input', render));
+      reset.addEventListener('click', () => { q.value=''; cat.value=''; diff.value=''; render(); });
       render();
     }
     load();
   </script>
 </body>
 </html>
-

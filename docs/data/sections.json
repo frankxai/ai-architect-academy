@@ -1,0 +1,570 @@
+[
+  {
+    "title": "Pattern: Content Generation: Business Value",
+    "page": "Pattern: Content Generation",
+    "url": "./pattern.html?file=01-design-patterns/content-generation.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Content Generation: Technical Architecture",
+    "page": "Pattern: Content Generation",
+    "url": "./pattern.html?file=01-design-patterns/content-generation.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Content Generation: Discovery Questions",
+    "page": "Pattern: Content Generation",
+    "url": "./pattern.html?file=01-design-patterns/content-generation.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Content Generation: Bill of Materials",
+    "page": "Pattern: Content Generation",
+    "url": "./pattern.html?file=01-design-patterns/content-generation.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Content Generation: Risks & Controls",
+    "page": "Pattern: Content Generation",
+    "url": "./pattern.html?file=01-design-patterns/content-generation.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Decision Support: Business Value",
+    "page": "Pattern: Decision Support",
+    "url": "./pattern.html?file=01-design-patterns/decision-support.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Decision Support: Technical Architecture",
+    "page": "Pattern: Decision Support",
+    "url": "./pattern.html?file=01-design-patterns/decision-support.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Decision Support: Discovery Questions",
+    "page": "Pattern: Decision Support",
+    "url": "./pattern.html?file=01-design-patterns/decision-support.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Decision Support: Bill of Materials",
+    "page": "Pattern: Decision Support",
+    "url": "./pattern.html?file=01-design-patterns/decision-support.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Decision Support: Risks & Controls",
+    "page": "Pattern: Decision Support",
+    "url": "./pattern.html?file=01-design-patterns/decision-support.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Energy Market Trading & Optimization: Business Value",
+    "page": "Pattern: Energy Market Trading & Optimization",
+    "url": "./pattern.html?file=01-design-patterns/energy-market-trading-optimization.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Energy Market Trading & Optimization: Technical Architecture",
+    "page": "Pattern: Energy Market Trading & Optimization",
+    "url": "./pattern.html?file=01-design-patterns/energy-market-trading-optimization.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Energy Market Trading & Optimization: Discovery Questions",
+    "page": "Pattern: Energy Market Trading & Optimization",
+    "url": "./pattern.html?file=01-design-patterns/energy-market-trading-optimization.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Energy Market Trading & Optimization: Bill of Materials",
+    "page": "Pattern: Energy Market Trading & Optimization",
+    "url": "./pattern.html?file=01-design-patterns/energy-market-trading-optimization.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Energy Market Trading & Optimization: Risks & Controls",
+    "page": "Pattern: Energy Market Trading & Optimization",
+    "url": "./pattern.html?file=01-design-patterns/energy-market-trading-optimization.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Genomic Sequence Processing & Public Health: Business Value",
+    "page": "Pattern: Genomic Sequence Processing & Public Health",
+    "url": "./pattern.html?file=01-design-patterns/genomic-sequence-processing.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Genomic Sequence Processing & Public Health: Technical Architecture",
+    "page": "Pattern: Genomic Sequence Processing & Public Health",
+    "url": "./pattern.html?file=01-design-patterns/genomic-sequence-processing.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Genomic Sequence Processing & Public Health: Discovery Questions",
+    "page": "Pattern: Genomic Sequence Processing & Public Health",
+    "url": "./pattern.html?file=01-design-patterns/genomic-sequence-processing.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Genomic Sequence Processing & Public Health: Bill of Materials",
+    "page": "Pattern: Genomic Sequence Processing & Public Health",
+    "url": "./pattern.html?file=01-design-patterns/genomic-sequence-processing.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Genomic Sequence Processing & Public Health: Risks & Controls",
+    "page": "Pattern: Genomic Sequence Processing & Public Health",
+    "url": "./pattern.html?file=01-design-patterns/genomic-sequence-processing.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Geographic Information Systems (GIS) Intelligence: Business Value",
+    "page": "Pattern: Geographic Information Systems (GIS) Intelligence",
+    "url": "./pattern.html?file=01-design-patterns/gis-intelligence.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Geographic Information Systems (GIS) Intelligence: Technical Architecture",
+    "page": "Pattern: Geographic Information Systems (GIS) Intelligence",
+    "url": "./pattern.html?file=01-design-patterns/gis-intelligence.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Geographic Information Systems (GIS) Intelligence: Discovery Questions",
+    "page": "Pattern: Geographic Information Systems (GIS) Intelligence",
+    "url": "./pattern.html?file=01-design-patterns/gis-intelligence.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Geographic Information Systems (GIS) Intelligence: Bill of Materials",
+    "page": "Pattern: Geographic Information Systems (GIS) Intelligence",
+    "url": "./pattern.html?file=01-design-patterns/gis-intelligence.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Geographic Information Systems (GIS) Intelligence: Risks & Controls",
+    "page": "Pattern: Geographic Information Systems (GIS) Intelligence",
+    "url": "./pattern.html?file=01-design-patterns/gis-intelligence.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Governance Compliance: Business Value",
+    "page": "Pattern: Governance Compliance",
+    "url": "./pattern.html?file=01-design-patterns/governance-compliance.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Governance Compliance: Technical Architecture",
+    "page": "Pattern: Governance Compliance",
+    "url": "./pattern.html?file=01-design-patterns/governance-compliance.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Governance Compliance: Discovery Questions",
+    "page": "Pattern: Governance Compliance",
+    "url": "./pattern.html?file=01-design-patterns/governance-compliance.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Governance Compliance: Bill of Materials",
+    "page": "Pattern: Governance Compliance",
+    "url": "./pattern.html?file=01-design-patterns/governance-compliance.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Governance Compliance: Risks & Controls",
+    "page": "Pattern: Governance Compliance",
+    "url": "./pattern.html?file=01-design-patterns/governance-compliance.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Insurance Rate Modeling: Business Value",
+    "page": "Pattern: Insurance Rate Modeling",
+    "url": "./pattern.html?file=01-design-patterns/insurance-rate-modeling.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Insurance Rate Modeling: Technical Architecture",
+    "page": "Pattern: Insurance Rate Modeling",
+    "url": "./pattern.html?file=01-design-patterns/insurance-rate-modeling.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Insurance Rate Modeling: Discovery Questions",
+    "page": "Pattern: Insurance Rate Modeling",
+    "url": "./pattern.html?file=01-design-patterns/insurance-rate-modeling.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Insurance Rate Modeling: Bill of Materials",
+    "page": "Pattern: Insurance Rate Modeling",
+    "url": "./pattern.html?file=01-design-patterns/insurance-rate-modeling.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Insurance Rate Modeling: Risks & Controls",
+    "page": "Pattern: Insurance Rate Modeling",
+    "url": "./pattern.html?file=01-design-patterns/insurance-rate-modeling.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Model Lifecycle Management (MLOps): Business Value",
+    "page": "Pattern: Model Lifecycle Management (MLOps)",
+    "url": "./pattern.html?file=01-design-patterns/model-lifecycle-management.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Model Lifecycle Management (MLOps): Technical Architecture",
+    "page": "Pattern: Model Lifecycle Management (MLOps)",
+    "url": "./pattern.html?file=01-design-patterns/model-lifecycle-management.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Model Lifecycle Management (MLOps): Discovery Questions",
+    "page": "Pattern: Model Lifecycle Management (MLOps)",
+    "url": "./pattern.html?file=01-design-patterns/model-lifecycle-management.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Model Lifecycle Management (MLOps): Bill of Materials",
+    "page": "Pattern: Model Lifecycle Management (MLOps)",
+    "url": "./pattern.html?file=01-design-patterns/model-lifecycle-management.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Model Lifecycle Management (MLOps): Risks & Controls",
+    "page": "Pattern: Model Lifecycle Management (MLOps)",
+    "url": "./pattern.html?file=01-design-patterns/model-lifecycle-management.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Orchestration Workflow: Business Value",
+    "page": "Pattern: Orchestration Workflow",
+    "url": "./pattern.html?file=01-design-patterns/orchestration-workflow.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Orchestration Workflow: Technical Architecture",
+    "page": "Pattern: Orchestration Workflow",
+    "url": "./pattern.html?file=01-design-patterns/orchestration-workflow.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Orchestration Workflow: Discovery Questions",
+    "page": "Pattern: Orchestration Workflow",
+    "url": "./pattern.html?file=01-design-patterns/orchestration-workflow.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Orchestration Workflow: Bill of Materials",
+    "page": "Pattern: Orchestration Workflow",
+    "url": "./pattern.html?file=01-design-patterns/orchestration-workflow.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Orchestration Workflow: Risks & Controls",
+    "page": "Pattern: Orchestration Workflow",
+    "url": "./pattern.html?file=01-design-patterns/orchestration-workflow.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Performance Optimization: Business Value",
+    "page": "Pattern: Performance Optimization",
+    "url": "./pattern.html?file=01-design-patterns/performance-optimization.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Performance Optimization: Technical Architecture",
+    "page": "Pattern: Performance Optimization",
+    "url": "./pattern.html?file=01-design-patterns/performance-optimization.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Performance Optimization: Discovery Questions",
+    "page": "Pattern: Performance Optimization",
+    "url": "./pattern.html?file=01-design-patterns/performance-optimization.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Performance Optimization: Bill of Materials",
+    "page": "Pattern: Performance Optimization",
+    "url": "./pattern.html?file=01-design-patterns/performance-optimization.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: Performance Optimization: Risks & Controls",
+    "page": "Pattern: Performance Optimization",
+    "url": "./pattern.html?file=01-design-patterns/performance-optimization.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: AI-Powered Vulnerability Management: Business Value",
+    "page": "Pattern: AI-Powered Vulnerability Management",
+    "url": "./pattern.html?file=01-design-patterns/vulnerability-management.md#business-value",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: AI-Powered Vulnerability Management: Technical Architecture",
+    "page": "Pattern: AI-Powered Vulnerability Management",
+    "url": "./pattern.html?file=01-design-patterns/vulnerability-management.md#technical-architecture",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: AI-Powered Vulnerability Management: Discovery Questions",
+    "page": "Pattern: AI-Powered Vulnerability Management",
+    "url": "./pattern.html?file=01-design-patterns/vulnerability-management.md#discovery-questions",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: AI-Powered Vulnerability Management: Bill of Materials",
+    "page": "Pattern: AI-Powered Vulnerability Management",
+    "url": "./pattern.html?file=01-design-patterns/vulnerability-management.md#bill-of-materials",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Pattern: AI-Powered Vulnerability Management: Risks & Controls",
+    "page": "Pattern: AI-Powered Vulnerability Management",
+    "url": "./pattern.html?file=01-design-patterns/vulnerability-management.md#risks-controls",
+    "tags": [
+      "pattern"
+    ]
+  },
+  {
+    "title": "Topic: Quick Wins",
+    "page": "agents",
+    "url": "./topics/agents.html#quick-wins",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Top Links",
+    "page": "agents",
+    "url": "./topics/agents.html#top-links",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Quick Wins",
+    "page": "chunking",
+    "url": "./topics/chunking.html#quick-wins",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Top Links",
+    "page": "chunking",
+    "url": "./topics/chunking.html#top-links",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Quick Wins",
+    "page": "costs",
+    "url": "./topics/costs.html#quick-wins",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Top Links",
+    "page": "costs",
+    "url": "./topics/costs.html#top-links",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Quick Wins",
+    "page": "evals",
+    "url": "./topics/evals.html#quick-wins",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Top Links",
+    "page": "evals",
+    "url": "./topics/evals.html#top-links",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Quick Wins",
+    "page": "guardrails",
+    "url": "./topics/guardrails.html#quick-wins",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Top Links",
+    "page": "guardrails",
+    "url": "./topics/guardrails.html#top-links",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Quick Wins",
+    "page": "hybrid-search",
+    "url": "./topics/hybrid-search.html#quick-wins",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Top Links",
+    "page": "hybrid-search",
+    "url": "./topics/hybrid-search.html#top-links",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Quick Wins",
+    "page": "observability",
+    "url": "./topics/observability.html#quick-wins",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Top Links",
+    "page": "observability",
+    "url": "./topics/observability.html#top-links",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Quick Wins",
+    "page": "rag",
+    "url": "./topics/rag.html#quick-wins",
+    "tags": [
+      "topic"
+    ]
+  },
+  {
+    "title": "Topic: Top Links",
+    "page": "rag",
+    "url": "./topics/rag.html#top-links",
+    "tags": [
+      "topic"
+    ]
+  }
+]
