@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">AI Architect Academy Signature Loop</title>
+  <desc id="desc">Pattern, Project, Evaluation, and Story connected by directional flows that illustrate the weekly cadence.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0f9ff" />
+      <stop offset="100%" stop-color="#eef2ff" />
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M0 0 L12 6 L0 12 z" fill="url(#stroke)" />
+    </marker>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+      .label { font-weight: 700; font-size: 20px; fill: #0f172a; }
+      .body { font-size: 14px; fill: #1f2937; }
+      .tag { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; fill: #475569; }
+    </style>
+  </defs>
+  <rect width="960" height="300" rx="36" fill="url(#bg)" stroke="#e2e8f0" />
+
+  <g fill="none" stroke="url(#stroke)" stroke-width="10" marker-end="url(#arrow)" stroke-linecap="round" opacity="0.9">
+    <path d="M220 150 C 280 60, 420 60, 480 130" />
+    <path d="M520 130 C 580 60, 720 60, 780 140" />
+    <path d="M780 160 C 720 240, 580 240, 520 170" />
+    <path d="M480 170 C 420 240, 280 240, 220 160" />
+  </g>
+
+  <g transform="translate(120 100)">
+    <rect width="200" height="140" rx="24" fill="#e0f2fe" stroke="#bae6fd" />
+    <text class="tag" x="24" y="44">Frame</text>
+    <text class="label" x="24" y="76">Pattern</text>
+    <text class="body" x="24" y="108">Value narrative, discovery scripts, risk assumptions.</text>
+  </g>
+  <g transform="translate(360 40)">
+    <rect width="200" height="140" rx="24" fill="#ede9fe" stroke="#ddd6fe" />
+    <text class="tag" x="24" y="44">Build</text>
+    <text class="label" x="24" y="76">Project</text>
+    <text class="body" x="24" y="108">Ship a focused workflow with toolchains and agent roles.</text>
+  </g>
+  <g transform="translate(600 100)">
+    <rect width="200" height="140" rx="24" fill="#ccfbf1" stroke="#99f6e4" />
+    <text class="tag" x="24" y="44">Measure</text>
+    <text class="label" x="24" y="76">Evaluation</text>
+    <text class="body" x="24" y="108">Guardrails, metrics, observability dashboards, cost reports.</text>
+  </g>
+  <g transform="translate(360 180)">
+    <rect width="200" height="140" rx="24" fill="#fef3c7" stroke="#fde68a" />
+    <text class="tag" x="24" y="44">Amplify</text>
+    <text class="label" x="24" y="76">Story</text>
+    <text class="body" x="24" y="108">Publish highlights, update roadmap, invite collaborators.</text>
+  </g>
+
+  <text x="120" y="268" class="body">Loop weekly: Pattern → Project → Evaluation → Story → capture insights for the next iteration.</text>
+</svg>
