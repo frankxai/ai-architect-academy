@@ -4,6 +4,7 @@ You arrived because you want to ship real AI value, brief stakeholders with auth
 
 ## Orientation Pulse (5 Minutes)
 - **Scan the [Experience Hub](docs/experience.html).** Note the hero CTA, persona lanes, and cloning checklist.
+- **Walk the Experience Map + Value Loop.** The refreshed SVGs show exactly how Explore → Design → Build → Amplify snap together week over week.
 - **Bookmark your launchpad.** Pick the program below that matches your mission and share the link with anyone joining you.
 - **Prime your AI copilots.** Drop `README.md`, `START-HERE.md`, and `docs/sitemap.xml` into your agent context so it can act as concierge.
 

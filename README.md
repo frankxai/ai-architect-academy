@@ -16,12 +16,20 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
   <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/archive/refs/heads/main.zip"><img alt="Download" src="https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge"></a>
 </div>
 
-![Experience Map](assets/experience-map.svg)
+![Diamond experience map connecting Explore, Design, Build, Amplify](assets/experience-map.svg)
 
 ## Experience Promise
 - **Precision guidance.** Persona journeys and cloning checklists live side-by-side so nobody wonders “where do I click next?”
 - **Pattern-first delivery.** Value framing, technical architecture, toolchains, and evaluation harnesses are wired into one flow.
 - **Shareable story.** Articles, resources, and brand voice prompts make it effortless to show progress to leaders, clients, or your audience.
+
+### Diamond Journey — Stage Breakdown
+| Stage | What it Unlocks | Hero Assets |
+| --- | --- | --- |
+| **Explore** | Launch orientation in minutes with human + agent briefings. | [`START-HERE.md`](START-HERE.md), [`docs/experience.html`](docs/experience.html) |
+| **Design** | Frame value narratives, stack decisions, and stakeholder scripts. | [`00-roadmap/`](00-roadmap/), [`01-design-patterns/`](01-design-patterns/) |
+| **Build** | Assemble projects, toolchains, and evaluation harnesses without losing momentum. | [`05-projects/`](05-projects/), [`06-toolchains/`](06-toolchains/), [`07-evaluation/`](07-evaluation/) |
+| **Amplify** | Package outcomes into articles, SEO drops, and collaboration rituals. | [`09-articles/`](09-articles/), [`16-collaboration/`](16-collaboration/), [`BRAND-VOICE.md`](BRAND-VOICE.md) |
 
 ## Why Clone the Repository
 - **Operate offline with your agents.** Serve the site locally (`scripts/serve.sh`), mirror it to internal portals, and let your AI copilots traverse the same structure they see on GitHub Pages.
@@ -54,7 +62,7 @@ Equip your Codex-style co-pilot or internal agent to explore this repo without f
 > 📡 **Tip:** When deploying an internal agent, mirror `docs/data/search-index.json` into your vector store. Pair embeddings with the metadata fields (`title`, `category`, `path`) for precise retrieval.
 
 ## Signature Loops You Can Run This Week
-![Value Loop](assets/value-loop.svg)
+![Circular value loop connecting Pattern, Project, Evaluation, Story](assets/value-loop.svg)
 - **Pattern → Project → Eval:** Pick a pattern, ship the smallest valuable build, wire in evaluation harnesses on day one.
 - **Concept → Platform Decision:** Use concept decks and the platform matrix to align your stack before coding.
 - **Learning Path → Portfolio:** Follow the 100-hour track, ship two case studies, and convert them into spotlight articles.

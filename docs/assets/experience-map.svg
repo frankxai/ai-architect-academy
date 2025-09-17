@@ -1,71 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
   <title id="title">AI Architect Academy Experience Map</title>
-  <desc id="desc">Four stages—Explore, Design, Build, Amplify—linked by directional arrows guiding visitors through the academy.</desc>
+  <desc id="desc">Four experience pillars arranged in a diamond, connected by luminous arrows that guide visitors through Explore, Design, Build, and Amplify.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0%" stop-color="#020617" />
-      <stop offset="50%" stop-color="#1e3a8a" />
-      <stop offset="100%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
     </linearGradient>
-    <linearGradient id="card" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.16" />
-      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.28" />
-    </linearGradient>
-    <radialGradient id="halo" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35" />
+    <radialGradient id="glow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.55" />
+      <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.08" />
       <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
     </radialGradient>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-      <path d="M0 0 L10 5 L0 10 z" fill="#38bdf8" />
+    <linearGradient id="card" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M0 0 L12 6 L0 12 Z" fill="#38bdf8" />
     </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#0ea5e9" flood-opacity="0.25" />
+    </filter>
     <style>
       text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-      .badge { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; fill: #a5f3fc; }
-      .title { font-size: 32px; font-weight: 700; fill: #e2e8f0; letter-spacing: 0.02em; }
-      .subtitle { font-size: 16px; fill: #cbd5f5; }
-      .pill { font-size: 20px; font-weight: 600; fill: #f8fafc; }
-      .body { font-size: 14px; fill: #cbd5f5; }
-      .tag { font-size: 12px; fill: #bae6fd; text-transform: uppercase; letter-spacing: 0.16em; }
+      .badge { font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; fill: #38bdf8; }
+      .title { font-size: 34px; font-weight: 700; fill: #f8fafc; letter-spacing: 0.02em; }
+      .subtitle { font-size: 17px; fill: #cbd5f5; }
+      .card-title { font-size: 22px; font-weight: 600; fill: #f8fafc; }
+      .card-body { font-size: 14px; line-height: 1.5; fill: #cbd5f5; }
+      .step { font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; fill: #bae6fd; }
+      .number { font-size: 16px; font-weight: 700; fill: #0f172a; }
     </style>
   </defs>
-  <rect width="960" height="400" rx="32" fill="url(#bg)" />
-  <rect x="140" y="60" width="680" height="280" rx="140" fill="url(#halo)" />
+  <rect width="960" height="560" rx="36" fill="url(#bg)" />
+  <rect x="60" y="40" width="840" height="480" rx="240" fill="url(#glow)" />
 
-  <text class="badge" x="80" y="82">AI Architect Academy</text>
-  <text class="title" x="80" y="120">Experience Map</text>
-  <text class="subtitle" x="80" y="152">Guide every visitor from first click to operating excellence.</text>
+  <text class="badge" x="80" y="90">AI Architect Academy</text>
+  <text class="title" x="80" y="132">Experience Map</text>
+  <text class="subtitle" x="80" y="166">Every visitor and AI concierge sees the same luminous path from orientation to amplification.</text>
 
-  <g fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)" opacity="0.8">
-    <path d="M320 220 C 360 170, 420 170, 460 200" />
-    <path d="M640 200 C 700 200, 740 220, 760 240" />
-    <path d="M680 280 C 600 340, 360 340, 280 280" />
-    <path d="M260 180 C 240 160, 240 140, 260 120" />
+  <g fill="none" stroke="url(#stroke)" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)" opacity="0.8">
+    <path d="M310 340 C 360 270, 340 220, 370 190" />
+    <path d="M590 190 C 660 180, 720 210, 760 260" />
+    <path d="M760 420 C 700 460, 640 480, 590 460" />
+    <path d="M370 460 C 260 520, 200 420, 200 260" />
   </g>
 
   <g>
-    <g transform="translate(200 190)">
-      <rect width="220" height="150" rx="24" fill="url(#card)" stroke="#38bdf8" stroke-opacity="0.55" />
-      <text class="tag" x="24" y="46">Welcome</text>
-      <text class="pill" x="24" y="78">Explore</text>
-      <text class="body" x="24" y="110">Start Here, Experience hub, persona briefings, cloning steps.</text>
+    <g transform="translate(90 260)">
+      <rect width="220" height="160" rx="28" fill="url(#card)" stroke="#38bdf8" stroke-opacity="0.6" filter="url(#shadow)" />
+      <text class="step" x="24" y="48">Stage 01</text>
+      <text class="card-title" x="24" y="80">Explore</text>
+      <text class="card-body" x="24" y="110">Start Here briefings, cloning checklist, and persona cues for humans and copilots.</text>
+      <circle cx="196" cy="36" r="18" fill="#38bdf8" />
+      <text class="number" x="190" y="41">1</text>
     </g>
-    <g transform="translate(430 130)">
-      <rect width="220" height="150" rx="24" fill="url(#card)" stroke="#60a5fa" stroke-opacity="0.55" />
-      <text class="tag" x="24" y="46">Frame Value</text>
-      <text class="pill" x="24" y="78">Design</text>
-      <text class="body" x="24" y="110">Patterns, concept decks, platform choices, discovery scripts.</text>
+    <g transform="translate(370 110)">
+      <rect width="220" height="160" rx="28" fill="url(#card)" stroke="#60a5fa" stroke-opacity="0.6" filter="url(#shadow)" />
+      <text class="step" x="24" y="48">Stage 02</text>
+      <text class="card-title" x="24" y="80">Design</text>
+      <text class="card-body" x="24" y="110">Blueprint strategy with roadmaps, discovery scripts, and platform decision guides.</text>
+      <circle cx="196" cy="36" r="18" fill="#60a5fa" />
+      <text class="number" x="190" y="41">2</text>
     </g>
-    <g transform="translate(430 260)">
-      <rect width="220" height="150" rx="24" fill="url(#card)" stroke="#2dd4bf" stroke-opacity="0.55" />
-      <text class="tag" x="24" y="46">Deliver</text>
-      <text class="pill" x="24" y="78">Build</text>
-      <text class="body" x="24" y="110">Projects, toolchains, agent workflows, evaluation harnesses.</text>
+    <g transform="translate(650 260)">
+      <rect width="220" height="160" rx="28" fill="url(#card)" stroke="#2dd4bf" stroke-opacity="0.6" filter="url(#shadow)" />
+      <text class="step" x="24" y="48">Stage 03</text>
+      <text class="card-title" x="24" y="80">Build</text>
+      <text class="card-body" x="24" y="110">Ship projects, toolchains, and agent workflows with evaluation harnesses ready.</text>
+      <circle cx="196" cy="36" r="18" fill="#2dd4bf" />
+      <text class="number" x="190" y="41">3</text>
     </g>
-    <g transform="translate(660 190)">
-      <rect width="220" height="150" rx="24" fill="url(#card)" stroke="#a855f7" stroke-opacity="0.55" />
-      <text class="tag" x="24" y="46">Amplify</text>
-      <text class="pill" x="24" y="78">Share</text>
-      <text class="body" x="24" y="110">Articles, resources, brand voice, collaboration rituals, SEO.</text>
+    <g transform="translate(370 380)">
+      <rect width="220" height="160" rx="28" fill="url(#card)" stroke="#a855f7" stroke-opacity="0.6" filter="url(#shadow)" />
+      <text class="step" x="24" y="48">Stage 04</text>
+      <text class="card-title" x="24" y="80">Amplify</text>
+      <text class="card-body" x="24" y="110">Package stories, SEO launches, and collaboration rituals to keep momentum visible.</text>
+      <circle cx="196" cy="36" r="18" fill="#a855f7" />
+      <text class="number" x="190" y="41">4</text>
     </g>
   </g>
 </svg>

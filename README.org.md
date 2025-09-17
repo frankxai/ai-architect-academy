@@ -15,7 +15,7 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
 #+html:   <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/archive/refs/heads/main.zip"><img alt="Download" src="https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge"></a>
 #+html: </div>
 
-#+html: <img src="assets/experience-map.svg" alt="Experience Map" />
+#+html: <img src="assets/experience-map.svg" alt="Diamond experience map showing Explore, Design, Build, Amplify" />
 
 * Experience Promise
 - *Precision guidance.* Persona journeys and cloning checklists live side-by-side so nobody wonders "where do I click next?"
@@ -55,7 +55,7 @@ Equip your Codex-style co-pilot or internal agent to explore this repo without f
 #+end_quote
 
 * Signature Loops You Can Run This Week
-#+html: <img src="assets/value-loop.svg" alt="Value Loop" />
+#+html: <img src="assets/value-loop.svg" alt="Circular value loop connecting Pattern, Project, Evaluation, Story" />
 - *Pattern → Project → Eval:* Pick a pattern, ship the smallest valuable build, wire in evaluation harnesses on day one.
 - *Concept → Platform Decision:* Use concept decks and the platform matrix to align your stack before coding.
 - *Learning Path → Portfolio:* Follow the 100-hour track, ship two case studies, and convert them into spotlight articles.
