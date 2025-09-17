@@ -1,39 +1,55 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Agents — AI Architect Academy</title>
-<link rel="icon" href="https://fav.farm/🧠" />
-<meta name="description" content="Agent frameworks, orchestration, and production patterns."/>
-<meta property="og:title" content="Agents — AI Architect Academy"/>
-<meta property="og:description" content="Agent frameworks, orchestration, and production patterns."/>
-<meta property="og:image" content="https://ai-architect-academy.github.io/ai-architect-academy/assets/social-card.svg"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:'class'}</script>
-<script src="../assets/site.js"></script>
-<script src="../assets/search.js" defer></script></head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100"><header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
-  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-    <a href="../index.html" class="flex items-center gap-3"><img src="../assets/logo.svg" alt="AI Architect Academy" class="h-8" /><span class="sr-only">AI Architect Academy</span></a>
-    <nav class="flex items-center gap-6 text-sm">
-      <a class="hover:text-cyan-600" href="../projects.html">Projects</a> <a class="hover:text-cyan-600" href="../collaborate.html">Collaborate</a> <a class="hover:text-cyan-600" href="../clouds.html">Clouds</a> <a class="hover:text-cyan-600" href="../concepts.html">Concepts</a> <a class="hover:text-cyan-600" href="../platforms.html">Platforms</a> <a class="hover:text-cyan-600" href="../patterns.html">Patterns</a> <a class="hover:text-cyan-600" href="../resources.html">Resources</a> <a class="hover:text-cyan-600" href="./index.html">Topics</a> <a class="hover:text-cyan-600" href="../start-here.html">Start Here</a>
-    </nav>
-    <button onclick="document.dispatchEvent(new KeyboardEvent('keydown',{key:'/'}))" class="px-2 py-1 border rounded text-xs mr-2">Search /</button>
-    <a class="px-2 py-1 border rounded text-xs mr-2" href="https://github.com/AI-Architect-Academy/ai-architect-academy" target="_blank" rel="noopener">GitHub</a>
-    <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
-  </div>
-</header><main class="max-w-6xl mx-auto px-4 py-10">
-<h1 class="text-2xl font-bold">Agents & Tool Use</h1>
-<p class="text-slate-600">Stateful workflows, tools, and review loops.</p>
-<h2 class="mt-6 font-semibold">Quick Wins</h2>
-<ul class="list-disc list-inside text-sm">
-<li>Prefer deterministic graphs for reliability (LangGraph)</li>
-<li>Sandbox tools; validate outputs; human review gates</li>
-<li>Log actions and costs; rate limit and budget</li>
-</ul>
-<h2 class="mt-6 font-semibold">Top Links</h2>
-<ul class="list-disc list-inside">
-<li><a class="text-cyan-600" href="https://github.com/langchain-ai/langgraph" target="_blank">langchain-ai/langgraph</a></li>
-<li><a class="text-cyan-600" href="https://github.com/microsoft/autogen" target="_blank">microsoft/autogen</a> • <a class="text-cyan-600" href="https://github.com/joaomdmoura/crewai" target="_blank">joaomdmoura/crewai</a></li>
-<li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/evals-langfuse.md" target="_blank">Observability & evals</a></li>
-<li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-agents.md" target="_blank">Awesome Agents</a></li>
-</ul>
-</main><footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400">© AI Architect Academy — Open Playbook</footer></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agents — AI Architect Academy</title>
+  <meta name="description" content="Agent orchestration patterns, tool routing strategies, and trusted links." />
+  <meta property="og:title" content="Agents — AI Architect Academy" />
+  <meta property="og:description" content="Agent orchestration patterns, tool routing strategies, and trusted links." />
+  <meta property="og:image" content="https://ai-architect-academy.github.io/ai-architect-academy/assets/social-card.svg" />
+  <link rel="icon" href="https://fav.farm/%F0%9F%A4%96" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class'};</script>
+  <script src="../assets/site.js"></script>
+  <script src="../assets/search.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center gap-4 flex-wrap justify-between">
+      <a href="../index.html" class="flex items-center gap-3"><img src="../assets/logo.svg" alt="AI Architect Academy" class="h-8" /><span class="sr-only">AI Architect Academy</span></a>
+      <nav data-site-nav class="flex flex-wrap items-center gap-4 text-sm"></nav>
+      <div class="flex items-center gap-2 text-xs sm:text-sm" data-site-actions>
+        <button type="button" data-search class="px-3 py-1 border rounded">Search /</button>
+        <a data-clone class="px-3 py-1 border rounded" target="_blank" rel="noopener">Clone Repo</a>
+        <a data-github class="px-3 py-1 border rounded" target="_blank" rel="noopener">GitHub</a>
+        <button type="button" onclick="toggleTheme()" class="px-3 py-1 border rounded">Theme</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-extrabold tracking-tight">Agents</h1>
+    <p class="mt-2 text-slate-600 dark:text-slate-300">Orchestrate multi-step workflows with deterministic routing, evaluation, and fallbacks.</p>
+
+    <h2 class="mt-6 font-semibold">Quick Wins</h2>
+    <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1">
+      <li>Define explicit goal + tool map before handing off control.</li>
+      <li>Instrument every tool call for latency, cost, and failure reason.</li>
+      <li>Set safe defaults: timeouts, max turns, escalation paths.</li>
+      <li>Blend deterministic planners with LLM creativity for reliability.</li>
+    </ul>
+
+    <h2 class="mt-6 font-semibold">Top Links</h2>
+    <ul class="list-disc list-inside text-sm">
+      <li><a class="text-cyan-600" href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">langchain-ai/langgraph</a></li>
+      <li><a class="text-cyan-600" href="https://github.com/microsoft/autogen" target="_blank" rel="noopener">microsoft/autogen</a></li>
+      <li><a class="text-cyan-600" href="https://github.com/joaomdmoura/crewai" target="_blank" rel="noopener">joaomdmoura/crewai</a></li>
+      <li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/agentic-saas-planner.md" target="_blank" rel="noopener">Agentic SaaS Planner (project)</a></li>
+      <li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/tree/main/agentic-swarms" target="_blank" rel="noopener">Agentic Code Swarms</a></li>
+      <li><a class="text-cyan-600" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-agents.md" target="_blank" rel="noopener">Awesome Agents (curated)</a></li>
+    </ul>
+  </main>
+  <footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400">© AI Architect Academy — Open Playbook</footer>
+</body>
+</html>
