@@ -1,0 +1,148 @@
+name: Claude AI Assistant
+
+on:
+  issues:
+    types: [opened, edited]
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+    inputs:
+      task_description:
+        description: 'Task for Claude to perform'
+        required: true
+        default: 'Review and analyze the repository'
+
+env:
+  CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+
+jobs:
+  claude-assistant:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+      actions: read
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: |
+        npm install --save-dev @anthropic-ai/sdk
+        npm install --save-dev @octokit/rest
+    
+    - name: Create Claude interaction script
+      run: |
+        cat > claude-interaction.js << 'EOF'
+        const Anthropic = require('@anthropic-ai/sdk');
+        const { Octokit } = require('@octokit/rest');
+        const fs = require('fs');
+        
+        async function main() {
+          const anthropic = new Anthropic({
+            apiKey: process.env.CLAUDE_API_KEY,
+          });
+          
+          const octokit = new Octokit({
+            auth: process.env.GITHUB_TOKEN,
+          });
+          
+          // Determine context based on event type
+          const eventName = process.env.GITHUB_EVENT_NAME;
+          const eventPath = process.env.GITHUB_EVENT_PATH;
+          const eventData = JSON.parse(fs.readFileSync(eventPath, 'utf8'));
+          
+          let contextPrompt = '';
+          let responseTarget = null;
+          
+          if (eventName === 'issues' && eventData.action === 'opened') {
+            contextPrompt = `New issue opened: "${eventData.issue.title}"\nDescription: ${eventData.issue.body}\n\nPlease provide helpful guidance or suggestions for this issue.`;
+            responseTarget = { type: 'issue', number: eventData.issue.number };
+          } else if (eventName === 'pull_request') {
+            contextPrompt = `Pull request: "${eventData.pull_request.title}"\nDescription: ${eventData.pull_request.body}\n\nPlease review this pull request and provide constructive feedback.`;
+            responseTarget = { type: 'pr', number: eventData.pull_request.number };
+          } else if (eventName === 'workflow_dispatch') {
+            contextPrompt = process.env.INPUT_TASK_DESCRIPTION || 'Analyze the repository structure and provide insights.';
+            responseTarget = null; // For workflow_dispatch, we'll just log the response
+          } else if (eventName === 'push') {
+            const commits = eventData.commits;
+            if (commits && commits.length > 0) {
+              const commitMessages = commits.map(c => `- ${c.message}`).join('\n');
+              contextPrompt = `Recent commits pushed:\n${commitMessages}\n\nPlease analyze these changes and provide insights.`;
+            }
+            responseTarget = null;
+          }
+          
+          // Add repository context
+          const repoContext = `\n\nRepository: ${process.env.GITHUB_REPOSITORY}\nBranch: ${process.env.GITHUB_REF_NAME}`;
+          contextPrompt += repoContext;
+          
+          try {
+            const message = await anthropic.messages.create({
+              model: 'claude-3-haiku-20240307',
+              max_tokens: 1000,
+              temperature: 0.7,
+              messages: [
+                {
+                  role: 'user',
+                  content: `You are Claude, an AI assistant helping with the AI Architect Academy repository. The repository contains learning paths, design patterns, and resources for AI architecture.\n\n${contextPrompt}\n\nPlease provide a helpful, constructive response that adds value to the discussion.`
+                }
+              ]
+            });
+            
+            const response = message.content[0].text;
+            console.log('Claude Response:', response);
+            
+            // Post response based on context
+            if (responseTarget && responseTarget.type === 'issue') {
+              await octokit.rest.issues.createComment({
+                owner: process.env.GITHUB_REPOSITORY.split('/')[0],
+                repo: process.env.GITHUB_REPOSITORY.split('/')[1],
+                issue_number: responseTarget.number,
+                body: `🤖 **Claude AI Assistant**\n\n${response}\n\n---\n*This response was generated automatically by Claude AI*`
+              });
+            } else if (responseTarget && responseTarget.type === 'pr') {
+              await octokit.rest.pulls.createReview({
+                owner: process.env.GITHUB_REPOSITORY.split('/')[0],
+                repo: process.env.GITHUB_REPOSITORY.split('/')[1],
+                pull_number: responseTarget.number,
+                body: `🤖 **Claude AI Review**\n\n${response}\n\n---\n*This review was generated automatically by Claude AI*`,
+                event: 'COMMENT'
+              });
+            }
+            
+          } catch (error) {
+            console.error('Error calling Claude API:', error);
+            process.exit(1);
+          }
+        }
+        
+        main();
+        EOF
+    
+    - name: Run Claude interaction
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        INPUT_TASK_DESCRIPTION: ${{ github.event.inputs.task_description }}
+      run: node claude-interaction.js
+    
+    - name: Summary
+      run: |
+        echo "## Claude AI Assistant Summary" >> $GITHUB_STEP_SUMMARY
+        echo "Event: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "Repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+        echo "Branch: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "Claude interaction completed successfully ✅" >> $GITHUB_STEP_SUMMARY
