@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
+  <title id="title">AI Architect Academy Experience Map</title>
+  <desc id="desc">Four experience pillars connected in a loop: Explore, Design, Build, Amplify.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0b1120" />
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.3" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', sans-serif; fill: #e2e8f0; }
+      .title { font-size: 28px; font-weight: 700; letter-spacing: 0.04em; }
+      .subtitle { font-size: 16px; fill: #94a3b8; }
+      .pill { font-size: 20px; font-weight: 600; }
+      .body { font-size: 14px; fill: #cbd5f5; }
+      .badge { font-size: 12px; fill: #e0f2fe; text-transform: uppercase; letter-spacing: 0.12em; }
+    </style>
+  </defs>
+  <rect width="960" height="400" rx="32" fill="url(#bg)" />
+
+  <g filter="url(#glow)" opacity="0.35">
+    <ellipse cx="480" cy="200" rx="360" ry="150" fill="#38bdf8" />
+  </g>
+
+  <text class="badge" x="80" y="72">AI Architect Academy</text>
+  <text class="title" x="80" y="112">Experience Map</text>
+  <text class="subtitle" x="80" y="142">Guide every visitor from curiosity to operating excellence.</text>
+
+  <g transform="translate(80 180)">
+    <rect width="240" height="140" rx="20" fill="url(#card)" stroke="#38bdf8" stroke-opacity="0.4" />
+    <text class="pill" x="24" y="48">Explore</text>
+    <text class="body" x="24" y="78">Start Here, Experience hub,</text>
+    <text class="body" x="24" y="100">persona journeys, quick wins.</text>
+  </g>
+
+  <g transform="translate(360 120)">
+    <rect width="240" height="140" rx="20" fill="url(#card)" stroke="#818cf8" stroke-opacity="0.4" />
+    <text class="pill" x="24" y="48">Design</text>
+    <text class="body" x="24" y="78">Patterns, concepts, platform</text>
+    <text class="body" x="24" y="100">decisions, discovery scripts.</text>
+  </g>
+
+  <g transform="translate(360 240)">
+    <rect width="240" height="140" rx="20" fill="url(#card)" stroke="#22d3ee" stroke-opacity="0.4" />
+    <text class="pill" x="24" y="48">Build</text>
+    <text class="body" x="24" y="78">Projects, toolchains, agent</text>
+    <text class="body" x="24" y="100">workflows, evaluation loops.</text>
+  </g>
+
+  <g transform="translate(640 180)">
+    <rect width="240" height="140" rx="20" fill="url(#card)" stroke="#a855f7" stroke-opacity="0.4" />
+    <text class="pill" x="24" y="48">Amplify</text>
+    <text class="body" x="24" y="78">Articles, resources, brand</text>
+    <text class="body" x="24" y="100">voice, collaboration rituals.</text>
+  </g>
+
+  <g fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" opacity="0.75">
+    <path d="M320 240 C360 160, 360 160, 360 160" />
+    <path d="M600 160 C660 160, 660 260, 640 260" />
+    <path d="M600 320 C560 360, 360 360, 320 300" />
+    <path d="M320 180 C280 180, 280 280, 320 280" />
+  </g>
+
+  <g fill="#38bdf8">
+    <circle cx="320" cy="240" r="6" />
+    <circle cx="600" cy="160" r="6" />
+    <circle cx="600" cy="320" r="6" />
+    <circle cx="320" cy="180" r="6" />
+  </g>
+</svg>

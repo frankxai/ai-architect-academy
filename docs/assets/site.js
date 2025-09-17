@@ -14,6 +14,91 @@ function toggleTheme(){
   try { localStorage.setItem('theme', d ? 'dark' : 'light'); } catch {}
 }
 
+// Primary navigation links
+const NAV_LINKS = [
+  { label: 'Home', path: 'index.html' },
+  { label: 'Experience', path: 'experience.html' },
+  { label: 'Start Here', path: 'start-here.html' },
+  { label: 'Projects', path: 'projects.html' },
+  { label: 'Patterns', path: 'patterns.html' },
+  { label: 'Platforms', path: 'platforms.html' },
+  { label: 'Resources', path: 'resources.html' },
+  { label: 'Topics', path: 'topics/index.html' },
+  { label: 'Collaborate', path: 'collaborate.html' },
+];
+
+const PATH_ALIASES = {
+  'pattern.html': 'patterns.html',
+  'concept.html': 'concepts.html',
+  'topics/index.html': 'topics/index.html',
+};
+
+function computeNavContext(){
+  const base = '/ai-architect-academy/';
+  let rel = window.location.pathname || '';
+  const idx = rel.indexOf(base);
+  if (idx >= 0) rel = rel.slice(idx + base.length);
+  rel = rel.replace(/^\//, '').split(/[?#]/)[0];
+  if (!rel || rel === '') rel = 'index.html';
+  if (rel.endsWith('/')) rel += 'index.html';
+  const segments = rel.split('/');
+  const depth = segments.length > 1 ? segments.length - 1 : 0;
+  const prefix = depth === 0 ? './' : '../'.repeat(depth);
+  return { rel, prefix };
+}
+
+function isActiveLink(current, target){
+  const normalisedCurrent = PATH_ALIASES[current] || current;
+  if (normalisedCurrent === target) return true;
+  if (target.endsWith('index.html')) {
+    const base = target.slice(0, -'index.html'.length);
+    if (base && normalisedCurrent.startsWith(base)) return true;
+  }
+  if (target === 'topics/index.html' && normalisedCurrent.startsWith('topics/')) return true;
+  return false;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const nav = document.querySelector('[data-site-nav]');
+    if (nav) {
+      const { rel, prefix } = computeNavContext();
+      nav.innerHTML = '';
+      NAV_LINKS.forEach((link) => {
+        const a = document.createElement('a');
+        a.textContent = link.label;
+        a.href = prefix + link.path;
+        a.className = 'hover:text-cyan-600';
+        if (isActiveLink(rel, link.path)) {
+          a.setAttribute('aria-current', 'page');
+          a.className += ' text-cyan-600 font-semibold';
+        }
+        nav.appendChild(a);
+      });
+    }
+
+    const actions = document.querySelector('[data-site-actions]');
+    if (actions) {
+      const clone = actions.querySelector('[data-clone]');
+      if (clone) {
+        clone.href = 'https://github.com/AI-Architect-Academy/ai-architect-academy/archive/refs/heads/main.zip';
+      }
+      const github = actions.querySelector('[data-github]');
+      if (github) {
+        github.href = 'https://github.com/AI-Architect-Academy/ai-architect-academy';
+      }
+      const search = actions.querySelector('[data-search]');
+      if (search) {
+        search.addEventListener('click', () => {
+          document.dispatchEvent(new KeyboardEvent('keydown', { key: '/' }));
+        });
+      }
+    }
+  } catch (err) {
+    console.warn('Navigation bootstrap failed', err);
+  }
+});
+
 // Accessibility: add skip link and ensure a #main target exists
 document.addEventListener('DOMContentLoaded', () => {
   try {

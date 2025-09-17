@@ -11,18 +11,19 @@
 <script src="../assets/site.js"></script>
 <script src="../assets/search.js" defer></script></head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100"><header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
-  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center gap-4 flex-wrap justify-between">
     <a href="../index.html" class="flex items-center gap-3"><img src="../assets/logo.svg" alt="AI Architect Academy" class="h-8" /><span class="sr-only">AI Architect Academy</span></a>
-    <nav class="flex items-center gap-6 text-sm">
-      <a class="hover:text-cyan-600" href="../projects.html">Projects</a> <a class="hover:text-cyan-600" href="../collaborate.html">Collaborate</a> <a class="hover:text-cyan-600" href="../clouds.html">Clouds</a> <a class="hover:text-cyan-600" href="../concepts.html">Concepts</a> <a class="hover:text-cyan-600" href="../platforms.html">Platforms</a> <a class="hover:text-cyan-600" href="../patterns.html">Patterns</a> <a class="hover:text-cyan-600" href="../resources.html">Resources</a> <a class="hover:text-cyan-600" href="./index.html">Topics</a> <a class="hover:text-cyan-600" href="../start-here.html">Start Here</a>
-    </nav>
-    <button onclick="document.dispatchEvent(new KeyboardEvent('keydown',{key:'/'}))" class="px-2 py-1 border rounded text-xs mr-2">Search /</button>
-    <a class="px-2 py-1 border rounded text-xs mr-2" href="https://github.com/AI-Architect-Academy/ai-architect-academy" target="_blank" rel="noopener">GitHub</a>
-    <button onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
+    <nav data-site-nav class="flex flex-wrap items-center gap-4 text-sm"></nav>
+    <div class="flex items-center gap-2 text-xs sm:text-sm" data-site-actions>
+      <button type="button" data-search class="px-3 py-1 border rounded">Search /</button>
+      <a data-clone class="px-3 py-1 border rounded" target="_blank" rel="noopener">Clone Repo</a>
+      <a data-github class="px-3 py-1 border rounded" target="_blank" rel="noopener">GitHub</a>
+      <button type="button" onclick="toggleTheme()" class="px-3 py-1 border rounded">Theme</button>
+    </div>
   </div>
 </header><main class="max-w-6xl mx-auto px-4 py-10">
-<h1 class="text-2xl font-bold">Retrieval Augmented Generation (RAG)</h1>
-<p class="text-slate-600">Top links and quick wins to get production‑ready.</p>
+<h1 class="text-3xl font-extrabold tracking-tight">Retrieval Augmented Generation (RAG)</h1>
+<p class="mt-2 text-slate-600 dark:text-slate-300">Production-ready retrieval patterns with evaluation and guardrail tips.</p>
 <h2 class="mt-6 font-semibold">Quick Wins</h2>
 <ul class="list-disc list-inside text-sm">
 <li>Chunk at semantic boundaries; target 200–400 tokens</li>
