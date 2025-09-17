@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" role="img" aria-labelledby="title desc">
+  <title id="title">AI Architect Value Loop</title>
+  <desc id="desc">Four connected stages: Pattern, Project, Evaluation, Story.</desc>
+  <defs>
+    <linearGradient id="loopGradient" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', sans-serif; fill: #0f172a; }
+      .label { font-weight: 700; font-size: 18px; }
+      .body { font-size: 14px; fill: #1f2937; }
+    </style>
+  </defs>
+  <rect width="960" height="280" rx="32" fill="#f8fafc" stroke="#e2e8f0" />
+  <g transform="translate(80 60)">
+    <g id="pattern">
+      <rect width="200" height="120" rx="20" fill="#e0f2fe" stroke="#bae6fd" />
+      <text class="label" x="24" y="54">Pattern</text>
+      <text class="body" x="24" y="82">Value framing,</text>
+      <text class="body" x="24" y="102">discovery scripts.</text>
+    </g>
+    <g id="project" transform="translate(240 0)">
+      <rect width="200" height="120" rx="20" fill="#ede9fe" stroke="#ddd6fe" />
+      <text class="label" x="24" y="54">Project</text>
+      <text class="body" x="24" y="82">Ship a useful build</text>
+      <text class="body" x="24" y="102">with toolchains.</text>
+    </g>
+    <g id="eval" transform="translate(480 0)">
+      <rect width="200" height="120" rx="20" fill="#ccfbf1" stroke="#99f6e4" />
+      <text class="label" x="24" y="54">Evaluation</text>
+      <text class="body" x="24" y="82">Metrics, guardrails,</text>
+      <text class="body" x="24" y="102">observability.</text>
+    </g>
+    <g id="story" transform="translate(720 0)">
+      <rect width="200" height="120" rx="20" fill="#fef3c7" stroke="#fde68a" />
+      <text class="label" x="24" y="54">Story</text>
+      <text class="body" x="24" y="82">Share progress,</text>
+      <text class="body" x="24" y="102">teach the wins.</text>
+    </g>
+  </g>
+  <g fill="none" stroke="url(#loopGradient)" stroke-width="14" stroke-linecap="round">
+    <path d="M180 140 C 220 140, 220 140, 320 140" />
+    <path d="M420 140 C 460 140, 460 140, 520 140" />
+    <path d="M620 140 C 660 140, 660 140, 720 140" />
+    <path d="M820 140 C 860 140, 860 140, 900 140" />
+  </g>
+  <g fill="#0f172a" opacity="0.6">
+    <polygon points="320,140 308,134 308,146" />
+    <polygon points="520,140 508,134 508,146" />
+    <polygon points="720,140 708,134 708,146" />
+    <polygon points="900,140 888,134 888,146" />
+  </g>
+  <text x="80" y="222" class="body">Loop weekly: Pattern → Project → Evaluation → Story → back to new insights.</text>
+</svg>

@@ -1,4 +1,4 @@
-﻿<p align="center"><img src="assets/logo.svg" width="420" alt="AI Architect Academy"></p>
+<p align="center"><img src="assets/logo.svg" width="420" alt="AI Architect Academy"></p>
 
 <p align="center">
   <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square"></a>
@@ -6,171 +6,69 @@
   <a href="https://ai-architect-academy.github.io/ai-architect-academy/"><img alt="Pages" src="https://img.shields.io/badge/Pages-live-green?style=flat-square"></a>
 </p>
 
-# AI Architect Academy - Open Playbook for Builders
+# AI Architect Academy — Command Center for Visionary Builders
 
-Become the architect who can design, ship, and operate AI systems that matter. This repo is a high-signal, living guide: patterns, projects, and the best open resources, curated and connected so you can move fast with confidence.
+Lead the conversations, ship the systems, and operate responsibly. This open playbook is your living hub for designing, building, and running AI products with confidence. Every page is built for AI architects, founding teams, creators, and advisors who need trusted patterns, deep resources, and a brand-ready story they can share with clients, partners, and their own communities.
 
-- Live site: https://ai-architect-academy.github.io/ai-architect-academy/
-- GitHub Pages source: `/docs`
+<div align="center">
+  <a href="START-HERE.md"><img alt="Start Here" src="https://img.shields.io/badge/Start-Now-cyan?style=for-the-badge"></a>
+  <a href="docs/experience.html"><img alt="Explore the Experience" src="https://img.shields.io/badge/Explore-Experience-purple?style=for-the-badge"></a>
+  <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/archive/refs/heads/main.zip"><img alt="Download" src="https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge"></a>
+</div>
 
-<p align="center"><img src="assets/start-here.svg" alt="Start Here" width="720"></p>
+![Experience Map](assets/experience-map.svg)
 
-## Why This Playbook
-- Patterns: enterprise-ready designs with value, risks, bill of materials, and architecture guidance
-- Projects: real builds for RAG, agents, evals, observability, and MLOps
-- Learning paths: beginner, professional, and 100-hour accelerators
-- Toolchains: reference stacks and trade-offs across platforms and vendors
-- Governance: privacy, risk, compliance, and operational guardrails
+## The Experience at a Glance
+- **Explore the live atlas.** Browse the [GitHub Pages site](https://ai-architect-academy.github.io/ai-architect-academy/) with unified navigation, topic landing pages, and fast search.
+- **Clone the full operating system.** Pull the repo to unlock scripts, prompt packs, workflows, and design assets for your team and AI assistants.
+- **Tell a sharper story.** Use the [Brand Voice playbook](BRAND-VOICE.md) to stay on-message with executives, clients, and your audience.
+- **Ship and scale.** Pair enterprise-ready patterns with hands-on projects, eval workflows, and governance checklists.
 
-## TL;DR - Get Value Fast
-- Pick a goal (RAG, agents, evals) and open the matching project
-- Use a pattern to shape value, architecture, BoM, and risks
-- Ship the smallest useful version with evals and observability from day one
+## Why Clone the Repository
+- **Offline & private workspaces.** Serve the site locally (`scripts/serve.sh`) and pair with your favourite AI copilots using the curated prompt packs in `prompt-packs/`.
+- **Pattern-first development.** Everything is structured for reuse: design blueprints (`01-design-patterns/`), project guides (`05-projects/`), workflows (`15-workflows/`), and collaboration rituals (`16-collaboration/`).
+- **Integrated storytelling.** Use `09-articles/` for long-form thought leadership, `03-awesome/` for curated references, and `10-resources/` when you need trusted links fast.
+- **Extend with ease.** Regenerate search data (`npm run build:index`), capture screenshots (`npm run screenshots`), and drop new visuals into `assets/` for instant publishing.
 
-Quick links: [Start Here](START-HERE.md) - [RAG on Supabase](05-projects/rag-on-supabase.md) - [Design Patterns](01-design-patterns/README.md) - [Live Catalog](https://ai-architect-academy.github.io/ai-architect-academy/)
+## Platform Architecture — What Lives Where
+| Pillar | Directories & Pages | What You Gain |
+| --- | --- | --- |
+| **Vision & Roadmap** | [`00-roadmap/`](00-roadmap/), [`BRAND-VOICE.md`](BRAND-VOICE.md) | Narrative, positioning, experience strategy. |
+| **Learning Paths** | [`START-HERE.md`](START-HERE.md), [`02-learning-paths/`](02-learning-paths/) | Beginner to AI CoE playbooks and accelerators. |
+| **Patterns & Concepts** | [`01-design-patterns/`](01-design-patterns/), [`12-concepts/`](12-concepts/), [`docs/pattern.html`](docs/pattern.html) | Value framing, architectures, discovery questions, risks. |
+| **Build Lab** | [`05-projects/`](05-projects/), [`06-toolchains/`](06-toolchains/), [`agentic-swarms/`](agentic-swarms/) | Opinionated builds, stacks, and agentic experiments. |
+| **Operate & Govern** | [`07-evaluation/`](07-evaluation/), [`08-governance/`](08-governance/), [`15-workflows/`](15-workflows/) | Metrics, guardrails, observability, team rituals. |
+| **Community & Amplification** | [`09-articles/`](09-articles/), [`14-ai-tools/`](14-ai-tools/), [`16-collaboration/`](16-collaboration/) | Content, tooling, and collaboration systems. |
 
-## Your Learning Journey
-- Orient: read Start Here and pick a path (100-hour, Beginner, Pro, Bootcamp)
-- Ground: learn enterprise patterns (value, architecture, discovery, BoM)
-- Build: ship hands-on projects (RAG, agents, evals, observability)
-- Operate: add SLOs, guardrails, governance, and cost controls
-- Specialize: choose an industry pattern and publish a portfolio proof of concept
+## Signature Loops You Can Run This Week
+![Value Loop](assets/value-loop.svg)
+- **Pattern → Project → Eval:** Pick a pattern, ship the smallest valuable build, and wire in evaluation harnesses on day one.
+- **Concept → Platform Decision:** Use the concept decks and platform matrix to align your stack before writing code.
+- **Learning Path → Portfolio:** Follow the 100-hour track, ship two case studies, and use the article templates to publish your wins.
+- **Governance → Collaboration:** Stand up policy baselines, then drop the collaboration checklists into your team rituals.
 
-## Agentic Code Swarms - Quickstart
-```bash
-cd agentic-swarms
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-python examples/hello_swarm.py --goal "Create a tiny function to add two numbers"
-```
-
-[Agentic Code Swarms docs](agentic-swarms/README.md) - [Agentic SaaS Planner](05-projects/agentic-saas-planner.md) - [Agentic workflows](15-workflows/agentic-swarms.md)
-
-## Screenshots
-Homepage and Projects from the GitHub Pages site.
-
-![Homepage](assets/screenshots/index.png)
-
-![Projects Catalog](assets/screenshots/projects.png)
-
-## What You Get
-- Practical patterns: value framing, solution architecture, discovery questions, BoM, risks
-- Battle-tested projects: RAG, agents, evals, observability, vector search
-- Curated resources: the best repos, papers, talks, and tools with no fluff
-- Operate in production: cost and latency SLOs, guardrails, governance, and monitoring
-
-## Starter Stack (Opinionated)
-- Data and vectors: Postgres with pgvector or Qdrant
-- Framework: LangChain (RAG or agents) or LlamaIndex (data-centric)
-- Reranking: bge-reranker or Cohere Rerank for quality boosts
-- Observability: Langfuse for traces, evals, and costs
-- Evals: promptfoo (CI-friendly) plus RAGAS for RAG quality
-- Guardrails: policy filtering and prompt-injection defenses
-
-## Fast Paths
-- RAG (citations, abstention, caching): [Guide](05-projects/rag-on-supabase.md)
-- Evals (faithfulness, coverage): [Guide](05-projects/evals-langfuse.md)
-- Vector search benchmarks: [Guide](05-projects/vector-search-pgvector.md)
-
-## Quick Start
-1. Read the short [Start Here](START-HERE.md)
-2. Pick the [100-hour plan](02-learning-paths/100-hour-ai-architect.md) or a focused project
-3. Ship value: choose a pattern plus project, then instrument with evals and observability
-
-## Top Repos Every AI Architect Should Know
-| Repo | What | Why it matters |
-|---|---|---|
-| [huggingface/transformers](https://github.com/huggingface/transformers) | Models and tokenizers | Standard toolkit for LLM and NLP foundations |
-| [openai/openai-cookbook](https://github.com/openai/openai-cookbook) | Production patterns | Pragmatic examples for prompts, evals, ops |
-| [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | LLM app framework | Fast path from prototype to production RAG and agents |
-| [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | Graph orchestration | Deterministic, stateful agent and RAG workflows |
-| [run-llama/llama_index](https://github.com/run-llama/llama_index) | Data framework | Indexing and retrieval patterns that scale |
-| [vllm-project/vllm](https://github.com/vllm-project/vllm) | Model serving | High-throughput, low-latency serving |
-| [ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) | Local inference | Portable CPU and edge inference for dev and privacy |
-| [ollama/ollama](https://github.com/ollama/ollama) | Local models runtime | Simplifies running and packaging local models |
-| [pgvector/pgvector](https://github.com/pgvector/pgvector) | Vector search in Postgres | Keep vectors in Postgres with simple operations |
-| [qdrant/qdrant](https://github.com/qdrant/qdrant) | Vector database | Open source, production-ready, HNSW, filters |
-| [weaviate/weaviate](https://github.com/weaviate/weaviate) | Vector database | Hybrid search plus modules and enterprise features |
-| [milvus-io/milvus](https://github.com/milvus-io/milvus) | Vector database | Distributed vector search at scale |
-| [langfuse/langfuse](https://github.com/langfuse/langfuse) | Observability | Traces, evals, and costs for LLM operations |
-| [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) | Observability | Deep model and LLM analysis plus evaluation |
-| [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | Prompt evals in CI | Keep quality from regressing as you ship |
-| [microsoft/autogen](https://github.com/microsoft/autogen) | Multi-agent framework | Agent teams with tool usage |
-| [joaomdmoura/crewai](https://github.com/joaomdmoura/crewai) | Agent workflows | Practical agent orchestration |
-| [eugeneyan/applied-ml](https://github.com/eugeneyan/applied-ml) | Applied ML reading | Real-world lessons, papers, case studies |
-| [papers-we-love/papers-we-love](https://github.com/papers-we-love/papers-we-love) | Classic papers | Systems and CS foundations that last |
-| [sindresorhus/awesome](https://github.com/sindresorhus/awesome) | Meta index | Find quality "awesome" lists across topics |
-
-See curated topic lists for [Awesome LLMs](03-awesome/awesome-llms.md), [RAG](03-awesome/awesome-rag.md), [Agents](03-awesome/awesome-agents.md), [Evals](03-awesome/awesome-evals.md), [MLOps](03-awesome/awesome-mlops.md), [Vector DBs](03-awesome/awesome-vector-dbs.md), and [Meta Aggregators](03-awesome/awesome-aggregators.md).
-
-## Projects (Ship Value Fast)
-- 100 Projects catalog: [100 Projects](05-projects/100-projects.md)
-- RAG on Supabase plus OpenAI: [Guide](05-projects/rag-on-supabase.md)
-- Vector search benchmarks: [Guide](05-projects/vector-search-pgvector.md)
-- Evals with Langfuse: [Guide](05-projects/evals-langfuse.md)
-- Agentic SaaS Planner: [Guide](05-projects/agentic-saas-planner.md)
-
-## Enterprise Patterns (Design by Value)
-Each pattern covers value framing, solution architecture, discovery questions, bill of materials, and risks.
-- [Content Generation](01-design-patterns/content-generation.md)
-- [Decision Support](01-design-patterns/decision-support.md)
-- [Model Lifecycle Management](01-design-patterns/model-lifecycle-management.md)
-- [Insurance Rate Modeling](01-design-patterns/insurance-rate-modeling.md)
-
-Explore all patterns: [Design Pattern Library](01-design-patterns/README.md)
+## Start Your Journey (Choose the Lane that Fits)
+- **Launchpad (100 hours).** A curated sprint for builders who want traction fast — [100-Hour Plan](02-learning-paths/100-hour-ai-architect.md).
+- **Creators & Educators.** Translate the playbook into content with the [Beginner](02-learning-paths/beginner.md) and [Professional](02-learning-paths/professional.md) paths.
+- **Enterprise & AI CoE Leaders.** Run the [Bootcamp](02-learning-paths/bootcamp.md) to align architecture, governance, and adoption.
+- **Agentic Innovators.** Experiment with [Agentic Code Swarms](agentic-swarms/README.md) and the [Agentic SaaS Planner](05-projects/agentic-saas-planner.md).
 
 ## Operate with Confidence
-- Evaluation and guardrails: [Metrics](07-evaluation/metrics.md) and [Harness](07-evaluation/eval-harness.md)
-- Governance: [Privacy and GDPR](08-governance/privacy-gdpr.md) and [Model Risk](08-governance/model-risk.md)
-- Toolchains: [Stack Reference](06-toolchains/stack-reference.md)
+- **Evaluation stack:** [Metrics](07-evaluation/metrics.md), [Eval harness](07-evaluation/eval-harness.md), and [promptfoo integrations](05-projects/evals-langfuse.md).
+- **Guardrails & governance:** [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model risk](08-governance/model-risk.md), and policy templates.
+- **Tooling matrix:** [Stack reference](06-toolchains/stack-reference.md), [Cloud blueprints](docs/clouds.html), and [Platform comparisons](docs/platforms.html).
 
-## Structure - Where This Is Going
-- Public playbook: keep it focused, fast, and searchable (this repo plus Pages)
-- Companion dashboard: Next.js plus API and Postgres or pgvector for local experimentation and demos
-- Internal docs: move operations or vision content to a private repo, link selectively from the playbook
+## Create Momentum for Your Brand & Community
+- Publish your progress using the [article outlines](09-articles/) and [content prompts](prompt-packs/).
+- Share live demos via the [Projects catalog](docs/projects.html) and embed screenshots captured with `node scripts/capture-screenshots.mjs`.
+- Use the [Collaborate](docs/collaborate.html) guide to co-create with AI teammates, clients, friends, or family exploring the space.
 
-## Live Catalog (GitHub Pages)
-- Visit: https://ai-architect-academy.github.io/ai-architect-academy/
-- Source: `/docs`
+## Contribute & Extend
+- Open an issue or PR with a clear “why it matters” note. Templates live under `04-templates/`.
+- Keep the tone on-brand by checking [BRAND-VOICE.md](BRAND-VOICE.md).
+- Update the search index after major content changes: `npm install` (first time) then `npm run build:index`.
+- Capture new visuals: drop SVG/PNGs into `assets/` and `docs/assets/` to surface them across the repo and site.
 
-### Site Features
-- Site-wide search overlay (press `/`)
-- Static search index generated from repo content
-- Dark mode persistence
-- Featured repos, featured projects, and quick topic links
+---
 
-### Maintainer Tips
-- Regenerate the search index: `node scripts/build-search-index.mjs`
-- Capture fresh screenshots: `node scripts/capture-screenshots.mjs`
-- Serve locally: `scripts/serve.sh` -> http://localhost:8080
-
-## Who This Is For
-- Builders shipping real features under time and budget constraints
-- Tech leads aligning value, architecture, and operations
-- Learners who prefer pragmatic, high-signal guidance over fluff
-
-## How to Use This Repo
-- Start with [Start Here](START-HERE.md) for orientation and path selection
-- Pick a project and ship an MVP with evals plus observability
-- Read the matching pattern to refine value, design, and risks
-- Use topic pages (RAG, agents, evals, observability, guardrails) for quick wins
-
-## Local Use and Collaboration
-- Serve Pages locally: `scripts/serve.sh` -> http://localhost:8080
-- Pair with AI tools: see `14-ai-tools/` (Aider, Continue, Claude Code, Gemini, Codex CLI)
-- Use prompt packs in `prompt-packs/` for code review, tests, refactors, docs
-- Follow `15-workflows/` for pairing, PR review, and maintenance with AI
-
-## Collaborate with AI
-- Read: `16-collaboration/working-with-ai.md` and `16-collaboration/prompting-guide.md`
-- Use prompt packs and workflows with Aider, Continue, or Claude Code
-- Diagram with `assets/collaborate.svg`
-
-## Contributing
-- PRs welcome. Add links with a one-line "why it matters" summary when possible.
-- Use templates for patterns and projects; keep quality high.
-- File issues or proposals if you see gaps in patterns, projects, or toolchains.
-
-## Star and Share
-If this playbook helps you, please star the repo and share it so others can learn faster.
-
+**Live site:** https://ai-architect-academy.github.io/ai-architect-academy/ · **Clone & customize:** `git clone https://github.com/AI-Architect-Academy/ai-architect-academy.git`

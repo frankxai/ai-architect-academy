@@ -15,21 +15,20 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
   <header class="sticky top-0 z-10 border-b bg-white/80 backdrop-blur dark:bg-slate-900/80">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="./index.html" class="font-semibold">AI Architect Academy</a>
-      <nav class="flex items-center gap-6 text-sm">
-        <a class="hover:text-cyan-600" href="./index.html">Home</a>
-        <a class="hover:text-cyan-600" href="./projects.html">Projects</a>
-        <a class="hover:text-cyan-600" href="./patterns.html">Patterns</a>
-        <a class="hover:text-cyan-600" href="./resources.html">Resources</a>
-        <a class="hover:text-cyan-600" target="_blank" rel="noopener" href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md">Start Here</a>
-        <button aria-label="Toggle theme" onclick="toggleTheme()" class="px-2 py-1 border rounded text-xs">Theme</button>
-      </nav>
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center gap-4 flex-wrap justify-between">
+      <a href="./index.html" class="flex items-center gap-3"><img src="./assets/logo.svg" alt="AI Architect Academy" class="h-8" /><span class="sr-only">AI Architect Academy</span></a>
+      <nav data-site-nav class="flex flex-wrap items-center gap-4 text-sm"></nav>
+      <div class="flex items-center gap-2 text-xs sm:text-sm" data-site-actions>
+        <button type="button" data-search class="px-3 py-1 border rounded">Search /</button>
+        <a data-clone class="px-3 py-1 border rounded" target="_blank" rel="noopener">Clone Repo</a>
+        <a data-github class="px-3 py-1 border rounded" target="_blank" rel="noopener">GitHub</a>
+        <button type="button" onclick="toggleTheme()" class="px-3 py-1 border rounded">Theme</button>
+      </div>
     </div>
   </header>
   <main class="max-w-6xl mx-auto px-4 py-10">
-    <h1 class="text-2xl font-bold">Search</h1>
-    <p class="text-slate-600 dark:text-slate-300">Find patterns, projects, templates, and resources across the playbook.</p>
+    <h1 class="text-3xl font-extrabold tracking-tight">Search the Playbook</h1>
+    <p class="mt-2 text-slate-600 dark:text-slate-300">Instantly surface patterns, projects, governance assets, and templates across the repo.</p>
 
     <div class="mt-4 grid md:grid-cols-6 gap-3">
       <input id="q" placeholder="Search keywords..." class="md:col-span-3 border rounded-md p-2 dark:bg-slate-800 dark:border-slate-700" />
