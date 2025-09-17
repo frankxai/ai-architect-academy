@@ -1,25 +1,41 @@
 [
   {
-    "id": "00-roadmap\\ROADMAP.md",
-    "title": "Roadmap",
+    "id": "00-roadmap/ROADMAP.md",
+    "title": "Experience Roadmap",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/00-roadmap/ROADMAP.md",
     "section": "Roadmap",
-    "path": "00-roadmap\\ROADMAP.md",
+    "path": "00-roadmap/ROADMAP.md",
     "headings": [
       {
         "level": 1,
-        "text": "Roadmap"
+        "text": "Experience Roadmap"
+      },
+      {
+        "level": 2,
+        "text": "Shipping Now"
+      },
+      {
+        "level": 2,
+        "text": "Next 30 Days"
+      },
+      {
+        "level": 2,
+        "text": "60–90 Day Horizon"
+      },
+      {
+        "level": 2,
+        "text": "Guiding Principles"
       }
     ],
-    "excerpt": "# Roadmap - MVP: core patterns, beginner path, 3 projects - Next: teams path, governance modules, more evals - Later: marketplace of projects, mentorship program",
-    "content": "# Roadmap - MVP: core patterns, beginner path, 3 projects - Next: teams path, governance modules, more evals - Later: marketplace of projects, mentorship program"
+    "excerpt": "# Experience Roadmap ## Shipping Now - **Unified navigation + experience hub.** Refreshed with an Experience page, consistent nav, and persona-first copy. - **Brand voice alignment.** Added and updated + to reflect the new narrative. - **Visual system.** New SVG assets ( , ) mirrored under for the live site. ## Next 30",
+    "content": "# Experience Roadmap ## Shipping Now - **Unified navigation + experience hub.** Refreshed with an Experience page, consistent nav, and persona-first copy. - **Brand voice alignment.** Added and updated + to reflect the new narrative. - **Visual system.** New SVG assets ( , ) mirrored under for the live site. ## Next 30 Days - **Persona dashboards.** Build dynamic cards on the Experience page that auto-pull highlights from learning paths, projects, and governance modules. - **Interactive project filters.** Extend with saved views (RAG, Agentic, Ops) and top-tier search presets. - **Governance deep dives.** Expand with checklists for procurement, incident response, and human-in-the-loop reviews. ## 60–90 Day Horizon - **Playground templates.** Bundle minimal repos for each flagship project with dockerised quick starts and CI-ready eval harnesses. - **Persona-specific onboarding emails.** Ship optional email sequences that reference repo content and live site milestones. - **Metrics dashboard.** Surface repo commit velocity, project freshness, and evaluation coverage on the homepage pulse cards. ## Guiding Principles - **Lead with clarity.** Every page answers “what value do I get in five minutes?” - **Ship in loops.** Pattern → Project → Eval → Story is the default development cadence. - **Stay truthful.** Document only what exists or is in flight. Ship fast, update often. - **Accessible to all.** Friends, family, enterprise buyers, and influencers should find a path immediately."
   },
   {
-    "id": "01-design-patterns\\README.md",
+    "id": "01-design-patterns/README.md",
     "title": "Design Pattern Library",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/README.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\README.md",
+    "path": "01-design-patterns/README.md",
     "headings": [
       {
         "level": 1,
@@ -30,11 +46,11 @@
     "content": "# Design Pattern Library - Customer Experience: Content Generation, Language Understanding, Personalization, Conversational Commerce - Decision Support & Workflow: Decision Support, Orchestration Workflow, Predictive Operations, Autonomous Optimization - Platform Enablement: Rapid Innovation, Security & Compliance, Synthetic Data - AI Infrastructure: Multicloud Orchestration, Model Lifecycle Management, Governance Compliance, Performance Optimization - Industry: Insurance Rate Modeling, Energy, Cyber, Genomics, GIS See each pattern file for value, architecture, discovery, BoM, and risks."
   },
   {
-    "id": "01-design-patterns\\content-generation.md",
+    "id": "01-design-patterns/content-generation.md",
     "title": "Content Generation",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/content-generation.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\content-generation.md",
+    "path": "01-design-patterns/content-generation.md",
     "headings": [
       {
         "level": 2,
@@ -61,11 +77,11 @@
     "content": "# Pattern: Content Generation ## Business Value - Scale on-brand content across channels while reducing cycle time and review burden. - Personalize by segment or user with measurable uplift and clear governance. ## Technical Architecture - Inputs: brief, product data, style guide -> orchestrator (workflow engine) - Retrieval: product knowledge base and policies via RAG -> LLM with prompt templates - Guardrails: PII redaction, policy checks, toxicity and bias filters - Human-in-the-loop: reviewer UI with diffs -> CMS publish - Observability: traces, costs, evaluation datasets (faithfulness and style) ## Discovery Questions - What sources of truth and brand or style constraints exist? - Which channels (email, web, ads) and localization needs are in scope? - What approval workflow, audit trail, and retention requirements apply? ## Bill of Materials - Vector store (pgvector on Supabase), OpenAI (smaller plus reviewer-quality models), workflow runtime (Temporal or Prefect), CMS connector - Observability (Langfuse) and a policy checker (Open Policy Agent or custom) ## Risks & Controls - Hallucinations -> enforce grounding, require citations, abstain on low confidence - Brand drift -> apply style constraints, reviewer gates, and A/B tests - PII leakage -> add redaction, policy enforcement, and logging with access controls"
   },
   {
-    "id": "01-design-patterns\\decision-support.md",
+    "id": "01-design-patterns/decision-support.md",
     "title": "Decision Support",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/decision-support.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\decision-support.md",
+    "path": "01-design-patterns/decision-support.md",
     "headings": [
       {
         "level": 2,
@@ -92,11 +108,11 @@
     "content": "# Pattern: Decision Support ## Business Value - Deliver faster, higher-quality decisions with transparent evidence and what-if analysis. ## Technical Architecture - Data pipelines -> feature store -> retrieval over facts and policies - LLM reasoning augmented with tools for simulation and scenario analysis - Explanation layer with citations, stated assumptions, and confidence scoring - Feedback loop that captures outcomes to improve future recommendations ## Discovery Questions - What decision cadence, owners, and tolerable risk levels are in play? - Which policies, regulations, and source systems of record apply? - What auditability, sign-off, and retention processes are required? ## Bill of Materials - Data warehouse plus feature store, pgvector, OpenAI, tool runner for simulations, user interface, logging and tracing, approval workflow ## Risks & Controls - Over-trust -> show citations and confidence; require human approval - Data drift -> monitor inputs and accuracy; schedule recalibration - Compliance -> retain decisions and rationale with strict access controls"
   },
   {
-    "id": "01-design-patterns\\energy-market-trading-optimization.md",
+    "id": "01-design-patterns/energy-market-trading-optimization.md",
     "title": "Pattern: Energy Market Trading & Optimization",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/energy-market-trading-optimization.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\energy-market-trading-optimization.md",
+    "path": "01-design-patterns/energy-market-trading-optimization.md",
     "headings": [
       {
         "level": 1,
@@ -127,11 +143,11 @@
     "content": "# Pattern: Energy Market Trading & Optimization ## Business Value - Optimize bids and dispatch, reduce imbalance costs, and improve profitability. ## Technical Architecture - Time-series ingestion (prices, generation, demand) → forecasting models - Optimization layer (linear/convex) with constraints and risk - Scenario simulation with LLM-assisted narrative reports ## Discovery Questions - Markets (day-ahead, intraday), assets, and constraints? - Risk appetite and KPIs (P&L, imbalance, penalties)? - Latency requirements and decision cadence? ## Bill of Materials - TS DB, forecasting libs, optimizer, dashboards, audit logs ## Risks & Controls - Forecast error → ensembles and recalibration; backtesting - Compliance → market rules encoded; auditability"
   },
   {
-    "id": "01-design-patterns\\genomic-sequence-processing.md",
+    "id": "01-design-patterns/genomic-sequence-processing.md",
     "title": "Pattern: Genomic Sequence Processing & Public Health",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/genomic-sequence-processing.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\genomic-sequence-processing.md",
+    "path": "01-design-patterns/genomic-sequence-processing.md",
     "headings": [
       {
         "level": 1,
@@ -162,11 +178,11 @@
     "content": "# Pattern: Genomic Sequence Processing & Public Health ## Business Value - Accelerate genomic analyses for surveillance and research while ensuring privacy. ## Technical Architecture - Pipelines for sequence alignment, variant calling, annotation - Secure compute and storage; de-identification; access controls - LLM-assisted report generation with strict grounding ## Discovery Questions - Data volumes and turnaround time? - Privacy and regulatory requirements (HIPAA/GDPR)? - Collaboration and data sharing needs? ## Bill of Materials - HPC/Cloud compute, genomics toolchain, secure storage, audit logs ## Risks & Controls - Privacy breach → de-identification, access policies - Reproducibility → versioned pipelines and datasets"
   },
   {
-    "id": "01-design-patterns\\gis-intelligence.md",
+    "id": "01-design-patterns/gis-intelligence.md",
     "title": "Pattern: Geographic Information Systems (GIS) Intelligence",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/gis-intelligence.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\gis-intelligence.md",
+    "path": "01-design-patterns/gis-intelligence.md",
     "headings": [
       {
         "level": 1,
@@ -197,11 +213,11 @@
     "content": "# Pattern: Geographic Information Systems (GIS) Intelligence ## Business Value - Optimize network planning, routing, and asset management with spatial insights. ## Technical Architecture - Spatial data ingestion (satellite, maps, sensors) → vector tiles/DB - Spatial queries + ML models; LLM for natural language spatial queries - Visualization and decision support dashboards ## Discovery Questions - Spatial sources and licensing? Update cadence? - Accuracy and resolution required for decisions? - Integration with existing GIS tools? ## Bill of Materials - Spatial DB (PostGIS), tile server, ML libs, visualization ## Risks & Controls - Licensing and privacy → data governance - Accuracy → QA pipelines and error bounds"
   },
   {
-    "id": "01-design-patterns\\governance-compliance.md",
+    "id": "01-design-patterns/governance-compliance.md",
     "title": "Pattern: Governance Compliance",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/governance-compliance.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\governance-compliance.md",
+    "path": "01-design-patterns/governance-compliance.md",
     "headings": [
       {
         "level": 1,
@@ -232,11 +248,11 @@
     "content": "# Pattern: Governance Compliance ## Business Value - ## Technical Architecture - ## Discovery Questions - ## Bill of Materials - ## Risks & Controls -"
   },
   {
-    "id": "01-design-patterns\\insurance-rate-modeling.md",
+    "id": "01-design-patterns/insurance-rate-modeling.md",
     "title": "Insurance Rate Modeling",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/insurance-rate-modeling.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\insurance-rate-modeling.md",
+    "path": "01-design-patterns/insurance-rate-modeling.md",
     "headings": [
       {
         "level": 2,
@@ -263,11 +279,11 @@
     "content": "# Pattern: Insurance Rate Modeling ## Business Value - Improve pricing accuracy and risk segmentation, reduce loss ratios, and stay compliant. ## Technical Architecture - Data ingestion (policies, claims, external data) -> feature store - Modeling: gradient boosting or GLMs plus optional LLM document understanding - Monitoring: drift, performance, and fairness metrics - Governance: audit trails, explainability (SHAP), approval workflows ## Discovery Questions - Which lines of business and regulatory constraints apply? - What data freshness and external sources (credit, weather, telematics) are required? - What explainability requirements and rate filing processes must be supported? ## Bill of Materials - Data warehouse plus feature store, model registry, monitoring and evaluations, explainability toolkit ## Risks & Controls - Bias and fairness -> add constraints, audits, and segment holdouts - Data quality -> enforce validation, SLAs, and incident playbooks"
   },
   {
-    "id": "01-design-patterns\\model-lifecycle-management.md",
+    "id": "01-design-patterns/model-lifecycle-management.md",
     "title": "Model Lifecycle Management",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/model-lifecycle-management.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\model-lifecycle-management.md",
+    "path": "01-design-patterns/model-lifecycle-management.md",
     "headings": [
       {
         "level": 2,
@@ -294,11 +310,11 @@
     "content": "# Pattern: Model Lifecycle Management (MLOps) ## Business Value - Ship reliable models and prompts with traceability, faster iteration, and controlled risk and cost. ## Technical Architecture - Data and versioning -> training and evaluation -> model or prompt registry -> deploy -> monitor - LLM applications: prompt registry, RAG datasets, evaluation harness wired into CI - Release strategies: canary, shadow, rollback, with budget and latency SLOs ## Discovery Questions - What release cadence, rollback strategy, and ownership model exist? - What data lineage, retention, and redaction policies apply? - Which latency, cost, and quality SLOs or budgets govern each tier? ## Bill of Materials - Model or prompt registry (MLflow, Weights & Biases), CI runner, deployment targets, tracing (Langfuse), metrics stack ## Risks & Controls - Regression risk -> evaluation gates in CI plus prompt/model versioning - Cost creep -> budget alerts, autoscaling, caching - Compliance -> audit logs, signed artifacts, access policies"
   },
   {
-    "id": "01-design-patterns\\orchestration-workflow.md",
+    "id": "01-design-patterns/orchestration-workflow.md",
     "title": "Pattern: Orchestration Workflow",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/orchestration-workflow.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\orchestration-workflow.md",
+    "path": "01-design-patterns/orchestration-workflow.md",
     "headings": [
       {
         "level": 1,
@@ -329,11 +345,11 @@
     "content": "# Pattern: Orchestration Workflow ## Business Value - ## Technical Architecture - ## Discovery Questions - ## Bill of Materials - ## Risks & Controls -"
   },
   {
-    "id": "01-design-patterns\\performance-optimization.md",
+    "id": "01-design-patterns/performance-optimization.md",
     "title": "Pattern: Performance Optimization",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/performance-optimization.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\performance-optimization.md",
+    "path": "01-design-patterns/performance-optimization.md",
     "headings": [
       {
         "level": 1,
@@ -364,11 +380,11 @@
     "content": "# Pattern: Performance Optimization ## Business Value - ## Technical Architecture - ## Discovery Questions - ## Bill of Materials - ## Risks & Controls -"
   },
   {
-    "id": "01-design-patterns\\vulnerability-management.md",
+    "id": "01-design-patterns/vulnerability-management.md",
     "title": "Pattern: AI-Powered Vulnerability Management",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/vulnerability-management.md",
     "section": "Design Patterns",
-    "path": "01-design-patterns\\vulnerability-management.md",
+    "path": "01-design-patterns/vulnerability-management.md",
     "headings": [
       {
         "level": 1,
@@ -399,11 +415,11 @@
     "content": "# Pattern: AI-Powered Vulnerability Management ## Business Value - Reduce mean-time-to-detect and patch risk by prioritizing critical vulnerabilities. ## Technical Architecture - Ingest CVEs, asset inventory, scanner outputs → risk scoring model - LLM triage assistant with source links; ticketing integration - Dashboards for coverage, SLA, and patch impact ## Discovery Questions - Asset inventory completeness and exposure? - Patch windows and change controls? - Compliance frameworks (SOC2, ISO, NIST)? ## Bill of Materials - Data store, scanners integrations, LLM, dashboards, ticketing ## Risks & Controls - False prioritization → feedback loop; audit trail - Sensitive data → access controls and redaction"
   },
   {
-    "id": "02-learning-paths\\100-hour-ai-architect.md",
+    "id": "02-learning-paths/100-hour-ai-architect.md",
     "title": "100‑Hour AI Architect Plan",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/100-hour-ai-architect.md",
     "section": "Learning Paths",
-    "path": "02-learning-paths\\100-hour-ai-architect.md",
+    "path": "02-learning-paths/100-hour-ai-architect.md",
     "headings": [
       {
         "level": 1,
@@ -414,11 +430,11 @@
     "content": "# 100‑Hour AI Architect Plan Format: 4 weeks × ~25 hours/week. Focus on shipping real artifacts weekly. Week 1 — Foundations (25h) - LLM basics (6h): tokenization, attention, prompting - Retrieval & embeddings (8h): chunking, hybrid search, pgvector - Hands‑on (8h): implement vector search; small RAG demo - Assessment (3h): quiz + short write‑up Week 2 — Systems (25h) - Agents & tools (6h): function calling, orchestration - Observability & evals (6h): Langfuse, metrics, datasets - Hands‑on (10h): RAG with citations and eval harness - Assessment (3h): demo + reflection Week 3 — Governance & Performance (25h) - Privacy/GDPR (4h), model risk (4h) - Performance & cost (6h): caching, batch, smaller models - Hands‑on (8h): optimize RAG; add guardrails - Assessment (3h): doc architecture & SLOs Week 4 — Specialization & Portfolio (25h) - Industry pattern (6h): choose domain - Project (15h): complete end‑to‑end PoC - Presentation (4h): writeup + slides + video Deliverables - Working RAG app with citations - Eval report with metrics - Architecture doc (diagram, SLOs, costs) - Final presentation"
   },
   {
-    "id": "02-learning-paths\\agentic-code-swarms.md",
+    "id": "02-learning-paths/agentic-code-swarms.md",
     "title": "Learning Path: Agentic Code Swarms",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/agentic-code-swarms.md",
     "section": "Learning Paths",
-    "path": "02-learning-paths\\agentic-code-swarms.md",
+    "path": "02-learning-paths/agentic-code-swarms.md",
     "headings": [
       {
         "level": 1,
@@ -453,11 +469,11 @@
     "content": "# Learning Path: Agentic Code Swarms Audience: AI Architects and Builders using Codex, Claude Code, or Cursor. Outcome: Ship a working multi-agent swarm, understand orchestration patterns, and build a visual explorer. Time: 10–16 hours (self-paced) ## Prereqs - Python 3.11 - Optional: OpenAI/Anthropic key (LiteLLM). Otherwise runs offline. ## Modules 1) Concepts and Patterns (1h) - Roles, messages, tools, orchestrators - Coordination: sequential, round-robin, planner–worker–reviewer 2) Core Setup (1h) - , venv, run Hello Swarm 3) Orchestration (2h) - Inspect and extend P–W–R with retries and critiques 4) Tools (2h) - Add a and tool 5) Visual Explorer (2h) - Use , add controls and message tracing 6) SaaS Planner (2–4h) - Extend to output a BoM and architecture diagram 7) Evaluate (2h) - Design acceptance checks and simple evals (see ) ## Hands-On Steps ## Challenges - Add a agent that blocks the final answer if tests fail - Add tracing to show token usage per agent (mock values offline) - Swap providers (OpenAI ↔ Anthropic) via LiteLLM config only ## Deliverables - Working swarm with at least 3 roles - A recorded screen demo of the Streamlit explorer - A short doc: architecture, trade-offs, and next steps ## Grading Rubric - Functionality (40%): agents coordinate, produce coherent outputs - Clarity (30%): code readability, clear prompts, thoughtful defaults - UX (20%): UI communicates roles, history, and decisions visually - Rigor (10%): eval checks or tests"
   },
   {
-    "id": "02-learning-paths\\beginner.md",
+    "id": "02-learning-paths/beginner.md",
     "title": "Beginner Path (4 Weeks)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/beginner.md",
     "section": "Learning Paths",
-    "path": "02-learning-paths\\beginner.md",
+    "path": "02-learning-paths/beginner.md",
     "headings": [
       {
         "level": 1,
@@ -468,11 +484,11 @@
     "content": "# Beginner Path (4 Weeks) - Week 1: LLM basics, prompting, safety - Week 2: Retrieval & embeddings, pgvector - Week 3: Agents & tools, orchestration - Week 4: Evaluation & observability"
   },
   {
-    "id": "02-learning-paths\\bootcamp.md",
+    "id": "02-learning-paths/bootcamp.md",
     "title": "Bootcamp Path (AI CoE Inspired)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/bootcamp.md",
     "section": "Learning Paths",
-    "path": "02-learning-paths\\bootcamp.md",
+    "path": "02-learning-paths/bootcamp.md",
     "headings": [
       {
         "level": 1,
@@ -483,11 +499,11 @@
     "content": "# Bootcamp Path (AI CoE Inspired) - Week 1: Core patterns & CX - Week 2: Architecture, vector search, integration, performance, governance - Week 3: Industry, agents, PoC & presentation"
   },
   {
-    "id": "02-learning-paths\\professional.md",
+    "id": "02-learning-paths/professional.md",
     "title": "Professional Path (6 Weeks)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/professional.md",
     "section": "Learning Paths",
-    "path": "02-learning-paths\\professional.md",
+    "path": "02-learning-paths/professional.md",
     "headings": [
       {
         "level": 1,
@@ -498,21 +514,21 @@
     "content": "# Professional Path (6 Weeks) - Foundations → Systems → Governance → Specialization - Projects: RAG on Supabase, Eval harness, Agentic workflow"
   },
   {
-    "id": "03-awesome\\awesome-agents.md",
+    "id": "03-awesome/awesome-agents.md",
     "title": "Awesome Agents",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-agents.md",
     "section": "Awesome",
-    "path": "03-awesome\\awesome-agents.md",
+    "path": "03-awesome/awesome-agents.md",
     "headings": [],
     "excerpt": "# Awesome Agents | Link | Why it matters | |---|---| | [microsoft/autogen](https://github.com/microsoft/autogen) | Multi-agent framework with tool support | | [joaomdmoura/crewai](https://github.com/joaomdmoura/crewai) | Agent teams and orchestration | | [langchain-ai/langgraph](https://github.com/langchain-ai/langgrap",
     "content": "# Awesome Agents | Link | Why it matters | |---|---| | [microsoft/autogen](https://github.com/microsoft/autogen) | Multi-agent framework with tool support | | [joaomdmoura/crewai](https://github.com/joaomdmoura/crewai) | Agent teams and orchestration | | [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | Deterministic agent graphs for complex flows |"
   },
   {
-    "id": "03-awesome\\awesome-aggregators.md",
+    "id": "03-awesome/awesome-aggregators.md",
     "title": "Awesome Aggregators (Meta Lists)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-aggregators.md",
     "section": "Awesome",
-    "path": "03-awesome\\awesome-aggregators.md",
+    "path": "03-awesome/awesome-aggregators.md",
     "headings": [
       {
         "level": 1,
@@ -523,61 +539,61 @@
     "content": "# Awesome Aggregators (Meta Lists) High-signal GitHub repos that aggregate the best resources. - sindresorhus/awesome — The canonical index of curated “awesome” lists across topics - awesome-machine-learning/awesome-machine-learning — Curated machine learning resources and libraries - visenger/awesome-mlops — Curated MLOps tools, articles, and best practices - eugeneyan/applied-ml — Applied ML reading list (papers, blog posts, case studies) - papers-we-love/papers-we-love — Foundational computer science and systems papers - f/awesome-chatgpt-prompts — Community prompts and examples for ChatGPT-style models - e2b-dev/awesome-ai-agents — Curated list of AI agent frameworks and tooling Notes - Prefer recent, maintained lists; check stars and last update. - When adding links from these lists, include 1–2 lines on why they matter."
   },
   {
-    "id": "03-awesome\\awesome-evals.md",
+    "id": "03-awesome/awesome-evals.md",
     "title": "Awesome Evals",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-evals.md",
     "section": "Awesome",
-    "path": "03-awesome\\awesome-evals.md",
+    "path": "03-awesome/awesome-evals.md",
     "headings": [],
     "excerpt": "# Awesome Evals | Link | Why it matters | |---|---| | [langfuse/langfuse](https://github.com/langfuse/langfuse) | Traces, evaluations, and cost tracking | | [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) | Model and LLM analysis plus evaluation | | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) ",
     "content": "# Awesome Evals | Link | Why it matters | |---|---| | [langfuse/langfuse](https://github.com/langfuse/langfuse) | Traces, evaluations, and cost tracking | | [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) | Model and LLM analysis plus evaluation | | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | Prompt evaluations in CI workflows | | [openai/evals](https://github.com/openai/evals) | Evaluation framework with reusable datasets | | [microsoft/promptflow](https://github.com/microsoft/promptflow) | Flow evaluation, orchestration, and tracking |"
   },
   {
-    "id": "03-awesome\\awesome-llms.md",
+    "id": "03-awesome/awesome-llms.md",
     "title": "Awesome Llms",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-llms.md",
     "section": "Awesome",
-    "path": "03-awesome\\awesome-llms.md",
+    "path": "03-awesome/awesome-llms.md",
     "headings": [],
     "excerpt": "# Awesome LLMs | Link | Why it matters | |---|---| | [huggingface/transformers](https://github.com/huggingface/transformers) | Core models and tokenizers for NLP and LLM work | | [ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) | Run models locally on CPU and edge devices | | [vllm-project/vllm](https://gi",
     "content": "# Awesome LLMs | Link | Why it matters | |---|---| | [huggingface/transformers](https://github.com/huggingface/transformers) | Core models and tokenizers for NLP and LLM work | | [ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) | Run models locally on CPU and edge devices | | [vllm-project/vllm](https://github.com/vllm-project/vllm) | High-throughput, low-latency model serving | | [ollama/ollama](https://github.com/ollama/ollama) | Local model runtime and packaging | | [openai/openai-python](https://github.com/openai/openai-python) | Official Python SDK for OpenAI APIs | | [openai/openai-cookbook](https://github.com/openai/openai-cookbook) | Production patterns and practical examples |"
   },
   {
-    "id": "03-awesome\\awesome-mlops.md",
+    "id": "03-awesome/awesome-mlops.md",
     "title": "Awesome Mlops",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-mlops.md",
     "section": "Awesome",
-    "path": "03-awesome\\awesome-mlops.md",
+    "path": "03-awesome/awesome-mlops.md",
     "headings": [],
     "excerpt": "# Awesome MLOps | Link | Why it matters | |---|---| | [ray-project/ray](https://github.com/ray-project/ray) | Distributed compute for Python and LLM workloads | | [PrefectHQ/prefect](https://github.com/PrefectHQ/prefect) | Modern workflow orchestration | | [temporalio/sdk-typescript](https://github.com/temporalio/sdk-t",
     "content": "# Awesome MLOps | Link | Why it matters | |---|---| | [ray-project/ray](https://github.com/ray-project/ray) | Distributed compute for Python and LLM workloads | | [PrefectHQ/prefect](https://github.com/PrefectHQ/prefect) | Modern workflow orchestration | | [temporalio/sdk-typescript](https://github.com/temporalio/sdk-typescript) | Durable workflows with strong guarantees | | [flyteorg/flyte](https://github.com/flyteorg/flyte) | ML orchestrator built for scale | | [dagster-io/dagster](https://github.com/dagster-io/dagster) | Data and ML orchestration | | [mlflow/mlflow](https://github.com/mlflow/mlflow) | Experiment tracking and model registry | | [bentoml/BentoML](https://github.com/bentoml/BentoML) | Packaging and serving toolkit |"
   },
   {
-    "id": "03-awesome\\awesome-rag.md",
+    "id": "03-awesome/awesome-rag.md",
     "title": "Awesome Rag",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-rag.md",
     "section": "Awesome",
-    "path": "03-awesome\\awesome-rag.md",
+    "path": "03-awesome/awesome-rag.md",
     "headings": [],
     "excerpt": "# Awesome RAG | Link | Why it matters | |---|---| | [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | Composable primitives for RAG and tool use | | [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | Graph and state orchestration for RAG and agents | | [run-llama/llama_index](http",
     "content": "# Awesome RAG | Link | Why it matters | |---|---| | [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | Composable primitives for RAG and tool use | | [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | Graph and state orchestration for RAG and agents | | [run-llama/llama_index](https://github.com/run-llama/llama_index) | Data framework for indexing and retrieval | | [explodinggradients/ragas](https://github.com/explodinggradients/ragas) | Evaluate RAG quality and faithfulness | | [pgvector/pgvector](https://github.com/pgvector/pgvector) | Vector similarity search inside Postgres | | [qdrant/qdrant](https://github.com/qdrant/qdrant) | Open source vector database | | [weaviate/weaviate](https://github.com/weaviate/weaviate) | Vector database with hybrid search |"
   },
   {
-    "id": "03-awesome\\awesome-vector-dbs.md",
+    "id": "03-awesome/awesome-vector-dbs.md",
     "title": "Awesome Vector Dbs",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-vector-dbs.md",
     "section": "Awesome",
-    "path": "03-awesome\\awesome-vector-dbs.md",
+    "path": "03-awesome/awesome-vector-dbs.md",
     "headings": [],
     "excerpt": "# Awesome Vector Databases | Link | Why it matters | |---|---| | [pgvector/pgvector](https://github.com/pgvector/pgvector) | Postgres extension for vector similarity | | [qdrant/qdrant](https://github.com/qdrant/qdrant) | Open source vector database | | [weaviate/weaviate](https://github.com/weaviate/weaviate) | Hybrid",
     "content": "# Awesome Vector Databases | Link | Why it matters | |---|---| | [pgvector/pgvector](https://github.com/pgvector/pgvector) | Postgres extension for vector similarity | | [qdrant/qdrant](https://github.com/qdrant/qdrant) | Open source vector database | | [weaviate/weaviate](https://github.com/weaviate/weaviate) | Hybrid search with modular extensions | | [milvus-io/milvus](https://github.com/milvus-io/milvus) | Distributed vector database | | [chroma-core/chroma](https://github.com/chroma-core/chroma) | Lightweight local vector store |"
   },
   {
-    "id": "04-templates\\bom-template.md",
+    "id": "04-templates/bom-template.md",
     "title": "Bill of Materials Template",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/bom-template.md",
     "section": "Templates",
-    "path": "04-templates\\bom-template.md",
+    "path": "04-templates/bom-template.md",
     "headings": [
       {
         "level": 1,
@@ -588,11 +604,11 @@
     "content": "# Bill of Materials Template - Services & SKUs - Usage assumptions - Monthly estimate - Notes & tradeoffs"
   },
   {
-    "id": "04-templates\\discovery-questions.md",
+    "id": "04-templates/discovery-questions.md",
     "title": "Discovery Questions Template",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/discovery-questions.md",
     "section": "Templates",
-    "path": "04-templates\\discovery-questions.md",
+    "path": "04-templates/discovery-questions.md",
     "headings": [
       {
         "level": 1,
@@ -603,11 +619,11 @@
     "content": "# Discovery Questions Template - Business goals, constraints, KPIs - Data sources, privacy, compliance - Users, workflows, SLAs - Risks and mitigations"
   },
   {
-    "id": "04-templates\\solution-doc.md",
+    "id": "04-templates/solution-doc.md",
     "title": "Solution Document Template",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/solution-doc.md",
     "section": "Templates",
-    "path": "04-templates\\solution-doc.md",
+    "path": "04-templates/solution-doc.md",
     "headings": [
       {
         "level": 1,
@@ -618,11 +634,11 @@
     "content": "# Solution Document Template - Problem & value - Architecture overview - Data flows & components - Security & compliance - Rollout & costs"
   },
   {
-    "id": "04-templates\\technical-architecture.md",
+    "id": "04-templates/technical-architecture.md",
     "title": "Technical Architecture Template",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/technical-architecture.md",
     "section": "Templates",
-    "path": "04-templates\\technical-architecture.md",
+    "path": "04-templates/technical-architecture.md",
     "headings": [
       {
         "level": 1,
@@ -633,11 +649,11 @@
     "content": "# Technical Architecture Template - Context & assumptions - Component diagram - Data model - Scaling & SLOs - Observability"
   },
   {
-    "id": "04-templates\\workshop-agenda.md",
+    "id": "04-templates/workshop-agenda.md",
     "title": "Workshop Agenda Template",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/workshop-agenda.md",
     "section": "Templates",
-    "path": "04-templates\\workshop-agenda.md",
+    "path": "04-templates/workshop-agenda.md",
     "headings": [
       {
         "level": 1,
@@ -648,11 +664,11 @@
     "content": "# Workshop Agenda Template - Intro & goals - Discovery questions - Architecture co-design - Risks & next steps"
   },
   {
-    "id": "05-projects\\100-projects.md",
+    "id": "05-projects/100-projects.md",
     "title": "100 Projects for AI Architects (Starter Set)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/100-projects.md",
     "section": "Projects",
-    "path": "05-projects\\100-projects.md",
+    "path": "05-projects/100-projects.md",
     "headings": [
       {
         "level": 1,
@@ -663,11 +679,11 @@
     "content": "# 100 Projects for AI Architects (Starter Set) Practical builds to master architecture by shipping. Sorted by theme; each project lists difficulty, estimated time, and links to guides or repos. Contribute: PR new projects with a short description, difficulty, est. hours, and links. Keep impact high and scope clear. | # | Project | Theme | Difficulty | Est. Hours | Links | |---|---|---|---|---|---| | 1 | RAG on Supabase with Citations | RAG | Beginner | 8–12 | [Guide](rag-on-supabase.md) • [pgvector](https://github.com/pgvector/pgvector) | | 2 | Hybrid Search (BM25 + Vectors) | Retrieval | Intermediate | 6–10 | [Concepts](../03-awesome/awesome-vector-dbs.md) | | 3 | Chunking Strategies Benchmark | Retrieval | Intermediate | 6–10 | [RAGAS](https://github.com/explodinggradients/ragas) | | 4 | Evals Harness (Faithfulness, Coverage) | Evaluation | Intermediate | 6–10 | [Langfuse](https://github.com/langfuse/langfuse) | | 5 | Cost Guardrails & Caching Layer | Ops | Intermediate | 6–10 | [openai-cookbook](https://github.com/openai/openai-cookbook) | | 6 | Agent with Tools (Web + DB) | Agents | Intermediate | 10–14 | [LangGraph](https://github.com/langchain-ai/langgraph) | | 7 | Multi-Agent Workflow (Reviewer Loops) | Agents | Advanced | 12–18 | [AutoGen](https://github.com/microsoft/autogen) | | 8 | Observability Dash (Traces, Costs) | Observability | Intermediate | 6–10 | [Langfuse](https://github.com/langfuse/langfuse) | | 9 | Prompt Registry + Versioning | MLOps | Intermediate | 6–10 | [promptfoo](https://github.com/promptfoo/promptfoo) | | 10 | Model Serving with vLLM | Serving | Intermediate | 8–12 | [vLLM](https://github.com/vllm-project/vllm) | | 11 | Local Inference Prototype | Edge | Beginner | 4–8 | [llama.cpp](https://github.com/ggerganov/llama.cpp) | | 12 | Orchestration with Temporal | Orchestration | Intermediate | 8–12 | [Temporal TS](https://github.com/temporalio/sdk-typescript) | | 13 | Vector DB Benchmarks (Qdrant/Weaviate/Milvus) | Retrieval | Advanced |"
   },
   {
-    "id": "05-projects\\agentic-saas-planner.md",
+    "id": "05-projects/agentic-saas-planner.md",
     "title": "Project: Agentic SaaS Planner",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/agentic-saas-planner.md",
     "section": "Projects",
-    "path": "05-projects\\agentic-saas-planner.md",
+    "path": "05-projects/agentic-saas-planner.md",
     "headings": [
       {
         "level": 1,
@@ -690,41 +706,41 @@
     "content": "# Project: Agentic SaaS Planner Goal: Use a Planner → Worker → Reviewer swarm to produce a product plan, architecture, and build plan for a simple SaaS idea. ## Steps 1) Run the example 2) Add a agent to block release if risks are high 3) Extend output: Bill of Materials, API list, day-by-day build plan 4) Optional: Streamlit UI button to export a PDF brief ## Acceptance Criteria - Outputs include target user, jobs-to-be-done, key features, risks, MVP outline - Technical plan includes components, data flow, APIs, eval plan - Reviewer summary is clear and actionable ## Stretch - Integrate LiteLLM to compare models (OpenAI vs Anthropic) - Add a test harness that verifies the plan includes eval metrics"
   },
   {
-    "id": "05-projects\\evals-langfuse.md",
+    "id": "05-projects/evals-langfuse.md",
     "title": "Evals Langfuse",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/evals-langfuse.md",
     "section": "Projects",
-    "path": "05-projects\\evals-langfuse.md",
+    "path": "05-projects/evals-langfuse.md",
     "headings": [],
     "excerpt": "# Project: Evals with Langfuse - Instrument API endpoints with traces, latency, and cost spans - Create an evaluation dataset (Q/A with citations) - Implement scoring for faithfulness and helpfulness - Track versions and regressions with CI that fails on quality drops",
     "content": "# Project: Evals with Langfuse - Instrument API endpoints with traces, latency, and cost spans - Create an evaluation dataset (Q/A with citations) - Implement scoring for faithfulness and helpfulness - Track versions and regressions with CI that fails on quality drops"
   },
   {
-    "id": "05-projects\\rag-on-supabase.md",
+    "id": "05-projects/rag-on-supabase.md",
     "title": "Rag On Supabase",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/rag-on-supabase.md",
     "section": "Projects",
-    "path": "05-projects\\rag-on-supabase.md",
+    "path": "05-projects/rag-on-supabase.md",
     "headings": [],
     "excerpt": "# Project: RAG on Supabase + OpenAI (Step-by-Step) 1. **Setup** - Create a Supabase project (EU recommended) and enable - Create tables: , - Secure OpenAI and YouTube API keys 2. **Ingest** - Fetch video transcripts, clean them, and segment into 200-400 token chunks at semantic boundaries - Compute embeddings (small mo",
     "content": "# Project: RAG on Supabase + OpenAI (Step-by-Step) 1. **Setup** - Create a Supabase project (EU recommended) and enable - Create tables: , - Secure OpenAI and YouTube API keys 2. **Ingest** - Fetch video transcripts, clean them, and segment into 200-400 token chunks at semantic boundaries - Compute embeddings (small model) and store vectors in 3. **Retrieval API** - Combine vector similarity with keyword search and re-ranking - Return chunks with timestamps and resource metadata 4. **Tutor Endpoint** - Compose a system prompt with rules (require citations, abstain on low confidence) - Retrieve top-k chunks, call OpenAI, and return answers with citations 5. **Evals and Observability** - Add Langfuse traces and build a small evaluation dataset (questions plus expected sources) - Track faithfulness and citation coverage 6. **Hardening** - Apply rate limits per user or tier and cache frequent queries - Add cost guardrails and alerts"
   },
   {
-    "id": "05-projects\\vector-search-pgvector.md",
+    "id": "05-projects/vector-search-pgvector.md",
     "title": "Vector Search Pgvector",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/vector-search-pgvector.md",
     "section": "Projects",
-    "path": "05-projects\\vector-search-pgvector.md",
+    "path": "05-projects/vector-search-pgvector.md",
     "headings": [],
     "excerpt": "# Project: Vector Search with pgvector - Install the extension and prepare schema - Choose embedding model; test cosine versus inner product - Tune indexing (IVFFlat) and storage parameters - Benchmark recall and latency trade-offs, including hybrid search",
     "content": "# Project: Vector Search with pgvector - Install the extension and prepare schema - Choose embedding model; test cosine versus inner product - Tune indexing (IVFFlat) and storage parameters - Benchmark recall and latency trade-offs, including hybrid search"
   },
   {
-    "id": "06-toolchains\\agentic-swarms-stack.md",
+    "id": "06-toolchains/agentic-swarms-stack.md",
     "title": "Reference Stack: Agentic Code Swarms",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/06-toolchains/agentic-swarms-stack.md",
     "section": "Toolchains",
-    "path": "06-toolchains\\agentic-swarms-stack.md",
+    "path": "06-toolchains/agentic-swarms-stack.md",
     "headings": [
       {
         "level": 1,
@@ -763,11 +779,11 @@
     "content": "# Reference Stack: Agentic Code Swarms ## Runtime - Python 3.11, , , - Orchestrations: sequential, P–W–R, round‑robin, map‑reduce - UI: Streamlit Explorer for learning and demos ## Providers - LiteLLM routing (OpenAI, Anthropic, etc.) - Offline mock provider for classrooms ## Data & Memory - Vector DB: pgvector or Qdrant (optional for advanced tools) - Cache: Redis for short‑term memory (optional) ## Observability - Tracing: OpenTelemetry export from agents (future) - Logs: structured JSON logs per agent step ## Evals & Guardrails - Metrics: task success, latency, cost - Harness: deterministic prompts + expected checks ## Deployment - Dockerfile provided; run Streamlit on 8501 - Suggested: Fly.io/Render for demos; Kubernetes for internal portals ## Security & Costs - Secrets via or platform secret store - Budget limits per run; circuit breakers on failure counts"
   },
   {
-    "id": "06-toolchains\\stack-reference.md",
+    "id": "06-toolchains/stack-reference.md",
     "title": "Stack Reference",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/06-toolchains/stack-reference.md",
     "section": "Toolchains",
-    "path": "06-toolchains\\stack-reference.md",
+    "path": "06-toolchains/stack-reference.md",
     "headings": [
       {
         "level": 1,
@@ -778,11 +794,11 @@
     "content": "# Stack Reference - Frontend: Next.js, Tailwind - API: Node/Express - DB: Supabase (Postgres + pgvector) - AI: OpenAI (with OSS fallback) - Obs: Sentry, Langfuse"
   },
   {
-    "id": "07-evaluation\\eval-harness.md",
+    "id": "07-evaluation/eval-harness.md",
     "title": "Eval Harness",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/07-evaluation/eval-harness.md",
     "section": "Evaluation",
-    "path": "07-evaluation\\eval-harness.md",
+    "path": "07-evaluation/eval-harness.md",
     "headings": [
       {
         "level": 1,
@@ -793,11 +809,11 @@
     "content": "# Eval Harness - Dataset format - Scoring functions - CI integration"
   },
   {
-    "id": "07-evaluation\\metrics.md",
+    "id": "07-evaluation/metrics.md",
     "title": "Evaluation Metrics",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/07-evaluation/metrics.md",
     "section": "Evaluation",
-    "path": "07-evaluation\\metrics.md",
+    "path": "07-evaluation/metrics.md",
     "headings": [
       {
         "level": 1,
@@ -808,11 +824,11 @@
     "content": "# Evaluation Metrics - Faithfulness, groundedness, factuality - Relevance, recall@k, MRR - UX metrics: satisfaction, time-to-answer"
   },
   {
-    "id": "08-governance\\model-risk.md",
+    "id": "08-governance/model-risk.md",
     "title": "Model Risk Management",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/08-governance/model-risk.md",
     "section": "Governance",
-    "path": "08-governance\\model-risk.md",
+    "path": "08-governance/model-risk.md",
     "headings": [
       {
         "level": 1,
@@ -823,11 +839,11 @@
     "content": "# Model Risk Management - Risk taxonomy - Controls & monitoring - Review cadence"
   },
   {
-    "id": "08-governance\\privacy-gdpr.md",
+    "id": "08-governance/privacy-gdpr.md",
     "title": "Privacy & GDPR",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/08-governance/privacy-gdpr.md",
     "section": "Governance",
-    "path": "08-governance\\privacy-gdpr.md",
+    "path": "08-governance/privacy-gdpr.md",
     "headings": [
       {
         "level": 1,
@@ -838,11 +854,11 @@
     "content": "# Privacy & GDPR - Data residency - Consent & retention - Data subject rights"
   },
   {
-    "id": "09-articles\\README.md",
+    "id": "09-articles/README.md",
     "title": "Articles",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/09-articles/README.md",
     "section": "Articles",
-    "path": "09-articles\\README.md",
+    "path": "09-articles/README.md",
     "headings": [
       {
         "level": 1,
@@ -853,21 +869,21 @@
     "content": "# Articles - RAG in Production: Chunking, Hybrid Search, Evals - Grounded Tutoring: Enforcing Citations - Design Patterns for Enterprise AI - Agentic Code Swarms: Orchestration patterns, UX for agents, and pedagogy"
   },
   {
-    "id": "10-resources\\channels.md",
+    "id": "10-resources/channels.md",
     "title": "Channels",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/channels.md",
     "section": "Resources",
-    "path": "10-resources\\channels.md",
+    "path": "10-resources/channels.md",
     "headings": [],
     "excerpt": "# YouTube Channels (Curated) - Andrej Karpathy - https://www.youtube.com/@AndrejKarpathy - Sebastian Raschka - https://www.youtube.com/@SebastianRaschka - Hugging Face - https://www.youtube.com/@HuggingFace - LangChain - https://www.youtube.com/@LangChain - OpenAI - https://www.youtube.com/@OpenAI - MLOps Community - h",
     "content": "# YouTube Channels (Curated) - Andrej Karpathy - https://www.youtube.com/@AndrejKarpathy - Sebastian Raschka - https://www.youtube.com/@SebastianRaschka - Hugging Face - https://www.youtube.com/@HuggingFace - LangChain - https://www.youtube.com/@LangChain - OpenAI - https://www.youtube.com/@OpenAI - MLOps Community - https://www.youtube.com/@MLOps - Two Minute Papers (curate for depth) - https://www.youtube.com/@TwoMinutePapers"
   },
   {
-    "id": "10-resources\\papers.md",
+    "id": "10-resources/papers.md",
     "title": "Papers & Reading",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/papers.md",
     "section": "Resources",
-    "path": "10-resources\\papers.md",
+    "path": "10-resources/papers.md",
     "headings": [
       {
         "level": 1,
@@ -878,11 +894,11 @@
     "content": "# Papers & Reading - Attention Is All You Need - Rethinking RAG architectures (surveys) - Hallucination evaluation methods"
   },
   {
-    "id": "10-resources\\platforms.md",
+    "id": "10-resources/platforms.md",
     "title": "Platforms & Tools",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/platforms.md",
     "section": "Resources",
-    "path": "10-resources\\platforms.md",
+    "path": "10-resources/platforms.md",
     "headings": [
       {
         "level": 1,
@@ -893,11 +909,11 @@
     "content": "# Platforms & Tools - Supabase — https://supabase.com/ - Vercel — https://vercel.com/ - Railway — https://railway.app/ - Fly.io — https://fly.io/ - Cloudflare — https://www.cloudflare.com/ - Stripe — https://stripe.com/ - Sentry — https://sentry.io/ - Langfuse — https://langfuse.com/"
   },
   {
-    "id": "10-resources\\playlists.md",
+    "id": "10-resources/playlists.md",
     "title": "Playlists (First Pull Targets)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/playlists.md",
     "section": "Resources",
-    "path": "10-resources\\playlists.md",
+    "path": "10-resources/playlists.md",
     "headings": [
       {
         "level": 1,
@@ -908,11 +924,11 @@
     "content": "# Playlists (First Pull Targets) - Karpathy: Neural Networks, LLMs — https://www.youtube.com/@AndrejKarpathy/playlists - Hugging Face: Transformers — https://www.youtube.com/@HuggingFace/playlists - LangChain: RAG & Agents — https://www.youtube.com/@LangChain/playlists - OpenAI Dev — https://www.youtube.com/@OpenAI/playlists - MLOps Community Sessions — https://www.youtube.com/@MLOps/playlists"
   },
   {
-    "id": "10-resources\\repos.md",
+    "id": "10-resources/repos.md",
     "title": "Repos",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/repos.md",
     "section": "Resources",
-    "path": "10-resources\\repos.md",
+    "path": "10-resources/repos.md",
     "headings": [
       {
         "level": 2,
@@ -923,11 +939,11 @@
     "content": "# Repositories to Know (With Links) | Link | Why it matters | |---|---| | [huggingface/transformers](https://github.com/huggingface/transformers) | Models and tokenizers: foundation for NLP and LLM projects | | [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | RAG and tool orchestration; fast from prototype to production | | [run-llama/llama_index](https://github.com/run-llama/llama_index) | Data framework for LLM applications | | [vllm-project/vllm](https://github.com/vllm-project/vllm) | High-throughput, low-latency serving | | [ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp) | Local inference on CPU and edge devices | | [ollama/ollama](https://github.com/ollama/ollama) | Local model runner and packaging | | [pgvector/pgvector](https://github.com/pgvector/pgvector) | Vector similarity inside Postgres | | [qdrant/qdrant](https://github.com/qdrant/qdrant) | Production-ready open source vector database | | [weaviate/weaviate](https://github.com/weaviate/weaviate) | Vector database with hybrid search | | [milvus-io/milvus](https://github.com/milvus-io/milvus) | Distributed vector database | | [langfuse/langfuse](https://github.com/langfuse/langfuse) | Observability for LLM applications | | [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) | Observability and analysis toolkit | | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | Prompt evaluations in CI | | [microsoft/autogen](https://github.com/microsoft/autogen) | Multi-agent framework | | [joaomdmoura/crewai](https://github.com/joaomdmoura/crewai) | Agent teams and workflows | ## Meta Aggregators | Link | Why it matters | |---|---| | [sindresorhus/awesome](https://github.com/sindresorhus/awesome) | Canonical index of awesome lists | | [awesome-machine-learning/awesome-machine-learning](https://github.com/awesome-machine-learning/awesome-machine-learning) | Broad machine learning resources | | [visenger/awesome-mlops](https://github.com/visenger/awesome-mlops) | Cu"
   },
   {
-    "id": "10-resources\\videos.md",
+    "id": "10-resources/videos.md",
     "title": "Videos (Selected)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/videos.md",
     "section": "Resources",
-    "path": "10-resources\\videos.md",
+    "path": "10-resources/videos.md",
     "headings": [
       {
         "level": 1,
@@ -938,11 +954,11 @@
     "content": "# Videos (Selected) - Karpathy: Intro to LLMs — https://www.youtube.com/watch?v=zjkBMFhNj_g - Raschka: LLM Evaluation — https://www.youtube.com/watch?v=Rr8a8Y3G9Vw - LangChain: RAG with pgvector — https://www.youtube.com/watch?v=b8bXqSxTq0E - Hugging Face: Transformers Intro — https://www.youtube.com/watch?v=G5RY_SUJih4 - OpenAI: Dev Day Highlights — https://www.youtube.com/watch?v=U9mJuUkhUzk"
   },
   {
-    "id": "11-hyperscalers\\README.md",
+    "id": "11-hyperscalers/README.md",
     "title": "Hyperscalers (OCI • AWS • GCP • Azure)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/README.md",
     "section": "Hyperscalers",
-    "path": "11-hyperscalers\\README.md",
+    "path": "11-hyperscalers/README.md",
     "headings": [
       {
         "level": 1,
@@ -953,11 +969,11 @@
     "content": "# Hyperscalers (OCI • AWS • GCP • Azure) Decision-focused guides to build GenAI/RAG on each cloud with links to official docs, vector options, and quick starts. - Oracle Cloud Infrastructure (OCI): - Amazon Web Services (AWS): - Google Cloud (GCP): - Microsoft Azure: See also: [Choose a Platform](choose-platform.md)"
   },
   {
-    "id": "11-hyperscalers\\aws\\README.md",
+    "id": "11-hyperscalers/aws/README.md",
     "title": "AWS for AI Architects",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/aws/README.md",
     "section": "Hyperscalers",
-    "path": "11-hyperscalers\\aws\\README.md",
+    "path": "11-hyperscalers/aws/README.md",
     "headings": [
       {
         "level": 1,
@@ -968,11 +984,11 @@
     "content": "# AWS for AI Architects Key Services - Amazon Bedrock: managed GenAI (model providers) - OpenSearch Serverless: vector search; filters - Aurora/ RDS Postgres: pgvector support - Lambda, API Gateway, ECS/EKS for serving - Observability: CloudWatch + 3rd‑party Vector Options - OpenSearch kNN / Faiss under the hood - Aurora Postgres + pgvector Quick Start (RAG) 1) Ingest → embeddings → OpenSearch index or pgvector 2) Retrieval API: vector + BM25 hybrid; re‑rank if needed 3) Tutor API: Bedrock (or OpenAI) with citations 4) Logs & metrics; costs via CloudWatch + tags Docs & Links - Amazon Bedrock — https://aws.amazon.com/bedrock/ - OpenSearch Vector Search — https://docs.aws.amazon.com/opensearch-service/latest/developerguide/knn.html - Aurora pgvector — https://aws.amazon.com/blogs/database/amazon-aurora-postgresql-adhere-pgvector/"
   },
   {
-    "id": "11-hyperscalers\\azure\\README.md",
+    "id": "11-hyperscalers/azure/README.md",
     "title": "Azure for AI Architects",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/azure/README.md",
     "section": "Hyperscalers",
-    "path": "11-hyperscalers\\azure\\README.md",
+    "path": "11-hyperscalers/azure/README.md",
     "headings": [
       {
         "level": 1,
@@ -983,11 +999,11 @@
     "content": "# Azure for AI Architects Key Services - Azure OpenAI Service: GPT models with enterprise controls - Azure AI Search (Cognitive Search) with vectors - Cosmos DB vector, Azure Postgres + pgvector - Azure Functions / AKS for serving - Observability: App Insights + 3rd‑party Vector Options - Azure AI Search (vector) - Cosmos DB vector - Azure Postgres + pgvector Quick Start (RAG) 1) Choose vector: AI Search or pgvector 2) Retrieval API: vector + filters; optional rerank 3) Tutor API: Azure OpenAI with citations + safety 4) Monitor with App Insights; track costs Docs & Links - Azure OpenAI — https://learn.microsoft.com/azure/ai-services/openai/ - Azure AI Search Vector — https://learn.microsoft.com/azure/search/vector-search-overview - Cosmos DB Vector — https://learn.microsoft.com/azure/cosmos-db/vector-database"
   },
   {
-    "id": "11-hyperscalers\\choose-platform.md",
+    "id": "11-hyperscalers/choose-platform.md",
     "title": "Choose a Platform (Decision Guide)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/choose-platform.md",
     "section": "Hyperscalers",
-    "path": "11-hyperscalers\\choose-platform.md",
+    "path": "11-hyperscalers/choose-platform.md",
     "headings": [
       {
         "level": 1,
@@ -998,11 +1014,11 @@
     "content": "# Choose a Platform (Decision Guide) Criteria - Data residency & compliance (EU, HIPAA, ISO) - Managed vector search options and performance - GenAI service availability (models, safety) - Integration with data sources and identity - Cost transparency and predictable budgets - Lock‑in vs. portability (pgvector, open SDKs) Quick Take - If you already use a cloud: pick native services (pgvector/managed vector + GenAI) and keep portability via open embeddings and RAG patterns. - If you need maximum portability and EU control: Postgres + pgvector + OpenAI/Anthropic with OSS fallbacks. Baseline Stack (All Clouds) - Postgres + pgvector or managed vector DB - Retrieval API (hybrid search), Tutor API (RAG with citations) - Observability (Langfuse/Phoenix), Evals (promptfoo/ragas) - AuthZ, rate limits, and cost guardrails"
   },
   {
-    "id": "11-hyperscalers\\gcp\\README.md",
+    "id": "11-hyperscalers/gcp/README.md",
     "title": "Google Cloud for AI Architects",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/gcp/README.md",
     "section": "Hyperscalers",
-    "path": "11-hyperscalers\\gcp\\README.md",
+    "path": "11-hyperscalers/gcp/README.md",
     "headings": [
       {
         "level": 1,
@@ -1013,11 +1029,11 @@
     "content": "# Google Cloud for AI Architects Key Services - Vertex AI (GenAI Studio, endpoints) - AlloyDB AI: integrated vector embeddings; Cloud SQL pgvector - Cloud Run / GKE for serving - Observability: Cloud Logging/Trace + 3rd‑party Vector Options - AlloyDB AI vector; Cloud SQL pgvector - OpenSearch-compatible via partners Quick Start (RAG) 1) Store embeddings in AlloyDB AI or Cloud SQL pgvector 2) Retrieval API: vector + keyword hybrid 3) Tutor API: Vertex AI models (or OpenAI) with citations 4) Traces/evals; pub/sub for ingestion Docs & Links - Vertex AI — https://cloud.google.com/vertex-ai - AlloyDB AI — https://cloud.google.com/alloydb/docs/ai - Cloud SQL pgvector — https://cloud.google.com/sql/docs/postgres/extensions/pgvector"
   },
   {
-    "id": "11-hyperscalers\\oci\\README.md",
+    "id": "11-hyperscalers/oci/README.md",
     "title": "OCI for AI Architects (Oracle Cloud Infrastructure)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/oci/README.md",
     "section": "Hyperscalers",
-    "path": "11-hyperscalers\\oci\\README.md",
+    "path": "11-hyperscalers/oci/README.md",
     "headings": [
       {
         "level": 1,
@@ -1028,11 +1044,11 @@
     "content": "# OCI for AI Architects (Oracle Cloud Infrastructure) Key Services - GenAI Service: managed access to foundation models - Oracle Database 23ai: AI Vector Search + JSON Relational Duality - Autonomous Database: managed Oracle DB with vector - Functions/OKE: serverless and Kubernetes - Observability: Logging, APM; 3rd‑party Langfuse/Sentry Vector Options - Oracle DB 23ai AI Vector Search (native) - Postgres (OCI) + pgvector Quick Start (RAG) 1) Store docs in Oracle DB 23ai (vector index) 2) Retrieval API: cosine similarity + lexical fallback 3) Tutor API: call GenAI Service/OpenAI with citations 4) Observability: traces, evals, cost budgets Docs & Links - Oracle GenAI Service — https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm - Database 23ai Vector Search — https://www.oracle.com/database/ai/ - JSON Relational Duality — https://www.oracle.com/database/json/"
   },
   {
-    "id": "12-concepts\\caching-and-observability.md",
+    "id": "12-concepts/caching-and-observability.md",
     "title": "Caching & Observability",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/caching-and-observability.md",
     "section": "Concepts",
-    "path": "12-concepts\\caching-and-observability.md",
+    "path": "12-concepts/caching-and-observability.md",
     "headings": [
       {
         "level": 1,
@@ -1043,11 +1059,11 @@
     "content": "# Caching & Observability - Semantic caches; TTL strategies; invalidation - Traces and spans for prompts, retrieval, answers - Cost tracking and dashboards"
   },
   {
-    "id": "12-concepts\\cost-and-latency-slos.md",
+    "id": "12-concepts/cost-and-latency-slos.md",
     "title": "Cost & Latency SLOs",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/cost-and-latency-slos.md",
     "section": "Concepts",
-    "path": "12-concepts\\cost-and-latency-slos.md",
+    "path": "12-concepts/cost-and-latency-slos.md",
     "headings": [
       {
         "level": 1,
@@ -1058,11 +1074,11 @@
     "content": "# Cost & Latency SLOs - Budgets per feature/tier; alerts - Latency budgets per step; caching and batch - Model choice tradeoffs; fallback strategies"
   },
   {
-    "id": "12-concepts\\embeddings-and-chunking.md",
+    "id": "12-concepts/embeddings-and-chunking.md",
     "title": "Embeddings & Chunking",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/embeddings-and-chunking.md",
     "section": "Concepts",
-    "path": "12-concepts\\embeddings-and-chunking.md",
+    "path": "12-concepts/embeddings-and-chunking.md",
     "headings": [
       {
         "level": 1,
@@ -1073,11 +1089,11 @@
     "content": "# Embeddings & Chunking - Embedding model selection: cost vs quality - Chunking: semantic boundaries, window overlap, structure aware - Metadata: titles, headings, source, timestamps - Vector hygiene: dedupe, normalization, index tuning"
   },
   {
-    "id": "12-concepts\\eval-and-guardrails.md",
+    "id": "12-concepts/eval-and-guardrails.md",
     "title": "Evaluation & Guardrails",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/eval-and-guardrails.md",
     "section": "Concepts",
-    "path": "12-concepts\\eval-and-guardrails.md",
+    "path": "12-concepts/eval-and-guardrails.md",
     "headings": [
       {
         "level": 1,
@@ -1088,11 +1104,11 @@
     "content": "# Evaluation & Guardrails - Datasets: Q/A with citations; negative tests - Metrics: faithfulness, coverage, relevance, MRR - Guardrails: safety filters, policy checks, PII redaction"
   },
   {
-    "id": "12-concepts\\hybrid-search-and-reranking.md",
+    "id": "12-concepts/hybrid-search-and-reranking.md",
     "title": "Hybrid Search & Reranking",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/hybrid-search-and-reranking.md",
     "section": "Concepts",
-    "path": "12-concepts\\hybrid-search-and-reranking.md",
+    "path": "12-concepts/hybrid-search-and-reranking.md",
     "headings": [
       {
         "level": 1,
@@ -1103,11 +1119,11 @@
     "content": "# Hybrid Search & Reranking - Combine BM25 and vectors for recall and precision - Reranking: cross-encoders or LLM rerankers - Filters and faceting; scoring and thresholds"
   },
   {
-    "id": "12-concepts\\prompt-injection-and-security.md",
+    "id": "12-concepts/prompt-injection-and-security.md",
     "title": "Prompt Injection & Security",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/prompt-injection-and-security.md",
     "section": "Concepts",
-    "path": "12-concepts\\prompt-injection-and-security.md",
+    "path": "12-concepts/prompt-injection-and-security.md",
     "headings": [
       {
         "level": 1,
@@ -1118,11 +1134,11 @@
     "content": "# Prompt Injection & Security - Threats: injection, data exfiltration, jailbreaking - Controls: isolation, allowlists, output validation, sandboxing - Monitoring: anomaly detection, logging, forensics"
   },
   {
-    "id": "12-concepts\\rag-architecture.md",
+    "id": "12-concepts/rag-architecture.md",
     "title": "RAG Architecture (Deep Dive)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/rag-architecture.md",
     "section": "Concepts",
-    "path": "12-concepts\\rag-architecture.md",
+    "path": "12-concepts/rag-architecture.md",
     "headings": [
       {
         "level": 1,
@@ -1133,11 +1149,11 @@
     "content": "# RAG Architecture (Deep Dive) - Indexing pipeline: cleaning, chunking, embeddings, metadata - Retrieval: vector similarity + lexical; filters; rerankers - Answering: prompts with rules (citations), abstain paths - Quality: faithfulness, coverage, latency, cost"
   },
   {
-    "id": "13-platforms\\README.md",
+    "id": "13-platforms/README.md",
     "title": "Platforms to Know",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/README.md",
     "section": "Platforms",
-    "path": "13-platforms\\README.md",
+    "path": "13-platforms/README.md",
     "headings": [
       {
         "level": 1,
@@ -1148,11 +1164,11 @@
     "content": "# Platforms to Know - Databricks: Lakehouse, MLflow, vector search integrations - Snowflake: Cortex, Snowflake Native Apps, pgvector via partners - Elastic: Elasticsearch vector, hybrid search, relevance - Neo4j: Knowledge graphs and RAG enrichment - Pinecone/Weaviate/Qdrant/Milvus: managed and OSS vector DBs - Redis: Redis Stack with vectors, caching for LLM apps"
   },
   {
-    "id": "13-platforms\\databricks.md",
+    "id": "13-platforms/databricks.md",
     "title": "Databricks",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/databricks.md",
     "section": "Platforms",
-    "path": "13-platforms\\databricks.md",
+    "path": "13-platforms/databricks.md",
     "headings": [
       {
         "level": 1,
@@ -1163,11 +1179,11 @@
     "content": "# Databricks - What: - Why it matters: - How to use in RAG: - Links:"
   },
   {
-    "id": "13-platforms\\elasticsearch.md",
+    "id": "13-platforms/elasticsearch.md",
     "title": "Elasticsearch",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/elasticsearch.md",
     "section": "Platforms",
-    "path": "13-platforms\\elasticsearch.md",
+    "path": "13-platforms/elasticsearch.md",
     "headings": [
       {
         "level": 1,
@@ -1178,11 +1194,11 @@
     "content": "# Elasticsearch - What: - Why it matters: - How to use in RAG: - Links:"
   },
   {
-    "id": "13-platforms\\milvus.md",
+    "id": "13-platforms/milvus.md",
     "title": "Milvus",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/milvus.md",
     "section": "Platforms",
-    "path": "13-platforms\\milvus.md",
+    "path": "13-platforms/milvus.md",
     "headings": [
       {
         "level": 1,
@@ -1193,11 +1209,11 @@
     "content": "# Milvus - What: - Why it matters: - How to use in RAG: - Links:"
   },
   {
-    "id": "13-platforms\\neo4j.md",
+    "id": "13-platforms/neo4j.md",
     "title": "Neo4j",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/neo4j.md",
     "section": "Platforms",
-    "path": "13-platforms\\neo4j.md",
+    "path": "13-platforms/neo4j.md",
     "headings": [
       {
         "level": 1,
@@ -1208,11 +1224,11 @@
     "content": "# Neo4j - What: - Why it matters: - How to use in RAG: - Links:"
   },
   {
-    "id": "13-platforms\\pinecone.md",
+    "id": "13-platforms/pinecone.md",
     "title": "Pinecone",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/pinecone.md",
     "section": "Platforms",
-    "path": "13-platforms\\pinecone.md",
+    "path": "13-platforms/pinecone.md",
     "headings": [
       {
         "level": 1,
@@ -1223,11 +1239,11 @@
     "content": "# Pinecone - What: - Why it matters: - How to use in RAG: - Links:"
   },
   {
-    "id": "13-platforms\\qdrant.md",
+    "id": "13-platforms/qdrant.md",
     "title": "Qdrant",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/qdrant.md",
     "section": "Platforms",
-    "path": "13-platforms\\qdrant.md",
+    "path": "13-platforms/qdrant.md",
     "headings": [
       {
         "level": 1,
@@ -1238,11 +1254,11 @@
     "content": "# Qdrant - What: - Why it matters: - How to use in RAG: - Links:"
   },
   {
-    "id": "13-platforms\\redis.md",
+    "id": "13-platforms/redis.md",
     "title": "Redis",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/redis.md",
     "section": "Platforms",
-    "path": "13-platforms\\redis.md",
+    "path": "13-platforms/redis.md",
     "headings": [
       {
         "level": 1,
@@ -1253,11 +1269,11 @@
     "content": "# Redis - What: - Why it matters: - How to use in RAG: - Links:"
   },
   {
-    "id": "13-platforms\\snowflake.md",
+    "id": "13-platforms/snowflake.md",
     "title": "Snowflake",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/snowflake.md",
     "section": "Platforms",
-    "path": "13-platforms\\snowflake.md",
+    "path": "13-platforms/snowflake.md",
     "headings": [
       {
         "level": 1,
@@ -1268,11 +1284,11 @@
     "content": "# Snowflake - What: - Why it matters: - How to use in RAG: - Links:"
   },
   {
-    "id": "13-platforms\\weaviate.md",
+    "id": "13-platforms/weaviate.md",
     "title": "Weaviate",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/weaviate.md",
     "section": "Platforms",
-    "path": "13-platforms\\weaviate.md",
+    "path": "13-platforms/weaviate.md",
     "headings": [
       {
         "level": 1,
@@ -1283,11 +1299,11 @@
     "content": "# Weaviate - What: - Why it matters: - How to use in RAG: - Links:"
   },
   {
-    "id": "14-ai-tools\\README.md",
+    "id": "14-ai-tools/README.md",
     "title": "AI Coding Tools & Agents",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/README.md",
     "section": "Ai Tools",
-    "path": "14-ai-tools\\README.md",
+    "path": "14-ai-tools/README.md",
     "headings": [
       {
         "level": 1,
@@ -1298,11 +1314,11 @@
     "content": "# AI Coding Tools & Agents Practical guidance for using AI coding assistants and agent tools effectively as an AI Architect. Covers setup, strengths/limits, and playbooks for pairing with your repo. Tools covered: - Claude Code (Anthropic) — deep reasoning in code; inline edits - Gemini Code Assist (Google) — cloud-native integrations - Codex CLI (open-source agentic interface) — repo-aware CLI workflows - Cerebras (Model Studio/Inference) — cost/perf options and CLI use - Aider (OSS) — Git-aware assistant via diffs/commits - Continue (OSS) — local/remote models inside VS Code/JetBrains - Cursor (editor) — AI-native IDE (commercial) - Devin (agent) — long-running coding agent (commercial; conceptual workflow) See also: and ."
   },
   {
-    "id": "14-ai-tools\\aider.md",
+    "id": "14-ai-tools/aider.md",
     "title": "Aider (OSS)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/aider.md",
     "section": "Ai Tools",
-    "path": "14-ai-tools\\aider.md",
+    "path": "14-ai-tools/aider.md",
     "headings": [
       {
         "level": 1,
@@ -1313,11 +1329,11 @@
     "content": "# Aider (OSS) - Repo: https://github.com/Aider-AI/aider - What: Git-aware CLI pair programmer; proposes diffs and commits. - Use: → in repo; ask for changes; review patches. - Tips: Use small, focused asks; rely on branch flows; run tests between steps."
   },
   {
-    "id": "14-ai-tools\\cerebras.md",
+    "id": "14-ai-tools/cerebras.md",
     "title": "Cerebras (Models & CLI)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/cerebras.md",
     "section": "Ai Tools",
-    "path": "14-ai-tools\\cerebras.md",
+    "path": "14-ai-tools/cerebras.md",
     "headings": [
       {
         "level": 1,
@@ -1328,11 +1344,11 @@
     "content": "# Cerebras (Models & CLI) - What: Efficient LLM inference and training offerings; explore CLI/SDK for cost/perf. - Info: https://www.cerebras.net/ and https://github.com/Cerebras - Use: For workloads needing lower-cost inference at scale; integrate via standard SDKs."
   },
   {
-    "id": "14-ai-tools\\claude-code.md",
+    "id": "14-ai-tools/claude-code.md",
     "title": "Claude Code (Anthropic)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/claude-code.md",
     "section": "Ai Tools",
-    "path": "14-ai-tools\\claude-code.md",
+    "path": "14-ai-tools/claude-code.md",
     "headings": [
       {
         "level": 1,
@@ -1343,11 +1359,11 @@
     "content": "# Claude Code (Anthropic) - What: IDE and web assistant for code with strong reasoning and refactoring. - Setup: https://www.anthropic.com/claude - Use: Pair for big-picture refactors, doc generation, and design. Provide repo context (files, errors) and ask for patch diffs. - Tips: Prefer \"show me a minimal diff\"; iterate with test stubs; paste stack traces and failing tests."
   },
   {
-    "id": "14-ai-tools\\codex-cli.md",
+    "id": "14-ai-tools/codex-cli.md",
     "title": "Codex CLI (Open-source agentic coding interface)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/codex-cli.md",
     "section": "Ai Tools",
-    "path": "14-ai-tools\\codex-cli.md",
+    "path": "14-ai-tools/codex-cli.md",
     "headings": [
       {
         "level": 1,
@@ -1358,11 +1374,11 @@
     "content": "# Codex CLI (Open-source agentic coding interface) - Repo: https://github.com/openai/codex - What: Terminal-centric agent that can plan, run commands, and patch files with your approval. - Use: Explain goals → let it propose a plan → approve tool calls → review diffs before applying. - Tips: Keep tasks atomic; commit often; use a separate branch."
   },
   {
-    "id": "14-ai-tools\\continue.md",
+    "id": "14-ai-tools/continue.md",
     "title": "Continue (OSS)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/continue.md",
     "section": "Ai Tools",
-    "path": "14-ai-tools\\continue.md",
+    "path": "14-ai-tools/continue.md",
     "headings": [
       {
         "level": 1,
@@ -1373,11 +1389,11 @@
     "content": "# Continue (OSS) - Repo: https://github.com/continuedev/continue - What: Open-source AI assistant inside VS Code/JetBrains; supports local/remote models. - Use: Install extension → configure providers → chat over code, run quick edits. - Tips: Add a context window with key files; save prompts as recipes."
   },
   {
-    "id": "14-ai-tools\\cursor.md",
+    "id": "14-ai-tools/cursor.md",
     "title": "Cursor (Editor)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/cursor.md",
     "section": "Ai Tools",
-    "path": "14-ai-tools\\cursor.md",
+    "path": "14-ai-tools/cursor.md",
     "headings": [
       {
         "level": 1,
@@ -1388,11 +1404,11 @@
     "content": "# Cursor (Editor) - Site: https://www.cursor.com/ - What: AI-first IDE with strong inline and repo-wide refactors (commercial). - Use: Great for day-to-day implementation; keep commits small; use integrated diff view."
   },
   {
-    "id": "14-ai-tools\\devin.md",
+    "id": "14-ai-tools/devin.md",
     "title": "Devin (Agent)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/devin.md",
     "section": "Ai Tools",
-    "path": "14-ai-tools\\devin.md",
+    "path": "14-ai-tools/devin.md",
     "headings": [
       {
         "level": 1,
@@ -1403,11 +1419,11 @@
     "content": "# Devin (Agent) - Site: https://www.cognition.ai/ - What: Autonomous coding agent (commercial, limited access). Use this as a conceptual workflow: plan tasks → monitor progress → validate outputs. - Guidance: Even with autonomous agents, keep tight scopes, observable outputs, and manual review gates."
   },
   {
-    "id": "14-ai-tools\\gemini-code-assist.md",
+    "id": "14-ai-tools/gemini-code-assist.md",
     "title": "Gemini Code Assist (Google)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/gemini-code-assist.md",
     "section": "Ai Tools",
-    "path": "14-ai-tools\\gemini-code-assist.md",
+    "path": "14-ai-tools/gemini-code-assist.md",
     "headings": [
       {
         "level": 1,
@@ -1418,11 +1434,11 @@
     "content": "# Gemini Code Assist (Google) - What: Code assistance integrated with Google Cloud and Vertex AI. - Setup: https://cloud.google.com/products/code-assist - Use: Cloud-native integrations (Vertex, GKE); ask for infra snippets and policy checks. - Tips: Keep prompts grounded with exact service names and links to docs."
   },
   {
-    "id": "15-workflows\\agentic-swarms.md",
+    "id": "15-workflows/agentic-swarms.md",
     "title": "Workflows: Agentic Code Swarms",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/agentic-swarms.md",
     "section": "Workflows",
-    "path": "15-workflows\\agentic-swarms.md",
+    "path": "15-workflows/agentic-swarms.md",
     "headings": [
       {
         "level": 1,
@@ -1449,11 +1465,11 @@
     "content": "# Workflows: Agentic Code Swarms ## Planner → Worker → Reviewer (P–W–R) - Use for small, well‑scoped tasks - Add for gated release when safety critical ## Round‑Robin with Ownership - Each agent updates a shared plan; ownership fields resolve conflicts - Good for brainstorming or multi‑discipline drafts ## Map‑Reduce - Fan‑out to N workers and aggregate; add deduplication and scoring ## Operational Flow 1) Goal defined with acceptance criteria 2) Orchestrator runs; traces captured 3) Evals check outputs; failures routed to triage 4) Approved outputs promoted to deliverables"
   },
   {
-    "id": "15-workflows\\ai-pair-programming.md",
+    "id": "15-workflows/ai-pair-programming.md",
     "title": "AI Pair Programming (Daily Flow)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/ai-pair-programming.md",
     "section": "Workflows",
-    "path": "15-workflows\\ai-pair-programming.md",
+    "path": "15-workflows/ai-pair-programming.md",
     "headings": [
       {
         "level": 1,
@@ -1464,11 +1480,11 @@
     "content": "# AI Pair Programming (Daily Flow) 1) Plan: Write a short plan in the issue; define acceptance criteria. 2) Context: Share key files/errors; ask for a minimal diff. 3) Apply: Review patches; run tests; iterate. 4) Document: Update README/docs; generate changelog. 5) PR: Ask AI to draft PR summary; link to issues; request reviews. Tools: Aider/Continue/Claude Code. Keep changes small; commit early/often."
   },
   {
-    "id": "15-workflows\\issue-triage-with-linear.md",
+    "id": "15-workflows/issue-triage-with-linear.md",
     "title": "Issue Triage with Linear/GitHub",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/issue-triage-with-linear.md",
     "section": "Workflows",
-    "path": "15-workflows\\issue-triage-with-linear.md",
+    "path": "15-workflows/issue-triage-with-linear.md",
     "headings": [
       {
         "level": 1,
@@ -1479,11 +1495,11 @@
     "content": "# Issue Triage with Linear/GitHub - Triage template: priority, scope, acceptance tests - Use AI to cluster issues and propose epics - Auto-draft tasks from 100 Projects with tags and timeboxes"
   },
   {
-    "id": "15-workflows\\pr-review-with-agents.md",
+    "id": "15-workflows/pr-review-with-agents.md",
     "title": "PR Review with AI Agents",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/pr-review-with-agents.md",
     "section": "Workflows",
-    "path": "15-workflows\\pr-review-with-agents.md",
+    "path": "15-workflows/pr-review-with-agents.md",
     "headings": [
       {
         "level": 1,
@@ -1494,11 +1510,11 @@
     "content": "# PR Review with AI Agents - Generate PR descriptions with context and risk notes. - Ask AI for test cases and edge cases; run suggested tests. - Use prompt pack: and ."
   },
   {
-    "id": "15-workflows\\repo-maintenance-with-ai.md",
+    "id": "15-workflows/repo-maintenance-with-ai.md",
     "title": "Repo Maintenance with AI",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/repo-maintenance-with-ai.md",
     "section": "Workflows",
-    "path": "15-workflows\\repo-maintenance-with-ai.md",
+    "path": "15-workflows/repo-maintenance-with-ai.md",
     "headings": [
       {
         "level": 1,
@@ -1509,11 +1525,11 @@
     "content": "# Repo Maintenance with AI - Link checks (CI): keep external links fresh - Auto-generate TOCs and badges as needed - Prompt pack: - Batch sanitize links and add context blurbs per link"
   },
   {
-    "id": "16-collaboration\\agentic-teams.md",
+    "id": "16-collaboration/agentic-teams.md",
     "title": "Agentic Teams: Roles, RACI, and Operating Model",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/agentic-teams.md",
     "section": "Collaboration",
-    "path": "16-collaboration\\agentic-teams.md",
+    "path": "16-collaboration/agentic-teams.md",
     "headings": [
       {
         "level": 1,
@@ -1544,11 +1560,11 @@
     "content": "# Agentic Teams: Roles, RACI, and Operating Model ## Roles - Orchestrator (Architect): defines goals, orchestrations, and acceptance criteria - Agent Lead (Tech): designs agents, tools, error handling, and eval hooks - Data/Evals: defines metrics, datasets, and guardrails; triages failures - Platform: CI/CD, secrets, cost controls, observability - Product: scope, risks, UX, compliance sign‑offs ## RACI (example) - Plan: Product (A), Architect (R), Tech (C), Evals (C) - Build: Tech (A/R), Platform (C), Architect (C) - Evaluate: Evals (A/R), Tech (C), Product (C) - Ship: Platform (A/R), Product (C), Architect (C) ## Cadence - Daily: 15‑min swarm review (top failures, costs, blocked items) - Weekly: model/agent perf review; update evals and guardrails - Monthly: pattern retro; consolidate lessons into the playbook ## Guardrails - Budget envelopes per run and per environment - Red‑team prompts and jailbreak checks in CI - PII scans, citations required for claims, source attribution ## Artifacts - Goals → plans → traces → final deliverables - Architecture documents and BoMs - Eval dashboards with trend lines and incidents"
   },
   {
-    "id": "16-collaboration\\checklists.md",
+    "id": "16-collaboration/checklists.md",
     "title": "Checklists (Before/After)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/checklists.md",
     "section": "Collaboration",
-    "path": "16-collaboration\\checklists.md",
+    "path": "16-collaboration/checklists.md",
     "headings": [
       {
         "level": 1,
@@ -1559,11 +1575,11 @@
     "content": "# Checklists (Before/After) Before Asking - [ ] Define success in 1–2 sentences - [ ] Gather context (files, logs, env) - [ ] Decide output format (diff, plan, code, table) - [ ] Note constraints (performance, security, style) After Receiving - [ ] Sanity check: does it meet acceptance criteria? - [ ] Apply minimal diff; run tests; lint - [ ] Add/adjust docs; create PR with summary - [ ] Capture follow‑ups as issues"
   },
   {
-    "id": "16-collaboration\\issue-templates.md",
+    "id": "16-collaboration/issue-templates.md",
     "title": "Issue Templates for AI Pairing",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/issue-templates.md",
     "section": "Collaboration",
-    "path": "16-collaboration\\issue-templates.md",
+    "path": "16-collaboration/issue-templates.md",
     "headings": [
       {
         "level": 1,
@@ -1574,11 +1590,11 @@
     "content": "# Issue Templates for AI Pairing Feature - Objective - Acceptance criteria - Constraints / non‑goals - Context (links, files) - Definition of done Bug - Observed behavior & logs - Expected behavior - Repro steps - Env (OS, versions) - Hypothesis (optional)"
   },
   {
-    "id": "16-collaboration\\prompting-guide.md",
+    "id": "16-collaboration/prompting-guide.md",
     "title": "Prompting Guide (Structure & Recipes)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/prompting-guide.md",
     "section": "Collaboration",
-    "path": "16-collaboration\\prompting-guide.md",
+    "path": "16-collaboration/prompting-guide.md",
     "headings": [
       {
         "level": 1,
@@ -1589,11 +1605,11 @@
     "content": "# Prompting Guide (Structure & Recipes) Prompt Canvas - Role: what assistant is (e.g., senior TS engineer) - Task: the concrete outcome - Context: files, errors, versions, constraints - Output: format requirements (diff, table, steps) - Checks: tests, constraints, guardrails Example (Patch‑First) Recipes - Code Review: see - Test Generator: see - Refactor: see - Docs Writer: see - Pattern Drafter: see - RAG Eval: see"
   },
   {
-    "id": "16-collaboration\\working-with-ai.md",
+    "id": "16-collaboration/working-with-ai.md",
     "title": "Working With AI Assistants (Playbook)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/working-with-ai.md",
     "section": "Collaboration",
-    "path": "16-collaboration\\working-with-ai.md",
+    "path": "16-collaboration/working-with-ai.md",
     "headings": [
       {
         "level": 1,
@@ -1605,62 +1621,34 @@
   },
   {
     "id": "README.md",
-    "title": "AI Architect Academy - Open Playbook for Builders",
+    "title": "AI Architect Academy — Command Center for Visionary Builders",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/README.md",
     "section": "README.md",
     "path": "README.md",
     "headings": [
       {
         "level": 1,
-        "text": "AI Architect Academy - Open Playbook for Builders"
+        "text": "AI Architect Academy — Command Center for Visionary Builders"
       },
       {
         "level": 2,
-        "text": "Why This Playbook"
+        "text": "The Experience at a Glance"
       },
       {
         "level": 2,
-        "text": "TL;DR - Get Value Fast"
+        "text": "Why Clone the Repository"
       },
       {
         "level": 2,
-        "text": "Your Learning Journey"
+        "text": "Platform Architecture — What Lives Where"
       },
       {
         "level": 2,
-        "text": "Agentic Code Swarms - Quickstart"
+        "text": "Signature Loops You Can Run This Week"
       },
       {
         "level": 2,
-        "text": "Screenshots"
-      },
-      {
-        "level": 2,
-        "text": "What You Get"
-      },
-      {
-        "level": 2,
-        "text": "Starter Stack (Opinionated)"
-      },
-      {
-        "level": 2,
-        "text": "Fast Paths"
-      },
-      {
-        "level": 2,
-        "text": "Quick Start"
-      },
-      {
-        "level": 2,
-        "text": "Top Repos Every AI Architect Should Know"
-      },
-      {
-        "level": 2,
-        "text": "Projects (Ship Value Fast)"
-      },
-      {
-        "level": 2,
-        "text": "Enterprise Patterns (Design by Value)"
+        "text": "Start Your Journey (Choose the Lane that Fits)"
       },
       {
         "level": 2,
@@ -1668,61 +1656,73 @@
       },
       {
         "level": 2,
-        "text": "Structure - Where This Is Going"
+        "text": "Create Momentum for Your Brand & Community"
       },
       {
         "level": 2,
-        "text": "Live Catalog (GitHub Pages)"
-      },
-      {
-        "level": 3,
-        "text": "Site Features"
-      },
-      {
-        "level": 3,
-        "text": "Maintainer Tips"
-      },
-      {
-        "level": 2,
-        "text": "Who This Is For"
-      },
-      {
-        "level": 2,
-        "text": "How to Use This Repo"
-      },
-      {
-        "level": 2,
-        "text": "Local Use and Collaboration"
-      },
-      {
-        "level": 2,
-        "text": "Collaborate with AI"
-      },
-      {
-        "level": 2,
-        "text": "Contributing"
-      },
-      {
-        "level": 2,
-        "text": "Star and Share"
+        "text": "Contribute & Extend"
       }
     ],
     "excerpt": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square\"></a> <a hre",
-    "content": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square\"></a> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/pulls\"><img alt=\"PRs\" src=\"https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square\"></a> <a href=\"https://ai-architect-academy.github.io/ai-architect-academy/\"><img alt=\"Pages\" src=\"https://img.shields.io/badge/Pages-live-green?style=flat-square\"></a> </p> # AI Architect Academy - Open Playbook for Builders Become the architect who can design, ship, and operate AI systems that matter. This repo is a high-signal, living guide: patterns, projects, and the best open resources, curated and connected so you can move fast with confidence. - Live site: https://ai-architect-academy.github.io/ai-architect-academy/ - GitHub Pages source: <p align=\"center\"><img src=\"assets/start-here.svg\" alt=\"Start Here\" width=\"720\"></p> ## Why This Playbook - Patterns: enterprise-ready designs with value, risks, bill of materials, and architecture guidance - Projects: real builds for RAG, agents, evals, observability, and MLOps - Learning paths: beginner, professional, and 100-hour accelerators - Toolchains: reference stacks and trade-offs across platforms and vendors - Governance: privacy, risk, compliance, and operational guardrails ## TL;DR - Get Value Fast - Pick a goal (RAG, agents, evals) and open the matching project - Use a pattern to shape value, architecture, BoM, and risks - Ship the smallest useful version with evals and observability from day one Quick links: [Start Here](START-HERE.md) - [RAG on Supabase](05-projects/rag-on-supabase.md) - [Design Patterns](01-design-patterns/README.md) - [Live Catalog](https://ai-architect-academy.github.io/ai-architect-academy/) ## Your Learning Journey - Ori"
+    "content": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square\"></a> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/pulls\"><img alt=\"PRs\" src=\"https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square\"></a> <a href=\"https://ai-architect-academy.github.io/ai-architect-academy/\"><img alt=\"Pages\" src=\"https://img.shields.io/badge/Pages-live-green?style=flat-square\"></a> </p> # AI Architect Academy — Command Center for Visionary Builders Lead the conversations, ship the systems, and operate responsibly. This open playbook is your living hub for designing, building, and running AI products with confidence. Every page is built for AI architects, founding teams, creators, and advisors who need trusted patterns, deep resources, and a brand-ready story they can share with clients, partners, and their own communities. <div align=\"center\"> <a href=\"START-HERE.md\"><img alt=\"Start Here\" src=\"https://img.shields.io/badge/Start-Now-cyan?style=for-the-badge\"></a> <a href=\"docs/experience.html\"><img alt=\"Explore the Experience\" src=\"https://img.shields.io/badge/Explore-Experience-purple?style=for-the-badge\"></a> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/archive/refs/heads/main.zip\"><img alt=\"Download\" src=\"https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge\"></a> </div> ![Experience Map](assets/experience-map.svg) ## The Experience at a Glance - **Explore the live atlas.** Browse the [GitHub Pages site](https://ai-architect-academy.github.io/ai-architect-academy/) with unified navigation, topic landing pages, and fast search. - **Clone the full operating system.** Pull the repo to unlock scripts, prompt packs, workflows, and design assets for your team and AI assistants. -"
   },
   {
     "id": "START-HERE.md",
-    "title": "Start Here",
+    "title": "Start Here — Build Your AI Architect Command Center",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md",
     "section": "START HERE.md",
     "path": "START-HERE.md",
     "headings": [
       {
         "level": 1,
-        "text": "Start Here"
+        "text": "Start Here — Build Your AI Architect Command Center"
+      },
+      {
+        "level": 2,
+        "text": "1. Choose Your Mission Profile"
+      },
+      {
+        "level": 3,
+        "text": "Launchpad — First 100 Hours"
+      },
+      {
+        "level": 3,
+        "text": "Creator & Influencer Track"
+      },
+      {
+        "level": 3,
+        "text": "Enterprise & AI CoE Leadership"
+      },
+      {
+        "level": 3,
+        "text": "Advisors, Clients, Friends & Family"
+      },
+      {
+        "level": 2,
+        "text": "2. Map Your Architecture Playbook"
+      },
+      {
+        "level": 2,
+        "text": "3. Build Value Loops"
+      },
+      {
+        "level": 2,
+        "text": "4. Instrument, Govern, and Operate"
+      },
+      {
+        "level": 2,
+        "text": "5. Amplify and Share the Story"
+      },
+      {
+        "level": 2,
+        "text": "Clone & Personalise the Repo"
+      },
+      {
+        "level": 2,
+        "text": "Keep Exploring"
       }
     ],
-    "excerpt": "# Start Here 1) Choose a Path - 100‑Hour AI Architect (fastest value): - Beginner (4 weeks): - Professional (6 weeks): - Bootcamp (AI CoE Inspired): 2) Learn by Patterns - Read and 3 exemplars: - Content Generation — - Decision Support — - Model Lifecycle — 3) Build Projects (Hands‑On) - RAG on Supabase — - Vector Sear",
-    "content": "# Start Here 1) Choose a Path - 100‑Hour AI Architect (fastest value): - Beginner (4 weeks): - Professional (6 weeks): - Bootcamp (AI CoE Inspired): 2) Learn by Patterns - Read and 3 exemplars: - Content Generation — - Decision Support — - Model Lifecycle — 3) Build Projects (Hands‑On) - RAG on Supabase — - Vector Search (pgvector) — - Evals with Langfuse — - Agentic Code Swarms — 4) Ship and Operate - Stack reference — - Eval metrics & harness — - Governance (GDPR, model risk) — 5) Go Deeper - Awesome lists (OSS) — - Articles (long‑form) —"
+    "excerpt": "# Start Here — Build Your AI Architect Command Center You’re here because you want to ship real AI value, guide stakeholders with confidence, and make your work easy to share. This quick guide orients you to the full experience so you can get momentum within minutes. ## 1. Choose Your Mission Profile ### Launchpad — Fi",
+    "content": "# Start Here — Build Your AI Architect Command Center You’re here because you want to ship real AI value, guide stakeholders with confidence, and make your work easy to share. This quick guide orients you to the full experience so you can get momentum within minutes. ## 1. Choose Your Mission Profile ### Launchpad — First 100 Hours - Follow the [100-Hour AI Architect plan](02-learning-paths/100-hour-ai-architect.md) to sprint through foundations, shipping, and storytelling. - Pair the plan with three anchor projects: [RAG on Supabase](05-projects/rag-on-supabase.md), [Langfuse evals](05-projects/evals-langfuse.md), and [Vector search benchmarks](05-projects/vector-search-pgvector.md). ### Creator & Influencer Track - Use the [Beginner](02-learning-paths/beginner.md) and [Professional](02-learning-paths/professional.md) paths to pace long-form content, workshops, and community sessions. - Pull examples and citations from the [Awesome collections](03-awesome/) and [Articles](09-articles/) folders. ### Enterprise & AI CoE Leadership - Run the [Bootcamp](02-learning-paths/bootcamp.md) to align product, platform, risk, and ops teams. - Combine architecture patterns ( ) with the [Governance toolkit](08-governance/) and [Collaboration playbooks](16-collaboration/) for executive visibility. ### Advisors, Clients, Friends & Family - Share the [Experience page](docs/experience.html) when introducing the hub to new collaborators. - Use to spin up proposals, meeting notes, and recap reports fast. ## 2. Map Your Architecture Playbook - Start with three core patterns: [Content Generation](01-design-patterns/content-generation.md), [Decision Support](01-design-patterns/decision-support.md), and [Model Lifecycle Management](01-design-patterns/model-lifecycle-management.md). - Explore the [Concept decks](12-concepts/) for mental models (retrieval, evaluation, observability, safety) you can present to stakeholders. - Browse [Platforms](docs/platforms.html) and [Cloud blueprints](docs"
   }
 ]
