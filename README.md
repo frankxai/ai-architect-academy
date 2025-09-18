@@ -16,7 +16,7 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
   <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/archive/refs/heads/main.zip"><img alt="Download" src="https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge"></a>
 </div>
 
-[[assets/ (20250910_1142_Sustainable Architectural Marvel_simple_compose_01k4sfzwfgfjbbcfr68yqms3yp.png)] 
+![AI Architect Academy](assets/20250910_1142_Sustainable Architectural Marvel_simple_compose_01k4sfzwfgfjbbcfr68yqms3yp.png)
 
 ## The Experience at a Glance
 - **Explore the live atlas.** Browse the [GitHub Pages site](https://ai-architect-academy.github.io/ai-architect-academy/) with unified navigation, topic landing pages, and fast search.
