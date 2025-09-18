@@ -41,8 +41,8 @@
   <script>
     const params = new URLSearchParams(location.search);
     const file = params.get('file') || '01-design-patterns/content-generation.md';
-    const raw = 'https://raw.githubusercontent.com/AI-Architect-Academy/ai-architect-academy/main/' + file;
-    const blob = 'https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/' + file;
+    const raw = 'https://raw.githubusercontent.com/frankxai/ai-architect-academy/main/' + file;
+    const blob = 'https://github.com/frankxai/ai-architect-academy/blob/main/' + file;
     document.getElementById('sourceLink').href = blob;
     fetch(raw).then(r=>r.text()).then(md=>{
       const html = marked.parse(md);
@@ -65,3 +65,5 @@
     });
   </script>
 </body></html>
+
+

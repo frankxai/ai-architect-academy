@@ -1,8 +1,8 @@
 <p align="center"><img src="assets/logo.svg" width="420" alt="AI Architect Academy"></p>
 
 <p align="center">
-  <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square"></a>
-  <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/pulls"><img alt="PRs" src="https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square"></a>
+  <a href="https://github.com/frankxai/ai-architect-academy/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/frankxai/ai-architect-academy?style=flat-square"></a>
+  <a href="https://github.com/frankxai/ai-architect-academy/pulls"><img alt="PRs" src="https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square"></a>
   <a href="https://ai-architect-academy.github.io/ai-architect-academy/"><img alt="Pages" src="https://img.shields.io/badge/Pages-live-green?style=flat-square"></a>
 </p>
 
@@ -13,10 +13,15 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
 <div align="center">
   <a href="START-HERE.md"><img alt="Start Here" src="https://img.shields.io/badge/Start-Now-cyan?style=for-the-badge"></a>
   <a href="docs/experience.html"><img alt="Explore the Experience" src="https://img.shields.io/badge/Explore-Experience-purple?style=for-the-badge"></a>
-  <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/archive/refs/heads/main.zip"><img alt="Download" src="https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge"></a>
+  <a href="https://github.com/frankxai/ai-architect-academy/archive/refs/heads/main.zip"><img alt="Download" src="https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge"></a>
 </div>
 
-![Experience Map](assets/experience-map.svg)
+![AI Architect Academy](assets/ai-architect-campus.png)
+
+<p align="center">
+  <img src="assets/ai-architect-professor.png" alt="AI Architect mentor persona using AI co-creation tools" width="320">
+  <img src="assets/ai-architect-education-poster.png" alt="Think like an AI Architect curriculum poster" width="320">
+</p>
 
 ## The Experience at a Glance
 - **Explore the live atlas.** Browse the [GitHub Pages site](https://ai-architect-academy.github.io/ai-architect-academy/) with unified navigation, topic landing pages, and fast search.
@@ -53,6 +58,11 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
 - **Enterprise & AI CoE Leaders.** Run the [Bootcamp](02-learning-paths/bootcamp.md) to align architecture, governance, and adoption.
 - **Agentic Innovators.** Experiment with [Agentic Code Swarms](agentic-swarms/README.md) and the [Agentic SaaS Planner](05-projects/agentic-saas-planner.md).
 
+## Curriculum Builder (Teach & Scale)
+- Run the updated [100-Hour AI Architect Plan](02-learning-paths/100-hour-ai-architect.md) when you need a detailed four-week build with daily outputs and assessments.
+- Coach professionals with the [Professional Path](02-learning-paths/professional.md) and mobilise exec sponsors via the [Bootcamp Path](02-learning-paths/bootcamp.md).
+- Use the hero visuals (`assets/ai-architect-campus.png`, `assets/ai-architect-professor.png`, `assets/ai-architect-education-poster.png`) to anchor workshops and enablement decks.
+
 ## Operate with Confidence
 - **Evaluation stack:** [Metrics](07-evaluation/metrics.md), [Eval harness](07-evaluation/eval-harness.md), and [promptfoo integrations](05-projects/evals-langfuse.md).
 - **Guardrails & governance:** [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model risk](08-governance/model-risk.md), and policy templates.
@@ -71,4 +81,6 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
 
 ---
 
-**Live site:** https://ai-architect-academy.github.io/ai-architect-academy/ · **Clone & customize:** `git clone https://github.com/AI-Architect-Academy/ai-architect-academy.git`
+**Live site:** https://ai-architect-academy.github.io/ai-architect-academy/ · **Clone & customize:** `git clone https://github.com/frankxai/ai-architect-academy.git`
+
+

@@ -36,14 +36,14 @@
       <nav id="toc" class="mt-2 text-sm space-y-1"></nav>
       <div class="mt-6">
         <a id="sourceLink" class="text-cyan-600 underline text-sm" target="_blank" rel="noopener"
-           href="https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md">View source on GitHub ↗</a>
+           href="https://github.com/frankxai/ai-architect-academy/blob/main/START-HERE.md">View source on GitHub ↗</a>
       </div>
     </aside>
     <article id="content" class="prose prose-slate dark:prose-invert max-w-none"></article>
   </main>
   <footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400">© AI Architect Academy — Open Playbook</footer>
   <script>
-    const raw = 'https://raw.githubusercontent.com/AI-Architect-Academy/ai-architect-academy/main/START-HERE.md';
+    const raw = 'https://raw.githubusercontent.com/frankxai/ai-architect-academy/main/START-HERE.md';
     fetch(raw).then(r=>r.text()).then(md=>{
       const el = document.getElementById('content');
       el.innerHTML = marked.parse(md);
@@ -62,3 +62,5 @@
   </script>
 </body>
 </html>
+
+

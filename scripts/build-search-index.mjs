@@ -1,4 +1,4 @@
-﻿import fs from 'node:fs/promises';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -79,7 +79,7 @@ function stripCodeFences(text) {
 }
 
 function toGithubHref(relativePath) {
-  return 'https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/' + relativePath.replace(/\\/g, '/');
+  return 'https://github.com/frankxai/ai-architect-academy/blob/main/' + relativePath.replace(/\\/g, '/');
 }
 
 async function ensureDir(dir) {
@@ -146,3 +146,4 @@ buildIndex().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+

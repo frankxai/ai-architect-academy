@@ -81,11 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (actions) {
       const clone = actions.querySelector('[data-clone]');
       if (clone) {
-        clone.href = 'https://github.com/AI-Architect-Academy/ai-architect-academy/archive/refs/heads/main.zip';
+        clone.href = 'https://github.com/frankxai/ai-architect-academy/archive/refs/heads/main.zip';
       }
       const github = actions.querySelector('[data-github]');
       if (github) {
-        github.href = 'https://github.com/AI-Architect-Academy/ai-architect-academy';
+        github.href = 'https://github.com/frankxai/ai-architect-academy';
       }
       const search = actions.querySelector('[data-search]');
       if (search) {
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     edit.textContent = 'Edit';
     edit.className = 'px-2 py-1 border rounded text-xs mr-2';
     // Compute repo edit URL for current docs page
-    const repo = 'https://github.com/AI-Architect-Academy/ai-architect-academy/edit/main/';
+    const repo = 'https://github.com/frankxai/ai-architect-academy/edit/main/';
     const path = window.location.pathname;
     // Try to find the docs path segment
     const idx = path.indexOf('/ai-architect-academy/');
@@ -151,3 +151,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   } catch {}
 });
+
