@@ -68,6 +68,9 @@ Purpose: Continuously absorb the best pedagogy, frameworks, and research practic
 | Gemini reasoning techniques | Google DeepMind | Reasoning | Expand `decision-support.md` reasoning tools | Builder | Completed | Added Gemini debate + simulator guidance (2025-09-22). |
 | GPT-5 Omni multi-modal UX | OpenAI | Interaction design | Add to `content-generation.md` multi-modal section | Creator | Completed | Documented GPT-5 Omni multi-modal and streaming hooks (2025-09-22). |
 | GTC accelerated inference best practices | NVIDIA | Infra | Update `performance-optimization.md` caching + quantisation | Ops | Completed | Added TensorRT-LLM batching + FinOps tips (2025-09-22). |
+| OpenAI Spec 2.0 adoption | OpenAI | Safety | Update governance library with usage policy metadata and disclosures | Governance | Planned | Map to compliance checklists and content safety tags. |
+| Gemini simulator playbooks | Google DeepMind | Reasoning | Publish scenario library aligned with debate sprint | Builder | Planned | Bundle with new micro-module docs. |
+| NVIDIA paged KV reference runbook | NVIDIA | Infra | Document rollout of Tensor-Optimised Inference playbook | Ops | Planned | Capture latency/cost benchmarks and rollback plan. |
 
 ## Research Questions
 - How do labs measure agent reliability and safety?  

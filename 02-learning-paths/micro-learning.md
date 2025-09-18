@@ -35,6 +35,13 @@ Mix and match the [Micro-Learning Atlas](micro-modules/README.md) modules to bui
 2. [Creator Evaluation Scorecards](micro-modules/creator-evaluation-scorecards.md)
 3. [Creator Analytics Feedback Loop](micro-modules/creator-analytics-feedback-loop.md)
 4. **Ship:** Publish a creator ops playbook that links prompts, scorecards, and analytics back to campaign briefs.
+### Sprint F — Reasoning & Safety
+1. [Gemini Reasoning & Debate Sprint](micro-modules/gemini-reasoning-debate.md)
+2. [Constitutional AI Guardrail Lab](micro-modules/constitutional-ai-guardrails.md)
+3. [Tensor-Optimised Inference Playbook](micro-modules/tensor-optimised-inference.md)
+4. **Ship:** Update the Decision Support and Governance patterns with debate transcripts, guardrail logs, and performance improvements.
+
+
 ## Implementation Tips
 - Schedule micro-modules as daily 45-minute focus blocks. Add reminders via your team calendar.
 - Track completion in the [Learning Logbook](logbook.md) and reflect weekly using [Retrospective with AI](../15-workflows/retrospective-with-ai.md).
