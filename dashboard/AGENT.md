@@ -1,6 +1,6 @@
 # Agent Integration Guide
 
-Connect the AI Architect Dashboard to coding copilots, hosted LLMs, or local models. Use this playbook to align assistant behaviour with the main repo’s guardrails.
+Connect the AI Architect Dashboard to coding copilots, hosted LLMs, or local models. Use this playbook to align assistant behaviour with the main repo's guardrails.
 
 ## 1. Choose Your Provider
 | Provider | Why use it | Minimum setup |

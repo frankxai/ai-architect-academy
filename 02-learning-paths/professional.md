@@ -18,10 +18,11 @@ Ideal for architects balancing delivery and leadership responsibilities (~12-15 
 | 6 | Teach & Scale | Build enablement assets, mentor peers, host workshop | Workshop agenda, recording, updated poster |
 
 ## Mentorship Moments
+- Add one [Micro-Learning Atlas](micro-learning.md) module per week to keep skills sharp (e.g., guardrails during Week 3, storytelling during Week 6).
 - Pair each week with a 30-minute mentor sync using the questions in `16-collaboration/working-with-ai.md`.
 - Swap eval results and guardrail ideas with peers via `15-workflows/peer-review.md`.
 
 ## Portfolio & Promotion
 - Capture new visuals (screenshots, hero art) and append to `assets/` + `docs/assets/` as you progress.
 - Maintain a change log in `02-learning-paths/logbook.md` (create if needed) highlighting wins, metrics, and stories.
-- When ready, submit a PR to share your vertical playbook or workflow so others can build on it.
+- When ready, submit a PR to share your vertical playbook or workflow so others can build on it.

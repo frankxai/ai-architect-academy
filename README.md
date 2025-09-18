@@ -49,6 +49,11 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 - Use the hero visuals (`assets/ai-architect-campus.png`, `assets/ai-architect-professor.png`, `assets/ai-architect-education-poster.png`) to anchor workshops and enablement decks.
 - Track progress with the [Self-Assessment](02-learning-paths/self-assessment.md) and [Learning Logbook](02-learning-paths/logbook.md).
 
+## Micro-Learning Atlas
+- Browse 45-minute modules in the [Micro-Learning Atlas](docs/micro-learning.html) covering foundations, retrieval, agents, ops, governance, and storytelling.
+- Download curated playlists in [`02-learning-paths/micro-learning.md`](02-learning-paths/micro-learning.md) or mix your own via [`docs/data/micro-learning.json`](docs/data/micro-learning.json).
+- Pair each module with the [Learning Logbook](02-learning-paths/logbook.md) and [Retrospective with AI](15-workflows/retrospective-with-ai.md) to build momentum.
+
 ## Tooling & Integrations
 - **Vercel AI SDK playbook:** Follow [`06-toolchains/vercel-ai-sdk.md`](06-toolchains/vercel-ai-sdk.md) to ship compliant chat, RAG, and agent flows with streaming UX.
 - **Stack reference:** [`06-toolchains/stack-reference.md`](06-toolchains/stack-reference.md) compares vector stores, rerankers, eval suites, and infra add-ons.

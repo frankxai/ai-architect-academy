@@ -44,10 +44,15 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 | **Advisors & Clients** | [`docs/experience.html`](docs/experience.html) | Curated walkthroughs and proposal templates | `04-templates/`, `16-collaboration/`, dashboard tour |
 
 ## Curriculum Builder (Teach & Scale)
-- Run the [100-Hour Plan](02-learning-paths/100-hour-ai-architect.md) for day-by-day outputs and assessments.
-- Layer the [Professional Path](02-learning-paths/professional.md) and [Bootcamp](02-learning-paths/bootcamp.md) to coach teams and exec sponsors.
+- Run the [[file:02-learning-paths/100-hour-ai-architect.md][100-Hour Plan]] for day-by-day outputs and assessments.
+- Layer the [[file:02-learning-paths/professional.md][Professional Path]] and [[file:02-learning-paths/bootcamp.md][Bootcamp]] to coach teams and exec sponsors.
 - Use the hero visuals (`assets/ai-architect-campus.png`, `assets/ai-architect-professor.png`, `assets/ai-architect-education-poster.png`) to anchor workshops and enablement decks.
-- Track progress with the [Self-Assessment](02-learning-paths/self-assessment.md) and [Learning Logbook](02-learning-paths/logbook.md).
+- Track progress with the [[file:02-learning-paths/self-assessment.md][Self-Assessment]] and [[file:02-learning-paths/logbook.md][Learning Logbook]].
+
+## Micro-Learning Atlas
+- Browse 45-minute modules in the [[docs/micro-learning.html][Micro-Learning Atlas]] covering foundations, retrieval, agents, ops, governance, and storytelling.
+- Download curated playlists in [[file:02-learning-paths/micro-learning.md][02-learning-paths/micro-learning.md]] or mix your own via [[file:docs/data/micro-learning.json][docs/data/micro-learning.json]].
+- Pair each module with the [[file:02-learning-paths/logbook.md][Learning Logbook]] and [[file:15-workflows/retrospective-with-ai.md][Retrospective with AI]] to build momentum.
 
 ## Tooling & Integrations
 - **Vercel AI SDK playbook:** Follow [`06-toolchains/vercel-ai-sdk.md`](06-toolchains/vercel-ai-sdk.md) to ship compliant chat, RAG, and agent flows with streaming UX.

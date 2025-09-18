@@ -1,0 +1,101 @@
+{
+  "generated_at": "2025-09-18",
+  "modules": [
+    {
+      "id": "foundations-context-engineering",
+      "title": "Context Engineering for LLMs",
+      "category": "Foundations",
+      "duration": "45 min",
+      "summary": "Design a context blueprint mixing prompts, retrieval buffers, and guardrails for 2025 enterprise assistants.",
+      "path": "02-learning-paths/micro-modules/foundations-context-engineering.md"
+    },
+    {
+      "id": "foundations-evaluation-signals",
+      "title": "Evaluation Signals Primer",
+      "category": "Foundations",
+      "duration": "40 min",
+      "summary": "Stand up a minimal eval harness with Langfuse + promptfoo metrics.",
+      "path": "02-learning-paths/micro-modules/foundations-evaluation-signals.md"
+    },
+    {
+      "id": "retrieval-hybrid-ranking",
+      "title": "Hybrid Ranking Blueprint",
+      "category": "Retrieval Systems",
+      "duration": "50 min",
+      "summary": "Blend sparse, dense, and rerank pipelines tuned for multilingual corpora.",
+      "path": "02-learning-paths/micro-modules/retrieval-hybrid-ranking.md"
+    },
+    {
+      "id": "retrieval-rag-guardrails",
+      "title": "RAG Guardrails Fast Track",
+      "category": "Retrieval Systems",
+      "duration": "45 min",
+      "summary": "Wrap RAG endpoints with safety, grounding, and audit guardrails.",
+      "path": "02-learning-paths/micro-modules/retrieval-rag-guardrails.md"
+    },
+    {
+      "id": "agents-langgraph-planner",
+      "title": "LangGraph Planner Loop",
+      "category": "Agentic Patterns",
+      "duration": "45 min",
+      "summary": "Build a LangGraph 0.3 planner with memory, tool scheduling, and guardrails.",
+      "path": "02-learning-paths/micro-modules/agents-langgraph-planner.md"
+    },
+    {
+      "id": "agents-multi-agent-handoff",
+      "title": "Multi-Agent Handoff Lab",
+      "category": "Agentic Patterns",
+      "duration": "55 min",
+      "summary": "Prototype researcher\u2192reviewer handoffs with human approval loops.",
+      "path": "02-learning-paths/micro-modules/agents-multi-agent-handoff.md"
+    },
+    {
+      "id": "operations-langfuse-telemetry",
+      "title": "Langfuse Telemetry Sprints",
+      "category": "Operations & Observability",
+      "duration": "40 min",
+      "summary": "Wire traces, drift detection, and alerts using Langfuse 2.3.",
+      "path": "02-learning-paths/micro-modules/operations-langfuse-telemetry.md"
+    },
+    {
+      "id": "operations-cost-optimization",
+      "title": "Cost & Latency Playbook",
+      "category": "Operations & Observability",
+      "duration": "50 min",
+      "summary": "Apply caching, batching, and adaptive routing to cut spend.",
+      "path": "02-learning-paths/micro-modules/operations-cost-optimization.md"
+    },
+    {
+      "id": "governance-model-risk-review",
+      "title": "Model Risk Review Sprint",
+      "category": "Governance & Risk",
+      "duration": "45 min",
+      "summary": "Run a cross-functional model risk workshop and update the register.",
+      "path": "02-learning-paths/micro-modules/governance-model-risk-review.md"
+    },
+    {
+      "id": "governance-policy-automation",
+      "title": "Policy Automation Quick Start",
+      "category": "Governance & Risk",
+      "duration": "45 min",
+      "summary": "Automate DPIA and policy checks with GitOps + CI gates.",
+      "path": "02-learning-paths/micro-modules/governance-policy-automation.md"
+    },
+    {
+      "id": "storytelling-exec-brief",
+      "title": "Executive Narrative Builder",
+      "category": "Storytelling & Adoption",
+      "duration": "35 min",
+      "summary": "Craft a board-ready narrative linking metrics to value.",
+      "path": "02-learning-paths/micro-modules/storytelling-exec-brief.md"
+    },
+    {
+      "id": "storytelling-adoption-metrics",
+      "title": "Adoption & ROI Metrics",
+      "category": "Storytelling & Adoption",
+      "duration": "40 min",
+      "summary": "Define adoption and ROI metrics tied to AI outcomes.",
+      "path": "02-learning-paths/micro-modules/storytelling-adoption-metrics.md"
+    }
+  ]
+}
