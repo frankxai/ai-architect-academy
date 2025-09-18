@@ -54,6 +54,13 @@
         </figure>
       </div>
     </section>
+    <section id="persona-dashboards" class="space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <h2 class="text-2xl font-semibold">Persona Dashboards</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Pick a lane and jump straight to patterns, projects, and micro-learning modules tailored to your role.</p>
+      </div>
+      <div id="persona-grid" class="grid gap-5 md:grid-cols-2"></div>
+    </section>
 
     <section>
       <h2 class="text-2xl font-semibold">Navigation Blueprint</h2>
@@ -103,6 +110,13 @@
         </table>
       </div>
     </section>
+    <section id="persona-dashboards" class="space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <h2 class="text-2xl font-semibold">Persona Dashboards</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Pick a lane and jump straight to patterns, projects, and micro-learning modules tailored to your role.</p>
+      </div>
+      <div id="persona-grid" class="grid gap-5 md:grid-cols-2"></div>
+    </section>
 
     <section>
       <h2 class="text-2xl font-semibold">Dashboard & Agents</h2>
@@ -119,6 +133,13 @@
           <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Use <a class="text-cyan-600 underline" href="https://github.com/frankxai/ai-architect-academy/blob/main/dashboard/AGENT.md" target="_blank" rel="noopener">dashboard/AGENT.md</a> to wire OpenRouter, OpenAI, or local models. Pair with <a class="text-cyan-600 underline" href="https://github.com/frankxai/ai-architect-academy/blob/main/06-toolchains/vercel-ai-sdk.md" target="_blank" rel="noopener">06-toolchains/vercel-ai-sdk.md</a> for streaming chat + RAG flows.</p>
         </div>
       </div>
+    </section>
+    <section id="persona-dashboards" class="space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <h2 class="text-2xl font-semibold">Persona Dashboards</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Pick a lane and jump straight to patterns, projects, and micro-learning modules tailored to your role.</p>
+      </div>
+      <div id="persona-grid" class="grid gap-5 md:grid-cols-2"></div>
     </section>
 
     <section>
@@ -167,6 +188,13 @@
         </div>
       </div>
     </section>
+    <section id="persona-dashboards" class="space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <h2 class="text-2xl font-semibold">Persona Dashboards</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Pick a lane and jump straight to patterns, projects, and micro-learning modules tailored to your role.</p>
+      </div>
+      <div id="persona-grid" class="grid gap-5 md:grid-cols-2"></div>
+    </section>
 
     <section class="grid md:grid-cols-2 gap-8 items-center">
       <div class="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-2xl p-4 shadow-sm">
@@ -182,6 +210,13 @@
           <li><strong>Story:</strong> Publish progress and update the roadmap. Loop back with new insights.</li>
         </ul>
       </div>
+    </section>
+    <section id="persona-dashboards" class="space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <h2 class="text-2xl font-semibold">Persona Dashboards</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Pick a lane and jump straight to patterns, projects, and micro-learning modules tailored to your role.</p>
+      </div>
+      <div id="persona-grid" class="grid gap-5 md:grid-cols-2"></div>
     </section>
 
     <section>
@@ -205,9 +240,53 @@
         </div>
       </div>
     </section>
+    <section id="persona-dashboards" class="space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <h2 class="text-2xl font-semibold">Persona Dashboards</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Pick a lane and jump straight to patterns, projects, and micro-learning modules tailored to your role.</p>
+      </div>
+      <div id="persona-grid" class="grid gap-5 md:grid-cols-2"></div>
+    </section>
   </main>
 
   <footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400">© AI Architect Academy — Open Playbook</footer>
+  <script>
+    async function renderPersonas(){
+      const grid = document.getElementById('persona-grid');
+      if(!grid){return;}
+      try{
+        const res = await fetch('./data/personas.json');
+        const data = await res.json();
+        grid.innerHTML = '';
+        data.personas.forEach(persona => {
+          const card = document.createElement('article');
+          card.className = 'p-5 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-2xl shadow-sm flex flex-col gap-4';
+          const resources = (persona.primary_resources || []).map(resource => `<a class="underline" href="${resource.href}" target="_blank" rel="noopener">${resource.label}</a>`).join(' · ');
+          const modules = (persona.micro_modules || []).map(id => { const label = id.replace(/-/g, ' ').replace(/\b\w/g, ch => ch.toUpperCase()); return `<span class="px-2 py-1 bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-200 rounded-full text-xs">${label}</span>`; }).join(' ');
+          const milestones = (persona.milestones || []).map(item => `<li class="flex gap-2"><span class="text-cyan-500">&rarr;</span><span>${item}</span></li>`).join('');
+          card.innerHTML = `
+            <div>
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">${persona.title}</div>
+              <h3 class="mt-2 text-lg font-semibold">${persona.headline}</h3>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">${persona.subtitle}</p>
+            </div>
+            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">${milestones}</ul>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Key resources: ${resources}</div>
+            <div class="flex flex-wrap gap-2">${modules}</div>
+            <div>
+              <a class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600" href="${(persona.cta && persona.cta.href) || '#'}">
+                ${(persona.cta && persona.cta.label) || 'Explore track'}
+              </a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }catch(error){
+        grid.innerHTML = '<div class="p-4 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-xl">Failed to load persona data. Clone the repo to access the full experience.</div>';
+      }
+    }
+    renderPersonas();
+  </script>
 </body>
 </html>
 

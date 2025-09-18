@@ -1,0 +1,62 @@
+<process name="pattern-delivery-sdlc">
+  <phase name="discover">
+    <inputs>
+      <file>problem.xml</file>
+    </inputs>
+    <tasks>
+      <task>Read problem statement and extract goals/personas/KPIs.</task>
+      <task>Review relevant design patterns in 01-design-patterns/.</task>
+      <task>Consult AI CoE Templates for BOM and architecture references.</task>
+      <task>Identify governance requirements from 08-governance/.</task>
+    </tasks>
+    <outputs>
+      <artifact>discovery-notes.md</artifact>
+      <artifact>persona-alignment.md</artifact>
+    </outputs>
+  </phase>
+  <phase name="define">
+    <tasks>
+      <task>Draft use-case table, experience blueprint, technical architecture.</task>
+      <task>List implementation sprints and resource requirements.</task>
+    </tasks>
+    <outputs>
+      <artifact>pattern-blueprint.md</artifact>
+    </outputs>
+  </phase>
+  <phase name="prototype">
+    <tasks>
+      <task>Scaffold project under 05-projects/.</task>
+      <task>Implement retrieval/generation pipelines.</task>
+      <task>Run npm install, npm run build:index.</task>
+      <task>Setup Python env, pip install requirements.</task>
+      <task>Run scripts/check_secrets.py and 05-projects/eval-automation/check_env.py.</task>
+      <task>Execute evaluations via python 05-projects/eval-automation/run_evals.py --dataset ...</task>
+    </tasks>
+    <outputs>
+      <artifact>prototype-report.md</artifact>
+      <artifact>evaluation-results</artifact>
+    </outputs>
+  </phase>
+  <phase name="industrialise">
+    <tasks>
+      <task>Add observability (Langfuse, metrics), cost tracking.</task>
+      <task>Integrate governance checklists.</task>
+      <task>Automate deployment pipeline.</task>
+    </tasks>
+    <outputs>
+      <artifact>runbook.md</artifact>
+      <artifact>governance-evidence</artifact>
+    </outputs>
+  </phase>
+  <phase name="operate">
+    <tasks>
+      <task>Capture metrics, retrospectives, stories.</task>
+      <task>Update persona dashboards, projects saved views.</task>
+      <task>Prepare leadership narrative.</task>
+    </tasks>
+    <outputs>
+      <artifact>retro-notes.md</artifact>
+      <artifact>narrative.md</artifact>
+    </outputs>
+  </phase>
+</process>

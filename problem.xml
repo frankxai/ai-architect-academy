@@ -1,0 +1,12 @@
+<problem>
+  <title>AI Customer Onboarding Assistant</title>
+  <businessGoal>Reduce onboarding time for SaaS customers by 50%.</businessGoal>
+  <personas>
+    <persona>Builder</persona>
+    <persona>Leader</persona>
+  </personas>
+  <constraints>
+    <constraint>Must integrate with existing CRM</constraint>
+    <constraint>Must meet SOC2 compliance</constraint>
+  </constraints>
+</problem>

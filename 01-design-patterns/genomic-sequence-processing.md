@@ -1,31 +1,68 @@
-# Pattern: Genomic Sequence Processing & Public Health
+# Pattern: Genomic Sequence Intelligence
 
-## Business Value
-- Compress turnaround from sample collection to actionable variant insights, enabling faster outbreak detection and clinical decision-making.
-- Support cross-institutional collaboration with governed data sharing that balances research needs against patient privacy obligations.
-- Provide epidemiologists and clinicians with contextualised summaries, lineage tracking, and therapeutic impact assessments.
+**Mission:** Accelerate genomic analysis for surveillance and clinical care with secure pipelines, transparent reporting, and collaborative workflows.
 
-## Technical Architecture
-1. **Secure Data Intake**: Biospecimen metadata and raw sequencing files (FASTQ/BAM) land in encrypted, access-controlled storage with QC checks.
-2. **Analysis Pipelines**: Workflow engines (Nextflow/Snakemake) orchestrate alignment, variant calling, annotation, and lineage assignment using validated reference genomes.
-3. **Knowledge Integration**: Link variants to public databases (ClinVar, GISAID) and institutional knowledge graphs, capturing pathogenicity and therapeutic implications.
-4. **Narrative & Reporting**: LLM assistant generates clinician-friendly briefs grounded in verified facts, highlighting confidence, quality metrics, and recommended follow-up.
-5. **Governance Layer**: Audit trails, consent management, and data retention policies enforce compliance with HIPAA/GDPR and local bioethics reviews.
+## High-Value Use Cases
+| Use Case | Impact | KPIs |
+| --- | --- | --- |
+| Variant detection for clinical decisions | Faster diagnosis, targeted therapies. | Turnaround <12h, variant confidence scores, clinician adoption. |
+| Public health surveillance | Detect emerging strains, track spread. | Time-to-alert, coverage % population, lineage classification accuracy. |
+| Research collaboration | Share de-identified datasets with partners. | Data requests served, reproducibility, compliance events. |
+| Pharmacogenomics reporting | Tailor drug regimens to patient profiles. | Prescription adjustments, adverse event reduction. |
 
-## Discovery Questions
-- What sequencing platforms are in use, and what are the expected daily/weekly sample volumes and SLAs?
-- Which regulatory regimes (HIPAA, GDPR, CCPA) and data residency constraints dictate storage and processing choices?
-- How will results be consumed (clinical dashboards, public health alerts, research portals), and what format is required?
-- What collaboration agreements exist with external labs or agencies, and how are data access requests approved?
+## Experience Blueprint
+| Stage | Human | AI/Agents | Systems |
+| --- | --- | --- | --- |
+| Intake & QC | Lab tech uploads sequences, metadata, consent. | QC agent checks read quality, contamination, schema. | LIMS, secure object storage. |
+| Pipeline Execution | Bioinformatician monitors progress, adjusts parameters. | Workflow agent orchestrates alignment, variant calling, annotation (Nextflow/Snakemake). | HPC/Cloud compute. |
+| Knowledge Integration | Clinician reviews annotations, guidelines. | Retrieval agent links variants to ClinVar, drug labels, institutional knowledge. | Knowledge graph, vector store. |
+| Reporting & Review | Clinical team signs off, public health shares insights. | Narrative agent drafts reports with risk levels, recommended actions, cites evidence. | Reporting UI, Langfuse trace. |
+| Feedback & Learning | Outcomes tracked, pipelines tuned. | Analytics agent aggregates metrics, flags drifts, schedules revalidation. | Data warehouse, evaluation suite. |
 
-## Bill of Materials
-- Workflow tooling (Nextflow, Cromwell) backed by HPC clusters or managed services (AWS Batch, Google Cloud Life Sciences).
-- Domain toolchain: BWA/GATK for alignment and variant calling, Ensembl/VEP for annotation, lineage trackers (Pangolin) for pathogen surveillance.
-- Security stack: encrypted storage (S3 with KMS), policy enforcement (OPA), consent ledger, and fine-grained IAM (Okta/Azure AD).
-- Observability: pipeline telemetry (Prometheus), QC dashboards (Grafana), and reproducibility artefacts stored via DVC or Quilt.
+## Technical Architecture Stack
+1. **Workflow Orchestration:** Nextflow/Cromwell orchestrating containerised tasks; integrated with Temporal for metadata + approvals.  
+2. **Secure Data Plane:** Encrypted storage (S3+KMS), data lake with PHI/PII separation, audit logs.  
+3. **Analysis Engines:** Alignment (BWA-MEM), variant calling (GATK), annotation (VEP, ClinVar), lineage assignment.  
+4. **Knowledge Hub:** Knowledge graph + vector search for publications, guidelines, drug interactions.  
+5. **Reporting & Collaboration:** Clinical dashboard, API for EHR integration, PDF/HL7 exports.  
+6. **Observability & Compliance:** Langfuse, pipeline telemetry, Promptfoo evaluation (factual summaries, disclaimers), retention policies.
 
-## Risks & Controls
-- **Privacy Breach**: Apply irreversible de-identification, segregate PHI, use differential privacy for aggregate reporting, and enforce least-privilege access.
-- **Pipeline Reproducibility**: Version code, containers, and reference datasets; capture provenance metadata for every run.
-- **Model Misinterpretation**: Ground LLM summaries in validated annotations, include confidence intervals, and require clinician acknowledgement.
-- **Operational Bottlenecks**: Auto-scale compute resources, implement queue-based scheduling, and monitor pipeline KPIs for backlog prevention.
+## Data & Models
+- Sequence files (FASTQ/BAM/VCF), patient metadata (de-identified), drug response datasets, public databases (ClinVar, GISAID).  
+- Models: Domain-specific LLMs for summarisation, variant prioritisation algorithms, statistical QC.  
+- Tools: Pydantic validation, consent ledger, privacy-preserving transformations.
+
+## Implementation Sprints
+1. **Infrastructure Setup** – Provision secure storage, networking, secret management.  
+2. **Pipeline Baseline** – Implement alignment + variant calling; verify accuracy vs reference set.  
+3. **Annotation & Knowledge Graph** – Integrate medical knowledge sources, build retrieval pipeline.  
+4. **Reporting Layer** – Generate clinician-friendly narratives, integrate with EHR, run review workflow.  
+5. **Compliance & Audits** – Map policies, run tabletop incident response, configure retention.  
+6. **Continuous Validation** – Automate evaluations, drift detection, reproduction checks.
+
+## Agent Build Instructions
+- Reference templates under `AI CoE Templates/002-pattern-library/.../genomics`.  
+- Use `05-projects/domain-rag-healthcare` as base for retrieval/evaluation.  
+- Automate pipeline scaffolding with `scripts/check_secrets.py` + `run_evals.py`.  
+- Generate architecture doc + runbook, include PHI handling guidelines, incident plan, reproducibility statement.  
+- Produce UI mockups using CoE templates; ensure review/approval flows captured.  
+- Deliver dataset sample (synthetic), evaluation report, compliance mapping.
+
+## Evaluation & Observability
+- Pipeline accuracy vs reference (precision/recall), QC metrics.  
+- Narrative factuality, citation coverage (Promptfoo).  
+- Langfuse metrics: latency, cost, guardrail hits.  
+- Weekly review with clinicians to capture overrides, feedback.
+
+## Governance & Controls
+- Procurement of external datasets via `AI-procurement-checklist`.  
+- Incident response emphasising PHI, data breaches (`incident-response-checklist`).  
+- Human review for all clinical recommendations (`human-review-checklist`).  
+- Align with governance library (audit, retention).  
+- Document data ethics and consent tracing.
+
+## Deliverables & Templates
+- Technical runbook, compliance binder, architecture diagrams from CoE templates.  
+- Evaluation dataset + reports, reviewer audit log.  
+- Storytelling artefacts for exec boards (metrics, impact narrative).  
+- Reproducibility package (pipeline version, container manifests, dataset hash).

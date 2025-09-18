@@ -1,31 +1,65 @@
-# Pattern: AI Performance Optimization
+# Pattern: AI Performance Optimisation
 
-## Business Value
-- Maximise responsiveness and throughput of AI services, improving user experiences and unlocking higher transaction volumes at lower unit cost.
-- Enable teams to experiment rapidly by providing predictable performance envelopes and capacity planning insights.
-- Reduce infrastructure spend by right-sizing models, leveraging hardware acceleration, and caching intelligently.
+**Mission:** Maximise responsiveness and throughput while controlling cost and quality across AI workloads.
 
-## Technical Architecture
-1. **Profiling & Benchmarking**: Automated load tests measure latency, throughput, and token compute across representative workloads.
-2. **Model Optimisation**: Techniques such as quantisation, distillation, sparse attention, or retrieval caching reduce inference costs while maintaining quality.
-3. **Serving Infrastructure**: Scalable serving stack (Kubernetes + KServe/Triton) with autoscaling, request batching, and multi-model hosting.
-4. **Edge & Caching Strategies**: Response caching, embedding reuse, and on-device inference for low-latency scenarios where feasible.
-5. **Observability & Feedback**: Real-time telemetry for latency, cost per request, and quality metrics drives dynamic load shedding and routing decisions.
+## High-Value Use Cases
+| Use Case | Impact | KPIs |
+| --- | --- | --- |
+| Latency tuning for chat/RAG | Deliver snappy UX, reduce drop-offs. | P95 latency, abandonment rate. |
+| Cost governance | Prevent runaway spend, increase ROI. | Cost per 1K tokens/request, budget variance. |
+| Capacity planning | Ensure availability during peaks. | Utilisation, autoscale efficiency. |
+| Model optimisation | Deploy smaller/faster models without losing quality. | Accuracy delta, compute savings. |
 
-## Discovery Questions
-- What latency and throughput targets are required for each user journey, and how do they vary by customer segment or geography?
-- Which hardware platforms (CPU, GPU, TPU) are available, and what is the cost profile or utilisation targets for each?
-- How frequently do models or prompts change, and how will performance regressions be detected during rollout?
-- Where are caching or edge deployments acceptable considering data residency, privacy, and update cadences?
+## Experience Blueprint
+| Stage | Human | AI/Agents | Systems |
+| --- | --- | --- | --- |
+| Baseline Assessment | SRE gathers metrics, identifies hotspots. | Observability agent aggregates logs, traces, cost data. | Langfuse, Prometheus, FinOps dashboards. |
+| Optimisation Strategy | Architects define targets, trade-offs. | Advisor agent recommends tactics (batching, caching, model tiers). | Knowledge base (playbooks, benchmarks). |
+| Implementation | Engineers deploy optimisations, test. | Automation agent runs load tests, prompt regression, capacity tests. | CI/CD, load test harness. |
+| Validation | QA validates latency, quality, cost. | Evaluation agent compares metrics vs baseline, surfaces regressions. | Promptfoo, metrics pipeline. |
+| Continuous Monitoring | Ops monitors and iterates. | Feedback agent alerts on drift, triggers playbook. | Alerting, retrospectives.
 
-## Bill of Materials
-- Benchmarking tools (Locust, k6), profiling suites (PyTorch Profiler, Nvidia Nsight) and synthetic workload generators.
-- Optimisation libraries: ONNX Runtime, TensorRT, DeepSpeed, vLLM for context caching and parallelism.
-- Serving platform: Kubernetes with auto-scaling (HPA/KEDA), load balancer (Envoy/NGINX), and feature store for low-latency retrieval.
-- Observability: OpenTelemetry traces, metrics pipeline (Prometheus/Grafana), cost dashboards (FinOps tooling), alerting (PagerDuty).
+## Technical Architecture Stack
+1. **Observability:** Centralised metrics (Prometheus/Grafana), tracing (OpenTelemetry/Langfuse), logging (ELK).  
+2. **Load & Regression Testing:** Tools like k6/Locust, Promptfoo, synthetic dataset generator.  
+3. **Optimisation Toolkit:** Model quantisation (ONNX/TensorRT), caching (vLLM, Redis), batching/proxy.  
+4. **Automation:** Blue/green, canary, shadow deployments, autoscaling policies (HPA/KEDA).  
+5. **FinOps:** Cost tracking (Cloud cost APIs), budgets, alerts, forecasting.
 
-## Risks & Controls
-- **Quality Degradation**: Validate optimisation techniques against golden datasets; maintain dual-run comparisons before cutover.
-- **Resource Exhaustion**: Implement backpressure, rate limiting, and graceful degradation strategies to protect shared infrastructure.
-- **Cost Overruns**: Track cost per 1K tokens/request, enforce budgets, and tune autoscaling policies; archive unused models.
-- **Security Exposure**: Harden serving endpoints, ensure TLS termination, and separate tenant workloads to avoid side-channel leakage.
+## Data & Models
+- Telemetry (latency, throughput, errors), cost reports, evaluation results.  
+- Models: Distilled variants, quantised versions, retrieval caches.  
+- Tools: Profilers, benchmarking suites, yet another instrumentation for GPU/CPU.
+
+## Implementation Sprints
+1. **Instrumentation** – Ensure metrics/traces/cost data captured for every service.  
+2. **Baseline & Goals** – Document SLOs, budgets, top offenders.  
+3. **Quick Wins** – Implement caching, batching, prompt tightening, inference fleet tuning.  
+4. **Model Optimisation** – Quantise, distil, route to best model tiers.  
+5. **Scalability** – Autoscaling policies, queue management, concurrency control.  
+6. **Continuous Improvement** – Automate regression tests, budgets, retrospectives.
+
+## Agent Build Instructions
+- Gather metrics from Langfuse, Prometheus; run `scripts/check_secrets.py`.  
+- Create runbooks for load testing, regression comparisons, cost analysis.  
+- Provide scripts for model conversions (ONNX), caching configuration, deployment automation.  
+- Document step-by-step actions for coding agents to tune environment: run load tests, apply optimisation, validate.  
+- Deliver final pack: before/after metrics, cost report, guidelines for future teams.
+
+## Evaluation & Observability
+- Track P50/P95 latency, error rate, throughput, cost.  
+- Evaluate output quality post optimisation (Promptfoo).  
+- Monitor budgets, anomalies.  
+- Schedule retros using `operations-cost-optimization` micro-module.
+
+## Governance & Controls
+- Apply procurement checklist when adopting new optimisation vendors.  
+- Incident response for performance outages.  
+- Human oversight for quality trade-offs.  
+- Document approvals for SLO changes, align with governance library.
+
+## Deliverables & Templates
+- Performance dashboards, SLO/SLA document, cost playbook.  
+- Optimisation runbook, automation scripts.  
+- Evaluation reports (before/after).  
+- Storytelling deck highlighting ROI improvements.

@@ -1,31 +1,66 @@
-# Pattern: Insurance Rate Modeling
+# Pattern: Insurance Rate Intelligence
 
-## Business Value
-- Achieve profitable growth by aligning underwriting prices with granular risk signals while maintaining competitiveness within regulatory bounds.
-- Accelerate rate filing cycles through reusable actuarial assets, automated documentation, and transparent justification of pricing changes.
-- Enhance cross-functional trust by exposing clear explanations of model drivers, fairness metrics, and compliance attestations.
+**Mission:** Deliver compliant, data-rich pricing decisions with transparent models, human oversight, and rapid iteration.
 
-## Technical Architecture
-1. **Data Foundation**: Consolidate policy, claims, exposure, and third-party datasets (credit, weather, telematics) into a governed warehouse and feature store.
-2. **Model Development**: Train GLMs, gradient boosting, or hybrid models with monotonic constraints; use LLMs to extract structured features from unstructured submissions.
-3. **Validation & Explainability**: Apply cross-validation, stress tests, SHAP values, and fairness assessments across protected classes and geographies.
-4. **Deployment & Governance**: Register approved models, manage champion/challenger rollouts, and integrate with workflow systems for actuarial and regulatory approvals.
-5. **Monitoring & Feedback**: Continuously track loss ratio, hit ratio, drift, and regulatory KPIs; feed performance back into retraining pipelines.
+## High-Value Use Cases
+| Use Case | Impact | KPIs |
+| --- | --- | --- |
+| Personal lines pricing refresh | Adjust rates quickly with granular risk signals. | Time-to-rate change, loss ratio, hit ratio. |
+| Commercial underwriting assistance | Equip underwriters with insights, narratives, data retrieval. | Underwriter productivity, approval speed. |
+| Regulatory filing automation | Generate SERFF-ready documentation with evidence. | Filing success rate, prep time. |
+| Portfolio monitoring & risk alerts | Track drift, adverse trends, recommend actions. | Drift alerts, profitability, retention. |
 
-## Discovery Questions
-- Which product lines and jurisdictions are in scope, and what specific regulatory filings (SERFF, PRA) govern them?
-- What external data sources add underwriting lift, and what contracts or privacy constraints accompany them?
-- How frequently must rates be refreshed, and what is the change management process for approvals and communication to distribution partners?
-- What level of explainability is required for regulators, and how will narratives be generated for filings or producer communications?
+## Experience Blueprint
+| Stage | Human | AI/Agents | Systems |
+| --- | --- | --- | --- |
+| Intake & Data Prep | Actuary/underwriter collects exposure, claims, external data. | Data agent validates, enriches, logs provenance. | Data warehouse, feature store. |
+| Model Development | Actuarial team trains GLM/GBM, sets constraints. | AutoML agent runs experiments, enforces monotonicity, fairness checks. | ML platform (Databricks/SageMaker). |
+| Rate Scenario Analysis | Pricing team explores impact by segment. | Simulation agent generates rate curves, sensitivity analysis, scenario narratives. | Solver + analytics workspace. |
+| Filing & Governance | Compliance/legal review justification, produce documentation. | Narrative agent creates SERFF filing, citations, reviewer checklist. | Document generator, governance workflow. |
+| Monitoring & Feedback | Ops monitors metrics, runs regular evals. | Evaluation agent triggers drift alerts, recalibration tasks, updates dashboards. | Evaluation pipeline, Langfuse.
 
-## Bill of Materials
-- Data platform (Snowflake, Databricks) with feature store (Feast/Tecton) and lineage tracking (OpenLineage).
-- Model development stack: scikit-learn, XGBoost, LightGBM, GLM libraries, plus document intelligence (Azure Form Recognizer, LayoutLM) for submissions.
-- Governance & monitoring suite: MLflow/SageMaker Model Registry, EvidentlyAI/Fiddler for drift and fairness, and SHAP/LOCI for interpretability.
-- Workflow integration: Actuarial approval portals, document generation for filings (Docassemble), and secure audit log storage.
+## Technical Architecture Stack
+1. **Data Foundation:** Governed lakehouse + feature store, external data connectors (credit, weather, telematics).  
+2. **Model Factory:** Versioned training pipelines (GLM, GBM, neural nets), experiment tracking, fairness checks.  
+3. **Scenario Engine:** Elastic compute for pricing simulations, risk appetite integration, regulatory constraints.  
+4. **Documentation & Governance:** Automated filing generator, risk register, policy-as-code integration.  
+5. **Monitoring:** Drift detection, KPI dashboards, evaluation automation, Langfuse traces.
 
-## Risks & Controls
-- **Regulatory Non-Compliance**: Embed regulatory rules as constraints, log every rate change with justifications, and maintain audit-ready documentation.
-- **Fairness & Bias Issues**: Run pre/post-deployment fairness audits, monitor residuals by protected class, and enforce governance review for material shifts.
-- **Data Quality Failures**: Implement data SLAs, anomaly detection, and incident response playbooks to address upstream data outages.
-- **Model Overfitting**: Use robust validation, stress scenarios (catastrophe, economic shocks), and cap price changes to avoid market disruption.
+## Data & Models
+- Policies, claims, exposures, third-party enrichment, geographic risk data.  
+- Models: GLM with monotonic constraints, gradient boosting, deep embeddings for unstructured underwriting, LLM summarisation.  
+- Tools: SHAP, fairness toolkits, Promptfoo for narrative evaluation.
+
+## Implementation Sprints
+1. **Data & Feature Store** – Consolidate data sources, data quality pipelines.  
+2. **Model Baseline** – Train baseline models, log metrics, fairness, calibration.  
+3. **Scenario + Governance** – Build simulation UI, integrate compliance steps.  
+4. **Documentation Automation** – Generate filings, create reviewer workflows.  
+5. **Monitoring & Alerts** – Drift detection, cost monitoring, incident response.  
+6. **Continuous Improvement** – Feedback loops from underwriters, regulators, customers.
+
+## Agent Build Instructions
+- Reference CoE templates for insurance pattern architecture + BOM.  
+- Use `05-projects` scaffolds (creator-evals for evaluation patterns).  
+- Implement pipelines: data ingestion, model training, evaluation, documentation.  
+- Provide command scripts and notebooks for coding agents to run full SDLC.  
+- Deploy evaluation harness with Promptfoo, fairness tests, scenario metrics.  
+- Output deliverable pack: architecture note, actuarial summary, filing template, monitoring dashboard.
+
+## Evaluation & Observability
+- Model metrics (Gini, loss ratio impact, calibration), fairness per segment.  
+- Governance metrics (policy coverage, overrides, review SLA).  
+- Operational metrics (deployment latency, cost).  
+- Langfuse & logs for agent traceability.
+
+## Governance & Controls
+- Procurement check on external data providers.  
+- Human review for rate changes; approvals logged.  
+- Incident response for compliance/regulator queries.  
+- Data retention, audit build according to governance library.
+
+## Deliverables & Templates
+- Pricing strategy deck, model documentation from CoE templates.  
+- Filing kit (SERFF doc, evidence attachments).  
+- Evaluation suite outputs + fairness report.  
+- Ops runbook (monitoring, incidents, change management).

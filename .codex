@@ -1,0 +1,33 @@
+instructions:
+  problem_intake:
+    prompt: "Provide problem brief (business goals, personas, constraints, success metrics)."
+  workflow:
+    - name: discover
+      actions:
+        - review /01-design-patterns
+        - consult AI CoE templates
+        - map personas from docs/data/personas.json
+    - name: define
+      actions:
+        - draft blueprint following pattern sections
+        - identify systems, data, governance needs
+    - name: prototype
+      actions:
+        - scaffold project under /05-projects
+        - implement retrieval/generation/eval flow
+        - run npm install, npm run build:index, python scripts/check_secrets.py, python 05-projects/eval-automation/check_env.py
+        - execute evaluations (python 05-projects/eval-automation/run_evals.py --dataset ...)
+    - name: industrialise
+      actions:
+        - add observability, guardrails, CI integration
+        - validate with governance checklists
+    - name: operate
+      actions:
+        - capture metrics, retrospectives, storytelling
+        - update personas, projects, documentation
+  outputs:
+    - updated_pattern
+    - project_artifacts
+    - evaluation_reports
+    - governance_evidence
+    - storytelling_assets

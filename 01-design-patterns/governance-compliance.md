@@ -1,31 +1,67 @@
 # Pattern: Governance & Compliance Automation
 
-## Business Value
-- Provide end-to-end traceability for AI systems, ensuring policies, risk controls, and regulatory obligations are satisfied without slowing delivery teams.
-- Reduce manual evidence collection and audit preparation by codifying governance workflows, checklists, and automated controls.
-- Increase organisational trust in AI deployments through transparent reporting of model lineage, performance, and policy adherence.
+**Mission:** Create an AI governance operating system that automates policy enforcement, evidence collection, and risk response without slowing delivery teams.
 
-## Technical Architecture
-1. **Policy Repository**: Structured catalog of regulations, internal standards, and control templates linked to products and models.
-2. **Workflow Orchestration**: Automated gating (ServiceNow/Jira) that enforces risk assessments, approvals, and segregation-of-duties before promotion.
-3. **Evidence Collection**: Integrations with MLOps, data platforms, and observability tools to ingest artefacts (datasets, model cards, evaluation reports).
-4. **Continuous Monitoring**: Real-time checks on drift, bias, privacy, and access logs with escalations to compliance officers.
-5. **Reporting & Audit**: Dashboards and exportable audit packages summarising status by regulation, business unit, and control effectiveness.
+## High-Value Use Cases
+| Use Case | Impact | KPIs |
+| --- | --- | --- |
+| Policy-as-code enforcement | Ensure models/prompts meet regulatory requirements pre-release. | Gate compliance %, audit findings. |
+| Evidence automation | Auto-generate audit packets for regulators/boards. | Evidence prep time, completeness. |
+| Governance dashboards | Provide leadership with real-time risk posture. | SLA adherence, open risk items, incident MTTR. |
+| Change management | Track model/prompt changes with approvals and rollback. | Change success rate, rollback frequency. |
 
-## Discovery Questions
-- Which external regulations (EU AI Act, GDPR, SOX, HIPAA) and internal policies apply to the AI portfolio?
-- How are models currently catalogued, and what metadata is missing to satisfy governance requirements?
-- Who are the control owners, reviewers, and approvers, and what SLAs must workflows meet?
-- What evidence is required for audits, and how long must it be retained or made discoverable?
+## Experience Blueprint
+| Stage | Human | AI/Agents | Systems |
+| --- | --- | --- | --- |
+| Register & Classify | Product owner registers system, risk tier. | Intake agent categorises by domain, regulatory obligations. | Governance registry, metadata store. |
+| Policy Mapping | Governance lead selects controls, SLAs. | Policy agent applies templates, identifies gaps, suggests requirements. | Policy-as-code repo (OPA). |
+| Control Execution | Teams integrate guardrails, tests, logging. | Automation agents insert CI/CD checks, evidence collectors. | CI pipelines, evaluation suites. |
+| Review & Approval | Risk committee reviews artefacts, decisions. | Explainability agent summarises compliance, issues status dashboards. | Review workflow, dashboards. |
+| Monitor & Respond | Ops monitors drift, incidents. | Monitoring agent correlates metrics, triggers incident response, updates risk log. | Langfuse, incident management. |
 
-## Bill of Materials
-- Governance platform (Azure AI Studio governance, Credo AI, or custom) with metadata catalog (DataHub, Collibra) and policy engine (OPA).
-- Integration adapters for ML pipelines (MLflow, SageMaker), data lineage (OpenLineage), and observability (Langfuse, EvidentlyAI).
-- Workflow automation (ServiceNow, Jira, Workato) connecting control tasks to accountable teams.
-- Storage for immutable evidence (WORM-compliant object store) and reporting layer (Power BI, Looker) with RBAC.
+## Technical Architecture Stack
+1. **Governance Registry:** Central catalog of models/prompts/services with metadata, lifecycle status.  
+2. **Policy Engine:** Declarative control templates (OPA/Rego), mapping to regulatory frameworks.  
+3. **Automation Hub:** Integrations with CI/CD, evaluation harness, evidence collectors (S3/SharePoint).  
+4. **Observability & Risk:** Telemetry ingestion, risk scoring, dashboards (Looker/Power BI), Langfuse traces.  
+5. **Workflow:** ServiceNow/Jira/Temporal for approvals, tasks, escalation.  
+6. **Knowledge Base:** Playbooks, checklists, training materials.
 
-## Risks & Controls
-- **Policy Drift**: Version policies, automate change notifications, and maintain governance release notes linked to impacted systems.
-- **Shadow AI Deployments**: Implement discovery scans, enforce registration through CI/CD hooks, and monitor infra for unregistered endpoints.
-- **Audit Failure**: Automate evidence capture with tamper-proof storage, and run rehearsal audits to validate completeness.
-- **Change Fatigue**: Provide self-service playbooks, training, and embedded compliance champions to ensure adoption across teams.
+## Data & Models
+- Control templates, regulatory mappings, audit logs, evaluation metrics, incident reports.  
+- Models: Risk scoring, anomaly detection for policy breaches; LLM summarisation for audits.  
+- Tools: Promptfoo integration, evidence bundler, policy simulation.
+
+## Implementation Sprints
+1. **Registry & Taxonomy** – Stand up metadata schema, integrate with repo tagging.  
+2. **Policy Library** – Encode templates using CoE assets, align with legal/compliance priorities.  
+3. **Automation Integrations** – Hook policies into CI/CD, evaluation suites, incident workflows.  
+4. **Dashboards & Narratives** – Build risk dashboards, exec templates, board reporting.  
+5. **Operational Runbooks** – Define incident response, review cadences, training.  
+6. **Continuous Improvement** – Feedback loops, policy refresh, audit rehearsals.
+
+## Agent Build Instructions
+- Use `AI-procurement-checklist`, `incident-response-checklist`, `human-review-checklist` as base.  
+- Set up metadata registry (YAML/DB).  
+- Auto-generate policy packages for each pattern referencing CoE templates.  
+- Implement CI jobs to enforce policy gates (see `05-projects/eval-automation`).  
+- Produce executive dashboard sample, compliance narrative, audit packet sample.  
+- Document agent scripts for onboarding new AI systems.
+
+## Evaluation & Observability
+- Policy coverage %, gate pass/fail trends, evidence freshness.  
+- Incident metrics (MTTR, severity distribution).  
+- Dashboard usage, leadership feedback.  
+- Langfuse tracks governance agent actions.
+
+## Governance & Controls
+- Already the hub: ensure integration with procurement, incident, human oversight checklists.  
+- Maintain change logs, approvals, retention rules.  
+- Support external audits with standard packages.
+
+## Deliverables & Templates
+- Governance operating model deck, RACI, cadences.  
+- Policy repository + mapping matrix.  
+- Evidence templates (audit packet, incident postmortem).  
+- Dashboard & narrative templates for leadership.  
+- Training modules for teams adopting governance automation.
