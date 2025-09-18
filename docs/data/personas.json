@@ -29,7 +29,9 @@
             "micro_modules": [
                 "foundations-context-engineering",
                 "retrieval-hybrid-ranking",
-                "operations-langfuse-telemetry"
+                "operations-langfuse-telemetry",
+                "gemini-reasoning-debate",
+                "tensor-optimised-inference"
             ],
             "cta": {
                 "label": "Run Builder Sprint",
@@ -64,7 +66,8 @@
             "micro_modules": [
                 "governance-model-risk-review",
                 "storytelling-adoption-metrics",
-                "storytelling-exec-brief"
+                "storytelling-exec-brief",
+                "constitutional-ai-guardrails"
             ],
             "cta": {
                 "label": "Review Leadership Rituals",
@@ -98,7 +101,8 @@
             "micro_modules": [
                 "creator-content-orchestration",
                 "creator-evaluation-scorecards",
-                "creator-analytics-feedback-loop"
+                "creator-analytics-feedback-loop",
+                "gemini-reasoning-debate"
             ],
             "cta": {
                 "label": "Launch Creator Sprint",
@@ -132,7 +136,8 @@
             "micro_modules": [
                 "operations-cost-optimization",
                 "evaluation-automation-pipeline",
-                "governance-policy-automation"
+                "governance-policy-automation",
+                "tensor-optimised-inference"
             ],
             "cta": {
                 "label": "Run Ops Review",

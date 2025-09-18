@@ -21,6 +21,9 @@ Rapid-fire modules designed for 45-minute deep dives. Each micro-lesson pairs a 
 | Creator Systems | [Creator Content Orchestration Sprint](creator-content-orchestration.md) | Build a brief-to-publish pipeline with compliant guardrails | 50 min |
 | Evaluation & QA | [Creator Evaluation Scorecards](creator-evaluation-scorecards.md) | Operationalise tone, accuracy, and CTA scoring for assets | 40 min |
 | Growth & Insights | [Creator Analytics Feedback Loop](creator-analytics-feedback-loop.md) | Feed engagement data into prompts and experiment plans | 45 min |
+| Reasoning & Agents | [Gemini Reasoning & Debate Sprint](gemini-reasoning-debate.md) | Deploy debate chains and simulators for better decisions | 55 min |
+| Governance & Safety | [Constitutional AI Guardrail Lab](constitutional-ai-guardrails.md) | Codify constitutions and red-team guardrails | 45 min |
+| Operations & Infra | [Tensor-Optimised Inference Playbook](tensor-optimised-inference.md) | Optimise GPT-5 Omni serving with TensorRT-LLM | 50 min |
 
 **How to use it**
 - Pair each module with the [Learning Logbook](../logbook.md) to capture progress.

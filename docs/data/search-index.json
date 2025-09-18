@@ -876,6 +876,10 @@
         "text": "Sprint E � Creator Studio Launch"
       },
       {
+        "level": 3,
+        "text": "Sprint F � Reasoning & Safety"
+      },
+      {
         "level": 2,
         "text": "Implementation Tips"
       }
@@ -967,6 +971,41 @@
     ],
     "excerpt": "# Multi-Agent Handoff Lab **Category:** Agentic Patterns **Duration:** 55 minutes **Outcome:** Prototype a two-agent workflow (researcher + reviewer) with explicit handoffs, audit trails, and human-in-the-loop checkpoints. ## Why it matters - 2025 enterprise deployments favour collaborative agents with controlled auton",
     "content": "# Multi-Agent Handoff Lab **Category:** Agentic Patterns **Duration:** 55 minutes **Outcome:** Prototype a two-agent workflow (researcher + reviewer) with explicit handoffs, audit trails, and human-in-the-loop checkpoints. ## Why it matters - 2025 enterprise deployments favour collaborative agents with controlled autonomy. - Clear handoffs reduce hallucinations and improve compliance. ## Prerequisites - Completion of [LangGraph Planner Loop](agents-langgraph-planner.md) module. - Access to a shared datastore (Redis, Supabase) for passing artefacts. - Slack/Teams webhook or email integration for human approvals (optional but recommended). ## Step-by-step 1. **Define roles:** Researcher agent gathers evidence; Reviewer agent validates, adds citations, and triggers approvals. 2. **Model selection:** Use Claude 3.5 Sonnet for research (long context) and GPT-5 Omni Mini for reviewer (speed). Configure via OpenRouter if centralised billing needed. 3. **Artefact contract:** Create JSON schema (problem, evidence[], risks[], draft_response) stored in shared_state. 4. **Human gate:** Add a webhook step that posts reviewer output to Slack with Approve/Reject buttons (use Slack Workflow Builder or n8n). 5. **Logging:** Persist each handoff with Langfuse spans labelled handoff_researcher and handoff_reviewer. Attach metadata (latency, token cost, approved? yes/no). 6. **Post-mortem:** If rejection occurs, run [Retrospective with AI](../../15-workflows/retrospective-with-ai.md) to capture lessons and update prompts. ## Deliverables - LangGraph agent definitions + orchestration script. - Screenshot or recording of the Slack/Teams approval flow. - Updated governance log noting review cadence and escalation path. ## References - Slack Workflow Builder AI approvals (May 2025 release). - OpenAI Function Calling best practices (June 2025 update). - 16-collaboration/agentic-teams.md for collaboration patterns."
+  },
+  {
+    "id": "02-learning-paths\\micro-modules\\constitutional-ai-guardrails.md",
+    "title": "Constitutional AI Guardrail Lab",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/constitutional-ai-guardrails.md",
+    "section": "Learning Paths",
+    "path": "02-learning-paths\\micro-modules\\constitutional-ai-guardrails.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Constitutional AI Guardrail Lab"
+      },
+      {
+        "level": 2,
+        "text": "Why it matters"
+      },
+      {
+        "level": 2,
+        "text": "Prerequisites"
+      },
+      {
+        "level": 2,
+        "text": "Step-by-step"
+      },
+      {
+        "level": 2,
+        "text": "Deliverables"
+      },
+      {
+        "level": 2,
+        "text": "References"
+      }
+    ],
+    "excerpt": "# Constitutional AI Guardrail Lab **Category:** Governance & Safety **Duration:** 45 minutes **Outcome:** Implement Anthropic-style constitutional prompts and red-team workflows to strengthen governance controls. ## Why it matters - Constitutional guardrails offer transparent, repeatable safety policies without heavy c",
+    "content": "# Constitutional AI Guardrail Lab **Category:** Governance & Safety **Duration:** 45 minutes **Outcome:** Implement Anthropic-style constitutional prompts and red-team workflows to strengthen governance controls. ## Why it matters - Constitutional guardrails offer transparent, repeatable safety policies without heavy classifier tuning. - Continuous red-teaming exposes policy regressions early. ## Prerequisites - Access to an LLM capable of constitutional prompting (Claude 3.5, GPT-5 Omni, or Azure Safety APIs). - Governance checklist ( ). ## Step-by-step 1. **Define constitution:** Select principles covering tone, safety, compliance (reference Anthropic prompts). 2. **Wire guardrail prompts:** Add constitution instructions to system prompts or moderation layer. 3. **Automate red-team suite:** Schedule nightly red-team runs using constitutional critique prompts; capture violations. 4. **Route violations:** Open governance tickets referencing the policy clause, assign human reviewers. 5. **Document evidence:** Store guardrail transcripts, reviewer decisions, mitigation steps in governance workspace. 6. **Iterate:** Adjust constitution rules based on reviewer feedback and incident learnings. ## Deliverables - Constitution definition file (YAML/Markdown) with principles and citations. - Red-team script or evaluation configuration (Promptfoo, custom harness). - Governance log entry summarising review outcomes and mitigation. ## References - Anthropic Constitutional AI guide (Sept 2025 update). - Governance & Compliance Automation pattern ( ). - for escalation."
   },
   {
     "id": "02-learning-paths\\micro-modules\\creator-analytics-feedback-loop.md",
@@ -1177,6 +1216,41 @@
     ],
     "excerpt": "# Evaluation Signals Primer **Category:** Foundations **Duration:** 40 minutes **Outcome:** Stand up a lightweight evaluation harness that scores accuracy, safety, and UX signals for a single workflow. ## Why it matters - 2025-era teams track multi-dimensional signals (faithfulness, bias, latency) before shipping any a",
     "content": "# Evaluation Signals Primer **Category:** Foundations **Duration:** 40 minutes **Outcome:** Stand up a lightweight evaluation harness that scores accuracy, safety, and UX signals for a single workflow. ## Why it matters - 2025-era teams track multi-dimensional signals (faithfulness, bias, latency) before shipping any assistant. - Langfuse, Promptfoo, and Weights & Biases now interoperate—learn the minimal loop. ## Prerequisites - Working RAG or agent prototype (CLI or notebook). - Langfuse project + API key (free tier is fine). - Node.js 18+ installed for promptfoo. ## Step-by-step 1. **Define assertions:** Use \u00007-evaluation/metrics.md to pick 3 KPIs (e.g., faithfulness ≥ 0.7, response time < 2 s, tone = \"compliant\"). 2. **Assemble dataset:** Export 15 representative questions + references from \u00005-projects/rag-on-supabase.md or your own CSV. Store in evaluation/cases.yaml. 3. **Configure promptfoo:** Run px promptfoo init and wire Langfuse integration using the template in \u00005-projects/evals-langfuse.md. 4. **Add custom check:** Implement a short script that flags responses missing citations or violating safety rules (use etrieval-rag-guardrails.md as reference). 5. **Execute & log:** promptfoo eval with parallelism=3. Inspect Langfuse dashboard for latency + cost scatterplots. 6. **Snapshot results:** Export promptfoo report and attach to your project README. Log follow-up work in 15-workflows/postmortem.md if thresholds failed. ## Deliverables - promptfoo.yaml with assertions + custom check. - Langfuse dashboard link showing evaluation traces. - Summary paragraph for the [Executive Narrative Builder](storytelling-exec-brief.md) module. ## References - Promptfoo 2.0 evaluation recipes (July 2025). - Langfuse model quality scorecards blog (May 2025). - \u00007-evaluation/eval-harness.md for advanced setup."
+  },
+  {
+    "id": "02-learning-paths\\micro-modules\\gemini-reasoning-debate.md",
+    "title": "Gemini Reasoning & Debate Sprint",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/gemini-reasoning-debate.md",
+    "section": "Learning Paths",
+    "path": "02-learning-paths\\micro-modules\\gemini-reasoning-debate.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Gemini Reasoning & Debate Sprint"
+      },
+      {
+        "level": 2,
+        "text": "Why it matters"
+      },
+      {
+        "level": 2,
+        "text": "Prerequisites"
+      },
+      {
+        "level": 2,
+        "text": "Step-by-step"
+      },
+      {
+        "level": 2,
+        "text": "Deliverables"
+      },
+      {
+        "level": 2,
+        "text": "References"
+      }
+    ],
+    "excerpt": "# Gemini Reasoning & Debate Sprint **Category:** Reasoning & Agents **Duration:** 55 minutes **Outcome:** Apply Gemini-style debate chains, simulator calls, and critique loops to strengthen decision intelligence workflows. ## Why it matters - Debate-style reasoning reduces hallucinations and exposes hidden assumptions.",
+    "content": "# Gemini Reasoning & Debate Sprint **Category:** Reasoning & Agents **Duration:** 55 minutes **Outcome:** Apply Gemini-style debate chains, simulator calls, and critique loops to strengthen decision intelligence workflows. ## Why it matters - Debate-style reasoning reduces hallucinations and exposes hidden assumptions. - Simulation tooling (market, risk, scenario generators) amplifies coverage for high-stakes choices. ## Prerequisites - Familiarity with the [Decision Support Intelligence](../../01-design-patterns/decision-support.md) pattern. - Access to a reasoning-capable model (Google Gemini 1.5 Pro/Flash or equivalent) via API. - Optional: existing optimisation or simulation service (OR-Tools, proprietary risk engines). ## Step-by-step 1. **Frame the debate:** Capture the decision prompt and stake levels; define pro/con agent personas. 2. **Set up Gemini debate:** Use debate chain scaffolding (two agents + judge) to produce argued recommendations. 3. **Integrate simulators:** Feed debate outputs into scenario generators (market, risk, capacity) to validate assumptions. 4. **Critique & refine:** Introduce a critic agent that compares outcomes, flags inconsistencies, and suggest follow-up questions. 5. **Human review:** Present debate summary, simulator metrics, and critiques to decision owners for final approval. 6. **Log evidence:** Store transcripts, simulation outputs, and chosen rationale in the decision journal. ## Deliverables - Debate chain configuration file (YAML/JSON) describing agent roles and prompts. - Simulation results comparing scenarios with key metrics. - Reviewer notes appended to the decision journal. ## References - Google DeepMind Gemini reasoning playbook (Sept 2025 release). - Decision Support Intelligence pattern in . - for evaluation structure examples."
   },
   {
     "id": "02-learning-paths\\micro-modules\\governance-model-risk-review.md",
@@ -1492,6 +1566,41 @@
     ],
     "excerpt": "# Executive Narrative Builder **Category:** Storytelling & Adoption **Duration:** 35 minutes **Outcome:** Produce a board-ready narrative that links AI delivery progress to business outcomes. ## Why it matters - Leaders need crisp proof of value, risks, and next bets each week. - Storytelling drives adoption and budget",
     "content": "# Executive Narrative Builder **Category:** Storytelling & Adoption **Duration:** 35 minutes **Outcome:** Produce a board-ready narrative that links AI delivery progress to business outcomes. ## Why it matters - Leaders need crisp proof of value, risks, and next bets each week. - Storytelling drives adoption and budget for AI programs. ## Prerequisites - Metrics snapshot from Langfuse or your telemetry stack. - Recent evaluation report (see [Evaluation Signals Primer](../micro-modules/foundations-evaluation-signals.md)). - Brand Voice guidance from BRAND-VOICE.md. ## Step-by-step 1. **Gather signals:** Extract top metrics (latency, cost, accuracy, adoption) and add qualitative wins + blockers. 2. **Structure brief:** Use the outline in 15-workflows/ai-briefing.md (headline, metrics pulse, highlights, blockers, next experiments). 3. **Add visuals:** Embed hero image (`ssets/ai-architect-campus.png) and relevant dashboards/screenshot. 4. **Highlight governance:** Summarise risk status + mitigations from [Model Risk Review Sprint](../micro-modules/governance-model-risk-review.md). 5. **Call to action:** Define decisions needed (budget, approvals) and deadlines. 6. **Distribute:** Package as PDF or Loom video; share via exec channel and archive in \u00009-articles/drafts/. ## Deliverables - 1-page executive brief (PDF/Markdown) referencing metrics + risks. - Key slide or graphic for town halls. - Log entry in the Learning Logbook capturing feedback. ## References - 2025 McKinsey AI adoption scorecard. - Stripe Radar storytelling examples (2024-2025). - \u00009-articles/templates/keynote.md for extended decks."
+  },
+  {
+    "id": "02-learning-paths\\micro-modules\\tensor-optimised-inference.md",
+    "title": "Tensor-Optimised Inference Playbook",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/tensor-optimised-inference.md",
+    "section": "Learning Paths",
+    "path": "02-learning-paths\\micro-modules\\tensor-optimised-inference.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Tensor-Optimised Inference Playbook"
+      },
+      {
+        "level": 2,
+        "text": "Why it matters"
+      },
+      {
+        "level": 2,
+        "text": "Prerequisites"
+      },
+      {
+        "level": 2,
+        "text": "Step-by-step"
+      },
+      {
+        "level": 2,
+        "text": "Deliverables"
+      },
+      {
+        "level": 2,
+        "text": "References"
+      }
+    ],
+    "excerpt": "# Tensor-Optimised Inference Playbook **Category:** Operations & Infra **Duration:** 50 minutes **Outcome:** Apply NVIDIA TensorRT-LLM and FinOps practices to reduce latency and cost for GPT-5 Omni and multimodal workloads. ## Why it matters - Paginated KV cache and batching unlock lower latency and higher throughput. ",
+    "content": "# Tensor-Optimised Inference Playbook **Category:** Operations & Infra **Duration:** 50 minutes **Outcome:** Apply NVIDIA TensorRT-LLM and FinOps practices to reduce latency and cost for GPT-5 Omni and multimodal workloads. ## Why it matters - Paginated KV cache and batching unlock lower latency and higher throughput. - FinOps dashboards avoid runaway inference spending at scale. ## Prerequisites - Access to GPU inference environment (NVIDIA H100/L40 or cloud equivalent). - Familiarity with the [AI Performance Optimisation](../../01-design-patterns/performance-optimization.md) pattern. ## Step-by-step 1. **Profile baseline:** Capture latency, cost, and throughput for current workload using Langfuse + Prometheus. 2. **Apply TensorRT-LLM:** Convert GPT-5 Omni weights or use pre-optimised engines; enable paged attention and continuous batching. 3. **Configure runtime:** Tune batch size, timeout, and memory pool; implement dynamic batching via Triton or custom router. 4. **Cost telemetry:** Integrate cloud cost metrics or custom accounting; set budget alerts and anomaly detection. 5. **Regression tests:** Run Promptfoo suite and offline evals to ensure quality parity post-optimisation. 6. **Document runbook:** Update performance playbook with new parameters, rollback plan, and guardrail thresholds. ## Deliverables - Optimisation configuration (TensorRT-LLM config, router settings). - Before/after metrics report (latency, throughput, cost). - Updated performance runbook and cost dashboard snapshot. ## References - NVIDIA GTC 2025 TensorRT-LLM sessions. - Azure FinOps playbooks for AI workloads (Sept 2025). - AI Performance Optimisation pattern ( )."
   },
   {
     "id": "02-learning-paths\\professional.md",
