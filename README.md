@@ -8,7 +8,7 @@
 
 # AI Architect Academy — Command Center for Visionary Builders
 
-Lead the conversations, ship the systems, and operate responsibly. This open playbook is your living hub for designing, building, and running AI products with confidence. Every page is built for AI architects, founding teams, creators, and advisors who need trusted patterns, deep resources, and a brand-ready story they can share with clients, partners, and their own communities.
+Design, ship, and operate AI systems with confidence. This open playbook gives you the artefacts, visuals, and workflows to lead conversations, execute fast, and tell a world-class story.
 
 <div align="center">
   <a href="START-HERE.md"><img alt="Start Here" src="https://img.shields.io/badge/Start-Now-cyan?style=for-the-badge"></a>
@@ -23,64 +23,57 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
   <img src="assets/ai-architect-education-poster.png" alt="Think like an AI Architect curriculum poster" width="320">
 </p>
 
-## The Experience at a Glance
-- **Explore the live atlas.** Browse the [GitHub Pages site](https://ai-architect-academy.github.io/ai-architect-academy/) with unified navigation, topic landing pages, and fast search.
-- **Clone the full operating system.** Pull the repo to unlock scripts, prompt packs, workflows, and design assets for your team and AI assistants.
-- **Tell a sharper story.** Use the [Brand Voice playbook](BRAND-VOICE.md) to stay on-message with executives, clients, and your audience.
-- **Ship and scale.** Pair enterprise-ready patterns with hands-on projects, eval workflows, and governance checklists.
+## Why This Playbook Wins
+- **Everything is cross-linked.** Jump between repo, GitHub Pages, and dashboard without losing context.
+- **Production-calibre patterns.** Value framing, discovery questions, architecture diagrams, evaluation harnesses, and governance packs sit side-by-side.
+- **Launch-ready visuals.** Hero art, poster layouts, and screenshot recipes so your decks, retros, and memos look polished.
+- **Ops-first mindset.** Guardrails, observability, cost control, and escalation playbooks are baked into every track.
+- **Living curriculum.** Weekly plans, retros, and logbooks keep teams aligned as the stack evolves.
 
-## Why Clone the Repository
-- **Offline & private workspaces.** Serve the site locally (`scripts/serve.sh`) and pair with your favourite AI copilots using the curated prompt packs in `prompt-packs/`.
-- **Pattern-first development.** Everything is structured for reuse: design blueprints (`01-design-patterns/`), project guides (`05-projects/`), workflows (`15-workflows/`), and collaboration rituals (`16-collaboration/`).
-- **Integrated storytelling.** Use `09-articles/` for long-form thought leadership, `03-awesome/` for curated references, and `10-resources/` when you need trusted links fast.
-- **Extend with ease.** Regenerate search data (`npm run build:index`), capture screenshots (`npm run screenshots`), and drop new visuals into `assets/` for instant publishing.
+## Run the Experience
+- **Tour the live site:** [ai-architect-academy.github.io/ai-architect-academy](https://ai-architect-academy.github.io/ai-architect-academy/)
+- **Explore persona journeys:** [`docs/experience.html`](docs/experience.html) shows how builders, leaders, and storytellers navigate.
+- **Spin up locally:** `scripts/serve.sh` opens the site at `http://localhost:8080` for offline or private work.
 
-## Platform Architecture — What Lives Where
-| Pillar | Directories & Pages | What You Gain |
-| --- | --- | --- |
-| **Vision & Roadmap** | [`00-roadmap/`](00-roadmap/), [`BRAND-VOICE.md`](BRAND-VOICE.md) | Narrative, positioning, experience strategy. |
-| **Learning Paths** | [`START-HERE.md`](START-HERE.md), [`02-learning-paths/`](02-learning-paths/) | Beginner to AI CoE playbooks and accelerators. |
-| **Patterns & Concepts** | [`01-design-patterns/`](01-design-patterns/), [`12-concepts/`](12-concepts/), [`docs/pattern.html`](docs/pattern.html) | Value framing, architectures, discovery questions, risks. |
-| **Build Lab** | [`05-projects/`](05-projects/), [`06-toolchains/`](06-toolchains/), [`agentic-swarms/`](agentic-swarms/) | Opinionated builds, stacks, and agentic experiments. |
-| **Operate & Govern** | [`07-evaluation/`](07-evaluation/), [`08-governance/`](08-governance/), [`15-workflows/`](15-workflows/) | Metrics, guardrails, observability, team rituals. |
-| **Community & Amplification** | [`09-articles/`](09-articles/), [`14-ai-tools/`](14-ai-tools/), [`16-collaboration/`](16-collaboration/) | Content, tooling, and collaboration systems. |
-
-## Signature Loops You Can Run This Week
-![Value Loop](assets/value-loop.svg)
-- **Pattern → Project → Eval:** Pick a pattern, ship the smallest valuable build, and wire in evaluation harnesses on day one.
-- **Concept → Platform Decision:** Use the concept decks and platform matrix to align your stack before writing code.
-- **Learning Path → Portfolio:** Follow the 100-hour track, ship two case studies, and use the article templates to publish your wins.
-- **Governance → Collaboration:** Stand up policy baselines, then drop the collaboration checklists into your team rituals.
-
-## Start Your Journey (Choose the Lane that Fits)
-- **Launchpad (100 hours).** A curated sprint for builders who want traction fast — [100-Hour Plan](02-learning-paths/100-hour-ai-architect.md).
-- **Creators & Educators.** Translate the playbook into content with the [Beginner](02-learning-paths/beginner.md) and [Professional](02-learning-paths/professional.md) paths.
-- **Enterprise & AI CoE Leaders.** Run the [Bootcamp](02-learning-paths/bootcamp.md) to align architecture, governance, and adoption.
-- **Agentic Innovators.** Experiment with [Agentic Code Swarms](agentic-swarms/README.md) and the [Agentic SaaS Planner](05-projects/agentic-saas-planner.md).
+## Launch Tracks
+| Audience | Go-To Path | Weekly Rhythm | Anchor Assets |
+| --- | --- | --- | --- |
+| **Launchpad (100h)** | [`02-learning-paths/100-hour-ai-architect.md`](02-learning-paths/100-hour-ai-architect.md) | Retrieval, agents, governance, storytelling | RAG on Supabase · Eval Harness · Vector Benchmarks |
+| **Creators & Educators** | [`02-learning-paths/beginner.md`](02-learning-paths/beginner.md) & [`02-learning-paths/professional.md`](02-learning-paths/professional.md) | Weekly demos, retros, publish cadence | `03-awesome/`, `09-articles/`, poster + hero imagery |
+| **Enterprise & AI CoE** | [`02-learning-paths/bootcamp.md`](02-learning-paths/bootcamp.md) | Vision alignment, ops rituals, launch narratives | Patterns, Governance toolkit, Collaboration playbooks |
+| **Advisors & Clients** | [`docs/experience.html`](docs/experience.html) | Curated walkthroughs and proposal templates | `04-templates/`, `16-collaboration/`, dashboard tour |
 
 ## Curriculum Builder (Teach & Scale)
-- Run the updated [100-Hour AI Architect Plan](02-learning-paths/100-hour-ai-architect.md) when you need a detailed four-week build with daily outputs and assessments.
-- Coach professionals with the [Professional Path](02-learning-paths/professional.md) and mobilise exec sponsors via the [Bootcamp Path](02-learning-paths/bootcamp.md).
+- Run the [100-Hour Plan](02-learning-paths/100-hour-ai-architect.md) for day-by-day outputs and assessments.
+- Layer the [Professional Path](02-learning-paths/professional.md) and [Bootcamp](02-learning-paths/bootcamp.md) to coach teams and exec sponsors.
 - Use the hero visuals (`assets/ai-architect-campus.png`, `assets/ai-architect-professor.png`, `assets/ai-architect-education-poster.png`) to anchor workshops and enablement decks.
+- Track progress with the [Self-Assessment](02-learning-paths/self-assessment.md) and [Learning Logbook](02-learning-paths/logbook.md).
+
+## Tooling & Integrations
+- **Vercel AI SDK playbook:** Follow [`06-toolchains/vercel-ai-sdk.md`](06-toolchains/vercel-ai-sdk.md) to ship compliant chat, RAG, and agent flows with streaming UX.
+- **Stack reference:** [`06-toolchains/stack-reference.md`](06-toolchains/stack-reference.md) compares vector stores, rerankers, eval suites, and infra add-ons.
+- **Projects to clone:** [`docs/projects.html`](docs/projects.html) filters 100+ builds with links directly into the repo.
 
 ## Operate with Confidence
 - **Evaluation stack:** [Metrics](07-evaluation/metrics.md), [Eval harness](07-evaluation/eval-harness.md), and [promptfoo integrations](05-projects/evals-langfuse.md).
-- **Guardrails & governance:** [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model risk](08-governance/model-risk.md), and policy templates.
-- **Tooling matrix:** [Stack reference](06-toolchains/stack-reference.md), [Cloud blueprints](docs/clouds.html), and [Platform comparisons](docs/platforms.html).
+- **Guardrails & governance:** [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model risk](08-governance/model-risk.md), and [Governance checklists](08-governance/checklists.md).
+- **Observability & retros:** [Retrospective with AI](15-workflows/retrospective-with-ai.md), [AI Briefing](15-workflows/ai-briefing.md), [Escalation Guide](16-collaboration/escalation-guide.md).
 
-## Create Momentum for Your Brand & Community
-- Publish your progress using the [article outlines](09-articles/) and [content prompts](prompt-packs/).
-- Share live demos via the [Projects catalog](docs/projects.html) and embed screenshots captured with `node scripts/capture-screenshots.mjs`.
-- Use the [Collaborate](docs/collaborate.html) guide to co-create with AI teammates, clients, friends, or family exploring the space.
+## Dashboard & Agents
+- Launch the **AI Architect Dashboard** (`dashboard/README.md`) for a Next.js control centre powered by the Vercel AI SDK, React Flow, and Langfuse-ready hooks.
+- Wire your own assistants with [`dashboard/AGENT.md`](dashboard/AGENT.md): connect OpenRouter, OpenAI, Anthropic, or local models via Open WebUI/Big-AGI.
+- Drop telemetry, embeddings, and eval outputs from the dashboard back into the repo’s playbooks to keep narrative and metrics in sync.
+
+## Tell the Story
+- Shape portfolio pieces with [`03-awesome/portfolio-examples.md`](03-awesome/portfolio-examples.md) and stage drafts under `09-articles/drafts/`.
+- Capture screenshots via `node scripts/capture-screenshots.mjs` and showcase them in the [Projects catalog](docs/projects.html).
+- Stay on-message with the [Brand Voice guide](BRAND-VOICE.md) and reuse decks/brief templates in `04-templates/`.
 
 ## Contribute & Extend
-- Open an issue or PR with a clear “why it matters” note. Templates live under `04-templates/`.
-- Keep the tone on-brand by checking [BRAND-VOICE.md](BRAND-VOICE.md).
-- Update the search index after major content changes: `npm install` (first time) then `npm run build:index`.
-- Capture new visuals: drop SVG/PNGs into `assets/` and `docs/assets/` to surface them across the repo and site.
+- Clone: `git clone https://github.com/frankxai/ai-architect-academy.git`
+- Serve locally: `scripts/serve.sh` → `http://localhost:8080`
+- Refresh search after major edits: `npm install` (first time) then `npm run build:index`
+- Drop new visuals into `assets/` + `docs/assets/`
+- Open issues/PRs with context and links; see `04-templates/` for proposal and retro formats.
 
----
-
-**Live site:** https://ai-architect-academy.github.io/ai-architect-academy/ · **Clone & customize:** `git clone https://github.com/frankxai/ai-architect-academy.git`
-
-
+**Live site:** https://ai-architect-academy.github.io/ai-architect-academy/ · **Clone & customise:** `git clone https://github.com/frankxai/ai-architect-academy.git`
