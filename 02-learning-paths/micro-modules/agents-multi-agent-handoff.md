@@ -15,7 +15,7 @@
 
 ## Step-by-step
 1. **Define roles:** Researcher agent gathers evidence; Reviewer agent validates, adds citations, and triggers approvals.
-2. **Model selection:** Use Claude 3.5 Sonnet for research (long context) and GPT-4.1 mini for reviewer (speed). Configure via OpenRouter if centralised billing needed.
+2. **Model selection:** Use Claude 3.5 Sonnet for research (long context) and GPT-5 Omni Mini for reviewer (speed). Configure via OpenRouter if centralised billing needed.
 3. **Artefact contract:** Create JSON schema (problem, evidence[], risks[], draft_response) stored in shared_state.
 4. **Human gate:** Add a webhook step that posts reviewer output to Slack with Approve/Reject buttons (use Slack Workflow Builder or n8n).
 5. **Logging:** Persist each handoff with Langfuse spans labelled handoff_researcher and handoff_reviewer. Attach metadata (latency, token cost, approved? yes/no).

@@ -30,7 +30,7 @@
 
 ## Data & Models
 - Brand voice matrices, product catalog, legal disclaimers, performance data, customer personas.  
-- Models: GPT-4o, Claude 3.5, smaller instruct models, diffusion for imagery, speech synthesis (ElevenLabs).  
+- Models: GPT-5 Omni, Claude 3.5, smaller instruct models, diffusion for imagery, speech synthesis (ElevenLabs).  
 - Tools: Prompt orchestrators, evaluation harness, analytics connectors.
 
 ## Implementation Sprints

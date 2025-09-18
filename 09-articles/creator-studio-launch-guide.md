@@ -26,7 +26,7 @@ Launch a high-velocity creator studio that blends human taste with AI copilots. 
 ## 4. Build the Tech Stack
 - **Workflow engine:** Temporal, Camunda, or Make for lighter teams.
 - **Content brain:** Postgres + pgvector or Weaviate storing brand assets and prior wins.
-- **Model providers:** mix general LLMs (GPT-4o, Claude 3.5) with domain fine-tunes for style consistency.
+- **Model providers:** mix general LLMs (GPT-5 Omni, Claude 3.5) with domain fine-tunes for style consistency.
 - **Evaluation & QA:** Promptfoo, Langfuse, custom scripts (see `05-projects/eval-automation`).
 - **Distribution:** API-friendly CMS (Contentful, Webflow), social schedulers, email platforms.
 - **Analytics:** Mode/Looker dashboards fed by Segment, Snowflake, or BigQuery.
