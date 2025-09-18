@@ -84,7 +84,15 @@
       <button id="reset" class="border rounded-md p-2">Reset</button>
     </div>
 
-    <div class="mt-2 text-sm text-slate-500" id="count"></div>
+
+<div class="mt-3 flex flex-wrap gap-2 text-xs sm:text-sm" id="saved-views">
+  <button data-view="rag" class="px-3 py-1 border rounded hover:bg-cyan-50 dark:hover:bg-cyan-900/30">RAG & Retrieval</button>
+  <button data-view="agentic" class="px-3 py-1 border rounded hover:bg-cyan-50 dark:hover:bg-cyan-900/30">Agentic Systems</button>
+  <button data-view="ops" class="px-3 py-1 border rounded hover:bg-cyan-50 dark:hover:bg-cyan-900/30">Operations & Governance</button>
+</div>
+
+<div class="mt-2 text-sm text-slate-500" id="count"></div>
+
     <div id="grid" class="mt-4 grid md:grid-cols-2 gap-4"></div>
   </main>
   <section class="max-w-6xl mx-auto px-4 pb-10">
@@ -108,6 +116,13 @@
         document.getElementById('grid').innerHTML = '<div class="p-4 border rounded bg-white dark:bg-slate-800 dark:border-slate-700">Failed to load projects. Please refresh.</div>';
         return;
       }
+
+const savedViews = {
+  rag: { label: 'RAG & Retrieval', category: 'Retrieval Systems', query: 'RAG', difficulty: '' },
+  agentic: { label: 'Agentic Systems', category: 'Agentic', query: 'agent', difficulty: '' },
+  ops: { label: 'Operations & Governance', category: '', query: 'governance cost eval', difficulty: '' }
+};
+
       const grid = document.getElementById('grid');
       const count = document.getElementById('count');
       const q = document.getElementById('q');
@@ -122,6 +137,22 @@
         opt.value = category;
         cat.appendChild(opt);
       }
+
+
+const savedViewButtons = document.querySelectorAll('[data-view]');
+
+function applyPreset(key){
+  const preset = savedViews[key];
+  if(!preset){return;}
+  q.value = preset.query || '';
+  cat.value = preset.category || '';
+  diff.value = preset.difficulty || '';
+  savedViewButtons.forEach(btn => {
+    btn.classList.toggle('bg-cyan-500', btn.dataset.view === key);
+    btn.classList.toggle('text-white', btn.dataset.view === key);
+  });
+  render();
+}
 
       function render(){
         const term = (q.value || '').toLowerCase();
@@ -155,7 +186,8 @@
       }
       [q,cat,diff].forEach(el => el.addEventListener('input', render));
       reset.addEventListener('click', () => { q.value=''; cat.value=''; diff.value=''; render(); });
-      render();
+      savedViewButtons.forEach(btn => btn.addEventListener('click', () => applyPreset(btn.dataset.view)));
+      applyPreset('rag');
     }
     load();
   </script>

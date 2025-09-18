@@ -1,31 +1,67 @@
-# Pattern: Energy Market Trading & Optimization
+# Pattern: Energy Market Trading & Optimisation
 
-## Business Value
-- Increase gross margin by optimising bid strategies across day-ahead, intraday, and balancing markets while respecting regulatory constraints.
-- Minimise imbalance penalties by pairing real-time telemetry with probabilistic forecasts of demand, supply, and renewable intermittency.
-- Enable traders to scenario-plan around weather, fuel, and outage events using transparent narratives anchored in quantitative models.
+**Mission:** Optimise bidding, dispatch, and risk management across energy markets with transparent analytics and resilient operations.
 
-## Technical Architecture
-1. **Data Foundation**: Stream ingestion of SCADA metrics, weather feeds, fuel prices, and market data into a time-series lakehouse with quality SLAs.
-2. **Forecasting Ensemble**: Combine statistical (ARIMA, Prophet) and ML (gradient boosting, deep temporal models) predictors with quantile outputs for uncertainty.
-3. **Optimisation Engine**: Solver (Gurobi/CPLEX/OR-Tools) enforces physical constraints, ramp rates, and risk limits to generate bid curves and dispatch schedules.
-4. **Agentic Advisory Layer**: LLM orchestrator translates optimisation outputs into trader-friendly narratives, highlights sensitivities, and surfaces compliance checks.
-5. **Monitoring & Feedback**: Backtesting harness compares realised vs. forecasted outcomes, recalibrates models, and logs rationale for audit trails.
+## High-Value Use Cases
+| Use Case | Impact | KPIs |
+| --- | --- | --- |
+| Day-ahead bidding optimisation | Maximise margins while respecting constraints. | Gross margin uplift, constraint violations = 0. |
+| Intraday balancing & risk hedging | Reduce imbalance charges, manage intermittency. | Imbalance cost %, reserve utilisation. |
+| Asset health & outage response | Quickly re-optimise when units fail. | Response time <15 min, availability. |
+| Market intelligence & reporting | Produce trader briefings, regulatory submissions. | Report turnaround, compliance breaches avoided. |
 
-## Discovery Questions
-- Which market products (energy, capacity, ancillary services) and geographies are in scope, and what are their clearing deadlines?
-- What telemetry exists for asset availability, and how is maintenance or forced outage data captured today?
-- How are risk tolerances defined (VaR, CVaR, position limits), and who approves overrides?
-- What regulatory reporting obligations apply (REMIT, FERC), and how must recommendations be recorded?
+## Experience Blueprint
+| Stage | Human | AI/Agents | Systems |
+| --- | --- | --- | --- |
+| Data & Forecast Prep | Ops ingests telemetry, traders review anomalies. | Data agent validates streams, backfills gaps, triggers alerts. | SCADA feeds, weather APIs, market data lake. |
+| Forecast Generation | Quants tune models, set scenario assumptions. | Forecast agent runs ensemble (statistical + ML), quantile outputs, confidence bands. | Forecast service (Prophet, XGBoost, deep models). |
+| Optimisation & Simulation | Traders configure constraints, risk appetite. | Optimisation agent runs solvers (Gurobi, OR-Tools), scenario agent performs Monte Carlo stress. | Solver cluster, risk engine. |
+| Recommendation & Execution | Trader reviews recommended bids/dispatch. | LLM assistant summarises strategy, provides citations, push to market API. | Bid submission service, Langfuse trace. |
+| Monitoring & Feedback | Control room monitors results, logs overrides. | Feedback agent tracks actual vs planned, triggers retraining/backtesting tasks. | Observability stack, evaluation pipeline. |
 
-## Bill of Materials
-- Time-series storage (InfluxDB, TimescaleDB) feeding a lakehouse (Delta/Snowflake) with data quality monitors.
-- Forecasting stack (tsfresh, GluonTS, Prophet) orchestrated via MLFlow plus optimisation solver (Gurobi, OR-Tools) exposed through microservices.
-- Messaging infrastructure (Kafka/Redpanda) for streaming updates, trader workstation UI (React, Plotly), and observability (Prometheus, Grafana).
-- Governance artefacts: model registry, scenario library, compliance log store with immutable retention (e.g., Azure WORM storage).
+## Technical Architecture Stack
+1. **Data Platform:** Time-series lakehouse (Delta/TimescaleDB), weather + commodity ingestion pipelines, quality monitors.  
+2. **Forecasting Service:** Microservice exposing model ensembles, feature store, retraining scheduler.  
+3. **Optimisation Core:** Solver infrastructure with constraint library (ramp rates, maintenance, regulatory caps).  
+4. **Decision Support Layer:** Agent orchestrator generating narratives, dashboards, compliance reports.  
+5. **Execution & Risk:** Integration with market APIs, PPA hedging tools, risk analytics.  
+6. **Observability:** Langfuse for agent trace, Prometheus/Grafana, Promptfoo for explanation accuracy.
 
-## Risks & Controls
-- **Forecast Error & Model Drift**: Implement champion/challenger evaluation, rolling window retraining, and manual fallback strategies during anomalies.
-- **Market Compliance Breaches**: Encode bidding rules and reporting thresholds as machine-readable policies; enforce maker-checker approval for manual edits.
-- **Operational Latency**: Stress-test end-to-end pipelines against clearing deadlines, and maintain hot-standby infrastructure for failover.
-- **Cybersecurity**: Segment OT/IT networks, enforce MFA for trader tools, and monitor for adversarial data poisoning on external feeds.
+## Data & Models
+- Telemetry (MW output, temperatures), market price curves, maintenance schedules, regulatory data.  
+- Models: ARIMA, Prophet, gradient boosting, deep temporal (Temporal Fusion Transformer), reinforcement learning for continuous optimisation (optional).  
+- Tools: Scenario simulators, risk calculators (VaR/CVaR), LLMs for summarisation.
+
+## Implementation Sprints
+1. **Data Foundation** – Stabilise ingestion, create unified dataset, set data contracts.  
+2. **Forecasting Ensemble** – Build baseline models, evaluate accuracy vs benchmarks.  
+3. **Optimisation Engine** – Codify constraints, integrate solver, run backtests.  
+4. **Trader Workbench** – UI/agent outputs with scenario comparisons, compliance stamps.  
+5. **Automation & Ops** – Hook into market APIs, set guardrails, run incident drills.  
+6. **Continuous Improvement** – Cost dashboards, evaluation harness, periodic recalibration.
+
+## Agent Build Instructions
+- Reference `AI CoE Templates/.../energy-market` technical architecture docs.  
+- Use `05-projects` for ingestion/eval scaffolds (clone `domain-rag` for retrieval, adapt to time-series).  
+- Implement solver microservice in repo (K8s job or serverless).  
+- Generate documentation bundle: architecture, runbook, evaluation metrics, regulatory checklist.  
+- Provide mock UI storyboard using CoE template; capture screens.  
+- Deliver scenario library enabling coding agents to test extremes.
+
+## Evaluation & Observability
+- Forecast accuracy: MAE/MAPE per horizon, bias detection.  
+- Optimisation outcomes: revenue vs baseline, constraint breaches, sensitivity metrics.  
+- Guardrails: compliance with bidding rules, override logs.  
+- Telemetry: Langfuse traces, solver runtime, cost.
+
+## Governance & Controls
+- Procurement & vendor risk (external data providers) via `AI-procurement-checklist`.  
+- Incident response for market failures via `incident-response-checklist`.  
+- Human oversight for critical decisions (trader approvals) via `human-review-checklist`.  
+- Audit requirements (reporting to regulators) tracked in governance library.
+
+## Deliverables & Templates
+- Strategy memo, architecture diagrams, BOM adapted from CoE templates.  
+- Evaluation report (forecasts, optimisation results).  
+- Control room playbook, escalation tree, compliance binder.  
+- Weekly narrative summarising performance to leadership.

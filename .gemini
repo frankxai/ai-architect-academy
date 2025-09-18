@@ -1,0 +1,59 @@
+{
+  "intro": "Follow the pattern delivery SDLC defined in /AGENT.md and /process/pattern-delivery-sdlc.xml.",
+  "steps": [
+    {
+      "name": "Discover",
+      "tasks": [
+        "Ask user for business context/KPIs/personas",
+        "Review relevant design patterns and AI CoE templates",
+        "Identify governance requirements"
+      ]
+    },
+    {
+      "name": "Define",
+      "tasks": [
+        "Draft use cases, experience blueprint, architecture",
+        "Select BOM, tooling, governance"
+      ]
+    },
+    {
+      "name": "Prototype",
+      "tasks": [
+        "Scaffold project under 05-projects/",
+        "Implement retrieval/generation/evaluation",
+        "Run npm install, npm run build:index",
+        "Activate venv, pip install -r 05-projects/eval-automation/requirements.txt",
+        "Run python scripts/check_secrets.py and 05-projects/eval-automation/check_env.py",
+        "Execute Promptfoo evaluations"
+      ]
+    },
+    {
+      "name": "Industrialise",
+      "tasks": [
+        "Add observability (Langfuse, metrics)",
+        "Apply governance checklists",
+        "Integrate with existing systems"
+      ]
+    },
+    {
+      "name": "Operate & Iterate",
+      "tasks": [
+        "Log metrics, retrospectives",
+        "Update documentation, persona dashboards",
+        "Prepare storytelling artefacts"
+      ]
+    }
+  ],
+  "outputs": [
+    "Updated pattern file",
+    "Project code & docs",
+    "Evaluation reports",
+    "Governance evidence",
+    "Narrative/summary"
+  ],
+  "governance": [
+    "08-governance/AI-procurement-checklist.md",
+    "08-governance/incident-response-checklist.md",
+    "08-governance/human-review-checklist.md"
+  ]
+}
