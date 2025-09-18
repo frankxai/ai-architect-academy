@@ -416,18 +416,46 @@
   },
   {
     "id": "02-learning-paths/100-hour-ai-architect.md",
-    "title": "100‑Hour AI Architect Plan",
+    "title": "100‑Hour AI Architect Plan — Launchpad Sprint",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/100-hour-ai-architect.md",
     "section": "Learning Paths",
     "path": "02-learning-paths/100-hour-ai-architect.md",
     "headings": [
       {
         "level": 1,
-        "text": "100‑Hour AI Architect Plan"
+        "text": "100‑Hour AI Architect Plan — Launchpad Sprint"
+      },
+      {
+        "level": 2,
+        "text": "Program Outcomes"
+      },
+      {
+        "level": 2,
+        "text": "Weekly Breakdown"
+      },
+      {
+        "level": 2,
+        "text": "Daily Cadence"
+      },
+      {
+        "level": 2,
+        "text": "Deliverables & Rubrics"
+      },
+      {
+        "level": 2,
+        "text": "Recommended Toolchain"
+      },
+      {
+        "level": 2,
+        "text": "Suggested Reading & Research"
+      },
+      {
+        "level": 2,
+        "text": "Next Steps After Launchpad"
       }
     ],
-    "excerpt": "# 100‑Hour AI Architect Plan Format: 4 weeks × ~25 hours/week. Focus on shipping real artifacts weekly. Week 1 — Foundations (25h) - LLM basics (6h): tokenization, attention, prompting - Retrieval & embeddings (8h): chunking, hybrid search, pgvector - Hands‑on (8h): implement vector search; small RAG demo - Assessment ",
-    "content": "# 100‑Hour AI Architect Plan Format: 4 weeks × ~25 hours/week. Focus on shipping real artifacts weekly. Week 1 — Foundations (25h) - LLM basics (6h): tokenization, attention, prompting - Retrieval & embeddings (8h): chunking, hybrid search, pgvector - Hands‑on (8h): implement vector search; small RAG demo - Assessment (3h): quiz + short write‑up Week 2 — Systems (25h) - Agents & tools (6h): function calling, orchestration - Observability & evals (6h): Langfuse, metrics, datasets - Hands‑on (10h): RAG with citations and eval harness - Assessment (3h): demo + reflection Week 3 — Governance & Performance (25h) - Privacy/GDPR (4h), model risk (4h) - Performance & cost (6h): caching, batch, smaller models - Hands‑on (8h): optimize RAG; add guardrails - Assessment (3h): doc architecture & SLOs Week 4 — Specialization & Portfolio (25h) - Industry pattern (6h): choose domain - Project (15h): complete end‑to‑end PoC - Presentation (4h): writeup + slides + video Deliverables - Working RAG app with citations - Eval report with metrics - Architecture doc (diagram, SLOs, costs) - Final presentation"
+    "excerpt": "# 100‑Hour AI Architect Plan — Launchpad Sprint Format: 4 weeks × ~25 hours/week. Blend async deep dives (12h), guided labs (8h), and reflection/storytelling (5h). ## Program Outcomes - Ship a production-grade retrieval pipeline (ingestion → hybrid search → rerank → answer) with citations. - Instrument evaluation and o",
+    "content": "# 100‑Hour AI Architect Plan — Launchpad Sprint Format: 4 weeks × ~25 hours/week. Blend async deep dives (12h), guided labs (8h), and reflection/storytelling (5h). ## Program Outcomes - Ship a production-grade retrieval pipeline (ingestion → hybrid search → rerank → answer) with citations. - Instrument evaluation and observability from day one (Langfuse or OSS equivalent, prompt regression tests, cost/latency dashboards). - Document architecture, governance decisions, and value narrative that convinces stakeholders to scale. ## Weekly Breakdown | Week | Focus | Key Work | Time Split | | --- | --- | --- | --- | | **Week 1 — Foundations & Retrieval** | Tokenization, attention, prompting systems, embedding strategy | Build dataset ingestion notebook, compare embedding models, implement pgvector hybrid search | 6h theory · 6h lab · 4h reading · 3h reflection · 6h optional dojo | | **Week 2 — Systems & Agents** | Tool use, function calling, orchestration strategies, context windows | Extend RAG app with tool-enabled agent, implement reranking, add streaming UX | 5h theory · 8h lab · 4h pairing · 4h research · 4h reflection | | **Week 3 — Evaluation, Observability & Governance** | Metrics, eval harnesses, tracing, privacy, model risk | Wire Langfuse traces, run prompt regression suite, map privacy controls, create incident playbook | 5h theory · 8h lab · 5h ops reviews · 3h governance · 4h storytelling | | **Week 4 — Specialisation & Portfolio** | Industry deep dives, optimisation, stakeholder influence | Optimise latency/cost, integrate guardrails, produce architecture brief, record final demo | 4h theory · 9h lab · 4h stakeholder interviews · 4h storytelling · 4h retros | ## Daily Cadence - **Mon:** 90-minute async module + guided exercise (LLM fundamentals, retrieval research, architecture patterns). - **Tue:** Live lab (mob build) on ingestion, retrieval, or orchestration. Pair using the [vector search project](../05-projects/vector-search-pgvector.md). - **Wed:** Eva"
   },
   {
     "id": "02-learning-paths/agentic-code-swarms.md",
@@ -439,6 +467,10 @@
       {
         "level": 1,
         "text": "Learning Path: Agentic Code Swarms"
+      },
+      {
+        "level": 2,
+        "text": "Curriculum Placement"
       },
       {
         "level": 2,
@@ -465,53 +497,160 @@
         "text": "Grading Rubric"
       }
     ],
-    "excerpt": "# Learning Path: Agentic Code Swarms Audience: AI Architects and Builders using Codex, Claude Code, or Cursor. Outcome: Ship a working multi-agent swarm, understand orchestration patterns, and build a visual explorer. Time: 10–16 hours (self-paced) ## Prereqs - Python 3.11 - Optional: OpenAI/Anthropic key (LiteLLM). Ot",
-    "content": "# Learning Path: Agentic Code Swarms Audience: AI Architects and Builders using Codex, Claude Code, or Cursor. Outcome: Ship a working multi-agent swarm, understand orchestration patterns, and build a visual explorer. Time: 10–16 hours (self-paced) ## Prereqs - Python 3.11 - Optional: OpenAI/Anthropic key (LiteLLM). Otherwise runs offline. ## Modules 1) Concepts and Patterns (1h) - Roles, messages, tools, orchestrators - Coordination: sequential, round-robin, planner–worker–reviewer 2) Core Setup (1h) - , venv, run Hello Swarm 3) Orchestration (2h) - Inspect and extend P–W–R with retries and critiques 4) Tools (2h) - Add a and tool 5) Visual Explorer (2h) - Use , add controls and message tracing 6) SaaS Planner (2–4h) - Extend to output a BoM and architecture diagram 7) Evaluate (2h) - Design acceptance checks and simple evals (see ) ## Hands-On Steps ## Challenges - Add a agent that blocks the final answer if tests fail - Add tracing to show token usage per agent (mock values offline) - Swap providers (OpenAI ↔ Anthropic) via LiteLLM config only ## Deliverables - Working swarm with at least 3 roles - A recorded screen demo of the Streamlit explorer - A short doc: architecture, trade-offs, and next steps ## Grading Rubric - Functionality (40%): agents coordinate, produce coherent outputs - Clarity (30%): code readability, clear prompts, thoughtful defaults - UX (20%): UI communicates roles, history, and decisions visually - Rigor (10%): eval checks or tests"
+    "excerpt": "# Learning Path: Agentic Code Swarms Audience: AI Architects and Builders using Codex, Claude Code, Cursor, or other pair-programming copilots. Outcome: Ship a working multi-agent swarm, understand orchestration patterns, and build a visual explorer with live telemetry. Time: 10–16 hours (self-paced) This lab is the ca",
+    "content": "# Learning Path: Agentic Code Swarms Audience: AI Architects and Builders using Codex, Claude Code, Cursor, or other pair-programming copilots. Outcome: Ship a working multi-agent swarm, understand orchestration patterns, and build a visual explorer with live telemetry. Time: 10–16 hours (self-paced) This lab is the capstone inside the [Agentic Systems Lab](curriculum-architecture.md#program-layers--flagship-outcomes). Pair it with the [Professional Studio](professional.md) for evaluation depth and the [Bootcamp](bootcamp.md) to socialise operating models with leadership. ## Curriculum Placement - **Prerequisite:** Comfortable with the [100-Hour Launchpad](100-hour-ai-architect.md) retrieval pipeline and evaluation loop. - **Parallel tracks:** Join weekly design reviews with Professional Studio cohorts to compare orchestrator decisions and failure modes. - **Post-lab moves:** Publish your swarm pattern as a case study in or demo it during a bootcamp executive council. ## Prereqs - Python 3.11 - Optional: OpenAI/Anthropic key (LiteLLM). Otherwise runs offline. ## Modules 1) Concepts and Patterns (1h) - Roles, messages, tools, orchestrators - Coordination: sequential, round-robin, planner–worker–reviewer 2) Core Setup (1h) - , venv, run Hello Swarm 3) Orchestration (2h) - Inspect and extend P–W–R with retries and critiques 4) Tools (2h) - Add a and tool 5) Visual Explorer (2h) - Use , add controls and message tracing 6) SaaS Planner (2–4h) - Extend to output a BoM and architecture diagram 7) Evaluate (2h) - Design acceptance checks and simple evals (see ) ## Hands-On Steps ## Challenges - Add a agent that blocks the final answer if tests fail - Add tracing to show token usage per agent (mock values offline) - Swap providers (OpenAI ↔ Anthropic) via LiteLLM config only ## Deliverables - Working swarm with at least 3 roles - A recorded screen demo of the Streamlit explorer - A short doc: architecture, trade-offs, and next steps ## Grading Rubric - Functionality (40%): a"
   },
   {
     "id": "02-learning-paths/beginner.md",
-    "title": "Beginner Path (4 Weeks)",
+    "title": "Beginner Path — Creator Launch Sequence (4 Weeks)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/beginner.md",
     "section": "Learning Paths",
     "path": "02-learning-paths/beginner.md",
     "headings": [
       {
         "level": 1,
-        "text": "Beginner Path (4 Weeks)"
+        "text": "Beginner Path — Creator Launch Sequence (4 Weeks)"
+      },
+      {
+        "level": 2,
+        "text": "Outcomes"
+      },
+      {
+        "level": 2,
+        "text": "Weekly Flow"
+      },
+      {
+        "level": 2,
+        "text": "Teaching Model"
+      },
+      {
+        "level": 2,
+        "text": "Portfolio Checklist"
+      },
+      {
+        "level": 2,
+        "text": "Next Moves"
       }
     ],
-    "excerpt": "# Beginner Path (4 Weeks) - Week 1: LLM basics, prompting, safety - Week 2: Retrieval & embeddings, pgvector - Week 3: Agents & tools, orchestration - Week 4: Evaluation & observability",
-    "content": "# Beginner Path (4 Weeks) - Week 1: LLM basics, prompting, safety - Week 2: Retrieval & embeddings, pgvector - Week 3: Agents & tools, orchestration - Week 4: Evaluation & observability"
+    "excerpt": "# Beginner Path — Creator Launch Sequence (4 Weeks) Designed for creators, educators, and advocates who want to teach AI architecture responsibly. Expect ~8–10 hours per week across async study, micro-builds, and storytelling. ## Outcomes - Explain core AI architecture concepts with clarity (retrieval, agents, evaluati",
+    "content": "# Beginner Path — Creator Launch Sequence (4 Weeks) Designed for creators, educators, and advocates who want to teach AI architecture responsibly. Expect ~8–10 hours per week across async study, micro-builds, and storytelling. ## Outcomes - Explain core AI architecture concepts with clarity (retrieval, agents, evaluation, governance). - Facilitate workshops or community sessions that demonstrate safe prompting and responsible usage. - Publish at least three artifacts (newsletter, tutorial, talk track) aligned with the Brand Voice playbook. ## Weekly Flow | Week | Focus | Key Activities | Teaching Assets | | --- | --- | --- | --- | | **Week 1 — Narrative Foundations** | Positioning, personas, value loops | Study [START-HERE](../START-HERE.md), craft audience personas, map value loop storyboard, draft welcome newsletter | [Brand Voice](../BRAND-VOICE.md), [Experience guide](../docs/experience.html) | | **Week 2 — Retrieval & Prompt Craft** | Prompt design, retrieval mental models, safe defaults | Run mini RAG lab using [vector search](../05-projects/vector-search-pgvector.md), capture screenshots, create cheat sheet | [Design Patterns](../01-design-patterns/), [Resources hub](../10-resources/) | | **Week 3 — Governance & Trust Signals** | Privacy, risk, evaluation narratives | Summarise [privacy](../08-governance/privacy-gdpr.md) & [model risk](../08-governance/model-risk.md) into workshop slides, design \"trust checklist\" handout | [Governance checklists](../08-governance/checklists.md), [Metrics](../07-evaluation/metrics.md) | | **Week 4 — Launch & Amplify** | Community delivery, storytelling, feedback loops | Host a live session or recorded tutorial, publish recap article, solicit feedback for iteration | [Article outlines](../09-articles/), [Collaboration playbook](../16-collaboration/working-with-ai.md) | ## Teaching Model - **Micro-drops.** 20-minute videos or async primers paired with practice prompts so learners can teach the content immediately. - **Office hou"
   },
   {
     "id": "02-learning-paths/bootcamp.md",
-    "title": "Bootcamp Path (AI CoE Inspired)",
+    "title": "Bootcamp Path — AI Center of Excellence Alignment",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/bootcamp.md",
     "section": "Learning Paths",
     "path": "02-learning-paths/bootcamp.md",
     "headings": [
       {
         "level": 1,
-        "text": "Bootcamp Path (AI CoE Inspired)"
+        "text": "Bootcamp Path — AI Center of Excellence Alignment"
+      },
+      {
+        "level": 2,
+        "text": "Bootcamp Outcomes"
+      },
+      {
+        "level": 2,
+        "text": "Weekly Agenda"
+      },
+      {
+        "level": 2,
+        "text": "Daily Rhythm (per week)"
+      },
+      {
+        "level": 2,
+        "text": "Toolkits & References"
+      },
+      {
+        "level": 2,
+        "text": "Assessment & Success Signals"
+      },
+      {
+        "level": 2,
+        "text": "Post-Bootcamp Actions"
       }
     ],
-    "excerpt": "# Bootcamp Path (AI CoE Inspired) - Week 1: Core patterns & CX - Week 2: Architecture, vector search, integration, performance, governance - Week 3: Industry, agents, PoC & presentation",
-    "content": "# Bootcamp Path (AI CoE Inspired) - Week 1: Core patterns & CX - Week 2: Architecture, vector search, integration, performance, governance - Week 3: Industry, agents, PoC & presentation"
+    "excerpt": "# Bootcamp Path — AI Center of Excellence Alignment Three intensive weeks for heads of AI, platform leaders, and cross-functional squads. Designed to align roadmap, governance, budget, and talent around measurable outcomes. Plan for 12–14 hours per week plus two executive councils. ## Bootcamp Outcomes - Shared AI oper",
+    "content": "# Bootcamp Path — AI Center of Excellence Alignment Three intensive weeks for heads of AI, platform leaders, and cross-functional squads. Designed to align roadmap, governance, budget, and talent around measurable outcomes. Plan for 12–14 hours per week plus two executive councils. ## Bootcamp Outcomes - Shared AI operating model (vision, value loops, operating cadence) grounded in current capabilities and risk appetite. - Platform architecture decision with vendor comparison, cost/latency forecasts, and integration backlog. - Governance baseline covering privacy, security, compliance, incident response, and responsible AI commitments. ## Weekly Agenda | Week | Council & Focus | Key Sessions | Artefacts | | --- | --- | --- | --- | | **Week 1 — Diagnose & Frame** | Council: product + exec sponsors | Experience walkthrough, stakeholder interviews, capability mapping, risk heatmap | Vision brief, capability matrix, stakeholder map | | **Week 2 — Architect & Decide** | Council: platform + engineering leads | Platform matrix review, retrieval & agent demos, cost modelling, integration sequencing | Platform scorecard, integration backlog, budget plan | | **Week 3 — Govern & Launch** | Council: legal, compliance, data, security | Policy workshops, incident tabletop, measurement framework, communications plan | Governance playbook, KPI dashboard draft, rollout narrative | ## Daily Rhythm (per week) - **Day 1:** 90-minute briefing (experience map, roadmap, best-in-class benchmarks) followed by executive working session. - **Day 2:** Technical deep dive — review architecture options, integration requirements, security posture. - **Day 3:** Governance workshop using templates plus risk scenario drills. - **Day 4:** Metrics & evaluation clinic leveraging [metrics](../07-evaluation/metrics.md), harnesses, and Langfuse dashboards. - **Day 5:** Story & alignment — craft executive update, Q&A rehearsal, and action plan. ## Toolkits & References - **Strategy:** [Roadmap](../00-roadm"
+  },
+  {
+    "id": "02-learning-paths/curriculum-architecture.md",
+    "title": "AI Architect Curriculum Architecture",
+    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/curriculum-architecture.md",
+    "section": "Learning Paths",
+    "path": "02-learning-paths/curriculum-architecture.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "AI Architect Curriculum Architecture"
+      },
+      {
+        "level": 2,
+        "text": "Program Layers & Flagship Outcomes"
+      },
+      {
+        "level": 2,
+        "text": "Learning Rhythms & Teaching Model"
+      },
+      {
+        "level": 2,
+        "text": "Curriculum Pillars & Depth"
+      },
+      {
+        "level": 2,
+        "text": "Feedback, Assessment, and Credentialing"
+      },
+      {
+        "level": 2,
+        "text": "Continuous Research & Refresh Cycle"
+      },
+      {
+        "level": 2,
+        "text": "How to Use This Map"
+      }
+    ],
+    "excerpt": "# AI Architect Curriculum Architecture Design the most capable AI architects on the planet. This map shows how every learner moves from foundations to executive-level influence with clear feedback loops, live build labs, and evergreen research refreshes. ## Program Layers & Flagship Outcomes | Layer | Duration & Cadenc",
+    "content": "# AI Architect Curriculum Architecture Design the most capable AI architects on the planet. This map shows how every learner moves from foundations to executive-level influence with clear feedback loops, live build labs, and evergreen research refreshes. ## Program Layers & Flagship Outcomes | Layer | Duration & Cadence | Primary Persona | Focus & Flagship Deliverables | Core Assets | | --- | --- | --- | --- | --- | | **Launchpad — 100-Hour Architect Sprint** | 4 weeks · 25 h/week · mix of async lessons + 2 live labs | Hands-on builders, technical founders | Ship a production-ready retrieval pipeline with eval harness, instrument costs, publish an architecture brief | [100-hour AI Architect](100-hour-ai-architect.md), [RAG on Supabase](../05-projects/rag-on-supabase.md), [Eval Harness](../05-projects/evals-langfuse.md) | | **Creator Launch Sequence** | 4 weeks · 8–10 h/week · cohort-friendly | Creators, community leads, educators | Translate key concepts into workshops, articles, and explainer assets while demonstrating safe prompting patterns | [Beginner Path](beginner.md), [Article Outlines](../09-articles/), [Brand Voice](../BRAND-VOICE.md) | | **Professional Architect Studio** | 6 weeks · 12–15 h/week · weekly design reviews | Staff/principal architects, AI product leads | Orchestrate multi-model systems, deploy eval+observability stack, defend trade-offs in exec review | [Professional Path](professional.md), [Design Patterns](../01-design-patterns/), [Observability Playbook](../15-workflows/observability-playbook.md) | | **AI CoE Bootcamp** | 3 intensive weeks · 2 executive councils/week | Heads of AI, platform leaders, cross-functional squads | Align roadmap, governance, and platform choices; produce a board-ready adoption plan | [Bootcamp Path](bootcamp.md), [Governance Toolkit](../08-governance/), [Collaboration Rituals](../16-collaboration/) | | **Agentic Systems Lab** | 2–4 week studio · blended async + live swarm critiques | Applied researchers, advanced "
   },
   {
     "id": "02-learning-paths/professional.md",
-    "title": "Professional Path (6 Weeks)",
+    "title": "Professional Path — Architect Studio (6 Weeks)",
     "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/professional.md",
     "section": "Learning Paths",
     "path": "02-learning-paths/professional.md",
     "headings": [
       {
         "level": 1,
-        "text": "Professional Path (6 Weeks)"
+        "text": "Professional Path — Architect Studio (6 Weeks)"
+      },
+      {
+        "level": 2,
+        "text": "Outcomes"
+      },
+      {
+        "level": 2,
+        "text": "Weekly Blueprint"
+      },
+      {
+        "level": 2,
+        "text": "Rituals & Teaching Model"
+      },
+      {
+        "level": 2,
+        "text": "Tooling & Research Refresh"
+      },
+      {
+        "level": 2,
+        "text": "Assessment Rubric"
+      },
+      {
+        "level": 2,
+        "text": "Graduation Pathways"
       }
     ],
-    "excerpt": "# Professional Path (6 Weeks) - Foundations → Systems → Governance → Specialization - Projects: RAG on Supabase, Eval harness, Agentic workflow",
-    "content": "# Professional Path (6 Weeks) - Foundations → Systems → Governance → Specialization - Projects: RAG on Supabase, Eval harness, Agentic workflow"
+    "excerpt": "# Professional Path — Architect Studio (6 Weeks) For staff/principal architects, AI product leads, and senior builders who need to orchestrate reliable, multi-model systems. Expect 12–15 hours per week with weekly design reviews and exec-facing presentations. ## Outcomes - Design and deploy end-to-end architectures tha",
+    "content": "# Professional Path — Architect Studio (6 Weeks) For staff/principal architects, AI product leads, and senior builders who need to orchestrate reliable, multi-model systems. Expect 12–15 hours per week with weekly design reviews and exec-facing presentations. ## Outcomes - Design and deploy end-to-end architectures that combine retrieval, tool-enabled agents, and domain-specific adapters. - Operationalise evaluation, observability, and governance with measurable SLOs and incident playbooks. - Influence stakeholders using quantified trade-offs, cost models, and portfolio-ready narratives. ## Weekly Blueprint | Week | Theme | Systems Focus | Labs & Deliverables | | --- | --- | --- | --- | | **1 — Discovery & Patterns** | Align on business goals, value loops, and risk posture | Pattern selection, capability map, stakeholder interviews | Discovery brief, architecture hypothesis, stakeholder playback | | **2 — Retrieval Depth** | Hybrid search, reranking, structured prompting | Compare embedding providers, implement rerankers, context compression | Retrieval benchmark report, ingestion pipeline repo | | **3 — Agents & Workflow Engines** | Planner-executor, LangGraph, CrewAI, AutoGen | Implement orchestrated agent flow with guardrails and retries | Agent workflow demo, design decision log | | **4 — Evaluation & Observability** | Metrics, prompt regression, Langfuse/LangSmith, OpenTelemetry | Build eval datasets, automate regression suite, wire tracing dashboards | Evaluation dossier, cost/latency dashboard | | **5 — Governance & Safety** | Policy automation, privacy, model risk, incident response | Map governance controls into CI/CD, simulate incident response drill | Governance playbook, risk register, mitigation backlog | | **6 — Optimization & Executive Review** | Performance, cost, UX, stakeholder influence | Tune inference & caching, craft exec narrative, rehearse review | Final architecture doc, exec presentation, investment roadmap | ## Rituals & Teaching Model - *"
   },
   {
     "id": "03-awesome/awesome-agents.md",
@@ -1679,50 +1818,30 @@
       },
       {
         "level": 2,
-        "text": "1. Choose Your Mission Profile"
-      },
-      {
-        "level": 3,
-        "text": "Launchpad — First 100 Hours"
-      },
-      {
-        "level": 3,
-        "text": "Creator & Influencer Track"
-      },
-      {
-        "level": 3,
-        "text": "Enterprise & AI CoE Leadership"
-      },
-      {
-        "level": 3,
-        "text": "Advisors, Clients, Friends & Family"
+        "text": "1. Map Your Learning Spine"
       },
       {
         "level": 2,
-        "text": "2. Map Your Architecture Playbook"
+        "text": "2. Run the Weekly Value Loop"
       },
       {
         "level": 2,
-        "text": "3. Build Value Loops"
+        "text": "3. How We Teach"
       },
       {
         "level": 2,
-        "text": "4. Instrument, Govern, and Operate"
+        "text": "4. Assessments & Portfolio"
       },
       {
         "level": 2,
-        "text": "5. Amplify and Share the Story"
+        "text": "5. Set Up Your Workspace"
       },
       {
         "level": 2,
-        "text": "Clone & Personalise the Repo"
-      },
-      {
-        "level": 2,
-        "text": "Keep Exploring"
+        "text": "6. Keep Exploring"
       }
     ],
-    "excerpt": "# Start Here — Build Your AI Architect Command Center You’re here because you want to ship real AI value, guide stakeholders with confidence, and make your work easy to share. This quick guide orients you to the full experience so you can get momentum within minutes. ## 1. Choose Your Mission Profile ### Launchpad — Fi",
-    "content": "# Start Here — Build Your AI Architect Command Center You’re here because you want to ship real AI value, guide stakeholders with confidence, and make your work easy to share. This quick guide orients you to the full experience so you can get momentum within minutes. ## 1. Choose Your Mission Profile ### Launchpad — First 100 Hours - Follow the [100-Hour AI Architect plan](02-learning-paths/100-hour-ai-architect.md) to sprint through foundations, shipping, and storytelling. - Pair the plan with three anchor projects: [RAG on Supabase](05-projects/rag-on-supabase.md), [Langfuse evals](05-projects/evals-langfuse.md), and [Vector search benchmarks](05-projects/vector-search-pgvector.md). ### Creator & Influencer Track - Use the [Beginner](02-learning-paths/beginner.md) and [Professional](02-learning-paths/professional.md) paths to pace long-form content, workshops, and community sessions. - Pull examples and citations from the [Awesome collections](03-awesome/) and [Articles](09-articles/) folders. ### Enterprise & AI CoE Leadership - Run the [Bootcamp](02-learning-paths/bootcamp.md) to align product, platform, risk, and ops teams. - Combine architecture patterns ( ) with the [Governance toolkit](08-governance/) and [Collaboration playbooks](16-collaboration/) for executive visibility. ### Advisors, Clients, Friends & Family - Share the [Experience page](docs/experience.html) when introducing the hub to new collaborators. - Use to spin up proposals, meeting notes, and recap reports fast. ## 2. Map Your Architecture Playbook - Start with three core patterns: [Content Generation](01-design-patterns/content-generation.md), [Decision Support](01-design-patterns/decision-support.md), and [Model Lifecycle Management](01-design-patterns/model-lifecycle-management.md). - Explore the [Concept decks](12-concepts/) for mental models (retrieval, evaluation, observability, safety) you can present to stakeholders. - Browse [Platforms](docs/platforms.html) and [Cloud blueprints](docs"
+    "excerpt": "# Start Here — Build Your AI Architect Command Center You’re here to ship real AI value, guide stakeholders with confidence, and show your work. This quickstart orients you to the refreshed curriculum so you can choose the right lane, lock in your learning rhythm, and publish proof every week. ## 1. Map Your Learning S",
+    "content": "# Start Here — Build Your AI Architect Command Center You’re here to ship real AI value, guide stakeholders with confidence, and show your work. This quickstart orients you to the refreshed curriculum so you can choose the right lane, lock in your learning rhythm, and publish proof every week. ## 1. Map Your Learning Spine | Program Layer | Best For | Outcomes | Go-To Assets | | --- | --- | --- | --- | | **Launchpad — 100 Hours** | Builders who need momentum fast | Retrieval pipeline with eval harness, architecture brief, stakeholder recap | [100-Hour Plan](02-learning-paths/100-hour-ai-architect.md), [Design Patterns](01-design-patterns/), [RAG on Supabase](05-projects/rag-on-supabase.md) | | **Creator Launch Sequence** | Educators, creators, advocates | Workshops, newsletters, and explainer content anchored in safe prompting and governance | [Beginner Path](02-learning-paths/beginner.md), [Brand Voice](BRAND-VOICE.md), [Article Outlines](09-articles/) | | **Professional Architect Studio** | Staff/principal ICs, AI product leads | Multi-model system design, observability rollout, executive reviews | [Professional Path](02-learning-paths/professional.md), [Observability Playbook](15-workflows/observability-playbook.md), [Eval Harness](05-projects/evals-langfuse.md) | | **AI CoE Bootcamp** | Platform leaders, transformation teams | Governance baseline, platform roadmap, adoption plan | [Bootcamp](02-learning-paths/bootcamp.md), [Governance Toolkit](08-governance/), [Collaboration Rituals](16-collaboration/) | | **Agentic Systems Lab** | Advanced builders, R&D squads | Agent orchestration with tracing, guardrails, and UX | [Agentic Code Swarms](02-learning-paths/agentic-code-swarms.md), [Agentic SaaS Planner](05-projects/agentic-saas-planner.md) | Need the full rationale behind each layer? Read the [Curriculum Architecture](02-learning-paths/curriculum-architecture.md). ## 2. Run the Weekly Value Loop 1. **Discover the stakeholder need.** Use the discovery questions p"
   }
 ]
