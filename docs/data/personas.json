@@ -1,141 +1,143 @@
 {
-    "generated_at":  "2025-09-18",
-    "personas":  [
-                     {
-                         "id":  "builder",
-                         "title":  "Builders",
-                         "subtitle":  "Hands-on architects shipping retrieval, agents, and workflow automation.",
-                         "headline":  "Ship reliable assistants with evaluation-first ops.",
-                         "milestones":  [
-                                            "Finish the 100-Hour AI Architect plan weeks 1-3.",
-                                            "Stand up Langfuse telemetry linked to Promptfoo evals.",
-                                            "Publish a RAG retro using the Venture Clinic playbook."
-                                        ],
-                         "primary_resources":  [
-                                                   {
-                                                       "label":  "Pattern",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/model-lifecycle-management.md"
-                                                   },
-                                                   {
-                                                       "label":  "Project",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/domain-rag-healthcare/README.md"
-                                                   },
-                                                   {
-                                                       "label":  "Eval",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/eval-automation/README.md"
-                                                   }
-                                               ],
-                         "micro_modules":  [
-                                               "foundations-context-engineering",
-                                               "retrieval-hybrid-ranking",
-                                               "operations-langfuse-telemetry"
-                                           ],
-                         "cta":  {
-                                     "label":  "Run Builder Sprint",
-                                     "href":  "./start-here.html#builder-track"
-                                 }
-                     },
-                     {
-                         "id":  "leader",
-                         "title":  "Leaders",
-                         "subtitle":  "Executives and product owners aligning roadmap, governance, and ROI.",
-                         "headline":  "Tell the story, balance risk, and drive accountable adoption.",
-                         "milestones":  [
-                                            "Frame quarterly outcomes with the Executive Narrative Builder.",
-                                            "Adopt the Model Risk Review sprint with cross-functional teams.",
-                                            "Launch governance scorecards covering privacy, compliance, and model health."
-                                        ],
-                         "primary_resources":  [
-                                                   {
-                                                       "label":  "Pattern",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/governance-compliance.md"
-                                                   },
-                                                   {
-                                                       "label":  "Workbook",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/professional.md"
-                                                   },
-                                                   {
-                                                       "label":  "Narrative",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/09-articles/creator-studio-launch-guide.md"
-                                                   }
-                                               ],
-                         "micro_modules":  [
-                                               "governance-model-risk-review",
-                                               "storytelling-adoption-metrics",
-                                               "storytelling-exec-brief"
-                                           ],
-                         "cta":  {
-                                     "label":  "Review Leadership Rituals",
-                                     "href":  "./start-here.html#leader-track"
-                                 }
-                     },
-                     {
-                         "id":  "creator",
-                         "title":  "Creators",
-                         "subtitle":  "Influencers, educators, and marketing teams scaling content ops.",
-                         "headline":  "Automate briefs-to-publish while keeping tone, compliance, and analytics aligned.",
-                         "milestones":  [
-                                            "Install the Creator Studio Automation blueprint.",
-                                            "Run the Creator Evaluation Scorecards suite before every launch.",
-                                            "Feed analytics back into prompt packs weekly."
-                                        ],
-                         "primary_resources":  [
-                                                   {
-                                                       "label":  "Pattern",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/creator-studio-automation.md"
-                                                   },
-                                                   {
-                                                       "label":  "Guide",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/09-articles/creator-studio-launch-guide.md"
-                                                   },
-                                                   {
-                                                       "label":  "Project",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/creator-evals/README.md"
-                                                   }
-                                               ],
-                         "micro_modules":  [
-                                               "creator-content-orchestration",
-                                               "creator-evaluation-scorecards",
-                                               "creator-analytics-feedback-loop"
-                                           ],
-                         "cta":  {
-                                     "label":  "Launch Creator Sprint",
-                                     "href":  "./start-here.html#creator--influencer-track"
-                                 }
-                     },
-                     {
-                         "id":  "operator",
-                         "title":  "Operators",
-                         "subtitle":  "Engineers and SREs keeping AI services observable, efficient, and safe.",
-                         "headline":  "Instrument, budget, and recover of AI workloads across the stack.",
-                         "milestones":  [
-                                            "Implement cost dashboards tied to model usage.",
-                                            "Automate guardrail regression tests in CI.",
-                                            "Document incident response and human-in-loop escalation."
-                                        ],
-                         "primary_resources":  [
-                                                   {
-                                                       "label":  "Pattern",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/performance-optimization.md"
-                                                   },
-                                                   {
-                                                       "label":  "Workflow",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/15-workflows/retrospective-with-ai.md"
-                                                   },
-                                                   {
-                                                       "label":  "Checklist",
-                                                       "href":  "https://github.com/frankxai/ai-architect-academy/blob/main/08-governance/incident-response-checklist.md"
-                                                   }
-                                               ],
-                         "micro_modules":  [
-                                               "operations-cost-optimization",
-                                               "evaluation-automation-pipeline",
-                                               "governance-policy-automation"
-                                           ],
-                         "cta":  {
-                                     "label":  "Run Ops Review",
-                                     "href":  "./start-here.html#operations-track"
-                                 }
-                     }
-                 ]
+    "generated_at": "2025-09-18",
+    "personas": [
+        {
+            "id": "builder",
+            "title": "Builders",
+            "subtitle": "Hands-on architects shipping retrieval, agents, and workflow automation.",
+            "headline": "Ship reliable assistants with evaluation-first ops.",
+            "milestones": [
+                "Finish the 100-Hour AI Architect plan weeks 1-3.",
+                "Stand up Langfuse telemetry linked to Promptfoo evals.",
+                "Publish a RAG retro using the Venture Clinic playbook.",
+                "Review weekly lab insights and update decision & agent assets accordingly."
+            ],
+            "primary_resources": [
+                {
+                    "label": "Pattern",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/model-lifecycle-management.md"
+                },
+                {
+                    "label": "Project",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/domain-rag-healthcare/README.md"
+                },
+                {
+                    "label": "Eval",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/eval-automation/README.md"
+                }
+            ],
+            "micro_modules": [
+                "foundations-context-engineering",
+                "retrieval-hybrid-ranking",
+                "operations-langfuse-telemetry"
+            ],
+            "cta": {
+                "label": "Run Builder Sprint",
+                "href": "./start-here.html#builder-track"
+            }
+        },
+        {
+            "id": "leader",
+            "title": "Leaders",
+            "subtitle": "Executives and product owners aligning roadmap, governance, and ROI.",
+            "headline": "Tell the story, balance risk, and drive accountable adoption.",
+            "milestones": [
+                "Frame quarterly outcomes with the Executive Narrative Builder.",
+                "Adopt the Model Risk Review sprint with cross-functional teams.",
+                "Launch governance scorecards covering privacy, compliance, and model health.",
+                "Share lab trend brief with governance stakeholders each month."
+            ],
+            "primary_resources": [
+                {
+                    "label": "Pattern",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/governance-compliance.md"
+                },
+                {
+                    "label": "Workbook",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/professional.md"
+                },
+                {
+                    "label": "Narrative",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/09-articles/creator-studio-launch-guide.md"
+                }
+            ],
+            "micro_modules": [
+                "governance-model-risk-review",
+                "storytelling-adoption-metrics",
+                "storytelling-exec-brief"
+            ],
+            "cta": {
+                "label": "Review Leadership Rituals",
+                "href": "./start-here.html#leader-track"
+            }
+        },
+        {
+            "id": "creator",
+            "title": "Creators",
+            "subtitle": "Influencers, educators, and marketing teams scaling content ops.",
+            "headline": "Automate briefs-to-publish while keeping tone, compliance, and analytics aligned.",
+            "milestones": [
+                "Install the Creator Studio Automation blueprint.",
+                "Run the Creator Evaluation Scorecards suite before every launch.",
+                "Feed analytics back into prompt packs weekly."
+            ],
+            "primary_resources": [
+                {
+                    "label": "Pattern",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/creator-studio-automation.md"
+                },
+                {
+                    "label": "Guide",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/09-articles/creator-studio-launch-guide.md"
+                },
+                {
+                    "label": "Project",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/creator-evals/README.md"
+                }
+            ],
+            "micro_modules": [
+                "creator-content-orchestration",
+                "creator-evaluation-scorecards",
+                "creator-analytics-feedback-loop"
+            ],
+            "cta": {
+                "label": "Launch Creator Sprint",
+                "href": "./start-here.html#creator--influencer-track"
+            }
+        },
+        {
+            "id": "operator",
+            "title": "Operators",
+            "subtitle": "Engineers and SREs keeping AI services observable, efficient, and safe.",
+            "headline": "Instrument, budget, and recover of AI workloads across the stack.",
+            "milestones": [
+                "Implement cost dashboards tied to model usage.",
+                "Automate guardrail regression tests in CI.",
+                "Document incident response and human-in-loop escalation."
+            ],
+            "primary_resources": [
+                {
+                    "label": "Pattern",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/performance-optimization.md"
+                },
+                {
+                    "label": "Workflow",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/15-workflows/retrospective-with-ai.md"
+                },
+                {
+                    "label": "Checklist",
+                    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/08-governance/incident-response-checklist.md"
+                }
+            ],
+            "micro_modules": [
+                "operations-cost-optimization",
+                "evaluation-automation-pipeline",
+                "governance-policy-automation"
+            ],
+            "cta": {
+                "label": "Run Ops Review",
+                "href": "./start-here.html#operations-track"
+            }
+        }
+    ]
 }

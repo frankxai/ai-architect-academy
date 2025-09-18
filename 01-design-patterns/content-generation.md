@@ -58,6 +58,11 @@
 - Enforce reviewer SLA from `human-review-checklist.md`.  
 - Incident procedures per `incident-response-checklist.md`.
 
+## Lab Insights (Sept 2025)
+- **OpenAI (GPT-4o multimodal)**: Combine streaming text+vision outputs with structured grounding JSON. Support canvas editing and webhook callbacks so reviewers can accept edits from a live preview.
+- **Microsoft Responsible AI**: Apply content safety filters and metadata watermarks for synthetic media; log sign-offs in governance artifacts.
+- **Anthropic Constitutional AI**: Re-run constitutional prompts during regression suites; feed violations into `08-governance/human-review-checklist.md` processes.
+
 ## Deliverables & Templates
 - **Pattern Brief Deck:** adapt from `AI CoE Templates/006-templates`.  
 - **BOM & Architecture:** reuse technical architecture docs in `AI CoE Templates/002-pattern-library/.../content-generation` (import sections as needed).  

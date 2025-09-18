@@ -59,6 +59,11 @@
 - Maintain change logs, approvals, retention rules.  
 - Support external audits with standard packages.
 
+## Lab Insights (Sept 2025)
+- **Anthropic**: Integrate Constitutional AI prompts into red-team suites; document refusals and overrides for compliance evidence.
+- **OpenAI**: Align with the latest OpenAI Spec for usage policies; capture system & developer instructions in audit packages.
+- **Google DeepMind**: Adopt safety playbooks for incident drills (red/blue team) and connect outputs to risk registers.
+
 ## Deliverables & Templates
 - Governance operating model deck, RACI, cadences.  
 - Policy repository + mapping matrix.  
