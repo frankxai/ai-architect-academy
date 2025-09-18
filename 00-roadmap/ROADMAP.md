@@ -6,6 +6,7 @@
 - **Visual system.** New SVG assets (`assets/experience-map.svg`, `assets/value-loop.svg`) mirrored under `docs/assets/` for the live site.
 
 ## Next 30 Days
+- **AI Lab Research Sync.** Launch weekly intelligence loop covering OpenAI, DeepMind, Anthropic, Meta, Microsoft, NVIDIA; feed updates into design patterns and micro-learning modules.
 - **Persona dashboards.** Build dynamic cards on the Experience page that auto-pull highlights from learning paths, projects, and governance modules.
 - **Interactive project filters.** Extend `docs/projects.html` with saved views (RAG, Agentic, Ops) and top-tier search presets.
 - **Governance deep dives.** Expand `08-governance/` with checklists for procurement, incident response, and human-in-the-loop reviews.
@@ -20,3 +21,4 @@
 - **Ship in loops.** Pattern → Project → Eval → Story is the default development cadence.
 - **Stay truthful.** Document only what exists or is in flight. Ship fast, update often.
 - **Accessible to all.** Friends, family, enterprise buyers, and influencers should find a path immediately.
+
