@@ -48,14 +48,15 @@ jobs:
       run: |
         cat > claude-interaction.js << 'EOF'
         const Anthropic = require('@anthropic-ai/sdk');
-        const { Octokit } = require('@octokit/rest');
         const fs = require('fs');
-        
+
         async function main() {
           const anthropic = new Anthropic({
             apiKey: process.env.CLAUDE_API_KEY,
           });
-          
+
+          const { Octokit } = await import('@octokit/rest');
+
           const octokit = new Octokit({
             auth: process.env.GITHUB_TOKEN,
           });

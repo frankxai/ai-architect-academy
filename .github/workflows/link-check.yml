@@ -17,7 +17,6 @@ jobs:
           args: >-
             --verbose
             --no-progress
-            --exclude-mail
             --max-redirects 5
             './**/*.md' './docs/**/*.html'
         env:

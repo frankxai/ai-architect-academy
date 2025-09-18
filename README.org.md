@@ -51,7 +51,7 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
 - **Launchpad (100 hours).** A curated sprint for builders who want traction fast — [100-Hour Plan](02-learning-paths/100-hour-ai-architect.md).
 - **Creators & Educators.** Translate the playbook into content with the [Beginner](02-learning-paths/beginner.md) and [Professional](02-learning-paths/professional.md) paths.
 - **Enterprise & AI CoE Leaders.** Run the [Bootcamp](02-learning-paths/bootcamp.md) to align architecture, governance, and adoption.
-- **Agentic Innovators.** Experiment with [Agentic Code Swarms](agentic-swarms/README.md) and the [Agentic SaaS Planner](05-projects/agentic-saas-planner.md).
+- **Agentic Innovators.** Experiment with [Agentic Code Swarms](02-learning-paths/agentic-code-swarms.md) and the [Agentic SaaS Planner](05-projects/agentic-saas-planner.md).
 
 ## Operate with Confidence
 - **Evaluation stack:** [Metrics](07-evaluation/metrics.md), [Eval harness](07-evaluation/eval-harness.md), and [promptfoo integrations](05-projects/evals-langfuse.md).
