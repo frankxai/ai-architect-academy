@@ -53,7 +53,7 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
 - **Creators & Educators.** Run workshops, newsletters, and community drops using the [Creator Launch Sequence](02-learning-paths/beginner.md) plus the [Brand Voice playbook](BRAND-VOICE.md).
 - **Professional Architects.** Join the six-week [Professional Studio](02-learning-paths/professional.md) to orchestrate multi-model systems with evaluation-first rigor.
 - **Enterprise & AI CoE Leaders.** Facilitate alignment with the revamped [Bootcamp](02-learning-paths/bootcamp.md), governance toolkits, and collaboration rituals.
-- **Agentic Innovators.** Layer in [Agentic Code Swarms](agentic-swarms/README.md), experiment with orchestrators, and publish learnings via the [Agentic SaaS Planner](05-projects/agentic-saas-planner.md).
+- **Agentic Innovators.** Layer in [Agentic Code Swarms](02-learning-paths/agentic-code-swarms.md), experiment with orchestrators, and publish learnings via the [Agentic SaaS Planner](05-projects/agentic-saas-planner.md).
 
 ## Operate with Confidence
 - **Evaluation stack:** [Metrics](07-evaluation/metrics.md), [Eval harness](07-evaluation/eval-harness.md), and [promptfoo integrations](05-projects/evals-langfuse.md).
