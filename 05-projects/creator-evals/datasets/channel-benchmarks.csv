@@ -1,0 +1,6 @@
+asset_id,title,channel,metric,value,period
+VID-001,How to automate creator briefs,YouTube,watch_time_minutes,1450,2025-09
+VID-001,How to automate creator briefs,YouTube,ctr,0.071,2025-09
+POST-204,Creator pipeline checklist,LinkedIn,engagement_rate,0.042,2025-09
+EMAIL-110,Creator studio launch email,Email,open_rate,0.386,2025-09
+EMAIL-110,Creator studio launch email,Email,click_rate,0.094,2025-09

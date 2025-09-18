@@ -1,6 +1,14 @@
-﻿[
+[
   {
-    "input": "List first-line treatments for stage 1 hypertension",
-    "expected": "Lifestyle modification and potential thiazide diuretics"
+    "input": "What follow-up actions are mandated if AIHA patients remain hypertensive after two visits?",
+    "expected": "Escalate to a cardiology consult within 14 days while continuing home monitoring and ACE inhibitor therapy."
+  },
+  {
+    "input": "Describe AIHA's diabetes prevention outreach for adults with elevated HbA1c readings.",
+    "expected": "Enroll them in annual HbA1c screening with referral to the metabolic coaching program and repeat labs within 12 weeks."
+  },
+  {
+    "input": "How does AIHA triage urgent symptoms submitted through telehealth?",
+    "expected": "Use SafeStart scripts and deliver an on-demand video consult within 30 minutes for urgent cases."
   }
 ]

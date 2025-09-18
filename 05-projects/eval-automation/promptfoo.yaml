@@ -1,14 +1,14 @@
-﻿version: 1
+version: 1
 prompts:
-  - label: default
-    prompt: |
+  - id: default
+    raw: |
       You are an AI assistant for the AI Architect Academy. Answer the user question truthfully using the provided context.
       Context:
       {{context}}
       Question: {{input}}
-models:
+providers:
   - id: openai:gpt-4o-mini
-  - id: anthropic:claude-3-5-sonnet
+  - id: anthropic:messages:claude-3-5-sonnet
 defaultTest:
   vars:
     context: ""

@@ -1,1 +1,6 @@
-id,title,content\n1,Hypertension Guideline,Patients with hypertension should receive lifestyle counseling...\n2,Diabetes Screening,Screen adults aged 35+ for diabetes mellitus every three years...
+id,title,content
+AHA-001,Hypertension Care Pathway,"AI Architect Health Alliance prescribes lifestyle counselling within 7 days, home blood pressure monitoring, and ACE inhibitor initiation for sustained systolic >160 mmHg; escalate to cardiology review if readings remain above target after 2 follow-ups."
+AHA-002,Diabetes Screening & Coaching,"Adults aged 30+ with BMI >=27 or family history receive annual HbA1c screening plus referral to the AIHA metabolic coaching program; offer culturally tailored nutrition sessions and repeat labs within 12 weeks when values are in the prediabetes range."
+AHA-003,Chronic Kidney Disease Monitoring,"For CKD stage 3 patients, order quarterly eGFR and albumin-to-creatinine tests, optimise ACE/ARB therapy, and trigger pharmacist medication reconciliation if eGFR declines >5 ml/min/year."
+AHA-004,Telehealth Triage Protocol,"Nurse navigators follow SafeStart triage scripts; urgent symptoms trigger on-demand video consult within 30 minutes, while routine requests receive asynchronous follow-up with educational microsites curated for AIHA members."
+AHA-005,Medication Safety Double-Check,"High-alert medications (anticoagulants, insulin, opioids) require dual clinician verification via the Medication Guardian app; document counselling and provide QR-coded patient education leaflets."

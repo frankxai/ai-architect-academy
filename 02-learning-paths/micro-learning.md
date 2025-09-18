@@ -30,6 +30,11 @@ Mix and match the [Micro-Learning Atlas](micro-modules/README.md) modules to bui
 4. [Executive Narrative Builder](micro-modules/storytelling-exec-brief.md)
 5. **Ship:** Publish a metrics + narrative bundle in `09-articles/drafts/`.
 
+### Sprint E — Creator Studio Launch
+1. [Creator Content Orchestration Sprint](micro-modules/creator-content-orchestration.md)
+2. [Creator Evaluation Scorecards](micro-modules/creator-evaluation-scorecards.md)
+3. [Creator Analytics Feedback Loop](micro-modules/creator-analytics-feedback-loop.md)
+4. **Ship:** Publish a creator ops playbook that links prompts, scorecards, and analytics back to campaign briefs.
 ## Implementation Tips
 - Schedule micro-modules as daily 45-minute focus blocks. Add reminders via your team calendar.
 - Track completion in the [Learning Logbook](logbook.md) and reflect weekly using [Retrospective with AI](../15-workflows/retrospective-with-ai.md).

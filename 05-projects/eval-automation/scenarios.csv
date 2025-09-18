@@ -1,1 +1,6 @@
-input,context,expected\nSummarise the Langfuse telemetry setup,,Should reference Langfuse Telemetry Sprints module\nExplain evaluation automation pipeline,,Should reference Evaluation Automation Pipeline module
+input,context,expected
+Summarise the Langfuse telemetry setup,"Langfuse Telemetry Sprints module describes instrumentation for traces, cost dashboards, and regression alerts.","Should reference Langfuse Telemetry Sprints module"
+Explain evaluation automation pipeline,"Evaluation Automation Pipeline module outlines promptfoo configs, CI hooks, and reporting bundles.","Should reference Evaluation Automation Pipeline module"
+What is AIHA's hypertension follow-up policy?,"AI Architect Health Alliance prescribes lifestyle coaching, ACE inhibitor initiation, and cardiology escalation within 14 days if blood pressure remains high after two visits.","Mention the 14-day cardiology consult and home monitoring."
+How does AIHA triage urgent telehealth requests?,"Nurse navigators use SafeStart scripts and launch on-demand video consults within 30 minutes for urgent symptoms, while routine asks get asynchronous guidance.","State that urgent cases receive a 30-minute video consult window."
+Summarise AIHA's diabetes prevention outreach,"Adults with risk factors enroll in annual HbA1c screening, get referred to the metabolic coaching program, and repeat labs within 12 weeks for prediabetes.","Highlight coaching referral and 12-week lab repeats."
