@@ -3,11 +3,12 @@
 Time-boxed to four sprints (~25 hours each) with optional orientation prep. Every week pairs context, guided study, and a tangible artifact.
 
 ## Orientation (Week 0, 4h)
+- **Micro-learning boost:** Pick two modules from [Micro-Learning Atlas](micro-learning.md) to reinforce personal gaps. Log outcomes in the [Learning Logbook](logbook.md).
 - **Setup:** Clone the repo, skim `START-HERE.md`, bookmark the live site, and sync your AI tools.
 - **Baseline:** Document current strengths + gaps using `02-learning-paths/self-assessment.md` (create if not already started).
 - **Intent:** Capture a one-page learning goal brief; agree with mentor/manager if you have one.
 
-## Week 1 — Retrieval Foundations (26h)
+## Week 1 â€” Retrieval Foundations (26h)
 **North star:** Stand up trustworthy retrieval and answer flows.
 
 | Day | Focus | Hands-on Output | Key References |
@@ -23,7 +24,7 @@ Time-boxed to four sprints (~25 hours each) with optional orientation prep. Ever
 - Demo recorded and linked in `15-workflows/retrospective-with-ai.md`.
 - Risks & next bets logged in your project README.
 
-## Week 2 — Agents, Tooling, and Evaluations (25h)
+## Week 2 â€” Agents, Tooling, and Evaluations (25h)
 **North star:** Chain tools together with observability you trust.
 
 | Day | Focus | Hands-on Output | Key References |
@@ -39,7 +40,7 @@ Time-boxed to four sprints (~25 hours each) with optional orientation prep. Ever
 - Trace screenshot or link captured in project notes.
 - Tool catalog + failure modes documented.
 
-## Week 3 — Governance, Cost, and Performance (24h)
+## Week 3 â€” Governance, Cost, and Performance (24h)
 **North star:** Ship responsibly and efficiently.
 
 | Day | Focus | Hands-on Output | Key References |
@@ -55,7 +56,7 @@ Time-boxed to four sprints (~25 hours each) with optional orientation prep. Ever
 - End-to-end latency documented pre/post optimization.
 - Risk register updated with severity + mitigation status.
 
-## Week 4 — Specialisation and Portfolio (25h)
+## Week 4 â€” Specialisation and Portfolio (25h)
 **North star:** Translate the platform into your context and tell the story.
 
 | Day | Focus | Hands-on Output | Key References |
@@ -75,4 +76,4 @@ Time-boxed to four sprints (~25 hours each) with optional orientation prep. Ever
 ## Sustain & Teach Forward
 - Schedule monthly refresh loops: run evals, revisit guardrails, update index.
 - Host an internal lunch-and-learn using the poster `assets/ai-architect-education-poster.png` as hook.
-- Contribute improvements back via issues or PRs; capture lessons in `09-articles/`.
+- Contribute improvements back via issues or PRs; capture lessons in `09-articles/`.

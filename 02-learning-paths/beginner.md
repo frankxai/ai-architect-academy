@@ -11,6 +11,7 @@ A ramp for builders spending ~6 hours/week. Pair it with the self-assessment to 
 | 4 | Evaluations + observability | Promptfoo suite with faithfulness + toxicity checks, retro using `15-workflows/retrospective-with-ai.md` | `07-evaluation/eval-harness.md`, `05-projects/evals-langfuse.md` |
 
 ## Practice Rituals
+- Assign one module per week from the [Micro-Learning Atlas](micro-learning.md) to reinforce hands-on practice. Log artefacts in `05-projects/sandboxes/`.
 - Ship a tiny artifact each week (notebook, README, Loom) and store it in `05-projects/sandboxes/`.
 - Use the `assets/ai-architect-education-poster.png` as a visual anchor for study groups.
 - Run a 30-minute wrap-up retro every Friday using the prompts in `15-workflows/postmortem.md`.
@@ -18,5 +19,5 @@ A ramp for builders spending ~6 hours/week. Pair it with the self-assessment to 
 ## Graduation Checklist
 - You can explain how embeddings, prompts, and guardrails work together.
 - You have a working retrieval notebook and a basic agent script with evals.
-- You can run Langfuse locally and interpret trace metrics.
-
+- You can run Langfuse locally and interpret trace metrics.
+
