@@ -1,0 +1,18 @@
+checks:
+  - name: pii_redaction
+    type: regex
+    pattern: "(?i)(mrn|ssn|patient id|\b[0-9]{3}-[0-9]{2}-[0-9]{4}\b)"
+    action: redact
+  - name: contraindication_warning
+    type: contains
+    phrases:
+      - "contraindicated"
+      - "do not prescribe"
+    action: flag
+  - name: missing_citations
+    type: custom
+    module: guardrails.custom_checks.ensure_citations
+
+response_policies:
+  on_fail: fallback
+  fallback_message: "I'm sorry, I cannot provide that information right now. Please consult a clinician."

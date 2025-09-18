@@ -53,7 +53,11 @@
 
     <section>
       <h2 class="text-2xl font-semibold">Browse Modules</h2>
-      <p class="mt-2 text-slate-600 dark:text-slate-300">Modules are grouped by category. Each one links to a Markdown playbook inside the repo for instant cloning.</p>
+      <p class="mt-2 text-slate-600 dark:text-slate-300">Use search or category filters to jump into the module you need right now.</p>
+      <div class="mt-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <input id="module-search" type="text" placeholder="Search modules by title, category, or summary" class="w-full md:w-1/2 px-3 py-2 border rounded-lg bg-white dark:bg-slate-900 dark:border-slate-700" />
+        <div id="module-categories" class="flex flex-wrap gap-2"></div>
+      </div>
       <div class="mt-6 grid md:grid-cols-2 xl:grid-cols-3 gap-4" id="module-grid"></div>
     </section>
 
@@ -68,6 +72,7 @@
             <li><a class="text-cyan-600 underline" href="../02-learning-paths/micro-modules/foundations-context-engineering.md">Context Engineering for LLMs</a></li>
             <li><a class="text-cyan-600 underline" href="../02-learning-paths/micro-modules/retrieval-hybrid-ranking.md">Hybrid Ranking Blueprint</a></li>
             <li><a class="text-cyan-600 underline" href="../02-learning-paths/micro-modules/retrieval-rag-guardrails.md">RAG Guardrails Fast Track</a></li>
+            <li><a class="text-cyan-600 underline" href="../02-learning-paths/micro-modules/retrieval-domain-rag-healthcare.md">Domain RAG Clinic (Healthcare)</a></li>
           </ul>
         </div>
         <div class="p-5 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-xl">
@@ -95,6 +100,7 @@
             <li><a class="text-cyan-600 underline" href="../02-learning-paths/micro-modules/foundations-evaluation-signals.md">Evaluation Signals Primer</a></li>
             <li><a class="text-cyan-600 underline" href="../02-learning-paths/micro-modules/storytelling-adoption-metrics.md">Adoption & ROI Metrics</a></li>
             <li><a class="text-cyan-600 underline" href="../02-learning-paths/micro-modules/storytelling-exec-brief.md">Executive Narrative Builder</a></li>
+            <li><a class="text-cyan-600 underline" href="../02-learning-paths/micro-modules/evaluation-automation-pipeline.md">Evaluation Automation Pipeline</a></li>
           </ul>
         </div>
       </div>
@@ -108,22 +114,52 @@
       try {
         const res = await fetch('./data/micro-learning.json');
         const data = await res.json();
+        const modules = data.modules || [];
         const grid = document.getElementById('module-grid');
-        const modules = data.modules;
-        grid.innerHTML = '';
-        modules.forEach((mod) => {
-          const card = document.createElement('a');
-          card.className = 'block p-5 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-xl hover:shadow transition';
-          card.href = '../' + mod.path;
-          card.innerHTML = `
-            <div class="text-xs uppercase tracking-[0.2em] text-slate-500">${mod.category}</div>
-            <div class="mt-2 text-lg font-semibold">${mod.title}</div>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${mod.summary}</p>
-            <div class="mt-3 text-xs text-slate-500 dark:text-slate-400">${mod.duration}</div>
-          `;
-          grid.appendChild(card);
-        });
-      } catch (err) {
+        const categories = ['All', ...Array.from(new Set(modules.map(m => m.category)))]
+        const categoryContainer = document.getElementById('module-categories');
+        const searchInput = document.getElementById('module-search');
+        let activeCategory = 'All';
+
+        function renderCategories() {
+          categoryContainer.innerHTML = '';
+          categories.forEach(cat => {
+            const button = document.createElement('button');
+            button.className = `px-3 py-1 rounded-full border text-sm ${cat === activeCategory ? 'bg-cyan-500 text-white border-cyan-500' : 'border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800'}`;
+            button.textContent = cat;
+            button.addEventListener('click', () => {
+              activeCategory = cat;
+              renderCategories();
+              renderModules();
+            });
+            categoryContainer.appendChild(button);
+          });
+        }
+
+        function renderModules() {
+          const query = (searchInput.value || '').toLowerCase();
+          const filtered = modules.filter(mod => {
+            const inCategory = activeCategory === 'All' || mod.category === activeCategory;
+            const haystack = `${mod.title} ${mod.summary} ${mod.category}`.toLowerCase();
+            const matches = !query || haystack.includes(query);
+            return inCategory && matches;
+          });
+
+          grid.innerHTML = filtered.map(mod => {
+            return `
+            <a id="${mod.id}" href="../${mod.path}" class="block p-5 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-xl hover:shadow transition">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-500">${mod.category}</div>
+              <div class="mt-2 text-lg font-semibold">${mod.title}</div>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${mod.summary}</p>
+              <div class="mt-3 text-xs text-slate-500 dark:text-slate-400">${mod.duration}</div>
+            </a>`;
+          }).join('') || '<div class="p-5 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-xl">No modules match your filters. Try another category or search term.</div>';
+        }
+
+        renderCategories();
+        renderModules();
+        searchInput.addEventListener('input', () => renderModules());
+      } catch (error) {
         document.getElementById('module-grid').innerHTML = '<div class="p-5 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-xl">Unable to load modules. Check data file.</div>';
       }
     }
