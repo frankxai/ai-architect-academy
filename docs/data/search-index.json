@@ -2,7 +2,7 @@
   {
     "id": "00-roadmap/ROADMAP.md",
     "title": "Experience Roadmap",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/00-roadmap/ROADMAP.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/00-roadmap/ROADMAP.md",
     "section": "Roadmap",
     "path": "00-roadmap/ROADMAP.md",
     "headings": [
@@ -33,7 +33,7 @@
   {
     "id": "01-design-patterns/README.md",
     "title": "Design Pattern Library",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/README.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/README.md",
     "headings": [
@@ -48,7 +48,7 @@
   {
     "id": "01-design-patterns/content-generation.md",
     "title": "Content Generation",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/content-generation.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/content-generation.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/content-generation.md",
     "headings": [
@@ -79,7 +79,7 @@
   {
     "id": "01-design-patterns/decision-support.md",
     "title": "Decision Support",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/decision-support.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/decision-support.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/decision-support.md",
     "headings": [
@@ -110,7 +110,7 @@
   {
     "id": "01-design-patterns/energy-market-trading-optimization.md",
     "title": "Pattern: Energy Market Trading & Optimization",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/energy-market-trading-optimization.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/energy-market-trading-optimization.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/energy-market-trading-optimization.md",
     "headings": [
@@ -145,7 +145,7 @@
   {
     "id": "01-design-patterns/genomic-sequence-processing.md",
     "title": "Pattern: Genomic Sequence Processing & Public Health",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/genomic-sequence-processing.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/genomic-sequence-processing.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/genomic-sequence-processing.md",
     "headings": [
@@ -180,7 +180,7 @@
   {
     "id": "01-design-patterns/gis-intelligence.md",
     "title": "Pattern: Geographic Information Systems (GIS) Intelligence",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/gis-intelligence.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/gis-intelligence.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/gis-intelligence.md",
     "headings": [
@@ -215,7 +215,7 @@
   {
     "id": "01-design-patterns/governance-compliance.md",
     "title": "Pattern: Governance Compliance",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/governance-compliance.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/governance-compliance.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/governance-compliance.md",
     "headings": [
@@ -250,7 +250,7 @@
   {
     "id": "01-design-patterns/insurance-rate-modeling.md",
     "title": "Insurance Rate Modeling",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/insurance-rate-modeling.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/insurance-rate-modeling.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/insurance-rate-modeling.md",
     "headings": [
@@ -281,7 +281,7 @@
   {
     "id": "01-design-patterns/model-lifecycle-management.md",
     "title": "Model Lifecycle Management",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/model-lifecycle-management.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/model-lifecycle-management.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/model-lifecycle-management.md",
     "headings": [
@@ -312,7 +312,7 @@
   {
     "id": "01-design-patterns/orchestration-workflow.md",
     "title": "Pattern: Orchestration Workflow",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/orchestration-workflow.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/orchestration-workflow.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/orchestration-workflow.md",
     "headings": [
@@ -347,7 +347,7 @@
   {
     "id": "01-design-patterns/performance-optimization.md",
     "title": "Pattern: Performance Optimization",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/performance-optimization.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/performance-optimization.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/performance-optimization.md",
     "headings": [
@@ -382,7 +382,7 @@
   {
     "id": "01-design-patterns/vulnerability-management.md",
     "title": "Pattern: AI-Powered Vulnerability Management",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/01-design-patterns/vulnerability-management.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/vulnerability-management.md",
     "section": "Design Patterns",
     "path": "01-design-patterns/vulnerability-management.md",
     "headings": [
@@ -417,7 +417,7 @@
   {
     "id": "02-learning-paths/100-hour-ai-architect.md",
     "title": "100‑Hour AI Architect Plan",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/100-hour-ai-architect.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/100-hour-ai-architect.md",
     "section": "Learning Paths",
     "path": "02-learning-paths/100-hour-ai-architect.md",
     "headings": [
@@ -432,7 +432,7 @@
   {
     "id": "02-learning-paths/agentic-code-swarms.md",
     "title": "Learning Path: Agentic Code Swarms",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/agentic-code-swarms.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/agentic-code-swarms.md",
     "section": "Learning Paths",
     "path": "02-learning-paths/agentic-code-swarms.md",
     "headings": [
@@ -471,7 +471,7 @@
   {
     "id": "02-learning-paths/beginner.md",
     "title": "Beginner Path (4 Weeks)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/beginner.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/beginner.md",
     "section": "Learning Paths",
     "path": "02-learning-paths/beginner.md",
     "headings": [
@@ -486,7 +486,7 @@
   {
     "id": "02-learning-paths/bootcamp.md",
     "title": "Bootcamp Path (AI CoE Inspired)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/bootcamp.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/bootcamp.md",
     "section": "Learning Paths",
     "path": "02-learning-paths/bootcamp.md",
     "headings": [
@@ -501,7 +501,7 @@
   {
     "id": "02-learning-paths/professional.md",
     "title": "Professional Path (6 Weeks)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/02-learning-paths/professional.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/professional.md",
     "section": "Learning Paths",
     "path": "02-learning-paths/professional.md",
     "headings": [
@@ -516,7 +516,7 @@
   {
     "id": "03-awesome/awesome-agents.md",
     "title": "Awesome Agents",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-agents.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/03-awesome/awesome-agents.md",
     "section": "Awesome",
     "path": "03-awesome/awesome-agents.md",
     "headings": [],
@@ -526,7 +526,7 @@
   {
     "id": "03-awesome/awesome-aggregators.md",
     "title": "Awesome Aggregators (Meta Lists)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-aggregators.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/03-awesome/awesome-aggregators.md",
     "section": "Awesome",
     "path": "03-awesome/awesome-aggregators.md",
     "headings": [
@@ -541,7 +541,7 @@
   {
     "id": "03-awesome/awesome-evals.md",
     "title": "Awesome Evals",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-evals.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/03-awesome/awesome-evals.md",
     "section": "Awesome",
     "path": "03-awesome/awesome-evals.md",
     "headings": [],
@@ -551,7 +551,7 @@
   {
     "id": "03-awesome/awesome-llms.md",
     "title": "Awesome Llms",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-llms.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/03-awesome/awesome-llms.md",
     "section": "Awesome",
     "path": "03-awesome/awesome-llms.md",
     "headings": [],
@@ -561,7 +561,7 @@
   {
     "id": "03-awesome/awesome-mlops.md",
     "title": "Awesome Mlops",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-mlops.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/03-awesome/awesome-mlops.md",
     "section": "Awesome",
     "path": "03-awesome/awesome-mlops.md",
     "headings": [],
@@ -571,7 +571,7 @@
   {
     "id": "03-awesome/awesome-rag.md",
     "title": "Awesome Rag",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-rag.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/03-awesome/awesome-rag.md",
     "section": "Awesome",
     "path": "03-awesome/awesome-rag.md",
     "headings": [],
@@ -581,7 +581,7 @@
   {
     "id": "03-awesome/awesome-vector-dbs.md",
     "title": "Awesome Vector Dbs",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/03-awesome/awesome-vector-dbs.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/03-awesome/awesome-vector-dbs.md",
     "section": "Awesome",
     "path": "03-awesome/awesome-vector-dbs.md",
     "headings": [],
@@ -591,7 +591,7 @@
   {
     "id": "04-templates/bom-template.md",
     "title": "Bill of Materials Template",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/bom-template.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/04-templates/bom-template.md",
     "section": "Templates",
     "path": "04-templates/bom-template.md",
     "headings": [
@@ -606,7 +606,7 @@
   {
     "id": "04-templates/discovery-questions.md",
     "title": "Discovery Questions Template",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/discovery-questions.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/04-templates/discovery-questions.md",
     "section": "Templates",
     "path": "04-templates/discovery-questions.md",
     "headings": [
@@ -621,7 +621,7 @@
   {
     "id": "04-templates/solution-doc.md",
     "title": "Solution Document Template",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/solution-doc.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/04-templates/solution-doc.md",
     "section": "Templates",
     "path": "04-templates/solution-doc.md",
     "headings": [
@@ -636,7 +636,7 @@
   {
     "id": "04-templates/technical-architecture.md",
     "title": "Technical Architecture Template",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/technical-architecture.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/04-templates/technical-architecture.md",
     "section": "Templates",
     "path": "04-templates/technical-architecture.md",
     "headings": [
@@ -651,7 +651,7 @@
   {
     "id": "04-templates/workshop-agenda.md",
     "title": "Workshop Agenda Template",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/04-templates/workshop-agenda.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/04-templates/workshop-agenda.md",
     "section": "Templates",
     "path": "04-templates/workshop-agenda.md",
     "headings": [
@@ -666,7 +666,7 @@
   {
     "id": "05-projects/100-projects.md",
     "title": "100 Projects for AI Architects (Starter Set)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/100-projects.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/100-projects.md",
     "section": "Projects",
     "path": "05-projects/100-projects.md",
     "headings": [
@@ -681,7 +681,7 @@
   {
     "id": "05-projects/agentic-saas-planner.md",
     "title": "Project: Agentic SaaS Planner",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/agentic-saas-planner.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/agentic-saas-planner.md",
     "section": "Projects",
     "path": "05-projects/agentic-saas-planner.md",
     "headings": [
@@ -708,7 +708,7 @@
   {
     "id": "05-projects/evals-langfuse.md",
     "title": "Evals Langfuse",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/evals-langfuse.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/evals-langfuse.md",
     "section": "Projects",
     "path": "05-projects/evals-langfuse.md",
     "headings": [],
@@ -718,7 +718,7 @@
   {
     "id": "05-projects/rag-on-supabase.md",
     "title": "Rag On Supabase",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/rag-on-supabase.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/rag-on-supabase.md",
     "section": "Projects",
     "path": "05-projects/rag-on-supabase.md",
     "headings": [],
@@ -728,7 +728,7 @@
   {
     "id": "05-projects/vector-search-pgvector.md",
     "title": "Vector Search Pgvector",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/05-projects/vector-search-pgvector.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/vector-search-pgvector.md",
     "section": "Projects",
     "path": "05-projects/vector-search-pgvector.md",
     "headings": [],
@@ -738,7 +738,7 @@
   {
     "id": "06-toolchains/agentic-swarms-stack.md",
     "title": "Reference Stack: Agentic Code Swarms",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/06-toolchains/agentic-swarms-stack.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/06-toolchains/agentic-swarms-stack.md",
     "section": "Toolchains",
     "path": "06-toolchains/agentic-swarms-stack.md",
     "headings": [
@@ -781,7 +781,7 @@
   {
     "id": "06-toolchains/stack-reference.md",
     "title": "Stack Reference",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/06-toolchains/stack-reference.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/06-toolchains/stack-reference.md",
     "section": "Toolchains",
     "path": "06-toolchains/stack-reference.md",
     "headings": [
@@ -796,7 +796,7 @@
   {
     "id": "07-evaluation/eval-harness.md",
     "title": "Eval Harness",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/07-evaluation/eval-harness.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/07-evaluation/eval-harness.md",
     "section": "Evaluation",
     "path": "07-evaluation/eval-harness.md",
     "headings": [
@@ -811,7 +811,7 @@
   {
     "id": "07-evaluation/metrics.md",
     "title": "Evaluation Metrics",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/07-evaluation/metrics.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/07-evaluation/metrics.md",
     "section": "Evaluation",
     "path": "07-evaluation/metrics.md",
     "headings": [
@@ -826,7 +826,7 @@
   {
     "id": "08-governance/model-risk.md",
     "title": "Model Risk Management",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/08-governance/model-risk.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/08-governance/model-risk.md",
     "section": "Governance",
     "path": "08-governance/model-risk.md",
     "headings": [
@@ -841,7 +841,7 @@
   {
     "id": "08-governance/privacy-gdpr.md",
     "title": "Privacy & GDPR",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/08-governance/privacy-gdpr.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/08-governance/privacy-gdpr.md",
     "section": "Governance",
     "path": "08-governance/privacy-gdpr.md",
     "headings": [
@@ -856,7 +856,7 @@
   {
     "id": "09-articles/README.md",
     "title": "Articles",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/09-articles/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/09-articles/README.md",
     "section": "Articles",
     "path": "09-articles/README.md",
     "headings": [
@@ -871,7 +871,7 @@
   {
     "id": "10-resources/channels.md",
     "title": "Channels",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/channels.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/10-resources/channels.md",
     "section": "Resources",
     "path": "10-resources/channels.md",
     "headings": [],
@@ -881,7 +881,7 @@
   {
     "id": "10-resources/papers.md",
     "title": "Papers & Reading",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/papers.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/10-resources/papers.md",
     "section": "Resources",
     "path": "10-resources/papers.md",
     "headings": [
@@ -896,7 +896,7 @@
   {
     "id": "10-resources/platforms.md",
     "title": "Platforms & Tools",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/platforms.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/10-resources/platforms.md",
     "section": "Resources",
     "path": "10-resources/platforms.md",
     "headings": [
@@ -911,7 +911,7 @@
   {
     "id": "10-resources/playlists.md",
     "title": "Playlists (First Pull Targets)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/playlists.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/10-resources/playlists.md",
     "section": "Resources",
     "path": "10-resources/playlists.md",
     "headings": [
@@ -926,7 +926,7 @@
   {
     "id": "10-resources/repos.md",
     "title": "Repos",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/repos.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/10-resources/repos.md",
     "section": "Resources",
     "path": "10-resources/repos.md",
     "headings": [
@@ -941,7 +941,7 @@
   {
     "id": "10-resources/videos.md",
     "title": "Videos (Selected)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/10-resources/videos.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/10-resources/videos.md",
     "section": "Resources",
     "path": "10-resources/videos.md",
     "headings": [
@@ -956,7 +956,7 @@
   {
     "id": "11-hyperscalers/README.md",
     "title": "Hyperscalers (OCI • AWS • GCP • Azure)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/11-hyperscalers/README.md",
     "section": "Hyperscalers",
     "path": "11-hyperscalers/README.md",
     "headings": [
@@ -971,7 +971,7 @@
   {
     "id": "11-hyperscalers/aws/README.md",
     "title": "AWS for AI Architects",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/aws/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/11-hyperscalers/aws/README.md",
     "section": "Hyperscalers",
     "path": "11-hyperscalers/aws/README.md",
     "headings": [
@@ -986,7 +986,7 @@
   {
     "id": "11-hyperscalers/azure/README.md",
     "title": "Azure for AI Architects",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/azure/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/11-hyperscalers/azure/README.md",
     "section": "Hyperscalers",
     "path": "11-hyperscalers/azure/README.md",
     "headings": [
@@ -1001,7 +1001,7 @@
   {
     "id": "11-hyperscalers/choose-platform.md",
     "title": "Choose a Platform (Decision Guide)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/choose-platform.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/11-hyperscalers/choose-platform.md",
     "section": "Hyperscalers",
     "path": "11-hyperscalers/choose-platform.md",
     "headings": [
@@ -1016,7 +1016,7 @@
   {
     "id": "11-hyperscalers/gcp/README.md",
     "title": "Google Cloud for AI Architects",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/gcp/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/11-hyperscalers/gcp/README.md",
     "section": "Hyperscalers",
     "path": "11-hyperscalers/gcp/README.md",
     "headings": [
@@ -1031,7 +1031,7 @@
   {
     "id": "11-hyperscalers/oci/README.md",
     "title": "OCI for AI Architects (Oracle Cloud Infrastructure)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/11-hyperscalers/oci/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/11-hyperscalers/oci/README.md",
     "section": "Hyperscalers",
     "path": "11-hyperscalers/oci/README.md",
     "headings": [
@@ -1046,7 +1046,7 @@
   {
     "id": "12-concepts/caching-and-observability.md",
     "title": "Caching & Observability",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/caching-and-observability.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/12-concepts/caching-and-observability.md",
     "section": "Concepts",
     "path": "12-concepts/caching-and-observability.md",
     "headings": [
@@ -1061,7 +1061,7 @@
   {
     "id": "12-concepts/cost-and-latency-slos.md",
     "title": "Cost & Latency SLOs",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/cost-and-latency-slos.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/12-concepts/cost-and-latency-slos.md",
     "section": "Concepts",
     "path": "12-concepts/cost-and-latency-slos.md",
     "headings": [
@@ -1076,7 +1076,7 @@
   {
     "id": "12-concepts/embeddings-and-chunking.md",
     "title": "Embeddings & Chunking",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/embeddings-and-chunking.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/12-concepts/embeddings-and-chunking.md",
     "section": "Concepts",
     "path": "12-concepts/embeddings-and-chunking.md",
     "headings": [
@@ -1091,7 +1091,7 @@
   {
     "id": "12-concepts/eval-and-guardrails.md",
     "title": "Evaluation & Guardrails",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/eval-and-guardrails.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/12-concepts/eval-and-guardrails.md",
     "section": "Concepts",
     "path": "12-concepts/eval-and-guardrails.md",
     "headings": [
@@ -1106,7 +1106,7 @@
   {
     "id": "12-concepts/hybrid-search-and-reranking.md",
     "title": "Hybrid Search & Reranking",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/hybrid-search-and-reranking.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/12-concepts/hybrid-search-and-reranking.md",
     "section": "Concepts",
     "path": "12-concepts/hybrid-search-and-reranking.md",
     "headings": [
@@ -1121,7 +1121,7 @@
   {
     "id": "12-concepts/prompt-injection-and-security.md",
     "title": "Prompt Injection & Security",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/prompt-injection-and-security.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/12-concepts/prompt-injection-and-security.md",
     "section": "Concepts",
     "path": "12-concepts/prompt-injection-and-security.md",
     "headings": [
@@ -1136,7 +1136,7 @@
   {
     "id": "12-concepts/rag-architecture.md",
     "title": "RAG Architecture (Deep Dive)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/12-concepts/rag-architecture.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/12-concepts/rag-architecture.md",
     "section": "Concepts",
     "path": "12-concepts/rag-architecture.md",
     "headings": [
@@ -1151,7 +1151,7 @@
   {
     "id": "13-platforms/README.md",
     "title": "Platforms to Know",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/README.md",
     "section": "Platforms",
     "path": "13-platforms/README.md",
     "headings": [
@@ -1166,7 +1166,7 @@
   {
     "id": "13-platforms/databricks.md",
     "title": "Databricks",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/databricks.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/databricks.md",
     "section": "Platforms",
     "path": "13-platforms/databricks.md",
     "headings": [
@@ -1181,7 +1181,7 @@
   {
     "id": "13-platforms/elasticsearch.md",
     "title": "Elasticsearch",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/elasticsearch.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/elasticsearch.md",
     "section": "Platforms",
     "path": "13-platforms/elasticsearch.md",
     "headings": [
@@ -1196,7 +1196,7 @@
   {
     "id": "13-platforms/milvus.md",
     "title": "Milvus",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/milvus.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/milvus.md",
     "section": "Platforms",
     "path": "13-platforms/milvus.md",
     "headings": [
@@ -1211,7 +1211,7 @@
   {
     "id": "13-platforms/neo4j.md",
     "title": "Neo4j",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/neo4j.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/neo4j.md",
     "section": "Platforms",
     "path": "13-platforms/neo4j.md",
     "headings": [
@@ -1226,7 +1226,7 @@
   {
     "id": "13-platforms/pinecone.md",
     "title": "Pinecone",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/pinecone.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/pinecone.md",
     "section": "Platforms",
     "path": "13-platforms/pinecone.md",
     "headings": [
@@ -1241,7 +1241,7 @@
   {
     "id": "13-platforms/qdrant.md",
     "title": "Qdrant",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/qdrant.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/qdrant.md",
     "section": "Platforms",
     "path": "13-platforms/qdrant.md",
     "headings": [
@@ -1256,7 +1256,7 @@
   {
     "id": "13-platforms/redis.md",
     "title": "Redis",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/redis.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/redis.md",
     "section": "Platforms",
     "path": "13-platforms/redis.md",
     "headings": [
@@ -1271,7 +1271,7 @@
   {
     "id": "13-platforms/snowflake.md",
     "title": "Snowflake",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/snowflake.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/snowflake.md",
     "section": "Platforms",
     "path": "13-platforms/snowflake.md",
     "headings": [
@@ -1286,7 +1286,7 @@
   {
     "id": "13-platforms/weaviate.md",
     "title": "Weaviate",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/13-platforms/weaviate.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/13-platforms/weaviate.md",
     "section": "Platforms",
     "path": "13-platforms/weaviate.md",
     "headings": [
@@ -1301,7 +1301,7 @@
   {
     "id": "14-ai-tools/README.md",
     "title": "AI Coding Tools & Agents",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/14-ai-tools/README.md",
     "section": "Ai Tools",
     "path": "14-ai-tools/README.md",
     "headings": [
@@ -1316,7 +1316,7 @@
   {
     "id": "14-ai-tools/aider.md",
     "title": "Aider (OSS)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/aider.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/14-ai-tools/aider.md",
     "section": "Ai Tools",
     "path": "14-ai-tools/aider.md",
     "headings": [
@@ -1331,7 +1331,7 @@
   {
     "id": "14-ai-tools/cerebras.md",
     "title": "Cerebras (Models & CLI)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/cerebras.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/14-ai-tools/cerebras.md",
     "section": "Ai Tools",
     "path": "14-ai-tools/cerebras.md",
     "headings": [
@@ -1346,7 +1346,7 @@
   {
     "id": "14-ai-tools/claude-code.md",
     "title": "Claude Code (Anthropic)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/claude-code.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/14-ai-tools/claude-code.md",
     "section": "Ai Tools",
     "path": "14-ai-tools/claude-code.md",
     "headings": [
@@ -1361,7 +1361,7 @@
   {
     "id": "14-ai-tools/codex-cli.md",
     "title": "Codex CLI (Open-source agentic coding interface)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/codex-cli.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/14-ai-tools/codex-cli.md",
     "section": "Ai Tools",
     "path": "14-ai-tools/codex-cli.md",
     "headings": [
@@ -1376,7 +1376,7 @@
   {
     "id": "14-ai-tools/continue.md",
     "title": "Continue (OSS)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/continue.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/14-ai-tools/continue.md",
     "section": "Ai Tools",
     "path": "14-ai-tools/continue.md",
     "headings": [
@@ -1391,7 +1391,7 @@
   {
     "id": "14-ai-tools/cursor.md",
     "title": "Cursor (Editor)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/cursor.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/14-ai-tools/cursor.md",
     "section": "Ai Tools",
     "path": "14-ai-tools/cursor.md",
     "headings": [
@@ -1406,7 +1406,7 @@
   {
     "id": "14-ai-tools/devin.md",
     "title": "Devin (Agent)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/devin.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/14-ai-tools/devin.md",
     "section": "Ai Tools",
     "path": "14-ai-tools/devin.md",
     "headings": [
@@ -1421,7 +1421,7 @@
   {
     "id": "14-ai-tools/gemini-code-assist.md",
     "title": "Gemini Code Assist (Google)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/14-ai-tools/gemini-code-assist.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/14-ai-tools/gemini-code-assist.md",
     "section": "Ai Tools",
     "path": "14-ai-tools/gemini-code-assist.md",
     "headings": [
@@ -1436,7 +1436,7 @@
   {
     "id": "15-workflows/agentic-swarms.md",
     "title": "Workflows: Agentic Code Swarms",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/agentic-swarms.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/15-workflows/agentic-swarms.md",
     "section": "Workflows",
     "path": "15-workflows/agentic-swarms.md",
     "headings": [
@@ -1467,7 +1467,7 @@
   {
     "id": "15-workflows/ai-pair-programming.md",
     "title": "AI Pair Programming (Daily Flow)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/ai-pair-programming.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/15-workflows/ai-pair-programming.md",
     "section": "Workflows",
     "path": "15-workflows/ai-pair-programming.md",
     "headings": [
@@ -1482,7 +1482,7 @@
   {
     "id": "15-workflows/issue-triage-with-linear.md",
     "title": "Issue Triage with Linear/GitHub",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/issue-triage-with-linear.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/15-workflows/issue-triage-with-linear.md",
     "section": "Workflows",
     "path": "15-workflows/issue-triage-with-linear.md",
     "headings": [
@@ -1497,7 +1497,7 @@
   {
     "id": "15-workflows/pr-review-with-agents.md",
     "title": "PR Review with AI Agents",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/pr-review-with-agents.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/15-workflows/pr-review-with-agents.md",
     "section": "Workflows",
     "path": "15-workflows/pr-review-with-agents.md",
     "headings": [
@@ -1512,7 +1512,7 @@
   {
     "id": "15-workflows/repo-maintenance-with-ai.md",
     "title": "Repo Maintenance with AI",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/15-workflows/repo-maintenance-with-ai.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/15-workflows/repo-maintenance-with-ai.md",
     "section": "Workflows",
     "path": "15-workflows/repo-maintenance-with-ai.md",
     "headings": [
@@ -1527,7 +1527,7 @@
   {
     "id": "16-collaboration/agentic-teams.md",
     "title": "Agentic Teams: Roles, RACI, and Operating Model",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/agentic-teams.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/16-collaboration/agentic-teams.md",
     "section": "Collaboration",
     "path": "16-collaboration/agentic-teams.md",
     "headings": [
@@ -1562,7 +1562,7 @@
   {
     "id": "16-collaboration/checklists.md",
     "title": "Checklists (Before/After)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/checklists.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/16-collaboration/checklists.md",
     "section": "Collaboration",
     "path": "16-collaboration/checklists.md",
     "headings": [
@@ -1577,7 +1577,7 @@
   {
     "id": "16-collaboration/issue-templates.md",
     "title": "Issue Templates for AI Pairing",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/issue-templates.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/16-collaboration/issue-templates.md",
     "section": "Collaboration",
     "path": "16-collaboration/issue-templates.md",
     "headings": [
@@ -1592,7 +1592,7 @@
   {
     "id": "16-collaboration/prompting-guide.md",
     "title": "Prompting Guide (Structure & Recipes)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/prompting-guide.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/16-collaboration/prompting-guide.md",
     "section": "Collaboration",
     "path": "16-collaboration/prompting-guide.md",
     "headings": [
@@ -1607,7 +1607,7 @@
   {
     "id": "16-collaboration/working-with-ai.md",
     "title": "Working With AI Assistants (Playbook)",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/16-collaboration/working-with-ai.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/16-collaboration/working-with-ai.md",
     "section": "Collaboration",
     "path": "16-collaboration/working-with-ai.md",
     "headings": [
@@ -1622,7 +1622,7 @@
   {
     "id": "README.md",
     "title": "AI Architect Academy — Command Center for Visionary Builders",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/README.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/README.md",
     "section": "README.md",
     "path": "README.md",
     "headings": [
@@ -1663,13 +1663,13 @@
         "text": "Contribute & Extend"
       }
     ],
-    "excerpt": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square\"></a> <a hre",
-    "content": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square\"></a> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/pulls\"><img alt=\"PRs\" src=\"https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square\"></a> <a href=\"https://ai-architect-academy.github.io/ai-architect-academy/\"><img alt=\"Pages\" src=\"https://img.shields.io/badge/Pages-live-green?style=flat-square\"></a> </p> # AI Architect Academy — Command Center for Visionary Builders Lead the conversations, ship the systems, and operate responsibly. This open playbook is your living hub for designing, building, and running AI products with confidence. Every page is built for AI architects, founding teams, creators, and advisors who need trusted patterns, deep resources, and a brand-ready story they can share with clients, partners, and their own communities. <div align=\"center\"> <a href=\"START-HERE.md\"><img alt=\"Start Here\" src=\"https://img.shields.io/badge/Start-Now-cyan?style=for-the-badge\"></a> <a href=\"docs/experience.html\"><img alt=\"Explore the Experience\" src=\"https://img.shields.io/badge/Explore-Experience-purple?style=for-the-badge\"></a> <a href=\"https://github.com/AI-Architect-Academy/ai-architect-academy/archive/refs/heads/main.zip\"><img alt=\"Download\" src=\"https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge\"></a> </div> ![Experience Map](assets/experience-map.svg) ## The Experience at a Glance - **Explore the live atlas.** Browse the [GitHub Pages site](https://ai-architect-academy.github.io/ai-architect-academy/) with unified navigation, topic landing pages, and fast search. - **Clone the full operating system.** Pull the repo to unlock scripts, prompt packs, workflows, and design assets for your team and AI assistants. -"
+    "excerpt": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/frankxai/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/frankxai/ai-architect-academy?style=flat-square\"></a> <a hre",
+    "content": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/frankxai/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/frankxai/ai-architect-academy?style=flat-square\"></a> <a href=\"https://github.com/frankxai/ai-architect-academy/pulls\"><img alt=\"PRs\" src=\"https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square\"></a> <a href=\"https://ai-architect-academy.github.io/ai-architect-academy/\"><img alt=\"Pages\" src=\"https://img.shields.io/badge/Pages-live-green?style=flat-square\"></a> </p> # AI Architect Academy — Command Center for Visionary Builders Lead the conversations, ship the systems, and operate responsibly. This open playbook is your living hub for designing, building, and running AI products with confidence. Every page is built for AI architects, founding teams, creators, and advisors who need trusted patterns, deep resources, and a brand-ready story they can share with clients, partners, and their own communities. <div align=\"center\"> <a href=\"START-HERE.md\"><img alt=\"Start Here\" src=\"https://img.shields.io/badge/Start-Now-cyan?style=for-the-badge\"></a> <a href=\"docs/experience.html\"><img alt=\"Explore the Experience\" src=\"https://img.shields.io/badge/Explore-Experience-purple?style=for-the-badge\"></a> <a href=\"https://github.com/frankxai/ai-architect-academy/archive/refs/heads/main.zip\"><img alt=\"Download\" src=\"https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge\"></a> </div> ![Experience Map](assets/experience-map.svg) ## The Experience at a Glance - **Explore the live atlas.** Browse the [GitHub Pages site](https://ai-architect-academy.github.io/ai-architect-academy/) with unified navigation, topic landing pages, and fast search. - **Clone the full operating system.** Pull the repo to unlock scripts, prompt packs, workflows, and design assets for your team and AI assistants. -"
   },
   {
     "id": "START-HERE.md",
     "title": "Start Here — Build Your AI Architect Command Center",
-    "href": "https://github.com/AI-Architect-Academy/ai-architect-academy/blob/main/START-HERE.md",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/START-HERE.md",
     "section": "START HERE.md",
     "path": "START-HERE.md",
     "headings": [
@@ -1726,3 +1726,4 @@
     "content": "# Start Here — Build Your AI Architect Command Center You’re here because you want to ship real AI value, guide stakeholders with confidence, and make your work easy to share. This quick guide orients you to the full experience so you can get momentum within minutes. ## 1. Choose Your Mission Profile ### Launchpad — First 100 Hours - Follow the [100-Hour AI Architect plan](02-learning-paths/100-hour-ai-architect.md) to sprint through foundations, shipping, and storytelling. - Pair the plan with three anchor projects: [RAG on Supabase](05-projects/rag-on-supabase.md), [Langfuse evals](05-projects/evals-langfuse.md), and [Vector search benchmarks](05-projects/vector-search-pgvector.md). ### Creator & Influencer Track - Use the [Beginner](02-learning-paths/beginner.md) and [Professional](02-learning-paths/professional.md) paths to pace long-form content, workshops, and community sessions. - Pull examples and citations from the [Awesome collections](03-awesome/) and [Articles](09-articles/) folders. ### Enterprise & AI CoE Leadership - Run the [Bootcamp](02-learning-paths/bootcamp.md) to align product, platform, risk, and ops teams. - Combine architecture patterns ( ) with the [Governance toolkit](08-governance/) and [Collaboration playbooks](16-collaboration/) for executive visibility. ### Advisors, Clients, Friends & Family - Share the [Experience page](docs/experience.html) when introducing the hub to new collaborators. - Use to spin up proposals, meeting notes, and recap reports fast. ## 2. Map Your Architecture Playbook - Start with three core patterns: [Content Generation](01-design-patterns/content-generation.md), [Decision Support](01-design-patterns/decision-support.md), and [Model Lifecycle Management](01-design-patterns/model-lifecycle-management.md). - Explore the [Concept decks](12-concepts/) for mental models (retrieval, evaluation, observability, safety) you can present to stakeholders. - Browse [Platforms](docs/platforms.html) and [Cloud blueprints](docs"
   }
 ]
+

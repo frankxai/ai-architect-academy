@@ -2,7 +2,7 @@
 
 Clone:
 ```
-git clone https://github.com/AI-Architect-Academy/ai-architect-academy
+git clone https://github.com/frankxai/ai-architect-academy
 cd ai-architect-academy
 ```
 
@@ -22,3 +22,4 @@ Recommended tools:
 
 Prompt Packs: see `prompt-packs/`.
 Workflows: see `15-workflows/`.
+

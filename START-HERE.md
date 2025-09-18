@@ -43,7 +43,7 @@ Focus on tight feedback loops that demonstrate value quickly:
 - Promote trusted resources to your community via the [Resources hub](docs/resources.html) and [Topics quick wins](docs/topics/index.html).
 
 ## Clone & Personalise the Repo
-1. `git clone https://github.com/AI-Architect-Academy/ai-architect-academy.git`
+1. `git clone https://github.com/frankxai/ai-architect-academy.git`
 2. `scripts/serve.sh` to explore the site locally at http://localhost:8080
 3. Update or add SVGs/PNGs under `assets/` and `docs/assets/`
 4. Run `npm install` once, then `npm run build:index` whenever you add new content so search stays sharp.
@@ -53,3 +53,4 @@ Focus on tight feedback loops that demonstrate value quickly:
 - Tour the full [Experience guide](docs/experience.html) for persona-specific journeys and navigation tips.
 - Dive into the [Sitemap](docs/sitemap.xml) or use [Search](docs/search.html) to surface patterns, projects, and governance assets instantly.
 - Track platform progress and upcoming drops in the refreshed [Roadmap](00-roadmap/ROADMAP.md).
+
