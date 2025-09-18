@@ -3,3 +3,7 @@ node_modules/
 .DS_Store
 assets/screenshots/*.tmp
 
+05-projects/domain-rag-healthcare/artifacts/
+05-projects/eval-automation/reports/*.json
+05-projects/eval-automation/reports/*.html
+05-projects/eval-automation/.env

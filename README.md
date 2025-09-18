@@ -6,7 +6,7 @@
   <a href="https://ai-architect-academy.github.io/ai-architect-academy/"><img alt="Pages" src="https://img.shields.io/badge/Pages-live-green?style=flat-square"></a>
 </p>
 
-# AI Architect Academy â€” Command Center for Visionary Builders
+# AI Architect Academy — Command Center for Visionary Builders
 
 Design, ship, and operate AI systems with confidence. This open playbook gives you the artefacts, visuals, and workflows to lead conversations, execute fast, and tell a world-class story.
 
@@ -30,6 +30,21 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 - **Ops-first mindset.** Guardrails, observability, cost control, and escalation playbooks are baked into every track.
 - **Living curriculum.** Weekly plans, retros, and logbooks keep teams aligned as the stack evolves.
 
+## Search-Optimized Highlights
+> **Primary keywords:** enterprise AI architecture, retrieval augmented generation (RAG), AI governance, evaluation automation, creator workflows, LangChain, Langfuse, Promptfoo, AI solution design.
+
+- **Outcome-based navigation:** Orientation, build, launch, and optimise phases map to repo folders with matching URLs for search engines.
+- **Structured data-ready copy:** Headings and bullet lists summarise use cases, industries, and tooling so snippets read clearly in search results.
+- **Creator economy coverage:** New modules and patterns now highlight AI content studios, editorial governance, and monetisation analytics.
+- **Evaluation depth:** Promptfoo, Langfuse, regression harnesses, and CI guidance ensure “AI evaluation” and “guardrail testing” queries resolve here.
+
+## What You Will Learn
+1. **Strategy & Roadmaps:** Align exec narratives with measurable adoption KPIs.
+2. **Architecture & Delivery:** Deploy RAG, agents, and workflow orchestration with observability-first guardrails.
+3. **Governance & Risk:** Build traceable evaluations, cost controls, and responsible AI checklists.
+4. **Creator Systems:** Automate briefing, content QA, and campaign analytics with reusable playbooks.
+5. **Growth Loops:** Turn evaluations, retros, and metrics into weekly learning cadences.
+
 ## Run the Experience
 - **Tour the live site:** [ai-architect-academy.github.io/ai-architect-academy](https://ai-architect-academy.github.io/ai-architect-academy/)
 - **Explore persona journeys:** [`docs/experience.html`](docs/experience.html) shows how builders, leaders, and storytellers navigate.
@@ -38,7 +53,7 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 ## Launch Tracks
 | Audience | Go-To Path | Weekly Rhythm | Anchor Assets |
 | --- | --- | --- | --- |
-| **Launchpad (100h)** | [`02-learning-paths/100-hour-ai-architect.md`](02-learning-paths/100-hour-ai-architect.md) | Retrieval, agents, governance, storytelling | RAG on Supabase Â· Eval Harness Â· Vector Benchmarks |
+| **Launchpad (100h)** | [`02-learning-paths/100-hour-ai-architect.md`](02-learning-paths/100-hour-ai-architect.md) | Retrieval, agents, governance, storytelling | RAG on Supabase ? Eval Harness ? Vector Benchmarks |
 | **Creators & Educators** | [`02-learning-paths/beginner.md`](02-learning-paths/beginner.md) & [`02-learning-paths/professional.md`](02-learning-paths/professional.md) | Weekly demos, retros, publish cadence | `03-awesome/`, `09-articles/`, poster + hero imagery |
 | **Enterprise & AI CoE** | [`02-learning-paths/bootcamp.md`](02-learning-paths/bootcamp.md) | Vision alignment, ops rituals, launch narratives | Patterns, Governance toolkit, Collaboration playbooks |
 | **Advisors & Clients** | [`docs/experience.html`](docs/experience.html) | Curated walkthroughs and proposal templates | `04-templates/`, `16-collaboration/`, dashboard tour |
@@ -67,7 +82,7 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 ## Dashboard & Agents
 - Launch the **AI Architect Dashboard** (`dashboard/README.md`) for a Next.js control centre powered by the Vercel AI SDK, React Flow, and Langfuse-ready hooks.
 - Wire your own assistants with [`dashboard/AGENT.md`](dashboard/AGENT.md): connect OpenRouter, OpenAI, Anthropic, or local models via Open WebUI/Big-AGI.
-- Drop telemetry, embeddings, and eval outputs from the dashboard back into the repoâ€™s playbooks to keep narrative and metrics in sync.
+- Drop telemetry, embeddings, and eval outputs from the dashboard back into the repo's playbooks to keep narrative and metrics in sync.
 
 ## Tell the Story
 - Shape portfolio pieces with [`03-awesome/portfolio-examples.md`](03-awesome/portfolio-examples.md) and stage drafts under `09-articles/drafts/`.
@@ -76,9 +91,9 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 
 ## Contribute & Extend
 - Clone: `git clone https://github.com/frankxai/ai-architect-academy.git`
-- Serve locally: `scripts/serve.sh` â†’ `http://localhost:8080`
+- Serve locally: `scripts/serve.sh` ? `http://localhost:8080`
 - Refresh search after major edits: `npm install` (first time) then `npm run build:index`
 - Drop new visuals into `assets/` + `docs/assets/`
 - Open issues/PRs with context and links; see `04-templates/` for proposal and retro formats.
 
-**Live site:** https://ai-architect-academy.github.io/ai-architect-academy/ Â· **Clone & customise:** `git clone https://github.com/frankxai/ai-architect-academy.git`
+**Live site:** https://ai-architect-academy.github.io/ai-architect-academy/ • **Clone & customise:** `git clone https://github.com/frankxai/ai-architect-academy.git`

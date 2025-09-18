@@ -42,17 +42,21 @@
         "text": "Design Pattern Library"
       }
     ],
-    "excerpt": "# Design Pattern Library - Customer Experience: Content Generation, Language Understanding, Personalization, Conversational Commerce - Decision Support & Workflow: Decision Support, Orchestration Workflow, Predictive Operations, Autonomous Optimization - Platform Enablement: Rapid Innovation, Security & Compliance, Syn",
-    "content": "# Design Pattern Library - Customer Experience: Content Generation, Language Understanding, Personalization, Conversational Commerce - Decision Support & Workflow: Decision Support, Orchestration Workflow, Predictive Operations, Autonomous Optimization - Platform Enablement: Rapid Innovation, Security & Compliance, Synthetic Data - AI Infrastructure: Multicloud Orchestration, Model Lifecycle Management, Governance Compliance, Performance Optimization - Industry: Insurance Rate Modeling, Energy, Cyber, Genomics, GIS See each pattern file for value, architecture, discovery, BoM, and risks."
+    "excerpt": "# Design Pattern Library - **Customer Experience**: Content Generation, Language Understanding, Personalization, Conversational Commerce, Creator Studio Automation (new). - **Decision Support & Workflow**: Decision Support, Intelligent Orchestration Workflow, Predictive Operations, Autonomous Optimisation. - **Platform",
+    "content": "# Design Pattern Library - **Customer Experience**: Content Generation, Language Understanding, Personalization, Conversational Commerce, Creator Studio Automation (new). - **Decision Support & Workflow**: Decision Support, Intelligent Orchestration Workflow, Predictive Operations, Autonomous Optimisation. - **Platform Enablement**: Rapid Innovation, Security & Compliance Automation, Synthetic Data Generation for experimentation. - **AI Infrastructure**: Multicloud Orchestration, Model Lifecycle Management, Governance & Compliance Automation, AI Performance Optimisation. - **Industry Blueprints**: Insurance Rate Modelling, Energy Trading Optimisation, Cyber Vulnerability Management, Genomic Analytics, GIS Intelligence. Each pattern file documents: 1. Business value narratives that clarify why the pattern matters. 2. A reference architecture with reasoning behind major components. 3. Discovery questions to align stakeholders and surface constraints early. 4. A bill of materials to accelerate vendor/tool selection and delivery planning. 5. Key risks with pragmatic controls informed by real-world deployments. Use the patterns as starting points�extend them with your organisation's context, decision gates, and compliance requirements before implementation."
   },
   {
     "id": "01-design-patterns\\content-generation.md",
-    "title": "Content Generation",
+    "title": "Pattern: Content Generation",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/content-generation.md",
     "section": "Design Patterns",
     "path": "01-design-patterns\\content-generation.md",
     "headings": [
       {
+        "level": 1,
+        "text": "Pattern: Content Generation"
+      },
+      {
         "level": 2,
         "text": "Business Value"
       },
@@ -73,17 +77,64 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Content Generation ## Business Value - Scale on-brand content across channels while reducing cycle time and review burden. - Personalize by segment or user with measurable uplift and clear governance. ## Technical Architecture - Inputs: brief, product data, style guide -> orchestrator (workflow engine) - Ret",
-    "content": "# Pattern: Content Generation ## Business Value - Scale on-brand content across channels while reducing cycle time and review burden. - Personalize by segment or user with measurable uplift and clear governance. ## Technical Architecture - Inputs: brief, product data, style guide -> orchestrator (workflow engine) - Retrieval: product knowledge base and policies via RAG -> LLM with prompt templates - Guardrails: PII redaction, policy checks, toxicity and bias filters - Human-in-the-loop: reviewer UI with diffs -> CMS publish - Observability: traces, costs, evaluation datasets (faithfulness and style) ## Discovery Questions - What sources of truth and brand or style constraints exist? - Which channels (email, web, ads) and localization needs are in scope? - What approval workflow, audit trail, and retention requirements apply? ## Bill of Materials - Vector store (pgvector on Supabase), OpenAI (smaller plus reviewer-quality models), workflow runtime (Temporal or Prefect), CMS connector - Observability (Langfuse) and a policy checker (Open Policy Agent or custom) ## Risks & Controls - Hallucinations -> enforce grounding, require citations, abstain on low confidence - Brand drift -> apply style constraints, reviewer gates, and A/B tests - PII leakage -> add redaction, policy enforcement, and logging with access controls"
+    "excerpt": "# Pattern: Content Generation ## Business Value - Compress campaign and asset production cycles from weeks to hours, enabling faster GTM iterations and multivariate experimentation. - Produce hyper-personalized content that reflects customer intent, compliance posture, and brand voice while scaling to long-tail segment",
+    "content": "# Pattern: Content Generation ## Business Value - Compress campaign and asset production cycles from weeks to hours, enabling faster GTM iterations and multivariate experimentation. - Produce hyper-personalized content that reflects customer intent, compliance posture, and brand voice while scaling to long-tail segments. - Free subject-matter experts from repetitive drafting so they can focus on high-signal review, governance, and performance improvement. ## Technical Architecture 1. **Brief & Context Intake**: Marketing brief, product catalogue, historical performance metrics, and tone guidance enter an orchestrated workflow (Temporal/Prefect) that normalizes metadata. 2. **Knowledge Retrieval**: A hybrid search (vector + keyword) layer over product knowledge, FAQs, and policy memos retrieves grounding snippets with provenance tags. 3. **Generation & Adaptation**: Prompt templates select the appropriate foundation or fine-tuned model (e.g., GPT-4o, Claude Sonnet) with controllable decoding for long-form vs. short-form assets. 4. **Guardrails & Review**: Automatic redaction, toxicity checks, policy linting, and side-by-side diff tooling feed a reviewer dashboard with accept/reject/annotate actions before CMS publish. 5. **Observability & Feedback**: Langfuse/Weights & Biases capture latency, cost, and evaluation metrics (groundedness, tone, conversion lift) for continuous tuning. ## Discovery Questions - Which gold-standard assets best represent brand voice, and how frequently do guidelines change? - What regulatory frameworks (GDPR, FINRA, HIPAA) constrain language, disclosures, or data flows? - How will performance be measured (CTR, pipeline contribution, NPS) and fed back into prompts or selection strategies? - What human review SLA is acceptable, and who owns final approval for different campaign tiers? ## Bill of Materials - Orchestrator (Temporal/Prefect), feature store for campaign metadata, secure prompt store, and CMS connectors (Contentful, Adobe Experienc"
+  },
+  {
+    "id": "01-design-patterns\\creator-studio-automation.md",
+    "title": "Pattern: Creator Studio Automation",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/creator-studio-automation.md",
+    "section": "Design Patterns",
+    "path": "01-design-patterns\\creator-studio-automation.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Pattern: Creator Studio Automation"
+      },
+      {
+        "level": 2,
+        "text": "Business Value"
+      },
+      {
+        "level": 2,
+        "text": "Technical Architecture"
+      },
+      {
+        "level": 2,
+        "text": "Discovery Questions"
+      },
+      {
+        "level": 2,
+        "text": "Bill of Materials"
+      },
+      {
+        "level": 2,
+        "text": "Risks & Controls"
+      },
+      {
+        "level": 2,
+        "text": "Metrics & Signals"
+      },
+      {
+        "level": 2,
+        "text": "Adoption Playbook"
+      }
+    ],
+    "excerpt": "# Pattern: Creator Studio Automation ## Business Value - Scale high-quality multimedia production (video, blog, social, email) without burning out creative teams or diluting brand consistency. - Turn briefs, scripts, editing, and distribution into measurable pipelines that surface performance insights within hours. - L",
+    "content": "# Pattern: Creator Studio Automation ## Business Value - Scale high-quality multimedia production (video, blog, social, email) without burning out creative teams or diluting brand consistency. - Turn briefs, scripts, editing, and distribution into measurable pipelines that surface performance insights within hours. - Level up client services and monetisation by offering AI-assisted packages with transparent governance and attribution. ## Technical Architecture 1. **Ideation Intake**: Capture campaign briefs, audience personas, and tone guidance through structured forms or Notion/Asana connectors that feed a workflow engine (Temporal/Camunda). 2. **Knowledge Layer**: Maintain brand voice, product facts, SEO keywords, and past winning assets in a vector-enabled content lake (pgvector on Postgres/Weaviate) with metadata tagging. 3. **Generation Tier**: Orchestrate specialised models for script drafting (LLMs), storyboard assistance (image diffusion), and headline experimentation (lightweight smaller models) with automatic citation back to the knowledge layer. 4. **Review & QA**: Route drafts through guardrails�style linting, compliance checks, SEO scoring, and fact validation�before human reviewers approve via a creator console. 5. **Publishing & Analytics**: Push approved assets to CMS, YouTube, newsletter, and social schedulers; stream engagement metrics back into analytics warehouse (Snowflake/BigQuery) for continuous optimisation. 6. **Observability & Feedback**: Langfuse/Weights & Biases capture latency, quality annotations, and cost per asset; promptfoo/DeepEval monitor hallucinations and tone adherence. ## Discovery Questions - Which content formats and channels (short-form video, blogs, ads, podcasts, email) are highest priority? What SLAs are required? - How strict are brand, legal, or regional compliance requirements? Are there approval gates by region or customer segment? - What performance metrics matter most�CTR, watch time, conversion, revenue attribution"
   },
   {
     "id": "01-design-patterns\\decision-support.md",
-    "title": "Decision Support",
+    "title": "Pattern: Decision Support",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/decision-support.md",
     "section": "Design Patterns",
     "path": "01-design-patterns\\decision-support.md",
     "headings": [
       {
+        "level": 1,
+        "text": "Pattern: Decision Support"
+      },
+      {
         "level": 2,
         "text": "Business Value"
       },
@@ -104,8 +155,8 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Decision Support ## Business Value - Deliver faster, higher-quality decisions with transparent evidence and what-if analysis. ## Technical Architecture - Data pipelines -> feature store -> retrieval over facts and policies - LLM reasoning augmented with tools for simulation and scenario analysis - Explanatio",
-    "content": "# Pattern: Decision Support ## Business Value - Deliver faster, higher-quality decisions with transparent evidence and what-if analysis. ## Technical Architecture - Data pipelines -> feature store -> retrieval over facts and policies - LLM reasoning augmented with tools for simulation and scenario analysis - Explanation layer with citations, stated assumptions, and confidence scoring - Feedback loop that captures outcomes to improve future recommendations ## Discovery Questions - What decision cadence, owners, and tolerable risk levels are in play? - Which policies, regulations, and source systems of record apply? - What auditability, sign-off, and retention processes are required? ## Bill of Materials - Data warehouse plus feature store, pgvector, OpenAI, tool runner for simulations, user interface, logging and tracing, approval workflow ## Risks & Controls - Over-trust -> show citations and confidence; require human approval - Data drift -> monitor inputs and accuracy; schedule recalibration - Compliance -> retain decisions and rationale with strict access controls"
+    "excerpt": "# Pattern: Decision Support ## Business Value - Shorten the time from data availability to defensible action by surfacing curated evidence, policy constraints, and confidence signals in one workspace. - Improve consistency of high-impact decisions (credit, underwriting, staffing) by encoding playbooks and risk toleranc",
+    "content": "# Pattern: Decision Support ## Business Value - Shorten the time from data availability to defensible action by surfacing curated evidence, policy constraints, and confidence signals in one workspace. - Improve consistency of high-impact decisions (credit, underwriting, staffing) by encoding playbooks and risk tolerances directly into the reasoning flow. - Capture the organisational learning loop by tying decisions to outcomes and producing auditable records for regulators and internal governance. ## Technical Architecture 1. **Data Harmonisation**: ELT pipelines feed a governed warehouse and feature store with mastered entities, policy rules, and reference data. 2. **Context Retrieval**: Semantic and rules-based retrieval assemble facts, comparable cases, and relevant regulations per decision context. 3. **Reasoning & Tooling**: An LLM agent orchestrates deterministic calculators, simulation engines, and optimisation solvers to generate scenarios and recommendations. 4. **Explanation Layer**: The system produces narratives with citations, highlights trade-offs, enumerates assumptions, and exposes model scores. 5. **Decision Capture**: Review UI records human overrides, notes, approvals, and downstream execution triggers while streaming telemetry for model monitoring. ## Discovery Questions - What is the decision frequency, latency requirement, and acceptable residual risk for each decision class? - Which simulation models, heuristics, or playbooks must be preserved and how often are they recalibrated? - How should conflicting data sources be reconciled, and who is the source-of-truth owner? - What retention, audit, and explainability obligations exist across jurisdictions or business units? ## Bill of Materials - Data stack: Warehouse (Snowflake/BigQuery), feature store (Feast/Tecton), policy repository (OPA or Decision Model & Notation). - Retrieval/search layer (pgvector, Elasticsearch) paired with agent runtime (LangChain, Semantic Kernel) and tool execution san"
   },
   {
     "id": "01-design-patterns\\energy-market-trading-optimization.md",
@@ -139,8 +190,8 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Energy Market Trading & Optimization ## Business Value - Optimize bids and dispatch, reduce imbalance costs, and improve profitability. ## Technical Architecture - Time-series ingestion (prices, generation, demand) → forecasting models - Optimization layer (linear/convex) with constraints and risk - Scenario",
-    "content": "# Pattern: Energy Market Trading & Optimization ## Business Value - Optimize bids and dispatch, reduce imbalance costs, and improve profitability. ## Technical Architecture - Time-series ingestion (prices, generation, demand) → forecasting models - Optimization layer (linear/convex) with constraints and risk - Scenario simulation with LLM-assisted narrative reports ## Discovery Questions - Markets (day-ahead, intraday), assets, and constraints? - Risk appetite and KPIs (P&L, imbalance, penalties)? - Latency requirements and decision cadence? ## Bill of Materials - TS DB, forecasting libs, optimizer, dashboards, audit logs ## Risks & Controls - Forecast error → ensembles and recalibration; backtesting - Compliance → market rules encoded; auditability"
+    "excerpt": "# Pattern: Energy Market Trading & Optimization ## Business Value - Increase gross margin by optimising bid strategies across day-ahead, intraday, and balancing markets while respecting regulatory constraints. - Minimise imbalance penalties by pairing real-time telemetry with probabilistic forecasts of demand, supply, ",
+    "content": "# Pattern: Energy Market Trading & Optimization ## Business Value - Increase gross margin by optimising bid strategies across day-ahead, intraday, and balancing markets while respecting regulatory constraints. - Minimise imbalance penalties by pairing real-time telemetry with probabilistic forecasts of demand, supply, and renewable intermittency. - Enable traders to scenario-plan around weather, fuel, and outage events using transparent narratives anchored in quantitative models. ## Technical Architecture 1. **Data Foundation**: Stream ingestion of SCADA metrics, weather feeds, fuel prices, and market data into a time-series lakehouse with quality SLAs. 2. **Forecasting Ensemble**: Combine statistical (ARIMA, Prophet) and ML (gradient boosting, deep temporal models) predictors with quantile outputs for uncertainty. 3. **Optimisation Engine**: Solver (Gurobi/CPLEX/OR-Tools) enforces physical constraints, ramp rates, and risk limits to generate bid curves and dispatch schedules. 4. **Agentic Advisory Layer**: LLM orchestrator translates optimisation outputs into trader-friendly narratives, highlights sensitivities, and surfaces compliance checks. 5. **Monitoring & Feedback**: Backtesting harness compares realised vs. forecasted outcomes, recalibrates models, and logs rationale for audit trails. ## Discovery Questions - Which market products (energy, capacity, ancillary services) and geographies are in scope, and what are their clearing deadlines? - What telemetry exists for asset availability, and how is maintenance or forced outage data captured today? - How are risk tolerances defined (VaR, CVaR, position limits), and who approves overrides? - What regulatory reporting obligations apply (REMIT, FERC), and how must recommendations be recorded? ## Bill of Materials - Time-series storage (InfluxDB, TimescaleDB) feeding a lakehouse (Delta/Snowflake) with data quality monitors. - Forecasting stack (tsfresh, GluonTS, Prophet) orchestrated via MLFlow plus optimisation solv"
   },
   {
     "id": "01-design-patterns\\genomic-sequence-processing.md",
@@ -174,8 +225,8 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Genomic Sequence Processing & Public Health ## Business Value - Accelerate genomic analyses for surveillance and research while ensuring privacy. ## Technical Architecture - Pipelines for sequence alignment, variant calling, annotation - Secure compute and storage; de-identification; access controls - LLM-as",
-    "content": "# Pattern: Genomic Sequence Processing & Public Health ## Business Value - Accelerate genomic analyses for surveillance and research while ensuring privacy. ## Technical Architecture - Pipelines for sequence alignment, variant calling, annotation - Secure compute and storage; de-identification; access controls - LLM-assisted report generation with strict grounding ## Discovery Questions - Data volumes and turnaround time? - Privacy and regulatory requirements (HIPAA/GDPR)? - Collaboration and data sharing needs? ## Bill of Materials - HPC/Cloud compute, genomics toolchain, secure storage, audit logs ## Risks & Controls - Privacy breach → de-identification, access policies - Reproducibility → versioned pipelines and datasets"
+    "excerpt": "# Pattern: Genomic Sequence Processing & Public Health ## Business Value - Compress turnaround from sample collection to actionable variant insights, enabling faster outbreak detection and clinical decision-making. - Support cross-institutional collaboration with governed data sharing that balances research needs again",
+    "content": "# Pattern: Genomic Sequence Processing & Public Health ## Business Value - Compress turnaround from sample collection to actionable variant insights, enabling faster outbreak detection and clinical decision-making. - Support cross-institutional collaboration with governed data sharing that balances research needs against patient privacy obligations. - Provide epidemiologists and clinicians with contextualised summaries, lineage tracking, and therapeutic impact assessments. ## Technical Architecture 1. **Secure Data Intake**: Biospecimen metadata and raw sequencing files (FASTQ/BAM) land in encrypted, access-controlled storage with QC checks. 2. **Analysis Pipelines**: Workflow engines (Nextflow/Snakemake) orchestrate alignment, variant calling, annotation, and lineage assignment using validated reference genomes. 3. **Knowledge Integration**: Link variants to public databases (ClinVar, GISAID) and institutional knowledge graphs, capturing pathogenicity and therapeutic implications. 4. **Narrative & Reporting**: LLM assistant generates clinician-friendly briefs grounded in verified facts, highlighting confidence, quality metrics, and recommended follow-up. 5. **Governance Layer**: Audit trails, consent management, and data retention policies enforce compliance with HIPAA/GDPR and local bioethics reviews. ## Discovery Questions - What sequencing platforms are in use, and what are the expected daily/weekly sample volumes and SLAs? - Which regulatory regimes (HIPAA, GDPR, CCPA) and data residency constraints dictate storage and processing choices? - How will results be consumed (clinical dashboards, public health alerts, research portals), and what format is required? - What collaboration agreements exist with external labs or agencies, and how are data access requests approved? ## Bill of Materials - Workflow tooling (Nextflow, Cromwell) backed by HPC clusters or managed services (AWS Batch, Google Cloud Life Sciences). - Domain toolchain: BWA/GATK for alignment and va"
   },
   {
     "id": "01-design-patterns\\gis-intelligence.md",
@@ -209,19 +260,19 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Geographic Information Systems (GIS) Intelligence ## Business Value - Optimize network planning, routing, and asset management with spatial insights. ## Technical Architecture - Spatial data ingestion (satellite, maps, sensors) → vector tiles/DB - Spatial queries + ML models; LLM for natural language spatial",
-    "content": "# Pattern: Geographic Information Systems (GIS) Intelligence ## Business Value - Optimize network planning, routing, and asset management with spatial insights. ## Technical Architecture - Spatial data ingestion (satellite, maps, sensors) → vector tiles/DB - Spatial queries + ML models; LLM for natural language spatial queries - Visualization and decision support dashboards ## Discovery Questions - Spatial sources and licensing? Update cadence? - Accuracy and resolution required for decisions? - Integration with existing GIS tools? ## Bill of Materials - Spatial DB (PostGIS), tile server, ML libs, visualization ## Risks & Controls - Licensing and privacy → data governance - Accuracy → QA pipelines and error bounds"
+    "excerpt": "# Pattern: Geographic Information Systems (GIS) Intelligence ## Business Value - Provide planners and field operators with timely spatial insights that optimise asset placement, maintenance schedules, and emergency response routing. - Fuse heterogeneous geospatial datasets to uncover growth opportunities, risk hotspots",
+    "content": "# Pattern: Geographic Information Systems (GIS) Intelligence ## Business Value - Provide planners and field operators with timely spatial insights that optimise asset placement, maintenance schedules, and emergency response routing. - Fuse heterogeneous geospatial datasets to uncover growth opportunities, risk hotspots, and environmental impacts with defensible evidence. - Reduce manual GIS workload by exposing natural-language interfaces that democratise access to complex spatial analytics. ## Technical Architecture 1. **Data Ingestion & Curation**: Stream satellite imagery, lidar, IoT sensors, cadastral records, and mobility data into a spatial data lake with licence metadata. 2. **Spatial Indexing**: Generate vector tiles, raster pyramids, and geohash indexes using PostGIS/BigQuery GIS to power fast proximity and overlay queries. 3. **Analytical Services**: Blend traditional spatial joins with ML models (segmentation, object detection) and route optimisation engines. 4. **Conversational Layer**: LLM interface grounded in metadata schemas translates natural-language questions into SQL/GeoSPARQL while enforcing permission checks. 5. **Visualisation & Actioning**: Interactive maps (Mapbox/Deck.gl) integrate with existing GIS platforms (Esri, QGIS) and trigger downstream workflows (work orders, alerts). ## Discovery Questions - Which data providers and licences govern usage, and how frequently must layers be refreshed to stay decision-grade? - What spatial resolution, coordinate systems, and accuracy tolerances are required for regulatory or engineering sign-off? - How will outputs integrate with current GIS tooling, mobile field apps, or ERP systems powering operations? - What access controls and anonymisation are needed to protect sensitive locations (critical infrastructure, personal address data)? ## Bill of Materials - Spatial storage/compute: PostGIS, BigQuery GIS, or GeoMesa on a data lake; tile rendering (Mapbox GL Native, Tegola). - ML pipeline: Raster analy"
   },
   {
     "id": "01-design-patterns\\governance-compliance.md",
-    "title": "Pattern: Governance Compliance",
+    "title": "Pattern: Governance & Compliance Automation",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/governance-compliance.md",
     "section": "Design Patterns",
     "path": "01-design-patterns\\governance-compliance.md",
     "headings": [
       {
         "level": 1,
-        "text": "Pattern: Governance Compliance"
+        "text": "Pattern: Governance & Compliance Automation"
       },
       {
         "level": 2,
@@ -244,17 +295,21 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Governance Compliance ## Business Value - ## Technical Architecture - ## Discovery Questions - ## Bill of Materials - ## Risks & Controls -",
-    "content": "# Pattern: Governance Compliance ## Business Value - ## Technical Architecture - ## Discovery Questions - ## Bill of Materials - ## Risks & Controls -"
+    "excerpt": "# Pattern: Governance & Compliance Automation ## Business Value - Provide end-to-end traceability for AI systems, ensuring policies, risk controls, and regulatory obligations are satisfied without slowing delivery teams. - Reduce manual evidence collection and audit preparation by codifying governance workflows, checkl",
+    "content": "# Pattern: Governance & Compliance Automation ## Business Value - Provide end-to-end traceability for AI systems, ensuring policies, risk controls, and regulatory obligations are satisfied without slowing delivery teams. - Reduce manual evidence collection and audit preparation by codifying governance workflows, checklists, and automated controls. - Increase organisational trust in AI deployments through transparent reporting of model lineage, performance, and policy adherence. ## Technical Architecture 1. **Policy Repository**: Structured catalog of regulations, internal standards, and control templates linked to products and models. 2. **Workflow Orchestration**: Automated gating (ServiceNow/Jira) that enforces risk assessments, approvals, and segregation-of-duties before promotion. 3. **Evidence Collection**: Integrations with MLOps, data platforms, and observability tools to ingest artefacts (datasets, model cards, evaluation reports). 4. **Continuous Monitoring**: Real-time checks on drift, bias, privacy, and access logs with escalations to compliance officers. 5. **Reporting & Audit**: Dashboards and exportable audit packages summarising status by regulation, business unit, and control effectiveness. ## Discovery Questions - Which external regulations (EU AI Act, GDPR, SOX, HIPAA) and internal policies apply to the AI portfolio? - How are models currently catalogued, and what metadata is missing to satisfy governance requirements? - Who are the control owners, reviewers, and approvers, and what SLAs must workflows meet? - What evidence is required for audits, and how long must it be retained or made discoverable? ## Bill of Materials - Governance platform (Azure AI Studio governance, Credo AI, or custom) with metadata catalog (DataHub, Collibra) and policy engine (OPA). - Integration adapters for ML pipelines (MLflow, SageMaker), data lineage (OpenLineage), and observability (Langfuse, EvidentlyAI). - Workflow automation (ServiceNow, Jira, Workato) connecting "
   },
   {
     "id": "01-design-patterns\\insurance-rate-modeling.md",
-    "title": "Insurance Rate Modeling",
+    "title": "Pattern: Insurance Rate Modeling",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/insurance-rate-modeling.md",
     "section": "Design Patterns",
     "path": "01-design-patterns\\insurance-rate-modeling.md",
     "headings": [
       {
+        "level": 1,
+        "text": "Pattern: Insurance Rate Modeling"
+      },
+      {
         "level": 2,
         "text": "Business Value"
       },
@@ -275,17 +330,21 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Insurance Rate Modeling ## Business Value - Improve pricing accuracy and risk segmentation, reduce loss ratios, and stay compliant. ## Technical Architecture - Data ingestion (policies, claims, external data) -> feature store - Modeling: gradient boosting or GLMs plus optional LLM document understanding - Mo",
-    "content": "# Pattern: Insurance Rate Modeling ## Business Value - Improve pricing accuracy and risk segmentation, reduce loss ratios, and stay compliant. ## Technical Architecture - Data ingestion (policies, claims, external data) -> feature store - Modeling: gradient boosting or GLMs plus optional LLM document understanding - Monitoring: drift, performance, and fairness metrics - Governance: audit trails, explainability (SHAP), approval workflows ## Discovery Questions - Which lines of business and regulatory constraints apply? - What data freshness and external sources (credit, weather, telematics) are required? - What explainability requirements and rate filing processes must be supported? ## Bill of Materials - Data warehouse plus feature store, model registry, monitoring and evaluations, explainability toolkit ## Risks & Controls - Bias and fairness -> add constraints, audits, and segment holdouts - Data quality -> enforce validation, SLAs, and incident playbooks"
+    "excerpt": "# Pattern: Insurance Rate Modeling ## Business Value - Achieve profitable growth by aligning underwriting prices with granular risk signals while maintaining competitiveness within regulatory bounds. - Accelerate rate filing cycles through reusable actuarial assets, automated documentation, and transparent justificatio",
+    "content": "# Pattern: Insurance Rate Modeling ## Business Value - Achieve profitable growth by aligning underwriting prices with granular risk signals while maintaining competitiveness within regulatory bounds. - Accelerate rate filing cycles through reusable actuarial assets, automated documentation, and transparent justification of pricing changes. - Enhance cross-functional trust by exposing clear explanations of model drivers, fairness metrics, and compliance attestations. ## Technical Architecture 1. **Data Foundation**: Consolidate policy, claims, exposure, and third-party datasets (credit, weather, telematics) into a governed warehouse and feature store. 2. **Model Development**: Train GLMs, gradient boosting, or hybrid models with monotonic constraints; use LLMs to extract structured features from unstructured submissions. 3. **Validation & Explainability**: Apply cross-validation, stress tests, SHAP values, and fairness assessments across protected classes and geographies. 4. **Deployment & Governance**: Register approved models, manage champion/challenger rollouts, and integrate with workflow systems for actuarial and regulatory approvals. 5. **Monitoring & Feedback**: Continuously track loss ratio, hit ratio, drift, and regulatory KPIs; feed performance back into retraining pipelines. ## Discovery Questions - Which product lines and jurisdictions are in scope, and what specific regulatory filings (SERFF, PRA) govern them? - What external data sources add underwriting lift, and what contracts or privacy constraints accompany them? - How frequently must rates be refreshed, and what is the change management process for approvals and communication to distribution partners? - What level of explainability is required for regulators, and how will narratives be generated for filings or producer communications? ## Bill of Materials - Data platform (Snowflake, Databricks) with feature store (Feast/Tecton) and lineage tracking (OpenLineage). - Model development stack: scikit-l"
   },
   {
     "id": "01-design-patterns\\model-lifecycle-management.md",
-    "title": "Model Lifecycle Management",
+    "title": "Pattern: Model Lifecycle Management (MLOps)",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/model-lifecycle-management.md",
     "section": "Design Patterns",
     "path": "01-design-patterns\\model-lifecycle-management.md",
     "headings": [
       {
+        "level": 1,
+        "text": "Pattern: Model Lifecycle Management (MLOps)"
+      },
+      {
         "level": 2,
         "text": "Business Value"
       },
@@ -306,19 +365,19 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Model Lifecycle Management (MLOps) ## Business Value - Ship reliable models and prompts with traceability, faster iteration, and controlled risk and cost. ## Technical Architecture - Data and versioning -> training and evaluation -> model or prompt registry -> deploy -> monitor - LLM applications: prompt reg",
-    "content": "# Pattern: Model Lifecycle Management (MLOps) ## Business Value - Ship reliable models and prompts with traceability, faster iteration, and controlled risk and cost. ## Technical Architecture - Data and versioning -> training and evaluation -> model or prompt registry -> deploy -> monitor - LLM applications: prompt registry, RAG datasets, evaluation harness wired into CI - Release strategies: canary, shadow, rollback, with budget and latency SLOs ## Discovery Questions - What release cadence, rollback strategy, and ownership model exist? - What data lineage, retention, and redaction policies apply? - Which latency, cost, and quality SLOs or budgets govern each tier? ## Bill of Materials - Model or prompt registry (MLflow, Weights & Biases), CI runner, deployment targets, tracing (Langfuse), metrics stack ## Risks & Controls - Regression risk -> evaluation gates in CI plus prompt/model versioning - Cost creep -> budget alerts, autoscaling, caching - Compliance -> audit logs, signed artifacts, access policies"
+    "excerpt": "# Pattern: Model Lifecycle Management (MLOps) ## Business Value - Enable teams to deploy AI services rapidly and safely by providing consistent tooling for data prep, experimentation, deployment, and monitoring. - Reduce outages and performance regressions through automated testing, observability, and rollback strategi",
+    "content": "# Pattern: Model Lifecycle Management (MLOps) ## Business Value - Enable teams to deploy AI services rapidly and safely by providing consistent tooling for data prep, experimentation, deployment, and monitoring. - Reduce outages and performance regressions through automated testing, observability, and rollback strategies anchored in measurable SLOs. - Maintain regulatory and organisational trust by ensuring every model or prompt change is auditable, reproducible, and cost-aware. ## Technical Architecture 1. **Data & Artefact Versioning**: Source-controlled datasets (DVC/LakeFS), feature stores, and prompt repositories capture provenance of training signals. 2. **Training & Evaluation Pipelines**: CI/CD orchestrates model training, fine-tuning, or prompt tuning with automated regression, bias, and robustness tests. 3. **Registry & Promotion**: Approved artefacts stored in MLflow/W&B with metadata (datasets, hyperparameters, eval scores) and staged promotion workflows. 4. **Deployment Engine**: Supports multiple targets (REST, streaming, batch, function-as-a-service) with canary/shadow rollouts and policy-aware routing. 5. **Monitoring & Feedback**: Unified observability pipeline tracks latency, cost, hallucination rates, and business KPIs; triggers retraining/reversion when thresholds breach. ## Discovery Questions - What environments (dev/test/prod) exist and how are deployment approvals or rollback actions governed across them? - Which compliance requirements mandate lineage tracking, data retention, or redaction for training and inference logs? - How are latency, reliability, and cost budgets defined for each product tier, and who owns them? - What is the current incident response process for model failures, and how will AI-specific runbooks integrate? ## Bill of Materials - Source control & CI (GitHub/GitLab, Jenkins) with pipeline orchestration (Argo Workflows, GitHub Actions) and IaC (Terraform). - Experimentation stack: MLflow/Weights & Biases, prompt manageme"
   },
   {
     "id": "01-design-patterns\\orchestration-workflow.md",
-    "title": "Pattern: Orchestration Workflow",
+    "title": "Pattern: Intelligent Orchestration Workflow",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/orchestration-workflow.md",
     "section": "Design Patterns",
     "path": "01-design-patterns\\orchestration-workflow.md",
     "headings": [
       {
         "level": 1,
-        "text": "Pattern: Orchestration Workflow"
+        "text": "Pattern: Intelligent Orchestration Workflow"
       },
       {
         "level": 2,
@@ -341,19 +400,19 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Orchestration Workflow ## Business Value - ## Technical Architecture - ## Discovery Questions - ## Bill of Materials - ## Risks & Controls -",
-    "content": "# Pattern: Orchestration Workflow ## Business Value - ## Technical Architecture - ## Discovery Questions - ## Bill of Materials - ## Risks & Controls -"
+    "excerpt": "# Pattern: Intelligent Orchestration Workflow ## Business Value - Break complex, multi-step AI tasks into reliable, reusable workflows that coordinate humans, classical services, and AI agents. - Increase throughput and consistency of operations (claims handling, onboarding, content approvals) without losing governance",
+    "content": "# Pattern: Intelligent Orchestration Workflow ## Business Value - Break complex, multi-step AI tasks into reliable, reusable workflows that coordinate humans, classical services, and AI agents. - Increase throughput and consistency of operations (claims handling, onboarding, content approvals) without losing governance checkpoints. - Provide visibility into end-to-end process health, service levels, and bottlenecks for continuous improvement. ## Technical Architecture 1. **Process Modelling**: Declarative workflow definitions (BPMN, state machines) capture tasks, branching logic, SLAs, and escalation paths. 2. **Task Execution Layer**: Mix of deterministic microservices, human tasks, and AI agents executed via orchestration runtime (Temporal, Camunda, Airflow). 3. **Context Management**: Shared data layer maintains case files, documents, and embeddings accessible to each step with strict access policies. 4. **Monitoring & SLAs**: Real-time metrics on task durations, queue lengths, and outcomes feed dashboards and automated escalation policies. 5. **Change & Experimentation**: Feature flags and A/B testing frameworks allow incremental rollout of new agents or task strategies. ## Discovery Questions - Which business processes are in scope, and what are the critical SLAs or compliance checkpoints within them? - How will human workers interact with the workflow (inbox, email, custom UI), and what training or change management is required? - What systems of record must be integrated, and how are credentials or API access managed? - What auditability is expected (event logs, approvals, artefact retention), and who consumes the reports? ## Bill of Materials - Orchestration engine (Temporal, Camunda, Airflow) with scalable task queue and retry semantics. - Integration services: API gateway, connector library, RPA bots if legacy screen automation is required. - AI components: LLM agent framework (LangChain, Semantic Kernel), RAG knowledge base, evaluation harness for agent p"
   },
   {
     "id": "01-design-patterns\\performance-optimization.md",
-    "title": "Pattern: Performance Optimization",
+    "title": "Pattern: AI Performance Optimization",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/01-design-patterns/performance-optimization.md",
     "section": "Design Patterns",
     "path": "01-design-patterns\\performance-optimization.md",
     "headings": [
       {
         "level": 1,
-        "text": "Pattern: Performance Optimization"
+        "text": "Pattern: AI Performance Optimization"
       },
       {
         "level": 2,
@@ -376,8 +435,8 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: Performance Optimization ## Business Value - ## Technical Architecture - ## Discovery Questions - ## Bill of Materials - ## Risks & Controls -",
-    "content": "# Pattern: Performance Optimization ## Business Value - ## Technical Architecture - ## Discovery Questions - ## Bill of Materials - ## Risks & Controls -"
+    "excerpt": "# Pattern: AI Performance Optimization ## Business Value - Maximise responsiveness and throughput of AI services, improving user experiences and unlocking higher transaction volumes at lower unit cost. - Enable teams to experiment rapidly by providing predictable performance envelopes and capacity planning insights. - ",
+    "content": "# Pattern: AI Performance Optimization ## Business Value - Maximise responsiveness and throughput of AI services, improving user experiences and unlocking higher transaction volumes at lower unit cost. - Enable teams to experiment rapidly by providing predictable performance envelopes and capacity planning insights. - Reduce infrastructure spend by right-sizing models, leveraging hardware acceleration, and caching intelligently. ## Technical Architecture 1. **Profiling & Benchmarking**: Automated load tests measure latency, throughput, and token compute across representative workloads. 2. **Model Optimisation**: Techniques such as quantisation, distillation, sparse attention, or retrieval caching reduce inference costs while maintaining quality. 3. **Serving Infrastructure**: Scalable serving stack (Kubernetes + KServe/Triton) with autoscaling, request batching, and multi-model hosting. 4. **Edge & Caching Strategies**: Response caching, embedding reuse, and on-device inference for low-latency scenarios where feasible. 5. **Observability & Feedback**: Real-time telemetry for latency, cost per request, and quality metrics drives dynamic load shedding and routing decisions. ## Discovery Questions - What latency and throughput targets are required for each user journey, and how do they vary by customer segment or geography? - Which hardware platforms (CPU, GPU, TPU) are available, and what is the cost profile or utilisation targets for each? - How frequently do models or prompts change, and how will performance regressions be detected during rollout? - Where are caching or edge deployments acceptable considering data residency, privacy, and update cadences? ## Bill of Materials - Benchmarking tools (Locust, k6), profiling suites (PyTorch Profiler, Nvidia Nsight) and synthetic workload generators. - Optimisation libraries: ONNX Runtime, TensorRT, DeepSpeed, vLLM for context caching and parallelism. - Serving platform: Kubernetes with auto-scaling (HPA/KEDA), load balanc"
   },
   {
     "id": "01-design-patterns\\vulnerability-management.md",
@@ -411,8 +470,8 @@
         "text": "Risks & Controls"
       }
     ],
-    "excerpt": "# Pattern: AI-Powered Vulnerability Management ## Business Value - Reduce mean-time-to-detect and patch risk by prioritizing critical vulnerabilities. ## Technical Architecture - Ingest CVEs, asset inventory, scanner outputs → risk scoring model - LLM triage assistant with source links; ticketing integration - Dashboar",
-    "content": "# Pattern: AI-Powered Vulnerability Management ## Business Value - Reduce mean-time-to-detect and patch risk by prioritizing critical vulnerabilities. ## Technical Architecture - Ingest CVEs, asset inventory, scanner outputs → risk scoring model - LLM triage assistant with source links; ticketing integration - Dashboards for coverage, SLA, and patch impact ## Discovery Questions - Asset inventory completeness and exposure? - Patch windows and change controls? - Compliance frameworks (SOC2, ISO, NIST)? ## Bill of Materials - Data store, scanners integrations, LLM, dashboards, ticketing ## Risks & Controls - False prioritization → feedback loop; audit trail - Sensitive data → access controls and redaction"
+    "excerpt": "# Pattern: AI-Powered Vulnerability Management ## Business Value - Shrink mean time to remediate critical vulnerabilities by continuously triaging findings against business impact, exploitability, and exposure. - Provide security and engineering teams with contextual narratives, remediation guidance, and automated work",
+    "content": "# Pattern: AI-Powered Vulnerability Management ## Business Value - Shrink mean time to remediate critical vulnerabilities by continuously triaging findings against business impact, exploitability, and exposure. - Provide security and engineering teams with contextual narratives, remediation guidance, and automated workflow routing to accelerate closure. - Improve compliance posture by generating defensible evidence of coverage, prioritisation rationale, and SLA adherence. ## Technical Architecture 1. **Data Aggregation**: Normalise scanner outputs (Qualys, Tenable), asset inventory, CMDB, threat intel, and business metadata into a unified knowledge graph. 2. **Risk Scoring Engine**: Combine rule-based scoring (CVSS, EPSS) with ML models that account for asset criticality, compensating controls, and exploit chatter. 3. **AI Triage Assistant**: LLM-generated summaries highlight potential impact, recommended fixes, and link to patches or knowledge docs with citations. 4. **Workflow Integration**: Automated ticketing (Jira/ServiceNow), change window validation, and exception management with approval workflows. 5. **Monitoring & Reporting**: Dashboards track coverage, SLA compliance, trending vulnerabilities, and residual risk by business unit. ## Discovery Questions - How accurate and complete is the asset inventory, and how are orphaned systems discovered or reconciled? - What patching cadences and maintenance windows exist across infrastructure types (cloud, OT, endpoints)? - Which regulatory or certification frameworks (SOC 2, ISO 27001, NIST 800-53) dictate reporting frequencies and evidence requirements? - How are vulnerability exceptions approved, reviewed, and revisited over time? ## Bill of Materials - Data platform: graph or document store (Neo4j, Elastic Common Schema) with streaming ingestion (Kafka) from scanners and CMDB. - Threat intelligence enrichers (MISP, Recorded Future), ML pipeline for prioritisation, and LLM service (Azure OpenAI, Bedrock) for summ"
   },
   {
     "id": "02-learning-paths\\100-hour-ai-architect.md",
@@ -609,12 +668,16 @@
         "text": "Sprint D — Storytelling & Adoption"
       },
       {
+        "level": 3,
+        "text": "Sprint E � Creator Studio Launch"
+      },
+      {
         "level": 2,
         "text": "Implementation Tips"
       }
     ],
     "excerpt": "# Micro-Learning Playlists Mix and match the [Micro-Learning Atlas](micro-modules/README.md) modules to build targeted sprints. Each playlist fits inside a week (~5 hours) and pairs with deliverables from the main curriculum. ## Week Sprint Templates ### Sprint A — Retrieval Excellence 1. [Context Engineering for LLMs]",
-    "content": "# Micro-Learning Playlists Mix and match the [Micro-Learning Atlas](micro-modules/README.md) modules to build targeted sprints. Each playlist fits inside a week (~5 hours) and pairs with deliverables from the main curriculum. ## Week Sprint Templates ### Sprint A — Retrieval Excellence 1. [Context Engineering for LLMs](micro-modules/foundations-context-engineering.md) 2. [Hybrid Ranking Blueprint](micro-modules/retrieval-hybrid-ranking.md) 3. [RAG Guardrails Fast Track](micro-modules/retrieval-rag-guardrails.md) 4. [Domain RAG Clinic (Healthcare)](micro-modules/retrieval-domain-rag-healthcare.md) 5. **Ship:** Update your domain RAG README with guardrails + metrics. ### Sprint B — Agentic Delivery 1. [LangGraph Planner Loop](micro-modules/agents-langgraph-planner.md) 2. [Multi-Agent Handoff Lab](micro-modules/agents-multi-agent-handoff.md) 3. [Langfuse Telemetry Sprints](micro-modules/operations-langfuse-telemetry.md) 4. **Ship:** Record a demo of planner → reviewer flow and capture traces. ### Sprint C — Governance Ready 1. [Model Risk Review Sprint](micro-modules/governance-model-risk-review.md) 2. [Policy Automation Quick Start](micro-modules/governance-policy-automation.md) 3. [Cost & Latency Playbook](micro-modules/operations-cost-optimization.md) 4. **Ship:** Merge CI policy gate and circulate governance update via [Executive Narrative Builder](micro-modules/storytelling-exec-brief.md). ### Sprint D — Storytelling & Adoption 1. [Evaluation Signals Primer](micro-modules/foundations-evaluation-signals.md) 2. [Evaluation Automation Pipeline](micro-modules/evaluation-automation-pipeline.md) 3. [Adoption & ROI Metrics](micro-modules/storytelling-adoption-metrics.md) 4. [Executive Narrative Builder](micro-modules/storytelling-exec-brief.md) 5. **Ship:** Publish a metrics + narrative bundle in . ## Implementation Tips - Schedule micro-modules as daily 45-minute focus blocks. Add reminders via your team calendar. - Track completion in the [Learning Logbook](logbook.md)"
+    "content": "# Micro-Learning Playlists Mix and match the [Micro-Learning Atlas](micro-modules/README.md) modules to build targeted sprints. Each playlist fits inside a week (~5 hours) and pairs with deliverables from the main curriculum. ## Week Sprint Templates ### Sprint A — Retrieval Excellence 1. [Context Engineering for LLMs](micro-modules/foundations-context-engineering.md) 2. [Hybrid Ranking Blueprint](micro-modules/retrieval-hybrid-ranking.md) 3. [RAG Guardrails Fast Track](micro-modules/retrieval-rag-guardrails.md) 4. [Domain RAG Clinic (Healthcare)](micro-modules/retrieval-domain-rag-healthcare.md) 5. **Ship:** Update your domain RAG README with guardrails + metrics. ### Sprint B — Agentic Delivery 1. [LangGraph Planner Loop](micro-modules/agents-langgraph-planner.md) 2. [Multi-Agent Handoff Lab](micro-modules/agents-multi-agent-handoff.md) 3. [Langfuse Telemetry Sprints](micro-modules/operations-langfuse-telemetry.md) 4. **Ship:** Record a demo of planner → reviewer flow and capture traces. ### Sprint C — Governance Ready 1. [Model Risk Review Sprint](micro-modules/governance-model-risk-review.md) 2. [Policy Automation Quick Start](micro-modules/governance-policy-automation.md) 3. [Cost & Latency Playbook](micro-modules/operations-cost-optimization.md) 4. **Ship:** Merge CI policy gate and circulate governance update via [Executive Narrative Builder](micro-modules/storytelling-exec-brief.md). ### Sprint D — Storytelling & Adoption 1. [Evaluation Signals Primer](micro-modules/foundations-evaluation-signals.md) 2. [Evaluation Automation Pipeline](micro-modules/evaluation-automation-pipeline.md) 3. [Adoption & ROI Metrics](micro-modules/storytelling-adoption-metrics.md) 4. [Executive Narrative Builder](micro-modules/storytelling-exec-brief.md) 5. **Ship:** Publish a metrics + narrative bundle in . ### Sprint E � Creator Studio Launch 1. [Creator Content Orchestration Sprint](micro-modules/creator-content-orchestration.md) 2. [Creator Evaluation Scorecards](micro-modules"
   },
   {
     "id": "02-learning-paths\\micro-modules\\README.md",
@@ -700,6 +763,111 @@
     ],
     "excerpt": "# Multi-Agent Handoff Lab **Category:** Agentic Patterns **Duration:** 55 minutes **Outcome:** Prototype a two-agent workflow (researcher + reviewer) with explicit handoffs, audit trails, and human-in-the-loop checkpoints. ## Why it matters - 2025 enterprise deployments favour collaborative agents with controlled auton",
     "content": "# Multi-Agent Handoff Lab **Category:** Agentic Patterns **Duration:** 55 minutes **Outcome:** Prototype a two-agent workflow (researcher + reviewer) with explicit handoffs, audit trails, and human-in-the-loop checkpoints. ## Why it matters - 2025 enterprise deployments favour collaborative agents with controlled autonomy. - Clear handoffs reduce hallucinations and improve compliance. ## Prerequisites - Completion of [LangGraph Planner Loop](agents-langgraph-planner.md) module. - Access to a shared datastore (Redis, Supabase) for passing artefacts. - Slack/Teams webhook or email integration for human approvals (optional but recommended). ## Step-by-step 1. **Define roles:** Researcher agent gathers evidence; Reviewer agent validates, adds citations, and triggers approvals. 2. **Model selection:** Use Claude 3.5 Sonnet for research (long context) and GPT-4.1 mini for reviewer (speed). Configure via OpenRouter if centralised billing needed. 3. **Artefact contract:** Create JSON schema (problem, evidence[], risks[], draft_response) stored in shared_state. 4. **Human gate:** Add a webhook step that posts reviewer output to Slack with Approve/Reject buttons (use Slack Workflow Builder or n8n). 5. **Logging:** Persist each handoff with Langfuse spans labelled handoff_researcher and handoff_reviewer. Attach metadata (latency, token cost, approved? yes/no). 6. **Post-mortem:** If rejection occurs, run [Retrospective with AI](../../15-workflows/retrospective-with-ai.md) to capture lessons and update prompts. ## Deliverables - LangGraph agent definitions + orchestration script. - Screenshot or recording of the Slack/Teams approval flow. - Updated governance log noting review cadence and escalation path. ## References - Slack Workflow Builder AI approvals (May 2025 release). - OpenAI Function Calling best practices (June 2025 update). - 16-collaboration/agentic-teams.md for collaboration patterns."
+  },
+  {
+    "id": "02-learning-paths\\micro-modules\\creator-analytics-feedback-loop.md",
+    "title": "Creator Analytics Feedback Loop",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/creator-analytics-feedback-loop.md",
+    "section": "Learning Paths",
+    "path": "02-learning-paths\\micro-modules\\creator-analytics-feedback-loop.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Creator Analytics Feedback Loop"
+      },
+      {
+        "level": 2,
+        "text": "Why it matters"
+      },
+      {
+        "level": 2,
+        "text": "Prerequisites"
+      },
+      {
+        "level": 2,
+        "text": "Step-by-step"
+      },
+      {
+        "level": 2,
+        "text": "Deliverables"
+      },
+      {
+        "level": 2,
+        "text": "References"
+      }
+    ],
+    "excerpt": "# Creator Analytics Feedback Loop **Category:** Growth & Insights **Duration:** 45 minutes **Outcome:** Wire marketing analytics back into prompts, briefs, and experimentation plans to keep AI-assisted content improving. ## Why it matters - Performance data often lives in silos; connecting it to the creation pipeline u",
+    "content": "# Creator Analytics Feedback Loop **Category:** Growth & Insights **Duration:** 45 minutes **Outcome:** Wire marketing analytics back into prompts, briefs, and experimentation plans to keep AI-assisted content improving. ## Why it matters - Performance data often lives in silos; connecting it to the creation pipeline unlocks rapid iteration. - Continuous learning avoids publishing fatigue and proves the ROI of creator automation investments. ## Prerequisites - Access to analytics exports (YouTube, TikTok, newsletter, web, CRM) with at least engagement and conversion metrics. - Basic familiarity with your data warehouse or BI tool (Mode, Looker, Metabase). - Outcome logs from recent campaigns (OKRs, narrative summaries). ## Step-by-step 1. **Collect key metrics:** Export last 4 weeks of channel performance and standardise columns (asset ID, publish date, watch time, CTR, conversions). 2. **Map to assets:** Link analytics rows to the AI-generated artefacts stored in your DAM or outputs. 3. **Derive insights:** Identify top/bottom performers and tag root causes (hook strength, distribution timing, CTA clarity). 4. **Feed prompts:** Update prompts/templates with insight snippets (e.g., �Lead with metric-driven hook referencing benefit X�). Store versions in . 5. **Schedule experiments:** Plan 2�3 tests for the next sprint (thumbnail variants, narrative angle). Document in . 6. **Automate refresh:** Add a job or reminder to pull analytics weekly and append to for trending dashboards. ## Deliverables - Normalised analytics dataset saved in . - Updated prompt variants capturing data-driven hooks. - Experiment plan summarising tests, success metrics, and owners. ## References - [ ](../../06-toolchains/stack-reference.md) for analytics connectors and warehouses. - [ ](../micro-learning.md) to slot this feedback loop into broader learning sequences. - [ ](../../16-collaboration/escalation-guide.md) for stakeholder communication during iteration."
+  },
+  {
+    "id": "02-learning-paths\\micro-modules\\creator-content-orchestration.md",
+    "title": "Creator Content Orchestration Sprint",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/creator-content-orchestration.md",
+    "section": "Learning Paths",
+    "path": "02-learning-paths\\micro-modules\\creator-content-orchestration.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Creator Content Orchestration Sprint"
+      },
+      {
+        "level": 2,
+        "text": "Why it matters"
+      },
+      {
+        "level": 2,
+        "text": "Prerequisites"
+      },
+      {
+        "level": 2,
+        "text": "Step-by-step"
+      },
+      {
+        "level": 2,
+        "text": "Deliverables"
+      },
+      {
+        "level": 2,
+        "text": "References"
+      }
+    ],
+    "excerpt": "# Creator Content Orchestration Sprint **Category:** Creator Systems **Duration:** 50 minutes **Outcome:** Stand up an AI-assisted production board that takes briefs to multi-channel assets with brand-safe guardrails. ## Why it matters - Creator teams juggle ideation, scripting, editing, and publishing across multiple ",
+    "content": "# Creator Content Orchestration Sprint **Category:** Creator Systems **Duration:** 50 minutes **Outcome:** Stand up an AI-assisted production board that takes briefs to multi-channel assets with brand-safe guardrails. ## Why it matters - Creator teams juggle ideation, scripting, editing, and publishing across multiple channels; automation keeps the cadence sustainable. - Structured hand-offs between humans and AI reduce brand risk while allowing experimentation with new formats. ## Prerequisites - Access to a campaign brief or editorial calendar (Notion/Asana export works). - Local copy of [ ](../../01-design-patterns/creator-studio-automation.md). - Prompt tooling (Promptfoo or LangChain notebooks) to test candidate prompts. ## Step-by-step 1. **Map the pipeline:** Sketch the stages (brief ? outline ? script ? edit ? publish) and assign human/AI responsibilities. 2. **Create prompt packs:** Draft structured prompts for outline, hook, CTA, and SEO blurb generation. Store in a folder. 3. **Wire data sources:** Connect brand voice snippets, product FAQs, and performance metrics into a lightweight retrieval layer (e.g., ). 4. **Set review gates:** Define human approval points and add checklist items (style, compliance, accessibility). Capture them in the orchestrator or a Kanban template. 5. **Automate publishing prep:** Generate distribution copy (YouTube description, LinkedIn post, newsletter teaser) reusing the same source snippets. 6. **Log metrics:** Decide which KPIs feed back (CTR, watch time, saves). Add placeholders for analytics ingestion in . ## Deliverables - Pipeline diagram or state machine exported to . - Prompt pack ( ) with rationale and guardrails. - Review checklist embedded in your project management tool or saved as . ## References - [ ](../../03-awesome/portfolio-examples.md) for storytelling inspiration. - [ ](../../06-toolchains/vercel-ai-sdk.md) for streaming editor experiences. - [ ](../../05-projects/eval-automation/README.md) to monitor tone"
+  },
+  {
+    "id": "02-learning-paths\\micro-modules\\creator-evaluation-scorecards.md",
+    "title": "Creator Evaluation Scorecards",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/creator-evaluation-scorecards.md",
+    "section": "Learning Paths",
+    "path": "02-learning-paths\\micro-modules\\creator-evaluation-scorecards.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Creator Evaluation Scorecards"
+      },
+      {
+        "level": 2,
+        "text": "Why it matters"
+      },
+      {
+        "level": 2,
+        "text": "Prerequisites"
+      },
+      {
+        "level": 2,
+        "text": "Step-by-step"
+      },
+      {
+        "level": 2,
+        "text": "Deliverables"
+      },
+      {
+        "level": 2,
+        "text": "References"
+      }
+    ],
+    "excerpt": "# Creator Evaluation Scorecards **Category:** Evaluation & QA **Duration:** 40 minutes **Outcome:** Build a repeatable scoring flow that keeps AI-generated creative assets on-brand, accurate, and high-converting. ## Why it matters - Creative output fails fast when tone, metadata, or compliance slip. Quantitative scorec",
+    "content": "# Creator Evaluation Scorecards **Category:** Evaluation & QA **Duration:** 40 minutes **Outcome:** Build a repeatable scoring flow that keeps AI-generated creative assets on-brand, accurate, and high-converting. ## Why it matters - Creative output fails fast when tone, metadata, or compliance slip. Quantitative scorecards keep stakeholders aligned. - Evaluations turn subjective feedback into measurable loops that improve prompts, datasets, and human guidance. ## Prerequisites - Access to the latest Promptfoo/Langfuse setup ( ). - Recently published assets or drafts ready for scoring (videos, blog posts, social variants). - Brand or compliance checklist (pull from or legal guidelines). ## Step-by-step 1. **Define success metrics:** Pick 3�5 signals (tone adherence, fact accuracy, CTA strength, SEO keyword coverage, safety). 2. **Instrument Promptfoo:** Add the signals to with expected outcomes, linking to specific tone rules or metadata requirements. 3. **Build human rubric:** Translate signals into a simple 1�5 scale spreadsheet or Notion template for reviewers. 4. **Automate ingestion:** Update to store outputs in and surface them in Langfuse dashboards. 5. **Close the loop:** Present results during weekly creative ops review; adjust prompts or guardrails based on missed thresholds. 6. **Document updates:** Log new findings in and share with stakeholders. ## Deliverables - Updated evaluation dataset targeting creator campaigns ( ). - Scorecard template for human reviewers saved in . - Retro notes summarising key improvements and action items. ## References - [ ](../../05-projects/domain-rag-healthcare/eval/healthcare.json) for structured expectation examples. - [ ](../../07-evaluation/metrics.md) to align score definitions. - [ ](../../15-workflows/retrospective-with-ai.md) for follow-up sessions."
   },
   {
     "id": "02-learning-paths\\micro-modules\\evaluation-automation-pipeline.md",
@@ -1427,19 +1595,62 @@
     "content": "# Project: Agentic SaaS Planner Goal: Use a Planner → Worker → Reviewer swarm to produce a product plan, architecture, and build plan for a simple SaaS idea. ## Steps 1) Run the example 2) Add a agent to block release if risks are high 3) Extend output: Bill of Materials, API list, day-by-day build plan 4) Optional: Streamlit UI button to export a PDF brief ## Acceptance Criteria - Outputs include target user, jobs-to-be-done, key features, risks, MVP outline - Technical plan includes components, data flow, APIs, eval plan - Reviewer summary is clear and actionable ## Stretch - Integrate LiteLLM to compare models (OpenAI vs Anthropic) - Add a test harness that verifies the plan includes eval metrics"
   },
   {
+    "id": "05-projects\\creator-evals\\README.md",
+    "title": "Creator Evaluation Harness",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/creator-evals/README.md",
+    "section": "Projects",
+    "path": "05-projects\\creator-evals\\README.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Creator Evaluation Harness"
+      },
+      {
+        "level": 2,
+        "text": "What's Inside"
+      },
+      {
+        "level": 2,
+        "text": "Quick Start"
+      },
+      {
+        "level": 1,
+        "text": "Reuse the shared automation tooling"
+      },
+      {
+        "level": 2,
+        "text": "Extend"
+      },
+      {
+        "level": 2,
+        "text": "Suggested Workflow"
+      },
+      {
+        "level": 2,
+        "text": "Related Resources"
+      }
+    ],
+    "excerpt": "# Creator Evaluation Harness Opinionated scaffold for scoring AI-assisted creator workflows. It extends with creator-specific scenarios, datasets, and reporting conventions. ## What's Inside - � Promptfoo-ready creator prompts covering hooks, performance summaries, and next-step experiments. - � Sample analytics export",
+    "content": "# Creator Evaluation Harness Opinionated scaffold for scoring AI-assisted creator workflows. It extends with creator-specific scenarios, datasets, and reporting conventions. ## What's Inside - � Promptfoo-ready creator prompts covering hooks, performance summaries, and next-step experiments. - � Sample analytics export used during evaluations. - � Drop evaluation outputs and retro notes here (gitignored by default). ## Quick Start Reports land in within the eval-automation project. Copy the relevant JSON/HTML into if you want creator-specific archives. ## Extend - Append new creator scenarios (e.g., newsletter variants, podcast scripts) to . - Mirror analytics exports from your BI stack into for reproducible tests. - Sync metrics with [ ](../../02-learning-paths/micro-modules/creator-analytics-feedback-loop.md) as you build longer feedback loops. ## Suggested Workflow 1. Run micro-modules: orchestration, scorecards, analytics loop. 2. Update Promptfoo configs to include creator guardrails (tone, compliance, CTA strength). 3. Execute evaluations pre- and post-campaign; log results in . 4. Share wins in the [Creator Studio Launch Guide](../../09-articles/creator-studio-launch-guide.md). ## Related Resources - [ ](../../01-design-patterns/creator-studio-automation.md) - [ ](../eval-automation/README.md) - [ ](../../02-learning-paths/micro-modules/creator-evaluation-scorecards.md)"
+  },
+  {
     "id": "05-projects\\domain-rag-healthcare\\README.md",
-    "title": "README",
+    "title": "Domain RAG Healthcare Blueprint",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/domain-rag-healthcare/README.md",
     "section": "Projects",
     "path": "05-projects\\domain-rag-healthcare\\README.md",
     "headings": [
       {
-        "level": 2,
-        "text": "What's inside"
+        "level": 1,
+        "text": "Domain RAG Healthcare Blueprint"
       },
       {
         "level": 2,
-        "text": "Quick start"
+        "text": "What's Inside"
+      },
+      {
+        "level": 2,
+        "text": "Quick Start"
       },
       {
         "level": 2,
@@ -1454,35 +1665,47 @@
         "text": "Extend"
       }
     ],
-    "excerpt": "# Domain RAG Healthcare Blueprint Opinionated project scaffolding for building a healthcare-ready retrieval augmented generation (RAG) service. ## What's inside - data/clinical_guidelines.csv — sample de-identified snippets for quick experiments. - pipeline.py — end-to-end ingestion + retrieval + response pipeline. - c",
-    "content": "# Domain RAG Healthcare Blueprint Opinionated project scaffolding for building a healthcare-ready retrieval augmented generation (RAG) service. ## What's inside - data/clinical_guidelines.csv — sample de-identified snippets for quick experiments. - pipeline.py — end-to-end ingestion + retrieval + response pipeline. - chunker.py — UMLS-aware chunking helper (falls back to sentence splitting if UMLS not installed). - guardrails.yaml — safety and compliance checks (PHI redaction, contraindication trigger). - evaluate.py — CLI to run evaluation sets and push metrics to Langfuse. - eports/ — stash evaluation outputs and decision logs. ## Quick start ## Configure Create .env based on .env.example: Set EMBEDDING_MODEL and RERANK_MODEL in pipeline.py to reflect your deployment (OpenAI, Azure OpenAI, Voyage, etc.). ## Evaluate & Share - Run python evaluate.py --dataset eval/healthcare.json after each update. - Capture a summary in eports/healthcare_rag_summary.md. - Feed outcomes into the [Domain RAG Clinic (Healthcare)](../../02-learning-paths/micro-modules/retrieval-domain-rag-healthcare.md) micro-module. ## Extend - Swap in your own datasets by dropping files in data/ and updating DATA_SOURCES. - Integrate hospital-specific ontologies by extending chunker.py. - Pair with 15-workflows/postmortem.md for post-release reviews."
+    "excerpt": "# Domain RAG Healthcare Blueprint Opinionated scaffolding for building a healthcare-ready retrieval augmented generation (RAG) service tailored to AI Architect Health Alliance (AIHA) clinical teams. ## What's Inside - � AIHA hypertension, diabetes, telehealth, kidney, and medication safety playbooks. - � end-to-end ing",
+    "content": "# Domain RAG Healthcare Blueprint Opinionated scaffolding for building a healthcare-ready retrieval augmented generation (RAG) service tailored to AI Architect Health Alliance (AIHA) clinical teams. ## What's Inside - � AIHA hypertension, diabetes, telehealth, kidney, and medication safety playbooks. - � end-to-end ingestion, embedding, and retrieval workflows with environment-tunable models. - � UMLS-aware chunker with sentence fallback for lightweight deployments. - � PHI redaction, contraindication alerts, and escalation triggers. - � CLI wrapper to score responses against and push metrics to Langfuse. - � drop evaluation outputs, risk reviews, and decision logs for audit. ## Quick Start ## Configure Create from and supply: Override or if you point ingest at alternate datasets. ## Evaluate & Share - Run after ingesting new knowledge. - Store summaries in (e.g., ). - Feed insights back into the [Domain RAG Clinic (Healthcare)](../../02-learning-paths/micro-modules/retrieval-domain-rag-healthcare.md) micro-module. ## Extend - Drop additional CSVs in (e.g., policy memos, care coordination scripts) and set to the combined export. - Enrich with terminology services (SNOMED, LOINC) for enterprise-grade retrieval. - Pair with to capture post-release retrospectives and risk mitigations."
   },
   {
     "id": "05-projects\\eval-automation\\README.md",
-    "title": "README",
+    "title": "Evaluation Automation",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/eval-automation/README.md",
     "section": "Projects",
     "path": "05-projects\\eval-automation\\README.md",
     "headings": [
       {
-        "level": 2,
-        "text": "What's inside"
+        "level": 1,
+        "text": "Evaluation Automation"
       },
       {
         "level": 2,
-        "text": "Quick start"
+        "text": "What's Inside"
       },
       {
         "level": 2,
-        "text": "Wire it into CI"
+        "text": "Quick Start"
       },
       {
         "level": 2,
-        "text": "Reports"
+        "text": "Live Eval Checklist"
+      },
+      {
+        "level": 2,
+        "text": "Wire It Into CI"
+      },
+      {
+        "level": 2,
+        "text": "Reports & Storytelling"
+      },
+      {
+        "level": 2,
+        "text": "Creator Ops Integration"
       }
     ],
-    "excerpt": "# Evaluation Automation Scaffold for running automated evaluation suites via promptfoo and Langfuse. ## What's inside - promptfoo.yaml — base configuration with accuracy, safety, and citation checks. - scenarios.csv — seed scenario set (expand with your own cases). - un_evals.py — orchestrates promptfoo + Langfuse sync",
-    "content": "# Evaluation Automation Scaffold for running automated evaluation suites via promptfoo and Langfuse. ## What's inside - promptfoo.yaml — base configuration with accuracy, safety, and citation checks. - scenarios.csv — seed scenario set (expand with your own cases). - un_evals.py — orchestrates promptfoo + Langfuse sync. - ci/eval-check.yml — GitHub Action to block merges when metrics regress. - eports/ — generated artefacts ready for exec briefings. ## Quick start ## Wire it into CI 1. Copy ci/eval-check.yml into .github/workflows/. 2. Add LANGFUSE_PUBLIC_KEY / SECRET_KEY to repository secrets. 3. Adjust thresholds inside promptfoo.yaml to suit your guardrails. ## Reports Generated HTML/JSON reports land in eports/. Attach summaries to the [Executive Narrative Builder](../../02-learning-paths/micro-modules/storytelling-exec-brief.md) or post in leadership channels. Need context? Complete the [Evaluation Automation Pipeline](../../02-learning-paths/micro-modules/evaluation-automation-pipeline.md) micro-module."
+    "excerpt": "# Evaluation Automation Scaffolding to run automated evaluation suites via Promptfoo and Langfuse with AIHA-specific scenarios. ## What's Inside - - accuracy, toxicity, and custom citation guardrails. - - curated prompts covering Langfuse telemetry, evaluation automation, and AIHA care protocols. - - orchestrates Promp",
+    "content": "# Evaluation Automation Scaffolding to run automated evaluation suites via Promptfoo and Langfuse with AIHA-specific scenarios. ## What's Inside - - accuracy, toxicity, and custom citation guardrails. - - curated prompts covering Langfuse telemetry, evaluation automation, and AIHA care protocols. - - orchestrates Promptfoo runs and writes timestamped JSON/HTML reports. - - quickcheck for provider API keys before running live evaluations. - - GitHub Action template to block merges when guardrails regress. - - drop-off point for generated artefacts and exec-ready summaries. - - template for provider keys and optional Promptfoo overrides. ## Quick Start If your Promptfoo binary lives outside of , set in to the absolute path. ## Live Eval Checklist 1. Populate with production-ready and values. 2. Run ; address any missing variables before continuing. 3. (Optional) Override if you manage multiple Promptfoo installs. 4. Execute to generate live-model reports. When provider keys are absent, the script falls back to ungraded summaries tagged as . ## Wire It Into CI 1. Copy into . 2. Store / (and any LLM provider keys) in repository secrets. 3. Tune thresholds or providers inside to reflect your policies. ## Reports & Storytelling Generated HTML/JSON reports land in . Attach highlights to the [Executive Narrative Builder](../../02-learning-paths/micro-modules/storytelling-exec-brief.md) or share in leadership forums. Offline runs remain in the same directory but clearly indicate the fallback status. Complete the [Evaluation Automation Pipeline](../../02-learning-paths/micro-modules/evaluation-automation-pipeline.md) micro-module to unlock advanced workflows. ## Creator Ops Integration - Run creator-specific test sets from [ ](../creator-evals/README.md) with . - Schedule micro-modules for your ops team: [Creator Content Orchestration Sprint](../../02-learning-paths/micro-modules/creator-content-orchestration.md), [Creator Evaluation Scorecards](../../02-learning-paths/micro-"
   },
   {
     "id": "05-projects\\evals-langfuse.md",
@@ -1687,8 +1910,55 @@
         "text": "Articles"
       }
     ],
-    "excerpt": "# Articles - RAG in Production: Chunking, Hybrid Search, Evals - Grounded Tutoring: Enforcing Citations - Design Patterns for Enterprise AI - Agentic Code Swarms: Orchestration patterns, UX for agents, and pedagogy",
-    "content": "# Articles - RAG in Production: Chunking, Hybrid Search, Evals - Grounded Tutoring: Enforcing Citations - Design Patterns for Enterprise AI - Agentic Code Swarms: Orchestration patterns, UX for agents, and pedagogy"
+    "excerpt": "# Articles - RAG in Production: Chunking, Hybrid Search, Evals - Grounded Tutoring: Enforcing Citations - Design Patterns for Enterprise AI - Agentic Code Swarms: Orchestration patterns, UX for agents, and pedagogy - Creator Studio Launch Guide: Automating briefs-to-publish workflows with eval loops",
+    "content": "# Articles - RAG in Production: Chunking, Hybrid Search, Evals - Grounded Tutoring: Enforcing Citations - Design Patterns for Enterprise AI - Agentic Code Swarms: Orchestration patterns, UX for agents, and pedagogy - Creator Studio Launch Guide: Automating briefs-to-publish workflows with eval loops"
+  },
+  {
+    "id": "09-articles\\creator-studio-launch-guide.md",
+    "title": "Creator Studio Launch Guide",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/09-articles/creator-studio-launch-guide.md",
+    "section": "Articles",
+    "path": "09-articles\\creator-studio-launch-guide.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Creator Studio Launch Guide"
+      },
+      {
+        "level": 2,
+        "text": "1. Anchor on Outcomes"
+      },
+      {
+        "level": 2,
+        "text": "2. Structure the Production Pipeline"
+      },
+      {
+        "level": 2,
+        "text": "3. Assign Roles & Rituals"
+      },
+      {
+        "level": 2,
+        "text": "4. Build the Tech Stack"
+      },
+      {
+        "level": 2,
+        "text": "5. Implement the Feedback Loop"
+      },
+      {
+        "level": 2,
+        "text": "6. Operational Excellence"
+      },
+      {
+        "level": 2,
+        "text": "7. Launch Checklist"
+      },
+      {
+        "level": 2,
+        "text": "8. Next Steps"
+      }
+    ],
+    "excerpt": "# Creator Studio Launch Guide Launch a high-velocity creator studio that blends human taste with AI copilots. This guide distils best practices from the new Creator Studio Automation pattern, micro-learning modules, and evaluation workflows so you can move from concept to multi-channel distribution in days, not months.",
+    "content": "# Creator Studio Launch Guide Launch a high-velocity creator studio that blends human taste with AI copilots. This guide distils best practices from the new Creator Studio Automation pattern, micro-learning modules, and evaluation workflows so you can move from concept to multi-channel distribution in days, not months. ## 1. Anchor on Outcomes - **North-star metrics:** retention, audience growth, revenue per campaign, turnaround time. - **Guardrails:** brand voice, compliance, accessibility, and regional requirements. - **Success definition:** a single campaign should demonstrate faster production, higher engagement, or better reuse of assets. ## 2. Structure the Production Pipeline 1. **Brief intake:** capture persona, offer, CTA, channel mix, and success metrics. Use forms with schema validation. 2. **Knowledge graph:** store brand voice snippets, value props, FAQs, and evergreen offers in a vector store. 3. **Generation tiers:** split prompts for outlines, long-form scripts, short-form hooks, thumbnails, and distribution copy. 4. **Guardrail service:** enforce tone/style rules, run compliance linting, and attach citations for claims. 5. **Review lanes:** surface diffs, highlight AI-generated sections, and collect reviewer notes in one dashboard. 6. **Publish & measure:** push to CMS, social schedulers, newsletters, and update analytics warehouse for tracking. ## 3. Assign Roles & Rituals | Persona | Responsibility | AI Assistants | | --- | --- | --- | | Creative Director | Approves campaign brief, calibrates tone, manages backlog | Outline generator, persona reminder bot | | Editor / Producer | Refines scripts, ensures compliance, orchestrates publishing | Fact-check agent, compliance lint tool | | Analyst | Monitors performance, designs experiments, communicates insights | Analytics notebook agent, cohort analysis prompts | | Marketing Ops | Maintains workflow automation, env secrets, CI checks | Promptfoo regression suite, Langfuse dashboards | ## 4. Build the "
   },
   {
     "id": "09-articles\\drafts\\README.md",
@@ -2637,18 +2907,26 @@
   },
   {
     "id": "README.md",
-    "title": "AI Architect Academy — Command Center for Visionary Builders",
+    "title": "AI Architect Academy � Command Center for Visionary Builders",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/README.md",
     "section": "README.md",
     "path": "README.md",
     "headings": [
       {
         "level": 1,
-        "text": "AI Architect Academy — Command Center for Visionary Builders"
+        "text": "AI Architect Academy � Command Center for Visionary Builders"
       },
       {
         "level": 2,
         "text": "Why This Playbook Wins"
+      },
+      {
+        "level": 2,
+        "text": "Search-Optimized Highlights"
+      },
+      {
+        "level": 2,
+        "text": "What You Will Learn"
       },
       {
         "level": 2,
@@ -2688,7 +2966,7 @@
       }
     ],
     "excerpt": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/frankxai/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/frankxai/ai-architect-academy?style=flat-square\"></a> <a href=\"https://github.com/fr",
-    "content": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/frankxai/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/frankxai/ai-architect-academy?style=flat-square\"></a> <a href=\"https://github.com/frankxai/ai-architect-academy/pulls\"><img alt=\"PRs\" src=\"https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square\"></a> <a href=\"https://ai-architect-academy.github.io/ai-architect-academy/\"><img alt=\"Pages\" src=\"https://img.shields.io/badge/Pages-live-green?style=flat-square\"></a> </p> # AI Architect Academy — Command Center for Visionary Builders Design, ship, and operate AI systems with confidence. This open playbook gives you the artefacts, visuals, and workflows to lead conversations, execute fast, and tell a world-class story. <div align=\"center\"> <a href=\"START-HERE.md\"><img alt=\"Start Here\" src=\"https://img.shields.io/badge/Start-Now-cyan?style=for-the-badge\"></a> <a href=\"docs/experience.html\"><img alt=\"Explore the Experience\" src=\"https://img.shields.io/badge/Explore-Experience-purple?style=for-the-badge\"></a> <a href=\"https://github.com/frankxai/ai-architect-academy/archive/refs/heads/main.zip\"><img alt=\"Download\" src=\"https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge\"></a> </div> ![AI Architect Academy](assets/ai-architect-campus.png) <p align=\"center\"> <img src=\"assets/ai-architect-professor.png\" alt=\"AI Architect mentor persona using AI co-creation tools\" width=\"320\"> <img src=\"assets/ai-architect-education-poster.png\" alt=\"Think like an AI Architect curriculum poster\" width=\"320\"> </p> ## Why This Playbook Wins - **Everything is cross-linked.** Jump between repo, GitHub Pages, and dashboard without losing context. - **Production-calibre patterns.** Value framing, discovery questions, architecture diagrams, evaluation harnesses, and governance packs sit side-by-side. - **Launch-ready visuals.** Hero art, poster layout"
+    "content": "<p align=\"center\"><img src=\"assets/logo.svg\" width=\"420\" alt=\"AI Architect Academy\"></p> <p align=\"center\"> <a href=\"https://github.com/frankxai/ai-architect-academy/stargazers\"><img alt=\"Stars\" src=\"https://img.shields.io/github/stars/frankxai/ai-architect-academy?style=flat-square\"></a> <a href=\"https://github.com/frankxai/ai-architect-academy/pulls\"><img alt=\"PRs\" src=\"https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square\"></a> <a href=\"https://ai-architect-academy.github.io/ai-architect-academy/\"><img alt=\"Pages\" src=\"https://img.shields.io/badge/Pages-live-green?style=flat-square\"></a> </p> # AI Architect Academy � Command Center for Visionary Builders Design, ship, and operate AI systems with confidence. This open playbook gives you the artefacts, visuals, and workflows to lead conversations, execute fast, and tell a world-class story. <div align=\"center\"> <a href=\"START-HERE.md\"><img alt=\"Start Here\" src=\"https://img.shields.io/badge/Start-Now-cyan?style=for-the-badge\"></a> <a href=\"docs/experience.html\"><img alt=\"Explore the Experience\" src=\"https://img.shields.io/badge/Explore-Experience-purple?style=for-the-badge\"></a> <a href=\"https://github.com/frankxai/ai-architect-academy/archive/refs/heads/main.zip\"><img alt=\"Download\" src=\"https://img.shields.io/badge/Clone-Repo-black?style=for-the-badge\"></a> </div> ![AI Architect Academy](assets/ai-architect-campus.png) <p align=\"center\"> <img src=\"assets/ai-architect-professor.png\" alt=\"AI Architect mentor persona using AI co-creation tools\" width=\"320\"> <img src=\"assets/ai-architect-education-poster.png\" alt=\"Think like an AI Architect curriculum poster\" width=\"320\"> </p> ## Why This Playbook Wins - **Everything is cross-linked.** Jump between repo, GitHub Pages, and dashboard without losing context. - **Production-calibre patterns.** Value framing, discovery questions, architecture diagrams, evaluation harnesses, and governance packs sit side-by-side. - **Launch-ready visuals.** Hero art, poster layout"
   },
   {
     "id": "START-HERE.md",
