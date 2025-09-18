@@ -11,7 +11,7 @@ Purpose: Continuously absorb the best pedagogy, frameworks, and research practic
 ## Labs & Primary Channels
 | Lab / Org | Channels to Monitor | Focus Areas for Academy | Initial Integration Targets |
 | --- | --- | --- | --- |
-| OpenAI | Research blog, Cookbook, GPT-4o system cards, Safety & alignment updates | Agent orchestration, eval methods, human feedback | Update agentic patterns, Promptfoo scenarios |
+| OpenAI | Research blog, Cookbook, GPT-5 Omni system cards, Safety & alignment updates | Agent orchestration, eval methods, human feedback | Update agentic patterns, Promptfoo scenarios |
 | Google DeepMind | Publications, safety blog, Gemini guides, Alpha team tech reports | Reasoning, safety frameworks, RL + simulations | Enrich decision-support & governance modules |
 | Anthropic | Claude guides, interpretability blog, policy docs | Constitutional AI, guardrails, interpretability | Strengthen governance/compliance pattern |
 | Meta AI | Research blog, open-source repos (Llama, Segment Anything), FAIR papers | Open models, multimodality, infra scaling | Expand AI performance optimisation pattern |
@@ -66,7 +66,7 @@ Purpose: Continuously absorb the best pedagogy, frameworks, and research practic
 | --- | --- | --- | --- | --- | --- | --- |
 | Constitutional AI guardrails | Anthropic | Governance | Update `governance-compliance.md` guardrail section | Curriculum | Completed | Incorporated Constitutional AI prompts (2025-09-22). |
 | Gemini reasoning techniques | Google DeepMind | Reasoning | Expand `decision-support.md` reasoning tools | Builder | Completed | Added Gemini debate + simulator guidance (2025-09-22). |
-| GPT-4o multi-modal UX | OpenAI | Interaction design | Add to `content-generation.md` multi-modal section | Creator | Completed | Documented GPT-4o multi-modal and streaming hooks (2025-09-22). |
+| GPT-5 Omni multi-modal UX | OpenAI | Interaction design | Add to `content-generation.md` multi-modal section | Creator | Completed | Documented GPT-5 Omni multi-modal and streaming hooks (2025-09-22). |
 | GTC accelerated inference best practices | NVIDIA | Infra | Update `performance-optimization.md` caching + quantisation | Ops | Completed | Added TensorRT-LLM batching + FinOps tips (2025-09-22). |
 
 ## Research Questions

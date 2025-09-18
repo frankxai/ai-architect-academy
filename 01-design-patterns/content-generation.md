@@ -22,14 +22,14 @@
 ## Technical Architecture Stack
 1. **Workflow & State:** Temporal/Camunda orchestrating tasks, retries, human approvals.  
 2. **Knowledge Layer:** Postgres + pgvector / Weaviate storing brand voice, product catalogues, legal policies, prior wins.  
-3. **Generation Layer:** Prompt router selecting GPT-4o, Claude 3.5, distilled models; style adapters and retrieval augmentation.  
+3. **Generation Layer:** Prompt router selecting GPT-5 Omni, Claude 3.5, distilled models; style adapters and retrieval augmentation.  
 4. **Guardrails & QA:** Policy engine (Open Policy Agent), redaction services, SEO and accessibility scoring, fact-check agent using retrieval+evaluation.  
 5. **Publishing & Analytics:** Connectors to CMS, email, social; engagement stream into Snowflake/BigQuery; Mode/Looker dashboards.  
 6. **Observability:** Langfuse traces, Promptfoo regression suite, cost ledger, audit trail storage.
 
 ## Data & Models
 - Brand voice dataset (approved copy, tone matrices), product knowledge base, campaign performance warehouse.
-- Foundation models: GPT-4o for long form, Claude 3.5 Sonnet for analysis, smaller instruct models for ad copy (Llama 3.1, Mixtral).
+- Foundation models: GPT-5 Omni for long form, Claude 3.5 Sonnet for analysis, smaller instruct models for ad copy (Llama 3.1, Mixtral).
 - Evaluators: Prompthub/Promptfoo graders for tone & factuality, custom cheap classifiers for compliance keywords.
 
 ## Implementation Sprints (Agentic Prototyping)
@@ -59,7 +59,7 @@
 - Incident procedures per `incident-response-checklist.md`.
 
 ## Lab Insights (Sept 2025)
-- **OpenAI (GPT-4o multimodal)**: Combine streaming text+vision outputs with structured grounding JSON. Support canvas editing and webhook callbacks so reviewers can accept edits from a live preview.
+- **OpenAI (GPT-5 Omni multimodal)**: Combine streaming text+vision outputs with structured grounding JSON. Support canvas editing and webhook callbacks so reviewers can accept edits from a live preview.
 - **Microsoft Responsible AI**: Apply content safety filters and metadata watermarks for synthetic media; log sign-offs in governance artifacts.
 - **Anthropic Constitutional AI**: Re-run constitutional prompts during regression suites; feed violations into `08-governance/human-review-checklist.md` processes.
 
