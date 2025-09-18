@@ -64,10 +64,10 @@ Purpose: Continuously absorb the best pedagogy, frameworks, and research practic
 ## Backlog & Status
 | Item | Lab | Type | Target Integration | Owner | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| Constitutional AI guardrails | Anthropic | Governance | Update `governance-compliance.md` guardrail section | Curriculum | Planned | Map to human review checklist |
-| Gemini reasoning techniques | Google DeepMind | Reasoning | Expand `decision-support.md` reasoning tools | Builder | In progress | Link to scenario simulations |
-| GPT-4o multi-modal UX | OpenAI | Interaction design | Add to `content-generation.md` multi-modal section | Creator | Planned | Need sample assets |
-| GTC accelerated inference best practices | NVIDIA | Infra | Update `performance-optimization.md` caching + quantisation | Ops | Planned | Prototype caching script |
+| Constitutional AI guardrails | Anthropic | Governance | Update `governance-compliance.md` guardrail section | Curriculum | Completed | Incorporated Constitutional AI prompts (2025-09-22). |
+| Gemini reasoning techniques | Google DeepMind | Reasoning | Expand `decision-support.md` reasoning tools | Builder | Completed | Added Gemini debate + simulator guidance (2025-09-22). |
+| GPT-4o multi-modal UX | OpenAI | Interaction design | Add to `content-generation.md` multi-modal section | Creator | Completed | Documented GPT-4o multi-modal and streaming hooks (2025-09-22). |
+| GTC accelerated inference best practices | NVIDIA | Infra | Update `performance-optimization.md` caching + quantisation | Ops | Completed | Added TensorRT-LLM batching + FinOps tips (2025-09-22). |
 
 ## Research Questions
 - How do labs measure agent reliability and safety?  

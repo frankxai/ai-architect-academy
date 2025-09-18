@@ -48,6 +48,11 @@
 - Generate UI mockups using `AI CoE Templates/006-templates` wireframes; capture via `scripts/capture-screenshots.mjs`.  
 - Deliver final package: architecture note, decision journal sample, eval report, runbook.
 
+## Lab Insights (Sept 2025)
+- **Google DeepMind**: Incorporate Gemini-style debate chains and tool/solver arbitration to stress-test recommendations; keep transcripts for auditability.
+- **Microsoft Research**: Use Responsible AI dashboards to capture rationale, fairness, and transparency metrics alongside decisions.
+- **OpenAI**: Experiment with GPT-4o structured outputs for scenario storytelling (tables, charts) embedded into decision journals.
+
 ## Evaluation & Observability
 - Decision accuracy vs shadow model, fairness metrics per protected attribute, override rate trending.  
 - Langfuse dashboards for latency, tool calls, cost per decision.  

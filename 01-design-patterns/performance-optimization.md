@@ -58,6 +58,11 @@
 - Human oversight for quality trade-offs.  
 - Document approvals for SLO changes, align with governance library.
 
+## Lab Insights (Sept 2025)
+- **NVIDIA GTC 2025**: Adopt TensorRT-LLM paged attention + KV cache eviction for large context windows; benchmark using `trtexec` recipes.
+- **Microsoft Azure FinOps**: Use cost anomaly detection and budget alerts tied to deployments; map outputs to governance dashboards.
+- **Meta AI**: Evaluate open-weight Llama distillations for cost/performance trade-offs; add streaming router fallback when premium models saturate.
+
 ## Deliverables & Templates
 - Performance dashboards, SLO/SLA document, cost playbook.  
 - Optimisation runbook, automation scripts.  
