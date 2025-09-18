@@ -23,6 +23,7 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
 - **Clone the full operating system.** Pull the repo to unlock scripts, prompt packs, workflows, and design assets for your team and AI assistants.
 - **Tell a sharper story.** Use the [Brand Voice playbook](BRAND-VOICE.md) to stay on-message with executives, clients, and your audience.
 - **Ship and scale.** Pair enterprise-ready patterns with hands-on projects, eval workflows, and governance checklists.
+- **Level up the curriculum.** Follow the [Curriculum Architecture](02-learning-paths/curriculum-architecture.md) to move from the 100-hour sprint to executive bootcamps and agentic labs.
 
 ## Why Clone the Repository
 - **Offline & private workspaces.** Serve the site locally (`scripts/serve.sh`) and pair with your favourite AI copilots using the curated prompt packs in `prompt-packs/`.
@@ -48,15 +49,17 @@ Lead the conversations, ship the systems, and operate responsibly. This open pla
 - **Governance → Collaboration:** Stand up policy baselines, then drop the collaboration checklists into your team rituals.
 
 ## Start Your Journey (Choose the Lane that Fits)
-- **Launchpad (100 hours).** A curated sprint for builders who want traction fast — [100-Hour Plan](02-learning-paths/100-hour-ai-architect.md).
-- **Creators & Educators.** Translate the playbook into content with the [Beginner](02-learning-paths/beginner.md) and [Professional](02-learning-paths/professional.md) paths.
-- **Enterprise & AI CoE Leaders.** Run the [Bootcamp](02-learning-paths/bootcamp.md) to align architecture, governance, and adoption.
-- **Agentic Innovators.** Experiment with [Agentic Code Swarms](agentic-swarms/README.md) and the [Agentic SaaS Planner](05-projects/agentic-saas-planner.md).
+- **Launchpad (100 hours).** Sprint through foundations, retrieval, observability, and storytelling with the refreshed [100-Hour Plan](02-learning-paths/100-hour-ai-architect.md).
+- **Creators & Educators.** Run workshops, newsletters, and community drops using the [Creator Launch Sequence](02-learning-paths/beginner.md) plus the [Brand Voice playbook](BRAND-VOICE.md).
+- **Professional Architects.** Join the six-week [Professional Studio](02-learning-paths/professional.md) to orchestrate multi-model systems with evaluation-first rigor.
+- **Enterprise & AI CoE Leaders.** Facilitate alignment with the revamped [Bootcamp](02-learning-paths/bootcamp.md), governance toolkits, and collaboration rituals.
+- **Agentic Innovators.** Layer in [Agentic Code Swarms](02-learning-paths/agentic-code-swarms.md), experiment with orchestrators, and publish learnings via the [Agentic SaaS Planner](05-projects/agentic-saas-planner.md).
 
 ## Operate with Confidence
 - **Evaluation stack:** [Metrics](07-evaluation/metrics.md), [Eval harness](07-evaluation/eval-harness.md), and [promptfoo integrations](05-projects/evals-langfuse.md).
 - **Guardrails & governance:** [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model risk](08-governance/model-risk.md), and policy templates.
 - **Tooling matrix:** [Stack reference](06-toolchains/stack-reference.md), [Cloud blueprints](docs/clouds.html), and [Platform comparisons](docs/platforms.html).
+- **Curriculum cadence:** Revisit the [Curriculum Architecture](02-learning-paths/curriculum-architecture.md) quarterly to plug in updated benchmarks, model releases, and sector case studies.
 
 ## Create Momentum for Your Brand & Community
 - Publish your progress using the [article outlines](09-articles/) and [content prompts](prompt-packs/).

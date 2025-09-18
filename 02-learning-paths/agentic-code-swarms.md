@@ -1,9 +1,16 @@
 # Learning Path: Agentic Code Swarms
 
-Audience: AI Architects and Builders using Codex, Claude Code, or Cursor.
-Outcome: Ship a working multi-agent swarm, understand orchestration patterns, and build a visual explorer.
+Audience: AI Architects and Builders using Codex, Claude Code, Cursor, or other pair-programming copilots.
+Outcome: Ship a working multi-agent swarm, understand orchestration patterns, and build a visual explorer with live telemetry.
 
 Time: 10–16 hours (self-paced)
+
+This lab is the capstone inside the [Agentic Systems Lab](curriculum-architecture.md#program-layers--flagship-outcomes). Pair it with the [Professional Studio](professional.md) for evaluation depth and the [Bootcamp](bootcamp.md) to socialise operating models with leadership.
+
+## Curriculum Placement
+- **Prerequisite:** Comfortable with the [100-Hour Launchpad](100-hour-ai-architect.md) retrieval pipeline and evaluation loop.
+- **Parallel tracks:** Join weekly design reviews with Professional Studio cohorts to compare orchestrator decisions and failure modes.
+- **Post-lab moves:** Publish your swarm pattern as a case study in `01-design-patterns/` or demo it during a bootcamp executive council.
 
 ## Prereqs
 - Python 3.11
