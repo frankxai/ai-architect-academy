@@ -579,11 +579,15 @@
   },
   {
     "id": "02-learning-paths\\micro-learning.md",
-    "title": "Micro Learning",
+    "title": "Micro-Learning Playlists",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-learning.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-learning.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Micro-Learning Playlists"
+      },
       {
         "level": 2,
         "text": "Week Sprint Templates"
@@ -610,25 +614,34 @@
       }
     ],
     "excerpt": "# Micro-Learning Playlists Mix and match the [Micro-Learning Atlas](micro-modules/README.md) modules to build targeted sprints. Each playlist fits inside a week (~5 hours) and pairs with deliverables from the main curriculum. ## Week Sprint Templates ### Sprint A — Retrieval Excellence 1. [Context Engineering for LLMs]",
-    "content": "# Micro-Learning Playlists Mix and match the [Micro-Learning Atlas](micro-modules/README.md) modules to build targeted sprints. Each playlist fits inside a week (~5 hours) and pairs with deliverables from the main curriculum. ## Week Sprint Templates ### Sprint A — Retrieval Excellence 1. [Context Engineering for LLMs](micro-modules/foundations-context-engineering.md) 2. [Hybrid Ranking Blueprint](micro-modules/retrieval-hybrid-ranking.md) 3. [RAG Guardrails Fast Track](micro-modules/retrieval-rag-guardrails.md) 4. Ship: Update your RAG project README with new guardrails + metrics. ### Sprint B — Agentic Delivery 1. [LangGraph Planner Loop](micro-modules/agents-langgraph-planner.md) 2. [Multi-Agent Handoff Lab](micro-modules/agents-multi-agent-handoff.md) 3. [Langfuse Telemetry Sprints](micro-modules/operations-langfuse-telemetry.md) 4. Ship: Record a demo of planner → reviewer flow and capture traces. ### Sprint C — Governance Ready 1. [Model Risk Review Sprint](micro-modules/governance-model-risk-review.md) 2. [Policy Automation Quick Start](micro-modules/governance-policy-automation.md) 3. [Cost & Latency Playbook](micro-modules/operations-cost-optimization.md) 4. Ship: Merge CI policy gate and circulate governance update via [Executive Narrative Builder](micro-modules/storytelling-exec-brief.md). ### Sprint D — Storytelling & Adoption 1. [Evaluation Signals Primer](micro-modules/foundations-evaluation-signals.md) 2. [Adoption & ROI Metrics](micro-modules/storytelling-adoption-metrics.md) 3. [Executive Narrative Builder](micro-modules/storytelling-exec-brief.md) 4. Ship: Publish a metrics + narrative bundle in \u00009-articles/drafts/. ## Implementation Tips - Schedule micro-modules as daily 45-minute focus blocks. Add reminders via your team calendar. - Track completion in the [Learning Logbook](logbook.md) and reflect weekly using [Retrospective with AI](../15-workflows/retrospective-with-ai.md). - Pair with the [100-Hour AI Architect Plan](100-hour-ai-architect.md)"
+    "content": "# Micro-Learning Playlists Mix and match the [Micro-Learning Atlas](micro-modules/README.md) modules to build targeted sprints. Each playlist fits inside a week (~5 hours) and pairs with deliverables from the main curriculum. ## Week Sprint Templates ### Sprint A — Retrieval Excellence 1. [Context Engineering for LLMs](micro-modules/foundations-context-engineering.md) 2. [Hybrid Ranking Blueprint](micro-modules/retrieval-hybrid-ranking.md) 3. [RAG Guardrails Fast Track](micro-modules/retrieval-rag-guardrails.md) 4. [Domain RAG Clinic (Healthcare)](micro-modules/retrieval-domain-rag-healthcare.md) 5. **Ship:** Update your domain RAG README with guardrails + metrics. ### Sprint B — Agentic Delivery 1. [LangGraph Planner Loop](micro-modules/agents-langgraph-planner.md) 2. [Multi-Agent Handoff Lab](micro-modules/agents-multi-agent-handoff.md) 3. [Langfuse Telemetry Sprints](micro-modules/operations-langfuse-telemetry.md) 4. **Ship:** Record a demo of planner → reviewer flow and capture traces. ### Sprint C — Governance Ready 1. [Model Risk Review Sprint](micro-modules/governance-model-risk-review.md) 2. [Policy Automation Quick Start](micro-modules/governance-policy-automation.md) 3. [Cost & Latency Playbook](micro-modules/operations-cost-optimization.md) 4. **Ship:** Merge CI policy gate and circulate governance update via [Executive Narrative Builder](micro-modules/storytelling-exec-brief.md). ### Sprint D — Storytelling & Adoption 1. [Evaluation Signals Primer](micro-modules/foundations-evaluation-signals.md) 2. [Evaluation Automation Pipeline](micro-modules/evaluation-automation-pipeline.md) 3. [Adoption & ROI Metrics](micro-modules/storytelling-adoption-metrics.md) 4. [Executive Narrative Builder](micro-modules/storytelling-exec-brief.md) 5. **Ship:** Publish a metrics + narrative bundle in . ## Implementation Tips - Schedule micro-modules as daily 45-minute focus blocks. Add reminders via your team calendar. - Track completion in the [Learning Logbook](logbook.md)"
   },
   {
     "id": "02-learning-paths\\micro-modules\\README.md",
-    "title": "README",
+    "title": "Micro-Learning Atlas",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/README.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\README.md",
-    "headings": [],
+    "headings": [
+      {
+        "level": 1,
+        "text": "Micro-Learning Atlas"
+      }
+    ],
     "excerpt": "# Micro-Learning Atlas Rapid-fire modules designed for 45-minute deep dives. Each micro-lesson pairs a single outcome with hands-on artefacts, updated for the September 2025 AI architecture landscape. Use this index to stitch custom learning journeys or supplement the 100-Hour Plan. | Category | Module | Purpose | Dura",
-    "content": "# Micro-Learning Atlas Rapid-fire modules designed for 45-minute deep dives. Each micro-lesson pairs a single outcome with hands-on artefacts, updated for the September 2025 AI architecture landscape. Use this index to stitch custom learning journeys or supplement the 100-Hour Plan. | Category | Module | Purpose | Duration | | --- | --- | --- | --- | | Foundations | [Context Engineering for LLMs](foundations-context-engineering.md) | Master prompt + retrieval scaffolding using 2025 best practices | 45 min | | Foundations | [Evaluation Signals Primer](foundations-evaluation-signals.md) | Build a minimal eval harness with production-grade metrics | 40 min | | Retrieval Systems | [Hybrid Ranking Blueprint](retrieval-hybrid-ranking.md) | Combine sparse/dense search with rerankers shipping in 2025 | 50 min | | Retrieval Systems | [RAG Guardrails Fast Track](retrieval-rag-guardrails.md) | Implement grounded answers with policy + factual checks | 45 min | | Agentic Patterns | [LangGraph Planner Loop](agents-langgraph-planner.md) | Orchestrate task decomposition using LangGraph 0.3 | 45 min | | Agentic Patterns | [Multi-Agent Handoff Lab](agents-multi-agent-handoff.md) | Execute cross-agent workflows with shared memory + audits | 55 min | | Operations & Observability | [Langfuse Telemetry Sprints](operations-langfuse-telemetry.md) | Wire traces, cost, and drift dashboards in one sprint | 40 min | | Operations & Observability | [Cost & Latency Playbook](operations-cost-optimization.md) | Apply batching, caching, and adaptive routing to trim spend | 50 min | | Governance & Risk | [Model Risk Review Sprint](governance-model-risk-review.md) | Facilitate a cross-functional risk workshop with outputs | 45 min | | Governance & Risk | [Policy Automation Quick Start](governance-policy-automation.md) | Automate DPIA + policy workflows with Checklists + GitOps | 45 min | | Storytelling & Adoption | [Executive Narrative Builder](storytelling-exec-brief.md) | Translate technical progres"
+    "content": "# Micro-Learning Atlas Rapid-fire modules designed for 45-minute deep dives. Each micro-lesson pairs a single outcome with hands-on artefacts, updated for the September 2025 AI architecture landscape. Use this index to stitch custom learning journeys or supplement the 100-Hour Plan. | Category | Module | Purpose | Duration | | --- | --- | --- | --- | | Foundations | [Context Engineering for LLMs](foundations-context-engineering.md) | Master prompt + retrieval scaffolding using 2025 best practices | 45 min | | Foundations | [Evaluation Signals Primer](foundations-evaluation-signals.md) | Build a minimal eval harness with production-grade metrics | 40 min | | Retrieval Systems | [Hybrid Ranking Blueprint](retrieval-hybrid-ranking.md) | Combine sparse/dense search with rerankers shipping in 2025 | 50 min | | Retrieval Systems | [RAG Guardrails Fast Track](retrieval-rag-guardrails.md) | Implement grounded answers with policy + factual checks | 45 min | | Domain & Vertical | [Domain RAG Clinic (Healthcare)](retrieval-domain-rag-healthcare.md) | Build a healthcare-focused RAG with compliance-ready datasets & evals | 55 min | | Agentic Patterns | [LangGraph Planner Loop](agents-langgraph-planner.md) | Orchestrate task decomposition using LangGraph 0.3 | 45 min | | Agentic Patterns | [Multi-Agent Handoff Lab](agents-multi-agent-handoff.md) | Execute cross-agent workflows with shared memory + audits | 55 min | | Operations & Observability | [Langfuse Telemetry Sprints](operations-langfuse-telemetry.md) | Wire traces, cost, and drift dashboards in one sprint | 40 min | | Operations & Observability | [Cost & Latency Playbook](operations-cost-optimization.md) | Apply batching, caching, and adaptive routing to trim spend | 50 min | | Operations & Observability | [Evaluation Automation Pipeline](evaluation-automation-pipeline.md) | Automate regression suites with promptfoo, Langfuse, and CI gates | 45 min | | Governance & Risk | [Model Risk Review Sprint](governance-model-risk-re"
   },
   {
     "id": "02-learning-paths\\micro-modules\\agents-langgraph-planner.md",
-    "title": "Agents Langgraph Planner",
+    "title": "LangGraph Planner Loop",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/agents-langgraph-planner.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\agents-langgraph-planner.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "LangGraph Planner Loop"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -651,15 +664,19 @@
       }
     ],
     "excerpt": "# LangGraph Planner Loop **Category:** Agentic Patterns **Duration:** 45 minutes **Outcome:** Build a LangGraph 0.3 planner that decomposes tasks, manages memory, and calls tools with guardrails. ## Why it matters - LangGraph 0.3 introduced native tool scheduling, retries, and graph visualisations. - Organisations rely",
-    "content": "# LangGraph Planner Loop **Category:** Agentic Patterns **Duration:** 45 minutes **Outcome:** Build a LangGraph 0.3 planner that decomposes tasks, manages memory, and calls tools with guardrails. ## Why it matters - LangGraph 0.3 introduced native tool scheduling, retries, and graph visualisations. - Organisations rely on deterministic planners before enabling autonomous steps. ## Prerequisites - Python 3.11+ environment with LangChain/LangGraph installed. - Toolset: search function, retrieval tool, evaluator (could be simple mock). - Access to at least one high-signal dataset (e.g., company knowledge base). ## Step-by-step 1. **Define nodes:** Create planner, worker, evaluator, and reporter nodes as per \u0007gentic-swarms/README.md. 2. **Configure memory:** Store intermediate states in RedisMemoryStore or langgraph.checkpoint.sqlite. Limit history to 5 steps. 3. **Implement planner:** Use StructuredChatAgent with reasoning tokens enabled (OpenAI o4-mini or Claude 3.5 Sonnet) and define MAX_STEPS=8. 4. **Add guardrails:** Integrate the RAG guardrails module for citations + policy enforcement before responses exit the graph. 5. **Visualise:** Render the graph with LangGraph's built-in graph.draw() and save PNG in \u0007ssets/screenshots/. 6. **Validate:** Run three tasks (e.g., \"Draft migration plan\", \"Summarise governance policy\") and capture success/failure metrics in Langfuse. ## Deliverables - LangGraph graph definition file with planner loop and memory config. - PNG of the graph structure for storytelling decks. - Experiment notes in the Logbook + follow-up questions for the Multi-Agent Handoff module. ## References - LangGraph 0.3 release (July 2025) docs. - OpenAI o4 reasoning model best practices (August 2025). - 15-workflows/peer-review.md for validating agent behaviours."
+    "content": "# LangGraph Planner Loop **Category:** Agentic Patterns **Duration:** 45 minutes **Outcome:** Build a LangGraph 0.3 planner that decomposes tasks, manages memory, and calls tools with guardrails. ## Why it matters - LangGraph 0.3 introduced native tool scheduling, retries, and graph visualisations. - Organisations rely on deterministic planners before enabling autonomous steps. ## Prerequisites - Python 3.11+ environment with LangChain/LangGraph installed. - Toolset: search function, retrieval tool, evaluator (could be simple mock). - Access to at least one high-signal dataset (e.g., company knowledge base). ## Step-by-step 1. **Define nodes:** Create planner, worker, evaluator, and reporter nodes as per . 2. **Configure memory:** Store intermediate states in or . Limit history to 5 steps. 3. **Implement planner:** Use with reasoning tokens enabled (OpenAI o4-mini or Claude 3.5 Sonnet) and define . 4. **Add guardrails:** Integrate the RAG guardrails module for citations + policy enforcement before responses exit the graph. 5. **Visualise:** Render the graph with LangGraph's built-in and save a PNG in . 6. **Validate:** Run three tasks (e.g., \"Draft migration plan\", \"Summarise governance policy\") and capture success/failure metrics in Langfuse. ## Deliverables - LangGraph graph definition file with planner loop and memory config. - PNG of the graph structure for storytelling decks. - Experiment notes in the Logbook + follow-up questions for the Multi-Agent Handoff module. ## References - LangGraph 0.3 release (July 2025) docs. - OpenAI o4 reasoning model best practices (August 2025). - for validating agent behaviours."
   },
   {
     "id": "02-learning-paths\\micro-modules\\agents-multi-agent-handoff.md",
-    "title": "Agents Multi Agent Handoff",
+    "title": "Multi-Agent Handoff Lab",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/agents-multi-agent-handoff.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\agents-multi-agent-handoff.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Multi-Agent Handoff Lab"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -685,12 +702,51 @@
     "content": "# Multi-Agent Handoff Lab **Category:** Agentic Patterns **Duration:** 55 minutes **Outcome:** Prototype a two-agent workflow (researcher + reviewer) with explicit handoffs, audit trails, and human-in-the-loop checkpoints. ## Why it matters - 2025 enterprise deployments favour collaborative agents with controlled autonomy. - Clear handoffs reduce hallucinations and improve compliance. ## Prerequisites - Completion of [LangGraph Planner Loop](agents-langgraph-planner.md) module. - Access to a shared datastore (Redis, Supabase) for passing artefacts. - Slack/Teams webhook or email integration for human approvals (optional but recommended). ## Step-by-step 1. **Define roles:** Researcher agent gathers evidence; Reviewer agent validates, adds citations, and triggers approvals. 2. **Model selection:** Use Claude 3.5 Sonnet for research (long context) and GPT-4.1 mini for reviewer (speed). Configure via OpenRouter if centralised billing needed. 3. **Artefact contract:** Create JSON schema (problem, evidence[], risks[], draft_response) stored in shared_state. 4. **Human gate:** Add a webhook step that posts reviewer output to Slack with Approve/Reject buttons (use Slack Workflow Builder or n8n). 5. **Logging:** Persist each handoff with Langfuse spans labelled handoff_researcher and handoff_reviewer. Attach metadata (latency, token cost, approved? yes/no). 6. **Post-mortem:** If rejection occurs, run [Retrospective with AI](../../15-workflows/retrospective-with-ai.md) to capture lessons and update prompts. ## Deliverables - LangGraph agent definitions + orchestration script. - Screenshot or recording of the Slack/Teams approval flow. - Updated governance log noting review cadence and escalation path. ## References - Slack Workflow Builder AI approvals (May 2025 release). - OpenAI Function Calling best practices (June 2025 update). - 16-collaboration/agentic-teams.md for collaboration patterns."
   },
   {
+    "id": "02-learning-paths\\micro-modules\\evaluation-automation-pipeline.md",
+    "title": "Evaluation Automation Pipeline",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/evaluation-automation-pipeline.md",
+    "section": "Learning Paths",
+    "path": "02-learning-paths\\micro-modules\\evaluation-automation-pipeline.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Evaluation Automation Pipeline"
+      },
+      {
+        "level": 2,
+        "text": "Why it matters"
+      },
+      {
+        "level": 2,
+        "text": "Prerequisites"
+      },
+      {
+        "level": 2,
+        "text": "Step-by-step"
+      },
+      {
+        "level": 2,
+        "text": "Deliverables"
+      },
+      {
+        "level": 2,
+        "text": "References"
+      }
+    ],
+    "excerpt": "# Evaluation Automation Pipeline **Category:** Operations & Observability **Duration:** 45 minutes **Outcome:** Automate regression evaluations with promptfoo, Langfuse, and CI gates to keep releases safe. ## Why it matters - AI teams now run nightly eval suites; automation prevents regressions from reaching prod. - Ti",
+    "content": "# Evaluation Automation Pipeline **Category:** Operations & Observability **Duration:** 45 minutes **Outcome:** Automate regression evaluations with promptfoo, Langfuse, and CI gates to keep releases safe. ## Why it matters - AI teams now run nightly eval suites; automation prevents regressions from reaching prod. - Ties into policy automation requirements for regulated industries. ## Prerequisites - Node.js 18+, Python 3.11. - Langfuse project with API key. - [ ](../../05-projects/eval-automation/README.md) checked out. ## Step-by-step 1. **Define scenarios:** Populate with real-world prompts, expected behaviours, and critical metrics. 2. **Promptfoo config:** Edit to include accuracy, toxicity, and citation checks. Reference templates from [Evaluation Signals Primer](foundations-evaluation-signals.md). 3. **Langfuse integration:** Use to execute promptfoo and sync results to Langfuse synthetic evaluations. 4. **CI gate:** Enable the GitHub Action in to run on every PR. Block merges when metrics drop below thresholds. 5. **Reporting:** Generate the HTML summary via and attach to release notes / [Executive Narrative Builder](storytelling-exec-brief.md). 6. **Continuous improvement:** Schedule weekly evaluation reviews with the [Model Risk Review Sprint](governance-model-risk-review.md). ## Deliverables - Updated + pipeline. - CI job status badge linked in project README. - Langfuse dashboard showing trendlines for key metrics. ## References - Promptfoo 2.0 automation guide (August 2025). - Langfuse synthetic evaluation API docs (July 2025). - GitHub Actions best practices for AI eval gating."
+  },
+  {
     "id": "02-learning-paths\\micro-modules\\foundations-context-engineering.md",
-    "title": "Foundations Context Engineering",
+    "title": "Context Engineering for LLMs",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/foundations-context-engineering.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\foundations-context-engineering.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Context Engineering for LLMs"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -717,11 +773,15 @@
   },
   {
     "id": "02-learning-paths\\micro-modules\\foundations-evaluation-signals.md",
-    "title": "Foundations Evaluation Signals",
+    "title": "Evaluation Signals Primer",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/foundations-evaluation-signals.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\foundations-evaluation-signals.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Evaluation Signals Primer"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -748,11 +808,15 @@
   },
   {
     "id": "02-learning-paths\\micro-modules\\governance-model-risk-review.md",
-    "title": "Governance Model Risk Review",
+    "title": "Model Risk Review Sprint",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/governance-model-risk-review.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\governance-model-risk-review.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Model Risk Review Sprint"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -779,11 +843,15 @@
   },
   {
     "id": "02-learning-paths\\micro-modules\\governance-policy-automation.md",
-    "title": "Governance Policy Automation",
+    "title": "Policy Automation Quick Start",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/governance-policy-automation.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\governance-policy-automation.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Policy Automation Quick Start"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -806,15 +874,19 @@
       }
     ],
     "excerpt": "# Policy Automation Quick Start **Category:** Governance & Risk **Duration:** 45 minutes **Outcome:** Automate DPIA/policy workflows using checklists, GitOps, and CI guards. ## Why it matters - Manual policy reviews don’t scale across hundreds of micro-features. - GitOps + policy-as-code ensures every release is tracea",
-    "content": "# Policy Automation Quick Start **Category:** Governance & Risk **Duration:** 45 minutes **Outcome:** Automate DPIA/policy workflows using checklists, GitOps, and CI guards. ## Why it matters - Manual policy reviews don’t scale across hundreds of micro-features. - GitOps + policy-as-code ensures every release is traceable. ## Prerequisites - Access to repo workflows (GitHub Actions or GitLab CI). - Governance templates under \u00008-governance/. - Optional: OpenPolicyAgent/Rego knowledge. ## Step-by-step 1. **Codify checklist:** Convert \u00008-governance/checklists.md into YAML (governance/checklist.yaml) capturing required artefacts (DPIA doc, risk score, Langfuse link). 2. **Create CI gate:** Build GitHub Action that blocks PR merge if checklist items missing (use \u0007ctions/github-script or OPA conftest). 3. **Generate DPIA summary:** Use prompt-packs/governance/dpia.nlg.json (create if missing) to auto-generate summaries after each change. 4. **Notify stakeholders:** Integrate with Teams/Slack to ping policy owners when PR flagged. 5. **Archive proofs:** Store generated PDFs in governance/artifacts/ with release tags. 6. **Review impact:** Run the [Model Risk Review Sprint](governance-model-risk-review.md) to confirm automation coverage. ## Deliverables - YAML checklist committed to repo. - CI workflow file enforcing policy automation. - Example DPIA summary attached to release notes. ## References - GitHub Actions OPA policy enforcement (June 2025 blog). - OpenPolicyAgent policy-as-code patterns for AI workflows. - \u00008-governance/privacy-gdpr.md and \u00008-governance/checklists.md."
+    "content": "# Policy Automation Quick Start **Category:** Governance & Risk **Duration:** 45 minutes **Outcome:** Automate DPIA/policy workflows using checklists, GitOps, and CI guards. ## Why it matters - Manual policy reviews don’t scale across hundreds of micro-features. - GitOps + policy-as-code ensures every release is traceable. ## Prerequisites - Access to repo workflows (GitHub Actions or GitLab CI). - Governance templates under \u00008-governance/. - Optional: OpenPolicyAgent/Rego knowledge. ## Step-by-step 1. **Codify checklist:** Convert \u00008-governance/checklists.md into YAML (governance/checklist.yaml) capturing required artefacts (DPIA doc, risk score, Langfuse link). 2. **Create CI gate:** Build GitHub Action that blocks PR merge if checklist items missing (use `ctions/github-script or OPA conftest). 3. **Generate DPIA summary:** Use prompt-packs/governance/dpia.nlg.json (create if missing) to auto-generate summaries after each change. 4. **Notify stakeholders:** Integrate with Teams/Slack to ping policy owners when PR flagged. 5. **Archive proofs:** Store generated PDFs in governance/artifacts/ with release tags. 6. **Review impact:** Run the [Model Risk Review Sprint](governance-model-risk-review.md) to confirm automation coverage. ## Deliverables - YAML checklist committed to repo. - CI workflow file enforcing policy automation. - Example DPIA summary attached to release notes. ## References - GitHub Actions OPA policy enforcement (June 2025 blog). - OpenPolicyAgent policy-as-code patterns for AI workflows. - \u00008-governance/privacy-gdpr.md and \u00008-governance/checklists.md."
   },
   {
     "id": "02-learning-paths\\micro-modules\\operations-cost-optimization.md",
-    "title": "Operations Cost Optimization",
+    "title": "Cost & Latency Playbook",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/operations-cost-optimization.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\operations-cost-optimization.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Cost & Latency Playbook"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -841,11 +913,15 @@
   },
   {
     "id": "02-learning-paths\\micro-modules\\operations-langfuse-telemetry.md",
-    "title": "Operations Langfuse Telemetry",
+    "title": "Langfuse Telemetry Sprints",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/operations-langfuse-telemetry.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\operations-langfuse-telemetry.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Langfuse Telemetry Sprints"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -871,12 +947,51 @@
     "content": "# Langfuse Telemetry Sprints **Category:** Operations & Observability **Duration:** 40 minutes **Outcome:** Stand up a telemetry baseline in Langfuse covering latency, cost, drift, and dataset health. ## Why it matters - 2025 exec dashboards expect real-time AI performance stats. - Langfuse 2.3 ships drift detection, cost anomaly alerts, and synthetic eval hooks. ## Prerequisites - Langfuse project + API key. - Access to your application logs or ability to instrument requests. - Optional: Snowflake/BigQuery for warehouse sync. ## Step-by-step 1. **Instrument client & server:** Use Langfuse middleware for Vercel AI SDK (see \u00006-toolchains/vercel-ai-sdk.md). Ensure trace IDs propagate end-to-end. 2. **Capture metadata:** Log model, temperature, tool invocations, and token counts. Add custom properties for \business_unit, customer_tier. 3. **Enable alerts:** Configure cost anomaly alert (20% spike) and latency SLA alert (p95 > 2s). Route notifications to Slack/Teams. 4. **Drift monitors:** Upload evaluation datasets via Langfuse Synthetic Evaluations. Track accuracy vs last baseline (tie into [Evaluation Signals Primer](foundations-evaluation-signals.md)). 5. **Warehouse sync:** If using Snowflake, enable the Langfuse connector and schedule daily sync for historical analysis. 6. **Snapshot dashboard:** Export charts for latency, cost, and accuracy. Attach to your Logbook and share in the AI Briefing workflow. ## Deliverables - Instrumented code snippet + Langfuse dashboard link. - Alert configuration screenshot. - Drift evaluation report with action items. ## References - Langfuse 2.3 release notes (August 2025). - Vercel AI SDK observability guide (July 2025). - \u00007-evaluation/metrics.md for aligning evaluation fields."
   },
   {
+    "id": "02-learning-paths\\micro-modules\\retrieval-domain-rag-healthcare.md",
+    "title": "Domain RAG Clinic (Healthcare)",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/retrieval-domain-rag-healthcare.md",
+    "section": "Learning Paths",
+    "path": "02-learning-paths\\micro-modules\\retrieval-domain-rag-healthcare.md",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Domain RAG Clinic (Healthcare)"
+      },
+      {
+        "level": 2,
+        "text": "Why it matters"
+      },
+      {
+        "level": 2,
+        "text": "Prerequisites"
+      },
+      {
+        "level": 2,
+        "text": "Step-by-step"
+      },
+      {
+        "level": 2,
+        "text": "Deliverables"
+      },
+      {
+        "level": 2,
+        "text": "References"
+      }
+    ],
+    "excerpt": "# Domain RAG Clinic (Healthcare) **Category:** Domain & Vertical **Duration:** 55 minutes **Outcome:** Customise a retrieval-augmented system for healthcare knowledge bases with compliance-ready guardrails. ## Why it matters - Healthcare deployments demand HIPAA-aware pipelines with provenance, consent, and auditabilit",
+    "content": "# Domain RAG Clinic (Healthcare) **Category:** Domain & Vertical **Duration:** 55 minutes **Outcome:** Customise a retrieval-augmented system for healthcare knowledge bases with compliance-ready guardrails. ## Why it matters - Healthcare deployments demand HIPAA-aware pipelines with provenance, consent, and auditability. - Domain-tuned retrievers outperform generic embeddings when combined with medical ontologies. ## Prerequisites - Access to de-identified healthcare documents (clinical guidelines, FAQs) in . - Running vector store (Supabase pgvector or Qdrant). - [ ](../../05-projects/domain-rag-healthcare/README.md) cloned locally. ## Step-by-step 1. **Prep corpus:** Load the sample dataset from . Chunk using UMLS-aware segmentation (see ). 2. **Embed with domain model:** Use BioClinicalBERT or OpenAI text-embedding-3-large as configured in . Store metadata (source, revision date, PHI flag). 3. **Hybrid search:** Enable BM25 + dense search with reciprocal rank fusion. Evaluate top-10 precision using the scripts provided. 4. **Guardrails:** Configure policy checks from (PHI redaction, contraindication warnings). Integrate with the [RAG Guardrails Fast Track](retrieval-rag-guardrails.md) steps. 5. **Context blueprint:** Update prompts in with clinician persona instructions and safety disclaimers. 6. **Evaluate:** Run or the CLI to measure factual accuracy and coverage. Log metrics in Langfuse. ## Deliverables - Updated with domain-specific embedding + guardrail settings. - Eval report saved to . - Risk log entry covering residual PHI risks (use [Model Risk Review Sprint](governance-model-risk-review.md)). ## References - NIH ClinicalTrials.gov ontology export (August 2025). - BioClinicalBERT 2025 embeddings performance benchmarks. - for extended walkthrough."
+  },
+  {
     "id": "02-learning-paths\\micro-modules\\retrieval-hybrid-ranking.md",
-    "title": "Retrieval Hybrid Ranking",
+    "title": "Hybrid Ranking Blueprint",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/retrieval-hybrid-ranking.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\retrieval-hybrid-ranking.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Hybrid Ranking Blueprint"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -903,11 +1018,15 @@
   },
   {
     "id": "02-learning-paths\\micro-modules\\retrieval-rag-guardrails.md",
-    "title": "Retrieval Rag Guardrails",
+    "title": "RAG Guardrails Fast Track",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/retrieval-rag-guardrails.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\retrieval-rag-guardrails.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "RAG Guardrails Fast Track"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -930,15 +1049,19 @@
       }
     ],
     "excerpt": "# RAG Guardrails Fast Track **Category:** Retrieval Systems **Duration:** 45 minutes **Outcome:** Wrap a RAG endpoint with safety, grounding, and compliance guardrails ready for pilot launch. ## Why it matters - Regulators expect grounded responses, citation tracking, and audit logs even during pilots. - Tooling like G",
-    "content": "# RAG Guardrails Fast Track **Category:** Retrieval Systems **Duration:** 45 minutes **Outcome:** Wrap a RAG endpoint with safety, grounding, and compliance guardrails ready for pilot launch. ## Why it matters - Regulators expect grounded responses, citation tracking, and audit logs even during pilots. - Tooling like Guardrails AI, Protect AI, and LangChain Guardrails matured dramatically in 2025. ## Prerequisites - Existing RAG service (REST or GraphQL) from \u00005-projects/rag-on-supabase.md. - Guardrails AI or OpenAI Moderation v2 API key. - Access to a policy checklist (see \u00008-governance/checklists.md). ## Step-by-step 1. **Catalogue risks:** Use \u00008-governance/model-risk.md to list top failure modes (hallucination, PII leakage, policy violation). 2. **Implement content filters:** Add Guardrails AI YAML config or OpenAI Moderation v2 call before returning answers. Log decisions. 3. **Enforce citation threshold:** Require ≥2 supporting references. If missing, return fallback message with confidence = LOW metadata. 4. **Add anti-hallucination check:** Compare answers with retrieved chunks using Semantic Similarity > 0.76 (Sentence Transformers \u0007ll-MiniLM-L6-v3 works). 5. **Audit logging:** Emit JSON logs to Langfuse or your SIEM capturing prompt, retrieved docs, policy verdicts, and user ID. 6. **Drill compliance:** Run the [Model Risk Review Sprint](governance-model-risk-review.md) module to validate guardrail coverage. ## Deliverables - Guardrails config + enforcement middleware committed to your project. - Audit log sample annotated with pass/fail outcomes. - Updated DPIA or risk register entry. ## References - Guardrails AI 2025 policy pack launch notes. - Protect AI Playbook for RAG pipelines (April 2025). - \u00007-evaluation/metrics.md for grounding metrics."
+    "content": "# RAG Guardrails Fast Track **Category:** Retrieval Systems **Duration:** 45 minutes **Outcome:** Wrap a RAG endpoint with safety, grounding, and compliance guardrails ready for pilot launch. ## Why it matters - Regulators expect grounded responses, citation tracking, and audit logs even during pilots. - Tooling like Guardrails AI, Protect AI, and LangChain Guardrails matured dramatically in 2025. ## Prerequisites - Existing RAG service (REST or GraphQL) from \u00005-projects/rag-on-supabase.md. - Guardrails AI or OpenAI Moderation v2 API key. - Access to a policy checklist (see \u00008-governance/checklists.md). ## Step-by-step 1. **Catalogue risks:** Use \u00008-governance/model-risk.md to list top failure modes (hallucination, PII leakage, policy violation). 2. **Implement content filters:** Add Guardrails AI YAML config or OpenAI Moderation v2 call before returning answers. Log decisions. 3. **Enforce citation threshold:** Require ≥2 supporting references. If missing, return fallback message with confidence = LOW metadata. 4. **Add anti-hallucination check:** Compare answers with retrieved chunks using Semantic Similarity > 0.76 (Sentence Transformers `ll-MiniLM-L6-v3 works). 5. **Audit logging:** Emit JSON logs to Langfuse or your SIEM capturing prompt, retrieved docs, policy verdicts, and user ID. 6. **Drill compliance:** Run the [Model Risk Review Sprint](governance-model-risk-review.md) module to validate guardrail coverage. ## Deliverables - Guardrails config + enforcement middleware committed to your project. - Audit log sample annotated with pass/fail outcomes. - Updated DPIA or risk register entry. ## References - Guardrails AI 2025 policy pack launch notes. - Protect AI Playbook for RAG pipelines (April 2025). - \u00007-evaluation/metrics.md for grounding metrics."
   },
   {
     "id": "02-learning-paths\\micro-modules\\storytelling-adoption-metrics.md",
-    "title": "Storytelling Adoption Metrics",
+    "title": "Adoption & ROI Metrics",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/storytelling-adoption-metrics.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\storytelling-adoption-metrics.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Adoption & ROI Metrics"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -965,11 +1088,15 @@
   },
   {
     "id": "02-learning-paths\\micro-modules\\storytelling-exec-brief.md",
-    "title": "Storytelling Exec Brief",
+    "title": "Executive Narrative Builder",
     "href": "https://github.com/frankxai/ai-architect-academy/blob/main/02-learning-paths/micro-modules/storytelling-exec-brief.md",
     "section": "Learning Paths",
     "path": "02-learning-paths\\micro-modules\\storytelling-exec-brief.md",
     "headings": [
+      {
+        "level": 1,
+        "text": "Executive Narrative Builder"
+      },
       {
         "level": 2,
         "text": "Why it matters"
@@ -992,7 +1119,7 @@
       }
     ],
     "excerpt": "# Executive Narrative Builder **Category:** Storytelling & Adoption **Duration:** 35 minutes **Outcome:** Produce a board-ready narrative that links AI delivery progress to business outcomes. ## Why it matters - Leaders need crisp proof of value, risks, and next bets each week. - Storytelling drives adoption and budget",
-    "content": "# Executive Narrative Builder **Category:** Storytelling & Adoption **Duration:** 35 minutes **Outcome:** Produce a board-ready narrative that links AI delivery progress to business outcomes. ## Why it matters - Leaders need crisp proof of value, risks, and next bets each week. - Storytelling drives adoption and budget for AI programs. ## Prerequisites - Metrics snapshot from Langfuse or your telemetry stack. - Recent evaluation report (see [Evaluation Signals Primer](../micro-modules/foundations-evaluation-signals.md)). - Brand Voice guidance from BRAND-VOICE.md. ## Step-by-step 1. **Gather signals:** Extract top metrics (latency, cost, accuracy, adoption) and add qualitative wins + blockers. 2. **Structure brief:** Use the outline in 15-workflows/ai-briefing.md (headline, metrics pulse, highlights, blockers, next experiments). 3. **Add visuals:** Embed hero image (\u0007ssets/ai-architect-campus.png) and relevant dashboards/screenshot. 4. **Highlight governance:** Summarise risk status + mitigations from [Model Risk Review Sprint](../micro-modules/governance-model-risk-review.md). 5. **Call to action:** Define decisions needed (budget, approvals) and deadlines. 6. **Distribute:** Package as PDF or Loom video; share via exec channel and archive in \u00009-articles/drafts/. ## Deliverables - 1-page executive brief (PDF/Markdown) referencing metrics + risks. - Key slide or graphic for town halls. - Log entry in the Learning Logbook capturing feedback. ## References - 2025 McKinsey AI adoption scorecard. - Stripe Radar storytelling examples (2024-2025). - \u00009-articles/templates/keynote.md for extended decks."
+    "content": "# Executive Narrative Builder **Category:** Storytelling & Adoption **Duration:** 35 minutes **Outcome:** Produce a board-ready narrative that links AI delivery progress to business outcomes. ## Why it matters - Leaders need crisp proof of value, risks, and next bets each week. - Storytelling drives adoption and budget for AI programs. ## Prerequisites - Metrics snapshot from Langfuse or your telemetry stack. - Recent evaluation report (see [Evaluation Signals Primer](../micro-modules/foundations-evaluation-signals.md)). - Brand Voice guidance from BRAND-VOICE.md. ## Step-by-step 1. **Gather signals:** Extract top metrics (latency, cost, accuracy, adoption) and add qualitative wins + blockers. 2. **Structure brief:** Use the outline in 15-workflows/ai-briefing.md (headline, metrics pulse, highlights, blockers, next experiments). 3. **Add visuals:** Embed hero image (`ssets/ai-architect-campus.png) and relevant dashboards/screenshot. 4. **Highlight governance:** Summarise risk status + mitigations from [Model Risk Review Sprint](../micro-modules/governance-model-risk-review.md). 5. **Call to action:** Define decisions needed (budget, approvals) and deadlines. 6. **Distribute:** Package as PDF or Loom video; share via exec channel and archive in \u00009-articles/drafts/. ## Deliverables - 1-page executive brief (PDF/Markdown) referencing metrics + risks. - Key slide or graphic for town halls. - Log entry in the Learning Logbook capturing feedback. ## References - 2025 McKinsey AI adoption scorecard. - Stripe Radar storytelling examples (2024-2025). - \u00009-articles/templates/keynote.md for extended decks."
   },
   {
     "id": "02-learning-paths\\professional.md",
@@ -1298,6 +1425,64 @@
     ],
     "excerpt": "# Project: Agentic SaaS Planner Goal: Use a Planner → Worker → Reviewer swarm to produce a product plan, architecture, and build plan for a simple SaaS idea. ## Steps 1) Run the example 2) Add a agent to block release if risks are high 3) Extend output: Bill of Materials, API list, day-by-day build plan 4) Optional: St",
     "content": "# Project: Agentic SaaS Planner Goal: Use a Planner → Worker → Reviewer swarm to produce a product plan, architecture, and build plan for a simple SaaS idea. ## Steps 1) Run the example 2) Add a agent to block release if risks are high 3) Extend output: Bill of Materials, API list, day-by-day build plan 4) Optional: Streamlit UI button to export a PDF brief ## Acceptance Criteria - Outputs include target user, jobs-to-be-done, key features, risks, MVP outline - Technical plan includes components, data flow, APIs, eval plan - Reviewer summary is clear and actionable ## Stretch - Integrate LiteLLM to compare models (OpenAI vs Anthropic) - Add a test harness that verifies the plan includes eval metrics"
+  },
+  {
+    "id": "05-projects\\domain-rag-healthcare\\README.md",
+    "title": "README",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/domain-rag-healthcare/README.md",
+    "section": "Projects",
+    "path": "05-projects\\domain-rag-healthcare\\README.md",
+    "headings": [
+      {
+        "level": 2,
+        "text": "What's inside"
+      },
+      {
+        "level": 2,
+        "text": "Quick start"
+      },
+      {
+        "level": 2,
+        "text": "Configure"
+      },
+      {
+        "level": 2,
+        "text": "Evaluate & Share"
+      },
+      {
+        "level": 2,
+        "text": "Extend"
+      }
+    ],
+    "excerpt": "# Domain RAG Healthcare Blueprint Opinionated project scaffolding for building a healthcare-ready retrieval augmented generation (RAG) service. ## What's inside - data/clinical_guidelines.csv — sample de-identified snippets for quick experiments. - pipeline.py — end-to-end ingestion + retrieval + response pipeline. - c",
+    "content": "# Domain RAG Healthcare Blueprint Opinionated project scaffolding for building a healthcare-ready retrieval augmented generation (RAG) service. ## What's inside - data/clinical_guidelines.csv — sample de-identified snippets for quick experiments. - pipeline.py — end-to-end ingestion + retrieval + response pipeline. - chunker.py — UMLS-aware chunking helper (falls back to sentence splitting if UMLS not installed). - guardrails.yaml — safety and compliance checks (PHI redaction, contraindication trigger). - evaluate.py — CLI to run evaluation sets and push metrics to Langfuse. - eports/ — stash evaluation outputs and decision logs. ## Quick start ## Configure Create .env based on .env.example: Set EMBEDDING_MODEL and RERANK_MODEL in pipeline.py to reflect your deployment (OpenAI, Azure OpenAI, Voyage, etc.). ## Evaluate & Share - Run python evaluate.py --dataset eval/healthcare.json after each update. - Capture a summary in eports/healthcare_rag_summary.md. - Feed outcomes into the [Domain RAG Clinic (Healthcare)](../../02-learning-paths/micro-modules/retrieval-domain-rag-healthcare.md) micro-module. ## Extend - Swap in your own datasets by dropping files in data/ and updating DATA_SOURCES. - Integrate hospital-specific ontologies by extending chunker.py. - Pair with 15-workflows/postmortem.md for post-release reviews."
+  },
+  {
+    "id": "05-projects\\eval-automation\\README.md",
+    "title": "README",
+    "href": "https://github.com/frankxai/ai-architect-academy/blob/main/05-projects/eval-automation/README.md",
+    "section": "Projects",
+    "path": "05-projects\\eval-automation\\README.md",
+    "headings": [
+      {
+        "level": 2,
+        "text": "What's inside"
+      },
+      {
+        "level": 2,
+        "text": "Quick start"
+      },
+      {
+        "level": 2,
+        "text": "Wire it into CI"
+      },
+      {
+        "level": 2,
+        "text": "Reports"
+      }
+    ],
+    "excerpt": "# Evaluation Automation Scaffold for running automated evaluation suites via promptfoo and Langfuse. ## What's inside - promptfoo.yaml — base configuration with accuracy, safety, and citation checks. - scenarios.csv — seed scenario set (expand with your own cases). - un_evals.py — orchestrates promptfoo + Langfuse sync",
+    "content": "# Evaluation Automation Scaffold for running automated evaluation suites via promptfoo and Langfuse. ## What's inside - promptfoo.yaml — base configuration with accuracy, safety, and citation checks. - scenarios.csv — seed scenario set (expand with your own cases). - un_evals.py — orchestrates promptfoo + Langfuse sync. - ci/eval-check.yml — GitHub Action to block merges when metrics regress. - eports/ — generated artefacts ready for exec briefings. ## Quick start ## Wire it into CI 1. Copy ci/eval-check.yml into .github/workflows/. 2. Add LANGFUSE_PUBLIC_KEY / SECRET_KEY to repository secrets. 3. Adjust thresholds inside promptfoo.yaml to suit your guardrails. ## Reports Generated HTML/JSON reports land in eports/. Attach summaries to the [Executive Narrative Builder](../../02-learning-paths/micro-modules/storytelling-exec-brief.md) or post in leadership channels. Need context? Complete the [Evaluation Automation Pipeline](../../02-learning-paths/micro-modules/evaluation-automation-pipeline.md) micro-module."
   },
   {
     "id": "05-projects\\evals-langfuse.md",

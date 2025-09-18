@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "app/api/ai/route.ts": {
+      "maxDuration": 30
+    },
+    "app/api/architecture/route.ts": {
+      "maxDuration": 60
+    }
+  },
+  "env": {
+    "NEXT_PUBLIC_APP_URL": "@app_url",
+    "OPENAI_API_KEY": "@openai_api_key",
+    "ANTHROPIC_API_KEY": "@anthropic_api_key",
+    "DATABASE_URL": "@database_url"
+  },
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "framework": "nextjs"
+}

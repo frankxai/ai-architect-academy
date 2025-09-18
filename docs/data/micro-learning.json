@@ -2,38 +2,6 @@
   "generated_at": "2025-09-18",
   "modules": [
     {
-      "id": "foundations-context-engineering",
-      "title": "Context Engineering for LLMs",
-      "category": "Foundations",
-      "duration": "45 min",
-      "summary": "Design a context blueprint mixing prompts, retrieval buffers, and guardrails for 2025 enterprise assistants.",
-      "path": "02-learning-paths/micro-modules/foundations-context-engineering.md"
-    },
-    {
-      "id": "foundations-evaluation-signals",
-      "title": "Evaluation Signals Primer",
-      "category": "Foundations",
-      "duration": "40 min",
-      "summary": "Stand up a minimal eval harness with Langfuse + promptfoo metrics.",
-      "path": "02-learning-paths/micro-modules/foundations-evaluation-signals.md"
-    },
-    {
-      "id": "retrieval-hybrid-ranking",
-      "title": "Hybrid Ranking Blueprint",
-      "category": "Retrieval Systems",
-      "duration": "50 min",
-      "summary": "Blend sparse, dense, and rerank pipelines tuned for multilingual corpora.",
-      "path": "02-learning-paths/micro-modules/retrieval-hybrid-ranking.md"
-    },
-    {
-      "id": "retrieval-rag-guardrails",
-      "title": "RAG Guardrails Fast Track",
-      "category": "Retrieval Systems",
-      "duration": "45 min",
-      "summary": "Wrap RAG endpoints with safety, grounding, and audit guardrails.",
-      "path": "02-learning-paths/micro-modules/retrieval-rag-guardrails.md"
-    },
-    {
       "id": "agents-langgraph-planner",
       "title": "LangGraph Planner Loop",
       "category": "Agentic Patterns",
@@ -50,20 +18,28 @@
       "path": "02-learning-paths/micro-modules/agents-multi-agent-handoff.md"
     },
     {
-      "id": "operations-langfuse-telemetry",
-      "title": "Langfuse Telemetry Sprints",
-      "category": "Operations & Observability",
-      "duration": "40 min",
-      "summary": "Wire traces, drift detection, and alerts using Langfuse 2.3.",
-      "path": "02-learning-paths/micro-modules/operations-langfuse-telemetry.md"
+      "id": "retrieval-domain-rag-healthcare",
+      "title": "Domain RAG Clinic (Healthcare)",
+      "category": "Domain & Vertical",
+      "duration": "55 min",
+      "summary": "Healthcare-focused RAG pipeline with compliance guardrails and Langfuse evals.",
+      "path": "02-learning-paths/micro-modules/retrieval-domain-rag-healthcare.md"
     },
     {
-      "id": "operations-cost-optimization",
-      "title": "Cost & Latency Playbook",
-      "category": "Operations & Observability",
-      "duration": "50 min",
-      "summary": "Apply caching, batching, and adaptive routing to cut spend.",
-      "path": "02-learning-paths/micro-modules/operations-cost-optimization.md"
+      "id": "foundations-context-engineering",
+      "title": "Context Engineering for LLMs",
+      "category": "Foundations",
+      "duration": "45 min",
+      "summary": "Design a context blueprint mixing prompts, retrieval buffers, and guardrails for 2025 enterprise assistants.",
+      "path": "02-learning-paths/micro-modules/foundations-context-engineering.md"
+    },
+    {
+      "id": "foundations-evaluation-signals",
+      "title": "Evaluation Signals Primer",
+      "category": "Foundations",
+      "duration": "40 min",
+      "summary": "Stand up a minimal eval harness with Langfuse + promptfoo metrics.",
+      "path": "02-learning-paths/micro-modules/foundations-evaluation-signals.md"
     },
     {
       "id": "governance-model-risk-review",
@@ -82,12 +58,44 @@
       "path": "02-learning-paths/micro-modules/governance-policy-automation.md"
     },
     {
-      "id": "storytelling-exec-brief",
-      "title": "Executive Narrative Builder",
-      "category": "Storytelling & Adoption",
-      "duration": "35 min",
-      "summary": "Craft a board-ready narrative linking metrics to value.",
-      "path": "02-learning-paths/micro-modules/storytelling-exec-brief.md"
+      "id": "operations-cost-optimization",
+      "title": "Cost & Latency Playbook",
+      "category": "Operations & Observability",
+      "duration": "50 min",
+      "summary": "Apply caching, batching, and adaptive routing to cut spend.",
+      "path": "02-learning-paths/micro-modules/operations-cost-optimization.md"
+    },
+    {
+      "id": "evaluation-automation-pipeline",
+      "title": "Evaluation Automation Pipeline",
+      "category": "Operations & Observability",
+      "duration": "45 min",
+      "summary": "Automate regression suites with promptfoo, Langfuse, and CI gates.",
+      "path": "02-learning-paths/micro-modules/evaluation-automation-pipeline.md"
+    },
+    {
+      "id": "operations-langfuse-telemetry",
+      "title": "Langfuse Telemetry Sprints",
+      "category": "Operations & Observability",
+      "duration": "40 min",
+      "summary": "Wire traces, drift detection, and alerts using Langfuse 2.3.",
+      "path": "02-learning-paths/micro-modules/operations-langfuse-telemetry.md"
+    },
+    {
+      "id": "retrieval-hybrid-ranking",
+      "title": "Hybrid Ranking Blueprint",
+      "category": "Retrieval Systems",
+      "duration": "50 min",
+      "summary": "Blend sparse, dense, and rerank pipelines tuned for multilingual corpora.",
+      "path": "02-learning-paths/micro-modules/retrieval-hybrid-ranking.md"
+    },
+    {
+      "id": "retrieval-rag-guardrails",
+      "title": "RAG Guardrails Fast Track",
+      "category": "Retrieval Systems",
+      "duration": "45 min",
+      "summary": "Wrap RAG endpoints with safety, grounding, and audit guardrails.",
+      "path": "02-learning-paths/micro-modules/retrieval-rag-guardrails.md"
     },
     {
       "id": "storytelling-adoption-metrics",
@@ -96,6 +104,14 @@
       "duration": "40 min",
       "summary": "Define adoption and ROI metrics tied to AI outcomes.",
       "path": "02-learning-paths/micro-modules/storytelling-adoption-metrics.md"
+    },
+    {
+      "id": "storytelling-exec-brief",
+      "title": "Executive Narrative Builder",
+      "category": "Storytelling & Adoption",
+      "duration": "35 min",
+      "summary": "Craft a board-ready narrative linking metrics to value.",
+      "path": "02-learning-paths/micro-modules/storytelling-exec-brief.md"
     }
   ]
 }
