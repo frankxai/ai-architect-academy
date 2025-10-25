@@ -1,0 +1,6 @@
+[submodule "Arc/integrations/cline-mvp/arc-cline"]
+	path = Arc/integrations/cline-mvp/arc-cline
+	url = https://github.com/frankxai/arc-cline
+[submodule "Arc/integrations/kilo-fork/arc-kilocode"]
+	path = Arc/integrations/kilo-fork/arc-kilocode
+	url = https://github.com/frankxai/arc-kilocode
