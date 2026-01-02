@@ -7,3 +7,12 @@ assets/screenshots/*.tmp
 05-projects/eval-automation/reports/*.json
 05-projects/eval-automation/reports/*.html
 05-projects/eval-automation/.env
+Arc/*.vsix
+
+
+# Claude Code local config
+.claude/
+.claude.bak
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md
