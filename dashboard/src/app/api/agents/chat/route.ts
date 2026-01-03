@@ -3,10 +3,9 @@
  *
  * Uses BOTH:
  * - Claude SDK (backend) - Agent orchestration, tool use
- * - Vercel AI SDK (streaming) - Real-time UI updates
+ * - Streaming Response - Real-time UI updates
  */
 
-import { StreamingTextResponse } from 'ai';
 import { getOrchestrator } from '@/lib/agents/claude-orchestrator';
 import { NextRequest } from 'next/server';
 
@@ -29,7 +28,7 @@ export async function POST(req: NextRequest) {
     // Get orchestrator (Claude SDK)
     const orchestrator = getOrchestrator(apiKey);
 
-    // Create a readable stream for Vercel AI SDK
+    // Create a readable stream
     const encoder = new TextEncoder();
     const stream = new ReadableStream({
       async start(controller) {
@@ -40,17 +39,14 @@ export async function POST(req: NextRequest) {
             lastMessage.content
           );
 
-          // Forward events to Vercel AI SDK format
+          // Forward events
           for await (const event of agentStream) {
             if (event.type === 'content') {
-              // Stream text chunks
               controller.enqueue(encoder.encode(event.data.text));
             } else if (event.type === 'tool') {
-              // Stream tool usage info
               const toolInfo = `\n\n🔧 Using tool: ${event.data.name}\n`;
               controller.enqueue(encoder.encode(toolInfo));
             } else if (event.type === 'end') {
-              // Stream final metadata
               const metadata = event.data;
               if (metadata.usage) {
                 const usageInfo = `\n\n📊 Tokens: ${metadata.usage.input_tokens} in, ${metadata.usage.output_tokens} out\n`;
@@ -68,8 +64,13 @@ export async function POST(req: NextRequest) {
       }
     });
 
-    // Return streaming response using Vercel AI SDK
-    return new StreamingTextResponse(stream);
+    // Return streaming response with proper headers for AI SDK
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Transfer-Encoding': 'chunked',
+      },
+    });
 
   } catch (error) {
     console.error('Agent chat error:', error);
