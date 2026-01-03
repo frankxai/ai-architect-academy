@@ -4,9 +4,9 @@
  * Real-world examples demonstrating the agent orchestration system.
  */
 
-import { getOrchestrator } from '../lib/agents/claude-orchestrator';
-import { WORKFLOW_LIBRARY } from '../lib/agents/workflows';
-import { createGitHubSync } from '../lib/github/oss-sync';
+import { getOrchestrator } from '../src/lib/agents/claude-orchestrator';
+import { WORKFLOW_LIBRARY } from '../src/lib/agents/workflows';
+import { createGitHubSync } from '../src/lib/github/oss-sync';
 
 // ============================================================================
 // Example 1: Build a RAG System
@@ -366,7 +366,7 @@ export async function example9_customWorkflow() {
   const customWorkflow = {
     name: 'quick-review',
     description: 'Quick pattern review and optimization',
-    agents: require('../lib/agents/agent-library').AGENT_LIBRARY,
+    agents: require('../src/lib/agents/agent-library').AGENT_LIBRARY,
     tasks: [
       {
         id: 'review',
@@ -511,7 +511,8 @@ if (require.main === module) {
     console.log('Usage: npm run examples [1-10]');
     console.log('\nAvailable examples:');
     Object.keys(examples).forEach(num => {
-      console.log(`  ${num}. ${examples[num as any].name}`);
+      const exampleFn = examples[Number(num) as keyof typeof examples];
+      console.log(`  ${num}. ${exampleFn?.name || 'Unknown'}`);
     });
   }
 }

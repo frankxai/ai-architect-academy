@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { OpenAI } from 'openai';
-import { anthropic } from '@anthropic-ai/sdk';
+import Anthropic from '@anthropic-ai/sdk';
 
 // Initialize AI clients
 const openai = process.env.OPENAI_API_KEY ? new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 }) : null;
 
-const claude = process.env.ANTHROPIC_API_KEY ? new anthropic.Anthropic({
+const claude = process.env.ANTHROPIC_API_KEY ? new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 }) : null;
 
@@ -177,7 +177,7 @@ function extractRecommendations(message: string, response: string): string[] {
 
 function identifyRelevantPatterns(message: string): any[] {
   const lowerMessage = message.toLowerCase();
-  const relevant = [];
+  const relevant: any[] = [];
   
   Object.entries(architecturePatterns).forEach(([key, pattern]) => {
     if (lowerMessage.includes(key) || 
