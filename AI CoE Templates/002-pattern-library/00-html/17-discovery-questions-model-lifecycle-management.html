@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: AI Model Lifecycle Management (MLOps) - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 05 Ai Infrastructure / 17 Solution Model Lifecycle Management</p>
+        </div>
+        
+        <article class="card">
+            <p><metadata>
+<pattern_id>17</pattern_id>
+<pattern_name>AI Model Lifecycle Management (MLOps)</pattern_name>
+<pattern_category>AI Infrastructure</pattern_category>
+<complexity_level>Advanced</complexity_level>
+<conversation_type>Discovery Questions</conversation_type>
+<audience>Data Science Leaders, ML Engineers, DevOps Teams, Technical Directors</audience>
+<business_value>Accelerate AI model development and deployment by 70% while ensuring reliability, compliance, and governance</business_value>
+</metadata></p>
+<h1 id="discovery-questions-ai-model-lifecycle-management-mlops">Discovery Questions: AI Model Lifecycle Management (MLOps)</h1>
+<p><discovery_current_state></discovery_current_state></p>
+<h2 id="current-state-assessment">Current State Assessment</h2>
+<h3 id="existing-infrastructure">Existing Infrastructure</h3>
+<ol>
+<li><strong>What ML/AI models are currently in production?</strong></li>
+<li>Which models are business-critical?</li>
+<li>What frameworks and technologies are being used?</li>
+<li>
+<p>How are models currently deployed and served?</p>
+</li>
+<li>
+<p><strong>What is your current model development process?</strong></p>
+</li>
+<li>How do data scientists collaborate on model development?</li>
+<li>What tools are used for experimentation and tracking?</li>
+<li>
+<p>How long does it typically take to deploy a model to production?</p>
+</li>
+<li>
+<p><strong>What data infrastructure exists?</strong></p>
+</li>
+<li>Where is training data stored and managed?</li>
+<li>How is data quality and lineage tracked?</li>
+<li>What data governance policies are in place?</li>
+</ol>
+<h3 id="operational-challenges">Operational Challenges</h3>
+<ol>
+<li><strong>What model performance issues have you experienced?</strong></li>
+<li>How do you detect model drift or degradation?</li>
+<li>What monitoring and alerting systems are in place?</li>
+<li>
+<p>How often do models need to be retrained?</p>
+</li>
+<li>
+<p><strong>What compliance and governance requirements exist?</strong></p>
+</li>
+<li>What regulatory standards must be met (SOX, GDPR, HIPAA, etc.)?</li>
+<li>How are model decisions audited and explained?</li>
+<li>
+<p>What documentation is required for model approval?</p>
+</li>
+<li>
+<p><strong>What are your current DevOps practices?</strong></p>
+</li>
+<li>Do you have CI/CD pipelines for application code?</li>
+<li>How are infrastructure changes managed?</li>
+<li>What testing and validation processes exist?
+</li>
+</ol>
+<p><strategy_business_alignment></strategy_business_alignment></p>
+<h2 id="future-state-vision">Future State Vision</h2>
+<h3 id="business-objectives">Business Objectives</h3>
+<ol>
+<li><strong>What are your key business goals for MLOps?</strong></li>
+<li>How much faster do you want to deploy models?</li>
+<li>What cost reductions are you targeting?</li>
+<li>
+<p>What new capabilities do you want to enable?</p>
+</li>
+<li>
+<p><strong>What model performance standards are required?</strong></p>
+</li>
+<li>What uptime SLAs must be met?</li>
+<li>What latency requirements exist for inference?</li>
+<li>
+<p>How will you measure model accuracy and drift?</p>
+</li>
+<li>
+<p><strong>What scale requirements do you have?</strong></p>
+</li>
+<li>How many models need to be managed?</li>
+<li>What inference volumes are expected?</li>
+<li>Do you need global deployment capabilities?
+</li>
+</ol>
+<p><opportunity_qualification></opportunity_qualification></p>
+<h3 id="technical-requirements">Technical Requirements</h3>
+<ol>
+<li>
+<p><strong>What automation level do you want to achieve?</strong></p>
+<ul>
+<li>Should model training be fully automated?</li>
+<li>Do you want automated retraining triggers?</li>
+<li>What approval gates are needed for production deployment?</li>
+</ul>
+</li>
+<li>
+<p><strong>What integration requirements exist?</strong></p>
+<ul>
+<li>Which existing systems need to consume model predictions?</li>
+<li>What data sources need to be integrated?</li>
+<li>Are there partner or vendor systems to consider?</li>
+</ul>
+</li>
+<li>
+<p><strong>What security and access control requirements exist?</strong></p>
+<ul>
+<li>Who should have access to different environments?</li>
+<li>How should model artifacts be secured?</li>
+<li>What encryption requirements exist?
+</li>
+</ul>
+</li>
+</ol>
+<p><technical_scoping_architecture></technical_scoping_architecture></p>
+<h2 id="implementation-planning">Implementation Planning</h2>
+<h3 id="resource-assessment">Resource Assessment</h3>
+<ol>
+<li>
+<p><strong>What team capabilities exist?</strong></p>
+<ul>
+<li>How many data scientists, ML engineers, and DevOps engineers?</li>
+<li>What training or upskilling is needed?</li>
+<li>Who will be responsible for platform operations?</li>
+</ul>
+</li>
+<li>
+<p><strong>What timeline constraints exist?</strong></p>
+<ul>
+<li>Are there specific deadlines or milestones?</li>
+<li>What dependencies exist with other projects?</li>
+<li>How should the rollout be phased?</li>
+</ul>
+</li>
+<li>
+<p><strong>What budget considerations exist?</strong></p>
+<ul>
+<li>What cloud spending limits apply?</li>
+<li>Are there preferences for managed vs. self-managed services?</li>
+<li>What cost optimization strategies are important?
+</li>
+</ul>
+</li>
+</ol>
+<p><risk_change_management></risk_change_management></p>
+<h3 id="risk-and-change-management">Risk and Change Management</h3>
+<ol>
+<li>
+<p><strong>What are your biggest concerns about MLOps adoption?</strong></p>
+<ul>
+<li>What risks keep you up at night?</li>
+<li>How will you handle the transition from current processes?</li>
+<li>What could cause the project to fail?</li>
+</ul>
+</li>
+<li>
+<p><strong>How will success be measured?</strong></p>
+<ul>
+<li>What KPIs will you track?</li>
+<li>How will ROI be calculated?</li>
+<li>What reporting requirements exist?</li>
+</ul>
+</li>
+<li>
+<p><strong>What change management considerations exist?</strong></p>
+<ul>
+<li>How will teams be trained on new processes?</li>
+<li>What communication plan is needed?</li>
+<li>How will you ensure adoption across the organization?
+</li>
+</ul>
+</li>
+</ol>
+<p><platform_integration></platform_integration></p>
+<h2 id="oracle-cloud-infrastructure-specifics">Oracle Cloud Infrastructure Specifics</h2>
+<h3 id="platform-preferences">Platform Preferences</h3>
+<ol>
+<li>
+<p><strong>What OCI services are you already using?</strong></p>
+<ul>
+<li>Do you have existing compute, storage, or networking resources?</li>
+<li>Are you using OCI Data Science or other AI services?</li>
+<li>What identity and access management is in place?</li>
+</ul>
+</li>
+<li>
+<p><strong>What multi-cloud considerations exist?</strong></p>
+<ul>
+<li>Do you need to support other cloud providers?</li>
+<li>Are there data residency or sovereignty requirements?</li>
+<li>What hybrid or on-premises requirements exist?</li>
+</ul>
+</li>
+<li>
+<p><strong>What Oracle ecosystem integrations are needed?</strong></p>
+<ul>
+<li>Do you need to integrate with Oracle databases?</li>
+<li>Are there Oracle applications that consume ML predictions?</li>
+<li>What Oracle partner solutions are being considered?
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="success-criteria">Success Criteria</h2>
+<h3 id="technical-metrics">Technical Metrics</h3>
+<ul>
+<li>Model deployment time reduction target: ____%</li>
+<li>Automated test coverage target: ____%</li>
+<li>Model serving uptime requirement: ____%</li>
+<li>Maximum inference latency: ____ms</li>
+</ul>
+<h3 id="business-metrics">Business Metrics</h3>
+<ul>
+<li>Cost reduction target: ____%</li>
+<li>Time to value improvement: ____%</li>
+<li>Compliance audit success rate: ____%</li>
+<li>Developer productivity improvement: ____%</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>Based on the responses to these questions, the implementation plan should be customized to address:
+1. <strong>Immediate Pain Points</strong>: Quick wins that provide immediate value
+2. <strong>Foundation Building</strong>: Core infrastructure and process establishment
+3. <strong>Advanced Capabilities</strong>: Sophisticated automation and optimization features
+4. <strong>Long-term Vision</strong>: Strategic roadmap for continuous improvement</p>
+<h2 id="appendix-response-prioritization">Appendix: Response Prioritization</h2>
+<p><strong>Critical (Must Address)</strong>
+- Questions 1, 2, 4, 7, 10, 13, 16</p>
+<p><strong>Important (Should Address)</strong>
+- Questions 3, 5, 6, 8, 9, 11, 14, 17, 19</p>
+<p><strong>Valuable (Nice to Address)</strong>
+- Questions 12, 15, 18, 20, 21</p>
+<p>This comprehensive discovery process enables organizations to implement a robust MLOps framework that accelerates model development, ensures production reliability, and maintains compliance while fostering innovation and collaboration across data science teams.</p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

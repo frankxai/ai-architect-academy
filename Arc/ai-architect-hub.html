@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Architect Academy - Arc Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 100%);
+            color: #ffffff;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 300px 1fr 350px;
+            grid-template-rows: 60px 1fr;
+            height: 100vh;
+            gap: 1px;
+            background: #333;
+        }
+
+        /* Header */
+        .header {
+            grid-column: 1 / -1;
+            background: linear-gradient(90deg, #2d2d2d, #404040);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 2px solid #007acc;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            color: #007acc;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .academy-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff41;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Agent Pool Sidebar */
+        .agent-pool {
+            background: #252526;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .agent-pool h3 {
+            color: #cccccc;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .agent-card {
+            background: #3c3c3c;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .agent-card:hover {
+            background: #4a4a4a;
+            transform: translateX(5px);
+        }
+
+        .agent-card.active {
+            border-left-color: #007acc;
+            background: #2d5aa0;
+        }
+
+        .agent-card.busy {
+            border-left-color: #ffa500;
+        }
+
+        .agent-card.idle {
+            border-left-color: #00ff41;
+        }
+
+        .agent-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .agent-status {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .agent-capabilities {
+            font-size: 11px;
+            color: #007acc;
+            margin-top: 5px;
+        }
+
+        /* Main Workspace */
+        .workspace {
+            background: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .workspace-header {
+            background: #2d2d2d;
+            padding: 15px 20px;
+            border-bottom: 1px solid #404040;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-info h2 {
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .project-path {
+            color: #cccccc;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .orchestrator-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.3s;
+        }
+
+        .control-btn:hover {
+            background: #005a9e;
+        }
+
+        .control-btn.secondary {
+            background: #404040;
+        }
+
+        .control-btn.secondary:hover {
+            background: #505050;
+        }
+
+        /* Task Queue */
+        .task-area {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .task-queue {
+            background: #252526;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .task-queue h4 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .task-item {
+            background: #3c3c3c;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-info {
+            flex: 1;
+        }
+
+        .task-title {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .task-meta {
+            font-size: 11px;
+            color: #cccccc;
+        }
+
+        .task-agent {
+            background: #007acc;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+        }
+
+        /* Activity Monitor */
+        .activity-monitor {
+            background: #252526;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .activity-monitor h3 {
+            color: #cccccc;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .activity-item {
+            background: #3c3c3c;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-left: 3px solid #007acc;
+        }
+
+        .activity-time {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .activity-text {
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .academy-sync {
+            background: #1e1e1e;
+            border: 1px solid #007acc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .sync-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .sync-btn {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        /* Performance Metrics */
+        .metrics-bar {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metric {
+            flex: 1;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ff41;
+        }
+
+        .metric-label {
+            font-size: 10px;
+            color: #cccccc;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div style="width: 24px; height: 24px; background: linear-gradient(45deg, #007acc, #00ff41); border-radius: 4px;"></div>
+                <h1>AI Architect Academy - Arc Hub</h1>
+            </div>
+            <div class="academy-status">
+                <span>Academy Dashboard</span>
+                <div class="status-indicator"></div>
+                <span style="font-size: 12px; color: #cccccc;">Connected</span>
+            </div>
+        </div>
+
+        <!-- Agent Pool Sidebar -->
+        <div class="agent-pool">
+            <h3>Agent Pool</h3>
+
+            <div class="agent-card active">
+                <div class="agent-name">Claude Code</div>
+                <div class="agent-status">Active • Processing</div>
+                <div class="agent-capabilities">Code, Debug, Analysis</div>
+            </div>
+
+            <div class="agent-card idle">
+                <div class="agent-name">Kilo Code</div>
+                <div class="agent-status">Idle • Ready</div>
+                <div class="agent-capabilities">Architecture, Testing</div>
+            </div>
+
+            <div class="agent-card busy">
+                <div class="agent-name">Cline</div>
+                <div class="agent-status">Busy • File Operations</div>
+                <div class="agent-capabilities">File Management</div>
+            </div>
+
+            <div class="agent-card idle">
+                <div class="agent-name">Gemini Code</div>
+                <div class="agent-status">Idle • Standby</div>
+                <div class="agent-capabilities">Research, Documentation</div>
+            </div>
+
+            <div class="agent-card idle">
+                <div class="agent-name">Codex</div>
+                <div class="agent-status">Idle • Ready</div>
+                <div class="agent-capabilities">Generation, Completion</div>
+            </div>
+
+            <div class="metrics-bar">
+                <div class="metric">
+                    <div class="metric-value">5</div>
+                    <div class="metric-label">Agents</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">2</div>
+                    <div class="metric-label">Active</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">98%</div>
+                    <div class="metric-label">Uptime</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Workspace -->
+        <div class="workspace">
+            <div class="workspace-header">
+                <div class="project-info">
+                    <h2>AI Architect Academy Extension</h2>
+                    <div class="project-path">C:\Users\Frank\AI Architect Academy\Arc</div>
+                </div>
+                <div class="orchestrator-controls">
+                    <button class="control-btn">Auto-Assign</button>
+                    <button class="control-btn secondary">Manual Mode</button>
+                    <button class="control-btn secondary">Settings</button>
+                </div>
+            </div>
+
+            <div class="task-area">
+                <div class="task-queue">
+                    <h4>
+                        <span>🎯</span>
+                        Task Orchestrator
+                    </h4>
+
+                    <div class="task-item">
+                        <div class="task-info">
+                            <div class="task-title">Implement extension manifest</div>
+                            <div class="task-meta">Priority: High • Est: 15min</div>
+                        </div>
+                        <div class="task-agent">Claude Code</div>
+                    </div>
+
+                    <div class="task-item">
+                        <div class="task-info">
+                            <div class="task-title">Design API integration layer</div>
+                            <div class="task-meta">Priority: Medium • Est: 30min</div>
+                        </div>
+                        <div class="task-agent">Kilo Code</div>
+                    </div>
+
+                    <div class="task-item">
+                        <div class="task-info">
+                            <div class="task-title">Create test suite structure</div>
+                            <div class="task-meta">Priority: Low • Est: 20min</div>
+                        </div>
+                        <div class="task-agent">Auto-Assign</div>
+                    </div>
+                </div>
+
+                <div class="task-queue">
+                    <h4>
+                        <span>🔄</span>
+                        Session Management
+                    </h4>
+
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <button class="control-btn" style="flex: 1;">New Session</button>
+                        <button class="control-btn secondary" style="flex: 1;">Fork Current</button>
+                        <button class="control-btn secondary" style="flex: 1;">Merge Sessions</button>
+                    </div>
+
+                    <div style="background: #1e1e1e; border-radius: 4px; padding: 15px;">
+                        <div style="font-size: 12px; color: #cccccc; margin-bottom: 8px;">Current Session: main-development</div>
+                        <div style="font-size: 11px; color: #888;">Git Worktree: /workspace/sessions/main-dev-20250922</div>
+                        <div style="font-size: 11px; color: #888;">Commits: 7 • Last: 2 min ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Monitor -->
+        <div class="activity-monitor">
+            <h3>Live Activity</h3>
+
+            <div class="activity-item">
+                <div class="activity-time">14:32:15</div>
+                <div class="activity-text">Claude Code completed file analysis for package.json</div>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-time">14:31:42</div>
+                <div class="activity-text">Kilo Code started architecture review task</div>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-time">14:30:18</div>
+                <div class="activity-text">Task auto-assigned: "Create extension manifest" → Claude Code</div>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-time">14:29:55</div>
+                <div class="activity-text">New session created: feature-agent-coordination</div>
+            </div>
+
+            <div class="academy-sync">
+                <div class="sync-status">
+                    <div style="width: 8px; height: 8px; border-radius: 50%; background: #00ff41;"></div>
+                    <span style="font-size: 12px;">Academy Dashboard Sync</span>
+                </div>
+                <div style="font-size: 11px; color: #cccccc; margin-bottom: 10px;">
+                    Project progress, metrics, and insights are being synced with your AI Architect Academy dashboard for comprehensive project management and learning analytics.
+                </div>
+                <button class="sync-btn">View Dashboard</button>
+                <button class="sync-btn" style="background: #404040; margin-left: 8px;">Configure</button>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h4 style="color: #cccccc; font-size: 12px; margin-bottom: 10px;">PERFORMANCE INSIGHTS</h4>
+                <div style="background: #1e1e1e; border-radius: 4px; padding: 12px;">
+                    <div style="font-size: 11px; color: #00ff41; margin-bottom: 5px;">✓ Claude Code: 94% task success rate</div>
+                    <div style="font-size: 11px; color: #ffa500;">⚡ Kilo Code: Best for architecture tasks</div>
+                    <div style="font-size: 11px; color: #007acc;">📊 Avg response time: 2.3s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate real-time updates
+        function simulateActivity() {
+            const activities = [
+                "Agent coordination optimized",
+                "New task added to queue",
+                "Session checkpoint created",
+                "Dashboard sync completed",
+                "Performance metrics updated"
+            ];
+
+            setInterval(() => {
+                const activity = activities[Math.floor(Math.random() * activities.length)];
+                const time = new Date().toLocaleTimeString();
+                console.log(`${time}: ${activity}`);
+            }, 5000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            simulateActivity();
+
+            // Add click handlers for agent cards
+            document.querySelectorAll('.agent-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.agent-card').forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

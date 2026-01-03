@@ -1,0 +1,169 @@
+{
+  "name": "arc",
+  "displayName": "Arc by AI Architect Academy",
+  "description": "Arc unifies AI Architect Academy dashboard workflows with OSS agent copilots.",
+  "version": "0.0.5",
+  "publisher": "ai-architect-academy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frankxai/ai-architect-academy"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:arc.generateProposal",
+    "onCommand:arc.kiloModes.open",
+    "onCommand:arc.kiloModes.refresh",
+    "onCommand:arc.openDashboard",
+    "onCommand:arc.showPanel",
+    "onCommand:arc.syncUseCases",
+    "onCommand:arc.academyProgress",
+    "onCommand:arc.linkKnowledge",
+    "onCommand:arcKiloSuite.startTask"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "arc.openDashboard",
+        "title": "Arc: Open Dashboard"
+      },
+      {
+        "command": "arc.syncUseCases",
+        "title": "Arc: Sync Use Cases"
+      },
+      {
+        "command": "arc.generateProposal",
+        "title": "Arc: Generate Proposal"
+      },
+      {
+        "command": "arc.showPanel",
+        "title": "Arc: Open Command Center"
+      },
+      {
+        "command": "arc.kiloModes.refresh",
+        "title": "Arc: Refresh Kilo Modes"
+      },
+      {
+        "command": "arc.kiloModes.open",
+        "title": "Arc: View Kilo Mode"
+      },
+      {
+        "command": "arc.academyProgress",
+        "title": "Arc: View Academy Progress"
+      },
+      {
+        "command": "arc.linkKnowledge",
+        "title": "Arc: Link to Knowledge Points"
+      },
+      {
+        "command": "arcKiloSuite.startTask",
+        "title": "Arc Kilo Suite: Start Academy Task"
+      }
+    ],
+    "configuration": {
+      "title": "AI Architect Studio",
+      "properties": {
+        "arc.dashboardUrl": {
+          "type": "string",
+          "default": "http://localhost:3000",
+          "description": "Local Arc dashboard base URL."
+        },
+        "arc.templatesPath": {
+          "type": "string",
+          "default": "../",
+          "description": "Relative path to Academy templates and specs."
+        },
+        "arc.useCaseCache": {
+          "type": "string",
+          "default": ".aia/usecases.json",
+          "description": "Local cache file storing synced use cases."
+        },
+        "arc.academyAPI": {
+          "type": "object",
+          "default": {
+            "baseUrl": "http://localhost:3000/api",
+            "timeout": 30000,
+            "retryAttempts": 3
+          },
+          "description": "Academy API configuration for progress tracking and knowledge integration."
+        },
+        "arc.governance": {
+          "type": "object",
+          "default": {
+            "enableSafetyChecks": true,
+            "requireHumanOversight": true,
+            "auditTrail": true,
+            "allowedCommands": [
+              "arcKiloSuite.startTask",
+              "arcKiloSuite.explainCode",
+              "arcKiloSuite.reviewPR"
+            ]
+          },
+          "description": "Governance and safety settings for Arc Kilo Suite operations."
+        }
+      }
+    },
+    "viewContainers": {
+      "activitybar": [
+        {
+          "id": "arcSidebar",
+          "title": "Arc",
+          "icon": "media/arc.svg"
+        }
+      ]
+    },
+    "views": {
+      "arcSidebar": [
+        {
+          "id": "arcChat",
+          "name": "Arc Command Center"
+        },
+        {
+          "id": "arcKiloModes",
+          "name": "Kilo Agent Modes"
+        },
+        {
+          "id": "arcAcademy",
+          "name": "Academy Progress"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "arcKiloModes",
+        "contents": "Discover Kilo agent modes curated for the Academy.\\n[Refresh modes](command:arc.kiloModes.refresh)"
+      },
+      {
+        "view": "arcAcademy",
+        "contents": "Track your Academy learning progress and certification status.\\n[View Progress](command:arc.academyProgress)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "webpack --mode production",
+    "compile": "webpack --mode development",
+    "watch": "webpack --mode development --watch",
+    "package": "vsce package",
+    "test": "echo 'No tests yet'"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/vscode": "^1.90.0",
+    "@vscode/test-electron": "^2.3.3",
+    "@vscode/vsce": "^3.6.0",
+    "ts-loader": "^9.5.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.5",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}

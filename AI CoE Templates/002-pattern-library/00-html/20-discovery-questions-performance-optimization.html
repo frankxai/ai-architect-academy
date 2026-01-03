@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: Performance Optimization Platform - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 05 Ai Infrastructure / 20 Solution Performance Optimization</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="discovery-questions-performance-optimization-platform">Discovery Questions: Performance Optimization Platform</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 20</li>
+<li><strong>Pattern Name:</strong> Performance Optimization Platform</li>
+<li><strong>Document Type:</strong> Discovery Questions</li>
+<li><strong>Created Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><discovery_current_state></discovery_current_state></p>
+<h2 id="current-state-assessment">Current State Assessment</h2>
+<h3 id="existing-ai-workloads">Existing AI Workloads</h3>
+<ol>
+<li><strong>What AI/ML workloads are currently running in your environment?</strong></li>
+<li>How many models are deployed in production?</li>
+<li>What types of AI workloads (inference, training, batch processing)?</li>
+<li>
+<p>What are the compute requirements for each workload?</p>
+</li>
+<li>
+<p><strong>What is your current infrastructure setup?</strong></p>
+</li>
+<li>What cloud platforms and services are you using?</li>
+<li>What container orchestration platforms are deployed?</li>
+<li>
+<p>What monitoring and observability tools are in place?</p>
+</li>
+<li>
+<p><strong>What are your current performance baselines?</strong></p>
+</li>
+<li>What are typical inference latency requirements?</li>
+<li>What throughput volumes do you handle?</li>
+<li>What are your availability and reliability targets?</li>
+</ol>
+<h3 id="performance-challenges">Performance Challenges</h3>
+<ol>
+<li><strong>What performance issues are you experiencing?</strong></li>
+<li>Are there latency bottlenecks in model serving?</li>
+<li>Do you experience resource contention or capacity issues?</li>
+<li>
+<p>Are there seasonal or time-based performance variations?</p>
+</li>
+<li>
+<p><strong>What are your current resource utilization patterns?</strong></p>
+</li>
+<li>What is your average CPU, GPU, and memory utilization?</li>
+<li>Do you have periods of over or under-provisioning?</li>
+<li>
+<p>How much idle capacity exists in your infrastructure?</p>
+</li>
+<li>
+<p><strong>What manual processes exist for resource management?</strong></p>
+</li>
+<li>How do you currently scale resources up or down?</li>
+<li>What monitoring and alerting mechanisms are in place?</li>
+<li>How do you handle capacity planning and forecasting?</li>
+</ol>
+<h2 id="cost-and-resource-management">Cost and Resource Management</h2>
+<h3 id="current-costs">Current Costs</h3>
+<ol>
+<li><strong>What are your current AI infrastructure costs?</strong></li>
+<li>What percentage of your cloud spend goes to AI workloads?</li>
+<li>How are costs allocated across different projects or teams?</li>
+<li>
+<p>What are the most expensive components of your AI infrastructure?</p>
+</li>
+<li>
+<p><strong>How do you track and optimize costs currently?</strong></p>
+</li>
+<li>What cost monitoring and reporting tools are in use?</li>
+<li>Do you have cost allocation and chargeback mechanisms?</li>
+<li>
+<p>What cost optimization initiatives have been attempted?</p>
+</li>
+<li>
+<p><strong>What budget constraints or cost targets exist?</strong></p>
+</li>
+<li>Are there specific cost reduction targets?</li>
+<li>What budget approval processes exist for infrastructure changes?</li>
+<li>How sensitive is your organization to infrastructure cost increases?</li>
+</ol>
+<h3 id="resource-allocation">Resource Allocation</h3>
+<ol>
+<li>
+<p><strong>How do you determine appropriate resource sizing?</strong></p>
+<ul>
+<li>What methods do you use for capacity planning?</li>
+<li>How do you handle resource requests from different teams?</li>
+<li>Do you have standardized compute configurations for AI workloads?</li>
+</ul>
+</li>
+<li>
+<p><strong>What resource sharing and multi-tenancy requirements exist?</strong></p>
+<ul>
+<li>Do multiple teams or applications share infrastructure?</li>
+<li>How do you handle resource isolation and security?</li>
+<li>What priority mechanisms exist for resource allocation?</li>
+</ul>
+</li>
+<li>
+<p><strong>What disaster recovery and high availability requirements exist?</strong></p>
+<ul>
+<li>What are your RTO and RPO requirements?</li>
+<li>Do you need multi-region or multi-zone deployments?</li>
+<li>How do you handle failover and disaster recovery scenarios?</li>
+</ul>
+</li>
+</ol>
+<h2 id="performance-requirements">Performance Requirements</h2>
+<h3 id="latency-and-throughput">Latency and Throughput</h3>
+<ol>
+<li>
+<p><strong>What are your specific performance SLA requirements?</strong></p>
+<ul>
+<li>What maximum latency is acceptable for different use cases?</li>
+<li>What minimum throughput must be maintained?</li>
+<li>Are there different performance tiers for different applications?</li>
+</ul>
+</li>
+<li>
+<p><strong>What are your peak and off-peak usage patterns?</strong></p>
+<ul>
+<li>When do you experience highest and lowest traffic?</li>
+<li>Are there predictable patterns (daily, weekly, seasonal)?</li>
+<li>How much variation exists between peak and baseline usage?</li>
+</ul>
+</li>
+<li>
+<p><strong>What real-time vs. batch processing requirements exist?</strong></p>
+<ul>
+<li>Which workloads require real-time inference?</li>
+<li>What batch processing schedules and SLAs exist?</li>
+<li>How do you prioritize between real-time and batch workloads?</li>
+</ul>
+</li>
+</ol>
+<h3 id="scaling-requirements">Scaling Requirements</h3>
+<ol>
+<li>
+<p><strong>What scaling patterns do you need to support?</strong></p>
+<ul>
+<li>How quickly do you need to scale up during traffic spikes?</li>
+<li>What is the acceptable time for scaling down to save costs?</li>
+<li>Do you need predictive scaling based on forecasts?</li>
+</ul>
+</li>
+<li>
+<p><strong>What are your minimum and maximum scaling boundaries?</strong></p>
+<ul>
+<li>What is the minimum capacity that must always be available?</li>
+<li>What are the maximum scale limits you need to support?</li>
+<li>Are there business or technical constraints on scaling?</li>
+</ul>
+</li>
+<li>
+<p><strong>What triggering events should initiate scaling actions?</strong></p>
+<ul>
+<li>What metrics should drive auto-scaling decisions?</li>
+<li>Are there business events that should trigger scaling?</li>
+<li>What external factors should influence scaling (time, market events)?</li>
+</ul>
+</li>
+</ol>
+<h2 id="technical-requirements">Technical Requirements</h2>
+<h3 id="infrastructure-preferences">Infrastructure Preferences</h3>
+<ol>
+<li>
+<p><strong>What compute shapes and configurations are optimal for your workloads?</strong></p>
+<ul>
+<li>Do you need CPU-optimized, GPU-accelerated, or memory-optimized instances?</li>
+<li>What specific GPU types are required for your models?</li>
+<li>Are there preferences for VM vs. bare metal vs. serverless options?</li>
+</ul>
+</li>
+<li>
+<p><strong>What container and orchestration requirements exist?</strong></p>
+<ul>
+<li>Are you using Kubernetes or other orchestration platforms?</li>
+<li>What container registry and image management needs exist?</li>
+<li>Do you need service mesh or advanced networking capabilities?</li>
+</ul>
+</li>
+<li>
+<p><strong>What storage and data access patterns need optimization?</strong></p>
+<ul>
+<li>What types of storage are used for model artifacts and data?</li>
+<li>How do you handle data loading and preprocessing?</li>
+<li>Are there data locality or caching requirements?</li>
+</ul>
+</li>
+</ol>
+<h3 id="integration-requirements">Integration Requirements</h3>
+<ol>
+<li>
+<p><strong>What existing systems need to integrate with optimization solutions?</strong></p>
+<ul>
+<li>What monitoring and observability tools are currently used?</li>
+<li>What CI/CD pipelines and deployment processes exist?</li>
+<li>Are there existing cost management or financial systems?</li>
+</ul>
+</li>
+<li>
+<p><strong>What APIs and automation capabilities are needed?</strong></p>
+<ul>
+<li>What programmatic interfaces are required?</li>
+<li>How should optimization integrate with existing automation?</li>
+<li>What webhook or notification mechanisms are needed?</li>
+</ul>
+</li>
+<li>
+<p><strong>What compliance and governance requirements apply?</strong></p>
+<ul>
+<li>Are there regulations that impact resource usage or data handling?</li>
+<li>What audit and reporting requirements exist?</li>
+<li>Do you need approval workflows for infrastructure changes?</li>
+</ul>
+</li>
+</ol>
+<h2 id="model-specific-optimization">Model-Specific Optimization</h2>
+<h3 id="model-characteristics">Model Characteristics</h3>
+<ol>
+<li>
+<p><strong>What types of models are you deploying?</strong></p>
+<ul>
+<li>What ML frameworks are being used (TensorFlow, PyTorch, etc.)?</li>
+<li>What model sizes and complexity levels exist?</li>
+<li>Are there specific model optimization techniques already in use?</li>
+</ul>
+</li>
+<li>
+<p><strong>What model serving patterns are used?</strong></p>
+<ul>
+<li>Do you use synchronous or asynchronous inference?</li>
+<li>What batch sizes and processing patterns are optimal?</li>
+<li>Are there A/B testing or canary deployment requirements?</li>
+</ul>
+</li>
+<li>
+<p><strong>What model lifecycle considerations affect performance?</strong></p>
+<ul>
+<li>How frequently are models retrained or updated?</li>
+<li>Do you need hot-swapping or blue-green deployment capabilities?</li>
+<li>What version management and rollback requirements exist?</li>
+</ul>
+</li>
+</ol>
+<h3 id="optimization-opportunities">Optimization Opportunities</h3>
+<ol>
+<li>
+<p><strong>What model optimization techniques are acceptable?</strong></p>
+<ul>
+<li>Are you open to model quantization or pruning?</li>
+<li>Can models be distilled or compressed?</li>
+<li>Are there accuracy vs. performance tradeoff tolerances?</li>
+</ul>
+</li>
+<li>
+<p><strong>What hardware acceleration capabilities can be leveraged?</strong></p>
+<ul>
+<li>Can models take advantage of GPU, TPU, or specialized chips?</li>
+<li>Are there opportunities for mixed-precision or TensorRT optimization?</li>
+<li>What compiler optimizations or runtime acceleration is possible?</li>
+</ul>
+</li>
+<li>
+<p><strong>What caching and preprocessing optimizations are possible?</strong></p>
+<ul>
+<li>Can inference results be cached for similar inputs?</li>
+<li>Are there opportunities to optimize data preprocessing?</li>
+<li>Can feature engineering be accelerated or cached?</li>
+</ul>
+</li>
+</ol>
+<h2 id="implementation-planning">Implementation Planning</h2>
+<h3 id="organizational-readiness">Organizational Readiness</h3>
+<ol>
+<li>
+<p><strong>What team capabilities exist for performance optimization?</strong></p>
+<ul>
+<li>Do you have DevOps or platform engineering expertise?</li>
+<li>What level of cloud infrastructure knowledge exists?</li>
+<li>Are there performance tuning and optimization skills available?</li>
+</ul>
+</li>
+<li>
+<p><strong>What change management considerations exist?</strong></p>
+<ul>
+<li>How will teams adapt to new optimization processes?</li>
+<li>What training or documentation needs exist?</li>
+<li>How will success be measured and communicated?</li>
+</ul>
+</li>
+<li>
+<p><strong>What timeline and milestone requirements exist?</strong></p>
+<ul>
+<li>Are there specific deadlines or business events driving optimization?</li>
+<li>What phased approach would work best for your organization?</li>
+<li>How should optimization wins be prioritized and delivered?</li>
+</ul>
+</li>
+</ol>
+<h3 id="risk-management">Risk Management</h3>
+<ol>
+<li>
+<p><strong>What risks are you most concerned about with optimization initiatives?</strong></p>
+<ul>
+<li>What could cause performance degradation during optimization?</li>
+<li>How would you handle cost increases during transition periods?</li>
+<li>What rollback capabilities are essential?</li>
+</ul>
+</li>
+<li>
+<p><strong>What testing and validation approaches are needed?</strong></p>
+<ul>
+<li>How will optimization changes be tested before production deployment?</li>
+<li>What performance testing and benchmarking is required?</li>
+<li>How will you validate that optimizations meet requirements?</li>
+</ul>
+</li>
+<li>
+<p><strong>What monitoring and alerting enhancements are needed?</strong></p>
+<ul>
+<li>What new metrics should be tracked for optimization?</li>
+<li>What alert thresholds and escalation procedures are needed?</li>
+<li>How will optimization effectiveness be measured over time?</li>
+</ul>
+</li>
+</ol>
+<h2 id="oracle-cloud-infrastructure-specifics">Oracle Cloud Infrastructure Specifics</h2>
+<h3 id="oci-service-preferences">OCI Service Preferences</h3>
+<ol>
+<li>
+<p><strong>What OCI services are you currently using or planning to use?</strong></p>
+<ul>
+<li>Are you using OCI Compute, OKE, Functions, or other services?</li>
+<li>What OCI AI and ML services are relevant to your use cases?</li>
+<li>Do you have preferences for managed vs. self-managed services?</li>
+</ul>
+</li>
+<li>
+<p><strong>What OCI-specific optimization opportunities interest you?</strong></p>
+<ul>
+<li>Are you interested in GPU Flex Shapes for right-sizing?</li>
+<li>Could OCI Functions provide cost benefits for variable workloads?</li>
+<li>What OCI auto-scaling capabilities align with your needs?</li>
+</ul>
+</li>
+<li>
+<p><strong>What multi-cloud or hybrid considerations exist?</strong></p>
+<ul>
+<li>Do you need optimization across multiple cloud providers?</li>
+<li>Are there on-premises workloads that need integration?</li>
+<li>What data gravity or regulatory constraints affect placement?</li>
+</ul>
+</li>
+</ol>
+<h2 id="success-criteria-and-metrics">Success Criteria and Metrics</h2>
+<h3 id="performance-targets">Performance Targets</h3>
+<ul>
+<li>Target latency reduction: ____% improvement in inference response time</li>
+<li>Throughput improvement: ____% increase in requests per second capacity</li>
+<li>Resource utilization target: ____% average CPU/GPU utilization</li>
+<li>Auto-scaling responsiveness: Scale actions complete within ____ minutes</li>
+</ul>
+<h3 id="cost-optimization-goals">Cost Optimization Goals</h3>
+<ul>
+<li>Infrastructure cost reduction: ____% decrease in monthly AI infrastructure spend</li>
+<li>Resource efficiency: ____% improvement in cost per inference/prediction</li>
+<li>Operational efficiency: ____% reduction in manual resource management time</li>
+<li>ROI timeline: Break-even on optimization investment within ____ months</li>
+</ul>
+<h3 id="reliability-and-quality-metrics">Reliability and Quality Metrics</h3>
+<ul>
+<li>Availability target: ____% uptime for AI services</li>
+<li>Error rate threshold: &lt;____% failed inference requests</li>
+<li>Performance consistency: &lt;____% variance in response times</li>
+<li>Capacity headroom: Maintain ____% capacity buffer for unexpected spikes</li>
+</ul>
+<h2 id="next-steps-and-prioritization">Next Steps and Prioritization</h2>
+<p>Based on the responses to these questions, the optimization implementation should focus on:</p>
+<ol>
+<li><strong>Quick Wins</strong>: Identify immediate opportunities for cost savings or performance improvements</li>
+<li><strong>High-Impact Areas</strong>: Target workloads with the largest cost or performance improvement potential</li>
+<li><strong>Risk Mitigation</strong>: Address areas with the highest operational or business risk</li>
+<li><strong>Foundation Building</strong>: Establish monitoring, automation, and governance frameworks</li>
+<li><strong>Continuous Improvement</strong>: Implement feedback loops and ongoing optimization processes</li>
+</ol>
+<h2 id="appendix-optimization-assessment-matrix">Appendix: Optimization Assessment Matrix</h2>
+<p><strong>Workload Prioritization Criteria:</strong>
+- <strong>Business Impact</strong>: Revenue generation, customer experience, operational efficiency
+- <strong>Cost Potential</strong>: Current spend, optimization opportunity, effort required
+- <strong>Technical Feasibility</strong>: Complexity, dependencies, skill requirements
+- <strong>Risk Level</strong>: Performance impact, rollback capability, testing requirements
+- <strong>Timeline Constraints</strong>: Business deadlines, resource availability, dependencies</p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="20-bill-of-materials-performance-optimization.html" class="btn btn-secondary">
+                    <i data-lucide="package"></i> Bill of Materials
+                </a>
+                <p class="mt-sm">Bill of Materials: Performance Optimization Platform</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

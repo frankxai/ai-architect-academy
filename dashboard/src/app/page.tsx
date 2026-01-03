@@ -29,18 +29,35 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const features = [
   {
-    icon: Brain,
-    title: 'AI Architecture Assistant',
-    description: 'Get intelligent recommendations for your architecture decisions',
+    icon: Bot,
+    title: 'Agent Orchestration',
+    description: '60+ specialized AI agents & multi-agent workflows for complex tasks',
+    color: 'bg-gradient-to-br from-cyan-500 to-blue-500',
+    href: '/agents',
+    badge: 'NEW'
+  },
+  {
+    icon: Sparkles,
+    title: 'Skills Catalog',
+    description: '80+ Claude Code skills for specialized AI expertise',
     color: 'bg-gradient-to-br from-purple-500 to-pink-500',
-    href: '/assistant'
+    href: '/skills',
+    badge: 'NEW'
+  },
+  {
+    icon: Brain,
+    title: 'AGI Research',
+    description: 'Accelerate AGI development and solve world problems',
+    color: 'bg-gradient-to-br from-pink-500 to-rose-500',
+    href: '/agi-research',
+    badge: 'NEW'
   },
   {
     icon: Layers,
-    title: 'Visual Architecture Builder',
-    description: 'Design and visualize your AI systems with drag-and-drop',
+    title: 'Complete Offering',
+    description: 'Explore our three-tier ecosystem: OSS, SaaS, Enterprise',
     color: 'bg-gradient-to-br from-blue-500 to-cyan-500',
-    href: '/builder'
+    href: '/offering'
   },
   {
     icon: Code2,
@@ -55,13 +72,6 @@ const features = [
     description: 'Test and compare AI models in real-time',
     color: 'bg-gradient-to-br from-orange-500 to-red-500',
     href: '/playground'
-  },
-  {
-    icon: TrendingUp,
-    title: 'Intelligence Hub',
-    description: 'Track benchmarks, costs, and performance metrics',
-    color: 'bg-gradient-to-br from-indigo-500 to-purple-500',
-    href: '/intelligence'
   },
   {
     icon: BookOpen,
@@ -80,10 +90,10 @@ const quickActions = [
 ];
 
 const stats = [
-  { label: 'Active Projects', value: '12', change: '+2 this week' },
-  { label: 'API Costs', value: '$247', change: '-15% vs last month' },
-  { label: 'Model Accuracy', value: '94.2%', change: '+3.1% improvement' },
-  { label: 'Response Time', value: '120ms', change: '-45ms optimized' }
+  { label: 'Skills Available', value: '80+', change: 'AI Architecture, Cloud, Creative' },
+  { label: 'Agent Teams', value: '60+', change: '4 departments ready' },
+  { label: 'Patterns', value: '200+', change: 'Production-ready' },
+  { label: 'Learning Hours', value: '100+', change: 'AGI + World Problems' }
 ];
 
 export default function Home() {
@@ -143,10 +153,21 @@ export default function Home() {
           </div>
           
           <nav className="flex items-center gap-6">
-            <Button variant="ghost" size="sm">Patterns</Button>
-            <Button variant="ghost" size="sm">Projects</Button>
-            <Button variant="ghost" size="sm">Community</Button>
-            <Button variant="ghost" size="sm">Docs</Button>
+            <Button variant="ghost" size="sm" onClick={() => window.location.href = '/agents'}>
+              <Bot className="w-4 h-4 mr-1" />
+              Agents
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => window.location.href = '/skills'}>
+              <Sparkles className="w-4 h-4 mr-1" />
+              Skills
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => window.location.href = '/agi-research'}>
+              <Brain className="w-4 h-4 mr-1" />
+              AGI
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => window.location.href = '/offering'}>
+              Offering
+            </Button>
             <Settings className="w-5 h-5 cursor-pointer" />
           </nav>
         </div>
@@ -219,8 +240,14 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.02, y: -5 }}
+                  onClick={() => window.location.href = feature.href}
                 >
-                  <Card className="p-6 border-0 shadow-lg hover:shadow-2xl transition-all cursor-pointer">
+                  <Card className="p-6 border-0 shadow-lg hover:shadow-2xl transition-all cursor-pointer relative">
+                    {feature.badge && (
+                      <div className="absolute -top-2 -right-2 px-2 py-1 text-xs font-bold bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full">
+                        {feature.badge}
+                      </div>
+                    )}
                     <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center mb-4`}>
                       <feature.icon className="w-6 h-6 text-white" />
                     </div>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: Genomic Sequence Processing & Analysis - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 09 Genomic Public Health Intelligence / 26 Solution Genomic Sequence Processing</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="discovery-questions-genomic-sequence-processing-analysis">Discovery Questions: Genomic Sequence Processing &amp; Analysis</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 26</li>
+<li><strong>Pattern Name:</strong> Genomic Sequence Processing &amp; Analysis</li>
+<li><strong>Document Type:</strong> Discovery Questions</li>
+<li><strong>Created Date:</strong> 2025-08-13</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><discovery_current_state></discovery_current_state></p>
+<h2 id="discovery-current-state-assessment">Discovery &amp; Current State Assessment</h2>
+<ol>
+<li><strong>What sequencing platforms and technologies are you currently using, and what is your typical genomic data processing volume per month?</strong></li>
+<li>
+<p><em>Purpose: Assess current sequencing capacity, technology mix, and scale requirements for processing infrastructure</em></p>
+</li>
+<li>
+<p><strong>How do you currently manage your genomic data processing workflows, and what are the main bottlenecks and challenges in your analysis pipeline?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Understand existing bioinformatics infrastructure, identify performance gaps, and quantify automation opportunities</em></p>
+</li>
+<li>
+<p><strong>What bioinformatics tools and software are you currently using for sequence analysis, variant calling, and genomic annotation?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Evaluate current tool stack compatibility, identify upgrade needs, and plan migration strategies</em></p>
+</li>
+<li>
+<p><strong>How long does it currently take to process a single genome from raw sequence to final results, and what are your turnaround time requirements?</strong></p>
+</li>
+<li><em>Purpose: Establish baseline performance metrics and define target performance improvements for new architecture</em>
+</li>
+</ol>
+<hr/>
+<p><strategy_business_alignment></strategy_business_alignment></p>
+<h2 id="strategy-business-alignment">Strategy &amp; Business Alignment</h2>
+<ol>
+<li><strong>What are your organization's primary genomic analysis objectives, and how do they align with public health surveillance, clinical diagnostics, or research goals?</strong></li>
+<li>
+<p><em>Purpose: Align genomic processing capabilities with organizational mission and strategic priorities</em></p>
+</li>
+<li>
+<p><strong>What specific genomic applications are most critical to your mission (pathogen surveillance, population studies, clinical diagnostics, drug resistance monitoring)?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Prioritize platform capabilities and ensure solution meets most critical use cases first</em></p>
+</li>
+<li>
+<p><strong>How do genomic analysis capabilities impact your ability to respond to public health emergencies, support clinical care, or advance research objectives?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Quantify business impact and establish value proposition for high-performance genomic processing</em></p>
+</li>
+<li>
+<p><strong>What funding sources and budget considerations exist for genomic infrastructure modernization and ongoing operational costs?</strong></p>
+</li>
+<li><em>Purpose: Understand investment capacity and align solution scope with budget parameters</em>
+</li>
+</ol>
+<hr/>
+<p><opportunity_qualification></opportunity_qualification></p>
+<h2 id="opportunity-qualification">Opportunity Qualification</h2>
+<ol>
+<li><strong>What timeline and urgency exist for implementing enhanced genomic processing capabilities, and what factors are driving this need?</strong></li>
+<li>
+<p><em>Purpose: Understand project urgency, business drivers, and implementation timeline requirements</em></p>
+</li>
+<li>
+<p><strong>Who are the key stakeholders and decision-makers for genomic infrastructure, bioinformatics platforms, and public health technology initiatives?</strong></p>
+<ul>
+<li><em>Purpose: Identify buying committee, implementation sponsors, and change management requirements</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What previous experience do you have with cloud-based genomic analysis, high-performance computing, or large-scale bioinformatics implementations?</strong></p>
+<ul>
+<li><em>Purpose: Assess cloud readiness, technical maturity, and implementation risk factors</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What are your expectations for performance improvement, cost reduction, and operational efficiency gains from modernized genomic processing?</strong></p>
+<ul>
+<li><em>Purpose: Establish success criteria and ROI expectations for platform implementation</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><technical_scoping_architecture></technical_scoping_architecture></p>
+<h2 id="technical-scoping-architecture">Technical Scoping &amp; Architecture</h2>
+<ol>
+<li>
+<p><strong>What is your current computing infrastructure (on-premises, cloud, hybrid), and what are your preferences for genomic data processing deployment?</strong></p>
+<ul>
+<li><em>Purpose: Determine deployment architecture preferences and assess infrastructure readiness</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What data storage and management systems do you currently use for genomic data, and what are your long-term data retention requirements?</strong></p>
+<ul>
+<li><em>Purpose: Plan data migration strategies and design appropriate storage architecture</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have existing high-performance computing resources, and what experience does your team have with HPC cluster management?</strong></p>
+<ul>
+<li><em>Purpose: Assess current HPC capabilities and determine managed service vs. self-managed preferences</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What network connectivity and bandwidth constraints exist for genomic data transfer and processing workflows?</strong></p>
+<ul>
+<li><em>Purpose: Design appropriate data transfer mechanisms and assess network infrastructure requirements</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What integration requirements exist with laboratory information systems, electronic health records, or external genomic databases?</strong></p>
+<ul>
+<li><em>Purpose: Plan comprehensive integration strategy and ensure seamless workflow connectivity</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><genomic_data_workflows></genomic_data_workflows></p>
+<h2 id="genomic-data-workflows">Genomic Data &amp; Workflows</h2>
+<ol>
+<li>
+<p><strong>What types of genomic sequencing data do you work with (whole genome, exome, targeted panels, metagenomic, viral surveillance)?</strong></p>
+<ul>
+<li><em>Purpose: Configure appropriate analysis pipelines and optimize processing workflows for specific data types</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What reference genomes, annotation databases, and genomic resources are essential for your analysis workflows?</strong></p>
+<ul>
+<li><em>Purpose: Ensure access to required reference data and plan for database integration and updates</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you currently handle data quality control, contamination detection, and genomic data validation?</strong></p>
+<ul>
+<li><em>Purpose: Implement appropriate quality assurance frameworks and maintain data integrity standards</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What variant calling, annotation, and interpretation workflows are critical for your genomic analysis objectives?</strong></p>
+<ul>
+<li><em>Purpose: Configure specialized analysis pipelines and ensure clinical or research-grade accuracy</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you require population-level genomic analysis, phylogenetic reconstruction, or epidemiological modeling capabilities?</strong></p>
+<ul>
+<li><em>Purpose: Design appropriate population genomics tools and surveillance-specific analytics</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><regulatory_compliance></regulatory_compliance></p>
+<h2 id="regulatory-compliance">Regulatory &amp; Compliance</h2>
+<ol>
+<li>
+<p><strong>What regulatory requirements apply to your genomic data (HIPAA, GDPR, IRB approvals, biosecurity regulations)?</strong></p>
+<ul>
+<li><em>Purpose: Ensure compliance with applicable regulations and implement appropriate data protection measures</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you currently manage genomic data privacy, de-identification, and secure sharing with collaborators?</strong></p>
+<ul>
+<li><em>Purpose: Design privacy-preserving analytics and secure collaboration frameworks</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What data sovereignty, geographic restrictions, or cross-border transfer limitations affect your genomic data?</strong></p>
+<ul>
+<li><em>Purpose: Plan appropriate data residency and ensure compliance with jurisdiction-specific requirements</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What audit trail, documentation, and validation requirements exist for your genomic analysis workflows?</strong></p>
+<ul>
+<li><em>Purpose: Implement comprehensive audit logging and ensure regulatory compliance documentation</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><performance_scalability></performance_scalability></p>
+<h2 id="performance-scalability">Performance &amp; Scalability</h2>
+<ol>
+<li>
+<p><strong>What are your current and projected genomic data processing volumes, and how do you expect these to grow over time?</strong></p>
+<ul>
+<li><em>Purpose: Design scalable architecture and plan for future capacity requirements</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What performance requirements exist for different types of genomic analysis (real-time surveillance vs. research studies)?</strong></p>
+<ul>
+<li><em>Purpose: Optimize performance for different use cases and establish appropriate service levels</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you require real-time or near-real-time genomic analysis capabilities for outbreak detection or clinical diagnostics?</strong></p>
+<ul>
+<li><em>Purpose: Design low-latency processing pipelines and real-time surveillance capabilities</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What geographic distribution or multi-site processing requirements exist for your genomic analysis needs?</strong></p>
+<ul>
+<li><em>Purpose: Plan multi-region deployment and ensure global accessibility</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><collaboration_sharing></collaboration_sharing></p>
+<h2 id="collaboration-data-sharing">Collaboration &amp; Data Sharing</h2>
+<ol>
+<li>
+<p><strong>What external collaborations, data sharing partnerships, or international surveillance networks do you participate in?</strong></p>
+<ul>
+<li><em>Purpose: Design secure collaboration frameworks and ensure interoperability with partner systems</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you currently share genomic data and analysis results with public health agencies, research collaborators, or clinical partners?</strong></p>
+<ul>
+<li><em>Purpose: Implement appropriate data sharing mechanisms and maintain security controls</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What requirements exist for contributing genomic data to national or international surveillance databases (GISAID, GenBank, etc.)?</strong></p>
+<ul>
+<li><em>Purpose: Automate data submission workflows and ensure compliance with database requirements</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you need capabilities for federated analysis or privacy-preserving multi-party computation for genomic research?</strong></p>
+<ul>
+<li><em>Purpose: Implement advanced privacy-preserving analytics for sensitive genomic collaborations</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><operational_processes></operational_processes></p>
+<h2 id="operational-processes">Operational Processes</h2>
+<ol>
+<li>
+<p><strong>How do your laboratory, bioinformatics, and public health teams currently collaborate on genomic analysis projects?</strong></p>
+<ul>
+<li><em>Purpose: Design collaborative workflows and ensure effective team coordination</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What training, support, and change management will be needed for teams to adopt new genomic processing capabilities?</strong></p>
+<ul>
+<li><em>Purpose: Plan comprehensive training programs and ensure successful user adoption</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you currently monitor genomic data quality, analysis performance, and system health?</strong></p>
+<ul>
+<li><em>Purpose: Implement appropriate monitoring and alerting systems for genomic operations</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What backup, disaster recovery, and business continuity requirements exist for your genomic analysis operations?</strong></p>
+<ul>
+<li><em>Purpose: Design robust disaster recovery and ensure continuous operations</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><public_health_surveillance></public_health_surveillance></p>
+<h2 id="public-health-surveillance">Public Health &amp; Surveillance</h2>
+<ol>
+<li>
+<p><strong>What pathogen surveillance, outbreak detection, or epidemiological analysis capabilities do you require?</strong></p>
+<ul>
+<li><em>Purpose: Configure surveillance-specific analytics and real-time monitoring capabilities</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you currently identify and track emerging variants, antimicrobial resistance, or other genomic markers of public health concern?</strong></p>
+<ul>
+<li><em>Purpose: Implement automated surveillance algorithms and real-time alert systems</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What integration requirements exist with public health response systems, laboratory networks, or international surveillance programs?</strong></p>
+<ul>
+<li><em>Purpose: Ensure seamless integration with public health infrastructure and response workflows</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you need capabilities for modeling transmission dynamics, contact tracing support, or intervention impact assessment?</strong></p>
+<ul>
+<li><em>Purpose: Implement epidemiological modeling tools and decision support capabilities</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><success_metrics></success_metrics></p>
+<h2 id="success-metrics-outcomes">Success Metrics &amp; Outcomes</h2>
+<ol>
+<li>
+<p><strong>What key performance indicators and metrics will you use to measure the success of enhanced genomic processing capabilities?</strong></p>
+<ul>
+<li><em>Purpose: Establish measurement framework and track implementation success</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How will you measure the impact of improved genomic analysis on public health outcomes, research productivity, or clinical care?</strong></p>
+<ul>
+<li><em>Purpose: Define value measurement criteria and demonstrate platform impact</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What reporting and dashboard capabilities are needed for different stakeholder groups (laboratory directors, public health officials, researchers)?</strong></p>
+<ul>
+<li><em>Purpose: Design appropriate visualization and reporting tools for different user communities</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you envision measuring return on investment and cost-effectiveness of modernized genomic processing infrastructure?</strong></p>
+<ul>
+<li><em>Purpose: Establish ROI measurement framework and track value realization</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><implementation_readiness></implementation_readiness></p>
+<h2 id="implementation-readiness">Implementation Readiness</h2>
+<ol>
+<li>
+<p><strong>What pilot programs, proof-of-concept approaches, or phased implementation strategies would work best for your organization?</strong></p>
+<ul>
+<li><em>Purpose: Design appropriate implementation approach and minimize deployment risk</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What data migration, system integration, and workflow transition challenges do you anticipate?</strong></p>
+<ul>
+<li><em>Purpose: Plan comprehensive migration strategy and address potential implementation obstacles</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What ongoing support, maintenance, and enhancement requirements do you expect for genomic processing infrastructure?</strong></p>
+<ul>
+<li><em>Purpose: Plan long-term operational support and ensure platform sustainability</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How will you ensure knowledge transfer, documentation, and capability sustainment after implementation?</strong></p>
+<ul>
+<li><em>Purpose: Establish knowledge management and ensure long-term platform success</em>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><em>These discovery questions are designed to comprehensively assess genomic processing requirements, understand organizational needs, and ensure successful implementation of high-performance genomic sequence processing and analysis capabilities.</em></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="26-solution-genomic-sequence-processing.html" class="btn btn-secondary">
+                    <i data-lucide="clipboard-list"></i> Solution Overview
+                </a>
+                <p class="mt-sm">Design Pattern 26: Genomic Sequence Processing & Analysis</p>
+            </div>
+            
+            <div class="card">
+                <a href="26-bill-of-materials-genomic-sequence-processing.html" class="btn btn-secondary">
+                    <i data-lucide="package"></i> Bill of Materials
+                </a>
+                <p class="mt-sm">Bill of Materials 26: Genomic Sequence Processing & Analysis</p>
+            </div>
+            
+            <div class="card">
+                <a href="26-technical-architecture-genomic-sequence-processing.html" class="btn btn-secondary">
+                    <i data-lucide="layers"></i> Technical Architecture
+                </a>
+                <p class="mt-sm">Technical Architecture 26: Genomic Sequence Processing & Analysis</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

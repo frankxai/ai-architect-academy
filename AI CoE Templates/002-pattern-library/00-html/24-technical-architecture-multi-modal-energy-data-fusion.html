@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Technical Architecture: Multi-Modal Energy Data Fusion - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 10 Energy Distribution Intelligence / 24 Solution Multi Modal Energy Data Fusion</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="technical-architecture-multi-modal-energy-data-fusion">Technical Architecture: Multi-Modal Energy Data Fusion</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 24</li>
+<li><strong>Pattern Name:</strong> Multi-Modal Energy Data Fusion</li>
+<li><strong>Document Type:</strong> Technical Architecture</li>
+<li><strong>Created Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><architecture_overview></architecture_overview></p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The Multi-Modal Energy Data Fusion architecture implements a comprehensive data integration and correlation platform that unifies diverse energy ecosystem data streams including weather, market sentiment, operational metrics, IoT sensors, and customer behavior. The architecture leverages stream processing, machine learning, and advanced analytics to create real-time, actionable intelligence that improves forecasting accuracy, optimizes grid operations, and enhances market performance.</p>
+<hr/>
+<h2 id="system-architecture-diagram">System Architecture Diagram</h2>
+<pre class="codehilite card"><code>┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         Multi-Modal Data Sources                                │
+├─────────────────────┬────────────────────┬────────────────────────────────────┤
+│  Weather Systems    │  Market Data       │  Operational Systems              │
+│  ┌───────────────┐  │ ┌────────────────┐│ ┌──────────────────────────┐       │
+│  │ Meteorological│  │ │ Energy Markets ││ │ SCADA/EMS              │       │
+│  │ - Satellite   │  │ │ - Prices       ││ │ - Grid Status          │       │
+│  │ - Radar       │  │ │ - Volumes      ││ │ - Generation           │       │
+│  │ - Stations    │  │ │ - News/Social  ││ │ - Load                 │       │
+│  └───────────────┘  │ └────────────────┘│ └──────────────────────────┘       │
+├─────────────────────┼────────────────────┼────────────────────────────────────┤
+│  IoT Sensor Network │  Customer Systems  │  External Data                    │
+│  ┌───────────────┐  │ ┌────────────────┐│ ┌──────────────────────────┐       │
+│  │ Smart Meters  │  │ │ CRM/Billing    ││ │ Economic Indicators     │       │
+│  │ Grid Sensors  │  │ │ - Usage        ││ │ - GDP/Inflation        │       │
+│  │ Asset Monitors│  │ │ - Behavior     ││ │ - Demographics         │       │
+│  │ Weather IoT   │  │ │ - Preferences  ││ │ - Events/Calendar      │       │
+│  └───────────────┘  │ └────────────────┘│ └──────────────────────────┘       │
+└─────────────────────┴────────────────────┴────────────────────────────────────┘
+                                       │
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                      Data Ingestion &amp; Streaming Layer                           │
+├──────────────────────┬────────────────────┬────────────────────────────────────┤
+│  Stream Processing   │  Batch Ingestion   │  API Gateway                      │
+│  ┌─────────────────┐ │ ┌────────────────┐│ ┌──────────────────────────┐       │
+│  │ Kafka/Streaming │ │ │ ETL Pipelines  ││ │ REST/GraphQL APIs      │       │
+│  │ - Weather Stream│ │ │ - Daily Loads  ││ │ - Rate Limiting        │       │
+│  │ - IoT Telemetry │ │ │ - File Import  ││ │ - Authentication       │       │
+│  │ - Market Feeds  │ │ │ - DB Sync      ││ │ - Data Validation      │       │
+│  └─────────────────┘ │ └────────────────┘│ └──────────────────────────┘       │
+└───────────────────────┴────────────────────┴────────────────────────────────────┘
+                                       │
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    Data Processing &amp; Transformation                             │
+├──────────────────────┬────────────────────┬────────────────────────────────────┤
+│  Data Cleansing      │  Normalization     │  Enrichment                       │
+│  ┌─────────────────┐ │ ┌────────────────┐│ ┌──────────────────────────┐       │
+│  │ Quality Rules   │ │ │ Unit Conversion ││ │ Geocoding              │       │
+│  │ - Validation    │ │ │ - Time Zones    ││ │ - Location Services    │       │
+│  │ - Deduplication │ │ │ - Standards     ││ │ - Reference Data       │       │
+│  │ - Outlier Det.  │ │ │ - Schemas       ││ │ - Calculated Fields    │       │
+│  └─────────────────┘ │ └────────────────┘│ └──────────────────────────┘       │
+└───────────────────────┴────────────────────┴────────────────────────────────────┘
+                                       │
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                      Unified Data Platform                                      │
+├──────────────────────┬────────────────────┬────────────────────────────────────┤
+│  Data Lake          │  Data Warehouse    │  Feature Store                    │
+│  ┌─────────────────┐ │ ┌────────────────┐│ ┌──────────────────────────┐       │
+│  │ Raw Data Zone   │ │ │ Dimensional    ││ │ ML Features            │       │
+│  │ - Object Store  │ │ │   Models       ││ │ - Time Series          │       │
+│  │ - Parquet Files │ │ │ - Facts/Dims   ││ │ - Aggregations         │       │
+│  │ - Time Series   │ │ │ - Time Series  ││ │ - Embeddings           │       │
+│  └─────────────────┘ │ └────────────────┘│ └──────────────────────────┘       │
+└───────────────────────┴────────────────────┴────────────────────────────────────┘
+                                       │
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    Correlation &amp; Fusion Engine                                  │
+├──────────────────────┬────────────────────┬────────────────────────────────────┤
+│  Correlation Analysis│  Pattern Detection │  Causal Discovery                 │
+│  ┌─────────────────┐ │ ┌────────────────┐│ ┌──────────────────────────┐       │
+│  │ Cross-Domain    │ │ │ Anomaly Detect ││ │ Causality Graphs       │       │
+│  │ - Pearson/Spear │ │ │ - Clustering   ││ │ - Bayesian Networks    │       │
+│  │ - Mutual Info   │ │ │ - Association  ││ │ - Granger Causality    │       │
+│  │ - Lag Analysis  │ │ │ - Sequential   ││ │ - Transfer Entropy     │       │
+│  └─────────────────┘ │ └────────────────┘│ └──────────────────────────┘       │
+└───────────────────────┴────────────────────┴────────────────────────────────────┘
+                                       │
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                      Machine Learning Layer                                     │
+├──────────────────────┬────────────────────┬────────────────────────────────────┤
+│  Forecasting Models  │  Classification    │  Optimization                     │
+│  ┌─────────────────┐ │ ┌────────────────┐│ ┌──────────────────────────┐       │
+│  │ Demand Forecast │ │ │ Event Detection││ │ Resource Optimization   │       │
+│  │ - LSTM/GRU     │ │ │ - Random Forest││ │ - Linear Programming   │       │
+│  │ - Prophet      │ │ │ - XGBoost      ││ │ - Genetic Algorithms   │       │
+│  │ - ARIMA        │ │ │ - Neural Nets  ││ │ - Reinforcement Learn  │       │
+│  └─────────────────┘ │ └────────────────┘│ └──────────────────────────┘       │
+└───────────────────────┴────────────────────┴────────────────────────────────────┘
+                                       │
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    Analytics &amp; Visualization Layer                              │
+├──────────────────────┬────────────────────┬────────────────────────────────────┤
+│  Real-time Analytics│  Dashboards        │  Reporting                        │
+│  ┌─────────────────┐ │ ┌────────────────┐│ ┌──────────────────────────┐       │
+│  │ Stream Analytics│ │ │ Executive View ││ │ Operational Reports     │       │
+│  │ - CEP Engine    │ │ │ - KPI Metrics  ││ │ - Scheduled Reports    │       │
+│  │ - Window Funcs  │ │ │ - Drill-downs  ││ │ - Ad-hoc Analysis      │       │
+│  │ - Aggregations  │ │ │ - Alerts       ││ │ - Export/Share         │       │
+│  └─────────────────┘ │ └────────────────┘│ └──────────────────────────┘       │
+└───────────────────────┴────────────────────┴────────────────────────────────────┘
+                                       │
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                      Application Services Layer                                 │
+├──────────────────────┬────────────────────┬────────────────────────────────────┤
+│  Forecasting Service │  Trading Analytics│  Grid Operations                  │
+│  ┌─────────────────┐ │ ┌────────────────┐│ ┌──────────────────────────┐       │
+│  │ Load Prediction │ │ │ Price Forecast ││ │ Outage Prediction       │       │
+│  │ Renewable Output│ │ │ Risk Analysis  ││ │ Maintenance Planning    │       │
+│  │ Peak Detection  │ │ │ Position Mgmt  ││ │ Dispatch Optimization   │       │
+│  └─────────────────┘ │ └────────────────┘│ └──────────────────────────┘       │
+└───────────────────────┴────────────────────┴────────────────────────────────────┘
+</code></pre>
+<hr/>
+<h2 id="component-architecture-details">Component Architecture Details</h2>
+<h3 id="1-data-ingestion-layer">1. Data Ingestion Layer</h3>
+<h4 id="stream-processing-platform">Stream Processing Platform</h4>
+<ul>
+<li><strong>Purpose</strong>: Real-time data ingestion and processing</li>
+<li><strong>Capabilities</strong>:</li>
+<li>High-throughput streaming</li>
+<li>Low-latency processing</li>
+<li>Exactly-once semantics</li>
+<li>Stream joins and windowing</li>
+<li><strong>Technologies</strong>:</li>
+<li>Apache Kafka/OCI Streaming</li>
+<li>Apache Flink/Spark Streaming</li>
+<li>Kafka Connect</li>
+<li>Schema Registry</li>
+</ul>
+<h4 id="weather-data-integration">Weather Data Integration</h4>
+<ul>
+<li><strong>Data Sources</strong>:</li>
+<li>NOAA/NWS feeds</li>
+<li>Commercial weather APIs</li>
+<li>Satellite imagery</li>
+<li>Local weather stations</li>
+<li><strong>Processing</strong>:</li>
+<li>Interpolation algorithms</li>
+<li>Grid mapping</li>
+<li>Forecast ensemble</li>
+<li>Confidence scoring</li>
+</ul>
+<h3 id="2-data-correlation-engine">2. Data Correlation Engine</h3>
+<h4 id="cross-domain-correlation">Cross-Domain Correlation</h4>
+<ul>
+<li><strong>Statistical Methods</strong>:</li>
+<li>Pearson correlation</li>
+<li>Spearman rank correlation</li>
+<li>Mutual information</li>
+<li>Distance correlation</li>
+<li><strong>Temporal Analysis</strong>:</li>
+<li>Lag correlation</li>
+<li>Dynamic time warping</li>
+<li>Granger causality</li>
+<li>Cross-correlation functions</li>
+</ul>
+<h4 id="pattern-recognition">Pattern Recognition</h4>
+<ul>
+<li><strong>Techniques</strong>:</li>
+<li>Clustering algorithms</li>
+<li>Association rules</li>
+<li>Sequential patterns</li>
+<li>Motif discovery</li>
+<li><strong>Applications</strong>:</li>
+<li>Load pattern identification</li>
+<li>Price pattern detection</li>
+<li>Anomaly correlation</li>
+<li>Event sequence analysis</li>
+</ul>
+<h3 id="3-machine-learning-platform">3. Machine Learning Platform</h3>
+<h4 id="forecasting-models">Forecasting Models</h4>
+<ul>
+<li><strong>Demand Forecasting</strong>:</li>
+<li>LSTM/GRU networks</li>
+<li>Facebook Prophet</li>
+<li>SARIMA models</li>
+<li>Ensemble methods</li>
+<li><strong>Renewable Forecasting</strong>:</li>
+<li>Weather-based models</li>
+<li>Physical models</li>
+<li>Hybrid approaches</li>
+<li>Uncertainty quantification</li>
+</ul>
+<h4 id="market-analytics">Market Analytics</h4>
+<ul>
+<li><strong>Sentiment Analysis</strong>:</li>
+<li>NLP for news/social</li>
+<li>Topic modeling</li>
+<li>Sentiment scoring</li>
+<li>Entity extraction</li>
+<li><strong>Price Prediction</strong>:</li>
+<li>Time series models</li>
+<li>Feature engineering</li>
+<li>Market microstructure</li>
+<li>Volatility modeling</li>
+</ul>
+<h3 id="4-unified-data-model">4. Unified Data Model</h3>
+<h4 id="semantic-layer">Semantic Layer</h4>
+<ul>
+<li><strong>Components</strong>:</li>
+<li>Business glossary</li>
+<li>Data dictionary</li>
+<li>Ontology definition</li>
+<li>Relationship mapping</li>
+<li><strong>Standards</strong>:</li>
+<li>CIM compliance</li>
+<li>Industry vocabularies</li>
+<li>Custom extensions</li>
+<li>Version control</li>
+</ul>
+<h4 id="master-data-management">Master Data Management</h4>
+<ul>
+<li><strong>Entity Resolution</strong>:</li>
+<li>Customer matching</li>
+<li>Asset identification</li>
+<li>Location services</li>
+<li>Hierarchy management</li>
+<li><strong>Data Quality</strong>:</li>
+<li>Completeness checks</li>
+<li>Accuracy validation</li>
+<li>Consistency rules</li>
+<li>Timeliness monitoring</li>
+</ul>
+<hr/>
+<h2 id="data-flow-architecture">Data Flow Architecture</h2>
+<h3 id="real-time-processing-flow">Real-time Processing Flow</h3>
+<ol>
+<li><strong>Data Ingestion</strong>: Continuous streaming from sources</li>
+<li><strong>Stream Processing</strong>: Real-time transformations</li>
+<li><strong>Correlation</strong>: Multi-stream correlation</li>
+<li><strong>Feature Engineering</strong>: Real-time feature creation</li>
+<li><strong>Model Scoring</strong>: ML model inference</li>
+<li><strong>Alert Generation</strong>: Threshold monitoring</li>
+<li><strong>Dashboard Update</strong>: Real-time visualization</li>
+<li><strong>Action Trigger</strong>: Automated responses</li>
+</ol>
+<h3 id="batch-processing-flow">Batch Processing Flow</h3>
+<ol>
+<li><strong>Data Collection</strong>: Scheduled batch loads</li>
+<li><strong>Staging</strong>: Raw data staging</li>
+<li><strong>Cleansing</strong>: Quality checks and fixes</li>
+<li><strong>Transformation</strong>: Business rules application</li>
+<li><strong>Integration</strong>: Cross-source matching</li>
+<li><strong>Aggregation</strong>: Summary calculations</li>
+<li><strong>Model Training</strong>: ML model updates</li>
+<li><strong>Report Generation</strong>: Scheduled reporting</li>
+</ol>
+<hr/>
+<h2 id="security-architecture">Security Architecture</h2>
+<h3 id="data-security">Data Security</h3>
+<ul>
+<li><strong>Encryption</strong>:</li>
+<li>TLS 1.3 in transit</li>
+<li>AES-256 at rest</li>
+<li>Field-level encryption</li>
+<li>Key rotation</li>
+<li><strong>Access Control</strong>:</li>
+<li>Role-based access</li>
+<li>Attribute-based policies</li>
+<li>Data masking</li>
+<li>Row-level security</li>
+</ul>
+<h3 id="network-security">Network Security</h3>
+<ul>
+<li><strong>Segmentation</strong>:</li>
+<li>DMZ for external data</li>
+<li>Internal zones</li>
+<li>Micro-segmentation</li>
+<li>Zero-trust model</li>
+<li><strong>Monitoring</strong>:</li>
+<li>Traffic analysis</li>
+<li>Anomaly detection</li>
+<li>DDoS protection</li>
+<li>Intrusion prevention</li>
+</ul>
+<h3 id="compliance">Compliance</h3>
+<ul>
+<li><strong>Standards</strong>:</li>
+<li>NERC CIP compliance</li>
+<li>GDPR/CCPA</li>
+<li>SOC 2 Type II</li>
+<li>ISO 27001</li>
+<li><strong>Audit</strong>:</li>
+<li>Access logging</li>
+<li>Change tracking</li>
+<li>Data lineage</li>
+<li>Compliance reporting</li>
+</ul>
+<hr/>
+<h2 id="performance-scalability">Performance &amp; Scalability</h2>
+<h3 id="processing-capacity">Processing Capacity</h3>
+<ul>
+<li><strong>Streaming</strong>: 1M+ events/second</li>
+<li><strong>Batch</strong>: 100TB+ daily processing</li>
+<li><strong>Queries</strong>: &lt;100ms response time</li>
+<li><strong>Concurrent Users</strong>: 1000+ simultaneous</li>
+</ul>
+<h3 id="scalability-design">Scalability Design</h3>
+<ul>
+<li><strong>Horizontal Scaling</strong>:</li>
+<li>Distributed processing</li>
+<li>Partitioned data</li>
+<li>Load balancing</li>
+<li>Auto-scaling</li>
+<li><strong>Vertical Scaling</strong>:</li>
+<li>GPU acceleration</li>
+<li>In-memory computing</li>
+<li>SSD storage</li>
+<li>Network optimization</li>
+</ul>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<ul>
+<li><strong>Caching</strong>:</li>
+<li>Result caching</li>
+<li>Query caching</li>
+<li>Feature caching</li>
+<li>CDN for static content</li>
+<li><strong>Indexing</strong>:</li>
+<li>Time-series indexes</li>
+<li>Spatial indexes</li>
+<li>Full-text search</li>
+<li>Columnar storage</li>
+</ul>
+<hr/>
+<h2 id="monitoring-observability">Monitoring &amp; Observability</h2>
+<h3 id="data-quality-monitoring">Data Quality Monitoring</h3>
+<ul>
+<li><strong>Metrics</strong>:</li>
+<li>Completeness rates</li>
+<li>Accuracy scores</li>
+<li>Freshness indicators</li>
+<li>Consistency checks</li>
+<li><strong>Alerting</strong>:</li>
+<li>Quality thresholds</li>
+<li>Anomaly detection</li>
+<li>SLA monitoring</li>
+<li>Drift detection</li>
+</ul>
+<h3 id="system-monitoring">System Monitoring</h3>
+<ul>
+<li><strong>Infrastructure</strong>:</li>
+<li>Resource utilization</li>
+<li>Service health</li>
+<li>Network performance</li>
+<li>Storage capacity</li>
+<li><strong>Application</strong>:</li>
+<li>Processing latency</li>
+<li>Throughput rates</li>
+<li>Error rates</li>
+<li>Queue depths</li>
+</ul>
+<hr/>
+<h2 id="integration-patterns">Integration Patterns</h2>
+<h3 id="weather-system-integration">Weather System Integration</h3>
+<ul>
+<li><strong>Protocols</strong>:</li>
+<li>REST APIs</li>
+<li>FTP/SFTP</li>
+<li>WebSocket streams</li>
+<li>Satellite feeds</li>
+<li><strong>Formats</strong>:</li>
+<li>GRIB/GRIB2</li>
+<li>NetCDF</li>
+<li>GeoJSON</li>
+<li>CSV/XML</li>
+</ul>
+<h3 id="market-data-integration">Market Data Integration</h3>
+<ul>
+<li><strong>Sources</strong>:</li>
+<li>Exchange feeds</li>
+<li>Bloomberg/Reuters</li>
+<li>News APIs</li>
+<li>Social media APIs</li>
+<li><strong>Protocols</strong>:</li>
+<li>FIX protocol</li>
+<li>WebSocket</li>
+<li>REST/GraphQL</li>
+<li>RSS/Atom</li>
+</ul>
+<h3 id="iot-integration">IoT Integration</h3>
+<ul>
+<li><strong>Protocols</strong>:</li>
+<li>MQTT</li>
+<li>CoAP</li>
+<li>LoRaWAN</li>
+<li>NB-IoT</li>
+<li><strong>Formats</strong>:</li>
+<li>JSON</li>
+<li>Protocol Buffers</li>
+<li>Avro</li>
+<li>Custom binary</li>
+</ul>
+<hr/>
+<h2 id="deployment-architecture">Deployment Architecture</h2>
+<h3 id="container-platform">Container Platform</h3>
+<ul>
+<li><strong>Kubernetes Architecture</strong>:</li>
+<li>Multi-zone deployment</li>
+<li>StatefulSets for databases</li>
+<li>DaemonSets for agents</li>
+<li>CronJobs for batch</li>
+<li><strong>Service Mesh</strong>:</li>
+<li>Traffic management</li>
+<li>Security policies</li>
+<li>Observability</li>
+<li>Circuit breaking</li>
+</ul>
+<h3 id="cloud-infrastructure">Cloud Infrastructure</h3>
+<ul>
+<li><strong>Multi-Region</strong>:</li>
+<li>Geographic distribution</li>
+<li>Data sovereignty</li>
+<li>Disaster recovery</li>
+<li>Edge computing</li>
+<li><strong>Hybrid Cloud</strong>:</li>
+<li>On-premise integration</li>
+<li>Cloud bursting</li>
+<li>Data residency</li>
+<li>Cost optimization</li>
+</ul>
+<hr/>
+<h2 id="cost-optimization">Cost Optimization</h2>
+<h3 id="resource-management">Resource Management</h3>
+<ul>
+<li><strong>Compute</strong>:</li>
+<li>Spot instances</li>
+<li>Reserved capacity</li>
+<li>Serverless functions</li>
+<li>Auto-scaling policies</li>
+<li><strong>Storage</strong>:</li>
+<li>Tiered storage</li>
+<li>Data lifecycle</li>
+<li>Compression</li>
+<li>Deduplication</li>
+</ul>
+<hr/>
+<p><em>This technical architecture provides a comprehensive blueprint for implementing the Multi-Modal Energy Data Fusion pattern. The architecture enables unified intelligence across diverse data streams, improving forecasting accuracy by 35% and enabling superior operational decision-making through advanced correlation and machine learning capabilities.</em></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="24-bill-of-materials-multi-modal-energy-data-fusion.html" class="btn btn-secondary">
+                    <i data-lucide="package"></i> Bill of Materials
+                </a>
+                <p class="mt-sm">Bill of Materials: Multi-Modal Energy Data Fusion</p>
+            </div>
+            
+            <div class="card">
+                <a href="24-discovery-questions-multi-modal-energy-data-fusion.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Multi-Modal Energy Data Fusion</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

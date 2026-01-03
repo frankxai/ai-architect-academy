@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<title>AI Architect Academy – MVP Specification</title>
+
+<style>
+
+:root {
+
+  --bg: #030712;
+
+  --panel: rgba(8,14,28,0.92);
+
+  --accent: #6f7cff;
+
+  --accent-2: #4ad5c0;
+
+  --accent-3: #ff8b6b;
+
+  --accent-4: #ffd166;
+
+  --text: #ecf1ff;
+
+  --muted: #a8b0d9;
+
+  --border: rgba(255,255,255,0.08);
+
+}
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+body {
+
+  margin: 0;
+
+  font-family: "Inter", "Segoe UI", Tahoma, sans-serif;
+
+  background: radial-gradient(circle at 10% 0%, rgba(111,124,255,0.35), transparent 55%),
+
+              radial-gradient(circle at 90% 10%, rgba(74,213,192,0.28), transparent 60%),
+
+              #030712;
+
+  color: var(--text);
+
+}
+
+.page {
+
+  max-width: 1240px;
+
+  margin: 0 auto;
+
+  padding: 56px 32px 96px;
+
+}
+
+.hero {
+
+  background: linear-gradient(120deg, rgba(111,124,255,0.35), rgba(74,213,192,0.35));
+
+  border: 1px solid var(--border);
+
+  border-radius: 32px;
+
+  padding: 52px 56px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  box-shadow: 0 40px 90px rgba(3,10,35,0.6);
+
+}
+
+.hero:after {
+
+  content: "";
+
+  position: absolute;
+
+  right: -120px;
+
+  top: -120px;
+
+  width: 320px;
+
+  height: 320px;
+
+  background: radial-gradient(circle, rgba(111,124,255,0.45), transparent 70%);
+
+  filter: blur(2px);
+
+}
+
+.hero h1 {
+
+  font-size: 44px;
+
+  margin: 0 0 12px;
+
+}
+
+.hero p {
+
+  margin: 0 0 24px;
+
+  max-width: 680px;
+
+  font-size: 18px;
+
+  color: var(--muted);
+
+}
+
+.hero-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 20px;
+
+}
+
+.hero-card {
+
+  background: rgba(3,7,18,0.6);
+
+  border-radius: 20px;
+
+  padding: 20px 24px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+}
+
+.hero-card h3 {
+
+  margin: 0 0 8px;
+
+  font-size: 18px;
+
+  color: var(--accent-2);
+
+}
+
+.hero-card p {
+
+  margin: 0;
+
+  color: var(--text);
+
+}
+
+section {
+
+  margin-top: 56px;
+
+}
+
+section h2 {
+
+  margin: 0 0 20px;
+
+  font-size: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+}
+
+section h2 span {
+
+  width: 12px;
+
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+}
+
+.grid-3, .grid-4 {
+
+  display: grid;
+
+  gap: 20px;
+
+}
+
+.grid-3 {
+
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+}
+
+.grid-4 {
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+}
+
+.card {
+
+  background: var(--panel);
+
+  border-radius: 24px;
+
+  padding: 26px 28px;
+
+  border: 1px solid var(--border);
+
+  box-shadow: 0 26px 60px rgba(3,10,35,0.5);
+
+}
+
+.card h3 {
+
+  margin: 0 0 12px;
+
+  color: var(--accent-2);
+
+  font-size: 20px;
+
+}
+
+.card h4 {
+
+  margin: 12px 0 8px;
+
+  color: var(--accent-3);
+
+  font-size: 17px;
+
+}
+
+.card p {
+
+  margin: 0 0 12px;
+
+  color: var(--muted);
+
+  line-height: 1.55;
+
+}
+
+.card ul {
+
+  margin: 0;
+
+  padding-left: 18px;
+
+}
+
+.card ul li {
+
+  margin-bottom: 8px;
+
+  color: var(--text);
+
+}
+
+.badges {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 14px;
+
+}
+
+.badge {
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: rgba(111,124,255,0.18);
+
+  border: 1px solid rgba(111,124,255,0.35);
+
+  font-size: 13px;
+
+}
+
+.table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 14px;
+
+}
+
+.table thead {
+
+  background: rgba(111,124,255,0.14);
+
+}
+
+.table th, .table td {
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  padding: 12px 14px;
+
+  text-align: left;
+
+}
+
+.table tbody tr:nth-child(even) {
+
+  background: rgba(255,255,255,0.03);
+
+}
+
+.flow {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 18px;
+
+}
+
+.flow-step {
+
+  background: rgba(15,20,40,0.9);
+
+  border-radius: 20px;
+
+  padding: 20px 22px;
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  position: relative;
+
+}
+
+.flow-step h3 {
+
+  margin: 0 0 10px;
+
+  font-size: 18px;
+
+  color: var(--accent-3);
+
+}
+
+.flow-step span {
+
+  position: absolute;
+
+  top: -12px;
+
+  left: 20px;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: rgba(255,139,107,0.18);
+
+  border: 1px solid rgba(255,139,107,0.5);
+
+  font-size: 13px;
+
+}
+
+.timeline {
+
+  border-left: 2px solid rgba(111,124,255,0.35);
+
+  padding-left: 28px;
+
+  position: relative;
+
+}
+
+.timeline-item {
+
+  margin-bottom: 28px;
+
+  position: relative;
+
+}
+
+.timeline-item:before {
+
+  content: "";
+
+  position: absolute;
+
+  left: -39px;
+
+  top: 3px;
+
+  width: 14px;
+
+  height: 14px;
+
+  background: var(--accent-4);
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 0 5px rgba(255,209,102,0.2);
+
+}
+
+.timeline h3 {
+
+  margin: 0 0 8px;
+
+  color: var(--accent-4);
+
+  font-size: 18px;
+
+}
+
+.subgrid {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  gap: 16px;
+
+}
+
+.highlight {
+
+  border-radius: 24px;
+
+  padding: 24px 26px;
+
+  background: rgba(74,213,192,0.12);
+
+  border: 1px solid rgba(74,213,192,0.35);
+
+  margin-top: 18px;
+
+}
+
+.highlight h3 {
+
+  margin: 0 0 10px;
+
+  color: var(--accent-2);
+
+}
+
+.tasks {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 16px;
+
+}
+
+.task-card {
+
+  background: rgba(15,22,44,0.95);
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(255,255,255,0.07);
+
+  padding: 20px 24px;
+
+}
+
+.task-card h3 {
+
+  margin: 0 0 10px;
+
+  color: var(--accent);
+
+}
+
+.task-card ul {
+
+  margin: 0;
+
+  padding-left: 18px;
+
+}
+
+.task-card ul li {
+
+  margin-bottom: 6px;
+
+}
+
+@media (max-width: 768px) {
+
+  .hero {
+
+    padding: 36px;
+
+  }
+
+  section h2 {
+
+    font-size: 24px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="hero">
+
+    <h1>AI Architect Academy MVP – Product & Delivery Blueprint</h1>
+
+    <p>Design, build, and launch an adaptive, gamified knowledge platform within a week while establishing a scalable foundation for continuous content ingestion, certification, and future professor-led experiences.</p>
+
+    <div class="hero-grid">
+
+      <div class="hero-card">
+
+        <h3>MVP Focus</h3>
+
+        <p>Adaptive knowledge graph, personalization engine, gamification, and certification readiness for 1,000 learners.</p>
+
+      </div>
+
+      <div class="hero-card">
+
+        <h3>Target Cohort</h3>
+
+        <p>Multi-tier participants across AI, GenAI, Data Science, and Healthcare architecture tracks.</p>
+
+      </div>
+
+      <div class="hero-card">
+
+        <h3>Launch Vehicle</h3>
+
+        <p>Vercel-hosted SaaS with serverless APIs, knowledge graph store, and agent ingestion pipeline.</p>
+
+      </div>
+
+      <div class="hero-card">
+
+        <h3>Engagement Loop</h3>
+
+        <p>Daily content refresh, weekly retention challenges, and leaderboard-driven motivation.</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <section>
+
+    <h2><span></span>Product Overview & Principles</h2>
+
+    <div class="grid-3">
+
+      <div class="card">
+
+        <h3>Purpose</h3>
+
+        <p>Deliver personalized AI architecture mastery pathways that certify learners across technologies and industries while rapidly ingesting new knowledgepoints.</p>
+
+        <div class="badges">
+
+          <span class="badge">Personalization-first</span>
+
+          <span class="badge">Adaptive</span>
+
+          <span class="badge">Gamified</span>
+
+          <span class="badge">Industry-ready</span>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Personas</h3>
+
+        <ul>
+
+          <li><strong>Strategist</strong>: Directors/VPs shaping AI roadmaps and governance.</li>
+
+          <li><strong>Builder</strong>: Architects and tech leads executing AI solutions.</li>
+
+          <li><strong>Explorer</strong>: Cross-functional talent seeking AI fluency.</li>
+
+          <li><strong>Professor</strong> (future): Experts curating content and mentoring.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Experience Pillars</h3>
+
+        <ul>
+
+          <li>Context-aware onboarding tuned to industry and time commitment.</li>
+
+          <li>Hierarchical knowledge graph powering adaptive playlists.</li>
+
+          <li>Gamification & certification targeting depth and breadth of mastery.</li>
+
+          <li>Continuous discovery via agent ingestion of latest AI breakthroughs.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <h2><span></span>User Journeys & Interaction Specs</h2>
+
+    <div class="flow">
+
+      <div class="flow-step">
+
+        <span>Journey 1</span>
+
+        <h3>Healthcare Architect Ramp-Up</h3>
+
+        <p>Goal: Craft AI architecture for hospital network in 2 weeks.</p>
+
+        <ul>
+
+          <li>Onboarding collects role, industry, commitment (5 hrs/week), current mastery.</li>
+
+          <li>System generates Healthcare playlist mixing AI Core, GenAI, compliance, deployment patterns.</li>
+
+          <li>Weekly retention quiz and case-based scenario adapt playlist to gaps.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="flow-step">
+
+        <span>Journey 2</span>
+
+        <h3>World-Class Expert Stretch</h3>
+
+        <p>Goal: Earn "World-Class" certification, contribute new knowledgepoints.</p>
+
+        <ul>
+
+          <li>Expert selects advanced builder track and opts into agent content beta.</li>
+
+          <li>Completes high-difficulty knowledgepoints, submits insights on new frameworks.</li>
+
+          <li>Triggers NFT credential workflow upon milestone completion.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="flow-step">
+
+        <span>Journey 3</span>
+
+        <h3>Newcomer Orientation</h3>
+
+        <p>Goal: Understand AI fundamentals in business within 4 hours.</p>
+
+        <ul>
+
+          <li>Onboarding selects "Explain AI for my industry" preset.</li>
+
+          <li>Receives micro-learning playlist with quick wins and glossary.</li>
+
+          <li>Completes retention pulse to unlock Specialist level.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="highlight">
+
+      <h3>Interaction Blueprint</h3>
+
+      <ul>
+
+        <li>Responsive multi-step onboarding wizard with progress indicator and dynamic previews.</li>
+
+        <li>Knowledge journey canvas: draggable playlist, dependency visualization, and time per week slider.</li>
+
+        <li>Gamified dashboard featuring streak meter, certification progress rings, leaderboard preview, and agent alerts.</li>
+
+        <li>Retention challenge modal with adaptive question bank and coaching feedback.</li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <h2><span></span>Experience Architecture & Page Inventory</h2>
+
+    <div class="card">
+
+      <table class="table">
+
+        <thead>
+
+          <tr>
+
+            <th>Page / Surface</th>
+
+            <th>Primary Purpose</th>
+
+            <th>Key Components</th>
+
+            <th>Interactions</th>
+
+            <th>Data Sources</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+            <td>Marketing Landing (Optional)</td>
+
+            <td>Explain value, capture early access.</td>
+
+            <td>Hero CTA, product tiles, testimonial slider.</td>
+
+            <td>Sign-up CTA -> Onboarding.</td>
+
+            <td>CMS marketing data.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Onboarding Wizard</td>
+
+            <td>Collect persona, industry, goals, commitment.</td>
+
+            <td>Stepper, form inputs, preview panel.</td>
+
+            <td>Dynamic recommendations, validation, progress save.</td>
+
+            <td>User profile store, knowledge graph metadata.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Realtime Copilot Coach</td>
+
+            <td>Hands-free guidance during onboarding and skill drills.</td>
+
+            <td>Voice/video widget, live transcript, safety indicators.</td>
+
+            <td>Realtime co-create plan, escalate to human mentor, log insights.</td>
+
+            <td>LLM realtime API, session memory store, safety monitor.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Knowledge Journey Dashboard</td>
+
+            <td>Show curated playlist, mastery, points.</td>
+
+            <td>Playlist table, dependency graph, time allocation slider, agent alerts.</td>
+
+            <td>Add/remove knowledgepoint, rearrange within constraints.</td>
+
+            <td>Knowledge graph, progress store, gamification service.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Knowledgepoint Detail</td>
+
+            <td>Deep dive into content + related assets.</td>
+
+            <td>Summary, prerequisites, completion CTA, recommended follow-ups.</td>
+
+            <td>Complete knowledgepoint, rate relevance, save notes.</td>
+
+            <td>Content store, media/CDN, agent annotations.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Retention Pulse</td>
+
+            <td>Weekly challenge to reinforce mastery.</td>
+
+            <td>Question carousel, confidence slider, feedback.</td>
+
+            <td>Adaptive question branching, reward points, update mastery.</td>
+
+            <td>Assessment engine, analytics store.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Leaderboard & Certifications</td>
+
+            <td>Drive competition, view badges.</td>
+
+            <td>Leaderboard table, certification cards, NFT teaser.</td>
+
+            <td>Filter by track, share achievements, claim badges.</td>
+
+            <td>Gamification API, credential ledger.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Admin/Professor Console</td>
+
+            <td>Curate knowledgepoints, review ingestion feed.</td>
+
+            <td>Content pipeline list, approval workflow, analytics.</td>
+
+            <td>Publish/retire knowledgepoints, trigger announcements.</td>
+
+            <td>Content DB, agent logs, notifications.</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <h2><span></span>Technical Architecture</h2>
+
+    <div class="grid-3">
+
+      <div class="card">
+
+        <h3>Front-End (Vercel)</h3>
+
+        <ul>
+
+          <li>Framework: Next.js App Router with TypeScript, Tailwind or CSS modules.</li>
+
+          <li>State: React Query + Zustand for personalization state and real-time updates.</li>
+
+          <li>Visualization: D3/Recharts for dependency graph, Radix UI components.</li>
+
+          <li>Auth: NextAuth with OAuth (Auth0/Azure AD) + magic link for rapid pilots.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Back-End & Data</h3>
+
+        <ul>
+
+          <li>Edge Functions for onboarding, playlist generation, analytics intake.</li>
+
+          <li>Serverless API routes orchestrating knowledge graph queries (Neptune, Neo4j Aura, or Supabase pg_graph).</li>
+
+          <li>Content store via Supabase/Postgres with row-level security.</li>
+
+          <li>Gamification microservice (serverless cron) managing points, streaks, certifications.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Intelligence Layer</h3>
+
+        <ul>
+
+          <li>Personalization engine using embeddings + rules (OpenAI, DeepSeek, Vertex).</li>
+
+          <li>Agent ingestion workers (LangChain/Autogen) running on scheduled serverless tasks.</li>
+
+          <li>Vector index (Pinecone/Weaviate) storing knowledgepoint embeddings.</li>
+
+          <li>Observability with Langfuse, PostHog for experience analytics.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="grid-3" style="margin-top:20px;">
+
+      <div class="card">
+
+        <h3>Data Model Snapshot</h3>
+
+        <ul>
+
+          <li><strong>Domain</strong>: id, name, description.</li>
+
+          <li><strong>Knowledgepoint</strong>: id, title, summary, hierarchy ids, duration, difficulty, freshness, point value, dependencies[]</li>
+
+          <li><strong>LearnerProfile</strong>: user id, persona, industry, goals, time commitment, mastery map.</li>
+
+          <li><strong>Progress</strong>: user id, knowledgepoint id, status, score, attempts, last retention date.</li>
+
+          <li><strong>Certification</strong>: track id, requirements, awarded date, credential hash.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Integration Touchpoints</h3>
+
+        <ul>
+
+          <li>Agent crawler -> Content ingestion API.</li>
+
+          <li>LLM provider -> Personalization + retention question generation.</li>
+
+          <li>NFT minting (future) -> Web3 service webhook.</li>
+
+          <li>Notification hub -> Email/SMS/Slack for weekly updates.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Security & Compliance</h3>
+
+        <ul>
+
+          <li>JWT-based session management with refresh tokens.</li>
+
+          <li>PII encryption at rest, hashed completion data.</li>
+
+          <li>Audit logging for admin actions; monitor ingestion anomalies.</li>
+
+          <li>Role-based access for professors, admins, learners.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <h2><span></span>API Specification</h2>
+
+    <div class="card">
+
+      <table class="table">
+
+        <thead>
+
+          <tr>
+
+            <th>Endpoint</th>
+
+            <th>Method</th>
+
+            <th>Purpose</th>
+
+            <th>Key Fields</th>
+
+            <th>Notes</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+            <td>/api/onboarding/profile</td>
+
+            <td>POST</td>
+
+            <td>Persist learner profile and preferences.</td>
+
+            <td>{persona, industry, goals, timeCommitment, levelSelfReport}</td>
+
+            <td>Edge function; triggers initial playlist generation.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>/api/playlist/recommend</td>
+
+            <td>POST</td>
+
+            <td>Create/update adaptive playlist.</td>
+
+            <td>{userId, context, includeIndustry, targetCertification}</td>
+
+            <td>LLM + rules; returns ordered knowledgepoint list with metadata.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>/api/knowledgepoint/{id}</td>
+
+            <td>GET</td>
+
+            <td>Retrieve detail with prerequisites and related content.</td>
+
+            <td>query: includeDependencies, includeFreshness</td>
+
+            <td>Serves UI + agent summarization.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>/api/progress/update</td>
+
+            <td>POST</td>
+
+            <td>Record completion, streak, and mastery delta.</td>
+
+            <td>{userId, knowledgepointId, status, score, duration, reflections}</td>
+
+            <td>Updates gamification service via event bus.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>/api/retention/challenge</td>
+
+            <td>POST</td>
+
+            <td>Generate weekly adaptive questions.</td>
+
+            <td>{userId, knowledgepointIds, targetLevel}</td>
+
+            <td>LLM prompt uses knowledgepoint summaries + latest updates.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>/api/gamification/leaderboard</td>
+
+            <td>GET</td>
+
+            <td>Fetch leaderboard and certification standings.</td>
+
+            <td>query: track, range</td>
+
+            <td>Cached; invalidated on major events.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>/api/ingestion/feed</td>
+
+            <td>POST</td>
+
+            <td>Submit new knowledgepoint from agent crawler.</td>
+
+            <td>{title, summary, source, hierarchyGuess, tags, freshnessScore}</td>
+
+            <td>Requires API key + human approval workflow.</td>
+
+          </tr>
+
+          <tr>
+
+            <td>/api/admin/approve</td>
+
+            <td>POST</td>
+
+            <td>Approve/publish ingested knowledgepoint.</td>
+
+            <td>{itemId, decision, notes, reviewerId}</td>
+
+            <td>Enforces RBAC; logs to audit store.</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <h2><span></span>Vercel Setup & Environments</h2>
+
+    <div class="grid-3">
+
+      <div class="card">
+
+        <h3>Project Bootstrap</h3>
+
+        <ul>
+
+          <li>Create Vercel project linked to GitHub repo `ai-architect-academy`.</li>
+
+          <li>Enable monorepo support if sharing assets with academy knowledge base.</li>
+
+          <li>Configure Next.js app directory and experimental server actions.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Environment Variables</h3>
+
+        <ul>
+
+          <li>AUTH_SECRET, AUTH_PROVIDER_KEYS</li>
+
+          <li>DATABASE_URL (Supabase/Postgres)</li>
+
+          <li>GRAPH_ENDPOINT, GRAPH_TOKEN</li>
+
+          <li>VECTOR_INDEX_URL, VECTOR_API_KEY</li>
+
+          <li>LLM_PROVIDER_KEY, AGENT_WEBHOOK_KEY</li>
+
+          <li>ANALYTICS_WRITE_KEY (PostHog/Segment)</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Deployment Workflow</h3>
+
+        <ul>
+
+          <li>Main branch -> Production (auto deploy after checks).</li>
+
+          <li>Preview deployments for feature branches (QA sign-off).</li>
+
+          <li>Scheduled revalidation for static marketing pages.</li>
+
+          <li>Cron jobs via Vercel Scheduler for retention pulse and ingestion.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="highlight">
+
+      <h3>Monitoring & Ops</h3>
+
+      <ul>
+
+        <li>Enable Vercel Observability, integrate with Datadog for serverless metrics.</li>
+
+        <li>Set up error alerting to Slack/Teams channel; include ingestion anomaly alerts.</li>
+
+        <li>Configure backups for Postgres and knowledge graph snapshots.</li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <h2><span></span>SDLC Sprint Plan (14-Day Cadence)</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <h3>Sprint 0 – Foundations (2 days)</h3>
+
+        <ul>
+
+          <li>Finalize user stories, data model, and technical stack decisions.</li>
+
+          <li>Stand up repo, CI/CD, linting, test harness, and environment configs.</li>
+
+          <li>Seed knowledge graph with initial hierarchy taxonomy.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <h3>Sprint 1 – Onboarding & Graph (4 days)</h3>
+
+        <ul>
+
+          <li>Implement onboarding wizard, profile API, and personalization draft.</li>
+
+          <li>Build knowledge journey dashboard skeleton with playlist view.</li>
+
+          <li>Integrate knowledge graph queries; display dependencies and durations.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <h3>Sprint 2 – Gamification & Retention (4 days)</h3>
+
+        <ul>
+
+          <li>Deliver gamification service, points logic, leaderboard preview.</li>
+
+          <li>Launch weekly retention challenge generator and analytics logging.</li>
+
+          <li>Polish UI, accessibility, and responsive behavior.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <h3>Sprint 3 – Agent Ingestion & Launch (4 days)</h3>
+
+        <ul>
+
+          <li>Integrate agent ingestion pipelines and admin approval console.</li>
+
+          <li>Perform end-to-end QA, load testing for 1,000 cohort.</li>
+
+          <li>Finalize go-live checklist, communications, and support playbooks.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <h2><span></span>Comprehensive Task Matrix</h2>
+
+    <div class="tasks">
+
+      <div class="task-card">
+
+        <h3>Product & UX</h3>
+
+        <ul>
+
+          <li>Author detailed user stories for each persona and journey.</li>
+
+          <li>Create Figma flows for onboarding, journey dashboard, retention pulse.</li>
+
+          <li>Prototype realtime copilot surfaces with voice safety states and accessibility notes.</li>
+
+          <li>Define gamification rules, badge art, and certification criteria documentation.</li>
+
+          <li>Produce content style guide for knowledgepoints and agent summaries.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="task-card">
+
+        <h3>Engineering</h3>
+
+        <ul>
+
+          <li>Scaffold Next.js project, configure Tailwind, ESLint, testing (Vitest/Playwright).</li>
+
+          <li>Implement API endpoints, edge functions, and integration tests.</li>
+
+          <li>Set up database schemas, Prisma migrations, and seed scripts.</li>
+
+          <li>Integrate personalization engine with LLM provider and fallback heuristics.</li>
+
+          <li>Build reasoning evaluation harness covering o1/Claude 3.5 cost, latency, and accuracy gates.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="task-card">
+
+        <h3>Data & Content</h3>
+
+        <ul>
+
+          <li>Curate hierarchy taxonomy and 220+ knowledgepoints with metadata.</li>
+
+          <li>Build agent crawler prompts and connectors for AI news feeds.</li>
+
+          <li>Establish approval workflow and SLAs for new knowledgepoints.</li>
+
+          <li>Develop retention question bank and scoring rubric.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="task-card">
+
+        <h3>Ops & Enablement</h3>
+
+        <ul>
+
+          <li>Configure Vercel projects, secrets, and monitoring integrations.</li>
+
+          <li>Document runbooks for ingestion incidents and content rollback.</li>
+
+          <li>Plan pilot onboarding events, support channels, and feedback loops.</li>
+
+          <li>Run EU AI Act launch checkpoints (risk class, transparency log, human oversight plan).</li>
+
+          <li>Coordinate NFT credential prototype with Web3 partner.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <h2><span></span>Risks & Mitigations</h2>
+
+    <div class="grid-3">
+
+      <div class="card">
+
+        <h3>Content Freshness</h3>
+
+        <p>Risk: Outdated knowledgepoints reduce trust.</p>
+
+        <h4>Mitigation</h4>
+
+        <ul>
+
+          <li>Daily agent crawls + manual review queue.</li>
+
+          <li>Freshness score decay triggers auto alerts.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Personalization Drift</h3>
+
+        <p>Risk: Recommendations misaligned with learner goals.</p>
+
+        <h4>Mitigation</h4>
+
+        <ul>
+
+          <li>Feedback capture on each knowledgepoint (useful/not relevant).</li>
+
+          <li>Weekly model retraining with monitored KPIs.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Scalability</h3>
+
+        <p>Risk: Serverless cold starts and graph queries slow down 1,000 user cohort.</p>
+
+        <h4>Mitigation</h4>
+
+        <ul>
+
+          <li>Use connection pooling, graph caching, and pre-computed playlists.</li>
+
+          <li>Load test via k6, auto-scale vector index capacity.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <h2><span></span>KPIs & Analytics</h2>
+
+    <div class="grid-3">
+
+      <div class="card">
+
+        <h3>Activation</h3>
+
+        <ul>
+
+          <li>Time to first playlist (&lt;3 minutes).</li>
+
+          <li>% onboarding completion (>85%).</li>
+
+          <li>Knowledgepoints started within 24h.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Engagement</h3>
+
+        <ul>
+
+          <li>Weekly retention pulse participation (&gt;70%).</li>
+
+          <li>Average points earned per week.</li>
+
+          <li>Playlist completion rate per certification track.</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Outcomes</h3>
+
+        <ul>
+
+          <li>Certifications issued vs. target.</li>
+
+          <li>Knowledgepoint freshness score average.</li>
+
+          <li>NPS and qualitative feedback sentiment.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+</body>
+
+</html>
+

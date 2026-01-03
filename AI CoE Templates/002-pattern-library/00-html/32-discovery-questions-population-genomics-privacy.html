@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: Population Genomics & Privacy-Preserving Analytics - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 09 Genomic Public Health Intelligence / 32 Solution Population Genomics Privacy</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="discovery-questions-population-genomics-privacy-preserving-analytics">Discovery Questions: Population Genomics &amp; Privacy-Preserving Analytics</h1>
+<h2 id="discovery-current-state-assessment">Discovery &amp; Current State Assessment</h2>
+<ol>
+<li><strong>What is the scale of genomic data you currently manage or plan to analyze?</strong></li>
+<li>
+<p><em>Purpose: Understand data volume and computational requirements</em></p>
+</li>
+<li>
+<p><strong>How do you currently handle genomic data privacy and consent management?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Assess privacy maturity and compliance gaps</em></p>
+</li>
+<li>
+<p><strong>What genomic analysis capabilities do you currently have?</strong></p>
+</li>
+<li><em>Purpose: Evaluate existing infrastructure and skills</em></li>
+</ol>
+<hr/>
+<h2 id="strategy-business-alignment">Strategy &amp; Business Alignment</h2>
+<ol>
+<li><strong>What are your primary goals for population-scale genomic analysis?</strong></li>
+<li>
+<p><em>Purpose: Align solution with business objectives</em></p>
+</li>
+<li>
+<p><strong>How important is multi-institutional collaboration for your genomic research?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Determine federated learning requirements</em></p>
+</li>
+<li>
+<p><strong>What would be the impact of enabling privacy-preserving genomic analysis?</strong></p>
+</li>
+<li><em>Purpose: Quantify business value and ROI</em></li>
+</ol>
+<hr/>
+<h2 id="opportunity-qualification">Opportunity Qualification</h2>
+<ol>
+<li><strong>What privacy regulations must you comply with for genomic data?</strong></li>
+<li>
+<p><em>Purpose: Understand regulatory requirements</em></p>
+</li>
+<li>
+<p><strong>Who are your key stakeholders for genomic initiatives?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Identify decision makers and influencers</em></p>
+</li>
+<li>
+<p><strong>What budget is allocated for genomic analytics and privacy compliance?</strong></p>
+</li>
+<li><em>Purpose: Assess financial commitment</em></li>
+</ol>
+<hr/>
+<h2 id="technical-scoping-architecture">Technical Scoping &amp; Architecture</h2>
+<ol>
+<li>
+<p><strong>Where does your genomic data currently reside?</strong></p>
+<ul>
+<li><em>Purpose: Map data sources and integration needs</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What genomic data formats and standards do you use?</strong></p>
+<ul>
+<li><em>Purpose: Assess standardization and interoperability</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What computational infrastructure do you have for genomic analysis?</strong></p>
+<ul>
+<li><em>Purpose: Evaluate compute capacity and requirements</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="privacy-security-requirements">Privacy &amp; Security Requirements</h2>
+<ol>
+<li>
+<p><strong>What are your specific privacy requirements for genomic data?</strong></p>
+<ul>
+<li><em>Purpose: Design privacy protection mechanisms</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Have you experienced any genomic data breaches or privacy incidents?</strong></p>
+<ul>
+<li><em>Purpose: Understand security concerns and history</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What level of privacy guarantee do you need (differential privacy epsilon)?</strong></p>
+<ul>
+<li><em>Purpose: Configure privacy parameters</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="consent-management">Consent Management</h2>
+<ol>
+<li>
+<p><strong>How do you currently manage participant consent for genomic studies?</strong></p>
+<ul>
+<li><em>Purpose: Design consent management system</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What granularity of consent control do participants expect?</strong></p>
+<ul>
+<li><em>Purpose: Define consent granularity requirements</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you handle consent withdrawal and data deletion requests?</strong></p>
+<ul>
+<li><em>Purpose: Plan consent lifecycle management</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="population-diversity">Population &amp; Diversity</h2>
+<ol>
+<li>
+<p><strong>What populations are included in your genomic studies?</strong></p>
+<ul>
+<li><em>Purpose: Assess diversity and representation</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you address health equity in genomic research?</strong></p>
+<ul>
+<li><em>Purpose: Design inclusive analytics approaches</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What ancestral populations are critical for your analyses?</strong></p>
+<ul>
+<li><em>Purpose: Plan population stratification methods</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="collaboration-requirements">Collaboration Requirements</h2>
+<ol>
+<li>
+<p><strong>Which institutions would you collaborate with for genomic analysis?</strong></p>
+<ul>
+<li><em>Purpose: Define federation participants</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What data sharing agreements exist or are needed?</strong></p>
+<ul>
+<li><em>Purpose: Understand legal frameworks</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you handle intellectual property from collaborative studies?</strong></p>
+<ul>
+<li><em>Purpose: Design IP protection mechanisms</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="analytics-research">Analytics &amp; Research</h2>
+<ol>
+<li>
+<p><strong>What types of genomic analyses do you need to perform?</strong></p>
+<ul>
+<li><em>Purpose: Define analytics requirements</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What is your typical study size and statistical power needs?</strong></p>
+<ul>
+<li><em>Purpose: Determine computational scale</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you validate and reproduce genomic findings?</strong></p>
+<ul>
+<li><em>Purpose: Design validation workflows</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="data-integration">Data Integration</h2>
+<ol>
+<li>
+<p><strong>What clinical and phenotype data accompanies genomic data?</strong></p>
+<ul>
+<li><em>Purpose: Plan multi-modal integration</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you link genomic data to health outcomes?</strong></p>
+<ul>
+<li><em>Purpose: Design outcome tracking</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What external databases do you need to integrate with?</strong></p>
+<ul>
+<li><em>Purpose: Plan external integrations</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="computational-requirements">Computational Requirements</h2>
+<ol>
+<li>
+<p><strong>What is your current genomic analysis throughput?</strong></p>
+<ul>
+<li><em>Purpose: Size computational infrastructure</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What are your latency requirements for genomic queries?</strong></p>
+<ul>
+<li><em>Purpose: Design performance optimization</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have GPU or specialized hardware for genomics?</strong></p>
+<ul>
+<li><em>Purpose: Assess acceleration options</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="quality-standards">Quality &amp; Standards</h2>
+<ol>
+<li>
+<p><strong>What quality control measures do you apply to genomic data?</strong></p>
+<ul>
+<li><em>Purpose: Design QC pipelines</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Which genomic standards and formats must you support?</strong></p>
+<ul>
+<li><em>Purpose: Ensure standards compliance</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you handle genomic data versioning and updates?</strong></p>
+<ul>
+<li><em>Purpose: Plan version management</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="regulatory-compliance">Regulatory &amp; Compliance</h2>
+<ol>
+<li>
+<p><strong>What genomic-specific regulations apply to your organization?</strong></p>
+<ul>
+<li><em>Purpose: Ensure regulatory compliance</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you demonstrate compliance for genomic data handling?</strong></p>
+<ul>
+<li><em>Purpose: Design audit capabilities</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What international data transfer restrictions apply?</strong></p>
+<ul>
+<li><em>Purpose: Plan cross-border compliance</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="results-reporting">Results &amp; Reporting</h2>
+<ol>
+<li>
+<p><strong>How do you return genomic results to participants or clinicians?</strong></p>
+<ul>
+<li><em>Purpose: Design result delivery mechanisms</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What reporting requirements exist for genomic findings?</strong></p>
+<ul>
+<li><em>Purpose: Plan reporting workflows</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you handle incidental findings in genomic data?</strong></p>
+<ul>
+<li><em>Purpose: Design incidental finding protocols</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="risk-management">Risk Management</h2>
+<ol>
+<li>
+<p><strong>What are your biggest risks in genomic data management?</strong></p>
+<ul>
+<li><em>Purpose: Identify and mitigate risks</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you handle re-identification risk in genomic data?</strong></p>
+<ul>
+<li><em>Purpose: Design re-identification prevention</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What is your incident response plan for genomic data breaches?</strong></p>
+<ul>
+<li><em>Purpose: Plan incident response procedures</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="future-considerations">Future Considerations</h2>
+<ol>
+<li>
+<p><strong>How do you see your genomic capabilities evolving?</strong></p>
+<ul>
+<li><em>Purpose: Ensure solution scalability</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What emerging genomic technologies are you considering?</strong></p>
+<ul>
+<li><em>Purpose: Plan for future integration</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Would you extend this to other omics data (proteomics, metabolomics)?</strong></p>
+<ul>
+<li><em>Purpose: Consider multi-omics expansion</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><em>These discovery questions are designed to comprehensively assess an organization's readiness for implementing the Population Genomics &amp; Privacy-Preserving Analytics pattern. The responses will help determine the appropriate privacy mechanisms, identify collaboration requirements, and customize the solution to enable population-scale genomic analysis while maintaining complete privacy compliance.</em></p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

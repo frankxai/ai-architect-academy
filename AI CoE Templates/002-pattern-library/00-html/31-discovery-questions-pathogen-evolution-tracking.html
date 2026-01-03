@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: Pathogen Evolution & Transmission Tracking - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 09 Genomic Public Health Intelligence / 31 Solution Pathogen Evolution Tracking</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="discovery-questions-pathogen-evolution-transmission-tracking">Discovery Questions: Pathogen Evolution &amp; Transmission Tracking</h1>
+<h2 id="strategic-and-public-health-questions">Strategic and Public Health Questions</h2>
+<h3 id="public-health-objectives-and-current-challenges">Public Health Objectives and Current Challenges</h3>
+<ol>
+<li><strong>Primary Surveillance Challenges</strong></li>
+<li>What are your most significant challenges in detecting and responding to infectious disease outbreaks?</li>
+<li>How long does it currently take from pathogen sample collection to actionable surveillance information?</li>
+<li>Which infectious diseases pose the greatest threat to your population, and what surveillance gaps exist?</li>
+<li>
+<p>How do you currently track transmission chains and identify outbreak sources?</p>
+</li>
+<li>
+<p><strong>Current Genomic Surveillance Capabilities</strong></p>
+</li>
+<li>What genomic sequencing capabilities do you currently have for pathogen surveillance?</li>
+<li>How do you currently integrate genomic data with epidemiological surveillance information?</li>
+<li>What is your current capacity for processing and analyzing pathogen genomic sequences?</li>
+<li>
+<p>How do you currently share genomic surveillance data with national and international partners?</p>
+</li>
+<li>
+<p><strong>Outbreak Response and Preparedness</strong></p>
+</li>
+<li>What is your current process for outbreak investigation and response coordination?</li>
+<li>How do you currently assess the effectiveness of public health interventions during outbreaks?</li>
+<li>What early warning systems do you have in place for emerging infectious disease threats?</li>
+<li>How do you coordinate with international partners during cross-border disease events?</li>
+</ol>
+<h3 id="stakeholder-requirements-and-use-cases">Stakeholder Requirements and Use Cases</h3>
+<ol>
+<li><strong>Key Stakeholders and Decision Makers</strong></li>
+<li>Which public health agencies, laboratories, and healthcare systems would be primary users?</li>
+<li>What are the different information needs of epidemiologists, laboratory scientists, and public health officials?</li>
+<li>How do you currently communicate genomic surveillance findings to policymakers and the public?</li>
+<li>
+<p>What coordination is needed with veterinary and environmental health partners (One Health approach)?</p>
+</li>
+<li>
+<p><strong>Priority Pathogens and Disease Areas</strong></p>
+</li>
+<li>Which pathogens are highest priority for enhanced genomic surveillance (respiratory viruses, foodborne pathogens, etc.)?</li>
+<li>Do you need capabilities for both routine surveillance and emergency outbreak response?</li>
+<li>What seasonal or endemic diseases require continuous monitoring versus event-based surveillance?</li>
+<li>Are there specific emerging threats or biodefense concerns that need specialized surveillance?</li>
+</ol>
+<h2 id="technical-infrastructure-questions">Technical Infrastructure Questions</h2>
+<h3 id="laboratory-and-sequencing-capabilities">Laboratory and Sequencing Capabilities</h3>
+<ol>
+<li><strong>Current Laboratory Infrastructure</strong></li>
+<li>What laboratories in your network currently perform pathogen genomic sequencing?</li>
+<li>What sequencing platforms and technologies are currently available (Illumina, Oxford Nanopore, PacBio)?</li>
+<li>What is your current sequencing throughput capacity and turnaround time?</li>
+<li>
+<p>How are laboratory quality control and assurance programs currently managed?</p>
+</li>
+<li>
+<p><strong>Sample Collection and Processing</strong></p>
+</li>
+<li>What is your current sample collection network and specimen transport system?</li>
+<li>How do you currently handle sample prioritization and triage for sequencing?</li>
+<li>What laboratory information management systems (LIMS) are currently in use?</li>
+<li>
+<p>How do you currently maintain sample integrity and chain of custody?</p>
+</li>
+<li>
+<p><strong>Bioinformatics and Data Analysis</strong></p>
+</li>
+<li>What bioinformatics expertise and computational infrastructure do you currently have?</li>
+<li>How do you currently perform sequence assembly, variant calling, and phylogenetic analysis?</li>
+<li>What software tools and pipelines are currently used for genomic data analysis?</li>
+<li>How do you currently manage and store large genomic datasets?</li>
+</ol>
+<h3 id="data-integration-and-interoperability">Data Integration and Interoperability</h3>
+<ol>
+<li><strong>Surveillance System Integration</strong></li>
+<li>How would genomic surveillance integrate with existing communicable disease surveillance systems?</li>
+<li>What electronic health record (EHR) systems need integration for clinical data linkage?</li>
+<li>How do you currently integrate laboratory data with epidemiological case investigation?</li>
+<li>
+<p>What contact tracing systems and platforms are currently in use?</p>
+</li>
+<li>
+<p><strong>Data Standards and Interoperability</strong></p>
+<ul>
+<li>What data standards and formats are currently used for surveillance data exchange?</li>
+<li>How do you currently ensure data quality and consistency across different data sources?</li>
+<li>What are your requirements for real-time versus batch data processing and analysis?</li>
+<li>How do you currently handle data linkage and patient privacy protection?</li>
+</ul>
+</li>
+</ol>
+<h2 id="genomic-analysis-and-intelligence-requirements">Genomic Analysis and Intelligence Requirements</h2>
+<h3 id="phylogenetic-and-evolution-analysis">Phylogenetic and Evolution Analysis</h3>
+<ol>
+<li>
+<p><strong>Phylogenetic Analysis Needs</strong></p>
+<ul>
+<li>What types of phylogenetic analysis are most important for your surveillance objectives?</li>
+<li>How important is real-time phylogenetic tree construction versus periodic batch analysis?</li>
+<li>What level of bootstrap support and statistical confidence is required for phylogenetic inferences?</li>
+<li>How do you need to handle recombination detection and analysis for specific pathogens?</li>
+</ul>
+</li>
+<li>
+<p><strong>Variant Detection and Classification</strong></p>
+<ul>
+<li>What variant classification systems need to be supported (WHO variants, Pango lineages, etc.)?</li>
+<li>How should emerging variants of concern be automatically flagged and prioritized?</li>
+<li>What functional annotation and impact prediction capabilities are needed?</li>
+<li>How should antigenic and drug resistance mutations be specifically tracked?</li>
+</ul>
+</li>
+<li>
+<p><strong>Evolution Prediction and Modeling</strong></p>
+<ul>
+<li>What value would you see in predicting pathogen evolutionary trajectories?</li>
+<li>How important is forecasting of antigenic drift for vaccine strain selection?</li>
+<li>What role should machine learning play in predicting mutation patterns and fitness effects?</li>
+<li>How should climate and environmental factors be integrated into evolution models?</li>
+</ul>
+</li>
+</ol>
+<h3 id="transmission-analysis-and-contact-tracing">Transmission Analysis and Contact Tracing</h3>
+<ol>
+<li>
+<p><strong>Transmission Network Analysis</strong></p>
+<ul>
+<li>How important is genomic-informed contact tracing and transmission chain reconstruction?</li>
+<li>What integration is needed with digital contact tracing platforms and applications?</li>
+<li>How should genomic similarity thresholds be set for inferring transmission links?</li>
+<li>What statistical confidence levels are required for transmission network inferences?</li>
+</ul>
+</li>
+<li>
+<p><strong>Geographic and Temporal Analysis</strong></p>
+<ul>
+<li>What geographic resolution is needed for transmission analysis (neighborhood, city, region, country)?</li>
+<li>How should population mobility and travel data be integrated with genomic analysis?</li>
+<li>What temporal windows are most relevant for transmission analysis of different pathogens?</li>
+<li>How important is real-time versus retrospective transmission analysis?</li>
+</ul>
+</li>
+</ol>
+<h2 id="international-collaboration-and-data-sharing">International Collaboration and Data Sharing</h2>
+<h3 id="global-surveillance-networks">Global Surveillance Networks</h3>
+<ol>
+<li>
+<p><strong>International Database Integration</strong></p>
+<ul>
+<li>Which international genomic databases require integration (GISAID, GenBank, regional databases)?</li>
+<li>What are your requirements for automated data submission and retrieval?</li>
+<li>How do you want to handle data acknowledgment, attribution, and citation requirements?</li>
+<li>What metadata standards need to be supported for international data sharing?</li>
+</ul>
+</li>
+<li>
+<p><strong>Cross-Border Collaboration</strong></p>
+<ul>
+<li>Which countries or regions are most important for surveillance data sharing and collaboration?</li>
+<li>What legal and regulatory frameworks govern international genomic data sharing?</li>
+<li>How should data sovereignty and national security concerns be addressed?</li>
+<li>What emergency protocols are needed for rapid international data sharing during outbreaks?</li>
+</ul>
+</li>
+<li>
+<p><strong>WHO and Regional Organization Integration</strong></p>
+<ul>
+<li>How should the system integrate with WHO Global Influenza Surveillance and Response System (GISRS)?</li>
+<li>What integration is needed with regional surveillance networks (EU ECDC, Africa CDC, etc.)?</li>
+<li>How should the system support WHO emergency response and pandemic preparedness activities?</li>
+<li>What reporting capabilities are needed for International Health Regulations (IHR) compliance?</li>
+</ul>
+</li>
+</ol>
+<h3 id="data-privacy-and-security">Data Privacy and Security</h3>
+<ol>
+<li>
+<p><strong>Privacy and Confidentiality</strong></p>
+<ul>
+<li>What privacy protection measures are required for genomic surveillance data?</li>
+<li>How should patient privacy be protected while enabling public health surveillance?</li>
+<li>What consent and authorization frameworks apply to genomic surveillance activities?</li>
+<li>How should data de-identification and anonymization be implemented?</li>
+</ul>
+</li>
+<li>
+<p><strong>Security and Access Control</strong></p>
+<ul>
+<li>What security classifications apply to different types of genomic surveillance data?</li>
+<li>How should access controls be implemented for different user roles and organizations?</li>
+<li>What audit and monitoring capabilities are required for data access and usage?</li>
+<li>How should high-consequence pathogen data be specially protected?</li>
+</ul>
+</li>
+</ol>
+<h2 id="implementation-and-operational-questions">Implementation and Operational Questions</h2>
+<h3 id="deployment-strategy-and-timeline">Deployment Strategy and Timeline</h3>
+<ol>
+<li>
+<p><strong>Implementation Priorities</strong></p>
+<ul>
+<li>Which pathogens or disease areas should be prioritized for initial implementation?</li>
+<li>Do you prefer a phased approach starting with specific laboratories or geographic regions?</li>
+<li>What would constitute a successful pilot or proof-of-concept implementation?</li>
+<li>What are your timeline expectations for achieving operational genomic surveillance capabilities?</li>
+</ul>
+</li>
+<li>
+<p><strong>Resource Requirements and Constraints</strong></p>
+<ul>
+<li>What budget range and funding sources are available for genomic surveillance implementation?</li>
+<li>What staffing and training requirements need to be addressed for successful implementation?</li>
+<li>What infrastructure limitations or constraints need to be considered?</li>
+<li>How should implementation be coordinated across multiple agencies and organizations?</li>
+</ul>
+</li>
+</ol>
+<h3 id="training-and-capacity-building">Training and Capacity Building</h3>
+<ol>
+<li>
+<p><strong>Skills and Expertise Development</strong></p>
+<ul>
+<li>What training is needed for laboratory staff in genomic sequencing and bioinformatics?</li>
+<li>How should epidemiologists be trained to interpret and use genomic surveillance data?</li>
+<li>What bioinformatics and data science expertise needs to be developed or recruited?</li>
+<li>How should public health officials be educated about genomic surveillance capabilities?</li>
+</ul>
+</li>
+<li>
+<p><strong>Quality Assurance and Validation</strong></p>
+<ul>
+<li>What quality control and assurance programs need to be established for genomic surveillance?</li>
+<li>How should proficiency testing and external quality assessment be implemented?</li>
+<li>What validation studies are needed to demonstrate surveillance system performance?</li>
+<li>How should genomic surveillance data quality be monitored and maintained over time?</li>
+</ul>
+</li>
+</ol>
+<h2 id="regulatory-and-compliance-questions">Regulatory and Compliance Questions</h2>
+<h3 id="laboratory-standards-and-accreditation">Laboratory Standards and Accreditation</h3>
+<ol>
+<li>
+<p><strong>Laboratory Certification Requirements</strong></p>
+<ul>
+<li>What laboratory accreditation and certification requirements apply to genomic surveillance?</li>
+<li>How should Clinical Laboratory Improvement Amendments (CLIA) requirements be addressed?</li>
+<li>What international laboratory standards need to be met (ISO 15189, CAP, etc.)?</li>
+<li>How should laboratory biosafety and biosecurity requirements be implemented?</li>
+</ul>
+</li>
+<li>
+<p><strong>Research and Surveillance Ethics</strong></p>
+<ul>
+<li>What ethical review and oversight processes apply to genomic surveillance activities?</li>
+<li>How should dual-use research of concern be identified and managed?</li>
+<li>What institutional review board (IRB) oversight is required for surveillance versus research activities?</li>
+<li>How should community engagement and public communication be handled?</li>
+</ul>
+</li>
+</ol>
+<h3 id="regulatory-compliance-and-reporting">Regulatory Compliance and Reporting</h3>
+<ol>
+<li>
+<p><strong>Public Health Regulations</strong></p>
+<ul>
+<li>What public health reporting requirements apply to genomic surveillance findings?</li>
+<li>How should genomic surveillance support International Health Regulations (IHR) compliance?</li>
+<li>What emergency use authorizations or regulatory pathways apply during public health emergencies?</li>
+<li>How should genomic surveillance data be used to support regulatory decision-making?</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Governance and Stewardship</strong></p>
+<ul>
+<li>What data governance frameworks need to be established for genomic surveillance data?</li>
+<li>How should data retention, archival, and deletion policies be implemented?</li>
+<li>What intellectual property considerations apply to genomic surveillance data and methods?</li>
+<li>How should commercial partnerships and technology transfer be managed?</li>
+</ul>
+</li>
+</ol>
+<h2 id="future-capabilities-and-innovation">Future Capabilities and Innovation</h2>
+<h3 id="emerging-technologies-and-methods">Emerging Technologies and Methods</h3>
+<ol>
+<li>
+<p><strong>Advanced Sequencing Technologies</strong></p>
+<ul>
+<li>What interest do you have in portable and point-of-care sequencing technologies?</li>
+<li>How important are long-read sequencing capabilities for pathogen surveillance?</li>
+<li>What role should metagenomic sequencing play in pathogen discovery and surveillance?</li>
+<li>How should environmental sequencing be integrated with clinical surveillance?</li>
+</ul>
+</li>
+<li>
+<p><strong>Artificial Intelligence and Machine Learning</strong></p>
+<ul>
+<li>What AI/ML capabilities would be most valuable for genomic surveillance applications?</li>
+<li>How important is automated interpretation and reporting of genomic surveillance findings?</li>
+<li>What role should predictive modeling play in surveillance and outbreak response?</li>
+<li>How should AI/ML models be validated and maintained for surveillance applications?</li>
+</ul>
+</li>
+</ol>
+<h3 id="strategic-vision-and-innovation">Strategic Vision and Innovation</h3>
+<ol>
+<li>
+<p><strong>Future State Vision</strong></p>
+<ul>
+<li>What is your vision for genomic surveillance capabilities in 5-10 years?</li>
+<li>How should genomic surveillance evolve to address emerging threats and technologies?</li>
+<li>What new partnerships and collaborations would enhance genomic surveillance capabilities?</li>
+<li>How should genomic surveillance contribute to broader One Health and global health security goals?</li>
+</ul>
+</li>
+<li>
+<p><strong>Innovation and Research Integration</strong></p>
+<ul>
+<li>How should genomic surveillance capabilities support infectious disease research activities?</li>
+<li>What opportunities exist for innovation in genomic surveillance methods and technologies?</li>
+<li>How should academic and industry partnerships enhance surveillance capabilities?</li>
+<li>What role should genomic surveillance play in countermeasure development (vaccines, therapeutics)?</li>
+</ul>
+</li>
+</ol>
+<p>These discovery questions will help assess the current state, requirements, and implementation strategy for Pathogen Evolution &amp; Transmission Tracking, ensuring that the solution addresses specific public health surveillance needs while integrating effectively with existing systems and international collaborative networks.</p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

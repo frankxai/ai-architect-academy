@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: Multi-Cloud AI Orchestration - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 05 Ai Infrastructure / 16 Solution Multicloud Orchestration</p>
+        </div>
+        
+        <article class="card">
+            <p><metadata>
+<pattern_id>16</pattern_id>
+<pattern_name>Multi-Cloud AI Orchestration</pattern_name>
+<pattern_category>AI Infrastructure</pattern_category>
+<complexity_level>Advanced</complexity_level>
+<conversation_type>Discovery Questions</conversation_type>
+<audience>Cloud Architects, CTOs, Infrastructure Leaders, DevOps Engineers</audience>
+<business_value>Seamlessly deploy and manage AI workloads across multiple cloud environments with 60% improved deployment flexibility</business_value>
+</metadata></p>
+<h1 id="discovery-questions-multi-cloud-ai-orchestration">Discovery Questions: Multi-Cloud AI Orchestration</h1>
+<p><discovery_current_state></discovery_current_state></p>
+<h2 id="current-state-assessment">Current State Assessment</h2>
+<h3 id="existing-infrastructure">Existing Infrastructure</h3>
+<ol>
+<li><strong>Multi-Cloud Presence</strong></li>
+<li>Which cloud providers are you currently using? (AWS, Azure, GCP, others)</li>
+<li>What percentage of your AI workloads run on each cloud?</li>
+<li>
+<p>Do you have existing contracts or commitments with multiple providers?</p>
+</li>
+<li>
+<p><strong>Architecture &amp; Workloads</strong></p>
+</li>
+<li>What types of AI/ML workloads are you currently running?</li>
+<li>How are your workloads currently distributed across clouds?</li>
+<li>
+<p>Do you have any containerized applications or Kubernetes experience?</p>
+</li>
+<li>
+<p><strong>Data Distribution</strong></p>
+</li>
+<li>Where is your training data currently stored?</li>
+<li>Do you have data residency or sovereignty requirements?</li>
+<li>How do you currently handle data synchronization between environments?</li>
+</ol>
+<h3 id="pain-points-challenges">Pain Points &amp; Challenges</h3>
+<ol>
+<li><strong>Current Challenges</strong></li>
+<li>What challenges do you face with your current multi-cloud setup?</li>
+<li>Are you experiencing vendor lock-in concerns?</li>
+<li>
+<p>How do you currently handle cost optimization across clouds?</p>
+</li>
+<li>
+<p><strong>Operational Complexity</strong></p>
+</li>
+<li>How many different tools/consoles do your teams use daily?</li>
+<li>What's your biggest operational pain point in managing multiple clouds?</li>
+<li>How do you currently handle identity and access management across clouds?
+</li>
+</ol>
+<p><strategy_business_alignment></strategy_business_alignment></p>
+<h3 id="requirements-objectives">Requirements &amp; Objectives</h3>
+<ol>
+<li><strong>Business Drivers</strong></li>
+<li>What's driving your need for multi-cloud AI orchestration?</li>
+<li>Are regulatory/compliance requirements a factor?</li>
+<li>
+<p>What cost optimization goals do you have?</p>
+</li>
+<li>
+<p><strong>Technical Requirements</strong></p>
+</li>
+<li>Do you need real-time data synchronization between clouds?</li>
+<li>What are your availability and disaster recovery requirements?</li>
+<li>
+<p>Do you have specific performance or latency requirements?</p>
+</li>
+<li>
+<p><strong>Governance &amp; Security</strong></p>
+</li>
+<li>What security and compliance frameworks must you adhere to?</li>
+<li>How do you currently handle governance across multiple clouds?</li>
+<li>Do you have specific data classification requirements?
+</li>
+</ol>
+<p><opportunity_qualification></opportunity_qualification></p>
+<h2 id="solution-design-questions">Solution Design Questions</h2>
+<h3 id="orchestration-strategy">Orchestration Strategy</h3>
+<ol>
+<li><strong>Workload Distribution</strong></li>
+<li>Which AI workloads would benefit most from multi-cloud deployment?</li>
+<li>Do you prefer active-active or active-passive multi-cloud strategies?</li>
+<li>
+<p>How important is automated failover between clouds?</p>
+</li>
+<li>
+<p><strong>Integration Requirements</strong></p>
+<ul>
+<li>What existing systems need to integrate with the orchestration platform?</li>
+<li>Do you have API management or service mesh requirements?</li>
+<li>How do you want to handle cross-cloud networking?</li>
+</ul>
+</li>
+</ol>
+<h3 id="implementation-approach">Implementation Approach</h3>
+<ol>
+<li>
+<p><strong>Rollout Strategy</strong></p>
+<ul>
+<li>Which AI workloads would you like to start with for multi-cloud orchestration?</li>
+<li>Do you prefer a phased migration or greenfield deployment?</li>
+<li>What's your ideal timeline for implementation?</li>
+</ul>
+</li>
+<li>
+<p><strong>Success Criteria</strong></p>
+<ul>
+<li>How will you measure the success of multi-cloud orchestration?</li>
+<li>What cost savings targets do you have?</li>
+<li>What operational efficiency improvements are you expecting?
+</li>
+</ul>
+</li>
+</ol>
+<p><technical_scoping_architecture></technical_scoping_architecture></p>
+<h2 id="technical-deep-dive">Technical Deep Dive</h2>
+<h3 id="infrastructure-requirements">Infrastructure Requirements</h3>
+<ol>
+<li>
+<p><strong>Connectivity</strong></p>
+<ul>
+<li>Do you have dedicated network connections between cloud providers?</li>
+<li>What bandwidth requirements do you have for inter-cloud communication?</li>
+<li>Are there specific latency requirements for your applications?</li>
+</ul>
+</li>
+<li>
+<p><strong>Resource Management</strong></p>
+<ul>
+<li>How do you currently handle resource provisioning across clouds?</li>
+<li>Do you use Infrastructure as Code (IaC) tools like Terraform?</li>
+<li>What automation tools are currently in your environment?</li>
+</ul>
+</li>
+</ol>
+<h3 id="data-security">Data &amp; Security</h3>
+<ol>
+<li>
+<p><strong>Data Management</strong></p>
+<ul>
+<li>What data classification levels exist in your organization?</li>
+<li>How do you currently handle data backup and recovery across clouds?</li>
+<li>Do you have specific data retention policies?</li>
+</ul>
+</li>
+<li>
+<p><strong>Security &amp; Compliance</strong></p>
+<ul>
+<li>What identity providers are you currently using?</li>
+<li>Do you have existing security tools that need to integrate?</li>
+<li>What audit and compliance reporting requirements do you have?
+</li>
+</ul>
+</li>
+</ol>
+<p><business_impact_assessment></business_impact_assessment></p>
+<h2 id="decision-factors">Decision Factors</h2>
+<h3 id="business-impact">Business Impact</h3>
+<ol>
+<li>
+<p><strong>ROI Expectations</strong></p>
+<ul>
+<li>What's your expected ROI timeline for multi-cloud orchestration?</li>
+<li>How do you currently measure cloud costs and optimization?</li>
+<li>What business processes would benefit most from improved orchestration?</li>
+</ul>
+</li>
+<li>
+<p><strong>Risk Assessment</strong></p>
+<ul>
+<li>What are your biggest concerns about multi-cloud complexity?</li>
+<li>How do you currently handle vendor relationship management?</li>
+<li>What disaster recovery scenarios are most critical to your business?
+</li>
+</ul>
+</li>
+</ol>
+<p><implementation_readiness></implementation_readiness></p>
+<h3 id="technical-readiness">Technical Readiness</h3>
+<ol>
+<li>
+<p><strong>Team Capabilities</strong></p>
+<ul>
+<li>Does your team have experience with Kubernetes and container orchestration?</li>
+<li>What training or upskilling might be needed?</li>
+<li>Do you have dedicated DevOps or cloud engineering teams?</li>
+</ul>
+</li>
+<li>
+<p><strong>Implementation Support</strong></p>
+<ul>
+<li>Would you prefer Oracle Professional Services or partner implementation?</li>
+<li>Do you need ongoing managed services support?</li>
+<li>What level of hands-on training would be valuable for your team?
+</li>
+</ul>
+</li>
+</ol>
+<p>This comprehensive discovery process enables organizations to design and implement a robust multi-cloud AI orchestration strategy that reduces vendor lock-in, improves deployment flexibility, and ensures optimal workload placement across diverse cloud environments.</p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

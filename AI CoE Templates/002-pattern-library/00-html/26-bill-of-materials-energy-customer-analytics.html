@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Bill of Materials: Energy Customer Analytics & Engagement - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 10 Energy Distribution Intelligence / 26 Solution Energy Customer Analytics</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="bill-of-materials-energy-customer-analytics-engagement">Bill of Materials: Energy Customer Analytics &amp; Engagement</h1>
+<h2 id="oracle-cloud-infrastructure-services">Oracle Cloud Infrastructure Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle Database 23ai</td>
+<td>Customer data platform</td>
+<td>3</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Data Science</td>
+<td>ML model development</td>
+<td>2</td>
+<td>Projects</td>
+</tr>
+<tr>
+<td>Oracle Analytics Cloud</td>
+<td>Customer analytics dashboards</td>
+<td>150</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>OCI Streaming</td>
+<td>Real-time data ingestion</td>
+<td>20</td>
+<td>Partitions</td>
+</tr>
+<tr>
+<td>Oracle Integration Cloud</td>
+<td>System integration</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>Oracle CX Cloud</td>
+<td>Customer experience platform</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>Oracle Marketing Cloud</td>
+<td>Campaign management</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>Oracle Service Cloud</td>
+<td>Customer service platform</td>
+<td>100</td>
+<td>Agents</td>
+</tr>
+<tr>
+<td>Oracle Digital Assistant</td>
+<td>Chatbot platform</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>Oracle Content Management</td>
+<td>Content delivery</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>OCI Data Lake</td>
+<td>Customer data storage</td>
+<td>500</td>
+<td>TB</td>
+</tr>
+<tr>
+<td>Oracle Machine Learning</td>
+<td>In-database ML</td>
+<td>3</td>
+<td>Databases</td>
+</tr>
+<tr>
+<td>OCI Data Flow</td>
+<td>Large-scale processing</td>
+<td>3</td>
+<td>Clusters</td>
+</tr>
+<tr>
+<td>Oracle Spatial</td>
+<td>Geographic analytics</td>
+<td>1</td>
+<td>License</td>
+</tr>
+<tr>
+<td>OCI Data Catalog</td>
+<td>Metadata management</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="compute-resources">Compute Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM.GPU3.2</td>
+<td>2 GPUs, 12 OCPUs, 180 GB RAM</td>
+<td>4</td>
+<td>ML model training</td>
+</tr>
+<tr>
+<td>VM.Standard3.Flex</td>
+<td>32 OCPUs, 512 GB RAM</td>
+<td>10</td>
+<td>Data processing</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>16 OCPUs, 256 GB RAM</td>
+<td>15</td>
+<td>Application servers</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>8 OCPUs, 128 GB RAM</td>
+<td>25</td>
+<td>Microservices</td>
+</tr>
+<tr>
+<td>BM.Standard.E4.128</td>
+<td>128 OCPUs, 2 TB RAM</td>
+<td>2</td>
+<td>Large-scale analytics</td>
+</tr>
+<tr>
+<td>VM.Standard.A1.Flex</td>
+<td>4 OCPUs, 64 GB RAM</td>
+<td>12</td>
+<td>Development/testing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="storage-resources">Storage Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Storage Type</th>
+<th>Capacity</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block Volume (Performance)</td>
+<td>10 TB</td>
+<td>15</td>
+<td>Database storage</td>
+</tr>
+<tr>
+<td>Block Volume (Balanced)</td>
+<td>50 TB</td>
+<td>10</td>
+<td>Application data</td>
+</tr>
+<tr>
+<td>Object Storage (Standard)</td>
+<td>1 PB</td>
+<td>1</td>
+<td>Customer data lake</td>
+</tr>
+<tr>
+<td>Object Storage (Archive)</td>
+<td>3 PB</td>
+<td>1</td>
+<td>Historical data</td>
+</tr>
+<tr>
+<td>File Storage</td>
+<td>30 TB</td>
+<td>4</td>
+<td>Shared content</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="network-resources">Network Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Network Component</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual Cloud Network</td>
+<td>/16 CIDR</td>
+<td>3</td>
+<td>Network segmentation</td>
+</tr>
+<tr>
+<td>Load Balancer</td>
+<td>Application LB</td>
+<td>6</td>
+<td>Service distribution</td>
+</tr>
+<tr>
+<td>FastConnect</td>
+<td>10 Gbps</td>
+<td>2</td>
+<td>Dedicated connectivity</td>
+</tr>
+<tr>
+<td>Site-to-Site VPN</td>
+<td>IPSec</td>
+<td>10</td>
+<td>System integrations</td>
+</tr>
+<tr>
+<td>NAT Gateway</td>
+<td>Public IP</td>
+<td>8</td>
+<td>Outbound connectivity</td>
+</tr>
+<tr>
+<td>API Gateway</td>
+<td>REST/GraphQL</td>
+<td>3</td>
+<td>External APIs</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="customer-data-platform-components">Customer Data Platform Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identity Resolution</td>
+<td>Customer matching engine</td>
+<td>1</td>
+<td>Profile unification</td>
+</tr>
+<tr>
+<td>Feature Store</td>
+<td>ML feature management</td>
+<td>1</td>
+<td>Feature engineering</td>
+</tr>
+<tr>
+<td>Segmentation Engine</td>
+<td>Customer clustering</td>
+<td>1</td>
+<td>Segmentation</td>
+</tr>
+<tr>
+<td>Profile Database</td>
+<td>360° customer view</td>
+<td>1</td>
+<td>Customer data</td>
+</tr>
+<tr>
+<td>Consent Manager</td>
+<td>Privacy preferences</td>
+<td>1</td>
+<td>Consent tracking</td>
+</tr>
+<tr>
+<td>Data Quality Engine</td>
+<td>Data validation</td>
+<td>1</td>
+<td>Quality control</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="analytics-ml-components">Analytics &amp; ML Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Churn Models</td>
+<td>Retention prediction</td>
+<td>5</td>
+<td>Churn prevention</td>
+</tr>
+<tr>
+<td>Satisfaction Models</td>
+<td>CSAT prediction</td>
+<td>4</td>
+<td>Satisfaction improvement</td>
+</tr>
+<tr>
+<td>Recommendation Engine</td>
+<td>Personalized recommendations</td>
+<td>1</td>
+<td>Content personalization</td>
+</tr>
+<tr>
+<td>Segmentation Models</td>
+<td>Customer clustering</td>
+<td>8</td>
+<td>Customer segments</td>
+</tr>
+<tr>
+<td>Load Forecasting</td>
+<td>Usage prediction</td>
+<td>6</td>
+<td>Demand forecasting</td>
+</tr>
+<tr>
+<td>Lifetime Value Models</td>
+<td>CLV calculation</td>
+<td>3</td>
+<td>Value optimization</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="engagement-channels">Engagement Channels</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Channel</th>
+<th>Platform</th>
+<th>Quantity</th>
+<th>Users/Capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mobile App</td>
+<td>iOS/Android</td>
+<td>2</td>
+<td>1M+ downloads</td>
+</tr>
+<tr>
+<td>Web Portal</td>
+<td>Responsive web</td>
+<td>1</td>
+<td>500K monthly users</td>
+</tr>
+<tr>
+<td>Email Platform</td>
+<td>SendGrid/Mailchimp</td>
+<td>1</td>
+<td>10M emails/month</td>
+</tr>
+<tr>
+<td>SMS Gateway</td>
+<td>Twilio</td>
+<td>1</td>
+<td>5M messages/month</td>
+</tr>
+<tr>
+<td>Voice Assistant</td>
+<td>Alexa/Google</td>
+<td>2</td>
+<td>Skills</td>
+</tr>
+<tr>
+<td>Chatbot</td>
+<td>Digital Assistant</td>
+<td>1</td>
+<td>10K conversations/day</td>
+</tr>
+<tr>
+<td>Call Center</td>
+<td>CTI integration</td>
+<td>1</td>
+<td>100 agents</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="smart-meter-integration">Smart Meter Integration</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMI Head-end</td>
+<td>Meter data collection</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>MDM Integration</td>
+<td>Meter data management</td>
+<td>1</td>
+<td>Interface</td>
+</tr>
+<tr>
+<td>Data Collectors</td>
+<td>Field data collection</td>
+<td>100</td>
+<td>Units</td>
+</tr>
+<tr>
+<td>Smart Meters</td>
+<td>Customer meters</td>
+<td>500,000</td>
+<td>Meters</td>
+</tr>
+<tr>
+<td>Disaggregation Engine</td>
+<td>Appliance detection</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Usage Analytics</td>
+<td>Consumption analysis</td>
+<td>1</td>
+<td>System</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="program-management">Program Management</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Efficiency Platform</td>
+<td>EE program management</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>DR Management</td>
+<td>Demand response platform</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Rate Engine</td>
+<td>Rate plan optimization</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Incentive Manager</td>
+<td>Rebate processing</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Enrollment Platform</td>
+<td>Program sign-up</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Performance Tracking</td>
+<td>Program metrics</td>
+<td>1</td>
+<td>System</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="marketing-automation">Marketing Automation</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Campaign Manager</td>
+<td>Marketing campaigns</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Email Templates</td>
+<td>Personalized emails</td>
+<td>500</td>
+<td>Templates</td>
+</tr>
+<tr>
+<td>Journey Builder</td>
+<td>Customer journeys</td>
+<td>50</td>
+<td>Journeys</td>
+</tr>
+<tr>
+<td>A/B Testing</td>
+<td>Campaign optimization</td>
+<td>1</td>
+<td>Tool</td>
+</tr>
+<tr>
+<td>Content Library</td>
+<td>Marketing content</td>
+<td>1000</td>
+<td>Assets</td>
+</tr>
+<tr>
+<td>Landing Pages</td>
+<td>Campaign pages</td>
+<td>100</td>
+<td>Pages</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="customer-service-tools">Customer Service Tools</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRM System</td>
+<td>Customer relationships</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Ticketing System</td>
+<td>Issue tracking</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Knowledge Base</td>
+<td>Self-service content</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>IVR System</td>
+<td>Phone automation</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Chat Platform</td>
+<td>Live chat support</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Feedback System</td>
+<td>Survey platform</td>
+<td>1</td>
+<td>Tool</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="monitoring-analytics">Monitoring &amp; Analytics</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Dashboards</td>
+<td>Analytics views</td>
+<td>50</td>
+<td>Dashboards</td>
+</tr>
+<tr>
+<td>Executive Reports</td>
+<td>Business metrics</td>
+<td>30</td>
+<td>Reports</td>
+</tr>
+<tr>
+<td>Program Dashboards</td>
+<td>Program performance</td>
+<td>25</td>
+<td>Dashboards</td>
+</tr>
+<tr>
+<td>Satisfaction Metrics</td>
+<td>NPS/CSAT tracking</td>
+<td>20</td>
+<td>Metrics</td>
+</tr>
+<tr>
+<td>Engagement Analytics</td>
+<td>Channel analytics</td>
+<td>40</td>
+<td>Reports</td>
+</tr>
+<tr>
+<td>Mobile Analytics</td>
+<td>App analytics</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="security-compliance">Security &amp; Compliance</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>License Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Identity Domains</td>
+<td>Access management</td>
+<td>1</td>
+<td>Tenant</td>
+</tr>
+<tr>
+<td>OCI Vault</td>
+<td>Key management</td>
+<td>3</td>
+<td>Vaults</td>
+</tr>
+<tr>
+<td>OCI Data Safe</td>
+<td>Data security</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Privacy Platform</td>
+<td>GDPR/CCPA compliance</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Consent Management</td>
+<td>Preference center</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Audit Logging</td>
+<td>Compliance logging</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="development-operations">Development &amp; Operations</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Category</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Access Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes (OKE)</td>
+<td>Container Platform</td>
+<td>Container orchestration</td>
+<td>2</td>
+<td>Clusters</td>
+</tr>
+<tr>
+<td>GitLab</td>
+<td>Source Control</td>
+<td>Code versioning</td>
+<td>150</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>Terraform</td>
+<td>IaC</td>
+<td>Infrastructure automation</td>
+<td>1</td>
+<td>Cloud</td>
+</tr>
+<tr>
+<td>DataOps Platform</td>
+<td>Data pipeline management</td>
+<td>1</td>
+<td>Platform</td>
+<td></td>
+</tr>
+<tr>
+<td>Testing Tools</td>
+<td>QA automation</td>
+<td>5</td>
+<td>Licenses</td>
+<td></td>
+</tr>
+<tr>
+<td>APM Tools</td>
+<td>Performance monitoring</td>
+<td>1</td>
+<td>Platform</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="external-data-services">External Data &amp; Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Provider</th>
+<th>Cost</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weather Data</td>
+<td>Weather.com</td>
+<td>$3,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Demographics</td>
+<td>Experian</td>
+<td>$5,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Property Data</td>
+<td>CoreLogic</td>
+<td>$4,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Social Media</td>
+<td>Twitter/FB APIs</td>
+<td>$2,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Address Validation</td>
+<td>USPS/Google</td>
+<td>$1,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Email Verification</td>
+<td>ZeroBounce</td>
+<td>$500</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="professional-services">Professional Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Duration</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Assessment</td>
+<td>Current state analysis</td>
+<td>4</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Data Architecture</td>
+<td>Platform design</td>
+<td>6</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Platform Implementation</td>
+<td>Core platform setup</td>
+<td>14</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>ML Model Development</td>
+<td>Custom models</td>
+<td>10</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Channel Development</td>
+<td>Omnichannel setup</td>
+<td>12</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Integration Services</td>
+<td>System integration</td>
+<td>10</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Training Program</td>
+<td>User training</td>
+<td>6</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Ongoing Support</td>
+<td>24x7 support</td>
+<td>12</td>
+<td>Months</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="licensing-summary">Licensing Summary</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>License Type</th>
+<th>Quantity</th>
+<th>Billing Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Universal Credits</td>
+<td>$1,600,000</td>
+<td>Annual Commitment</td>
+</tr>
+<tr>
+<td>Oracle Database EE</td>
+<td>12</td>
+<td>Processor licenses</td>
+</tr>
+<tr>
+<td>Oracle CX Suite</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td>Analytics Users</td>
+<td>150</td>
+<td>Named users</td>
+</tr>
+<tr>
+<td>Marketing Cloud</td>
+<td>10M</td>
+<td>Contacts</td>
+</tr>
+<tr>
+<td>API Calls</td>
+<td>200M</td>
+<td>Calls/month</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="cost-estimation">Cost Estimation</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Monthly Cost</th>
+<th>Annual Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compute Resources</td>
+<td>$40,000</td>
+<td>$480,000</td>
+</tr>
+<tr>
+<td>Storage Resources</td>
+<td>$15,000</td>
+<td>$180,000</td>
+</tr>
+<tr>
+<td>Network Resources</td>
+<td>$8,000</td>
+<td>$96,000</td>
+</tr>
+<tr>
+<td>Database Services</td>
+<td>$20,000</td>
+<td>$240,000</td>
+</tr>
+<tr>
+<td>AI/ML Services</td>
+<td>$25,000</td>
+<td>$300,000</td>
+</tr>
+<tr>
+<td>CX Platform</td>
+<td>$30,000</td>
+<td>$360,000</td>
+</tr>
+<tr>
+<td>Marketing Platform</td>
+<td>$20,000</td>
+<td>$240,000</td>
+</tr>
+<tr>
+<td>External Data</td>
+<td>$15,500</td>
+<td>$186,000</td>
+</tr>
+<tr>
+<td>Professional Services</td>
+<td>$25,000</td>
+<td>$300,000</td>
+</tr>
+<tr>
+<td>Support &amp; Maintenance</td>
+<td>$15,000</td>
+<td>$180,000</td>
+</tr>
+<tr>
+<td><strong>Total Estimated Cost</strong></td>
+<td><strong>$213,500</strong></td>
+<td><strong>$2,562,000</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="roi-projection">ROI Projection</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Satisfaction</td>
+<td>45% improvement</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Program Participation</td>
+<td>30% increase</td>
+<td>9 months</td>
+</tr>
+<tr>
+<td>Churn Reduction</td>
+<td>25% decrease</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Call Volume</td>
+<td>30% reduction</td>
+<td>6 months</td>
+</tr>
+<tr>
+<td>Energy Savings</td>
+<td>15% reduction</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Revenue per Customer</td>
+<td>10% increase</td>
+<td>Year 2</td>
+</tr>
+<tr>
+<td>Payback Period</td>
+<td>13 months</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3-Year ROI</td>
+<td>380%</td>
+<td>3 years</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="success-metrics">Success Metrics</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSAT Score</td>
+<td>&gt;85%</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>NPS Score</td>
+<td>&gt;40</td>
+<td>Quarterly</td>
+</tr>
+<tr>
+<td>Digital Adoption</td>
+<td>&gt;70%</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Program Enrollment</td>
+<td>&gt;40%</td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>Churn Rate</td>
+<td>&lt;10%</td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>First Contact Resolution</td>
+<td>&gt;80%</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Model Accuracy</td>
+<td>&gt;85%</td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td>Platform Availability</td>
+<td>99.9%</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><em>This Bill of Materials provides a comprehensive list of technical components required for implementing the Energy Customer Analytics &amp; Engagement pattern. The configuration enables personalized customer experiences achieving 45% improvement in satisfaction and 30% increase in program participation. Costs and quantities should be adjusted based on customer base size and engagement requirements.</em></p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

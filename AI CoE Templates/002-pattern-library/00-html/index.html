@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Oracle AI Center of Excellence Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                    <i data-lucide="wrench"></i> Oracle AI Pattern Library
+                </a>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="guides.html" class="nav-link">Guides</a>
+                    <a href="library.html" class="nav-link">Library</a>
+                    <a href="roadmap.html" class="nav-link">Roadmap</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container">
+                <header class="text-center mb-lg">
+            <h1>Oracle AI Center of Excellence</h1>
+            <h2 class="text-secondary">Pattern Library</h2>
+            <p class="mt-md">A comprehensive collection of AI design patterns for enterprise implementations</p>
+        </header>
+
+        <div class="grid grid-cols-3 mt-lg">
+            <div class="metric-card">
+                <div class="metric-value primary"><i data-lucide="book-open"></i></div>
+                <div class="metric-label">Comprehensive Guides</div>
+                <p class="mt-sm">Step-by-step implementation guides for AI patterns</p>
+                <a href="guides.html" class="btn btn-primary mt-md">Explore Guides</a>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-value success"><i data-lucide="target"></i></div>
+                <div class="metric-label">Solution Library</div>
+                <p class="mt-sm">Ready-to-use AI solutions for various industries</p>
+                <a href="library.html" class="btn btn-primary mt-md">Browse Library</a>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-value warning"><i data-lucide="rocket"></i></div>
+                <div class="metric-label">Future Roadmap</div>
+                <p class="mt-sm">Upcoming patterns and planned enhancements</p>
+                <a href="roadmap.html" class="btn btn-primary mt-md">View Roadmap</a>
+            </div>
+        </div>
+
+        <section class="mt-xl">
+            <h3>Quick Access</h3>
+            <div class="grid grid-cols-2 mt-md">
+                <div class="card">
+                    <h4><i data-lucide="layers"></i> Horizontal Patterns</h4>
+                    <p>Cross-industry AI solutions that can be applied across various domains including:</p>
+                    <ul class="mt-sm">
+                        <li><a href="library.html#01-intelligent-operations">Intelligent Operations</a> - AI-driven process automation and optimization</li>
+                        <li><a href="library.html#02-customer-experience">Customer Experience</a> - Personalization and engagement solutions</li>
+                        <li><a href="library.html#03-data-intelligence">Data Intelligence</a> - Knowledge extraction and analytics</li>
+                        <li><a href="library.html#04-platform-enablement">Platform Enablement</a> - Infrastructure and governance frameworks</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4><i data-lucide="target"></i> Vertical Patterns</h4>
+                    <p>Industry-specific AI solutions tailored for particular sectors including:</p>
+                    <ul class="mt-sm">
+                        <li><a href="library.html#09-genomic-public-health-intelligence">Genomic & Public Health</a> - Healthcare and life sciences solutions</li>
+                        <li><a href="library.html#10-energy-distribution-intelligence">Energy & Distribution</a> - Smart grid and energy optimization</li>
+                        <li><a href="library.html#financial-services">Financial Services</a> - Banking and insurance intelligence</li>
+                        <li><a href="library.html#manufacturing">Manufacturing</a> - Industrial AI and automation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-xl">
+            <div class="card">
+                <h3>Getting Started</h3>
+                <p>New to the Oracle AI Pattern Library? Start with these essential resources:</p>
+                <div class="flex mt-md">
+                    <a href="01-new-pattern-creation-guide.html" class="btn btn-secondary">Pattern Creation Guide</a>
+                    <a href="02-pattern-selection-guide.html" class="btn btn-secondary">Pattern Selection Guide</a>
+                    <a href="library.html" class="btn btn-primary">Browse All Patterns</a>
+                </div>
+            </div>
+        </section>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on {datetime.now().strftime("%Y-%m-%d %H:%M:%S")} | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Technical Architecture 9: Personalization Engine & Recommendation System - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 02 Customer Experience / 09 Solution Personalization Engine</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="technical-architecture-9-personalization-engine-recommendation-system">Technical Architecture 9: Personalization Engine &amp; Recommendation System</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 09</li>
+<li><strong>Pattern Name:</strong> Personalization Engine &amp; Recommendation System</li>
+<li><strong>Document Type:</strong> Technical Architecture</li>
+<li><strong>Created Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><architecture_overview></architecture_overview></p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The Real-time Personalization Engine architecture delivers hyper-personalized experiences through AI-driven recommendation systems and real-time behavioral analysis. This architecture enables organizations to increase engagement by 200%, conversion rates by 45%, and customer lifetime value by 60% through advanced machine learning models, real-time data processing, and intelligent personalization algorithms that adapt to user behavior in milliseconds.</p>
+<h2 id="system-architecture-diagram">System Architecture Diagram</h2>
+<pre class="codehilite card"><code>┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           User Interaction Channels                            │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  Web         │  Mobile     │  Email      │  Social     │  In-Store   │  Call     │
+│  Applications│  Apps       │  Campaigns  │  Media      │  Kiosks     │  Centers  │
+│              │             │             │             │             │           │
+│  IoT Devices │  Smart TV   │  Voice      │  Chatbots   │  AR/VR      │  Wearables│
+│              │  Apps       │  Assistants │             │ Experiences │           │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Real-time Event Collection Layer                        │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                           OCI Streaming                                        │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Clickstream    │  │  Purchase       │  │  Search         │                │
+│  │  Events         │  │  Events         │  │  Events         │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Behavioral     │  │  Contextual     │  │  Feedback       │                │
+│  │  Events         │  │  Events         │  │  Events         │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Event Processing &amp; Feature Engineering                  │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                              OCI Events                                        │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Real-time      │  │  Session        │  │  User           │                │
+│  │  Aggregation    │  │  Management     │  │  Segmentation   │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Feature        │  │  Context        │  │  Anomaly        │                │
+│  │  Extraction     │  │  Enrichment     │  │  Detection      │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        ML Model Training &amp; Serving Layer                       │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                        OCI Data Science + GPU Clusters                        │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Collaborative  │  │  Content-Based  │  │  Deep Learning  │                │
+│  │  Filtering      │  │  Filtering      │  │  Models         │                │
+│  │  (Matrix        │  │  (TF-IDF,       │  │  (Neural CF,    │                │
+│  │  Factorization) │  │  Word2Vec)      │  │  AutoEncoders)  │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Reinforcement  │  │  Multi-Armed    │  │  Graph Neural   │                │
+│  │  Learning       │  │  Bandits        │  │  Networks       │                │
+│  │  (DQN, A3C)     │  │  (UCB, Thompson)│  │  (GraphSAGE)    │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Real-time Recommendation Engine                         │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  OCI Cache      │  │  Container      │  │  API Gateway    │                │
+│  │  (Redis)        │  │  Engine (OKE)   │  │  (Rate Limiting,│                │
+│  │  Sub-100ms      │  │  Model Serving  │  │  Authentication)│                │
+│  │  Response       │  │                 │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  A/B Testing    │  │  Business Rules │  │  Diversity &amp;    │                │
+│  │  Framework      │  │  Engine         │  │  Fairness       │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        User Profile &amp; Data Management                          │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Oracle Database│  │  Customer Data  │  │  Preference     │                │
+│  │  23ai           │  │  Platform       │  │  Management     │                │
+│  │  (360° Customer │  │  (Real-time     │  │  (Explicit &amp;    │                │
+│  │  View)          │  │  Profiles)      │  │  Implicit)      │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Behavioral     │  │  Demographic    │  │  Contextual     │                │
+│  │  History        │  │  Data           │  │  Information    │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="component-architecture-details">Component Architecture Details</h2>
+<h3 id="1-real-time-event-collection-layer">1. Real-time Event Collection Layer</h3>
+<h4 id="oci-streaming-platform">OCI Streaming Platform</h4>
+<ul>
+<li><strong>High-Throughput Ingestion</strong>:</li>
+<li>Support for 1M+ events per second per partition</li>
+<li>Auto-scaling based on event volume</li>
+<li>Sub-second latency for real-time processing</li>
+<li>Built-in data compression and optimization</li>
+<li><strong>Event Types</strong>:</li>
+<li>Clickstream events (page views, clicks, scrolls)</li>
+<li>Purchase and transaction events</li>
+<li>Search and browse behavior</li>
+<li>Social media interactions</li>
+<li>Mobile app usage patterns</li>
+</ul>
+<h4 id="event-schema-management">Event Schema Management</h4>
+<ul>
+<li><strong>Schema Registry</strong>: Centralized event schema management</li>
+<li><strong>Schema Evolution</strong>: Backward compatibility for event structure changes</li>
+<li><strong>Data Validation</strong>: Real-time event validation and filtering</li>
+<li><strong>Event Enrichment</strong>: Automatic event enrichment with contextual data</li>
+</ul>
+<h3 id="2-event-processing-feature-engineering">2. Event Processing &amp; Feature Engineering</h3>
+<h4 id="real-time-feature-engineering">Real-time Feature Engineering</h4>
+<ul>
+<li><strong>Streaming Analytics</strong>:</li>
+<li>Real-time aggregation of user behavior metrics</li>
+<li>Session-based feature calculation</li>
+<li>Time-window based statistics (1min, 5min, 1hour, 1day)</li>
+<li>Trend detection and pattern recognition</li>
+<li><strong>User Segmentation</strong>:</li>
+<li>Dynamic user segmentation based on behavior</li>
+<li>Real-time segment updates</li>
+<li>Cohort analysis and lifecycle stage identification</li>
+<li>Predictive segment assignment</li>
+</ul>
+<h4 id="context-enrichment">Context Enrichment</h4>
+<ul>
+<li><strong>Contextual Data Integration</strong>:</li>
+<li>Geographic location and weather data</li>
+<li>Device and browser information</li>
+<li>Time-based context (day of week, season)</li>
+<li>Social and demographic context</li>
+<li><strong>External Data Sources</strong>: Integration with third-party data providers</li>
+</ul>
+<h3 id="3-ml-model-training-serving-layer">3. ML Model Training &amp; Serving Layer</h3>
+<h4 id="advanced-recommendation-algorithms">Advanced Recommendation Algorithms</h4>
+<ul>
+<li><strong>Collaborative Filtering</strong>:</li>
+<li>Matrix factorization (SVD, NMF)</li>
+<li>Deep matrix factorization</li>
+<li>Neighborhood-based methods</li>
+<li>Implicit feedback processing</li>
+<li><strong>Content-Based Filtering</strong>:</li>
+<li>TF-IDF and word embeddings</li>
+<li>Image and video content analysis</li>
+<li>Product attribute matching</li>
+<li>Semantic similarity computation</li>
+</ul>
+<h4 id="deep-learning-models">Deep Learning Models</h4>
+<ul>
+<li><strong>Neural Collaborative Filtering</strong>: Deep learning for user-item interactions</li>
+<li><strong>Autoencoders</strong>: Dimensionality reduction and feature learning</li>
+<li><strong>Recurrent Neural Networks</strong>: Sequential behavior modeling</li>
+<li><strong>Graph Neural Networks</strong>: Social network and item relationship modeling</li>
+</ul>
+<h4 id="gpu-computing-infrastructure">GPU Computing Infrastructure</h4>
+<ul>
+<li><strong>NVIDIA A100/H100 Clusters</strong>:</li>
+<li>Distributed model training across multiple GPUs</li>
+<li>Real-time inference optimization</li>
+<li>Model parallelism for large-scale models</li>
+<li>Mixed precision training for efficiency</li>
+</ul>
+<h3 id="4-real-time-recommendation-engine">4. Real-time Recommendation Engine</h3>
+<h4 id="high-performance-serving">High-Performance Serving</h4>
+<ul>
+<li><strong>OCI Cache (Redis)</strong>:</li>
+<li>Sub-100ms recommendation response times</li>
+<li>Distributed caching across multiple regions</li>
+<li>Cache warming and precomputation strategies</li>
+<li>Intelligent cache invalidation</li>
+<li><strong>Container Engine (OKE)</strong>:</li>
+<li>Auto-scaling model serving infrastructure</li>
+<li>A/B testing framework for model comparison</li>
+<li>Canary deployments for model updates</li>
+<li>Health monitoring and automatic failover</li>
+</ul>
+<h4 id="business-logic-integration">Business Logic Integration</h4>
+<ul>
+<li><strong>Business Rules Engine</strong>:</li>
+<li>Inventory-aware recommendations</li>
+<li>Promotional and seasonal adjustments</li>
+<li>Category and brand constraints</li>
+<li>Price and margin optimization</li>
+<li><strong>Diversity and Fairness</strong>:</li>
+<li>Recommendation diversity algorithms</li>
+<li>Bias detection and mitigation</li>
+<li>Fairness constraints and optimization</li>
+<li>Explainable AI for transparency</li>
+</ul>
+<h3 id="5-user-profile-data-management">5. User Profile &amp; Data Management</h3>
+<h4 id="oracle-database-23ai">Oracle Database 23ai</h4>
+<ul>
+<li><strong>360-Degree Customer View</strong>:</li>
+<li>Unified customer profiles across all touchpoints</li>
+<li>Real-time profile updates and synchronization</li>
+<li>Historical behavior tracking and analysis</li>
+<li>Predictive customer lifetime value</li>
+<li><strong>AI-Enhanced Features</strong>:</li>
+<li>Automatic customer segmentation</li>
+<li>Churn prediction and retention modeling</li>
+<li>Next-best-action recommendations</li>
+<li>Customer journey optimization</li>
+</ul>
+<h4 id="privacy-and-consent-management">Privacy and Consent Management</h4>
+<ul>
+<li><strong>Privacy Controls</strong>: Granular privacy settings and consent management</li>
+<li><strong>Data Anonymization</strong>: Automatic PII removal and pseudonymization</li>
+<li><strong>GDPR Compliance</strong>: Right to be forgotten and data portability</li>
+<li><strong>Consent Tracking</strong>: Comprehensive consent audit trails</li>
+</ul>
+<h2 id="data-flow-architecture">Data Flow Architecture</h2>
+<h3 id="real-time-personalization-flow">Real-time Personalization Flow</h3>
+<ol>
+<li><strong>Event Capture</strong>: Real-time user interaction capture across channels</li>
+<li><strong>Stream Processing</strong>: Immediate event processing and feature extraction</li>
+<li><strong>Profile Update</strong>: Real-time user profile and preference updates</li>
+<li><strong>Model Inference</strong>: Sub-100ms recommendation generation</li>
+<li><strong>Business Rules</strong>: Application of business constraints and rules</li>
+<li><strong>Response Delivery</strong>: Personalized content delivery to user interface</li>
+<li><strong>Feedback Loop</strong>: User response tracking for model improvement</li>
+</ol>
+<h3 id="model-training-flow">Model Training Flow</h3>
+<ol>
+<li><strong>Data Collection</strong>: Historical and real-time behavior data aggregation</li>
+<li><strong>Feature Engineering</strong>: Advanced feature extraction and transformation</li>
+<li><strong>Model Training</strong>: Distributed training on GPU clusters</li>
+<li><strong>Model Validation</strong>: A/B testing and performance evaluation</li>
+<li><strong>Model Deployment</strong>: Automated deployment to serving infrastructure</li>
+<li><strong>Performance Monitoring</strong>: Continuous model performance tracking</li>
+</ol>
+<h2 id="security-architecture">Security Architecture</h2>
+<h3 id="data-privacy">Data Privacy</h3>
+<ul>
+<li><strong>Encryption</strong>: End-to-end encryption for all user data</li>
+<li><strong>Access Control</strong>: Role-based access with fine-grained permissions</li>
+<li><strong>Data Minimization</strong>: Collection of only necessary user data</li>
+<li><strong>Retention Policies</strong>: Automated data retention and deletion</li>
+</ul>
+<h3 id="model-security">Model Security</h3>
+<ul>
+<li><strong>Model Protection</strong>: Secure model storage and serving</li>
+<li><strong>Adversarial Defense</strong>: Protection against adversarial attacks</li>
+<li><strong>Model Auditing</strong>: Comprehensive model behavior auditing</li>
+<li><strong>Bias Detection</strong>: Automated bias detection and mitigation</li>
+</ul>
+<h3 id="api-security">API Security</h3>
+<ul>
+<li><strong>Authentication</strong>: OAuth 2.0 and JWT token-based authentication</li>
+<li><strong>Rate Limiting</strong>: Intelligent rate limiting and throttling</li>
+<li><strong>API Monitoring</strong>: Real-time API usage monitoring and alerting</li>
+<li><strong>DDoS Protection</strong>: Built-in distributed denial-of-service protection</li>
+</ul>
+<h2 id="performance-scalability">Performance &amp; Scalability</h2>
+<h3 id="horizontal-scaling">Horizontal Scaling</h3>
+<ul>
+<li><strong>Auto-scaling</strong>: Dynamic scaling based on user traffic and model load</li>
+<li><strong>Load Balancing</strong>: Intelligent traffic distribution across regions</li>
+<li><strong>Container Orchestration</strong>: Kubernetes-based microservices architecture</li>
+<li><strong>Database Sharding</strong>: Horizontal partitioning for user profiles</li>
+</ul>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<ul>
+<li><strong>Model Optimization</strong>: TensorRT and ONNX optimization for inference</li>
+<li><strong>Caching Strategy</strong>: Multi-tier caching for optimal performance</li>
+<li><strong>CDN Integration</strong>: Global content delivery network integration</li>
+<li><strong>Connection Pooling</strong>: Efficient database connection management</li>
+</ul>
+<h2 id="monitoring-observability">Monitoring &amp; Observability</h2>
+<h3 id="real-time-monitoring">Real-time Monitoring</h3>
+<ul>
+<li><strong>Recommendation Metrics</strong>: Click-through rates, conversion rates, engagement</li>
+<li><strong>Model Performance</strong>: Accuracy, precision, recall, and F1 scores</li>
+<li><strong>System Performance</strong>: Latency, throughput, and error rates</li>
+<li><strong>Business Metrics</strong>: Revenue impact, customer satisfaction, retention</li>
+</ul>
+<h3 id="ab-testing-framework">A/B Testing Framework</h3>
+<ul>
+<li><strong>Experiment Design</strong>: Statistical experiment design and power analysis</li>
+<li><strong>Traffic Splitting</strong>: Intelligent traffic allocation for experiments</li>
+<li><strong>Statistical Analysis</strong>: Automated statistical significance testing</li>
+<li><strong>Result Interpretation</strong>: Automated experiment result analysis</li>
+</ul>
+<h2 id="disaster-recovery-business-continuity">Disaster Recovery &amp; Business Continuity</h2>
+<h3 id="backup-strategy">Backup Strategy</h3>
+<ul>
+<li><strong>Model Versioning</strong>: Complete model version history and rollback</li>
+<li><strong>Data Backup</strong>: Continuous backup of user profiles and preferences</li>
+<li><strong>Configuration Backup</strong>: System configuration and rule backup</li>
+<li><strong>Cross-Region Replication</strong>: Geographic distribution of critical data</li>
+</ul>
+<h3 id="high-availability">High Availability</h3>
+<ul>
+<li><strong>Multi-AZ Deployment</strong>: Distribution across availability zones</li>
+<li><strong>Failover Mechanisms</strong>: Automatic failover for recommendation services</li>
+<li><strong>Data Replication</strong>: Real-time user profile synchronization</li>
+<li><strong>Recovery Objectives</strong>: RTO &lt; 5 minutes, RPO &lt; 1 minute</li>
+</ul>
+<h2 id="integration-patterns">Integration Patterns</h2>
+<h3 id="api-first-architecture">API-First Architecture</h3>
+<ul>
+<li><strong>RESTful APIs</strong>: Standard HTTP-based recommendation APIs</li>
+<li><strong>GraphQL Support</strong>: Flexible querying of user profiles and recommendations</li>
+<li><strong>WebSocket Support</strong>: Real-time recommendation updates</li>
+<li><strong>SDK Support</strong>: Native SDKs for popular platforms and languages</li>
+</ul>
+<h3 id="real-time-integration">Real-time Integration</h3>
+<ul>
+<li><strong>Event Streaming</strong>: Real-time event streaming to external systems</li>
+<li><strong>Webhook Integration</strong>: Event-driven notifications to external systems</li>
+<li><strong>Message Queues</strong>: Asynchronous processing and integration</li>
+<li><strong>CDC (Change Data Capture)</strong>: Real-time data synchronization</li>
+</ul>
+<h2 id="deployment-architecture">Deployment Architecture</h2>
+<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
+<ul>
+<li><strong>Terraform Templates</strong>: Automated infrastructure provisioning</li>
+<li><strong>Configuration Management</strong>: Ansible-based configuration automation</li>
+<li><strong>Environment Promotion</strong>: Automated deployment across environments</li>
+<li><strong>Blue-Green Deployment</strong>: Zero-downtime deployment strategy</li>
+</ul>
+<h3 id="mlops-integration">MLOps Integration</h3>
+<ul>
+<li><strong>Model Pipeline</strong>: Automated model training and deployment pipelines</li>
+<li><strong>Feature Store</strong>: Centralized feature management and serving</li>
+<li><strong>Model Registry</strong>: Versioned model artifact management</li>
+<li><strong>Monitoring Integration</strong>: Integrated model and system monitoring</li>
+</ul>
+<h2 id="cost-optimization">Cost Optimization</h2>
+<h3 id="resource-management">Resource Management</h3>
+<ul>
+<li><strong>Dynamic Scaling</strong>: Automatic resource scaling based on demand</li>
+<li><strong>Spot Instances</strong>: Cost-effective compute for model training</li>
+<li><strong>Reserved Capacity</strong>: Cost savings through capacity reservations</li>
+<li><strong>Resource Scheduling</strong>: Automated resource scheduling and optimization</li>
+</ul>
+<h3 id="model-efficiency">Model Efficiency</h3>
+<ul>
+<li><strong>Model Compression</strong>: Techniques to reduce model size and complexity</li>
+<li><strong>Quantization</strong>: Model quantization for efficient inference</li>
+<li><strong>Knowledge Distillation</strong>: Transfer learning for smaller models</li>
+<li><strong>Caching Optimization</strong>: Intelligent caching to reduce computation costs</li>
+</ul>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="09-bill-of-materials-personalization-engine.html" class="btn btn-secondary">
+                    <i data-lucide="package"></i> Bill of Materials
+                </a>
+                <p class="mt-sm">Bill of Materials: Personalization Engine & Recommendation System</p>
+            </div>
+            
+            <div class="card">
+                <a href="09-discovery-questions-personalization-engine.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Personalization Engine & Recommendation System</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

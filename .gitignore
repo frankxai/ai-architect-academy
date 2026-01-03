@@ -9,10 +9,22 @@ assets/screenshots/*.tmp
 05-projects/eval-automation/.env
 Arc/*.vsix
 
+# Internal documentation (private)
+.internal/
 
 # Claude Code local config
 .claude/
 .claude.bak
 
-#Ignore vscode AI rules
-.github\instructions\codacy.instructions.md
+# Ignore vscode AI rules
+.github/instructions/codacy.instructions.md
+
+# Environment files
+.env
+.env.local
+.env*.local
+
+# Build outputs
+dashboard/.next/
+academy-dashboard/.next/
+*.tsbuildinfo

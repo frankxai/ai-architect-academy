@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Bill of Materials: Synthetic Data Generation Platform - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 04 Platform Enablement / 12 Solution Synthetic Data</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="bill-of-materials-synthetic-data-generation-platform">Bill of Materials: Synthetic Data Generation Platform</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 12</li>
+<li><strong>Pattern Name:</strong> Synthetic Data Generation Platform</li>
+<li><strong>Document Type:</strong> Bill of Materials</li>
+<li><strong>Customer:</strong> [Customer Name]</li>
+<li><strong>Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><oracle_cloud_infrastructure></oracle_cloud_infrastructure></p>
+<h2 id="oracle-cloud-infrastructure-services">Oracle Cloud Infrastructure Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle Database 23ai</td>
+<td>Synthetic data storage and metadata</td>
+<td>3</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Data Science</td>
+<td>ML models for synthetic data generation</td>
+<td>3</td>
+<td>Projects</td>
+</tr>
+<tr>
+<td>OCI GenAI Service</td>
+<td>AI-powered synthetic content generation</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Oracle Analytics Cloud</td>
+<td>Data quality and validation analytics</td>
+<td>25</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>OCI Data Flow</td>
+<td>Large-scale data generation processing</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Oracle Integration Cloud</td>
+<td>Data pipeline integration</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>OCI Functions</td>
+<td>Data generation workflows</td>
+<td>500</td>
+<td>GB-Hours/month</td>
+</tr>
+<tr>
+<td>OCI Events</td>
+<td>Generation pipeline triggers</td>
+<td>40</td>
+<td>Rules</td>
+</tr>
+<tr>
+<td>OCI Data Catalog</td>
+<td>Synthetic data discovery and lineage</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>Oracle APEX</td>
+<td>Data generation management interfaces</td>
+<td>2</td>
+<td>Workspaces</td>
+</tr>
+<tr>
+<td>OCI Monitoring</td>
+<td>System performance monitoring</td>
+<td>1</td>
+<td>Namespace</td>
+</tr>
+<tr>
+<td>OCI Logging</td>
+<td>Generation process logs</td>
+<td>20</td>
+<td>TB/month</td>
+</tr>
+<tr>
+<td>OCI Notifications</td>
+<td>Generation completion notifications</td>
+<td>10</td>
+<td>Topics</td>
+</tr>
+<tr>
+<td>OCI Vault</td>
+<td>Data privacy and anonymization keys</td>
+<td>1</td>
+<td>Vault</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="compute-resources">Compute Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM.GPU3.1</td>
+<td>1 GPU, 6 OCPUs, 90 GB RAM</td>
+<td>6</td>
+<td>ML model training and generation</td>
+</tr>
+<tr>
+<td>VM.Standard3.Flex</td>
+<td>32 OCPUs, 512 GB RAM</td>
+<td>3</td>
+<td>Large-scale data processing</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>16 OCPUs, 256 GB RAM</td>
+<td>4</td>
+<td>Application servers</td>
+</tr>
+<tr>
+<td>BM.GPU4.128</td>
+<td>8 GPUs, 128 OCPUs, 2 TB RAM</td>
+<td>1</td>
+<td>Intensive synthetic data generation</td>
+</tr>
+<tr>
+<td>VM.Standard.A1.Flex</td>
+<td>8 OCPUs, 64 GB RAM</td>
+<td>3</td>
+<td>Development and testing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="storage-resources">Storage Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Storage Type</th>
+<th>Capacity</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block Volume (Performance)</td>
+<td>20 TB</td>
+<td>8</td>
+<td>Database and model storage</td>
+</tr>
+<tr>
+<td>Block Volume (Balanced)</td>
+<td>100 TB</td>
+<td>6</td>
+<td>Synthetic data working storage</td>
+</tr>
+<tr>
+<td>Object Storage (Standard)</td>
+<td>1 PB</td>
+<td>1</td>
+<td>Generated dataset repository</td>
+</tr>
+<tr>
+<td>Object Storage (Archive)</td>
+<td>2 PB</td>
+<td>1</td>
+<td>Historical generation archive</td>
+</tr>
+<tr>
+<td>File Storage</td>
+<td>50 TB</td>
+<td>3</td>
+<td>Shared models and templates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="network-resources">Network Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Network Component</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual Cloud Network</td>
+<td>/16 CIDR</td>
+<td>2</td>
+<td>Production and DR networks</td>
+</tr>
+<tr>
+<td>Load Balancer</td>
+<td>Network LB</td>
+<td>2</td>
+<td>High-performance data distribution</td>
+</tr>
+<tr>
+<td>FastConnect</td>
+<td>10 Gbps</td>
+<td>1</td>
+<td>High-speed data transfer</td>
+</tr>
+<tr>
+<td>NAT Gateway</td>
+<td>Standard</td>
+<td>2</td>
+<td>Secure outbound connections</td>
+</tr>
+<tr>
+<td>Internet Gateway</td>
+<td>Standard</td>
+<td>2</td>
+<td>API and dashboard access</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><third_party_components></third_party_components></p>
+<h2 id="third-party-components-integrations">Third-Party Components &amp; Integrations</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Vendor</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>License Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mostly AI</td>
+<td>Mostly AI</td>
+<td>Synthetic data generation platform</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td>Gretel.ai</td>
+<td>Gretel</td>
+<td>Privacy-preserving synthetic data</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td>CTGAN</td>
+<td>SDV</td>
+<td>Tabular synthetic data generation</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>Faker</td>
+<td>Open Source</td>
+<td>Fake data generation library</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>Apache Beam</td>
+<td>Apache</td>
+<td>Data processing pipeline framework</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>DataSynthesizer</td>
+<td>Open Source</td>
+<td>Differential privacy data synthesis</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>TensorFlow Privacy</td>
+<td>Google</td>
+<td>Privacy-preserving ML framework</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><development_tools></development_tools></p>
+<h2 id="development-management-tools">Development &amp; Management Tools</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Category</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Access Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI DevOps</td>
+<td>CI/CD Platform</td>
+<td>Model and pipeline deployment</td>
+<td>1</td>
+<td>Admin</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>Source Control</td>
+<td>Model and code versioning</td>
+<td>12</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Jupyter Notebooks</td>
+<td>Data Science</td>
+<td>Synthetic data model development</td>
+<td>15</td>
+<td>User</td>
+</tr>
+<tr>
+<td>MLflow</td>
+<td>ML Lifecycle</td>
+<td>Model tracking and versioning</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Apache Airflow</td>
+<td>Workflow Management</td>
+<td>Data generation pipeline orchestration</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Data Validation Suite</td>
+<td>Quality Assurance</td>
+<td>Synthetic data quality testing</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Privacy Auditing Tool</td>
+<td>Compliance</td>
+<td>Privacy risk assessment</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Statistical Analysis Tool</td>
+<td>Analytics</td>
+<td>Data distribution analysis</td>
+<td>8</td>
+<td>User</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<hr/>
+<p><l>
+<em>This Bill of Materials provides a comprehensive list of technical components required for implementing Synthetic Data Generation Platform. Quantities and specifications may be adjusted based on final requirements analysis and customer environment assessment.</em>
+</l></p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

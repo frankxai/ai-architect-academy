@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AI Architect Academy – Platform Reimagination & MVP Build Playbook</title>
+<style>
+:root {
+  --bg: #01040c;
+  --layer: rgba(7,12,26,0.92);
+  --layer-soft: rgba(7,12,26,0.75);
+  --accent: #8c7dff;
+  --accent-2: #52d6c3;
+  --accent-3: #ff9965;
+  --accent-4: #ffd36a;
+  --text: #eef2ff;
+  --muted: #a6afd6;
+  --border: rgba(255,255,255,0.08);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at -10% 0%, rgba(140,125,255,0.3), transparent 55%),
+              radial-gradient(circle at 110% 10%, rgba(82,214,195,0.25), transparent 65%),
+              #01040c;
+  color: var(--text);
+}
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 60px 32px 100px;
+}
+.hero {
+  border-radius: 36px;
+  padding: 58px 64px;
+  background: linear-gradient(130deg, rgba(140,125,255,0.35), rgba(82,214,195,0.32));
+  border: 1px solid var(--border);
+  box-shadow: 0 42px 120px rgba(3,10,36,0.68);
+  position: relative;
+  overflow: hidden;
+}
+.hero:after {
+  content: "";
+  position: absolute;
+  top: -140px;
+  right: -140px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(255,153,101,0.35), transparent 70%);
+  filter: blur(3px);
+}
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: 46px;
+}
+.hero p {
+  margin: 0 0 28px;
+  max-width: 760px;
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.hero-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.hero-card {
+  padding: 24px;
+  border-radius: 22px;
+  background: rgba(3,7,20,0.68);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.hero-card h3 {
+  margin: 0 0 10px;
+  color: var(--accent-2);
+  font-size: 19px;
+}
+.hero-card p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.5;
+}
+section {
+  margin-top: 60px;
+}
+section h2 {
+  margin: 0 0 22px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+section h2 span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.grid-3 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.grid-4 { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.card {
+  background: var(--layer);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  padding: 26px 28px;
+  box-shadow: 0 30px 70px rgba(3,10,32,0.5);
+}
+.card h3 { margin: 0 0 12px; color: var(--accent-2); font-size: 20px; }
+.card h4 { margin: 14px 0 8px; color: var(--accent-3); font-size: 17px; }
+.card p { margin: 0 0 12px; color: var(--muted); line-height: 1.6; }
+.card ul { margin: 0; padding-left: 20px; }
+.card ul li { margin-bottom: 8px; color: var(--text); }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  background: rgba(140,125,255,0.18);
+  border: 1px solid rgba(140,125,255,0.35);
+}
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: rgba(3,7,18,0.75);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.matrix th, .matrix td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  text-align: left;
+}
+.matrix thead {
+  background: rgba(140,125,255,0.16);
+}
+.matrix tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.03);
+}
+.timeline {
+  border-left: 2px solid rgba(140,125,255,0.35);
+  padding-left: 30px;
+  position: relative;
+}
+.timeline-item {
+  margin-bottom: 30px;
+  position: relative;
+}
+.timeline-item:before {
+  content: "";
+  position: absolute;
+  left: -41px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-3);
+  box-shadow: 0 0 0 6px rgba(255,153,101,0.22);
+}
+.timeline h3 { margin: 0 0 8px; color: var(--accent-3); font-size: 19px; }
+.timeline ul { margin: 0; padding-left: 18px; }
+.layered {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.layered-card {
+  border-radius: 24px;
+  padding: 24px;
+  background: var(--layer-soft);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.layered-card h3 { margin: 0 0 8px; color: var(--accent-4); }
+.stack {
+  display: grid;
+  gap: 16px;
+}
+.stack-card {
+  border-radius: 24px;
+  padding: 22px 24px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.stack-card h3 { margin: 0 0 10px; color: var(--accent); }
+.stack-card ul { margin: 0; padding-left: 18px; }
+.highlight {
+  margin-top: 18px;
+  border-radius: 24px;
+  padding: 24px 26px;
+  background: rgba(82,214,195,0.12);
+  border: 1px solid rgba(82,214,195,0.35);
+}
+.highlight h3 { margin: 0 0 8px; color: var(--accent-2); }
+@media (max-width: 780px) {
+  .hero { padding: 38px; }
+  section h2 { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hero">
+    <h1>AI Architect Academy Platform – Reimagined Blueprint</h1>
+    <p>Transform the academy into a modular, intelligence-driven platform with resilient architecture, dynamic knowledge orchestration, and a disciplined MVP build sequence that delivers immediate learner value and long-term extensibility.</p>
+    <div class="hero-grid">
+      <div class="hero-card">
+        <h3>North Star</h3>
+        <p>An adaptive AI mastery fabric that continuously absorbs new knowledge, tailors journeys, and certifies architects across industries.</p>
+      </div>
+      <div class="hero-card">
+        <h3>Design Tenets</h3>
+        <p>Composable modules, graph-first intelligence, transparent gamification, and operational excellence from day one.</p>
+      </div>
+      <div class="hero-card">
+        <h3>Execution Lens</h3>
+        <p>Vertical slices anchored in user outcomes, automated quality gates, and agent-augmented content operations.</p>
+      </div>
+      <div class="hero-card">
+        <h3>Launch Target</h3>
+        <p>Day-7 MVP unlocking onboarding ? journey ? retention loop for 1,000 learners with expandable components.</p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2><span></span>Evolved Platform Architecture</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Experience Layer</h3>
+        <ul>
+          <li>Unified design system with adaptive theming and accessibility baked in.</li>
+          <li>Dynamic surfaces: onboarding wizard, journey canvas, retention arena, leaderboards, professor console.</li>
+          <li>Component-driven build (Storybook) to enable iterative delivery and future white-label offerings.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Intelligence Layer</h3>
+        <ul>
+          <li>Knowledge graph + vector store powering personalization, recommendations, and dependency navigation.</li>
+          <li>Orchestration engine blending heuristics, LLM reasoning, and reinforcement from learner feedback.</li>
+          <li>Agent services for ingestion, summarization, and retention question generation.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Platform & Ops Layer</h3>
+        <ul>
+          <li>Serverless core on Vercel with modular APIs (Next.js Route Handlers + Edge Functions).</li>
+          <li>Data backbone via managed Postgres/Supabase + graph DB (Neo4j Aura) and streaming event bus.</li>
+          <li>Observability mesh (PostHog, Langfuse, Datadog) integrated with ops runbooks.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight">
+      <h3>Design System Upgrade</h3>
+      <ul>
+        <li>Create token library (spacing, typography, color ramps) aligned with accessibility contrast ratios.</li>
+        <li>Build core components: `KPCard`, `JourneyTimeline`, `GamificationMeter`, `RetentionModal`.</li>
+        <li>Adopt motion guidelines (micro-interactions for streak gains, dependency reveals).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2><span></span>Service Blueprint (Front ? Backstage)</h2>
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>Moment</th>
+          <th>Frontstage Experience</th>
+          <th>Backstage Actions</th>
+          <th>Systems & Data</th>
+          <th>Success Metrics</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account Creation</td>
+          <td>Guided wizard with live preview of journey highlights.</td>
+          <td>Profile API writes to learner store; triggers persona classifier.</td>
+          <td>Next.js UI, Edge API, Postgres (Profile), Feature flag service.</td>
+          <td>&gt;85% completion, &lt;3 min to playlist preview.</td>
+        </tr>
+        <tr>
+          <td>Journey Planning</td>
+          <td>Drag/drop journey canvas with dependency guardrails.</td>
+          <td>Graph traversal calculates prerequisites, knowledge gaps, estimated effort.</td>
+          <td>Neo4j graph, Recommendation engine, Vector search.</td>
+          <td>90% of learners accept first playlist; 60% complete first KP in 24h.</td>
+        </tr>
+        <tr>
+          <td>Learning Loop</td>
+          <td>Knowledgepoint view with narratives, labs, and agent prompts.</td>
+          <td>Content service fetches latest version; gamification service updates streaks.</td>
+          <td>Content CDN, Postgres Progress, Event bus (points-earned).</td>
+          <td>Average KP satisfaction =4.2/5, zero stale content incidents.</td>
+        </tr>
+        <tr>
+          <td>Retention Pulse</td>
+          <td>Weekly adaptive challenge with immediate feedback overlay.</td>
+          <td>LLM generator crafts questions; analytics logs mastery delta.</td>
+          <td>Edge function, LangChain worker, Analytics warehouse.</td>
+          <td>&gt;70% participation, +15% mastery uplift on follow-up.</td>
+        </tr>
+        <tr>
+          <td>Certification Reveal</td>
+          <td>Progress rings animate to completion; credential download.</td>
+          <td>Rules engine validates requirements; optional NFT mint queued.</td>
+          <td>Gamification microservice, Credential ledger, Web3 broker.</td>
+          <td>Cert issuance accuracy 100%, share rate &gt;40%.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span></span>Data Flows & Knowledge Fabric</h2>
+    <div class="layered">
+      <div class="layered-card">
+        <h3>Content Lifecycle</h3>
+        <ul>
+          <li>Agent Crawlers ingest new AI updates ? embed + classify ? submit to review queue.</li>
+          <li>Professor console approves, enriches metadata, assigns point/freshness multipliers.</li>
+          <li>Graph sync service reconciles hierarchy links and pushes notifications to impacted learners.</li>
+        </ul>
+      </div>
+      <div class="layered-card">
+        <h3>Learner Feedback Loop</h3>
+        <ul>
+          <li>Each KP completion logs rating, confidence, and reflection snippet.</li>
+          <li>Reinforcement job tunes recommendation weights and updates mastery map.</li>
+          <li>Insights dashboard surfaces trending gaps for content team action.</li>
+        </ul>
+      </div>
+      <div class="layered-card">
+        <h3>Analytics Pipeline</h3>
+        <ul>
+          <li>Event bus streams to warehouse (BigQuery/Snowflake) for cohort analytics.</li>
+          <li>Pre-computed KPI tiles feed ops dashboard and executive scorecards.</li>
+          <li>Anomaly detection flags drops in progress or engagement for proactive outreach.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span></span>Step-by-Step MVP Build Sequence</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Step 1 · Vision Alignment (Day 0)</h3>
+        <ul>
+          <li>Lock personas, value map, and success metrics using service blueprint.</li>
+          <li>Finalize domain taxonomy and certification outcomes with professor council.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Step 2 · Platform Foundations (Day 0-1)</h3>
+        <ul>
+          <li>Bootstrap Next.js repo with design system tokens and Storybook.</li>
+          <li>Provision Supabase, Neo4j Aura, PostHog, Langfuse, and event bus.</li>
+          <li>Configure CI/CD, lint/test pipelines, preview deployments.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Step 3 · Onboarding Vertical Slice (Day 1-2)</h3>
+        <ul>
+          <li>Build onboarding wizard UI, connect profile API, persist learner record.</li>
+          <li>Implement persona classifier stub returning recommended track preview.</li>
+          <li>Ship Playwright smoke test for onboarding completion.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Step 4 · Knowledge Graph Core (Day 2-3)</h3>
+        <ul>
+          <li>Import initial hierarchy (domains ? knowledgepoints) and seed dependencies.</li>
+          <li>Create graph query API for playlist generation and dependency lookups.</li>
+          <li>Expose admin console stub to inspect relationships.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Step 5 · Journey Canvas & Playlist Logic (Day 3-4)</h3>
+        <ul>
+          <li>Render journey canvas with KP cards, durations, and point values.</li>
+          <li>Wire recommendation engine (LLM-assisted) with heuristics fallback.</li>
+          <li>Enable add/swap interactions respecting prerequisites.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Step 6 · Gamification Spine (Day 4-5)</h3>
+        <ul>
+          <li>Implement points service, streak tracker, certification progress model.</li>
+          <li>Expose dashboard widgets: streak meter, level badge, leaderboard preview.</li>
+          <li>Log events to analytics pipeline; validate reward calculations.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Step 7 · Retention Challenge Loop (Day 5-6)</h3>
+        <ul>
+          <li>Build retention pulse UI and API to request adaptive questions.</li>
+          <li>Integrate LLM generator using KP summaries + user mastery state.</li>
+          <li>Update mastery map and gamification points post-challenge.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Step 8 · Agent Ingestion & Ops (Day 6)</h3>
+        <ul>
+          <li>Configure crawler agent templates for LLM/industry news sources.</li>
+          <li>Deliver approval workflow in professor console with audit logging.</li>
+          <li>Test notification fan-out to learners impacted by new KPs.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Step 9 · Hardening & Insights (Day 6-7)</h3>
+        <ul>
+          <li>Run load tests, resolve performance hotspots, optimize graph queries.</li>
+          <li>Finalize dashboards (activation, engagement, outcomes) and alert thresholds.</li>
+          <li>Execute launch checklist dry run; capture open issues.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Step 10 · Launch & Iterate (Day 7)</h3>
+        <ul>
+          <li>Deploy MVP, onboard pilot cohort, monitor live metrics.</li>
+          <li>Host feedback session, log improvements into Sprint 1 backlog.</li>
+          <li>Celebrate wins; prep roadmap for professor program and builder mode.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span></span>Delivery Streams & Ownership</h2>
+    <div class="grid-4">
+      <div class="card">
+        <h3>Stream A – Experience</h3>
+        <ul>
+          <li>Design system, onboarding wizard, journey canvas, retention UI.</li>
+          <li>Leads: Product Design + Front-end Engineering.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Stream B – Intelligence</h3>
+        <ul>
+          <li>Recommendation engine, mastery model, retention generator.</li>
+          <li>Leads: Data Science + AI Engineering.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Stream C – Content & Gamification</h3>
+        <ul>
+          <li>Knowledge graph curation, agent ingestion, points/certification rules.</li>
+          <li>Leads: Content Architects + Platform PM.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Stream D – Platform & Ops</h3>
+        <ul>
+          <li>Infrastructure, security, analytics, automation, support tooling.</li>
+          <li>Leads: DevOps + Operations.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span></span>Operational Excellence Checklist</h2>
+    <div class="stack">
+      <div class="stack-card">
+        <h3>Quality Gates</h3>
+        <ul>
+          <li>CI pipeline: lint, unit, integration, contract tests on every PR.</li>
+          <li>Accessibility audit for key flows (axe/Deque) with pass =98%.</li>
+          <li>Performance budgets: TTFB &lt; 300ms (Edge), LCP &lt; 2.4s on 3G.</li>
+        </ul>
+      </div>
+      <div class="stack-card">
+        <h3>Observability & Support</h3>
+        <ul>
+          <li>Dashboards for onboarding funnel, KP completion, retention rates.</li>
+          <li>Error tracking (Sentry) triaged daily, on-call rotation defined.</li>
+          <li>Support playbook with FAQ, escalation matrix, response SLAs.</li>
+        </ul>
+      </div>
+      <div class="stack-card">
+        <h3>Governance & Risk</h3>
+        <ul>
+          <li>Healthcare content flagged for compliance review (HIPAA/GDPR guidance).</li>
+          <li>Agent ingestion audit log stored =1 year, anomaly alerts configured.</li>
+          <li>Backup and recovery drills (database + graph) rehearsed pre-launch.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span></span>Post-MVP Growth Horizon</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Professor Studio</h3>
+        <p>Immersive mentoring spaces with live critique sessions, artifact reviews, and cohort challenges powered by the same knowledge fabric.</p>
+        <ul>
+          <li>Studio scheduler, artifact submission workflow, peer feedback loops.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Continuous Builder Mode</h3>
+        <p>Hands-on architecture missions integrating deployment sandboxes, agent automation, and maker score.</p>
+        <ul>
+          <li>Launch templates, telemetry capture, showcase marketplace.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Credential Innovations</h3>
+        <p>NFT credentials with verifiable metadata, partner badges, and longitudinal mastery tracking.</p>
+        <ul>
+          <li>Credential API, blockchain broker, partner verification portal.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

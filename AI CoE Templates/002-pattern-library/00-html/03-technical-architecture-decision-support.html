@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Technical Architecture 3: Intelligent Decision Support - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 01 Intelligent Operations / 03 Solution Decision Support</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="technical-architecture-3-intelligent-decision-support">Technical Architecture 3: Intelligent Decision Support</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 03</li>
+<li><strong>Pattern Name:</strong> Intelligent Decision Support</li>
+<li><strong>Document Type:</strong> Technical Architecture</li>
+<li><strong>Created Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><architecture_overview></architecture_overview></p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The Intelligent Decision Support architecture provides a comprehensive platform for transforming raw data into actionable insights through advanced analytics, machine learning, and real-time processing capabilities. This architecture enables organizations to make data-driven decisions with 45% improved accuracy while reducing analysis time from weeks to hours.
+</p>
+<hr/>
+<p><system_architecture_diagram></system_architecture_diagram></p>
+<h2 id="system-architecture-diagram">System Architecture Diagram</h2>
+<pre class="codehilite card"><code>┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           Data Sources Layer                                    │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ERP Systems  │  CRM Data  │  IoT Sensors  │  Market Data  │  External APIs    │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Data Ingestion &amp; Pipeline Layer                          │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                           OCI Connector Hub                                     │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Data Streaming │  │  Batch Processing│  │  Data Validation│                │
+│  │  (OCI Streaming)│  │  (OCI Functions) │  │  &amp; Cleansing    │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                          Data Storage &amp; Management                              │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                        Oracle Database 23ai                                    │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │   Data Lake     │  │  Vector Store   │  │  Time Series    │                │
+│  │   (Structured   │  │  (AI Embeddings)│  │  Data Store     │                │
+│  │   &amp; Unstructured│  │                 │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                      AI/ML Processing &amp; Analytics Layer                         │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                           OCI Data Science                                     │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Predictive     │  │  Anomaly        │  │  Pattern        │                │
+│  │  Models         │  │  Detection      │  │  Recognition    │                │
+│  │  (GPU A10/A100) │  │                 │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Model Science  │  │  AutoML         │  │  Feature        │                │
+│  │  (Custom Algos) │  │  Pipeline       │  │  Engineering    │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Decision Engine &amp; Orchestration                         │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Business Rules │  │  Decision Trees │  │  Recommendation │                │
+│  │  Engine         │  │  &amp; Logic        │  │  Engine         │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Workflow       │  │  Event Triggers │  │  Alert &amp;        │                │
+│  │  Orchestration  │  │  (OCI Events)   │  │  Notification   │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                          Presentation &amp; Interface Layer                        │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Executive      │  │  Operational    │  │  Mobile         │                │
+│  │  Dashboards     │  │  Dashboards     │  │  Applications   │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  API Gateway    │  │  Real-time      │  │  Report         │                │
+│  │  (External      │  │  Alerts         │  │  Generation     │                │
+│  │  Integration)   │  │                 │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<p></p>
+<hr/>
+<p><component_architecture_details></component_architecture_details></p>
+<h2 id="component-architecture-details">Component Architecture Details</h2>
+<h3 id="1-data-ingestion-pipeline-layer">1. Data Ingestion &amp; Pipeline Layer</h3>
+<h4 id="oci-connector-hub">OCI Connector Hub</h4>
+<ul>
+<li><strong>Purpose</strong>: Centralized data integration from multiple sources</li>
+<li><strong>Capabilities</strong>:</li>
+<li>Pre-built connectors for 200+ data sources</li>
+<li>Real-time and batch data ingestion</li>
+<li>Data transformation and mapping</li>
+<li>Error handling and retry mechanisms</li>
+<li><strong>Scalability</strong>: Auto-scaling based on data volume</li>
+<li><strong>Security</strong>: End-to-end encryption, OAuth 2.0 authentication</li>
+</ul>
+<h4 id="oci-streaming">OCI Streaming</h4>
+<ul>
+<li><strong>Purpose</strong>: Real-time data streaming and processing</li>
+<li><strong>Architecture</strong>:</li>
+<li>Partitioned streams for parallel processing</li>
+<li>Configurable retention periods (24 hours to 7 days)</li>
+<li>Integration with Apache Kafka protocol</li>
+<li><strong>Throughput</strong>: Up to 1MB/sec per partition</li>
+<li><strong>Latency</strong>: Sub-second message delivery</li>
+</ul>
+<h3 id="2-data-storage-management">2. Data Storage &amp; Management</h3>
+<h4 id="oracle-database-23ai">Oracle Database 23ai</h4>
+<ul>
+<li><strong>Multi-Model Architecture</strong>:</li>
+<li>Relational data for structured information</li>
+<li>JSON documents for semi-structured data</li>
+<li>Vector embeddings for AI/ML operations</li>
+<li>Graph data for relationship analysis</li>
+<li>
+<p>Time-series data for temporal analytics</p>
+</li>
+<li>
+<p><strong>AI-Native Features</strong>:</p>
+</li>
+<li>Built-in machine learning algorithms</li>
+<li>Automatic indexing and optimization</li>
+<li>Vector similarity search</li>
+<li>
+<p>Natural language query processing</p>
+</li>
+<li>
+<p><strong>Performance Specifications</strong>:</p>
+</li>
+<li>In-memory processing capabilities</li>
+<li>Automatic storage tiering</li>
+<li>Parallel query execution</li>
+<li>Real-time analytics on operational data</li>
+</ul>
+<h3 id="3-aiml-processing-layer">3. AI/ML Processing Layer</h3>
+<h4 id="oci-data-science-platform">OCI Data Science Platform</h4>
+<ul>
+<li><strong>Model Development Environment</strong>:</li>
+<li>Jupyter notebooks with pre-configured environments</li>
+<li>Support for Python, R, Scala, and SQL</li>
+<li>Integrated version control and collaboration tools</li>
+<li>
+<p>AutoML capabilities for rapid model development</p>
+</li>
+<li>
+<p><strong>Model Training Infrastructure</strong>:</p>
+</li>
+<li>GPU clusters (A10, A100) for deep learning</li>
+<li>Distributed training across multiple nodes</li>
+<li>Hyperparameter tuning and optimization</li>
+<li>Model versioning and experiment tracking</li>
+</ul>
+<h4 id="gpu-computing-resources">GPU Computing Resources</h4>
+<ul>
+<li><strong>NVIDIA A10 Specifications</strong>:</li>
+<li>24GB GDDR6 memory</li>
+<li>9,216 CUDA cores</li>
+<li>Optimized for inference workloads</li>
+<li>
+<p>Support for mixed-precision training</p>
+</li>
+<li>
+<p><strong>NVIDIA A100 Specifications</strong>:</p>
+</li>
+<li>40GB/80GB HBM2e memory</li>
+<li>6,912 CUDA cores</li>
+<li>Third-generation Tensor cores</li>
+<li>Multi-instance GPU (MIG) support</li>
+</ul>
+<h3 id="4-decision-engine-architecture">4. Decision Engine Architecture</h3>
+<h4 id="business-rules-engine">Business Rules Engine</h4>
+<ul>
+<li><strong>Rule Definition</strong>: Visual rule builder with natural language support</li>
+<li><strong>Rule Execution</strong>: High-performance rule evaluation engine</li>
+<li><strong>Rule Management</strong>: Version control, testing, and deployment workflows</li>
+<li><strong>Integration</strong>: REST APIs for external system integration</li>
+</ul>
+<h4 id="recommendation-engine">Recommendation Engine</h4>
+<ul>
+<li><strong>Algorithms</strong>:</li>
+<li>Collaborative filtering</li>
+<li>Content-based filtering</li>
+<li>Matrix factorization</li>
+<li>Deep learning recommendations</li>
+<li><strong>Real-time Processing</strong>: Sub-100ms recommendation generation</li>
+<li><strong>Personalization</strong>: Individual and segment-based recommendations</li>
+</ul>
+<h3 id="5-event-driven-architecture">5. Event-Driven Architecture</h3>
+<h4 id="oci-events">OCI Events</h4>
+<ul>
+<li><strong>Event Sources</strong>:</li>
+<li>Database triggers</li>
+<li>Application events</li>
+<li>External system notifications</li>
+<li>Scheduled events</li>
+<li><strong>Event Processing</strong>:</li>
+<li>Event filtering and routing</li>
+<li>Event transformation</li>
+<li>Dead letter queues for failed events</li>
+<li><strong>Integration</strong>: Serverless functions, workflows, and external systems
+</li>
+</ul>
+<hr/>
+<p><data_flow_architecture></data_flow_architecture></p>
+<h2 id="data-flow-architecture">Data Flow Architecture</h2>
+<h3 id="real-time-decision-flow">Real-Time Decision Flow</h3>
+<ol>
+<li><strong>Data Ingestion</strong>: Streaming data arrives via OCI Streaming</li>
+<li><strong>Data Processing</strong>: Real-time transformation and validation</li>
+<li><strong>AI Processing</strong>: Immediate model inference on GPU clusters</li>
+<li><strong>Decision Logic</strong>: Business rules evaluation and recommendation generation</li>
+<li><strong>Action Trigger</strong>: Automated responses via OCI Events</li>
+<li><strong>Notification</strong>: Real-time alerts to stakeholders</li>
+</ol>
+<h3 id="batch-analytics-flow">Batch Analytics Flow</h3>
+<ol>
+<li><strong>Data Collection</strong>: Scheduled batch ingestion from source systems</li>
+<li><strong>Data Preparation</strong>: ETL processes using OCI Functions</li>
+<li><strong>Model Training</strong>: Periodic model retraining on historical data</li>
+<li><strong>Insight Generation</strong>: Comprehensive analytics and reporting</li>
+<li><strong>Dashboard Update</strong>: Refreshed visualizations and KPIs
+</li>
+</ol>
+<hr/>
+<p><security_architecture></security_architecture></p>
+<h2 id="security-architecture">Security Architecture</h2>
+<h3 id="data-security">Data Security</h3>
+<ul>
+<li><strong>Encryption</strong>: AES-256 encryption at rest and in transit</li>
+<li><strong>Key Management</strong>: OCI Vault for centralized key management</li>
+<li><strong>Access Control</strong>: Role-based access control (RBAC) with fine-grained permissions</li>
+<li><strong>Data Masking</strong>: Dynamic data masking for sensitive information</li>
+</ul>
+<h3 id="network-security">Network Security</h3>
+<ul>
+<li><strong>Virtual Cloud Networks</strong>: Isolated network environments</li>
+<li><strong>Security Lists</strong>: Stateful firewall rules</li>
+<li><strong>Network Security Groups</strong>: Application-specific security policies</li>
+<li><strong>Private Endpoints</strong>: Secure connectivity without internet exposure</li>
+</ul>
+<h3 id="identity-access-management">Identity &amp; Access Management</h3>
+<ul>
+<li><strong>Multi-Factor Authentication</strong>: Required for all administrative access</li>
+<li><strong>Single Sign-On</strong>: Integration with enterprise identity providers</li>
+<li><strong>Audit Logging</strong>: Comprehensive audit trails for all system activities</li>
+<li><strong>Privileged Access Management</strong>: Elevated access controls and monitoring
+</li>
+</ul>
+<hr/>
+<p><performance_scalability></performance_scalability></p>
+<h2 id="performance-scalability">Performance &amp; Scalability</h2>
+<h3 id="horizontal-scaling">Horizontal Scaling</h3>
+<ul>
+<li><strong>Auto-scaling Groups</strong>: Automatic scaling based on demand</li>
+<li><strong>Load Balancing</strong>: Intelligent traffic distribution</li>
+<li><strong>Container Orchestration</strong>: Kubernetes-based microservices architecture</li>
+<li><strong>Database Sharding</strong>: Horizontal partitioning for large datasets</li>
+</ul>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<ul>
+<li><strong>Caching Strategy</strong>: Multi-tier caching with Redis and in-memory databases</li>
+<li><strong>Query Optimization</strong>: Automatic query plan optimization</li>
+<li><strong>Index Management</strong>: AI-driven index recommendations</li>
+<li><strong>Resource Allocation</strong>: Dynamic resource allocation based on workload patterns
+</li>
+</ul>
+<hr/>
+<p><monitoring_observability></monitoring_observability></p>
+<h2 id="monitoring-observability">Monitoring &amp; Observability</h2>
+<h3 id="application-performance-monitoring">Application Performance Monitoring</h3>
+<ul>
+<li><strong>Metrics Collection</strong>: Custom and system metrics</li>
+<li><strong>Distributed Tracing</strong>: End-to-end request tracing</li>
+<li><strong>Log Aggregation</strong>: Centralized logging with search capabilities</li>
+<li><strong>Alerting</strong>: Proactive alerting based on thresholds and anomalies</li>
+</ul>
+<h3 id="business-intelligence-monitoring">Business Intelligence Monitoring</h3>
+<ul>
+<li><strong>Decision Quality Metrics</strong>: Accuracy and effectiveness tracking</li>
+<li><strong>Model Performance</strong>: Drift detection and model degradation alerts</li>
+<li><strong>Usage Analytics</strong>: User behavior and system utilization metrics</li>
+<li><strong>ROI Tracking</strong>: Business impact measurement and reporting
+</li>
+</ul>
+<hr/>
+<p><disaster_recovery></disaster_recovery></p>
+<h2 id="disaster-recovery-business-continuity">Disaster Recovery &amp; Business Continuity</h2>
+<h3 id="backup-strategy">Backup Strategy</h3>
+<ul>
+<li><strong>Automated Backups</strong>: Daily incremental and weekly full backups</li>
+<li><strong>Cross-Region Replication</strong>: Geographic distribution of backup data</li>
+<li><strong>Point-in-Time Recovery</strong>: Granular recovery capabilities</li>
+<li><strong>Backup Testing</strong>: Regular restore testing and validation</li>
+</ul>
+<h3 id="high-availability">High Availability</h3>
+<ul>
+<li><strong>Multi-AZ Deployment</strong>: Distribution across availability zones</li>
+<li><strong>Failover Mechanisms</strong>: Automatic failover for critical components</li>
+<li><strong>Data Replication</strong>: Synchronous and asynchronous replication</li>
+<li><strong>Recovery Time Objective</strong>: RTO &lt; 4 hours, RPO &lt; 1 hour
+</li>
+</ul>
+<hr/>
+<p><integration_patterns></integration_patterns></p>
+<h2 id="integration-patterns">Integration Patterns</h2>
+<h3 id="api-first-architecture">API-First Architecture</h3>
+<ul>
+<li><strong>RESTful APIs</strong>: Standard HTTP-based interfaces</li>
+<li><strong>GraphQL Support</strong>: Flexible query capabilities</li>
+<li><strong>Webhook Integration</strong>: Event-driven external notifications</li>
+<li><strong>API Gateway</strong>: Centralized API management and security</li>
+</ul>
+<h3 id="message-driven-integration">Message-Driven Integration</h3>
+<ul>
+<li><strong>Asynchronous Messaging</strong>: Decoupled system communication</li>
+<li><strong>Event Sourcing</strong>: Complete audit trail of system changes</li>
+<li><strong>CQRS Pattern</strong>: Separate read and write operations</li>
+<li><strong>Saga Pattern</strong>: Distributed transaction management
+</li>
+</ul>
+<hr/>
+<p><deployment_architecture></deployment_architecture></p>
+<h2 id="deployment-architecture">Deployment Architecture</h2>
+<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
+<ul>
+<li><strong>Terraform Templates</strong>: Automated infrastructure provisioning</li>
+<li><strong>Configuration Management</strong>: Ansible-based configuration automation</li>
+<li><strong>Environment Promotion</strong>: Automated deployment pipelines</li>
+<li><strong>Blue-Green Deployment</strong>: Zero-downtime deployment strategy</li>
+</ul>
+<h3 id="devops-integration">DevOps Integration</h3>
+<ul>
+<li><strong>CI/CD Pipelines</strong>: Automated testing and deployment</li>
+<li><strong>Container Registry</strong>: Secure container image management</li>
+<li><strong>Artifact Management</strong>: Versioned deployment artifacts</li>
+<li><strong>Environment Management</strong>: Consistent development, staging, and production environments
+</li>
+</ul>
+<hr/>
+<p><cost_optimization></cost_optimization></p>
+<h2 id="cost-optimization">Cost Optimization</h2>
+<h3 id="resource-management">Resource Management</h3>
+<ul>
+<li><strong>Right-Sizing</strong>: Automatic resource optimization recommendations</li>
+<li><strong>Reserved Capacity</strong>: Cost savings through capacity reservations</li>
+<li><strong>Spot Instances</strong>: Cost-effective compute for batch workloads</li>
+<li><strong>Storage Tiering</strong>: Automatic data lifecycle management</li>
+</ul>
+<h3 id="usage-monitoring">Usage Monitoring</h3>
+<ul>
+<li><strong>Cost Allocation</strong>: Department and project-level cost tracking</li>
+<li><strong>Budget Alerts</strong>: Proactive cost management notifications</li>
+<li><strong>Usage Analytics</strong>: Resource utilization optimization insights</li>
+<li><strong>ROI Analysis</strong>: Cost-benefit analysis of decision support investments
+</li>
+</ul>
+<hr/>
+<p><em>This technical architecture provides comprehensive specifications for implementing intelligent decision support systems. The architecture ensures scalability, security, and performance while maintaining flexibility for customization based on specific organizational requirements.</em></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="03-solution-decision-support.html" class="btn btn-secondary">
+                    <i data-lucide="clipboard-list"></i> Solution Overview
+                </a>
+                <p class="mt-sm">Design Pattern 3: Intelligent Decision Support</p>
+            </div>
+            
+            <div class="card">
+                <a href="03-discovery-questions-decision-support.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Intelligent Decision Support</p>
+            </div>
+            
+            <div class="card">
+                <a href="03-bill-of-materials-decision-support.html" class="btn btn-secondary">
+                    <i data-lucide="package"></i> Bill of Materials
+                </a>
+                <p class="mt-sm">Bill of Materials: Intelligent Decision Support</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

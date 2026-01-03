@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Bill of Materials: Multi-Modal Energy Data Fusion - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 10 Energy Distribution Intelligence / 24 Solution Multi Modal Energy Data Fusion</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="bill-of-materials-multi-modal-energy-data-fusion">Bill of Materials: Multi-Modal Energy Data Fusion</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 24</li>
+<li><strong>Pattern Name:</strong> Multi-Modal Energy Data Fusion</li>
+<li><strong>Document Type:</strong> Bill of Materials</li>
+<li><strong>Customer:</strong> [Customer Name]</li>
+<li><strong>Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<h2 id="oracle-cloud-infrastructure-services">Oracle Cloud Infrastructure Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Data Integration</td>
+<td>Multi-source data connectivity</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>OCI Streaming</td>
+<td>Real-time data ingestion</td>
+<td>25</td>
+<td>Partitions</td>
+</tr>
+<tr>
+<td>Oracle Database 23ai</td>
+<td>Unified data storage and analytics</td>
+<td>4</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Data Science</td>
+<td>ML model development and deployment</td>
+<td>2</td>
+<td>Projects</td>
+</tr>
+<tr>
+<td>OCI Data Flow</td>
+<td>Apache Spark for large-scale processing</td>
+<td>5</td>
+<td>Clusters</td>
+</tr>
+<tr>
+<td>Oracle Analytics Cloud</td>
+<td>Unified dashboards and visualization</td>
+<td>80</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>OCI Data Catalog</td>
+<td>Metadata management and discovery</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>Oracle GoldenGate</td>
+<td>Real-time data replication</td>
+<td>6</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Object Storage</td>
+<td>Data lake storage</td>
+<td>1</td>
+<td>PB</td>
+</tr>
+<tr>
+<td>Oracle Machine Learning</td>
+<td>In-database ML capabilities</td>
+<td>4</td>
+<td>Databases</td>
+</tr>
+<tr>
+<td>OCI Language</td>
+<td>Text analytics for news/social</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>OCI Vision</td>
+<td>Satellite imagery analysis</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>OCI Anomaly Detection</td>
+<td>Multi-source anomaly detection</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Oracle Spatial</td>
+<td>Geographic data analytics</td>
+<td>1</td>
+<td>License</td>
+</tr>
+<tr>
+<td>OCI Functions</td>
+<td>Serverless data processing</td>
+<td>800</td>
+<td>GB-Hours/month</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="compute-resources">Compute Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BM.GPU4.8</td>
+<td>8x A100 GPUs, 2TB RAM</td>
+<td>4</td>
+<td>ML model training</td>
+</tr>
+<tr>
+<td>VM.Standard3.Flex</td>
+<td>32 OCPUs, 512 GB RAM</td>
+<td>10</td>
+<td>Stream processing</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>16 OCPUs, 256 GB RAM</td>
+<td>15</td>
+<td>Data transformation</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>8 OCPUs, 128 GB RAM</td>
+<td>20</td>
+<td>API services</td>
+</tr>
+<tr>
+<td>BM.Standard.E4.128</td>
+<td>128 OCPUs, 2 TB RAM</td>
+<td>3</td>
+<td>Large-scale analytics</td>
+</tr>
+<tr>
+<td>VM.Standard.A1.Flex</td>
+<td>4 OCPUs, 64 GB RAM</td>
+<td>10</td>
+<td>Development/testing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="storage-resources">Storage Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Storage Type</th>
+<th>Capacity</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block Volume (Performance)</td>
+<td>20 TB</td>
+<td>15</td>
+<td>High-speed processing</td>
+</tr>
+<tr>
+<td>Block Volume (Balanced)</td>
+<td>100 TB</td>
+<td>10</td>
+<td>Data warehouse</td>
+</tr>
+<tr>
+<td>Object Storage (Standard)</td>
+<td>1 PB</td>
+<td>1</td>
+<td>Data lake</td>
+</tr>
+<tr>
+<td>Object Storage (Archive)</td>
+<td>5 PB</td>
+<td>1</td>
+<td>Historical data</td>
+</tr>
+<tr>
+<td>File Storage</td>
+<td>50 TB</td>
+<td>5</td>
+<td>Shared analytics workspace</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="network-resources">Network Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Network Component</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual Cloud Network</td>
+<td>/16 CIDR</td>
+<td>4</td>
+<td>Network segmentation</td>
+</tr>
+<tr>
+<td>Load Balancer</td>
+<td>Application LB</td>
+<td>6</td>
+<td>Service distribution</td>
+</tr>
+<tr>
+<td>FastConnect</td>
+<td>100 Gbps</td>
+<td>2</td>
+<td>High-speed data transfer</td>
+</tr>
+<tr>
+<td>Site-to-Site VPN</td>
+<td>IPSec</td>
+<td>20</td>
+<td>External connections</td>
+</tr>
+<tr>
+<td>NAT Gateway</td>
+<td>Public IP</td>
+<td>8</td>
+<td>Outbound connectivity</td>
+</tr>
+<tr>
+<td>API Gateway</td>
+<td>REST/GraphQL</td>
+<td>4</td>
+<td>External APIs</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="data-source-integrations">Data Source Integrations</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Data Source</th>
+<th>Type</th>
+<th>Volume</th>
+<th>Update Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weather Services</td>
+<td>API/FTP</td>
+<td>500 GB/day</td>
+<td>15-minute</td>
+</tr>
+<tr>
+<td>Market Data Feeds</td>
+<td>Streaming</td>
+<td>100 GB/day</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td>SCADA/EMS</td>
+<td>OPC UA/DNP3</td>
+<td>1 TB/day</td>
+<td>1-second</td>
+</tr>
+<tr>
+<td>Smart Meters</td>
+<td>MQTT</td>
+<td>200 GB/day</td>
+<td>15-minute</td>
+</tr>
+<tr>
+<td>IoT Sensors</td>
+<td>Various</td>
+<td>300 GB/day</td>
+<td>1-minute</td>
+</tr>
+<tr>
+<td>News/Social Media</td>
+<td>API</td>
+<td>50 GB/day</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td>Economic Data</td>
+<td>API</td>
+<td>10 GB/day</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>Satellite Imagery</td>
+<td>FTP</td>
+<td>100 GB/day</td>
+<td>Hourly</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="stream-processing-components">Stream Processing Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kafka Cluster</td>
+<td>Message streaming</td>
+<td>10</td>
+<td>Nodes</td>
+</tr>
+<tr>
+<td>Schema Registry</td>
+<td>Schema management</td>
+<td>3</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>Kafka Connect</td>
+<td>Source/sink connectors</td>
+<td>30</td>
+<td>Connectors</td>
+</tr>
+<tr>
+<td>Stream Processing</td>
+<td>Flink/Spark Streaming</td>
+<td>5</td>
+<td>Clusters</td>
+</tr>
+<tr>
+<td>Event Store</td>
+<td>Event sourcing</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>CDC Platform</td>
+<td>Change data capture</td>
+<td>10</td>
+<td>Agents</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="analytics-ml-components">Analytics &amp; ML Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forecasting Models</td>
+<td>Demand/supply prediction</td>
+<td>20</td>
+<td>Models</td>
+</tr>
+<tr>
+<td>Correlation Engine</td>
+<td>Cross-domain correlation</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Pattern Detection</td>
+<td>Anomaly and pattern recognition</td>
+<td>15</td>
+<td>Models</td>
+</tr>
+<tr>
+<td>NLP Models</td>
+<td>Text analysis</td>
+<td>10</td>
+<td>Models</td>
+</tr>
+<tr>
+<td>Computer Vision</td>
+<td>Image analysis</td>
+<td>5</td>
+<td>Models</td>
+</tr>
+<tr>
+<td>Optimization Models</td>
+<td>Resource optimization</td>
+<td>8</td>
+<td>Models</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="weather-data-platform">Weather Data Platform</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weather API Subscriptions</td>
+<td>Commercial weather data</td>
+<td>3</td>
+<td>Services</td>
+</tr>
+<tr>
+<td>NOAA Data Feeds</td>
+<td>Government weather data</td>
+<td>1</td>
+<td>Feed</td>
+</tr>
+<tr>
+<td>Weather Stations</td>
+<td>Local weather sensors</td>
+<td>50</td>
+<td>Stations</td>
+</tr>
+<tr>
+<td>Radar Processing</td>
+<td>Weather radar analysis</td>
+<td>2</td>
+<td>Systems</td>
+</tr>
+<tr>
+<td>Forecast Ensemble</td>
+<td>Multiple forecast models</td>
+<td>5</td>
+<td>Models</td>
+</tr>
+<tr>
+<td>Interpolation Engine</td>
+<td>Spatial interpolation</td>
+<td>1</td>
+<td>System</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="market-intelligence">Market Intelligence</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Market Data Terminal</td>
+<td>Bloomberg/Reuters</td>
+<td>2</td>
+<td>Subscriptions</td>
+</tr>
+<tr>
+<td>News Aggregation</td>
+<td>News API subscriptions</td>
+<td>5</td>
+<td>Services</td>
+</tr>
+<tr>
+<td>Social Media APIs</td>
+<td>Twitter/LinkedIn</td>
+<td>3</td>
+<td>APIs</td>
+</tr>
+<tr>
+<td>Economic Data Feeds</td>
+<td>Economic indicators</td>
+<td>4</td>
+<td>Services</td>
+</tr>
+<tr>
+<td>Exchange Connections</td>
+<td>Energy market data</td>
+<td>7</td>
+<td>Connections</td>
+</tr>
+<tr>
+<td>Sentiment Analysis</td>
+<td>NLP sentiment scoring</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="iot-sensor-management">IoT &amp; Sensor Management</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IoT Platform</td>
+<td>Device management</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Edge Gateways</td>
+<td>Field data collection</td>
+<td>100</td>
+<td>Devices</td>
+</tr>
+<tr>
+<td>Protocol Adapters</td>
+<td>MQTT/CoAP/LoRa</td>
+<td>10</td>
+<td>Adapters</td>
+</tr>
+<tr>
+<td>Time Series DB</td>
+<td>IoT data storage</td>
+<td>2</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>Device Registry</td>
+<td>Asset management</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Telemetry Processing</td>
+<td>Real-time processing</td>
+<td>5</td>
+<td>Nodes</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="data-quality-governance">Data Quality &amp; Governance</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Quality Engine</td>
+<td>Quality rules and validation</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>MDM System</td>
+<td>Master data management</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Data Lineage</td>
+<td>Lineage tracking</td>
+<td>1</td>
+<td>Tool</td>
+</tr>
+<tr>
+<td>Data Catalog</td>
+<td>Metadata management</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Profiling Tools</td>
+<td>Data profiling</td>
+<td>3</td>
+<td>Tools</td>
+</tr>
+<tr>
+<td>Cleansing Rules</td>
+<td>Data cleansing</td>
+<td>500</td>
+<td>Rules</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="visualization-reporting">Visualization &amp; Reporting</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Executive Dashboards</td>
+<td>C-level KPIs</td>
+<td>20</td>
+<td>Dashboards</td>
+</tr>
+<tr>
+<td>Operational Dashboards</td>
+<td>Real-time operations</td>
+<td>40</td>
+<td>Dashboards</td>
+</tr>
+<tr>
+<td>Analytical Reports</td>
+<td>Scheduled reports</td>
+<td>100</td>
+<td>Templates</td>
+</tr>
+<tr>
+<td>Mobile Apps</td>
+<td>Mobile dashboards</td>
+<td>2</td>
+<td>Applications</td>
+</tr>
+<tr>
+<td>Alert Dashboards</td>
+<td>Alert monitoring</td>
+<td>15</td>
+<td>Dashboards</td>
+</tr>
+<tr>
+<td>Custom Visualizations</td>
+<td>Specialized views</td>
+<td>50</td>
+<td>Visualizations</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="security-compliance">Security &amp; Compliance</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>License Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Identity Domains</td>
+<td>Access management</td>
+<td>1</td>
+<td>Tenant</td>
+</tr>
+<tr>
+<td>OCI Vault</td>
+<td>Key management</td>
+<td>4</td>
+<td>Vaults</td>
+</tr>
+<tr>
+<td>OCI Security Zones</td>
+<td>Security enforcement</td>
+<td>10</td>
+<td>Zones</td>
+</tr>
+<tr>
+<td>Data Masking</td>
+<td>Sensitive data protection</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Encryption Services</td>
+<td>Data encryption</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Audit Logging</td>
+<td>Compliance logging</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="development-operations">Development &amp; Operations</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Category</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Access Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes (OKE)</td>
+<td>Container Platform</td>
+<td>Container orchestration</td>
+<td>3</td>
+<td>Clusters</td>
+</tr>
+<tr>
+<td>GitLab</td>
+<td>Source Control</td>
+<td>Code versioning</td>
+<td>80</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>Terraform</td>
+<td>IaC</td>
+<td>Infrastructure automation</td>
+<td>1</td>
+<td>Cloud</td>
+</tr>
+<tr>
+<td>DataOps Platform</td>
+<td>Data pipeline management</td>
+<td>1</td>
+<td>Platform</td>
+<td></td>
+</tr>
+<tr>
+<td>MLOps Platform</td>
+<td>ML lifecycle management</td>
+<td>1</td>
+<td>Platform</td>
+<td></td>
+</tr>
+<tr>
+<td>Monitoring Stack</td>
+<td>Prometheus/Grafana</td>
+<td>1</td>
+<td>Stack</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="professional-services">Professional Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Duration</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Architecture</td>
+<td>Solution architecture design</td>
+<td>6</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Data Source Assessment</td>
+<td>Source inventory and mapping</td>
+<td>4</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Platform Implementation</td>
+<td>Core platform setup</td>
+<td>16</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>ML Model Development</td>
+<td>Custom model creation</td>
+<td>12</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Integration Services</td>
+<td>System integration</td>
+<td>14</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Data Migration</td>
+<td>Historical data migration</td>
+<td>8</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Training Program</td>
+<td>User and admin training</td>
+<td>6</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Ongoing Support</td>
+<td>24x7 platform support</td>
+<td>12</td>
+<td>Months</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="external-data-subscriptions">External Data Subscriptions</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Provider</th>
+<th>Cost</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weather Data</td>
+<td>Weather.com API</td>
+<td>$5,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Market Data</td>
+<td>Bloomberg</td>
+<td>$10,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>News Feeds</td>
+<td>Reuters</td>
+<td>$3,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Economic Data</td>
+<td>Various</td>
+<td>$2,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Satellite Imagery</td>
+<td>Planet Labs</td>
+<td>$8,000</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Social Media</td>
+<td>Twitter API</td>
+<td>$1,000</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="licensing-summary">Licensing Summary</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>License Type</th>
+<th>Quantity</th>
+<th>Billing Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Universal Credits</td>
+<td>$1,800,000</td>
+<td>Annual Commitment</td>
+</tr>
+<tr>
+<td>Oracle Database EE</td>
+<td>16</td>
+<td>Processor licenses</td>
+</tr>
+<tr>
+<td>Streaming Licenses</td>
+<td>25</td>
+<td>Partitions</td>
+</tr>
+<tr>
+<td>Analytics Users</td>
+<td>80</td>
+<td>Named users</td>
+</tr>
+<tr>
+<td>API Calls</td>
+<td>200M</td>
+<td>Calls/month</td>
+</tr>
+<tr>
+<td>ML Compute Hours</td>
+<td>10,000</td>
+<td>GPU-hours/month</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="cost-estimation">Cost Estimation</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Monthly Cost</th>
+<th>Annual Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compute Resources</td>
+<td>$60,000</td>
+<td>$720,000</td>
+</tr>
+<tr>
+<td>Storage Resources</td>
+<td>$25,000</td>
+<td>$300,000</td>
+</tr>
+<tr>
+<td>Network Resources</td>
+<td>$10,000</td>
+<td>$120,000</td>
+</tr>
+<tr>
+<td>Database Services</td>
+<td>$20,000</td>
+<td>$240,000</td>
+</tr>
+<tr>
+<td>AI/ML Services</td>
+<td>$30,000</td>
+<td>$360,000</td>
+</tr>
+<tr>
+<td>Streaming Services</td>
+<td>$15,000</td>
+<td>$180,000</td>
+</tr>
+<tr>
+<td>External Data</td>
+<td>$29,000</td>
+<td>$348,000</td>
+</tr>
+<tr>
+<td>Analytics Platform</td>
+<td>$12,000</td>
+<td>$144,000</td>
+</tr>
+<tr>
+<td>Security &amp; Compliance</td>
+<td>$8,000</td>
+<td>$96,000</td>
+</tr>
+<tr>
+<td>Professional Services</td>
+<td>$25,000</td>
+<td>$300,000</td>
+</tr>
+<tr>
+<td><strong>Total Estimated Cost</strong></td>
+<td><strong>$234,000</strong></td>
+<td><strong>$2,808,000</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="roi-projection">ROI Projection</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forecast Accuracy</td>
+<td>35% improvement</td>
+<td>6 months</td>
+</tr>
+<tr>
+<td>Grid Balance</td>
+<td>25% better</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Trading Performance</td>
+<td>30% improvement</td>
+<td>9 months</td>
+</tr>
+<tr>
+<td>Operational Savings</td>
+<td>$50M annual</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Outage Reduction</td>
+<td>40% fewer</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Customer Satisfaction</td>
+<td>20% increase</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Payback Period</td>
+<td>14 months</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3-Year ROI</td>
+<td>380%</td>
+<td>3 years</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="success-metrics">Success Metrics</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Sources Integrated</td>
+<td>&gt;50</td>
+<td>Count</td>
+</tr>
+<tr>
+<td>Processing Latency</td>
+<td>&lt;5 minutes</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td>Forecast Accuracy</td>
+<td>&gt;90%</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>Correlation Discovery</td>
+<td>&gt;100/month</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Data Quality Score</td>
+<td>&gt;95%</td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td>System Availability</td>
+<td>99.9%</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>User Adoption</td>
+<td>&gt;80%</td>
+<td>Quarterly</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><em>This Bill of Materials provides a comprehensive list of technical components required for implementing the Multi-Modal Energy Data Fusion pattern. The configuration enables unified intelligence across diverse data streams, improving forecasting accuracy by 35% and operational efficiency through advanced data correlation and analytics. Costs and quantities should be adjusted based on data volume and analytical requirements.</em></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="24-technical-architecture-multi-modal-energy-data-fusion.html" class="btn btn-secondary">
+                    <i data-lucide="layers"></i> Technical Architecture
+                </a>
+                <p class="mt-sm">Technical Architecture: Multi-Modal Energy Data Fusion</p>
+            </div>
+            
+            <div class="card">
+                <a href="24-discovery-questions-multi-modal-energy-data-fusion.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Multi-Modal Energy Data Fusion</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

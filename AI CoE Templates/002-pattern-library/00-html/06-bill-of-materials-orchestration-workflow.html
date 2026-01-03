@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Bill of Materials: Orchestration & Workflow Automation - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 01 Intelligent Operations / 06 Solution Orchestration Workflow</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="bill-of-materials-orchestration-workflow-automation">Bill of Materials: Orchestration &amp; Workflow Automation</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 06</li>
+<li><strong>Pattern Name:</strong> Orchestration &amp; Workflow Automation</li>
+<li><strong>Document Type:</strong> Bill of Materials</li>
+<li><strong>Customer:</strong> [Customer Name]</li>
+<li><strong>Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><oracle_cloud_infrastructure></oracle_cloud_infrastructure></p>
+<h2 id="oracle-cloud-infrastructure-services">Oracle Cloud Infrastructure Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle Database 23ai</td>
+<td>Workflow state and orchestration data</td>
+<td>3</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Data Science</td>
+<td>Process optimization and analytics</td>
+<td>1</td>
+<td>Project</td>
+</tr>
+<tr>
+<td>Oracle Integration Cloud</td>
+<td>Enterprise system integration</td>
+<td>3</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Functions</td>
+<td>Serverless workflow execution</td>
+<td>500</td>
+<td>GB-Hours/month</td>
+</tr>
+<tr>
+<td>OCI Events</td>
+<td>Workflow event triggers and routing</td>
+<td>100</td>
+<td>Rules</td>
+</tr>
+<tr>
+<td>OCI API Gateway</td>
+<td>Workflow API management</td>
+<td>2</td>
+<td>Gateways</td>
+</tr>
+<tr>
+<td>OCI Process Automation</td>
+<td>Business process automation</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>OCI Queue</td>
+<td>Message queuing for workflow coordination</td>
+<td>5</td>
+<td>Queues</td>
+</tr>
+<tr>
+<td>Oracle Analytics Cloud</td>
+<td>Workflow performance analytics</td>
+<td>30</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>Oracle APEX</td>
+<td>Workflow management interfaces</td>
+<td>2</td>
+<td>Workspaces</td>
+</tr>
+<tr>
+<td>OCI Monitoring</td>
+<td>System performance monitoring</td>
+<td>1</td>
+<td>Namespace</td>
+</tr>
+<tr>
+<td>OCI Logging</td>
+<td>Workflow execution logs</td>
+<td>25</td>
+<td>TB/month</td>
+</tr>
+<tr>
+<td>OCI Notifications</td>
+<td>Workflow alerts and notifications</td>
+<td>15</td>
+<td>Topics</td>
+</tr>
+<tr>
+<td>OCI Service Mesh</td>
+<td>Microservice orchestration</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="compute-resources">Compute Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM.Standard3.Flex</td>
+<td>32 OCPUs, 512 GB RAM</td>
+<td>2</td>
+<td>Workflow engine processing</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>16 OCPUs, 256 GB RAM</td>
+<td>4</td>
+<td>Application servers</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>8 OCPUs, 128 GB RAM</td>
+<td>6</td>
+<td>Integration services</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>4 OCPUs, 64 GB RAM</td>
+<td>8</td>
+<td>Microservice workloads</td>
+</tr>
+<tr>
+<td>VM.Standard.A1.Flex</td>
+<td>4 OCPUs, 32 GB RAM</td>
+<td>3</td>
+<td>Development and testing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="storage-resources">Storage Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Storage Type</th>
+<th>Capacity</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block Volume (Performance)</td>
+<td>8 TB</td>
+<td>6</td>
+<td>Database and state storage</td>
+</tr>
+<tr>
+<td>Block Volume (Balanced)</td>
+<td>30 TB</td>
+<td>4</td>
+<td>Workflow data storage</td>
+</tr>
+<tr>
+<td>Object Storage (Standard)</td>
+<td>200 TB</td>
+<td>1</td>
+<td>Document and artifact storage</td>
+</tr>
+<tr>
+<td>Object Storage (Archive)</td>
+<td>1 PB</td>
+<td>1</td>
+<td>Historical workflow archive</td>
+</tr>
+<tr>
+<td>File Storage</td>
+<td>20 TB</td>
+<td>2</td>
+<td>Shared configuration and templates</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="network-resources">Network Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Network Component</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual Cloud Network</td>
+<td>/16 CIDR</td>
+<td>2</td>
+<td>Production and DR networks</td>
+</tr>
+<tr>
+<td>Load Balancer</td>
+<td>Network LB</td>
+<td>3</td>
+<td>High-performance load distribution</td>
+</tr>
+<tr>
+<td>FastConnect</td>
+<td>5 Gbps</td>
+<td>1</td>
+<td>Enterprise system connectivity</td>
+</tr>
+<tr>
+<td>NAT Gateway</td>
+<td>Standard</td>
+<td>2</td>
+<td>Secure outbound connections</td>
+</tr>
+<tr>
+<td>Service Gateway</td>
+<td>Standard</td>
+<td>2</td>
+<td>Oracle service connectivity</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><third_party_components></third_party_components></p>
+<h2 id="third-party-components-integrations">Third-Party Components &amp; Integrations</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Vendor</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>License Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apache Airflow</td>
+<td>Apache</td>
+<td>Workflow orchestration platform</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>Camunda BPM</td>
+<td>Camunda</td>
+<td>Business process management</td>
+<td>50</td>
+<td>Per user</td>
+</tr>
+<tr>
+<td>Microsoft Power Automate</td>
+<td>Microsoft</td>
+<td>Low-code workflow automation</td>
+<td>25</td>
+<td>Per user</td>
+</tr>
+<tr>
+<td>Zapier Enterprise</td>
+<td>Zapier</td>
+<td>App integration and automation</td>
+<td>100</td>
+<td>Per task</td>
+</tr>
+<tr>
+<td>MuleSoft Anypoint</td>
+<td>Salesforce</td>
+<td>API and integration platform</td>
+<td>10</td>
+<td>Per core</td>
+</tr>
+<tr>
+<td>Red Hat Process Automation</td>
+<td>Red Hat</td>
+<td>Enterprise process automation</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td>ServiceNow Workflow</td>
+<td>ServiceNow</td>
+<td>IT service management workflows</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><development_tools></development_tools></p>
+<h2 id="development-management-tools">Development &amp; Management Tools</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Category</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Access Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI DevOps</td>
+<td>CI/CD Platform</td>
+<td>Workflow deployment automation</td>
+<td>1</td>
+<td>Admin</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>Source Control</td>
+<td>Workflow definition versioning</td>
+<td>20</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Workflow Designer</td>
+<td>Process Design</td>
+<td>Visual workflow design interface</td>
+<td>15</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Postman</td>
+<td>API Testing</td>
+<td>Integration endpoint testing</td>
+<td>10</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Apache NiFi</td>
+<td>Data Flow</td>
+<td>Data processing workflow design</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Kubernetes Dashboard</td>
+<td>Container Management</td>
+<td>Container orchestration management</td>
+<td>2</td>
+<td>Admin</td>
+</tr>
+<tr>
+<td>Process Mining Tool</td>
+<td>Analytics</td>
+<td>Workflow optimization analysis</td>
+<td>5</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Grafana</td>
+<td>Monitoring</td>
+<td>Workflow performance dashboards</td>
+<td>8</td>
+<td>User</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<hr/>
+<p><l>
+<em>This Bill of Materials provides a comprehensive list of technical components required for implementing Orchestration &amp; Workflow Automation. Quantities and specifications may be adjusted based on final requirements analysis and customer environment assessment.</em>
+</l></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="06-technical-architecture-orchestration-workflow.html" class="btn btn-secondary">
+                    <i data-lucide="layers"></i> Technical Architecture
+                </a>
+                <p class="mt-sm">Technical Architecture 6: Intelligent Orchestration & Workflow Automation</p>
+            </div>
+            
+            <div class="card">
+                <a href="06-discovery-questions-orchestration-workflow.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Intelligent Orchestration & Workflow Automation</p>
+            </div>
+            
+            <div class="card">
+                <a href="06-solution-orchestration-workflow.html" class="btn btn-secondary">
+                    <i data-lucide="clipboard-list"></i> Solution Overview
+                </a>
+                <p class="mt-sm">Design Pattern 6: Intelligent Orchestration & Workflow Automation</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

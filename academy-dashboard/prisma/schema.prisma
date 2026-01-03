@@ -1,0 +1,935 @@
+// AI Architect Academy - Hierarchical Knowledge Graph Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== USER & AUTHENTICATION ====================
+// Note: User model defined at end with all V2 relations
+
+enum UserRole {
+  LEARNER
+  PROFESSOR
+  ADMIN
+}
+
+// ==================== LEARNER PROFILE & GAMIFICATION ====================
+
+model LearnerProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Demographics & Goals
+  industry         String?
+  role             String?
+  weeklyCommitment Int      @default(5) // hours per week
+  goals            String[] // JSON array of goal strings
+
+  // Gamification
+  totalPoints      Int       @default(0)
+  currentLevel     Int       @default(1)
+  streakDays       Int       @default(0)
+  lastActivityDate DateTime?
+
+  // Skill Assessment
+  aiMasteryLevel    Int @default(1) // 1-5 self-reported
+  genaiMasteryLevel Int @default(1)
+  dataMasteryLevel  Int @default(1)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("learner_profiles")
+}
+
+// ==================== HIERARCHICAL KNOWLEDGE GRAPH ====================
+
+// Level 1: Domain (e.g., "AI", "Data Science", "Healthcare")
+model Domain {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  description String?
+  icon        String?
+  order       Int     @default(0)
+
+  subdomains Subdomain[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("domains")
+}
+
+// Level 2: Subdomain (e.g., "Machine Learning", "GenAI", "Clinical AI")
+model Subdomain {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  description String?
+  domainId    String
+  domain      Domain  @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  order       Int     @default(0)
+
+  businessAreas BusinessArea[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("subdomains")
+}
+
+// Level 3: Business Area (e.g., "Patient Safety", "Fraud Detection", "Supply Chain")
+model BusinessArea {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  name        String
+  description String?
+  subdomainId String
+  subdomain   Subdomain @relation(fields: [subdomainId], references: [id], onDelete: Cascade)
+  order       Int       @default(0)
+
+  topics Topic[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("business_areas")
+}
+
+// Level 4: Topic (e.g., "RAG Systems", "Prompt Engineering", "Model Monitoring")
+model Topic {
+  id             String       @id @default(cuid())
+  slug           String       @unique
+  name           String
+  description    String?
+  businessAreaId String
+  businessArea   BusinessArea @relation(fields: [businessAreaId], references: [id], onDelete: Cascade)
+  order          Int          @default(0)
+
+  knowledgePoints KnowledgePoint[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("topics")
+}
+
+// Level 5: Knowledge Point (atomic learning unit)
+model KnowledgePoint {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  description String?
+  content     String  @db.Text // Markdown content
+  topicId     String
+  topic       Topic   @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  // Metadata
+  difficulty     DifficultyLevel @default(BEGINNER)
+  estimatedHours Float           @default(1.0)
+  pointValue     Int             @default(10)
+  freshnessScore Float           @default(1.0) // 0.0-1.0, decays over time
+  publishedAt    DateTime?
+  tags           String[]
+
+  // Content assets
+  videoUrl     String?
+  labUrl       String?
+  codeExamples Json? // Array of code snippets
+
+  // Relations
+  prerequisites   KnowledgePointPrerequisite[]  @relation("PrerequisiteKPs")
+  dependents      KnowledgePointPrerequisite[]  @relation("DependentKPs")
+  complementary   KnowledgePointComplementary[] @relation("ComplementaryKP1")
+  complementaryOf KnowledgePointComplementary[] @relation("ComplementaryKP2")
+
+  progress         LearnerProgress[]
+  activities       Activity[]
+  certificationKPs CertificationKnowledgePoint[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("knowledge_points")
+}
+
+enum DifficultyLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+}
+
+// Prerequisites: KP A must be completed before KP B
+model KnowledgePointPrerequisite {
+  id             String         @id @default(cuid())
+  prerequisiteId String
+  prerequisite   KnowledgePoint @relation("PrerequisiteKPs", fields: [prerequisiteId], references: [id], onDelete: Cascade)
+  dependentId    String
+  dependent      KnowledgePoint @relation("DependentKPs", fields: [dependentId], references: [id], onDelete: Cascade)
+
+  @@unique([prerequisiteId, dependentId])
+  @@map("knowledge_point_prerequisites")
+}
+
+// Complementary: KPs that work well together
+model KnowledgePointComplementary {
+  id                String         @id @default(cuid())
+  knowledgePoint1Id String
+  knowledgePoint1   KnowledgePoint @relation("ComplementaryKP1", fields: [knowledgePoint1Id], references: [id], onDelete: Cascade)
+  knowledgePoint2Id String
+  knowledgePoint2   KnowledgePoint @relation("ComplementaryKP2", fields: [knowledgePoint2Id], references: [id], onDelete: Cascade)
+
+  @@unique([knowledgePoint1Id, knowledgePoint2Id])
+  @@map("knowledge_point_complementary")
+}
+
+// ==================== LEARNER PROGRESS & ACTIVITIES ====================
+
+model LearnerProgress {
+  id               String         @id @default(cuid())
+  userId           String
+  user             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  knowledgePointId String
+  knowledgePoint   KnowledgePoint @relation(fields: [knowledgePointId], references: [id], onDelete: Cascade)
+
+  status    ProgressStatus @default(NOT_STARTED)
+  score     Float? // 0-100 if completed
+  timeSpent Int            @default(0) // minutes
+  attempts  Int            @default(0)
+
+  startedAt      DateTime?
+  completedAt    DateTime?
+  lastAccessedAt DateTime?
+
+  @@unique([userId, knowledgePointId])
+  @@map("learner_progress")
+}
+
+enum ProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  MASTERED
+}
+
+model Activity {
+  id               String          @id @default(cuid())
+  userId           String
+  user             User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  knowledgePointId String?
+  knowledgePoint   KnowledgePoint? @relation(fields: [knowledgePointId], references: [id], onDelete: SetNull)
+
+  type         ActivityType
+  description  String
+  pointsEarned Int          @default(0)
+  metadata     Json?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("activities")
+}
+
+enum ActivityType {
+  COMPLETED_KP
+  ACHIEVED_STREAK
+  LEVELED_UP
+  STARTED_JOURNEY
+  EARNED_CERTIFICATION
+  LINKED_CODE
+  CONTRIBUTED_CONTENT
+}
+
+// ==================== CERTIFICATION SYSTEM ====================
+
+model CertificationTrack {
+  id             String  @id @default(cuid())
+  slug           String  @unique
+  name           String
+  description    String?
+  icon           String?
+  color          String?
+  requiredPoints Int     @default(1000)
+  estimatedHours Float   @default(40)
+  order          Int     @default(0)
+
+  knowledgePoints CertificationKnowledgePoint[]
+  certifications  Certification[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("certification_tracks")
+}
+
+model CertificationKnowledgePoint {
+  id                   String             @id @default(cuid())
+  certificationTrackId String
+  certificationTrack   CertificationTrack @relation(fields: [certificationTrackId], references: [id], onDelete: Cascade)
+  knowledgePointId     String
+  knowledgePoint       KnowledgePoint     @relation(fields: [knowledgePointId], references: [id], onDelete: Cascade)
+  required             Boolean            @default(true) // false = optional/bonus
+
+  @@unique([certificationTrackId, knowledgePointId])
+  @@map("certification_knowledge_points")
+}
+
+model Certification {
+  id                   String             @id @default(cuid())
+  userId               String
+  user                 User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  certificationTrackId String
+  certificationTrack   CertificationTrack @relation(fields: [certificationTrackId], references: [id], onDelete: Cascade)
+
+  status        CertificationStatus @default(IN_PROGRESS)
+  progress      Float               @default(0) // 0-100
+  credentialUrl String? // URL to shareable credential/NFT
+
+  earnedAt  DateTime?
+  expiresAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, certificationTrackId])
+  @@map("certifications")
+}
+
+enum CertificationStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  EARNED
+  EXPIRED
+}
+
+// ==================== CONTENT INGESTION ====================
+
+model ContentIngestion {
+  id         String  @id @default(cuid())
+  source     String // "agent-crawler", "manual", "api"
+  sourceUrl  String?
+  title      String
+  summary    String?
+  rawContent String  @db.Text
+  metadata   Json?
+
+  status      IngestionStatus @default(PENDING)
+  reviewedBy  String?
+  reviewNotes String?
+
+  // If approved, link to created KP
+  knowledgePointId String?
+
+  createdAt  DateTime  @default(now())
+  reviewedAt DateTime?
+
+  @@index([status, createdAt])
+  @@map("content_ingestion")
+}
+
+enum IngestionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// ==================== V2 HYBRID: DEPLOYABLE PATTERNS & FACTORY ====================
+
+// Learning Journey (enhanced certification track with narrative)
+model LearningJourney {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  description String?
+  narrative   String? @db.Text // Industry storyline
+  icon        String?
+  color       String?
+
+  // Journey metadata
+  type           JourneyType @default(FOUNDATION)
+  industry       String? // Healthcare, Finance, Manufacturing, etc.
+  estimatedHours Float       @default(40)
+  systemsToBuild Int         @default(3) // How many systems to deploy
+  requiredPoints Int         @default(1000)
+  order          Int         @default(0)
+
+  // Relations
+  patterns    DeployablePattern[]
+  enrollments JourneyEnrollment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("learning_journeys")
+}
+
+enum JourneyType {
+  FOUNDATION // Core skills
+  SPECIALIST // GenAI, MLOps, etc.
+  INDUSTRY // Healthcare, Finance, etc.
+}
+
+// Deployable Pattern (knowledge point + deployable system)
+model DeployablePattern {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  description String?
+
+  // Learning aspects (Academy)
+  learningGuide  String          @db.Text // Theory & concepts
+  concepts       String[] // Key concepts covered
+  difficulty     DifficultyLevel @default(BEGINNER)
+  estimatedHours Float           @default(2.0)
+  pointValue     Int             @default(50)
+
+  // Factory aspects (Builder)
+  codeTemplateUrl String? // GitHub template URL
+  architecture    String   @db.Text // System design diagram
+  agentWorkflow   String   @db.Text // How to build with agents
+  deploymentGuide String   @db.Text // Production deployment
+  techStack       String[] // Technologies used
+
+  // Industry variants
+  industryVariants Json? // Healthcare, Finance specific adaptations
+  useCases         String[] // Real-world applications
+
+  // Media
+  videoUrl String?
+  demoUrl  String?
+
+  // Relations
+  journeyId String
+  journey   LearningJourney @relation(fields: [journeyId], references: [id], onDelete: Cascade)
+
+  deployments PatternDeployment[]
+  progress    PatternProgress[]
+  listing     PatternListing? // V3: Marketplace listing
+
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("deployable_patterns")
+}
+
+// User's journey enrollment and progress
+model JourneyEnrollment {
+  id        String          @id @default(cuid())
+  userId    String
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  journeyId String
+  journey   LearningJourney @relation(fields: [journeyId], references: [id], onDelete: Cascade)
+
+  // Progress tracking
+  progress         Float   @default(0) // 0-100
+  systemsBuilt     Int     @default(0)
+  systemsDeployed  Int     @default(0)
+  currentPatternId String?
+
+  // Points & achievements
+  pointsEarned Int @default(0)
+
+  // Status
+  status JourneyStatus @default(IN_PROGRESS)
+
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  @@unique([userId, journeyId])
+  @@map("journey_enrollments")
+}
+
+enum JourneyStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  CERTIFIED
+}
+
+// Pattern learning progress
+model PatternProgress {
+  id        String            @id @default(cuid())
+  userId    String
+  user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  patternId String
+  pattern   DeployablePattern @relation(fields: [patternId], references: [id], onDelete: Cascade)
+
+  // Learning progress
+  learningStatus ProgressStatus @default(NOT_STARTED)
+  score          Float? // 0-100
+  timeSpent      Int            @default(0) // minutes
+
+  // Build progress
+  buildStarted   Boolean @default(false)
+  buildCompleted Boolean @default(false)
+  deployed       Boolean @default(false)
+
+  startedAt   DateTime?
+  completedAt DateTime?
+
+  @@unique([userId, patternId])
+  @@map("pattern_progress")
+}
+
+// Deployed Systems Portfolio
+model PatternDeployment {
+  id        String            @id @default(cuid())
+  userId    String
+  user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  patternId String
+  pattern   DeployablePattern @relation(fields: [patternId], references: [id], onDelete: Cascade)
+
+  // Deployment details
+  name        String // Custom name for this deployment
+  description String?
+  status      DeploymentStatus @default(IN_PROGRESS)
+
+  // URLs
+  deploymentUrl String? // Live system URL
+  repositoryUrl String? // GitHub repo
+  documentation String? @db.Text
+
+  // Industry context
+  industry String? // Healthcare, Finance, etc.
+  useCase  String? // Specific use case
+
+  // Metrics
+  isProduction Boolean @default(false)
+  uptime       Float? // Uptime percentage
+  activeUsers  Int?
+
+  // Tech details
+  deploymentPlatform String? // Vercel, AWS, etc.
+  techStack          String[]
+
+  // Showcase
+  isFeatured    Boolean @default(false)
+  showcaseImage String?
+
+  deployedAt  DateTime  @default(now())
+  lastUpdated DateTime  @updatedAt
+  archivedAt  DateTime?
+
+  @@map("pattern_deployments")
+}
+
+enum DeploymentStatus {
+  IN_PROGRESS
+  DEPLOYED
+  PRODUCTION
+  MAINTAINED
+  ARCHIVED
+}
+
+// User portfolio showcase
+model Portfolio {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Public profile
+  isPublic Boolean @default(true)
+  bio      String? @db.Text
+  website  String?
+  github   String?
+  linkedin String?
+
+  // Stats
+  totalSystemsBuilt    Int @default(0)
+  totalSystemsDeployed Int @default(0)
+  totalInProduction    Int @default(0)
+
+  // Specializations
+  industries   String[] // Industries worked in
+  technologies String[] // Tech stack expertise
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("portfolios")
+}
+
+// ==================== V3 MARKETPLACE & MONETIZATION ====================
+
+// Professor Account - Content creators & instructors
+model ProfessorAccount {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Profile
+  displayName String
+  bio         String?  @db.Text
+  expertise   String[] // Areas of expertise
+  website     String?
+  github      String?
+  linkedin    String?
+
+  // Verification & tier
+  verified Boolean       @default(false)
+  tier     ProfessorTier @default(COMMUNITY)
+
+  // Payment info
+  stripeAccountId String? @unique // Stripe Connect account
+  payoutEnabled   Boolean @default(false)
+
+  // Analytics
+  totalStudents Int    @default(0)
+  totalRevenue  Float  @default(0) // in dollars
+  avgRating     Float? // 1-5
+  totalReviews  Int    @default(0)
+
+  // Content stats
+  patternsCreated Int @default(0)
+  workshopsSold   Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  listings PatternListing[]
+  revenues Revenue[]
+  reviews  Review[]
+
+  @@map("professor_accounts")
+}
+
+enum ProfessorTier {
+  COMMUNITY // Free tier
+  CREATOR // $99/mo - sell patterns
+  EXPERT // $299/mo - workshops + private sessions
+}
+
+// Pattern Marketplace Listing
+model PatternListing {
+  id        String            @id @default(cuid())
+  patternId String            @unique
+  pattern   DeployablePattern @relation(fields: [patternId], references: [id], onDelete: Cascade)
+
+  professorId String
+  professor   ProfessorAccount @relation(fields: [professorId], references: [id], onDelete: Cascade)
+
+  // Pricing
+  priceType PriceType @default(FREE)
+  price     Float     @default(0) // in dollars
+
+  // Listing details
+  isPublished Boolean @default(false)
+  isFeatured  Boolean @default(false)
+
+  // Sales & ratings
+  totalSales   Int    @default(0)
+  totalRevenue Float  @default(0)
+  avgRating    Float? // 1-5
+  reviewCount  Int    @default(0)
+
+  // SEO & discovery
+  tags       String[]
+  industries String[]
+
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  purchases Purchase[]
+  reviews   Review[]
+
+  @@map("pattern_listings")
+}
+
+enum PriceType {
+  FREE
+  PAID
+  SUBSCRIPTION
+}
+
+// Purchase transactions
+model Purchase {
+  id String @id @default(cuid())
+
+  // Buyer
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Listing
+  listingId String
+  listing   PatternListing @relation(fields: [listingId], references: [id])
+
+  // Transaction
+  amount          Float // in dollars
+  platformFee     Float // 30%
+  professorPayout Float // 70%
+
+  // Payment
+  stripePaymentId String?        @unique
+  status          PurchaseStatus @default(PENDING)
+
+  // Delivery
+  accessGranted Boolean @default(false)
+
+  purchasedAt DateTime  @default(now())
+  completedAt DateTime?
+  refundedAt  DateTime?
+
+  @@map("purchases")
+}
+
+enum PurchaseStatus {
+  PENDING
+  COMPLETED
+  REFUNDED
+  FAILED
+}
+
+// Revenue tracking & payouts
+model Revenue {
+  id String @id @default(cuid())
+
+  professorId String
+  professor   ProfessorAccount @relation(fields: [professorId], references: [id], onDelete: Cascade)
+
+  // Revenue period
+  period String // "2024-01"
+
+  // Amounts
+  grossRevenue Float @default(0) // Total sales
+  platformFee  Float @default(0) // 30%
+  netRevenue   Float @default(0) // 70%
+
+  // Payout
+  payoutStatus   PayoutStatus @default(PENDING)
+  payoutDate     DateTime?
+  stripePayoutId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([professorId, period])
+  @@map("revenues")
+}
+
+enum PayoutStatus {
+  PENDING
+  PROCESSING
+  PAID
+  FAILED
+}
+
+// Reviews & ratings
+model Review {
+  id String @id @default(cuid())
+
+  // Reviewer
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Target
+  listingId String
+  listing   PatternListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  professorId String
+  professor   ProfessorAccount @relation(fields: [professorId], references: [id], onDelete: Cascade)
+
+  // Review content
+  rating  Int // 1-5
+  title   String?
+  content String? @db.Text
+
+  // Moderation
+  isPublished Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, listingId])
+  @@map("reviews")
+}
+
+// Enterprise Account
+model EnterpriseAccount {
+  id String @id @default(cuid())
+
+  // Company info
+  companyName String
+  industry    String
+  size        EnterpriseSize
+
+  // Contact
+  contactName  String
+  contactEmail String  @unique
+  contactPhone String?
+
+  // Account details
+  tier   EnterpriseTier @default(TALENT_PIPELINE)
+  status AccountStatus  @default(ACTIVE)
+
+  // Billing
+  stripeCustomerId String? @unique
+  billingEmail     String?
+
+  // Contract
+  contractStart DateTime?
+  contractEnd   DateTime?
+  annualValue   Float? // in dollars
+
+  // Usage
+  activeSeats Int @default(0)
+  maxSeats    Int @default(10)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  licenses     EnterpriseLicense[]
+  partnerships Partnership[]
+
+  @@map("enterprise_accounts")
+}
+
+enum EnterpriseSize {
+  STARTUP // <50
+  SMB // 50-500
+  ENTERPRISE // 500+
+}
+
+enum EnterpriseTier {
+  TALENT_PIPELINE // $5k/year - hire certified architects
+  PRIVATE_ACADEMY // $25k/year - custom tracks
+  TRAINING_PROGRAM // $100k/year - train existing team
+}
+
+enum AccountStatus {
+  TRIAL
+  ACTIVE
+  SUSPENDED
+  CANCELLED
+}
+
+// Enterprise user licenses
+model EnterpriseLicense {
+  id String @id @default(cuid())
+
+  enterpriseId String
+  enterprise   EnterpriseAccount @relation(fields: [enterpriseId], references: [id], onDelete: Cascade)
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Access
+  role     EnterpriseRole @default(LEARNER)
+  isActive Boolean        @default(true)
+
+  assignedAt DateTime  @default(now())
+  revokedAt  DateTime?
+
+  @@map("enterprise_licenses")
+}
+
+enum EnterpriseRole {
+  LEARNER
+  ADMIN
+  MANAGER
+}
+
+// Strategic Partnerships
+model Partnership {
+  id String @id @default(cuid())
+
+  // Partner info
+  partnerName String
+  partnerType PartnerType
+
+  // Contact
+  contactName  String
+  contactEmail String @unique
+
+  // Deal structure
+  dealType     DealType
+  revenueShare Float? // percentage
+  annualValue  Float? // in dollars
+
+  // Status
+  status PartnershipStatus @default(NEGOTIATING)
+
+  // Dates
+  contractStart DateTime?
+  contractEnd   DateTime?
+
+  // Relations
+  enterpriseId String?
+  enterprise   EnterpriseAccount? @relation(fields: [enterpriseId], references: [id])
+
+  // Notes & metrics
+  notes   String? @db.Text
+  metrics Json? // Custom tracking
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("partnerships")
+}
+
+enum PartnerType {
+  CLOUD_PROVIDER // AWS, Azure, GCP
+  AI_COMPANY // OpenAI, Anthropic, etc.
+  CONSULTING_FIRM // McKinsey, Deloitte, etc.
+  TECHNOLOGY_VENDOR // LangChain, Pinecone, etc.
+  EDUCATION // Universities, bootcamps
+}
+
+enum DealType {
+  REFERRAL // Send customers to us
+  INTEGRATION // Technical partnership
+  CO_MARKETING // Joint campaigns
+  RESELLER // They sell our platform
+  WHITE_LABEL // Rebrand our content
+}
+
+enum PartnershipStatus {
+  LEAD
+  NEGOTIATING
+  ACTIVE
+  PAUSED
+  ENDED
+}
+
+// Update User model relations
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      UserRole @default(LEARNER)
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  profile        LearnerProfile?
+  progress       LearnerProgress[]
+  activities     Activity[]
+  certifications Certification[]
+
+  // V2 Factory relations
+  journeyEnrollments JourneyEnrollment[]
+  patternProgress    PatternProgress[]
+  deployments        PatternDeployment[]
+  portfolio          Portfolio?
+
+  // V3 Marketplace relations
+  professorAccount  ProfessorAccount?
+  purchases         Purchase[]
+  reviews           Review[]
+  enterpriseLicense EnterpriseLicense?
+
+  @@map("users")
+}

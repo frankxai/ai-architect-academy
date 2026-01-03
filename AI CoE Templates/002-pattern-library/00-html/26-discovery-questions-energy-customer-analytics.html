@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: Energy Customer Analytics & Engagement - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 10 Energy Distribution Intelligence / 26 Solution Energy Customer Analytics</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="discovery-questions-energy-customer-analytics-engagement">Discovery Questions: Energy Customer Analytics &amp; Engagement</h1>
+<h2 id="discovery-current-state-assessment">Discovery &amp; Current State Assessment</h2>
+<ol>
+<li><strong>How many customers do you serve, and what types (residential, commercial)?</strong></li>
+<li>
+<p><em>Purpose: Understand customer base size and composition</em></p>
+</li>
+<li>
+<p><strong>What customer data do you currently collect and analyze?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Assess data availability and analytics maturity</em></p>
+</li>
+<li>
+<p><strong>What is your current customer satisfaction score (CSAT/NPS)?</strong></p>
+</li>
+<li><em>Purpose: Establish baseline satisfaction metrics</em></li>
+</ol>
+<hr/>
+<h2 id="strategy-business-alignment">Strategy &amp; Business Alignment</h2>
+<ol>
+<li><strong>What are your primary goals for customer engagement?</strong></li>
+<li>
+<p><em>Purpose: Align solution with business objectives</em></p>
+</li>
+<li>
+<p><strong>How important is customer retention in your market?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Understand competitive landscape and churn impact</em></p>
+</li>
+<li>
+<p><strong>What would 45% improvement in customer satisfaction mean for your business?</strong></p>
+</li>
+<li><em>Purpose: Quantify value of improved engagement</em></li>
+</ol>
+<hr/>
+<h2 id="opportunity-qualification">Opportunity Qualification</h2>
+<ol>
+<li><strong>What is driving the need for better customer analytics?</strong></li>
+<li>
+<p><em>Purpose: Understand business drivers and urgency</em></p>
+</li>
+<li>
+<p><strong>Who owns customer experience in your organization?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Identify stakeholders and decision makers</em></p>
+</li>
+<li>
+<p><strong>What budget is allocated for customer engagement initiatives?</strong></p>
+</li>
+<li><em>Purpose: Assess financial commitment</em></li>
+</ol>
+<hr/>
+<h2 id="technical-scoping-architecture">Technical Scoping &amp; Architecture</h2>
+<ol>
+<li>
+<p><strong>What customer systems do you currently have (CIS, billing, CRM)?</strong></p>
+<ul>
+<li><em>Purpose: Map existing systems for integration</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have smart meters deployed? What is the coverage?</strong></p>
+<ul>
+<li><em>Purpose: Assess AMI data availability</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What digital channels do you offer customers?</strong></p>
+<ul>
+<li><em>Purpose: Understand current engagement channels</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="smart-meter-usage-data">Smart Meter &amp; Usage Data</h2>
+<ol>
+<li>
+<p><strong>How frequently do you collect meter reads?</strong></p>
+<ul>
+<li><em>Purpose: Determine data granularity</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What percentage of customers have smart meters?</strong></p>
+<ul>
+<li><em>Purpose: Assess data coverage</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you currently use smart meter data?</strong></p>
+<ul>
+<li><em>Purpose: Understand current utilization</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="customer-programs">Customer Programs</h2>
+<ol>
+<li>
+<p><strong>What energy efficiency programs do you offer?</strong></p>
+<ul>
+<li><em>Purpose: Inventory existing programs</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What is your current program participation rate?</strong></p>
+<ul>
+<li><em>Purpose: Establish baseline participation</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have demand response programs?</strong></p>
+<ul>
+<li><em>Purpose: Assess DR capabilities</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="customer-communications">Customer Communications</h2>
+<ol>
+<li>
+<p><strong>How do you currently communicate with customers?</strong></p>
+<ul>
+<li><em>Purpose: Map communication channels</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What personalization do you currently provide?</strong></p>
+<ul>
+<li><em>Purpose: Assess personalization maturity</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do customers prefer to interact with you?</strong></p>
+<ul>
+<li><em>Purpose: Understand channel preferences</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="customer-service">Customer Service</h2>
+<ol>
+<li>
+<p><strong>What is your call center volume and top call reasons?</strong></p>
+<ul>
+<li><em>Purpose: Identify service pain points</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What self-service options do you provide?</strong></p>
+<ul>
+<li><em>Purpose: Assess digital adoption</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What is your first contact resolution rate?</strong></p>
+<ul>
+<li><em>Purpose: Measure service effectiveness</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="rate-plans-billing">Rate Plans &amp; Billing</h2>
+<ol>
+<li>
+<p><strong>What rate plans do you offer customers?</strong></p>
+<ul>
+<li><em>Purpose: Understand rate complexity</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do customers understand their bills?</strong></p>
+<ul>
+<li><em>Purpose: Assess bill clarity needs</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What payment options do you provide?</strong></p>
+<ul>
+<li><em>Purpose: Evaluate payment flexibility</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="energy-efficiency-conservation">Energy Efficiency &amp; Conservation</h2>
+<ol>
+<li>
+<p><strong>What are your energy efficiency targets?</strong></p>
+<ul>
+<li><em>Purpose: Understand conservation goals</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you measure program effectiveness?</strong></p>
+<ul>
+<li><em>Purpose: Assess measurement capabilities</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What incentives do you offer for efficiency?</strong></p>
+<ul>
+<li><em>Purpose: Inventory incentive programs</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="customer-segmentation">Customer Segmentation</h2>
+<ol>
+<li>
+<p><strong>How do you currently segment customers?</strong></p>
+<ul>
+<li><em>Purpose: Understand segmentation approach</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What customer personas have you identified?</strong></p>
+<ul>
+<li><em>Purpose: Assess customer understanding</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you target different customer segments?</strong></p>
+<ul>
+<li><em>Purpose: Evaluate targeting capabilities</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="competitive-landscape">Competitive Landscape</h2>
+<ol>
+<li>
+<p><strong>Are you in a regulated or deregulated market?</strong></p>
+<ul>
+<li><em>Purpose: Understand competitive environment</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What is your customer churn rate?</strong></p>
+<ul>
+<li><em>Purpose: Measure retention challenges</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you differentiate from competitors?</strong></p>
+<ul>
+<li><em>Purpose: Identify differentiation needs</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="new-technologies">New Technologies</h2>
+<ol>
+<li>
+<p><strong>What is your solar/DER adoption rate?</strong></p>
+<ul>
+<li><em>Purpose: Assess distributed resource integration</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Are customers adopting electric vehicles?</strong></p>
+<ul>
+<li><em>Purpose: Plan for EV programs</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you offer smart home services?</strong></p>
+<ul>
+<li><em>Purpose: Evaluate service expansion</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="data-analytics">Data &amp; Analytics</h2>
+<ol>
+<li>
+<p><strong>What analytics tools do you currently use?</strong></p>
+<ul>
+<li><em>Purpose: Assess analytics infrastructure</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you measure customer lifetime value?</strong></p>
+<ul>
+<li><em>Purpose: Understand value metrics</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What predictive analytics do you perform?</strong></p>
+<ul>
+<li><em>Purpose: Evaluate ML maturity</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="privacy-consent">Privacy &amp; Consent</h2>
+<ol>
+<li>
+<p><strong>How do you manage customer data privacy?</strong></p>
+<ul>
+<li><em>Purpose: Ensure privacy compliance</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What consent management processes exist?</strong></p>
+<ul>
+<li><em>Purpose: Assess consent tracking</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What data sharing agreements do you have?</strong></p>
+<ul>
+<li><em>Purpose: Understand data governance</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="integration-requirements">Integration Requirements</h2>
+<ol>
+<li>
+<p><strong>What APIs are available from your systems?</strong></p>
+<ul>
+<li><em>Purpose: Assess integration methods</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What are your data latency requirements?</strong></p>
+<ul>
+<li><em>Purpose: Define real-time needs</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What security requirements apply to customer data?</strong></p>
+<ul>
+<li><em>Purpose: Design security architecture</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="success-metrics">Success Metrics</h2>
+<ol>
+<li>
+<p><strong>How would you measure success of customer analytics?</strong></p>
+<ul>
+<li><em>Purpose: Define KPIs and success criteria</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What customer experience improvements are most important?</strong></p>
+<ul>
+<li><em>Purpose: Prioritize solution capabilities</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><em>These discovery questions are designed to comprehensively assess an organization's readiness for implementing the Energy Customer Analytics &amp; Engagement pattern. The responses will help determine data requirements, identify integration needs, and customize the solution to achieve 45% improvement in customer satisfaction and 30% increase in program participation.</em></p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Architect Academy - Complete Offering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7c3aed',
+                        secondary: '#ec4899',
+                        accent: '#06b6d4',
+                        dark: '#0f172a',
+                        darker: '#020617'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-border {
+            border: 2px solid transparent;
+            background: linear-gradient(#0f172a, #0f172a) padding-box,
+                        linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4) border-box;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
+        }
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.8); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="bg-darker text-white min-h-screen">
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s"></div>
+
+        <nav class="relative container mx-auto px-6 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <span class="text-xl font-bold">AI Architect Academy</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="#skills" class="hover:text-primary transition">Skills</a>
+                <a href="#agents" class="hover:text-primary transition">Agents</a>
+                <a href="#pricing" class="hover:text-primary transition">Pricing</a>
+                <a href="#agi" class="hover:text-primary transition">AGI Research</a>
+                <a href="https://github.com/frankxai/ai-architect-academy" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary/80 transition">GitHub</a>
+            </div>
+        </nav>
+
+        <div class="relative container mx-auto px-6 py-24 text-center">
+            <div class="inline-block px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6">
+                80+ Skills | 60+ Agents | 200+ Patterns
+            </div>
+            <h1 class="text-6xl font-bold mb-6">
+                <span class="gradient-text">AI Architect Academy</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+                The complete ecosystem for enterprise AI architecture education, AGI research, and solving humanity's greatest challenges.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#offerings" class="px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition font-semibold">
+                    Explore Offerings
+                </a>
+                <a href="https://github.com/frankxai/ai-architect-academy" class="px-8 py-4 rounded-xl border border-gray-700 hover:border-primary transition font-semibold">
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Three-Tier Architecture -->
+    <section id="offerings" class="py-24 bg-dark">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4">Three-Tier Offering</h2>
+            <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+                Seamlessly integrated layers from open-source to enterprise
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Open Source -->
+                <div class="gradient-border rounded-2xl p-8 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="text-green-400 text-sm font-semibold mb-2">LAYER 1</div>
+                    <h3 class="text-2xl font-bold mb-4">Open Source</h3>
+                    <p class="text-gray-400 mb-6">Free, MIT-licensed patterns, templates, and workflows for the community</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-green-400"></span> 200+ Architecture Patterns</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-green-400"></span> Professional Templates</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-green-400"></span> Learning Paths (100+ hours)</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-green-400"></span> Agent Workflows</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-green-400"></span> Governance Frameworks</li>
+                    </ul>
+                    <div class="text-3xl font-bold mb-2">Free</div>
+                    <p class="text-sm text-gray-500">MIT License</p>
+                </div>
+
+                <!-- SaaS Platform -->
+                <div class="relative gradient-border rounded-2xl p-8 card-hover transition-all duration-300 pulse-glow">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-primary to-secondary text-sm font-semibold">
+                        RECOMMENDED
+                    </div>
+                    <div class="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                    </div>
+                    <div class="text-primary text-sm font-semibold mb-2">LAYER 2</div>
+                    <h3 class="text-2xl font-bold mb-4">SaaS Platform</h3>
+                    <p class="text-gray-400 mb-6">Full-featured dashboard with agent orchestration and marketplace</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span> 8 Specialized AI Agents</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span> Visual Architecture Builder</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span> Three-Sided Marketplace</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span> Portfolio Certifications</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span> Analytics Dashboard</li>
+                    </ul>
+                    <div class="text-3xl font-bold mb-2">$29-99<span class="text-lg font-normal text-gray-400">/mo</span></div>
+                    <p class="text-sm text-gray-500">Proprietary + 70% creator share</p>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="gradient-border rounded-2xl p-8 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/20 flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <div class="text-amber-400 text-sm font-semibold mb-2">LAYER 3</div>
+                    <h3 class="text-2xl font-bold mb-4">Enterprise</h3>
+                    <p class="text-gray-400 mb-6">Custom solutions, team licenses, and strategic partnerships</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Team Licenses</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Custom Training Programs</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Private Pattern Libraries</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Hiring Pipeline Access</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-amber-400"></span> White-Label Options</li>
+                    </ul>
+                    <div class="text-3xl font-bold mb-2">Custom</div>
+                    <p class="text-sm text-gray-500">Contact for pricing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Catalog -->
+    <section id="skills" class="py-24 bg-darker">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4">80+ Claude Code Skills</h2>
+            <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+                Specialized expertise modules for every AI architecture domain
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- AI Architecture -->
+                <div class="bg-dark rounded-2xl p-6 border border-gray-800 hover:border-primary/50 transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold">AI Architecture</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">16 skills for enterprise AI systems</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs rounded-full bg-cyan-500/20 text-cyan-400">oracle-adk</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-cyan-500/20 text-cyan-400">mcp-architecture</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-cyan-500/20 text-cyan-400">rag-expert</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-cyan-500/20 text-cyan-400">claude-sdk</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-gray-700">+12 more</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & Infrastructure -->
+                <div class="bg-dark rounded-2xl p-6 border border-gray-800 hover:border-primary/50 transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold">Cloud & Infra</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Multi-cloud architecture expertise</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">oci-services</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">multi-cloud</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">terraform</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">kubernetes</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-gray-700">+8 more</span>
+                    </div>
+                </div>
+
+                <!-- Creative & Content -->
+                <div class="bg-dark rounded-2xl p-6 border border-gray-800 hover:border-primary/50 transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold">Creative</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Content, music, and world-building</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs rounded-full bg-pink-500/20 text-pink-400">suno-ai</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-pink-500/20 text-pink-400">book-writing</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-pink-500/20 text-pink-400">arcanea-lore</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-pink-500/20 text-pink-400">brand</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-gray-700">+16 more</span>
+                    </div>
+                </div>
+
+                <!-- Personal Dev -->
+                <div class="bg-dark rounded-2xl p-6 border border-gray-800 hover:border-primary/50 transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold">Personal Dev</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Wisdom, fitness, and growth</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs rounded-full bg-amber-500/20 text-amber-400">philosopher</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-amber-500/20 text-amber-400">spartan</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-amber-500/20 text-amber-400">nutrition</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-amber-500/20 text-amber-400">soulbook</span>
+                        <span class="px-2 py-1 text-xs rounded-full bg-gray-700">+19 more</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Teams -->
+    <section id="agents" class="py-24 bg-dark">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4">60+ Specialized Agents</h2>
+            <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+                Multi-agent teams organized by department for complex orchestration
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Cloud Infrastructure -->
+                <div class="bg-darker rounded-2xl p-8 border border-gray-800">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Cloud Infrastructure</h3>
+                            <p class="text-gray-400 text-sm">11 specialized agents</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">OCI-Compute-Expert</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">OCI-Network-Expert</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">AWS-Expert</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Azure-Expert</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">GCP-Expert</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Terraform-Expert</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Kubernetes-Expert</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm text-gray-500">+4 more</div>
+                    </div>
+                </div>
+
+                <!-- AI & ML -->
+                <div class="bg-darker rounded-2xl p-8 border border-gray-800">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">AI & Machine Learning</h3>
+                            <p class="text-gray-400 text-sm">11 specialized agents</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">GenAI-Architect</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">RAG-Specialist</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Agent-Architect</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">MCP-Developer</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Fine-Tuning-Expert</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">MLOps-Engineer</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Prompt-Engineer</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm text-gray-500">+4 more</div>
+                    </div>
+                </div>
+
+                <!-- Enterprise Architecture -->
+                <div class="bg-darker rounded-2xl p-8 border border-gray-800">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Enterprise Architecture</h3>
+                            <p class="text-gray-400 text-sm">9 specialized agents</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Security-Architect</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Compliance-Expert</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">API-Architect</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Cost-Optimizer</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Data-Privacy</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Standards-Keeper</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm text-gray-500">+3 more</div>
+                    </div>
+                </div>
+
+                <!-- Solution Delivery -->
+                <div class="bg-darker rounded-2xl p-8 border border-gray-800">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Solution Delivery</h3>
+                            <p class="text-gray-400 text-sm">10 specialized agents</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Python-Developer</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">TypeScript-Dev</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">QA-Agent</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Security-Tester</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">Performance-Test</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm">SRE-Agent</div>
+                        <div class="px-3 py-2 rounded-lg bg-dark text-sm text-gray-500">+4 more</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Agents -->
+            <div class="mt-12 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl p-8 border border-primary/30">
+                <h3 class="text-2xl font-bold mb-6 text-center">Dashboard Agent System (8 Agents)</h3>
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="bg-dark/50 rounded-xl p-4 text-center">
+                        <div class="text-2xl mb-2">🏗️</div>
+                        <div class="font-semibold">Pattern Builder</div>
+                        <div class="text-sm text-gray-400">Create AI systems</div>
+                    </div>
+                    <div class="bg-dark/50 rounded-xl p-4 text-center">
+                        <div class="text-2xl mb-2">🔍</div>
+                        <div class="font-semibold">QA Agent</div>
+                        <div class="text-sm text-gray-400">Test & secure</div>
+                    </div>
+                    <div class="bg-dark/50 rounded-xl p-4 text-center">
+                        <div class="text-2xl mb-2">📚</div>
+                        <div class="font-semibold">Documentation</div>
+                        <div class="text-sm text-gray-400">Write docs</div>
+                    </div>
+                    <div class="bg-dark/50 rounded-xl p-4 text-center">
+                        <div class="text-2xl mb-2">🏛️</div>
+                        <div class="font-semibold">Architecture</div>
+                        <div class="text-sm text-gray-400">System design</div>
+                    </div>
+                    <div class="bg-dark/50 rounded-xl p-4 text-center">
+                        <div class="text-2xl mb-2">🎓</div>
+                        <div class="font-semibold">Learning</div>
+                        <div class="text-sm text-gray-400">Guide students</div>
+                    </div>
+                    <div class="bg-dark/50 rounded-xl p-4 text-center">
+                        <div class="text-2xl mb-2">⚡</div>
+                        <div class="font-semibold">Optimizer</div>
+                        <div class="text-sm text-gray-400">Performance</div>
+                    </div>
+                    <div class="bg-dark/50 rounded-xl p-4 text-center">
+                        <div class="text-2xl mb-2">🐙</div>
+                        <div class="font-semibold">GitHub</div>
+                        <div class="text-sm text-gray-400">OSS sync</div>
+                    </div>
+                    <div class="bg-dark/50 rounded-xl p-4 text-center">
+                        <div class="text-2xl mb-2">✅</div>
+                        <div class="font-semibold">Compliance</div>
+                        <div class="text-sm text-gray-400">Regulations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AGI Research Section -->
+    <section id="agi" class="py-24 bg-darker relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10"></div>
+        <div class="container mx-auto px-6 relative">
+            <div class="text-center mb-16">
+                <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 text-sm font-semibold mb-6">
+                    NEW MISSION
+                </div>
+                <h2 class="text-4xl font-bold mb-4">AGI Research & World Problems</h2>
+                <p class="text-gray-400 max-w-3xl mx-auto text-lg">
+                    Evolving beyond enterprise AI to accelerate AGI research and solve humanity's greatest challenges
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- AGI Research -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <span class="text-3xl">🧠</span> AGI Research Track
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-dark rounded-xl p-5 border border-gray-800">
+                            <h4 class="font-semibold mb-2">Agent Architectures</h4>
+                            <p class="text-sm text-gray-400">Multi-agent coordination patterns for general intelligence</p>
+                        </div>
+                        <div class="bg-dark rounded-xl p-5 border border-gray-800">
+                            <h4 class="font-semibold mb-2">Alignment Research</h4>
+                            <p class="text-sm text-gray-400">Techniques for ensuring AI systems remain beneficial</p>
+                        </div>
+                        <div class="bg-dark rounded-xl p-5 border border-gray-800">
+                            <h4 class="font-semibold mb-2">Safety Frameworks</h4>
+                            <p class="text-sm text-gray-400">Guardrails and monitoring for advanced AI systems</p>
+                        </div>
+                        <div class="bg-dark rounded-xl p-5 border border-gray-800">
+                            <h4 class="font-semibold mb-2">Self-Improvement Systems</h4>
+                            <p class="text-sm text-gray-400">Recursive self-improvement with safety constraints</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- World Problems -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <span class="text-3xl">🌍</span> World Problem Tracks
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-dark rounded-xl p-5 border border-green-500/30">
+                            <h4 class="font-semibold mb-2 text-green-400">Climate AI</h4>
+                            <p class="text-sm text-gray-400">Carbon modeling, optimization, prediction systems</p>
+                        </div>
+                        <div class="bg-dark rounded-xl p-5 border border-red-500/30">
+                            <h4 class="font-semibold mb-2 text-red-400">Health AI</h4>
+                            <p class="text-sm text-gray-400">Drug discovery, diagnostics, personalized medicine</p>
+                        </div>
+                        <div class="bg-dark rounded-xl p-5 border border-blue-500/30">
+                            <h4 class="font-semibold mb-2 text-blue-400">Education AI</h4>
+                            <p class="text-sm text-gray-400">Adaptive learning, accessibility, global reach</p>
+                        </div>
+                        <div class="bg-dark rounded-xl p-5 border border-amber-500/30">
+                            <h4 class="font-semibold mb-2 text-amber-400">Economic AI</h4>
+                            <p class="text-sm text-gray-400">Resource allocation, poverty reduction, equity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <div class="inline-block bg-gradient-to-r from-primary to-secondary p-[2px] rounded-2xl">
+                    <div class="bg-darker rounded-2xl px-12 py-8">
+                        <p class="text-xl font-semibold mb-2">New Mission Statement</p>
+                        <p class="text-gray-300 text-lg italic">
+                            "Democratize AI architecture education and accelerate AGI research<br/>for solving humanity's greatest challenges"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="py-16 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold gradient-text mb-2">200+</div>
+                    <div class="text-gray-400">Patterns</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold gradient-text mb-2">80+</div>
+                    <div class="text-gray-400">Skills</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold gradient-text mb-2">60+</div>
+                    <div class="text-gray-400">Agents</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold gradient-text mb-2">100+</div>
+                    <div class="text-gray-400">Learning Hours</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold gradient-text mb-2">5</div>
+                    <div class="text-gray-400">Workflows</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 bg-darker">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Build the Future?</h2>
+            <p class="text-gray-400 text-xl mb-8 max-w-2xl mx-auto">
+                Join thousands of AI architects learning, building, and solving the world's biggest problems
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="https://github.com/frankxai/ai-architect-academy" class="px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition font-semibold">
+                    Start Learning (Free)
+                </a>
+                <a href="#pricing" class="px-8 py-4 rounded-xl border border-gray-700 hover:border-primary transition font-semibold">
+                    View Pricing
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-dark border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center gap-3 mb-4 md:mb-0">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <span class="font-semibold">AI Architect Academy</span>
+                </div>
+                <div class="flex items-center gap-6 text-gray-400 text-sm">
+                    <span>Built with Claude Opus 4.5</span>
+                    <span>|</span>
+                    <span>MIT License (OSS)</span>
+                    <span>|</span>
+                    <span>2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
