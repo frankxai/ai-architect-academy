@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: AI Governance & Compliance Framework - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 05 Ai Infrastructure / 18 Solution Ai Governance Compliance</p>
+        </div>
+        
+        <article class="card">
+            <p><metadata>
+<pattern_id>18</pattern_id>
+<pattern_name>AI Governance &amp; Compliance Framework</pattern_name>
+<pattern_category>AI Infrastructure</pattern_category>
+<complexity_level>Advanced</complexity_level>
+<conversation_type>Discovery Questions</conversation_type>
+<audience>Chief Risk Officers, Compliance Officers, Legal Counsel, AI Ethics Teams</audience>
+<business_value>Ensure responsible AI deployment with comprehensive governance, risk management, and regulatory compliance</business_value>
+</metadata></p>
+<h1 id="discovery-questions-ai-governance-compliance-framework">Discovery Questions: AI Governance &amp; Compliance Framework</h1>
+<p><discovery_current_state></discovery_current_state></p>
+<h2 id="current-state-assessment">Current State Assessment</h2>
+<h3 id="existing-ai-landscape">Existing AI Landscape</h3>
+<ol>
+<li><strong>What AI/ML models are currently deployed in your organization?</strong></li>
+<li>How many models are in production?</li>
+<li>What are the business-critical AI applications?</li>
+<li>
+<p>Which models make decisions that affect customers, employees, or business outcomes?</p>
+</li>
+<li>
+<p><strong>What is your current AI governance maturity?</strong></p>
+</li>
+<li>Do you have an AI ethics committee or governance board?</li>
+<li>What AI policies and guidelines are currently in place?</li>
+<li>
+<p>How are AI projects currently approved and monitored?</p>
+</li>
+<li>
+<p><strong>What regulatory requirements apply to your AI systems?</strong></p>
+</li>
+<li>Which regulations must you comply with (GDPR, CCPA, Fair Credit Reporting Act, etc.)?</li>
+<li>Are there industry-specific AI regulations you must follow?</li>
+<li>What are the consequences of non-compliance in your industry?</li>
+</ol>
+<h3 id="risk-and-compliance-challenges">Risk and Compliance Challenges</h3>
+<ol>
+<li><strong>What AI-related risks have you identified or experienced?</strong></li>
+<li>Have you encountered bias or fairness issues in AI decisions?</li>
+<li>What privacy or data protection concerns exist?</li>
+<li>
+<p>Have there been any regulatory inquiries or compliance issues?</p>
+</li>
+<li>
+<p><strong>How do you currently monitor AI model performance and fairness?</strong></p>
+</li>
+<li>What metrics do you track for bias detection?</li>
+<li>How do you handle model drift and performance degradation?</li>
+<li>
+<p>What processes exist for investigating AI decision disputes?</p>
+</li>
+<li>
+<p><strong>What documentation and audit capabilities exist?</strong></p>
+</li>
+<li>How do you track AI decision-making processes?</li>
+<li>What documentation is available for model development and deployment?</li>
+<li>How quickly can you provide audit trails to regulators?
+</li>
+</ol>
+<p><strategy_business_alignment></strategy_business_alignment></p>
+<h2 id="governance-framework-requirements">Governance Framework Requirements</h2>
+<h3 id="organizational-structure">Organizational Structure</h3>
+<ol>
+<li><strong>Who should be involved in AI governance?</strong></li>
+<li>Who are the key stakeholders (legal, ethics, business, technical)?</li>
+<li>What decision-making authority should different roles have?</li>
+<li>
+<p>How should the AI governance committee be structured?</p>
+</li>
+<li>
+<p><strong>What approval processes are needed for AI projects?</strong></p>
+</li>
+<li>What criteria should trigger enhanced review processes?</li>
+<li>What risk thresholds require executive approval?</li>
+<li>
+<p>How should AI impact assessments be conducted?</p>
+</li>
+<li>
+<p><strong>What training and awareness programs are needed?</strong></p>
+</li>
+<li>Who needs AI ethics and governance training?</li>
+<li>What level of AI literacy is required across the organization?</li>
+<li>How will you maintain awareness of evolving regulations?</li>
+</ol>
+<h3 id="policy-and-standards">Policy and Standards</h3>
+<ol>
+<li>
+<p><strong>What AI ethics principles should guide your organization?</strong></p>
+<ul>
+<li>What values should be embedded in AI systems (fairness, transparency, accountability)?</li>
+<li>How should conflicts between business objectives and ethical considerations be resolved?</li>
+<li>What use cases should be prohibited or restricted?</li>
+</ul>
+</li>
+<li>
+<p><strong>What data governance policies need to be established?</strong></p>
+<ul>
+<li>How should training data be selected and validated?</li>
+<li>What data quality standards are required?</li>
+<li>How should data lineage and provenance be tracked?</li>
+</ul>
+</li>
+<li>
+<p><strong>What model development standards are needed?</strong></p>
+<ul>
+<li>What bias testing should be mandatory?</li>
+<li>What documentation standards should apply?</li>
+<li>What validation and testing requirements are necessary?
+</li>
+</ul>
+</li>
+</ol>
+<p><opportunity_qualification></opportunity_qualification></p>
+<h2 id="risk-assessment-and-management">Risk Assessment and Management</h2>
+<h3 id="risk-identification">Risk Identification</h3>
+<ol>
+<li>
+<p><strong>What are your highest-priority AI risks?</strong></p>
+<ul>
+<li>Which models pose the greatest risk to individuals or society?</li>
+<li>What financial or reputational risks exist?</li>
+<li>Where could AI failures have the most significant impact?</li>
+</ul>
+</li>
+<li>
+<p><strong>How should AI risks be categorized and prioritized?</strong></p>
+<ul>
+<li>What risk scoring methodology should be used?</li>
+<li>How should different types of risk be weighted?</li>
+<li>What factors should determine risk levels (data sensitivity, decision impact, etc.)?</li>
+</ul>
+</li>
+<li>
+<p><strong>What risk mitigation strategies are needed?</strong></p>
+<ul>
+<li>How should high-risk models be treated differently?</li>
+<li>What additional controls are needed for sensitive applications?</li>
+<li>How should risk tolerance vary across different use cases?</li>
+</ul>
+</li>
+</ol>
+<h3 id="bias-and-fairness">Bias and Fairness</h3>
+<ol>
+<li>
+<p><strong>What fairness requirements apply to your AI systems?</strong></p>
+<ul>
+<li>Which protected attributes must be considered?</li>
+<li>What fairness metrics are most relevant to your use cases?</li>
+<li>How should fairness be balanced against other objectives like accuracy?</li>
+</ul>
+</li>
+<li>
+<p><strong>How should bias be detected and measured?</strong></p>
+<ul>
+<li>What statistical tests should be performed?</li>
+<li>How frequently should bias testing occur?</li>
+<li>What thresholds should trigger remediation actions?</li>
+</ul>
+</li>
+<li>
+<p><strong>What bias mitigation strategies should be implemented?</strong></p>
+<ul>
+<li>Should bias be addressed in data preprocessing, model training, or post-processing?</li>
+<li>What techniques are appropriate for your use cases?</li>
+<li>How should you handle tradeoffs between fairness and performance?
+</li>
+</ul>
+</li>
+</ol>
+<p><technical_scoping_architecture></technical_scoping_architecture></p>
+<h2 id="compliance-and-monitoring">Compliance and Monitoring</h2>
+<h3 id="regulatory-compliance">Regulatory Compliance</h3>
+<ol>
+<li>
+<p><strong>What specific compliance requirements must be met?</strong></p>
+<ul>
+<li>What documentation must be maintained for auditors?</li>
+<li>What reporting requirements exist?</li>
+<li>How should compliance be demonstrated and validated?</li>
+</ul>
+</li>
+<li>
+<p><strong>How should data privacy and protection be ensured?</strong></p>
+<ul>
+<li>What data minimization principles should be applied?</li>
+<li>How should consent and data subject rights be handled?</li>
+<li>What data retention and deletion policies are needed?</li>
+</ul>
+</li>
+<li>
+<p><strong>What transparency and explainability requirements exist?</strong></p>
+<ul>
+<li>Who has the right to explanations of AI decisions?</li>
+<li>What level of detail is required in explanations?</li>
+<li>How should explanations be delivered and documented?</li>
+</ul>
+</li>
+</ol>
+<h3 id="monitoring-and-auditing">Monitoring and Auditing</h3>
+<ol>
+<li>
+<p><strong>What monitoring capabilities are needed?</strong></p>
+<ul>
+<li>What should be logged and tracked in real-time?</li>
+<li>How should suspicious patterns or anomalies be detected?</li>
+<li>What alerts and notifications are required?</li>
+</ul>
+</li>
+<li>
+<p><strong>How should audit trails be maintained?</strong></p>
+<ul>
+<li>What information must be retained for compliance purposes?</li>
+<li>How long should audit data be kept?</li>
+<li>What format and accessibility requirements exist?</li>
+</ul>
+</li>
+<li>
+<p><strong>What reporting and dashboard capabilities are needed?</strong></p>
+<ul>
+<li>Who needs access to governance metrics and reports?</li>
+<li>What KPIs should be tracked and reported?</li>
+<li>How frequently should compliance status be reviewed?</li>
+</ul>
+</li>
+</ol>
+<h2 id="technical-requirements">Technical Requirements</h2>
+<h3 id="infrastructure-and-tools">Infrastructure and Tools</h3>
+<ol>
+<li>
+<p><strong>What technical capabilities are needed for governance?</strong></p>
+<ul>
+<li>What model interpretability tools are required?</li>
+<li>How should bias detection be automated?</li>
+<li>What audit logging infrastructure is needed?</li>
+</ul>
+</li>
+<li>
+<p><strong>How should governance be integrated with existing systems?</strong></p>
+<ul>
+<li>What APIs and integrations are required?</li>
+<li>How should governance fit into CI/CD pipelines?</li>
+<li>What compatibility requirements exist with current tools?</li>
+</ul>
+</li>
+<li>
+<p><strong>What scalability and performance requirements exist?</strong></p>
+<ul>
+<li>How many models need to be governed?</li>
+<li>What latency impact is acceptable for governance checks?</li>
+<li>How should governance scale with organizational growth?</li>
+</ul>
+</li>
+</ol>
+<h3 id="data-management">Data Management</h3>
+<ol>
+<li>
+<p><strong>How should training and inference data be governed?</strong></p>
+<ul>
+<li>What data quality checks are required?</li>
+<li>How should data lineage be tracked?</li>
+<li>What data validation and testing is needed?</li>
+</ul>
+</li>
+<li>
+<p><strong>What data security and access controls are required?</strong></p>
+<ul>
+<li>Who should have access to sensitive data and models?</li>
+<li>How should data encryption and protection be implemented?</li>
+<li>What audit requirements exist for data access?
+</li>
+</ul>
+</li>
+</ol>
+<p><implementation_planning></implementation_planning></p>
+<h2 id="implementation-planning">Implementation Planning</h2>
+<h3 id="phasing-and-prioritization">Phasing and Prioritization</h3>
+<ol>
+<li>
+<p><strong>How should governance implementation be phased?</strong></p>
+<ul>
+<li>Which models or use cases should be governed first?</li>
+<li>What is the timeline for full governance implementation?</li>
+<li>How should you balance quick wins with comprehensive coverage?</li>
+</ul>
+</li>
+<li>
+<p><strong>What resources and budget are available?</strong></p>
+<ul>
+<li>What staffing is needed for governance activities?</li>
+<li>What technology investments are required?</li>
+<li>How should costs be allocated across business units?</li>
+</ul>
+</li>
+<li>
+<p><strong>What success metrics will be used?</strong></p>
+<ul>
+<li>How will governance effectiveness be measured?</li>
+<li>What compliance KPIs should be tracked?</li>
+<li>How will ROI be calculated and demonstrated?</li>
+</ul>
+</li>
+</ol>
+<h3 id="change-management">Change Management</h3>
+<ol>
+<li>
+<p><strong>How will organizational adoption be ensured?</strong></p>
+<ul>
+<li>What incentives and accountability mechanisms are needed?</li>
+<li>How will resistance to governance processes be addressed?</li>
+<li>What communication and training strategies are required?</li>
+</ul>
+</li>
+<li>
+<p><strong>How will governance evolve with changing regulations?</strong></p>
+<ul>
+<li>What processes exist for updating policies and procedures?</li>
+<li>How will new regulatory requirements be incorporated?</li>
+<li>What mechanisms exist for continuous improvement?
+</li>
+</ul>
+</li>
+</ol>
+<p><platform_integration></platform_integration></p>
+<h2 id="oracle-cloud-infrastructure-specifics">Oracle Cloud Infrastructure Specifics</h2>
+<h3 id="platform-integration">Platform Integration</h3>
+<ol>
+<li>
+<p><strong>How should OCI services support governance requirements?</strong></p>
+<ul>
+<li>Which OCI AI services need governance integration?</li>
+<li>How should OCI security and compliance features be leveraged?</li>
+<li>What OCI monitoring and logging capabilities are needed?</li>
+</ul>
+</li>
+<li>
+<p><strong>What multi-cloud or hybrid considerations exist?</strong></p>
+<ul>
+<li>Do you need governance across multiple cloud platforms?</li>
+<li>How should on-premises AI systems be governed?</li>
+<li>What data residency or sovereignty requirements apply?</li>
+</ul>
+</li>
+<li>
+<p><strong>How should Oracle ecosystem integrations be handled?</strong></p>
+<ul>
+<li>Do you need governance for Oracle Database AI features?</li>
+<li>How should Oracle Analytics Cloud AI capabilities be governed?</li>
+<li>What integration is needed with other Oracle applications?
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="success-criteria-and-outcomes">Success Criteria and Outcomes</h2>
+<h3 id="compliance-metrics">Compliance Metrics</h3>
+<ul>
+<li>Model governance coverage: ____% of models with complete documentation</li>
+<li>Audit readiness: Time to produce compliance reports reduced to ____ days</li>
+<li>Risk reduction: ____% decrease in identified compliance risks</li>
+<li>Bias metrics: Maximum bias variance of ____% across protected groups</li>
+</ul>
+<h3 id="operational-metrics">Operational Metrics</h3>
+<ul>
+<li>Governance process efficiency: ____% reduction in manual compliance work</li>
+<li>Time to market: Impact on AI project delivery timelines</li>
+<li>Cost of compliance: Annual governance costs as % of AI investment</li>
+<li>Stakeholder satisfaction: Governance process usability ratings</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>Based on the responses to these questions, the implementation plan should prioritize:</p>
+<ol>
+<li><strong>High-Risk Models</strong>: Start with models that have the highest regulatory or business risk</li>
+<li><strong>Quick Wins</strong>: Implement basic audit logging and documentation for immediate compliance benefits</li>
+<li><strong>Framework Foundation</strong>: Establish governance committee and basic policies</li>
+<li><strong>Automation</strong>: Deploy automated bias detection and monitoring capabilities</li>
+<li><strong>Continuous Improvement</strong>: Establish processes for evolving governance with changing requirements</li>
+</ol>
+<h2 id="appendix-regulatory-landscape-reference">Appendix: Regulatory Landscape Reference</h2>
+<p><strong>Key Regulations to Consider:</strong>
+- <strong>GDPR</strong>: Data protection and privacy in EU
+- <strong>CCPA</strong>: California consumer privacy rights
+- <strong>Fair Credit Reporting Act</strong>: Credit decision fairness
+- <strong>Equal Credit Opportunity Act</strong>: Lending discrimination prevention
+- <strong>SOX</strong>: Financial reporting and audit requirements
+- <strong>HIPAA</strong>: Healthcare data protection
+- <strong>EU AI Act</strong>: Comprehensive AI regulation framework
+- <strong>State AI Bills</strong>: Emerging state-level AI regulations</p>
+<p>This comprehensive discovery process enables organizations to build a robust AI governance and compliance framework that ensures responsible AI deployment while meeting all regulatory requirements and ethical standards.</p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

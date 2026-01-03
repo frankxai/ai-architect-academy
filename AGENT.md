@@ -1,62 +1,101 @@
-# AI Architect Academy Agent Guide
+# AI Architect Academy Delivery Agent
 
-## 1. Mission
-Transform business problems into production-ready AI solutions using the academy's pattern library, process guides, and governance assets.
+This agent orchestrates the build-out of the AI Architect Academy MVP as described in `AI-Architect-Academy-Spec.html` and `MVP and Timeline.md`. Execute with precision, ship-ready documentation, and continuous validation.
 
-## 2. Inputs Required
-- **Problem Definition**: Provide context, stakeholder goals, KPIs, constraints (PRD/vision brief).
-- **Persona Selection**: Identify primary persona (Builder, Leader, Creator, Operator).
-- **Target Pattern(s)**: Choose relevant design pattern(s) under `01-design-patterns/` referencing CoE templates.
+## 1. Mission Control
+- Launch adaptive, gamified knowledge platform for 1,000 learners within one-week MVP window.
+- Maintain alignment with product pillars, technical architecture, and SDLC sprints defined in the specification HTML.
+- Keep stakeholders informed through concise daily status notes.
 
-## 3. Standard Workflow
-1. **Discover**
-   - Review problem statement, align with persona needs (`docs/data/personas.json`).
-   - Lookup design patterns in `01-design-patterns/` and supporting CoE template folders.
-   - Consult governance library (`08-governance/`).
-2. **Define**
-   - Compose blueprint using pattern structure (use-case table, experience blueprint, architecture stack).
-   - Reference `AI CoE Templates` for BOM, architecture diagrams.
-3. **Prototype**
-   - Scaffold projects in `05-projects/` (clone nearest base if available).
-   - Implement retrieval/generation/evaluation using guidance in pattern and templates.
-   - Run evaluations with `05-projects/eval-automation` or scenario-specific harness.
-4. **Industrialise**
-   - Add observability (Langfuse, cost dashboards), guardrails, governance checklists.
-   - Integrate with existing systems.
-5. **Operate & Iterate**
-   - Capture metrics, retrospectives, stories.
-   - Update persona dashboards, project catalog as needed.
+## 2. Key Assets
+- **Product & Delivery Blueprint**: `AI-Architect-Academy-Spec.html` (master reference for flows, pages, APIs, and tasks).
+- **Roadmap & Timeline**: `MVP and Timeline.md` (7-day launch plan, success criteria).
+- **Knowledge Libraries**: `01-design-patterns/`, `02-learning-paths/`, `08-governance/`, `AI CoE Templates/`.
+- **Process Accelerators**: `process/`, `dashboard/`, `scripts/`.
 
-Follow the detailed instructions in `process/pattern-delivery-sdlc.xml`.
+## 3. Operating Principles
+1. **Traceability**: Every task must reference the relevant section in the HTML spec or roadmap.
+2. **Incremental Delivery**: Commit in vertical slices (onboarding flow, playlist engine, gamification layer, ingestion ops).
+3. **Quality Gates**: Lint, unit test, integration test, and UX acceptance criteria enforced before merge.
+4. **Feedback Loops**: Capture learner, content curator, and professor signals; feed into backlog daily.
 
-## 4. Outputs
-- Updated pattern file (including customer-specific notes if applicable).
-- Project folder with code/evaluation assets.
-- Evaluation reports, metrics snapshots, runbooks.
-- Governance deliverables (checklists, approvals).
-- Storytelling artefacts (deck, narrative, logbook entry).
+## 4. Core Workflow
+1. **Plan**
+   - Review sprint scope (see SDLC timeline inside HTML spec).
+   - Break down feature epics into executable stories stored in `process/backlog/*.md`.
+   - Align daily stand-up goals with `Comprehensive Task Matrix` in the spec.
+2. **Build**
+   - Implement Next.js surfaces per `Experience Architecture & Page Inventory`.
+   - Expose APIs matching `API Specification` (payload contracts, auth rules).
+   - Configure data schemas and migrations outlined in `Data Model Snapshot`.
+3. **Integrate**
+   - Wire personalization engine to LLM provider with evaluation harness.
+   - Connect gamification service to points, streaks, and leaderboard UI.
+   - Set up agent ingestion pipeline and approval console.
+4. **Validate**
+   - Author Playwright flows for onboarding, playlist management, and retention challenge.
+   - Run load testing scripts (k6/Gatling) for 1,000 concurrent learners.
+   - Verify observability dashboards, alerts, and retention analytics.
+5. **Launch & Iterate**
+   - Execute launch checklist from roadmap.
+   - Collect pilot cohort feedback and update backlog.
+   - Document retrospectives; adjust future sprints and professor program prep.
 
-## 5. Governance
-- Apply `AI-procurement-checklist`, `incident-response-checklist`, `human-review-checklist` when relevant.
-- Document risk register entries and compliance evidence.
-- Follow incident escalation via `16-collaboration/escalation-guide.md`.
+## 5. Task Breakdown
+Follow this baseline allocation and adapt as priorities shift:
+- **Product/UX**
+  - User stories, Figma flows, gamification rulebook, certification matrix.
+- **Engineering**
+  - Next.js scaffolding, API routes, edge functions, CI/CD, tests.
+  - Database schema and seeding for domains, knowledgepoints, progress, certifications.
+- **Data & Content**
+  - Hierarchy curation, agent crawler prompts, retention question bank.
+  - Approval workflow definitions and SLAs for content freshness.
+- **Ops & Enablement**
+  - Vercel project setup, secrets, monitoring, cron schedules.
+  - Support playbooks, pilot communications, NFT credential prototype coordination.
 
-## 6. Agent Types
-- **Builder Agent**: Implements code, tests, automation.
-- **Research Agent**: Synthesises references, knowledge.
-- **Governance Agent**: Ensures policies/compliance.
-- **Storyteller Agent**: Prepares narratives, dashboards.
+## 6. Coordination Rituals
+- **Daily Sync**: 15-minute stand-up covering progress, blockers, next deliverables.
+- **Mid-Sprint Review**: Validate user journeys end-to-end; adjust backlog.
+- **Launch Readiness**: Checklist dry run 48 hours before go-live.
+- **Post-Launch**: 24-hour performance review, learner feedback digest, and action log.
 
-Each agent should log decisions, commands executed, files changed.
+## 7. Definition of Done
+A story is complete when:
+- Functionality matches spec acceptance criteria and passes automated tests.
+- UX reviewed and approved by product/design lead.
+- Documentation updated (README, runbook, or knowledgepoint notes).
+- Observability hooks emit expected metrics; alerts configured.
+- Stakeholder update posted with demo link or screenshots.
 
-## 7. Command Cheatsheet
+## 8. Tooling & Commands
 ```
-git clone <repo>
+# Install dependencies
 npm install
-npm run build:index
-python -m venv .venv && .\.venv\Scripts\activate
-pip install -r 05-projects/eval-automation/requirements.txt
-python scripts/check_secrets.py
-python 05-projects/eval-automation/check_env.py
-python 05-projects/eval-automation/run_evals.py --dataset <dataset>
+
+# Run dev server
+npm run dev
+
+# Lint & format
+npm run lint
+npm run format
+
+# Tests
+npm run test
+npm run test:e2e
+
+# Database
+npx prisma migrate dev
+npx prisma db seed
+
+# Load testing (example)
+node scripts/k6-launch.js
 ```
+
+## 9. Escalation & Governance
+- Apply governance checklists from `08-governance/` for compliance-sensitive tracks (Healthcare, Finance).
+- Log content ingestion decisions and NFT credential triggers in `dashboard/ops-log.md`.
+- Escalate critical incidents via `16-collaboration/escalation-guide.md` with timestamps and owner assignments.
+
+Stay aligned with the spec; no untracked scope. Iterate quickly, maintain quality, and ship the MVP on schedule.

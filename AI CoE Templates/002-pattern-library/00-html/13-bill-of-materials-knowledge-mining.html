@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Bill of Materials: Knowledge Mining & Discovery Platform - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 03 Data Intelligence / 13 Solution Knowledge Mining</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="bill-of-materials-knowledge-mining-discovery-platform">Bill of Materials: Knowledge Mining &amp; Discovery Platform</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 13</li>
+<li><strong>Pattern Name:</strong> Knowledge Mining &amp; Discovery Platform</li>
+<li><strong>Document Type:</strong> Bill of Materials</li>
+<li><strong>Customer:</strong> [Customer Name]</li>
+<li><strong>Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><oracle_cloud_infrastructure></oracle_cloud_infrastructure></p>
+<h2 id="oracle-cloud-infrastructure-services">Oracle Cloud Infrastructure Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle Database 23ai</td>
+<td>Knowledge graph and structured data</td>
+<td>4</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Data Science</td>
+<td>Knowledge extraction ML models</td>
+<td>2</td>
+<td>Projects</td>
+</tr>
+<tr>
+<td>OCI GenAI Service</td>
+<td>Natural language understanding for knowledge</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>OCI Document Understanding</td>
+<td>Document parsing and entity extraction</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>OCI Language</td>
+<td>Text analysis and semantic processing</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Oracle Analytics Cloud</td>
+<td>Knowledge analytics and visualization</td>
+<td>35</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>Oracle Integration Cloud</td>
+<td>Knowledge source integration</td>
+<td>2</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Functions</td>
+<td>Knowledge processing workflows</td>
+<td>400</td>
+<td>GB-Hours/month</td>
+</tr>
+<tr>
+<td>OCI Events</td>
+<td>Knowledge discovery triggers</td>
+<td>55</td>
+<td>Rules</td>
+</tr>
+<tr>
+<td>OCI Data Catalog</td>
+<td>Knowledge asset discovery</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>Oracle APEX</td>
+<td>Knowledge management interfaces</td>
+<td>3</td>
+<td>Workspaces</td>
+</tr>
+<tr>
+<td>OCI Monitoring</td>
+<td>System performance monitoring</td>
+<td>1</td>
+<td>Namespace</td>
+</tr>
+<tr>
+<td>OCI Logging</td>
+<td>Knowledge processing logs</td>
+<td>35</td>
+<td>TB/month</td>
+</tr>
+<tr>
+<td>OCI Notifications</td>
+<td>Discovery alerts and notifications</td>
+<td>15</td>
+<td>Topics</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="compute-resources">Compute Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM.Standard3.Flex</td>
+<td>32 OCPUs, 512 GB RAM</td>
+<td>3</td>
+<td>Knowledge graph processing</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>16 OCPUs, 256 GB RAM</td>
+<td>5</td>
+<td>Application servers</td>
+</tr>
+<tr>
+<td>VM.GPU3.1</td>
+<td>1 GPU, 6 OCPUs, 90 GB RAM</td>
+<td>3</td>
+<td>NLP and entity extraction</td>
+</tr>
+<tr>
+<td>BM.Standard.E4.128</td>
+<td>128 OCPUs, 2 TB RAM</td>
+<td>1</td>
+<td>Large-scale text processing</td>
+</tr>
+<tr>
+<td>VM.Standard.A1.Flex</td>
+<td>8 OCPUs, 64 GB RAM</td>
+<td>3</td>
+<td>Development and testing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="storage-resources">Storage Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Storage Type</th>
+<th>Capacity</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block Volume (Performance)</td>
+<td>15 TB</td>
+<td>8</td>
+<td>Database and graph storage</td>
+</tr>
+<tr>
+<td>Block Volume (Balanced)</td>
+<td>80 TB</td>
+<td>6</td>
+<td>Document and text corpus</td>
+</tr>
+<tr>
+<td>Object Storage (Standard)</td>
+<td>800 TB</td>
+<td>1</td>
+<td>Knowledge repository</td>
+</tr>
+<tr>
+<td>Object Storage (Archive)</td>
+<td>3 PB</td>
+<td>1</td>
+<td>Historical knowledge archive</td>
+</tr>
+<tr>
+<td>File Storage</td>
+<td>30 TB</td>
+<td>3</td>
+<td>Shared models and ontologies</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="network-resources">Network Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Network Component</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual Cloud Network</td>
+<td>/16 CIDR</td>
+<td>2</td>
+<td>Production and DR networks</td>
+</tr>
+<tr>
+<td>Load Balancer</td>
+<td>Application LB</td>
+<td>3</td>
+<td>Knowledge service distribution</td>
+</tr>
+<tr>
+<td>FastConnect</td>
+<td>5 Gbps</td>
+<td>1</td>
+<td>High-speed knowledge transfer</td>
+</tr>
+<tr>
+<td>NAT Gateway</td>
+<td>Standard</td>
+<td>2</td>
+<td>Secure outbound connections</td>
+</tr>
+<tr>
+<td>Internet Gateway</td>
+<td>Standard</td>
+<td>2</td>
+<td>Knowledge portal access</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><third_party_components></third_party_components></p>
+<h2 id="third-party-components-integrations">Third-Party Components &amp; Integrations</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Vendor</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>License Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Neo4j Enterprise</td>
+<td>Neo4j</td>
+<td>Graph database for knowledge graphs</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td>Elasticsearch</td>
+<td>Elastic</td>
+<td>Search and knowledge discovery</td>
+<td>5</td>
+<td>Per node</td>
+</tr>
+<tr>
+<td>Apache Solr</td>
+<td>Apache</td>
+<td>Enterprise search platform</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>spaCy</td>
+<td>Explosion AI</td>
+<td>Natural language processing library</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>Stanford NLP</td>
+<td>Stanford</td>
+<td>Named entity recognition</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>Apache Jena</td>
+<td>Apache</td>
+<td>RDF and semantic web framework</td>
+<td>1</td>
+<td>Open source</td>
+</tr>
+<tr>
+<td>Stardog</td>
+<td>Stardog</td>
+<td>Knowledge graph platform</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><development_tools></development_tools></p>
+<h2 id="development-management-tools">Development &amp; Management Tools</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Category</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Access Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI DevOps</td>
+<td>CI/CD Platform</td>
+<td>Knowledge pipeline deployment</td>
+<td>1</td>
+<td>Admin</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>Source Control</td>
+<td>Model and ontology versioning</td>
+<td>20</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Jupyter Notebooks</td>
+<td>Data Science</td>
+<td>Knowledge extraction development</td>
+<td>12</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Neo4j Browser</td>
+<td>Graph Database</td>
+<td>Graph visualization and querying</td>
+<td>15</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Protégé</td>
+<td>Ontology Editor</td>
+<td>Knowledge ontology development</td>
+<td>8</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Apache Airflow</td>
+<td>Workflow Management</td>
+<td>Knowledge processing orchestration</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Knowledge Validation Tool</td>
+<td>Quality Assurance</td>
+<td>Knowledge graph validation</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Semantic Search Tool</td>
+<td>Search Interface</td>
+<td>Knowledge discovery interface</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<hr/>
+<p><l>
+<em>This Bill of Materials provides a comprehensive list of technical components required for implementing Knowledge Mining &amp; Discovery Platform. Quantities and specifications may be adjusted based on final requirements analysis and customer environment assessment.</em>
+</l></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="13-discovery-questions-knowledge-mining.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Knowledge Mining & Discovery</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:15 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: Personalization Engine & Recommendation System - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 02 Customer Experience / 09 Solution Personalization Engine</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="discovery-questions-personalization-engine-recommendation-system">Discovery Questions: Personalization Engine &amp; Recommendation System</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 09</li>
+<li><strong>Pattern Name:</strong> Personalization Engine &amp; Recommendation System</li>
+<li><strong>Document Type:</strong> Discovery Questions</li>
+<li><strong>Created Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><discovery_current_state></discovery_current_state></p>
+<h2 id="discovery-current-state-assessment">Discovery &amp; Current State Assessment</h2>
+<ol>
+<li><strong>What customer touchpoints and channels do you currently have (web, mobile, email, in-store), and how are you personalizing experiences across these channels today?</strong></li>
+<li>
+<p><em>Purpose: Understand current personalization maturity and omnichannel requirements</em></p>
+</li>
+<li>
+<p><strong>What customer data do you collect and how is it currently stored and analyzed, and what are your current engagement and conversion rates?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Establish baseline for 200% engagement and 45% conversion improvement claims</em></p>
+</li>
+<li>
+<p><strong>How do you currently handle product recommendations, content suggestions, or personalized offers, and what are the limitations of your existing approach?</strong></p>
+</li>
+<li><em>Purpose: Assess current recommendation systems and identify improvement opportunities</em></li>
+</ol>
+<h2 id="strategy-business-alignment">Strategy &amp; Business Alignment</h2>
+<ol>
+<li><strong>What are your organization's customer experience and revenue growth goals, and how important is personalization to your competitive differentiation strategy?</strong></li>
+<li>
+<p><em>Purpose: Align solution capabilities with business strategy and competitive positioning</em></p>
+</li>
+<li>
+<p><strong>Which business areas (e-commerce, content streaming, financial services, travel, education) would benefit most from hyper-personalized experiences?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Prioritize implementation approach and identify highest-impact use cases</em></p>
+</li>
+<li>
+<p><strong>How do you currently measure customer lifetime value, retention, and engagement, and what personalization KPIs would be most important to track?</strong></p>
+</li>
+<li><em>Purpose: Establish success criteria and ROI measurement framework</em></li>
+</ol>
+<h2 id="opportunity-qualification">Opportunity Qualification</h2>
+<ol>
+<li><strong>What is your annual budget for customer experience technology, marketing automation, and personalization tools, and what revenue impact do you expect from improved personalization?</strong></li>
+<li>
+<p><em>Purpose: Qualify budget authority and establish value expectations</em></p>
+</li>
+<li>
+<p><strong>Who are the key stakeholders (marketing leaders, product managers, customer experience executives) who would need to approve and champion personalization initiatives?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Identify buying committee and business champions</em></p>
+</li>
+<li>
+<p><strong>What is your preferred timeline for implementing real-time personalization, and are there any major product launches or campaigns driving this timeline?</strong></p>
+</li>
+<li><em>Purpose: Understand urgency and business event dependencies</em></li>
+</ol>
+<h2 id="technical-scoping-architecture">Technical Scoping &amp; Architecture</h2>
+<ol>
+<li>
+<p><strong>What are your user interaction volumes (daily active users, page views, transactions) and what response time requirements do you have for personalized recommendations?</strong></p>
+<ul>
+<li><em>Purpose: Size OCI Streaming, Cache, and compute requirements for sub-100ms delivery</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What existing customer data platforms, e-commerce systems, and marketing tools would need to integrate with the personalization engine?</strong></p>
+<ul>
+<li><em>Purpose: Plan API Gateway integration and data pipeline architecture</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have requirements for A/B testing, experimentation, and machine learning model management for continuous personalization optimization?</strong></p>
+<ul>
+<li><em>Purpose: Configure OCI Data Science platform and Container Engine for model serving</em></li>
+</ul>
+</li>
+</ol>
+<h2 id="data-privacy">Data &amp; Privacy</h2>
+<ol>
+<li>
+<p><strong>What customer data privacy regulations do you need to comply with (GDPR, CCPA, etc.), and how do you handle consent management and data governance?</strong></p>
+<ul>
+<li><em>Purpose: Design privacy-compliant personalization architecture</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What are your data quality standards and real-time data processing requirements for maintaining accurate customer profiles?</strong></p>
+<ul>
+<li><em>Purpose: Configure Oracle Database 23ai for 360-degree customer view and real-time updates</em></li>
+</ul>
+</li>
+</ol>
+<h2 id="performance-scalability">Performance &amp; Scalability</h2>
+<ol>
+<li><strong>What are your peak traffic patterns and scalability requirements, and how do you currently handle high-volume personalization during major events or promotions?</strong><ul>
+<li><em>Purpose: Plan auto-scaling architecture and performance optimization strategies</em></li>
+</ul>
+</li>
+</ol>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="09-bill-of-materials-personalization-engine.html" class="btn btn-secondary">
+                    <i data-lucide="package"></i> Bill of Materials
+                </a>
+                <p class="mt-sm">Bill of Materials: Personalization Engine & Recommendation System</p>
+            </div>
+            
+            <div class="card">
+                <a href="09-technical-architecture-personalization-engine.html" class="btn btn-secondary">
+                    <i data-lucide="layers"></i> Technical Architecture
+                </a>
+                <p class="mt-sm">Technical Architecture 9: Personalization Engine & Recommendation System</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Technical Architecture: Multi-Cloud AI Orchestration - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 05 Ai Infrastructure / 16 Solution Multicloud Orchestration</p>
+        </div>
+        
+        <article class="card">
+            <p><metadata>
+<pattern_id>16</pattern_id>
+<pattern_name>Multi-Cloud AI Orchestration</pattern_name>
+<pattern_category>AI Infrastructure</pattern_category>
+<complexity_level>Advanced</complexity_level>
+<conversation_type>Technical Architecture</conversation_type>
+<audience>Solutions Architects, Technical Leaders, DevOps Engineers</audience>
+<business_value>Seamlessly deploy and manage AI workloads across multiple cloud environments with 60% improved deployment flexibility</business_value>
+</metadata></p>
+<h1 id="technical-architecture-multi-cloud-ai-orchestration">Technical Architecture: Multi-Cloud AI Orchestration</h1>
+<p><architecture_overview></architecture_overview></p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<pre class="codehilite card"><code>┌─────────────────────────────────────────────────────────────────┐
+│                     Unified Management Layer                    │
+├─────────────────────────────────────────────────────────────────┤
+│  OCI Resource Manager  │  Identity &amp; Access Management (IAM)    │
+│  Multi-Cloud Control   │  Unified Security &amp; Governance         │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                    ┌───────────┼───────────┐
+                    │           │           │
+            ┌───────▼──┐   ┌────▼────┐   ┌──▼──────┐
+            │   OCI    │   │   AWS   │   │  Azure  │
+            │ Primary  │   │Secondary│   │Tertiary │
+            └───────▲──┘   └────▲────┘   └──▲──────┘
+                    │           │           │
+                    └───────────┼───────────┘
+                                │
+        ┌───────────────────────▼───────────────────────┐
+        │          FastConnect/VPN Connectivity          │
+        │     Secure Multi-Cloud Network Backbone       │
+        └───────────────────────────────────────────────┘
+</code></pre>
+<p></p>
+<p><system_architecture_diagram>
+[Architecture diagram content already included in previous section]
+</system_architecture_diagram></p>
+<p><component_architecture_details></component_architecture_details></p>
+<h2 id="core-components">Core Components</h2>
+<h3 id="1-orchestration-control-plane-oci">1. Orchestration Control Plane (OCI)</h3>
+<p><strong>Primary Services:</strong>
+- <strong>OCI Container Engine (OKE)</strong>: Master Kubernetes cluster
+- <strong>OCI Resource Manager</strong>: Terraform-based infrastructure provisioning
+- <strong>OCI Identity &amp; Access Management</strong>: Unified identity across clouds
+- <strong>OCI Service Mesh</strong>: Traffic management and security policies</p>
+<p><strong>Configuration:</strong></p>
+<pre class="codehilite card"><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: multi-cloud-config
+data:
+  primary_cloud: "oci"
+  secondary_clouds: "aws,azure"
+  failover_policy: "automatic"
+  data_residency: "eu-west"
+</code></pre>
+<h3 id="2-cross-cloud-networking">2. Cross-Cloud Networking</h3>
+<p><strong>Network Architecture:</strong>
+- <strong>FastConnect</strong>: Dedicated OCI connectivity (10Gbps+)
+- <strong>AWS Direct Connect</strong>: AWS hybrid connectivity
+- <strong>Azure ExpressRoute</strong>: Azure hybrid connectivity
+- <strong>VPN Backup</strong>: Encrypted internet backup paths</p>
+<p><strong>Traffic Routing:</strong></p>
+<pre class="codehilite card"><code class="language-yaml">apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ai-workload-routing
+spec:
+  hosts:
+  - ai-service
+  http:
+  - match:
+    - headers:
+        region:
+          exact: eu
+    route:
+    - destination:
+        host: ai-service
+        subset: oci-eu
+  - route:
+    - destination:
+        host: ai-service
+        subset: aws-us
+</code></pre>
+<h3 id="3-data-layer-architecture">3. Data Layer Architecture</h3>
+<p><strong>Data Distribution Strategy:</strong></p>
+<pre class="codehilite card"><code class="language-yaml">apiVersion: v1
+kind: Secret
+metadata:
+  name: data-replication-config
+data:
+  primary_store: "oci_object_storage"
+  sync_frequency: "real_time"
+  backup_clouds: "aws_s3,azure_blob"
+  encryption: "aes_256"
+</code></pre>
+<p><strong>Data Services:</strong>
+- <strong>OCI Object Storage</strong>: Primary data lake
+- <strong>OCI Data Integration</strong>: ETL and data movement
+- <strong>Cross-Cloud Replication</strong>: Automated data sync
+- <strong>Unified Data Catalog</strong>: Metadata management
+</p>
+<p><data_flow_architecture></data_flow_architecture></p>
+<h2 id="deployment-architecture">Deployment Architecture</h2>
+<h3 id="container-orchestration">Container Orchestration</h3>
+<p><strong>Kubernetes Federation:</strong></p>
+<pre class="codehilite card"><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: ai-model-service
+  annotations:
+    multicloud.oracle.com/clouds: "oci,aws,azure"
+    multicloud.oracle.com/primary: "oci"
+spec:
+  selector:
+    app: ai-model
+  ports:
+  - port: 8080
+    targetPort: 8080
+</code></pre>
+<p><strong>Workload Distribution:</strong>
+- <strong>Training Workloads</strong>: GPU-optimized clusters (OCI A100/H100)
+- <strong>Inference Workloads</strong>: Distributed across all clouds for latency
+- <strong>Data Processing</strong>: Co-located with data sources
+- <strong>Monitoring</strong>: Centralized on OCI with remote agents</p>
+<h3 id="aiml-pipeline-architecture">AI/ML Pipeline Architecture</h3>
+<pre class="codehilite card"><code class="language-yaml">apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: multi-cloud-ml-pipeline
+spec:
+  templates:
+  - name: data-ingestion
+    container:
+      image: oci.ocir.io/ai/data-processor:latest
+      command: ["python", "ingest.py"]
+      env:
+      - name: CLOUD_PROVIDER
+        value: "{{workflow.parameters.cloud}}"
+  - name: model-training
+    container:
+      image: oci.ocir.io/ai/trainer:latest
+       resources:
+         requests:
+           nvidia.com/gpu: 4
+</code></pre>
+<p></p>
+<p><security_architecture></security_architecture></p>
+<h2 id="implementation-specifications">Implementation Specifications</h2>
+<h3 id="1-infrastructure-as-code">1. Infrastructure as Code</h3>
+<p><strong>Terraform Multi-Cloud Module:</strong></p>
+<pre class="codehilite card"><code class="language-hcl">module "multi_cloud_ai" {
+  source = "./modules/multi-cloud-ai"
+
+  providers = {
+    oci   = oci.primary
+    aws   = aws.secondary
+    azure = azurerm.tertiary
+  }
+
+  ai_workloads = {
+    training = {
+      primary_cloud = "oci"
+      gpu_type     = "A100"
+      replicas     = 3
+    }
+    inference = {
+      clouds = ["oci", "aws", "azure"]
+      scaling_policy = "auto"
+    }
+  }
+}
+</code></pre>
+<h3 id="2-monitoring-observability">2. Monitoring &amp; Observability</h3>
+<p><strong>Unified Monitoring Stack:</strong></p>
+<pre class="codehilite card"><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: monitoring-config
+data:
+  prometheus_config: |
+    global:
+      scrape_interval: 15s
+    scrape_configs:
+    - job_name: 'oci-nodes'
+      static_configs:
+      - targets: ['oci-cluster:9090']
+    - job_name: 'aws-nodes'
+      static_configs:
+      - targets: ['aws-cluster:9090']
+    - job_name: 'azure-nodes'
+      static_configs:
+      - targets: ['azure-cluster:9090']
+</code></pre>
+<p><strong>Alerting Rules:</strong></p>
+<pre class="codehilite card"><code class="language-yaml">groups:
+- name: multi-cloud-alerts
+  rules:
+  - alert: CrossCloudLatencyHigh
+    expr: avg(network_latency_seconds) &gt; 0.1
+    for: 5m
+    labels:
+      severity: warning
+     annotations:
+       summary: "High latency between clouds detected"
+</code></pre>
+<p></p>
+<p><performance_scalability></performance_scalability></p>
+<h3 id="3-disaster-recovery">3. Disaster Recovery</h3>
+<p><strong>Automated Failover:</strong></p>
+<pre class="codehilite card"><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: disaster-recovery
+data:
+  rto_target: "15m"
+  rpo_target: "5m"
+  failover_triggers: |
+    - cloud_availability &lt; 95%
+    - response_time &gt; 5s
+    - error_rate &gt; 1%
+</code></pre>
+<p></p>
+<p><monitoring_observability>
+[Content covered in previous sections]
+</monitoring_observability></p>
+<p><disaster_recovery>
+[Content covered in previous sections]
+</disaster_recovery></p>
+<p><integration_patterns></integration_patterns></p>
+<h2 id="integration-points">Integration Points</h2>
+<h3 id="external-systems">External Systems</h3>
+<ul>
+<li><strong>CI/CD Pipelines</strong>: GitLab/Jenkins integration across clouds</li>
+<li><strong>Monitoring Tools</strong>: Datadog, New Relic, Splunk federation</li>
+<li><strong>Security Tools</strong>: CyberArk, Okta, Ping Identity integration</li>
+<li><strong>Cost Management</strong>: CloudHealth, CloudCheckr multi-cloud visibility</li>
+</ul>
+<h3 id="oci-service-dependencies">OCI Service Dependencies</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Purpose</th>
+<th>Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OKE</td>
+<td>Primary orchestration</td>
+<td>Multi-master, cross-AZ</td>
+</tr>
+<tr>
+<td>Resource Manager</td>
+<td>Infrastructure automation</td>
+<td>Terraform state management</td>
+</tr>
+<tr>
+<td>IAM</td>
+<td>Identity federation</td>
+<td>SAML/OIDC integration</td>
+</tr>
+<tr>
+<td>FastConnect</td>
+<td>Network connectivity</td>
+<td>10Gbps dedicated circuits</td>
+</tr>
+<tr>
+<td>Object Storage</td>
+<td>Data lake primary</td>
+<td>Cross-region replication</td>
+</tr>
+<tr>
+<td>Vault</td>
+<td>Key management</td>
+<td>HSM-backed encryption</td>
+</tr>
+<tr>
+<td>Monitoring</td>
+<td>Observability hub</td>
+<td>Cross-cloud agent deployment</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><deployment_architecture>
+[Content covered in component architecture details section]
+</deployment_architecture></p>
+<p><cost_optimization></cost_optimization></p>
+<h2 id="performance-specifications">Performance Specifications</h2>
+<h3 id="network-requirements">Network Requirements</h3>
+<ul>
+<li><strong>Bandwidth</strong>: Minimum 1Gbps between clouds</li>
+<li><strong>Latency</strong>: &lt;50ms between primary and secondary clouds</li>
+<li><strong>Availability</strong>: 99.9% network uptime SLA</li>
+<li><strong>Throughput</strong>: Support 100K+ API calls per second</li>
+</ul>
+<h3 id="scalability-targets">Scalability Targets</h3>
+<ul>
+<li><strong>Horizontal Scaling</strong>: 1000+ nodes across clouds</li>
+<li><strong>Auto-scaling</strong>: 0-100 instances in &lt;5 minutes</li>
+<li><strong>Data Volume</strong>: Petabyte-scale data processing</li>
+<li><strong>Concurrent Users</strong>: 10,000+ simultaneous API users</li>
+</ul>
+<h3 id="security-requirements">Security Requirements</h3>
+<ul>
+<li><strong>Encryption</strong>: AES-256 for data at rest and in transit</li>
+<li><strong>Authentication</strong>: Multi-factor authentication required</li>
+<li><strong>Authorization</strong>: Role-based access control (RBAC)</li>
+<li><strong>Audit</strong>: Complete audit trail across all clouds</li>
+<li><strong>Compliance</strong>: SOC 2, ISO 27001, GDPR compliance
+</li>
+</ul>
+<p>This comprehensive technical architecture provides organizations with the foundation for seamless multi-cloud AI orchestration, enabling flexible workload deployment, unified management, and optimal resource utilization across diverse cloud environments while maintaining enterprise-grade security and compliance standards.</p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

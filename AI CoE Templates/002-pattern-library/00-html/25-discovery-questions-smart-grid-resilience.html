@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Discovery Questions: Smart Grid Resilience & Self-Healing - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 10 Energy Distribution Intelligence / 25 Solution Smart Grid Resilience</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="discovery-questions-smart-grid-resilience-self-healing">Discovery Questions: Smart Grid Resilience &amp; Self-Healing</h1>
+<h2 id="discovery-current-state-assessment">Discovery &amp; Current State Assessment</h2>
+<ol>
+<li><strong>What is your current grid outage frequency and duration (SAIDI/SAIFI)?</strong></li>
+<li>
+<p><em>Purpose: Establish baseline reliability metrics</em></p>
+</li>
+<li>
+<p><strong>How do you currently detect and respond to grid faults?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Assess current fault management maturity</em></p>
+</li>
+<li>
+<p><strong>What percentage of fault response requires manual intervention?</strong></p>
+</li>
+<li><em>Purpose: Identify automation opportunities</em></li>
+</ol>
+<hr/>
+<h2 id="strategy-business-alignment">Strategy &amp; Business Alignment</h2>
+<ol>
+<li><strong>What are your grid reliability improvement goals?</strong></li>
+<li>
+<p><em>Purpose: Align solution with reliability targets</em></p>
+</li>
+<li>
+<p><strong>Which areas of your grid are most vulnerable to outages?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Prioritize deployment locations</em></p>
+</li>
+<li>
+<p><strong>What would be the value of reducing outage duration by 80%?</strong></p>
+</li>
+<li><em>Purpose: Quantify business value and ROI</em></li>
+</ol>
+<hr/>
+<h2 id="opportunity-qualification">Opportunity Qualification</h2>
+<ol>
+<li><strong>What is driving the need for grid resilience improvements?</strong></li>
+<li>
+<p><em>Purpose: Understand business drivers and urgency</em></p>
+</li>
+<li>
+<p><strong>Who are the key stakeholders for grid reliability?</strong></p>
+</li>
+<li>
+<p><em>Purpose: Identify decision makers and influencers</em></p>
+</li>
+<li>
+<p><strong>What budget is allocated for grid modernization?</strong></p>
+</li>
+<li><em>Purpose: Assess financial commitment</em></li>
+</ol>
+<hr/>
+<h2 id="technical-scoping-architecture">Technical Scoping &amp; Architecture</h2>
+<ol>
+<li>
+<p><strong>Can you describe your current grid topology and infrastructure?</strong></p>
+<ul>
+<li><em>Purpose: Understand grid complexity and layout</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What grid automation equipment do you currently have installed?</strong></p>
+<ul>
+<li><em>Purpose: Assess existing automation infrastructure</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What SCADA/EMS systems do you operate?</strong></p>
+<ul>
+<li><em>Purpose: Identify control system integration needs</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="grid-infrastructure">Grid Infrastructure</h2>
+<ol>
+<li>
+<p><strong>How many feeders and substations do you operate?</strong></p>
+<ul>
+<li><em>Purpose: Size the solution appropriately</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What types of switches and reclosers are deployed?</strong></p>
+<ul>
+<li><em>Purpose: Determine automation capabilities</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have smart meters deployed, and what is the coverage?</strong></p>
+<ul>
+<li><em>Purpose: Assess customer-side visibility</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="fault-management">Fault Management</h2>
+<ol>
+<li>
+<p><strong>What types of faults are most common on your grid?</strong></p>
+<ul>
+<li><em>Purpose: Prioritize fault detection capabilities</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you currently locate faults on the distribution system?</strong></p>
+<ul>
+<li><em>Purpose: Assess fault location methods</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What is your average time to locate and isolate faults?</strong></p>
+<ul>
+<li><em>Purpose: Identify improvement potential</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="communication-infrastructure">Communication Infrastructure</h2>
+<ol>
+<li>
+<p><strong>What communication networks support your grid operations?</strong></p>
+<ul>
+<li><em>Purpose: Assess communication readiness</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have fiber optic or wireless networks to substations?</strong></p>
+<ul>
+<li><em>Purpose: Determine data connectivity options</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What are the latency and bandwidth capabilities?</strong></p>
+<ul>
+<li><em>Purpose: Ensure real-time control feasibility</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="distributed-energy-resources">Distributed Energy Resources</h2>
+<ol>
+<li>
+<p><strong>What DER penetration do you have (solar, storage, etc.)?</strong></p>
+<ul>
+<li><em>Purpose: Assess DER integration needs</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you currently manage and control DER assets?</strong></p>
+<ul>
+<li><em>Purpose: Understand DER management maturity</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have any microgrids or plan to deploy them?</strong></p>
+<ul>
+<li><em>Purpose: Plan microgrid integration</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="weather-environmental-factors">Weather &amp; Environmental Factors</h2>
+<ol>
+<li>
+<p><strong>What weather events most impact your grid reliability?</strong></p>
+<ul>
+<li><em>Purpose: Design weather resilience features</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you prepare for and respond to storms?</strong></p>
+<ul>
+<li><em>Purpose: Assess storm response capabilities</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What vegetation management challenges do you face?</strong></p>
+<ul>
+<li><em>Purpose: Address vegetation-related outages</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="operational-processes">Operational Processes</h2>
+<ol>
+<li>
+<p><strong>How many operators manage your distribution system?</strong></p>
+<ul>
+<li><em>Purpose: Understand operational structure</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What are your switching and restoration procedures?</strong></p>
+<ul>
+<li><em>Purpose: Assess process automation potential</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you prioritize restoration for critical customers?</strong></p>
+<ul>
+<li><em>Purpose: Design priority restoration logic</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="customer-impact">Customer Impact</h2>
+<ol>
+<li>
+<p><strong>Who are your critical customers (hospitals, emergency services)?</strong></p>
+<ul>
+<li><em>Purpose: Define restoration priorities</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What are your customer reliability expectations?</strong></p>
+<ul>
+<li><em>Purpose: Align solution with customer needs</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you communicate with customers during outages?</strong></p>
+<ul>
+<li><em>Purpose: Plan customer notification integration</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="regulatory-compliance">Regulatory &amp; Compliance</h2>
+<ol>
+<li>
+<p><strong>What reliability standards must you meet?</strong></p>
+<ul>
+<li><em>Purpose: Ensure regulatory compliance</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Are there penalties for poor reliability performance?</strong></p>
+<ul>
+<li><em>Purpose: Quantify compliance value</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What reporting requirements exist for outages?</strong></p>
+<ul>
+<li><em>Purpose: Design compliance reporting</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="data-analytics">Data &amp; Analytics</h2>
+<ol>
+<li>
+<p><strong>What data do you collect from grid devices?</strong></p>
+<ul>
+<li><em>Purpose: Assess data availability</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you currently analyze grid performance?</strong></p>
+<ul>
+<li><em>Purpose: Understand analytics maturity</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have historians or data lakes for grid data?</strong></p>
+<ul>
+<li><em>Purpose: Plan data architecture</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="integration-requirements">Integration Requirements</h2>
+<ol>
+<li>
+<p><strong>What systems need to integrate with the self-healing platform?</strong></p>
+<ul>
+<li><em>Purpose: Map integration points</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What protocols and standards do your systems use?</strong></p>
+<ul>
+<li><em>Purpose: Ensure compatibility</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Do you have APIs or integration platforms?</strong></p>
+<ul>
+<li><em>Purpose: Assess integration methods</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="safety-security">Safety &amp; Security</h2>
+<ol>
+<li>
+<p><strong>What safety procedures govern automated switching?</strong></p>
+<ul>
+<li><em>Purpose: Design safety interlocks</em></li>
+</ul>
+</li>
+<li>
+<p><strong>How do you ensure worker safety during grid operations?</strong></p>
+<ul>
+<li><em>Purpose: Implement safety protocols</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What cybersecurity requirements apply to grid control?</strong></p>
+<ul>
+<li><em>Purpose: Design security architecture</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="performance-requirements">Performance Requirements</h2>
+<ol>
+<li>
+<p><strong>What are your target restoration time objectives?</strong></p>
+<ul>
+<li><em>Purpose: Define performance goals</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What level of automation do you want to achieve?</strong></p>
+<ul>
+<li><em>Purpose: Set automation targets</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What are acceptable false positive rates for fault detection?</strong></p>
+<ul>
+<li><em>Purpose: Tune algorithm sensitivity</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h2 id="future-considerations">Future Considerations</h2>
+<ol>
+<li>
+<p><strong>How do you see your grid evolving over the next 5 years?</strong></p>
+<ul>
+<li><em>Purpose: Ensure solution scalability</em></li>
+</ul>
+</li>
+<li>
+<p><strong>What emerging technologies are you considering (EVs, storage)?</strong></p>
+<ul>
+<li><em>Purpose: Plan for future integration</em></li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><em>These discovery questions are designed to comprehensively assess an organization's readiness for implementing the Smart Grid Resilience &amp; Self-Healing pattern. The responses will help determine grid automation requirements, identify integration needs, and customize the solution to achieve 80% reduction in outage duration and 90% self-healing success rate.</em></p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

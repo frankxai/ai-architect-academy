@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arc Command Center</title>
+    <style>
+        :root {
+            --vscode-foreground: #cccccc;
+            --vscode-background: #1e1e1e;
+            --vscode-panel-background: #252526;
+            --vscode-sidebar-background: #252526;
+            --vscode-button-background: #0e639c;
+            --vscode-button-hoverBackground: #1177bb;
+            --vscode-input-background: #3c3c3c;
+            --vscode-border: #464647;
+            --vscode-success: #89d185;
+            --vscode-warning: #d7ba7d;
+            --vscode-error: #f48771;
+            --arc-primary: #007acc;
+            --arc-secondary: #00ff41;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--vscode-background);
+            color: var(--vscode-foreground);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .command-center {
+            padding: 16px;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--vscode-border);
+        }
+
+        .logo {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--arc-primary) 0%, var(--arc-secondary) 100%);
+            border-radius: 4px;
+        }
+
+        .title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--vscode-foreground);
+        }
+
+        .status-badge {
+            background: var(--arc-secondary);
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .section {
+            background: var(--vscode-panel-background);
+            border-radius: 6px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 12px 16px;
+            background: var(--vscode-input-background);
+            border-bottom: 1px solid var(--vscode-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--vscode-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-content {
+            padding: 16px;
+        }
+
+        /* Agent Orchestrator */
+        .orchestrator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .orchestrator-btn {
+            background: var(--vscode-button-background);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .orchestrator-btn:hover {
+            background: var(--vscode-button-hoverBackground);
+        }
+
+        .orchestrator-btn.secondary {
+            background: var(--vscode-input-background);
+            color: var(--vscode-foreground);
+        }
+
+        .orchestrator-btn.secondary:hover {
+            background: #505050;
+        }
+
+        /* Agent Pool */
+        .agent-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .agent-card {
+            background: var(--vscode-input-background);
+            border: 1px solid var(--vscode-border);
+            border-radius: 6px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .agent-card:hover {
+            border-color: var(--arc-primary);
+            background: #404040;
+        }
+
+        .agent-card.active {
+            border-color: var(--arc-primary);
+            background: rgba(0, 122, 204, 0.1);
+        }
+
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .agent-name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .agent-status {
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 9px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .agent-status.active {
+            background: var(--arc-secondary);
+            color: #000;
+        }
+
+        .agent-status.idle {
+            background: var(--vscode-input-background);
+            color: var(--vscode-foreground);
+        }
+
+        .agent-status.busy {
+            background: var(--vscode-warning);
+            color: #000;
+        }
+
+        .agent-capabilities {
+            font-size: 11px;
+            color: var(--arc-primary);
+            margin-bottom: 4px;
+        }
+
+        .agent-stats {
+            font-size: 10px;
+            color: #888;
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Task Queue */
+        .task-item {
+            background: var(--vscode-input-background);
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-left: 3px solid transparent;
+        }
+
+        .task-item.high {
+            border-left-color: var(--vscode-error);
+        }
+
+        .task-item.medium {
+            border-left-color: var(--vscode-warning);
+        }
+
+        .task-item.low {
+            border-left-color: var(--vscode-success);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 4px;
+        }
+
+        .task-title {
+            font-size: 12px;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .task-meta {
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 6px;
+        }
+
+        .task-agent-assignment {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+
+        .task-agent {
+            background: var(--arc-primary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 9px;
+            font-weight: 500;
+        }
+
+        .task-progress {
+            width: 100%;
+            height: 2px;
+            background: var(--vscode-input-background);
+            border-radius: 1px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .task-progress-bar {
+            height: 100%;
+            background: var(--arc-primary);
+            transition: width 0.3s;
+        }
+
+        /* Academy Integration */
+        .academy-sync {
+            background: linear-gradient(135deg, rgba(0, 122, 204, 0.1) 0%, rgba(0, 255, 65, 0.1) 100%);
+            border: 1px solid var(--arc-primary);
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .sync-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .sync-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--arc-secondary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .sync-text {
+            font-size: 11px;
+            color: var(--vscode-foreground);
+            margin-bottom: 8px;
+        }
+
+        .academy-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .academy-btn {
+            background: var(--arc-primary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 3px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .academy-btn:hover {
+            background: var(--vscode-button-hoverBackground);
+        }
+
+        .academy-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--arc-primary);
+            color: var(--arc-primary);
+        }
+
+        /* Activity Feed */
+        .activity-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--vscode-border);
+            font-size: 11px;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-time {
+            color: #888;
+            margin-bottom: 2px;
+        }
+
+        .activity-text {
+            color: var(--vscode-foreground);
+        }
+
+        /* Performance Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 8px;
+            background: var(--vscode-input-background);
+            border-radius: 4px;
+        }
+
+        .metric-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--arc-secondary);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 9px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Session Management */
+        .session-info {
+            background: var(--vscode-input-background);
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 12px;
+        }
+
+        .session-name {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .session-meta {
+            font-size: 10px;
+            color: #888;
+        }
+
+        .session-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="command-center">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo"></div>
+            <div class="title">Arc Command Center</div>
+            <div class="status-badge">Live</div>
+        </div>
+
+        <!-- Agent Orchestrator -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🎯 Agent Orchestrator</div>
+                <button class="orchestrator-btn secondary" onclick="toggleAutoMode()">Auto Mode</button>
+            </div>
+            <div class="section-content">
+                <div class="orchestrator-grid">
+                    <button class="orchestrator-btn" onclick="sendMessage('assign-task')">Smart Assign</button>
+                    <button class="orchestrator-btn secondary" onclick="sendMessage('manual-mode')">Manual</button>
+                    <button class="orchestrator-btn" onclick="sendMessage('parallel-session')">New Session</button>
+                    <button class="orchestrator-btn secondary" onclick="sendMessage('merge-sessions')">Merge</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent Pool -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🤖 Agent Pool</div>
+                <span style="font-size: 10px; color: #888;">5 Connected</span>
+            </div>
+            <div class="section-content">
+                <div class="agent-grid">
+                    <div class="agent-card active" onclick="selectAgent('claude-code')">
+                        <div class="agent-header">
+                            <div class="agent-name">Claude Code</div>
+                            <div class="agent-status active">Active</div>
+                        </div>
+                        <div class="agent-capabilities">Code Analysis • Debugging • Refactoring</div>
+                        <div class="agent-stats">
+                            <span>Tasks: 12</span>
+                            <span>Success: 94%</span>
+                            <span>Avg: 2.1s</span>
+                        </div>
+                    </div>
+
+                    <div class="agent-card" onclick="selectAgent('kilo-code')">
+                        <div class="agent-header">
+                            <div class="agent-name">Kilo Code</div>
+                            <div class="agent-status idle">Ready</div>
+                        </div>
+                        <div class="agent-capabilities">Architecture • Testing • Performance</div>
+                        <div class="agent-stats">
+                            <span>Tasks: 8</span>
+                            <span>Success: 97%</span>
+                            <span>Avg: 3.2s</span>
+                        </div>
+                    </div>
+
+                    <div class="agent-card" onclick="selectAgent('cline')">
+                        <div class="agent-header">
+                            <div class="agent-name">Cline</div>
+                            <div class="agent-status busy">Processing</div>
+                        </div>
+                        <div class="agent-capabilities">File Operations • Project Setup</div>
+                        <div class="agent-stats">
+                            <span>Tasks: 5</span>
+                            <span>Success: 89%</span>
+                            <span>Avg: 1.8s</span>
+                        </div>
+                    </div>
+
+                    <div class="agent-card" onclick="selectAgent('gemini')">
+                        <div class="agent-header">
+                            <div class="agent-name">Gemini Code</div>
+                            <div class="agent-status idle">Standby</div>
+                        </div>
+                        <div class="agent-capabilities">Research • Documentation • Analysis</div>
+                        <div class="agent-stats">
+                            <span>Tasks: 3</span>
+                            <span>Success: 92%</span>
+                            <span>Avg: 4.1s</span>
+                        </div>
+                    </div>
+
+                    <div class="agent-card" onclick="selectAgent('codex')">
+                        <div class="agent-header">
+                            <div class="agent-name">Codex</div>
+                            <div class="agent-status idle">Ready</div>
+                        </div>
+                        <div class="agent-capabilities">Code Generation • Completion</div>
+                        <div class="agent-stats">
+                            <span>Tasks: 7</span>
+                            <span>Success: 91%</span>
+                            <span>Avg: 2.7s</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Queue -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">📋 Task Queue</div>
+                <span style="font-size: 10px; color: #888;">3 Pending</span>
+            </div>
+            <div class="section-content">
+                <div class="task-item high">
+                    <div class="task-header">
+                        <div class="task-title">Implement agent coordination API</div>
+                    </div>
+                    <div class="task-meta">Priority: High • Est: 25min • Assigned 2min ago</div>
+                    <div class="task-agent-assignment">
+                        <div class="task-agent">Claude Code</div>
+                    </div>
+                    <div class="task-progress">
+                        <div class="task-progress-bar" style="width: 35%;"></div>
+                    </div>
+                </div>
+
+                <div class="task-item medium">
+                    <div class="task-header">
+                        <div class="task-title">Update extension manifest for multi-agent support</div>
+                    </div>
+                    <div class="task-meta">Priority: Medium • Est: 15min • Queue</div>
+                    <div class="task-agent-assignment">
+                        <div class="task-agent">Auto-Assign</div>
+                    </div>
+                </div>
+
+                <div class="task-item low">
+                    <div class="task-header">
+                        <div class="task-title">Create integration tests</div>
+                    </div>
+                    <div class="task-meta">Priority: Low • Est: 30min • Queue</div>
+                    <div class="task-agent-assignment">
+                        <div class="task-agent">Kilo Code</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Session Management -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🔄 Session Management</div>
+            </div>
+            <div class="section-content">
+                <div class="session-info">
+                    <div class="session-name">arc-multi-agent-dev</div>
+                    <div class="session-meta">
+                        Branch: feature/orchestrator • Commits: 8 • Last: 3min ago<br>
+                        Workspace: C:\Users\Frank\AI Architect Academy\Arc
+                    </div>
+                </div>
+                <div class="session-controls">
+                    <button class="orchestrator-btn" onclick="sendMessage('checkpoint')">Checkpoint</button>
+                    <button class="orchestrator-btn secondary" onclick="sendMessage('fork-session')">Fork</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academy Integration -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🎓 Academy Integration</div>
+            </div>
+            <div class="section-content">
+                <div class="academy-sync">
+                    <div class="sync-header">
+                        <div class="sync-indicator"></div>
+                        <span style="font-size: 12px; font-weight: 600;">Dashboard Sync Active</span>
+                    </div>
+                    <div class="sync-text">
+                        Project progress, agent performance metrics, and learning insights are syncing with your AI Architect Academy dashboard for comprehensive project management.
+                    </div>
+                    <div class="academy-actions">
+                        <button class="academy-btn" onclick="sendMessage('open-dashboard')">Open Dashboard</button>
+                        <button class="academy-btn secondary" onclick="sendMessage('sync-usecases')">Sync Use Cases</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Metrics -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">📊 Performance Insights</div>
+            </div>
+            <div class="section-content">
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <span class="metric-value">28</span>
+                        <span class="metric-label">Tasks Today</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">93%</span>
+                        <span class="metric-label">Success Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">2.4s</span>
+                        <span class="metric-label">Avg Response</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Development Roadmap -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">🗺️ Development Roadmap</div>
+                <button class="academy-btn secondary" onclick="sendMessage('view-roadmap')">View Full Roadmap</button>
+            </div>
+            <div class="section-content">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div class="academy-btn" onclick="sendMessage('view-prd')">📋 Complete PRD</div>
+                    <div class="academy-btn secondary" onclick="sendMessage('view-specs')">🏗️ Technical Specs</div>
+                </div>
+
+                <div class="task-item high">
+                    <div class="task-header">
+                        <div class="task-title">Phase 1: Fork Integration (3 weeks)</div>
+                    </div>
+                    <div class="task-meta">Arc-Kilo + Arc-Cline • 60 hours total effort</div>
+                    <div class="task-progress">
+                        <div class="task-progress-bar" style="width: 15%;"></div>
+                    </div>
+                </div>
+
+                <div class="task-item medium">
+                    <div class="task-header">
+                        <div class="task-title">Phase 2: Full Orchestration (9 weeks)</div>
+                    </div>
+                    <div class="task-meta">Complete multi-agent platform • 240 hours effort</div>
+                    <div class="task-progress">
+                        <div class="task-progress-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(0, 122, 204, 0.1); border-radius: 6px; padding: 12px; margin-top: 15px;">
+                    <div style="font-size: 12px; color: var(--arc-primary); font-weight: 600; margin-bottom: 5px;">📊 Project Metrics</div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 11px; color: var(--vscode-foreground);">
+                        <div style="text-align: center;"><strong>300hrs</strong><br>Total Effort</div>
+                        <div style="text-align: center;"><strong>5 Agents</strong><br>Unified</div>
+                        <div style="text-align: center;"><strong>12 weeks</strong><br>Timeline</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Feed -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">📈 Live Activity</div>
+            </div>
+            <div class="section-content">
+                <div class="activity-item">
+                    <div class="activity-time">14:35:42</div>
+                    <div class="activity-text">✅ Complete roadmap and PRD generated successfully</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-time">14:33:18</div>
+                    <div class="activity-text">🏗️ Technical specifications completed with full API docs</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-time">14:31:05</div>
+                    <div class="activity-text">📋 User stories and flow diagrams finalized</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-time">14:29:33</div>
+                    <div class="activity-text">🎯 Phase 1 implementation plan ready for execution</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // VS Code API communication
+        const vscode = acquireVsCodeApi();
+
+        function sendMessage(type, data = {}) {
+            vscode.postMessage({ type, ...data });
+
+            // Handle documentation views
+            if (type === 'view-roadmap') {
+                window.open('./arc-development-roadmap.html', '_blank');
+            } else if (type === 'view-prd') {
+                window.open('./arc-prd-complete.html', '_blank');
+            } else if (type === 'view-specs') {
+                window.open('./arc-technical-specs.html', '_blank');
+            }
+        }
+
+        function selectAgent(agentId) {
+            document.querySelectorAll('.agent-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            sendMessage('agent-selected', { agentId });
+        }
+
+        function toggleAutoMode() {
+            const btn = event.target;
+            const isAuto = btn.textContent === 'Auto Mode';
+            btn.textContent = isAuto ? 'Manual Mode' : 'Auto Mode';
+            btn.classList.toggle('orchestrator-btn');
+            btn.classList.toggle('secondary');
+            sendMessage('toggle-mode', { mode: isAuto ? 'manual' : 'auto' });
+        }
+
+        // Listen for messages from extension
+        window.addEventListener('message', event => {
+            const message = event.data;
+            switch (message.command) {
+                case 'updateAgentStatus':
+                    updateAgentStatus(message.agentId, message.status);
+                    break;
+                case 'addTask':
+                    addTask(message.task);
+                    break;
+                case 'updateMetrics':
+                    updateMetrics(message.metrics);
+                    break;
+            }
+        });
+
+        function updateAgentStatus(agentId, status) {
+            const card = document.querySelector(`[onclick*="${agentId}"]`);
+            if (card) {
+                const statusEl = card.querySelector('.agent-status');
+                statusEl.textContent = status;
+                statusEl.className = `agent-status ${status.toLowerCase()}`;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Request initial state from extension
+            sendMessage('webview-ready');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Technical Architecture 6: Intelligent Orchestration & Workflow Automation - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 01 Intelligent Operations / 06 Solution Orchestration Workflow</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="technical-architecture-6-intelligent-orchestration-workflow-automation">Technical Architecture 6: Intelligent Orchestration &amp; Workflow Automation</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 06</li>
+<li><strong>Pattern Name:</strong> Intelligent Orchestration &amp; Workflow Automation</li>
+<li><strong>Document Type:</strong> Technical Architecture</li>
+<li><strong>Created Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><architecture_overview></architecture_overview></p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The Intelligent Orchestration &amp; Workflow Automation architecture provides comprehensive business process automation with AI-driven coordination capabilities. This architecture enables organizations to reduce process completion time by 65% and eliminate 90% of manual handoffs while maintaining perfect compliance and audit trails through intelligent workflow orchestration, automated decision-making, and seamless system integration.
+</p>
+<hr/>
+<p><system_architecture_diagram></system_architecture_diagram></p>
+<h2 id="system-architecture-diagram">System Architecture Diagram</h2>
+<pre class="codehilite card"><code>┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           Process Trigger Sources                               │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  Business   │  Customer   │  System     │  Time-based │  External   │  Manual   │
+│  Events     │  Requests   │  Alerts     │  Schedules  │  APIs       │  Triggers │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Event Processing &amp; Routing Layer                        │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                              OCI Events                                        │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Event          │  │  Event          │  │  Event          │                │
+│  │  Ingestion      │  │  Filtering      │  │  Routing        │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Event          │  │  Priority       │  │  Dead Letter    │                │
+│  │  Transformation │  │  Management     │  │  Queue          │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Workflow Orchestration Engine                           │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                        Oracle Integration Cloud                                │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Process        │  │  Workflow       │  │  Decision       │                │
+│  │  Definition     │  │  Engine         │  │  Engine         │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  State          │  │  Error          │  │  Compensation   │                │
+│  │  Management     │  │  Handling       │  │  Logic          │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Data Processing &amp; Transformation                        │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                           OCI Connector Hub                                    │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Data           │  │  Format         │  │  Schema         │                │
+│  │  Extraction     │  │  Transformation │  │  Mapping        │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Data           │  │  Enrichment     │  │  Quality        │                │
+│  │  Validation     │  │  Services       │  │  Assessment     │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Intelligent Processing Layer                            │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  OCI Functions  │  │  Oracle Digital │  │  Business Rules │                │
+│  │  (Serverless    │  │  Assistant      │  │  Engine         │                │
+│  │  Processing)    │  │  (AI Decisions) │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Machine        │  │  Document       │  │  Approval       │                │
+│  │  Learning       │  │  Processing     │  │  Workflows      │                │
+│  │  Models         │  │  (OCR/NLP)      │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Process State &amp; Analytics Layer                         │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Oracle Database│  │  OCI Streaming  │  │  Process        │                │
+│  │  23ai           │  │  (Real-time     │  │  Analytics      │                │
+│  │  (Process State)│  │  Monitoring)    │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Audit Trail    │  │  Performance    │  │  Compliance     │                │
+│  │  Management     │  │  Metrics        │  │  Reporting      │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        External System Integration                             │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ERP Systems │  CRM        │  HR Systems │  Financial  │  Document   │  Custom   │
+│  (SAP, Oracle│  (Salesforce│  (Workday,  │  Systems    │  Management │  APIs     │
+│  ERP Cloud)  │  Dynamics)  │  SuccessFactors) │  (EBS, Fusion) │  (SharePoint) │           │
+└─────────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<p></p>
+<hr/>
+<p><component_architecture_details></component_architecture_details></p>
+<h2 id="component-architecture-details">Component Architecture Details</h2>
+<h3 id="1-event-processing-routing-layer">1. Event Processing &amp; Routing Layer</h3>
+<h4 id="oci-events-platform">OCI Events Platform</h4>
+<ul>
+<li><strong>Event Ingestion</strong>:</li>
+<li>Support for 10,000+ events per second</li>
+<li>Multiple event sources (REST APIs, message queues, webhooks)</li>
+<li>Event deduplication and ordering</li>
+<li>Batch and streaming event processing</li>
+<li><strong>Event Processing</strong>:</li>
+<li>Real-time event filtering and transformation</li>
+<li>Content-based routing and priority management</li>
+<li>Event correlation and pattern matching</li>
+<li>Dead letter queue for failed events</li>
+</ul>
+<h4 id="event-management">Event Management</h4>
+<ul>
+<li><strong>Event Schema Registry</strong>: Centralized event schema management</li>
+<li><strong>Event Versioning</strong>: Backward compatibility for event evolution</li>
+<li><strong>Event Replay</strong>: Ability to replay events for debugging and recovery</li>
+<li><strong>Event Monitoring</strong>: Real-time event flow monitoring and alerting</li>
+</ul>
+<h3 id="2-workflow-orchestration-engine">2. Workflow Orchestration Engine</h3>
+<h4 id="oracle-integration-cloud">Oracle Integration Cloud</h4>
+<ul>
+<li><strong>Process Definition</strong>:</li>
+<li>Visual workflow designer with drag-and-drop interface</li>
+<li>BPMN 2.0 compliant process modeling</li>
+<li>Reusable process components and templates</li>
+<li>Version control and change management</li>
+<li><strong>Workflow Engine</strong>:</li>
+<li>High-performance workflow execution engine</li>
+<li>Parallel and sequential process execution</li>
+<li>Dynamic workflow modification during runtime</li>
+<li>Support for long-running processes (days to months)</li>
+</ul>
+<h4 id="advanced-orchestration-features">Advanced Orchestration Features</h4>
+<ul>
+<li><strong>State Management</strong>: Persistent workflow state across system failures</li>
+<li><strong>Compensation Logic</strong>: Automatic rollback and compensation handling</li>
+<li><strong>Human Tasks</strong>: Integration with human approval workflows</li>
+<li><strong>SLA Management</strong>: Process-level SLA monitoring and enforcement</li>
+</ul>
+<h3 id="3-data-processing-transformation">3. Data Processing &amp; Transformation</h3>
+<h4 id="oci-connector-hub">OCI Connector Hub</h4>
+<ul>
+<li><strong>Pre-built Connectors</strong>:</li>
+<li>200+ enterprise application connectors</li>
+<li>Cloud service integrations (AWS, Azure, GCP)</li>
+<li>Database connectors (Oracle, SQL Server, MySQL, PostgreSQL)</li>
+<li>File system and FTP connectors</li>
+<li><strong>Data Transformation</strong>:</li>
+<li>Visual data mapping and transformation</li>
+<li>Support for complex data transformations</li>
+<li>Data format conversion (JSON, XML, CSV, EDI)</li>
+<li>Custom transformation logic with scripting</li>
+</ul>
+<h4 id="data-quality-validation">Data Quality &amp; Validation</h4>
+<ul>
+<li><strong>Data Validation</strong>: Schema validation and business rule checking</li>
+<li><strong>Data Enrichment</strong>: External data source integration for data enhancement</li>
+<li><strong>Error Handling</strong>: Comprehensive error handling and retry mechanisms</li>
+<li><strong>Data Lineage</strong>: Complete data transformation tracking</li>
+</ul>
+<h3 id="4-intelligent-processing-layer">4. Intelligent Processing Layer</h3>
+<h4 id="ai-powered-decision-making">AI-Powered Decision Making</h4>
+<ul>
+<li><strong>Oracle Digital Assistant</strong>:</li>
+<li>Natural language processing for human interactions</li>
+<li>Intent recognition and entity extraction</li>
+<li>Conversational workflow interfaces</li>
+<li>Multi-language support for global operations</li>
+<li><strong>Machine Learning Integration</strong>:</li>
+<li>Predictive analytics for process optimization</li>
+<li>Anomaly detection for process monitoring</li>
+<li>Classification models for automatic routing</li>
+<li>Recommendation engines for process improvement</li>
+</ul>
+<h4 id="business-rules-engine">Business Rules Engine</h4>
+<ul>
+<li><strong>Rule Definition</strong>: Visual rule builder with natural language support</li>
+<li><strong>Rule Execution</strong>: High-performance rule evaluation</li>
+<li><strong>Rule Management</strong>: Version control and testing frameworks</li>
+<li><strong>Dynamic Rules</strong>: Runtime rule modification without deployment</li>
+</ul>
+<h3 id="5-process-state-analytics-layer">5. Process State &amp; Analytics Layer</h3>
+<h4 id="oracle-database-23ai">Oracle Database 23ai</h4>
+<ul>
+<li><strong>Process State Management</strong>:</li>
+<li>Persistent storage of workflow states</li>
+<li>Transaction management and ACID compliance</li>
+<li>Automatic state recovery and consistency</li>
+<li>Distributed transaction support</li>
+<li><strong>Analytics Capabilities</strong>:</li>
+<li>Real-time process performance analytics</li>
+<li>Historical trend analysis and reporting</li>
+<li>Process bottleneck identification</li>
+<li>Predictive process analytics</li>
+</ul>
+<h4 id="monitoring-compliance">Monitoring &amp; Compliance</h4>
+<ul>
+<li><strong>Audit Trail</strong>: Complete audit trail of all process activities</li>
+<li><strong>Compliance Reporting</strong>: Automated regulatory compliance reporting</li>
+<li><strong>Performance Metrics</strong>: Real-time KPI monitoring and alerting</li>
+<li><strong>Process Mining</strong>: Automatic process discovery and optimization
+</li>
+</ul>
+<hr/>
+<p><data_flow_architecture></data_flow_architecture></p>
+<h2 id="data-flow-architecture">Data Flow Architecture</h2>
+<h3 id="end-to-end-process-flow">End-to-End Process Flow</h3>
+<ol>
+<li><strong>Event Trigger</strong>: Business event triggers workflow initiation</li>
+<li><strong>Process Routing</strong>: Intelligent routing based on event content and rules</li>
+<li><strong>Data Gathering</strong>: Automatic data collection from multiple sources</li>
+<li><strong>Processing</strong>: AI-powered processing and decision making</li>
+<li><strong>System Integration</strong>: Automated updates to downstream systems</li>
+<li><strong>Human Interaction</strong>: Human tasks and approvals when required</li>
+<li><strong>Completion</strong>: Process completion with notifications and reporting</li>
+</ol>
+<h3 id="real-time-monitoring-flow">Real-time Monitoring Flow</h3>
+<ol>
+<li><strong>Event Streaming</strong>: Real-time process event streaming</li>
+<li><strong>Analytics Processing</strong>: Continuous analytics and KPI calculation</li>
+<li><strong>Anomaly Detection</strong>: Real-time anomaly and bottleneck detection</li>
+<li><strong>Alert Generation</strong>: Automated alerting for process issues</li>
+<li><strong>Dashboard Updates</strong>: Real-time dashboard and reporting updates
+</li>
+</ol>
+<hr/>
+<p><security_architecture></security_architecture></p>
+<h2 id="security-architecture">Security Architecture</h2>
+<h3 id="process-security">Process Security</h3>
+<ul>
+<li><strong>Access Control</strong>: Role-based access control with fine-grained permissions</li>
+<li><strong>Process Isolation</strong>: Secure isolation between different process instances</li>
+<li><strong>Data Encryption</strong>: End-to-end encryption for all process data</li>
+<li><strong>Audit Logging</strong>: Comprehensive audit trails for compliance</li>
+</ul>
+<h3 id="integration-security">Integration Security</h3>
+<ul>
+<li><strong>API Security</strong>: OAuth 2.0, JWT tokens, and API key management</li>
+<li><strong>Network Security</strong>: VPN and private network connectivity</li>
+<li><strong>Certificate Management</strong>: Automated SSL/TLS certificate management</li>
+<li><strong>Secrets Management</strong>: Centralized secrets and credential management</li>
+</ul>
+<h3 id="compliance-governance">Compliance &amp; Governance</h3>
+<ul>
+<li><strong>Regulatory Compliance</strong>: SOX, GDPR, HIPAA compliance frameworks</li>
+<li><strong>Data Governance</strong>: Data classification and handling policies</li>
+<li><strong>Process Governance</strong>: Process approval and change management</li>
+<li><strong>Risk Management</strong>: Process risk assessment and mitigation
+</li>
+</ul>
+<hr/>
+<p><performance_scalability></performance_scalability></p>
+<h2 id="performance-scalability">Performance &amp; Scalability</h2>
+<h3 id="horizontal-scaling">Horizontal Scaling</h3>
+<ul>
+<li><strong>Auto-scaling</strong>: Dynamic scaling based on process volume</li>
+<li><strong>Load Balancing</strong>: Intelligent load distribution across instances</li>
+<li><strong>Container Orchestration</strong>: Kubernetes-based microservices architecture</li>
+<li><strong>Database Sharding</strong>: Horizontal partitioning for large process datasets</li>
+</ul>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<ul>
+<li><strong>Caching Strategy</strong>: Multi-tier caching for frequently accessed data</li>
+<li><strong>Connection Pooling</strong>: Efficient database and API connection management</li>
+<li><strong>Asynchronous Processing</strong>: Non-blocking process execution</li>
+<li><strong>Resource Optimization</strong>: AI-powered resource allocation optimization
+</li>
+</ul>
+<hr/>
+<p><monitoring_observability></monitoring_observability></p>
+<h2 id="monitoring-observability">Monitoring &amp; Observability</h2>
+<h3 id="process-performance-monitoring">Process Performance Monitoring</h3>
+<ul>
+<li><strong>Real-time Metrics</strong>: Process execution time, throughput, and error rates</li>
+<li><strong>SLA Monitoring</strong>: Process-level SLA tracking and alerting</li>
+<li><strong>Bottleneck Detection</strong>: Automatic identification of process bottlenecks</li>
+<li><strong>Capacity Planning</strong>: Predictive capacity planning and scaling</li>
+</ul>
+<h3 id="business-intelligence">Business Intelligence</h3>
+<ul>
+<li><strong>Process Analytics</strong>: Business process performance insights</li>
+<li><strong>Cost Analysis</strong>: Process cost optimization opportunities</li>
+<li><strong>Efficiency Metrics</strong>: Process efficiency and improvement recommendations</li>
+<li><strong>ROI Tracking</strong>: Business value measurement and reporting
+</li>
+</ul>
+<hr/>
+<p><disaster_recovery></disaster_recovery></p>
+<h2 id="disaster-recovery-business-continuity">Disaster Recovery &amp; Business Continuity</h2>
+<h3 id="backup-strategy">Backup Strategy</h3>
+<ul>
+<li><strong>Automated Backups</strong>: Continuous backup of process definitions and state</li>
+<li><strong>Cross-Region Replication</strong>: Geographic distribution of critical processes</li>
+<li><strong>Point-in-Time Recovery</strong>: Granular recovery of process instances</li>
+<li><strong>Configuration Backup</strong>: Complete system configuration backup</li>
+</ul>
+<h3 id="high-availability">High Availability</h3>
+<ul>
+<li><strong>Multi-AZ Deployment</strong>: Distribution across availability zones</li>
+<li><strong>Failover Mechanisms</strong>: Automatic failover for critical processes</li>
+<li><strong>Data Replication</strong>: Real-time process state synchronization</li>
+<li><strong>Recovery Objectives</strong>: RTO &lt; 30 minutes, RPO &lt; 5 minutes
+</li>
+</ul>
+<hr/>
+<p><integration_patterns></integration_patterns></p>
+<h2 id="integration-patterns">Integration Patterns</h2>
+<h3 id="api-first-architecture">API-First Architecture</h3>
+<ul>
+<li><strong>RESTful APIs</strong>: Standard HTTP-based process management APIs</li>
+<li><strong>GraphQL Support</strong>: Flexible querying of process data</li>
+<li><strong>Webhook Integration</strong>: Event-driven external system notifications</li>
+<li><strong>SDK Support</strong>: Native SDKs for popular programming languages</li>
+</ul>
+<h3 id="enterprise-integration">Enterprise Integration</h3>
+<ul>
+<li><strong>ESB Integration</strong>: Enterprise service bus connectivity</li>
+<li><strong>Message Queues</strong>: Asynchronous messaging with JMS, AMQP</li>
+<li><strong>File Transfer</strong>: Secure file transfer protocols (SFTP, FTPS)</li>
+<li><strong>Database Integration</strong>: Direct database connectivity and synchronization
+</li>
+</ul>
+<hr/>
+<p><deployment_architecture></deployment_architecture></p>
+<h2 id="deployment-architecture">Deployment Architecture</h2>
+<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
+<ul>
+<li><strong>Terraform Templates</strong>: Automated infrastructure provisioning</li>
+<li><strong>Configuration Management</strong>: Ansible-based configuration automation</li>
+<li><strong>Environment Promotion</strong>: Automated deployment across environments</li>
+<li><strong>Blue-Green Deployment</strong>: Zero-downtime deployment strategy</li>
+</ul>
+<h3 id="devops-integration">DevOps Integration</h3>
+<ul>
+<li><strong>CI/CD Pipelines</strong>: Automated process testing and deployment</li>
+<li><strong>Version Control</strong>: Git-based process definition management</li>
+<li><strong>Testing Framework</strong>: Automated process testing and validation</li>
+<li><strong>Environment Management</strong>: Consistent dev, staging, and production environments
+</li>
+</ul>
+<hr/>
+<p><cost_optimization></cost_optimization></p>
+<h2 id="cost-optimization">Cost Optimization</h2>
+<h3 id="resource-management">Resource Management</h3>
+<ul>
+<li><strong>Dynamic Scaling</strong>: Automatic resource scaling based on process load</li>
+<li><strong>Reserved Capacity</strong>: Cost savings through capacity reservations</li>
+<li><strong>Spot Instances</strong>: Cost-effective compute for batch processes</li>
+<li><strong>Resource Scheduling</strong>: Automated resource scheduling and optimization</li>
+</ul>
+<h3 id="usage-monitoring">Usage Monitoring</h3>
+<ul>
+<li><strong>Cost Allocation</strong>: Process and department-level cost tracking</li>
+<li><strong>Budget Controls</strong>: Automated budget enforcement and alerts</li>
+<li><strong>Usage Analytics</strong>: Resource utilization optimization insights</li>
+<li><strong>ROI Analysis</strong>: Process automation return on investment analysis
+</li>
+</ul>
+<hr/>
+<p><em>This technical architecture provides comprehensive specifications for implementing intelligent orchestration and workflow automation systems. The architecture ensures scalability, security, and performance while maintaining flexibility for customization based on specific organizational requirements.</em></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="06-bill-of-materials-orchestration-workflow.html" class="btn btn-secondary">
+                    <i data-lucide="package"></i> Bill of Materials
+                </a>
+                <p class="mt-sm">Bill of Materials: Orchestration & Workflow Automation</p>
+            </div>
+            
+            <div class="card">
+                <a href="06-discovery-questions-orchestration-workflow.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Intelligent Orchestration & Workflow Automation</p>
+            </div>
+            
+            <div class="card">
+                <a href="06-solution-orchestration-workflow.html" class="btn btn-secondary">
+                    <i data-lucide="clipboard-list"></i> Solution Overview
+                </a>
+                <p class="mt-sm">Design Pattern 6: Intelligent Orchestration & Workflow Automation</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

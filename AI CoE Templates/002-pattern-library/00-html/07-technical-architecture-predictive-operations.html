@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Technical Architecture 7: Predictive Operations & Maintenance - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 01 Intelligent Operations / 07 Solution Predictive Operations</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="technical-architecture-7-predictive-operations-maintenance">Technical Architecture 7: Predictive Operations &amp; Maintenance</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 07</li>
+<li><strong>Pattern Name:</strong> Predictive Operations &amp; Maintenance</li>
+<li><strong>Document Type:</strong> Technical Architecture</li>
+<li><strong>Created Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><architecture_overview></architecture_overview></p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The Predictive Operations &amp; Maintenance architecture transforms reactive operations into predictive excellence through AI-driven analytics and real-time monitoring. This architecture enables organizations to reduce unplanned downtime by 75%, extend equipment life by 40%, and optimize maintenance costs by 35% through advanced predictive analytics, IoT integration, and automated maintenance workflows.
+</p>
+<hr/>
+<p><system_architecture_diagram></system_architecture_diagram></p>
+<h2 id="system-architecture-diagram">System Architecture Diagram</h2>
+<pre class="codehilite card"><code>┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           IoT &amp; Sensor Data Sources                            │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  Industrial  │  Vibration  │  Temperature│  Pressure   │  Flow       │  Power    │
+│  Equipment   │  Sensors    │  Sensors    │  Sensors    │  Meters     │  Meters   │
+│              │             │             │             │             │           │
+│  SCADA       │  PLCs       │  Historian  │  MES        │  ERP        │  CMMS     │
+│  Systems     │             │  Data       │  Systems    │  Systems    │  Systems  │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Data Ingestion &amp; Streaming Layer                        │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                           OCI Streaming                                        │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Real-time      │  │  Batch Data     │  │  Edge           │                │
+│  │  Streaming      │  │  Ingestion      │  │  Processing     │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Data           │  │  Protocol       │  │  Quality        │                │
+│  │  Normalization  │  │  Translation    │  │  Validation     │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Time-Series Data Storage &amp; Management                   │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                        Oracle Database 23ai                                   │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Time-Series    │  │  Asset          │  │  Maintenance    │                │
+│  │  Data Store     │  │  Hierarchy      │  │  History        │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Sensor         │  │  Equipment      │  │  Performance    │                │
+│  │  Metadata       │  │  Specifications │  │  Baselines      │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        AI/ML Analytics &amp; Prediction Engine                     │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                        OCI Data Science + GPU Clusters                        │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Anomaly        │  │  Failure        │  │  Remaining      │                │
+│  │  Detection      │  │  Prediction     │  │  Useful Life    │                │
+│  │  (Isolation     │  │  (LSTM, GRU)    │  │  (RUL) Models   │                │
+│  │  Forest, OCSVM) │  │                 │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Condition      │  │  Performance    │  │  Root Cause     │                │
+│  │  Monitoring     │  │  Optimization   │  │  Analysis       │                │
+│  │  (Statistical  │  │  Models         │  │  (Causal AI)    │                │
+│  │  Process Control)│ │                 │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Alert Generation &amp; Decision Engine                      │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  OCI Events     │  │  Business Rules │  │  Priority       │                │
+│  │  (Alert         │  │  Engine         │  │  Management     │                │
+│  │  Triggering)    │  │                 │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Maintenance    │  │  Resource       │  │  Cost           │                │
+│  │  Scheduling     │  │  Optimization   │  │  Optimization   │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Automated Response &amp; Integration                        │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  OCI Functions  │  │  Maintenance    │  │  Inventory      │                │
+│  │  (Serverless    │  │  Management     │  │  Management     │                │
+│  │  Actions)       │  │  Systems        │  │  Systems        │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Work Order     │  │  Mobile         │  │  Dashboard &amp;    │                │
+│  │  Generation     │  │  Applications   │  │  Reporting      │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<p></p>
+<hr/>
+<p><component_architecture_details></component_architecture_details></p>
+<h2 id="component-architecture-details">Component Architecture Details</h2>
+<h3 id="1-data-ingestion-streaming-layer">1. Data Ingestion &amp; Streaming Layer</h3>
+<h4 id="oci-streaming-platform">OCI Streaming Platform</h4>
+<ul>
+<li><strong>Real-time Data Processing</strong>:</li>
+<li>Support for 1M+ sensor readings per second</li>
+<li>Sub-second latency for critical alerts</li>
+<li>Automatic partitioning and load balancing</li>
+<li>Built-in data compression and optimization</li>
+<li><strong>Protocol Support</strong>:</li>
+<li>OPC-UA for industrial automation</li>
+<li>MQTT for IoT device communication</li>
+<li>Modbus for legacy equipment integration</li>
+<li>REST APIs for modern systems</li>
+</ul>
+<h4 id="edge-processing-capabilities">Edge Processing Capabilities</h4>
+<ul>
+<li><strong>Edge Computing</strong>: Local processing for latency-sensitive operations</li>
+<li><strong>Data Filtering</strong>: Intelligent filtering to reduce bandwidth usage</li>
+<li><strong>Local Storage</strong>: Temporary storage for network outages</li>
+<li><strong>Security</strong>: Edge-level encryption and authentication</li>
+</ul>
+<h3 id="2-time-series-data-storage-management">2. Time-Series Data Storage &amp; Management</h3>
+<h4 id="oracle-database-23ai">Oracle Database 23ai</h4>
+<ul>
+<li><strong>Time-Series Optimization</strong>:</li>
+<li>Specialized time-series data types and indexing</li>
+<li>Automatic data compression and partitioning</li>
+<li>High-speed ingestion (10M+ points per second)</li>
+<li>Efficient storage with 10:1 compression ratios</li>
+<li><strong>Asset Management</strong>:</li>
+<li>Hierarchical asset modeling</li>
+<li>Equipment genealogy and relationships</li>
+<li>Maintenance history and documentation</li>
+<li>Performance baseline establishment</li>
+</ul>
+<h4 id="data-management-features">Data Management Features</h4>
+<ul>
+<li><strong>Automated Archiving</strong>: Intelligent data lifecycle management</li>
+<li><strong>Data Quality</strong>: Automatic outlier detection and correction</li>
+<li><strong>Metadata Management</strong>: Comprehensive sensor and asset metadata</li>
+<li><strong>Backup &amp; Recovery</strong>: Continuous backup with point-in-time recovery</li>
+</ul>
+<h3 id="3-aiml-analytics-prediction-engine">3. AI/ML Analytics &amp; Prediction Engine</h3>
+<h4 id="advanced-analytics-models">Advanced Analytics Models</h4>
+<ul>
+<li><strong>Anomaly Detection</strong>:</li>
+<li>Isolation Forest for multivariate anomaly detection</li>
+<li>One-Class SVM for novelty detection</li>
+<li>Statistical process control for threshold monitoring</li>
+<li>Ensemble methods for improved accuracy</li>
+<li><strong>Failure Prediction</strong>:</li>
+<li>LSTM networks for sequence prediction</li>
+<li>GRU models for long-term dependencies</li>
+<li>Transformer models for complex patterns</li>
+<li>Physics-informed neural networks</li>
+</ul>
+<h4 id="gpu-computing-infrastructure">GPU Computing Infrastructure</h4>
+<ul>
+<li><strong>NVIDIA A100 Clusters</strong>:</li>
+<li>80GB HBM2e memory per GPU</li>
+<li>Multi-instance GPU (MIG) support</li>
+<li>NVLink interconnect for distributed training</li>
+<li>CUDA optimization for time-series processing</li>
+<li><strong>Model Training</strong>: Distributed training across multiple GPUs</li>
+<li><strong>Inference Optimization</strong>: TensorRT optimization for real-time predictions</li>
+</ul>
+<h3 id="4-alert-generation-decision-engine">4. Alert Generation &amp; Decision Engine</h3>
+<h4 id="intelligent-alerting-system">Intelligent Alerting System</h4>
+<ul>
+<li><strong>Multi-level Alerting</strong>:</li>
+<li>Predictive alerts (weeks to months ahead)</li>
+<li>Early warning alerts (days to weeks)</li>
+<li>Critical alerts (immediate action required)</li>
+<li>Maintenance reminders (scheduled activities)</li>
+<li><strong>Alert Correlation</strong>: Intelligent correlation to reduce alert fatigue</li>
+<li><strong>Escalation Management</strong>: Automatic escalation based on response times</li>
+</ul>
+<h4 id="decision-support">Decision Support</h4>
+<ul>
+<li><strong>Maintenance Scheduling</strong>: AI-optimized maintenance scheduling</li>
+<li><strong>Resource Optimization</strong>: Optimal allocation of maintenance resources</li>
+<li><strong>Cost-Benefit Analysis</strong>: ROI calculation for maintenance decisions</li>
+<li><strong>Risk Assessment</strong>: Failure probability and impact analysis</li>
+</ul>
+<h3 id="5-automated-response-integration">5. Automated Response &amp; Integration</h3>
+<h4 id="oci-functions-serverless">OCI Functions (Serverless)</h4>
+<ul>
+<li><strong>Automated Actions</strong>:</li>
+<li>Automatic work order generation</li>
+<li>Inventory level checking and ordering</li>
+<li>Technician scheduling and dispatch</li>
+<li>Equipment shutdown for safety</li>
+<li><strong>Integration Functions</strong>: Seamless integration with enterprise systems</li>
+<li><strong>Custom Logic</strong>: Configurable business logic for specific scenarios</li>
+</ul>
+<h4 id="enterprise-system-integration">Enterprise System Integration</h4>
+<ul>
+<li><strong>CMMS Integration</strong>: Work order and maintenance history synchronization</li>
+<li><strong>ERP Integration</strong>: Inventory, procurement, and financial integration</li>
+<li><strong>Mobile Applications</strong>: Field technician mobile applications</li>
+<li><strong>Dashboard Integration</strong>: Real-time operational dashboards
+</li>
+</ul>
+<hr/>
+<p><data_flow_architecture></data_flow_architecture></p>
+<h2 id="data-flow-architecture">Data Flow Architecture</h2>
+<h3 id="real-time-monitoring-flow">Real-time Monitoring Flow</h3>
+<ol>
+<li><strong>Sensor Data Collection</strong>: Continuous data collection from IoT sensors</li>
+<li><strong>Stream Processing</strong>: Real-time data processing and normalization</li>
+<li><strong>Anomaly Detection</strong>: Immediate anomaly detection and scoring</li>
+<li><strong>Alert Generation</strong>: Intelligent alert generation and prioritization</li>
+<li><strong>Automated Response</strong>: Immediate automated responses for critical issues</li>
+<li><strong>Human Notification</strong>: Technician and management notifications</li>
+</ol>
+<h3 id="predictive-analytics-flow">Predictive Analytics Flow</h3>
+<ol>
+<li><strong>Historical Data Analysis</strong>: Analysis of historical performance data</li>
+<li><strong>Model Training</strong>: Continuous model training and improvement</li>
+<li><strong>Failure Prediction</strong>: Long-term failure probability calculation</li>
+<li><strong>Maintenance Planning</strong>: Optimal maintenance schedule generation</li>
+<li><strong>Resource Planning</strong>: Maintenance resource and inventory planning</li>
+<li><strong>Performance Optimization</strong>: Continuous process improvement
+</li>
+</ol>
+<hr/>
+<p><security_architecture></security_architecture></p>
+<h2 id="security-architecture">Security Architecture</h2>
+<h3 id="industrial-security">Industrial Security</h3>
+<ul>
+<li><strong>Network Segmentation</strong>: Isolated networks for operational technology</li>
+<li><strong>Protocol Security</strong>: Secure industrial protocol implementation</li>
+<li><strong>Device Authentication</strong>: Certificate-based device authentication</li>
+<li><strong>Encryption</strong>: End-to-end encryption for all sensor data</li>
+</ul>
+<h3 id="data-protection">Data Protection</h3>
+<ul>
+<li><strong>Data Classification</strong>: Automatic classification of sensitive operational data</li>
+<li><strong>Access Control</strong>: Role-based access with fine-grained permissions</li>
+<li><strong>Audit Logging</strong>: Comprehensive audit trails for compliance</li>
+<li><strong>Data Retention</strong>: Automated data retention and disposal policies</li>
+</ul>
+<h3 id="cybersecurity">Cybersecurity</h3>
+<ul>
+<li><strong>Threat Detection</strong>: Real-time cybersecurity threat detection</li>
+<li><strong>Intrusion Prevention</strong>: Automated intrusion prevention systems</li>
+<li><strong>Vulnerability Management</strong>: Regular security assessments and patching</li>
+<li><strong>Incident Response</strong>: Automated incident response procedures
+</li>
+</ul>
+<hr/>
+<p><performance_scalability></performance_scalability></p>
+<h2 id="performance-scalability">Performance &amp; Scalability</h2>
+<h3 id="horizontal-scaling">Horizontal Scaling</h3>
+<ul>
+<li><strong>Auto-scaling</strong>: Dynamic scaling based on data volume and processing load</li>
+<li><strong>Load Balancing</strong>: Intelligent distribution of processing tasks</li>
+<li><strong>Container Orchestration</strong>: Kubernetes-based microservices architecture</li>
+<li><strong>Database Sharding</strong>: Horizontal partitioning for large time-series datasets</li>
+</ul>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<ul>
+<li><strong>Stream Processing</strong>: Optimized stream processing for real-time analytics</li>
+<li><strong>Caching Strategy</strong>: Multi-tier caching for frequently accessed data</li>
+<li><strong>Index Optimization</strong>: Specialized indexing for time-series queries</li>
+<li><strong>Query Optimization</strong>: Automatic query plan optimization
+</li>
+</ul>
+<hr/>
+<p><monitoring_observability></monitoring_observability></p>
+<h2 id="monitoring-observability">Monitoring &amp; Observability</h2>
+<h3 id="system-performance-monitoring">System Performance Monitoring</h3>
+<ul>
+<li><strong>Data Pipeline Monitoring</strong>: Real-time monitoring of data ingestion pipelines</li>
+<li><strong>Model Performance</strong>: Continuous monitoring of prediction accuracy</li>
+<li><strong>Alert Effectiveness</strong>: Monitoring of alert precision and recall</li>
+<li><strong>System Health</strong>: Comprehensive system health monitoring</li>
+</ul>
+<h3 id="business-intelligence">Business Intelligence</h3>
+<ul>
+<li><strong>Maintenance KPIs</strong>: Key performance indicators for maintenance operations</li>
+<li><strong>Cost Analysis</strong>: Maintenance cost optimization insights</li>
+<li><strong>Equipment Performance</strong>: Equipment efficiency and utilization metrics</li>
+<li><strong>ROI Tracking</strong>: Return on investment for predictive maintenance
+</li>
+</ul>
+<hr/>
+<p><disaster_recovery></disaster_recovery></p>
+<h2 id="disaster-recovery-business-continuity">Disaster Recovery &amp; Business Continuity</h2>
+<h3 id="backup-strategy">Backup Strategy</h3>
+<ul>
+<li><strong>Continuous Backup</strong>: Real-time backup of critical operational data</li>
+<li><strong>Cross-Region Replication</strong>: Geographic distribution of time-series data</li>
+<li><strong>Model Versioning</strong>: Complete model version history and rollback</li>
+<li><strong>Configuration Backup</strong>: Backup of all system configurations</li>
+</ul>
+<h3 id="high-availability">High Availability</h3>
+<ul>
+<li><strong>Multi-AZ Deployment</strong>: Distribution across availability zones</li>
+<li><strong>Failover Mechanisms</strong>: Automatic failover for critical monitoring</li>
+<li><strong>Data Replication</strong>: Real-time synchronization of operational data</li>
+<li><strong>Recovery Objectives</strong>: RTO &lt; 15 minutes, RPO &lt; 1 minute
+</li>
+</ul>
+<hr/>
+<p><integration_patterns></integration_patterns></p>
+<h2 id="integration-patterns">Integration Patterns</h2>
+<h3 id="industrial-integration">Industrial Integration</h3>
+<ul>
+<li><strong>OPC-UA Integration</strong>: Standard industrial automation protocol</li>
+<li><strong>Historian Integration</strong>: Integration with process historians</li>
+<li><strong>SCADA Integration</strong>: Supervisory control and data acquisition systems</li>
+<li><strong>MES Integration</strong>: Manufacturing execution system connectivity</li>
+</ul>
+<h3 id="enterprise-integration">Enterprise Integration</h3>
+<ul>
+<li><strong>ERP Integration</strong>: Enterprise resource planning system connectivity</li>
+<li><strong>CMMS Integration</strong>: Computerized maintenance management systems</li>
+<li><strong>Asset Management</strong>: Enterprise asset management system integration</li>
+<li><strong>Business Intelligence</strong>: Integration with BI and reporting tools
+</li>
+</ul>
+<hr/>
+<p><deployment_architecture></deployment_architecture></p>
+<h2 id="deployment-architecture">Deployment Architecture</h2>
+<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
+<ul>
+<li><strong>Terraform Templates</strong>: Automated infrastructure provisioning</li>
+<li><strong>Configuration Management</strong>: Ansible-based configuration automation</li>
+<li><strong>Environment Promotion</strong>: Automated deployment across environments</li>
+<li><strong>Blue-Green Deployment</strong>: Zero-downtime deployment strategy</li>
+</ul>
+<h3 id="devops-integration">DevOps Integration</h3>
+<ul>
+<li><strong>CI/CD Pipelines</strong>: Automated model training and deployment</li>
+<li><strong>Model Registry</strong>: Centralized model version management</li>
+<li><strong>Testing Framework</strong>: Automated model testing and validation</li>
+<li><strong>Monitoring Integration</strong>: Integrated monitoring and alerting
+</li>
+</ul>
+<hr/>
+<p><cost_optimization></cost_optimization></p>
+<h2 id="cost-optimization">Cost Optimization</h2>
+<h3 id="resource-management">Resource Management</h3>
+<ul>
+<li><strong>Dynamic Scaling</strong>: Automatic resource scaling based on workload</li>
+<li><strong>Reserved Capacity</strong>: Cost savings through capacity reservations</li>
+<li><strong>Spot Instances</strong>: Cost-effective compute for batch processing</li>
+<li><strong>Storage Tiering</strong>: Automatic data lifecycle management</li>
+</ul>
+<h3 id="maintenance-optimization">Maintenance Optimization</h3>
+<ul>
+<li><strong>Predictive Scheduling</strong>: Optimal maintenance scheduling to reduce costs</li>
+<li><strong>Inventory Optimization</strong>: AI-driven inventory level optimization</li>
+<li><strong>Resource Utilization</strong>: Optimal utilization of maintenance resources</li>
+<li><strong>Energy Efficiency</strong>: Equipment optimization for energy savings
+</li>
+</ul>
+<hr/>
+<p><em>This technical architecture provides comprehensive specifications for implementing predictive operations and maintenance systems. The architecture ensures scalability, security, and performance while maintaining flexibility for customization based on specific organizational requirements.</em></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="07-solution-predictive-operations.html" class="btn btn-secondary">
+                    <i data-lucide="clipboard-list"></i> Solution Overview
+                </a>
+                <p class="mt-sm">Design Pattern 7: Predictive Operations & Maintenance</p>
+            </div>
+            
+            <div class="card">
+                <a href="07-discovery-questions-predictive-operations.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Predictive Operations & Maintenance</p>
+            </div>
+            
+            <div class="card">
+                <a href="07-bill-of-materials-predictive-operations.html" class="btn btn-secondary">
+                    <i data-lucide="package"></i> Bill of Materials
+                </a>
+                <p class="mt-sm">Bill of Materials: Predictive Operations Intelligence</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:16 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

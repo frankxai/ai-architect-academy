@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Technical Architecture 11: Conversational Commerce & Services - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Horizontal Patterns / 02 Customer Experience / 11 Solution Conversational Commerce</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="technical-architecture-11-conversational-commerce-services">Technical Architecture 11: Conversational Commerce &amp; Services</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 11</li>
+<li><strong>Pattern Name:</strong> Conversational Commerce &amp; Services</li>
+<li><strong>Document Type:</strong> Technical Architecture</li>
+<li><strong>Created Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<p><architecture_overview></architecture_overview></p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The Conversational Commerce &amp; Services architecture enables seamless voice and chat commerce through intelligent conversational AI platforms. This architecture drives 3x higher conversion rates and reduces customer service costs by 60% while providing 24/7 intelligent assistance that completes transactions autonomously through advanced natural language processing, multi-modal interfaces, and integrated commerce platforms.
+</p>
+<hr/>
+<p><system_architecture_diagram></system_architecture_diagram></p>
+<h2 id="system-architecture-diagram">System Architecture Diagram</h2>
+<pre class="codehilite card"><code>┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           Conversational Channels                              │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  Voice       │  Web Chat   │  Mobile     │  Social     │  SMS/Text   │  Email    │
+│  Assistants  │  Widgets    │  Apps       │  Media      │  Messaging  │ Assistants│
+│  (Alexa,     │             │             │ (Facebook,  │ (WhatsApp,  │           │
+│  Google)     │             │             │ Twitter)    │ Telegram)   │           │
+│              │             │             │             │             │           │
+│  Smart       │  Kiosks     │  Call       │  Video      │  AR/VR      │  IoT      │
+│  Speakers    │             │ Centers     │ Calls       │ Interfaces  │ Devices   │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Conversation Interface Layer                            │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                        Oracle Digital Assistant                                │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Multi-Channel  │  │  Session        │  │  Context        │                │
+│  │  Orchestration  │  │  Management     │  │  Management     │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Channel        │  │  User           │  │  Conversation   │                │
+│  │  Adapters       │  │  Authentication │  │  Routing        │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Natural Language Processing Layer                       │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  OCI Language   │  │  OCI Speech     │  │  Intent         │                │
+│  │  (NLP Engine)   │  │  (Voice         │  │  Recognition    │                │
+│  │                 │  │  Processing)    │  │  Engine         │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Entity         │  │  Sentiment      │  │  Language       │                │
+│  │  Extraction     │  │  Analysis       │  │  Detection      │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Conversation Intelligence Engine                        │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                        AI-Powered Dialog Management                            │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Dialog State   │  │  Response       │  │  Personalization│                │
+│  │  Tracking       │  │  Generation     │  │  Engine         │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Knowledge      │  │  Recommendation │  │  Escalation     │                │
+│  │  Base           │  │  Engine         │  │  Management     │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Commerce &amp; Transaction Processing                       │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  OCI Functions  │  │  Payment        │  │  Order          │                │
+│  │  (Transaction   │  │  Processing     │  │  Management     │                │
+│  │  Logic)         │  │  Gateway        │  │  System         │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Inventory      │  │  Pricing        │  │  Fraud          │                │
+│  │  Management     │  │  Engine         │  │  Detection      │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Integration &amp; Data Management                           │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  Oracle         │  │  Oracle Database│  │  OCI Streaming  │                │
+│  │  Integration    │  │  23ai           │  │  (Real-time     │                │
+│  │  Cloud          │  │  (Customer &amp;    │  │  Analytics)     │                │
+│  │                 │  │  Transaction    │  │                 │                │
+│  │                 │  │  Data)          │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+│                                                                                 │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐                │
+│  │  API Gateway    │  │  External       │  │  Analytics &amp;    │                │
+│  │  (Secure APIs)  │  │  System         │  │  Reporting      │                │
+│  │                 │  │ Integration     │  │                 │                │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<p></p>
+<hr/>
+<p><component_architecture_details></component_architecture_details></p>
+<h2 id="component-architecture-details">Component Architecture Details</h2>
+<h3 id="1-conversation-interface-layer">1. Conversation Interface Layer</h3>
+<h4 id="oracle-digital-assistant">Oracle Digital Assistant</h4>
+<ul>
+<li><strong>Multi-Channel Orchestration</strong>:</li>
+<li>Unified conversation management across all channels</li>
+<li>Channel-specific adaptation and optimization</li>
+<li>Seamless handoff between channels</li>
+<li>Consistent user experience across touchpoints</li>
+<li><strong>Session Management</strong>:</li>
+<li>Persistent conversation state across sessions</li>
+<li>Context preservation during channel switches</li>
+<li>Multi-turn dialog handling</li>
+<li>Session timeout and recovery mechanisms</li>
+</ul>
+<h4 id="channel-adapters">Channel Adapters</h4>
+<ul>
+<li><strong>Voice Channels</strong>: Alexa Skills, Google Actions, custom voice apps</li>
+<li><strong>Text Channels</strong>: Web chat, mobile messaging, social media</li>
+<li><strong>Video Channels</strong>: Video calling platforms with screen sharing</li>
+<li><strong>IoT Integration</strong>: Smart home devices and connected appliances</li>
+</ul>
+<h3 id="2-natural-language-processing-layer">2. Natural Language Processing Layer</h3>
+<h4 id="advanced-nlp-capabilities">Advanced NLP Capabilities</h4>
+<ul>
+<li><strong>OCI Language Services</strong>:</li>
+<li>Multi-language support (100+ languages)</li>
+<li>Intent classification with 95%+ accuracy</li>
+<li>Named entity recognition for commerce entities</li>
+<li>Sentiment analysis for customer satisfaction</li>
+<li><strong>OCI Speech Services</strong>:</li>
+<li>Real-time speech-to-text conversion</li>
+<li>Voice biometric authentication</li>
+<li>Emotion detection from voice patterns</li>
+<li>Noise cancellation and audio enhancement</li>
+</ul>
+<h4 id="commerce-specific-nlp">Commerce-Specific NLP</h4>
+<ul>
+<li><strong>Product Recognition</strong>: Intelligent product name and attribute extraction</li>
+<li><strong>Price Understanding</strong>: Currency, discount, and pricing intent recognition</li>
+<li><strong>Temporal Processing</strong>: Date, time, and delivery preference extraction</li>
+<li><strong>Location Processing</strong>: Address, store location, and shipping destination handling</li>
+</ul>
+<h3 id="3-conversation-intelligence-engine">3. Conversation Intelligence Engine</h3>
+<h4 id="ai-powered-dialog-management">AI-Powered Dialog Management</h4>
+<ul>
+<li><strong>Dialog State Tracking</strong>:</li>
+<li>Multi-slot dialog state management</li>
+<li>Context-aware conversation flow</li>
+<li>Dynamic dialog adaptation based on user behavior</li>
+<li>Conversation memory and history integration</li>
+<li><strong>Response Generation</strong>:</li>
+<li>Template-based and neural response generation</li>
+<li>Personalized response adaptation</li>
+<li>Multi-modal response formatting</li>
+<li>A/B testing for response optimization</li>
+</ul>
+<h4 id="knowledge-management">Knowledge Management</h4>
+<ul>
+<li><strong>Dynamic Knowledge Base</strong>: Real-time product catalog integration</li>
+<li><strong>FAQ Management</strong>: Intelligent FAQ matching and updates</li>
+<li><strong>Policy Integration</strong>: Business rules and policy enforcement</li>
+<li><strong>Learning System</strong>: Continuous learning from conversations</li>
+</ul>
+<h3 id="4-commerce-transaction-processing">4. Commerce &amp; Transaction Processing</h3>
+<h4 id="transaction-management">Transaction Management</h4>
+<ul>
+<li><strong>OCI Functions Integration</strong>:</li>
+<li>Serverless transaction processing logic</li>
+<li>Real-time inventory checking</li>
+<li>Dynamic pricing calculations</li>
+<li>Order validation and processing</li>
+<li><strong>Payment Processing</strong>:</li>
+<li>Multi-payment method support</li>
+<li>PCI DSS compliant payment handling</li>
+<li>Fraud detection and prevention</li>
+<li>Subscription and recurring payment management</li>
+</ul>
+<h4 id="commerce-intelligence">Commerce Intelligence</h4>
+<ul>
+<li><strong>Recommendation Engine</strong>: AI-powered product recommendations</li>
+<li><strong>Cross-sell/Upsell</strong>: Intelligent sales optimization</li>
+<li><strong>Inventory Optimization</strong>: Real-time inventory management</li>
+<li><strong>Price Optimization</strong>: Dynamic pricing based on demand and context</li>
+</ul>
+<h3 id="5-integration-data-management">5. Integration &amp; Data Management</h3>
+<h4 id="oracle-database-23ai">Oracle Database 23ai</h4>
+<ul>
+<li><strong>Customer Data Platform</strong>:</li>
+<li>360-degree customer view</li>
+<li>Real-time customer profile updates</li>
+<li>Conversation history and analytics</li>
+<li>Preference and behavior tracking</li>
+<li><strong>Transaction Data</strong>:</li>
+<li>Complete transaction history</li>
+<li>Order status and tracking</li>
+<li>Payment and billing information</li>
+<li>Return and refund management</li>
+</ul>
+<h4 id="enterprise-integration">Enterprise Integration</h4>
+<ul>
+<li><strong>Oracle Integration Cloud</strong>:</li>
+<li>200+ pre-built connectors</li>
+<li>Real-time and batch integration</li>
+<li>Error handling and retry mechanisms</li>
+<li>Workflow orchestration and automation</li>
+<li><strong>External Systems</strong>: CRM, ERP, inventory, shipping, and logistics systems
+</li>
+</ul>
+<hr/>
+<p><data_flow_architecture></data_flow_architecture></p>
+<h2 id="data-flow-architecture">Data Flow Architecture</h2>
+<h3 id="conversational-commerce-flow">Conversational Commerce Flow</h3>
+<ol>
+<li><strong>User Interaction</strong>: Multi-channel user interaction capture</li>
+<li><strong>Intent Recognition</strong>: AI-powered intent and entity extraction</li>
+<li><strong>Context Processing</strong>: Conversation context and history analysis</li>
+<li><strong>Business Logic</strong>: Commerce rules and policy application</li>
+<li><strong>System Integration</strong>: Real-time backend system queries</li>
+<li><strong>Response Generation</strong>: Personalized response creation</li>
+<li><strong>Transaction Processing</strong>: Secure payment and order processing</li>
+<li><strong>Confirmation</strong>: Order confirmation and tracking information</li>
+</ol>
+<h3 id="customer-journey-flow">Customer Journey Flow</h3>
+<ol>
+<li><strong>Discovery</strong>: Product discovery through conversation</li>
+<li><strong>Exploration</strong>: Interactive product exploration and comparison</li>
+<li><strong>Configuration</strong>: Product customization and option selection</li>
+<li><strong>Purchase</strong>: Seamless checkout and payment processing</li>
+<li><strong>Fulfillment</strong>: Order tracking and delivery updates</li>
+<li><strong>Support</strong>: Post-purchase support and service
+</li>
+</ol>
+<hr/>
+<p><security_architecture></security_architecture></p>
+<h2 id="security-architecture">Security Architecture</h2>
+<h3 id="conversation-security">Conversation Security</h3>
+<ul>
+<li><strong>End-to-End Encryption</strong>: AES-256 encryption for all conversations</li>
+<li><strong>Authentication</strong>: Multi-factor authentication and biometric verification</li>
+<li><strong>Authorization</strong>: Role-based access control for different user types</li>
+<li><strong>Session Security</strong>: Secure session management and timeout controls</li>
+</ul>
+<h3 id="payment-security">Payment Security</h3>
+<ul>
+<li><strong>PCI DSS Compliance</strong>: Full PCI DSS Level 1 compliance</li>
+<li><strong>Tokenization</strong>: Payment data tokenization and secure storage</li>
+<li><strong>Fraud Detection</strong>: AI-powered fraud detection and prevention</li>
+<li><strong>Risk Assessment</strong>: Real-time transaction risk scoring</li>
+</ul>
+<h3 id="data-protection">Data Protection</h3>
+<ul>
+<li><strong>Privacy Controls</strong>: Granular privacy settings and consent management</li>
+<li><strong>Data Minimization</strong>: Collection of only necessary customer data</li>
+<li><strong>Retention Policies</strong>: Automated data retention and deletion</li>
+<li><strong>Compliance</strong>: GDPR, CCPA, and other privacy regulation compliance
+</li>
+</ul>
+<hr/>
+<p><performance_scalability></performance_scalability></p>
+<h2 id="performance-scalability">Performance &amp; Scalability</h2>
+<h3 id="horizontal-scaling">Horizontal Scaling</h3>
+<ul>
+<li><strong>Auto-scaling</strong>: Dynamic scaling based on conversation volume</li>
+<li><strong>Load Balancing</strong>: Intelligent traffic distribution across regions</li>
+<li><strong>Container Orchestration</strong>: Kubernetes-based microservices architecture</li>
+<li><strong>Database Sharding</strong>: Horizontal partitioning for customer data</li>
+</ul>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<ul>
+<li><strong>Response Time</strong>: Sub-second response times for all interactions</li>
+<li><strong>Caching Strategy</strong>: Multi-tier caching for frequently accessed data</li>
+<li><strong>CDN Integration</strong>: Global content delivery for media and assets</li>
+<li><strong>Connection Pooling</strong>: Efficient database and API connection management
+</li>
+</ul>
+<hr/>
+<p><monitoring_observability></monitoring_observability></p>
+<h2 id="monitoring-observability">Monitoring &amp; Observability</h2>
+<h3 id="conversation-analytics">Conversation Analytics</h3>
+<ul>
+<li><strong>Engagement Metrics</strong>: Conversation length, completion rates, satisfaction scores</li>
+<li><strong>Conversion Metrics</strong>: Conversion rates, average order value, revenue per conversation</li>
+<li><strong>Performance Metrics</strong>: Response time, accuracy, resolution rates</li>
+<li><strong>Channel Analytics</strong>: Channel-specific performance and optimization insights</li>
+</ul>
+<h3 id="business-intelligence">Business Intelligence</h3>
+<ul>
+<li><strong>Customer Insights</strong>: Customer behavior and preference analysis</li>
+<li><strong>Product Performance</strong>: Product recommendation effectiveness</li>
+<li><strong>Revenue Analytics</strong>: Conversational commerce revenue attribution</li>
+<li><strong>Operational Efficiency</strong>: Agent productivity and cost optimization
+</li>
+</ul>
+<hr/>
+<p><disaster_recovery></disaster_recovery></p>
+<h2 id="disaster-recovery-business-continuity">Disaster Recovery &amp; Business Continuity</h2>
+<h3 id="backup-strategy">Backup Strategy</h3>
+<ul>
+<li><strong>Conversation Backup</strong>: Continuous backup of conversation data and context</li>
+<li><strong>Configuration Backup</strong>: Dialog flows, intents, and business rules backup</li>
+<li><strong>Customer Data Backup</strong>: Secure backup of customer profiles and preferences</li>
+<li><strong>Cross-Region Replication</strong>: Geographic distribution of critical data</li>
+</ul>
+<h3 id="high-availability">High Availability</h3>
+<ul>
+<li><strong>Multi-AZ Deployment</strong>: Distribution across availability zones</li>
+<li><strong>Failover Mechanisms</strong>: Automatic failover for conversation services</li>
+<li><strong>Data Replication</strong>: Real-time conversation and customer data synchronization</li>
+<li><strong>Recovery Objectives</strong>: RTO &lt; 2 minutes, RPO &lt; 30 seconds
+</li>
+</ul>
+<hr/>
+<p><integration_patterns></integration_patterns></p>
+<h2 id="integration-patterns">Integration Patterns</h2>
+<h3 id="api-first-architecture">API-First Architecture</h3>
+<ul>
+<li><strong>RESTful APIs</strong>: Standard HTTP-based conversation and commerce APIs</li>
+<li><strong>GraphQL Support</strong>: Flexible querying of customer and product data</li>
+<li><strong>WebSocket Support</strong>: Real-time bidirectional communication</li>
+<li><strong>SDK Support</strong>: Native SDKs for popular platforms and languages</li>
+</ul>
+<h3 id="event-driven-architecture">Event-Driven Architecture</h3>
+<ul>
+<li><strong>Conversation Events</strong>: Real-time conversation event streaming</li>
+<li><strong>Transaction Events</strong>: Order and payment event notifications</li>
+<li><strong>Customer Events</strong>: Customer behavior and preference updates</li>
+<li><strong>Integration Events</strong>: External system synchronization events</li>
+</ul>
+<h2 id="deployment-architecture">Deployment Architecture</h2>
+<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
+<ul>
+<li><strong>Terraform Templates</strong>: Automated infrastructure provisioning</li>
+<li><strong>Configuration Management</strong>: Ansible-based configuration automation</li>
+<li><strong>Environment Promotion</strong>: Automated deployment across environments</li>
+<li><strong>Blue-Green Deployment</strong>: Zero-downtime deployment strategy</li>
+</ul>
+<h3 id="devops-integration">DevOps Integration</h3>
+<ul>
+<li><strong>CI/CD Pipelines</strong>: Automated dialog flow testing and deployment</li>
+<li><strong>Conversation Testing</strong>: Automated conversation flow testing</li>
+<li><strong>Performance Testing</strong>: Load testing for conversation scalability</li>
+<li><strong>Monitoring Integration</strong>: Integrated conversation and system monitoring
+</li>
+</ul>
+<hr/>
+<p><cost_optimization></cost_optimization></p>
+<h2 id="cost-optimization">Cost Optimization</h2>
+<h3 id="resource-management">Resource Management</h3>
+<ul>
+<li><strong>Dynamic Scaling</strong>: Automatic resource scaling based on conversation volume</li>
+<li><strong>Reserved Capacity</strong>: Cost savings through capacity reservations</li>
+<li><strong>Spot Instances</strong>: Cost-effective compute for batch processing</li>
+<li><strong>Resource Scheduling</strong>: Automated resource scheduling and optimization</li>
+</ul>
+<h3 id="conversation-efficiency">Conversation Efficiency</h3>
+<ul>
+<li><strong>Automation Rate</strong>: Maximizing automated conversation resolution</li>
+<li><strong>Deflection Rate</strong>: Reducing human agent escalation costs</li>
+<li><strong>Conversion Optimization</strong>: Improving conversation-to-sale conversion rates</li>
+<li><strong>Channel Optimization</strong>: Cost-effective channel utilization and routing
+</li>
+</ul>
+<hr/>
+<p><em>This technical architecture provides comprehensive specifications for implementing conversational commerce and services systems. The architecture ensures scalability, security, and performance while maintaining flexibility for customization based on specific organizational requirements.</em></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="11-discovery-questions-conversational-commerce.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Conversational Commerce & Services</p>
+            </div>
+            
+            <div class="card">
+                <a href="11-bill-of-materials-conversational-commerce.html" class="btn btn-secondary">
+                    <i data-lucide="package"></i> Bill of Materials
+                </a>
+                <p class="mt-sm">Bill of Materials: Conversational Commerce Platform</p>
+            </div>
+            
+            <div class="card">
+                <a href="11-solution-conversational-commerce.html" class="btn btn-secondary">
+                    <i data-lucide="clipboard-list"></i> Solution Overview
+                </a>
+                <p class="mt-sm">Design Pattern 11: Conversational Commerce & Services</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:15 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

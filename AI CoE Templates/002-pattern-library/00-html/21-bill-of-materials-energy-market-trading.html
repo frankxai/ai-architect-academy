@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Bill of Materials: Energy Market Trading & Optimization - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 10 Energy Distribution Intelligence / 21 Solution Energy Market Trading</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="bill-of-materials-energy-market-trading-optimization">Bill of Materials: Energy Market Trading &amp; Optimization</h1>
+<ul>
+<li><strong>Pattern Number:</strong> 21</li>
+<li><strong>Pattern Name:</strong> Energy Market Trading &amp; Optimization</li>
+<li><strong>Document Type:</strong> Bill of Materials</li>
+<li><strong>Customer:</strong> [Customer Name]</li>
+<li><strong>Date:</strong> 2025-08-14</li>
+<li><strong>Version:</strong> 1.0
+</li>
+</ul>
+<hr/>
+<h2 id="oracle-cloud-infrastructure-services">Oracle Cloud Infrastructure Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Compute HPC</td>
+<td>High-performance computing for trading engines</td>
+<td>20</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI GPU Instances</td>
+<td>A100/H100 GPUs for ML model training and inference</td>
+<td>8</td>
+<td>GPU instances</td>
+</tr>
+<tr>
+<td>OCI Streaming</td>
+<td>Real-time market data ingestion and processing</td>
+<td>50</td>
+<td>Partitions</td>
+</tr>
+<tr>
+<td>Oracle Database 23ai</td>
+<td>Time-series database for market data and analytics</td>
+<td>4</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Data Science</td>
+<td>Machine learning platform for price prediction models</td>
+<td>1</td>
+<td>Project</td>
+</tr>
+<tr>
+<td>OCI Data Flow</td>
+<td>Apache Spark for large-scale data processing</td>
+<td>200</td>
+<td>OCPUs</td>
+</tr>
+<tr>
+<td>OCI Functions</td>
+<td>Serverless compute for trading logic and automation</td>
+<td>500</td>
+<td>GB-Hours/month</td>
+</tr>
+<tr>
+<td>Oracle Analytics Cloud</td>
+<td>Trading dashboards and reporting</td>
+<td>50</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>OCI Events</td>
+<td>Event-driven trade execution and workflows</td>
+<td>100</td>
+<td>Rules</td>
+</tr>
+<tr>
+<td>OCI Service Connector Hub</td>
+<td>Integration with market data providers</td>
+<td>10</td>
+<td>Connectors</td>
+</tr>
+<tr>
+<td>OCI API Gateway</td>
+<td>Secure API management for external connections</td>
+<td>5</td>
+<td>Gateways</td>
+</tr>
+<tr>
+<td>OCI Queue</td>
+<td>Message queuing for order management</td>
+<td>20</td>
+<td>Queues</td>
+</tr>
+<tr>
+<td>OCI Object Storage</td>
+<td>Historical data and model storage</td>
+<td>100</td>
+<td>TB</td>
+</tr>
+<tr>
+<td>OCI Anomaly Detection</td>
+<td>Market anomaly and pattern detection</td>
+<td>5</td>
+<td>Models</td>
+</tr>
+<tr>
+<td>OCI GenAI Service</td>
+<td>Natural language processing for market intelligence</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="compute-resources">Compute Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BM.HPC2.36</td>
+<td>36 cores, 384 GB RAM, RDMA</td>
+<td>10</td>
+<td>Ultra-low latency trading engines</td>
+</tr>
+<tr>
+<td>VM.GPU3.4</td>
+<td>4 GPUs, 24 OCPUs, 360 GB RAM</td>
+<td>4</td>
+<td>ML model training</td>
+</tr>
+<tr>
+<td>VM.GPU3.2</td>
+<td>2 GPUs, 12 OCPUs, 180 GB RAM</td>
+<td>4</td>
+<td>ML inference servers</td>
+</tr>
+<tr>
+<td>VM.Standard3.Flex</td>
+<td>32 OCPUs, 512 GB RAM</td>
+<td>8</td>
+<td>Risk analytics and backtesting</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>16 OCPUs, 256 GB RAM</td>
+<td>12</td>
+<td>Application and web servers</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>8 OCPUs, 128 GB RAM</td>
+<td>10</td>
+<td>Development and testing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="storage-resources">Storage Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Storage Type</th>
+<th>Capacity</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block Volume (NVMe)</td>
+<td>10 TB</td>
+<td>20</td>
+<td>Ultra-fast trading data storage</td>
+</tr>
+<tr>
+<td>Block Volume (Balanced)</td>
+<td>50 TB</td>
+<td>10</td>
+<td>Database storage</td>
+</tr>
+<tr>
+<td>Object Storage (Standard)</td>
+<td>500 TB</td>
+<td>1</td>
+<td>Historical market data</td>
+</tr>
+<tr>
+<td>Object Storage (Archive)</td>
+<td>1 PB</td>
+<td>1</td>
+<td>Long-term trade archives</td>
+</tr>
+<tr>
+<td>File Storage</td>
+<td>100 TB</td>
+<td>2</td>
+<td>Shared model and configuration storage</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="network-resources">Network Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Network Component</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FastConnect</td>
+<td>100 Gbps</td>
+<td>2</td>
+<td>Direct exchange connectivity</td>
+</tr>
+<tr>
+<td>FastConnect</td>
+<td>10 Gbps</td>
+<td>4</td>
+<td>Market data provider connections</td>
+</tr>
+<tr>
+<td>Virtual Cloud Network</td>
+<td>/16 CIDR</td>
+<td>3</td>
+<td>Production, DR, and development networks</td>
+</tr>
+<tr>
+<td>Network Load Balancer</td>
+<td>Layer 4, 10 Gbps</td>
+<td>4</td>
+<td>High-performance load distribution</td>
+</tr>
+<tr>
+<td>DDoS Protection</td>
+<td>Always-on</td>
+<td>1</td>
+<td>Network security</td>
+</tr>
+<tr>
+<td>Private Endpoints</td>
+<td>Dedicated</td>
+<td>10</td>
+<td>Secure service access</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="market-connectivity-data">Market Connectivity &amp; Data</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Vendor</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>License Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exchange Connectivity</td>
+<td>ICE</td>
+<td>Direct market access to ICE markets</td>
+<td>2</td>
+<td>Connections</td>
+</tr>
+<tr>
+<td>Exchange Connectivity</td>
+<td>CME</td>
+<td>CME Globex connection</td>
+<td>2</td>
+<td>Connections</td>
+</tr>
+<tr>
+<td>Exchange Connectivity</td>
+<td>EEX/EPEX</td>
+<td>European power exchange access</td>
+<td>2</td>
+<td>Connections</td>
+</tr>
+<tr>
+<td>Market Data Feed</td>
+<td>Bloomberg</td>
+<td>Bloomberg Terminal and data feed</td>
+<td>10</td>
+<td>Terminals</td>
+</tr>
+<tr>
+<td>Market Data Feed</td>
+<td>Reuters</td>
+<td>Refinitiv Eikon and data services</td>
+<td>10</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>Market Data Feed</td>
+<td>Platts</td>
+<td>Energy price assessments</td>
+<td>1</td>
+<td>Subscription</td>
+</tr>
+<tr>
+<td>Weather Data</td>
+<td>NOAA</td>
+<td>Weather forecasts and historical data</td>
+<td>1</td>
+<td>API access</td>
+</tr>
+<tr>
+<td>News Feed</td>
+<td>Dow Jones</td>
+<td>Energy news and analytics</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="trading-platform-components">Trading Platform Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Order Management System</td>
+<td>Core trading engine</td>
+<td>1</td>
+<td>Order routing and execution</td>
+</tr>
+<tr>
+<td>FIX Engine</td>
+<td>FIX protocol connectivity</td>
+<td>5</td>
+<td>Exchange communication</td>
+</tr>
+<tr>
+<td>Risk Management System</td>
+<td>Real-time risk analytics</td>
+<td>1</td>
+<td>Portfolio risk management</td>
+</tr>
+<tr>
+<td>Position Keeping</td>
+<td>Position and P&amp;L tracking</td>
+<td>1</td>
+<td>Real-time position management</td>
+</tr>
+<tr>
+<td>Market Surveillance</td>
+<td>Trade surveillance system</td>
+<td>1</td>
+<td>Compliance monitoring</td>
+</tr>
+<tr>
+<td>Backtesting Platform</td>
+<td>Strategy testing environment</td>
+<td>1</td>
+<td>Historical simulation</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="aiml-components">AI/ML Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ML Models - Price Prediction</td>
+<td>LSTM/Transformer models</td>
+<td>20</td>
+<td>Price forecasting</td>
+</tr>
+<tr>
+<td>ML Models - Risk</td>
+<td>Risk prediction models</td>
+<td>10</td>
+<td>Risk assessment</td>
+</tr>
+<tr>
+<td>ML Models - NLP</td>
+<td>Text analysis models</td>
+<td>5</td>
+<td>News sentiment analysis</td>
+</tr>
+<tr>
+<td>AutoML Platform</td>
+<td>Automated model development</td>
+<td>1</td>
+<td>Model creation</td>
+</tr>
+<tr>
+<td>Model Registry</td>
+<td>Model versioning and deployment</td>
+<td>1</td>
+<td>MLOps</td>
+</tr>
+<tr>
+<td>Feature Store</td>
+<td>Centralized feature management</td>
+<td>1</td>
+<td>ML features</td>
+</tr>
+<tr>
+<td>GPU Hours</td>
+<td>A100/H100 compute time</td>
+<td>5000</td>
+<td>Hours/month</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="security-compliance">Security &amp; Compliance</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>License Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Vault</td>
+<td>Key and secret management</td>
+<td>2</td>
+<td>Vaults</td>
+</tr>
+<tr>
+<td>OCI Audit</td>
+<td>Comprehensive audit logging</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>OCI Data Safe</td>
+<td>Data security and compliance</td>
+<td>1</td>
+<td>Target databases</td>
+</tr>
+<tr>
+<td>OCI Cloud Guard</td>
+<td>Security monitoring</td>
+<td>1</td>
+<td>Tenancy</td>
+</tr>
+<tr>
+<td>OCI Bastion</td>
+<td>Secure administrative access</td>
+<td>4</td>
+<td>Bastions</td>
+</tr>
+<tr>
+<td>WAF</td>
+<td>Web application firewall</td>
+<td>2</td>
+<td>Policies</td>
+</tr>
+<tr>
+<td>Certificates</td>
+<td>TLS/SSL certificates</td>
+<td>20</td>
+<td>Certificates</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="monitoring-analytics">Monitoring &amp; Analytics</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Metrics</td>
+<td>Trading and risk metrics</td>
+<td>1000</td>
+<td>Metrics</td>
+</tr>
+<tr>
+<td>Alarms</td>
+<td>Threshold-based alerts</td>
+<td>200</td>
+<td>Alarms</td>
+</tr>
+<tr>
+<td>Dashboards</td>
+<td>Real-time monitoring dashboards</td>
+<td>20</td>
+<td>Dashboards</td>
+</tr>
+<tr>
+<td>Log Analytics</td>
+<td>Log processing and analysis</td>
+<td>50</td>
+<td>TB/month</td>
+</tr>
+<tr>
+<td>APM</td>
+<td>Application performance monitoring</td>
+<td>10M</td>
+<td>Traces/month</td>
+</tr>
+<tr>
+<td>Synthetic Monitoring</td>
+<td>Service availability checks</td>
+<td>100</td>
+<td>Monitors</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="development-operations-tools">Development &amp; Operations Tools</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Category</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Access Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes (OKE)</td>
+<td>Container Platform</td>
+<td>Container orchestration</td>
+<td>3</td>
+<td>Clusters</td>
+</tr>
+<tr>
+<td>Jenkins</td>
+<td>CI/CD</td>
+<td>Build and deployment automation</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td>GitLab</td>
+<td>Source Control</td>
+<td>Code repository and CI/CD</td>
+<td>100</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>Terraform</td>
+<td>IaC</td>
+<td>Infrastructure as code</td>
+<td>1</td>
+<td>Cloud</td>
+</tr>
+<tr>
+<td>Ansible</td>
+<td>Configuration</td>
+<td>Configuration management</td>
+<td>1</td>
+<td>Tower</td>
+</tr>
+<tr>
+<td>Grafana</td>
+<td>Monitoring</td>
+<td>Custom dashboards</td>
+<td>20</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>Prometheus</td>
+<td>Metrics</td>
+<td>Metrics collection</td>
+<td>3</td>
+<td>Instances</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="disaster-recovery-backup">Disaster Recovery &amp; Backup</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DR Region</td>
+<td>Full standby environment</td>
+<td>1</td>
+<td>Disaster recovery site</td>
+</tr>
+<tr>
+<td>Cross-Region Replication</td>
+<td>Synchronous</td>
+<td>All</td>
+<td>Data replication</td>
+</tr>
+<tr>
+<td>Database Backup</td>
+<td>Continuous</td>
+<td>30</td>
+<td>Days retention</td>
+</tr>
+<tr>
+<td>Volume Snapshots</td>
+<td>Hourly</td>
+<td>24</td>
+<td>Point-in-time recovery</td>
+</tr>
+<tr>
+<td>Backup Storage</td>
+<td>Cross-region</td>
+<td>200</td>
+<td>TB</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="professional-services">Professional Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Duration</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture Design</td>
+<td>Solution architecture and planning</td>
+<td>6</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Platform Implementation</td>
+<td>Core platform deployment</td>
+<td>16</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Model Development</td>
+<td>ML model creation and training</td>
+<td>12</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Integration Services</td>
+<td>Exchange and system integration</td>
+<td>8</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Performance Tuning</td>
+<td>Latency optimization</td>
+<td>4</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Training Services</td>
+<td>Platform and trading system training</td>
+<td>4</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Go-Live Support</td>
+<td>Production deployment support</td>
+<td>6</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Ongoing Support</td>
+<td>24x7 technical and trading support</td>
+<td>12</td>
+<td>Months</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="licensing-summary">Licensing Summary</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>License Type</th>
+<th>Quantity</th>
+<th>Billing Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Universal Credits</td>
+<td>$2,000,000</td>
+<td>Annual Commitment</td>
+</tr>
+<tr>
+<td>Oracle Database EE</td>
+<td>32</td>
+<td>Processor licenses</td>
+</tr>
+<tr>
+<td>Exchange Connectivity</td>
+<td>6</td>
+<td>Direct connections</td>
+</tr>
+<tr>
+<td>Market Data</td>
+<td>$500,000</td>
+<td>Annual subscriptions</td>
+</tr>
+<tr>
+<td>ML Platform Users</td>
+<td>100</td>
+<td>Named users</td>
+</tr>
+<tr>
+<td>API Calls</td>
+<td>1B</td>
+<td>Calls/month</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="cost-estimation">Cost Estimation</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Monthly Cost</th>
+<th>Annual Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compute (HPC &amp; GPU)</td>
+<td>$80,000</td>
+<td>$960,000</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>$15,000</td>
+<td>$180,000</td>
+</tr>
+<tr>
+<td>Network &amp; Connectivity</td>
+<td>$25,000</td>
+<td>$300,000</td>
+</tr>
+<tr>
+<td>Database Services</td>
+<td>$30,000</td>
+<td>$360,000</td>
+</tr>
+<tr>
+<td>AI/ML Services</td>
+<td>$40,000</td>
+<td>$480,000</td>
+</tr>
+<tr>
+<td>Market Data &amp; Feeds</td>
+<td>$50,000</td>
+<td>$600,000</td>
+</tr>
+<tr>
+<td>Security &amp; Compliance</td>
+<td>$10,000</td>
+<td>$120,000</td>
+</tr>
+<tr>
+<td>Support &amp; Operations</td>
+<td>$20,000</td>
+<td>$240,000</td>
+</tr>
+<tr>
+<td><strong>Total Estimated Cost</strong></td>
+<td><strong>$270,000</strong></td>
+<td><strong>$3,240,000</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="roi-projection">ROI Projection</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expected Trading Profit Increase</td>
+<td>30%</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Risk Reduction</td>
+<td>50%</td>
+<td>Immediate</td>
+</tr>
+<tr>
+<td>Operational Cost Savings</td>
+<td>40%</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Compliance Cost Reduction</td>
+<td>60%</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Payback Period</td>
+<td>14 months</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3-Year ROI</td>
+<td>320%</td>
+<td>3 years</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><em>This Bill of Materials provides a comprehensive list of technical components required for implementing the Energy Market Trading &amp; Optimization pattern. The configuration supports high-frequency trading with ultra-low latency while providing advanced analytics and risk management capabilities. Costs and quantities should be adjusted based on specific trading volumes and market coverage requirements.</em></p>
+        </article>
+        
+        <div class="card mt-lg"><div class="card-header"><h4 class="card-title">Related Documents</h4></div><div class="grid grid-cols-2">
+            <div class="card">
+                <a href="21-discovery-questions-energy-market-trading.html" class="btn btn-secondary">
+                    ❓ Discovery Questions
+                </a>
+                <p class="mt-sm">Discovery Questions: Energy Market Trading & Optimization</p>
+            </div>
+            
+            <div class="card">
+                <a href="21-technical-architecture-energy-market-trading.html" class="btn btn-secondary">
+                    <i data-lucide="layers"></i> Technical Architecture
+                </a>
+                <p class="mt-sm">Technical Architecture: Energy Market Trading & Optimization</p>
+            </div>
+            </div></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

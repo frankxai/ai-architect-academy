@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Bill of Materials: Regulatory Genomic Compliance & Reporting - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Library / Solutions / Vertical Patterns / 09 Genomic Public Health Intelligence / 33 Solution Regulatory Genomic Compliance</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="bill-of-materials-regulatory-genomic-compliance-reporting">Bill of Materials: Regulatory Genomic Compliance &amp; Reporting</h1>
+<h2 id="oracle-cloud-infrastructure-services">Oracle Cloud Infrastructure Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle Blockchain Platform</td>
+<td>Immutable audit trail and compliance verification</td>
+<td>1</td>
+<td>Network</td>
+</tr>
+<tr>
+<td>Oracle Database 23ai</td>
+<td>Secure genomic data storage with encryption</td>
+<td>3</td>
+<td>Instances</td>
+</tr>
+<tr>
+<td>OCI Data Safe</td>
+<td>Data discovery, masking, and security assessment</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Oracle Integration Cloud</td>
+<td>Regulatory system integration and workflow</td>
+<td>1</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>OCI Identity Domains</td>
+<td>Identity and access management for compliance</td>
+<td>1</td>
+<td>Tenant</td>
+</tr>
+<tr>
+<td>OCI Vault</td>
+<td>Hardware security module for key management</td>
+<td>2</td>
+<td>Vaults</td>
+</tr>
+<tr>
+<td>OCI Events</td>
+<td>Event-driven compliance workflows</td>
+<td>50</td>
+<td>Rules</td>
+</tr>
+<tr>
+<td>OCI Functions</td>
+<td>Serverless compliance rule execution</td>
+<td>200</td>
+<td>GB-Hours/month</td>
+</tr>
+<tr>
+<td>Oracle Analytics Cloud</td>
+<td>Compliance analytics and dashboards</td>
+<td>25</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>OCI Logging</td>
+<td>Comprehensive audit logging</td>
+<td>50</td>
+<td>TB/month</td>
+</tr>
+<tr>
+<td>OCI Monitoring</td>
+<td>Real-time compliance monitoring</td>
+<td>1</td>
+<td>Namespace</td>
+</tr>
+<tr>
+<td>OCI Service Connector Hub</td>
+<td>Data routing and transformation</td>
+<td>5</td>
+<td>Connectors</td>
+</tr>
+<tr>
+<td>Oracle APEX</td>
+<td>Compliance interfaces and reporting</td>
+<td>1</td>
+<td>Workspace</td>
+</tr>
+<tr>
+<td>OCI Data Catalog</td>
+<td>Metadata management and data lineage</td>
+<td>1</td>
+<td>Catalog</td>
+</tr>
+<tr>
+<td>OCI Notifications</td>
+<td>Alert and notification management</td>
+<td>10</td>
+<td>Topics</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="compute-resources">Compute Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM.Standard3.Flex</td>
+<td>16 OCPUs, 256 GB RAM</td>
+<td>6</td>
+<td>Blockchain nodes and consensus</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>8 OCPUs, 128 GB RAM</td>
+<td>8</td>
+<td>Application and integration servers</td>
+</tr>
+<tr>
+<td>VM.Standard.E4.Flex</td>
+<td>4 OCPUs, 64 GB RAM</td>
+<td>6</td>
+<td>Compliance engine and rule processing</td>
+</tr>
+<tr>
+<td>BM.Standard.E4.128</td>
+<td>128 OCPUs, 2 TB RAM</td>
+<td>1</td>
+<td>High-performance database server</td>
+</tr>
+<tr>
+<td>VM.Standard.A1.Flex</td>
+<td>4 OCPUs, 32 GB RAM</td>
+<td>4</td>
+<td>Development and testing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="storage-resources">Storage Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Storage Type</th>
+<th>Capacity</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block Volume (Performance)</td>
+<td>10 TB</td>
+<td>6</td>
+<td>Blockchain ledger storage</td>
+</tr>
+<tr>
+<td>Block Volume (Balanced)</td>
+<td>50 TB</td>
+<td>4</td>
+<td>Database storage</td>
+</tr>
+<tr>
+<td>Object Storage (Standard)</td>
+<td>500 TB</td>
+<td>1</td>
+<td>Document and report archive</td>
+</tr>
+<tr>
+<td>Object Storage (Archive)</td>
+<td>2 PB</td>
+<td>1</td>
+<td>Long-term compliance records</td>
+</tr>
+<tr>
+<td>File Storage</td>
+<td>20 TB</td>
+<td>2</td>
+<td>Shared configuration and documents</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="network-resources">Network Resources</h3>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Network Component</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual Cloud Network</td>
+<td>/16 CIDR</td>
+<td>2</td>
+<td>Production and DR networks</td>
+</tr>
+<tr>
+<td>FastConnect</td>
+<td>10 Gbps</td>
+<td>2</td>
+<td>Dedicated connectivity to regulators</td>
+</tr>
+<tr>
+<td>Site-to-Site VPN</td>
+<td>IPSec</td>
+<td>4</td>
+<td>Backup connectivity</td>
+</tr>
+<tr>
+<td>Load Balancer</td>
+<td>Application LB</td>
+<td>2</td>
+<td>High availability</td>
+</tr>
+<tr>
+<td>NAT Gateway</td>
+<td>Public IP</td>
+<td>4</td>
+<td>Outbound connectivity</td>
+</tr>
+<tr>
+<td>Service Gateway</td>
+<td>Private access</td>
+<td>2</td>
+<td>OCI service access</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="compliance-governance-components">Compliance &amp; Governance Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consent Management System</td>
+<td>Dynamic consent tracking and versioning</td>
+<td>1</td>
+<td>Platform</td>
+</tr>
+<tr>
+<td>Audit Trail System</td>
+<td>Blockchain-based immutable records</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Compliance Rule Engine</td>
+<td>Automated policy enforcement</td>
+<td>1</td>
+<td>Engine</td>
+</tr>
+<tr>
+<td>Data Classification Tool</td>
+<td>Automated sensitivity classification</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Privacy Protection Suite</td>
+<td>De-identification and masking tools</td>
+<td>1</td>
+<td>Suite</td>
+</tr>
+<tr>
+<td>Document Management</td>
+<td>Compliance documentation system</td>
+<td>1</td>
+<td>System</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="security-components">Security Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>License Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Cloud Guard</td>
+<td>Security posture management</td>
+<td>1</td>
+<td>Tenancy</td>
+</tr>
+<tr>
+<td>OCI Security Zones</td>
+<td>Compliance-enforced compartments</td>
+<td>10</td>
+<td>Zones</td>
+</tr>
+<tr>
+<td>OCI Bastion</td>
+<td>Secure administrative access</td>
+<td>4</td>
+<td>Bastions</td>
+</tr>
+<tr>
+<td>Network Security Groups</td>
+<td>Micro-segmentation</td>
+<td>20</td>
+<td>Groups</td>
+</tr>
+<tr>
+<td>Web Application Firewall</td>
+<td>Application protection</td>
+<td>2</td>
+<td>Policies</td>
+</tr>
+<tr>
+<td>Key Management</td>
+<td>Encryption key lifecycle</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Certificates</td>
+<td>TLS/SSL certificates</td>
+<td>15</td>
+<td>Certificates</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="integration-components">Integration Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Vendor</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>License Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LIMS Connector</td>
+<td>Various</td>
+<td>Laboratory system integration</td>
+<td>3</td>
+<td>Connectors</td>
+</tr>
+<tr>
+<td>EHR Integration</td>
+<td>HL7 FHIR</td>
+<td>Clinical system connectivity</td>
+<td>2</td>
+<td>Interfaces</td>
+</tr>
+<tr>
+<td>GISAID Interface</td>
+<td>GISAID</td>
+<td>Global genomic data sharing</td>
+<td>1</td>
+<td>Connection</td>
+</tr>
+<tr>
+<td>GA4GH Connector</td>
+<td>GA4GH</td>
+<td>Standards-based data exchange</td>
+<td>1</td>
+<td>Interface</td>
+</tr>
+<tr>
+<td>WHO Reporting</td>
+<td>WHO</td>
+<td>International health reporting</td>
+<td>1</td>
+<td>Gateway</td>
+</tr>
+<tr>
+<td>National Health API</td>
+<td>Various</td>
+<td>Country-specific reporting</td>
+<td>5</td>
+<td>APIs</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="genomic-processing-components">Genomic Processing Components</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bioinformatics Pipeline</td>
+<td>Validated analysis workflows</td>
+<td>5</td>
+<td>Pipelines</td>
+</tr>
+<tr>
+<td>Quality Control System</td>
+<td>QC metrics and validation</td>
+<td>1</td>
+<td>System</td>
+</tr>
+<tr>
+<td>Sample Tracking</td>
+<td>Chain of custody management</td>
+<td>1</td>
+<td>Module</td>
+</tr>
+<tr>
+<td>Variant Annotation</td>
+<td>Clinical interpretation tools</td>
+<td>1</td>
+<td>Service</td>
+</tr>
+<tr>
+<td>Reference Databases</td>
+<td>Genomic reference data</td>
+<td>3</td>
+<td>Databases</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="monitoring-analytics">Monitoring &amp; Analytics</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compliance Dashboards</td>
+<td>Real-time compliance monitoring</td>
+<td>10</td>
+<td>Dashboards</td>
+</tr>
+<tr>
+<td>Custom Metrics</td>
+<td>Compliance and quality metrics</td>
+<td>500</td>
+<td>Metrics</td>
+</tr>
+<tr>
+<td>Alarms</td>
+<td>Compliance violation alerts</td>
+<td>100</td>
+<td>Alarms</td>
+</tr>
+<tr>
+<td>Log Analytics</td>
+<td>Audit log analysis</td>
+<td>20</td>
+<td>TB/month</td>
+</tr>
+<tr>
+<td>Report Templates</td>
+<td>Regulatory report formats</td>
+<td>50</td>
+<td>Templates</td>
+</tr>
+<tr>
+<td>Analytics Models</td>
+<td>Predictive compliance models</td>
+<td>5</td>
+<td>Models</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="development-management-tools">Development &amp; Management Tools</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>Category</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Access Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI DevOps</td>
+<td>CI/CD</td>
+<td>Deployment automation</td>
+<td>1</td>
+<td>Project</td>
+</tr>
+<tr>
+<td>Terraform</td>
+<td>IaC</td>
+<td>Infrastructure as code</td>
+<td>1</td>
+<td>Enterprise</td>
+</tr>
+<tr>
+<td>Kubernetes (OKE)</td>
+<td>Container</td>
+<td>Container orchestration</td>
+<td>2</td>
+<td>Clusters</td>
+</tr>
+<tr>
+<td>GitLab</td>
+<td>Source Control</td>
+<td>Code and configuration management</td>
+<td>50</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>Postman</td>
+<td>API Testing</td>
+<td>API development and testing</td>
+<td>10</td>
+<td>Users</td>
+</tr>
+<tr>
+<td>Oracle SQL Developer</td>
+<td>Database</td>
+<td>Database development tools</td>
+<td>20</td>
+<td>Users</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="disaster-recovery-backup">Disaster Recovery &amp; Backup</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Specifications</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DR Region</td>
+<td>Full standby environment</td>
+<td>1</td>
+<td>Disaster recovery</td>
+</tr>
+<tr>
+<td>Cross-Region Backup</td>
+<td>Automated replication</td>
+<td>All</td>
+<td>Data protection</td>
+</tr>
+<tr>
+<td>Database Backup</td>
+<td>Continuous with 7-year retention</td>
+<td>All</td>
+<td>Compliance</td>
+</tr>
+<tr>
+<td>Blockchain Backup</td>
+<td>Distributed ledger copies</td>
+<td>3</td>
+<td>Nodes</td>
+</tr>
+<tr>
+<td>Document Archive</td>
+<td>Immutable storage</td>
+<td>1</td>
+<td>Repository</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="professional-services">Professional Services</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Service</th>
+<th>Description</th>
+<th>Duration</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compliance Assessment</td>
+<td>Current state and gap analysis</td>
+<td>4</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Architecture Design</td>
+<td>Solution architecture and planning</td>
+<td>6</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Platform Implementation</td>
+<td>Core platform deployment</td>
+<td>12</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Integration Services</td>
+<td>System integration and testing</td>
+<td>8</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Compliance Validation</td>
+<td>Regulatory compliance testing</td>
+<td>4</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Training Services</td>
+<td>Staff training and certification</td>
+<td>3</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Audit Preparation</td>
+<td>Pre-audit assessment and prep</td>
+<td>2</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Ongoing Support</td>
+<td>24x7 compliance support</td>
+<td>12</td>
+<td>Months</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="regulatory-compliance-tools">Regulatory Compliance Tools</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Tool/Service</th>
+<th>Description</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIPAA Compliance Kit</td>
+<td>HIPAA-compliant configurations</td>
+<td>1</td>
+<td>Package</td>
+</tr>
+<tr>
+<td>GDPR Compliance Tools</td>
+<td>GDPR data protection tools</td>
+<td>1</td>
+<td>Suite</td>
+</tr>
+<tr>
+<td>ISO 15189 Templates</td>
+<td>Laboratory quality templates</td>
+<td>1</td>
+<td>Set</td>
+</tr>
+<tr>
+<td>CLIA Compliance Module</td>
+<td>CLIA certification support</td>
+<td>1</td>
+<td>Module</td>
+</tr>
+<tr>
+<td>CAP Checklists</td>
+<td>CAP accreditation checklists</td>
+<td>1</td>
+<td>Set</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="licensing-summary">Licensing Summary</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>License Type</th>
+<th>Quantity</th>
+<th>Billing Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCI Universal Credits</td>
+<td>$800,000</td>
+<td>Annual Commitment</td>
+</tr>
+<tr>
+<td>Oracle Database EE</td>
+<td>12</td>
+<td>Processor licenses</td>
+</tr>
+<tr>
+<td>Oracle Blockchain</td>
+<td>6</td>
+<td>Node licenses</td>
+</tr>
+<tr>
+<td>Integration Cloud</td>
+<td>50,000</td>
+<td>Messages/hour</td>
+</tr>
+<tr>
+<td>Analytics Cloud Users</td>
+<td>25</td>
+<td>Named users</td>
+</tr>
+<tr>
+<td>APEX Users</td>
+<td>100</td>
+<td>Named users</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="cost-estimation">Cost Estimation</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Monthly Cost</th>
+<th>Annual Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compute Resources</td>
+<td>$25,000</td>
+<td>$300,000</td>
+</tr>
+<tr>
+<td>Storage Resources</td>
+<td>$12,000</td>
+<td>$144,000</td>
+</tr>
+<tr>
+<td>Network Resources</td>
+<td>$5,000</td>
+<td>$60,000</td>
+</tr>
+<tr>
+<td>Blockchain Platform</td>
+<td>$15,000</td>
+<td>$180,000</td>
+</tr>
+<tr>
+<td>Database Services</td>
+<td>$20,000</td>
+<td>$240,000</td>
+</tr>
+<tr>
+<td>Integration Services</td>
+<td>$8,000</td>
+<td>$96,000</td>
+</tr>
+<tr>
+<td>Security Services</td>
+<td>$6,000</td>
+<td>$72,000</td>
+</tr>
+<tr>
+<td>Analytics &amp; Monitoring</td>
+<td>$7,000</td>
+<td>$84,000</td>
+</tr>
+<tr>
+<td>Support &amp; Operations</td>
+<td>$10,000</td>
+<td>$120,000</td>
+</tr>
+<tr>
+<td><strong>Total Estimated Cost</strong></td>
+<td><strong>$108,000</strong></td>
+<td><strong>$1,296,000</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="compliance-roi-projection">Compliance ROI Projection</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compliance Violation Reduction</td>
+<td>100%</td>
+<td>Immediate</td>
+</tr>
+<tr>
+<td>Audit Preparation Time Savings</td>
+<td>80%</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Manual Compliance Cost Reduction</td>
+<td>60%</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Regulatory Fine Avoidance</td>
+<td>$5M+</td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>Operational Efficiency Gain</td>
+<td>40%</td>
+<td>Year 1</td>
+</tr>
+<tr>
+<td>Payback Period</td>
+<td>10 months</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3-Year ROI</td>
+<td>450%</td>
+<td>3 years</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="compliance-metrics">Compliance Metrics</h2>
+<div class_="table-container"><table class="table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulatory Compliance Rate</td>
+<td>100%</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>Audit Pass Rate</td>
+<td>100%</td>
+<td>Per audit</td>
+</tr>
+<tr>
+<td>Consent Validity</td>
+<td>100%</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td>Report Submission Timeliness</td>
+<td>100%</td>
+<td>Per deadline</td>
+</tr>
+<tr>
+<td>Data Breach Incidents</td>
+<td>0</td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>Accreditation Status</td>
+<td>Maintained</td>
+<td>Continuous</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<p><em>This Bill of Materials provides a comprehensive list of technical components required for implementing the Regulatory Genomic Compliance &amp; Reporting pattern. The configuration ensures complete regulatory compliance, data sovereignty, and audit trail integrity for genomic public health operations. Costs and quantities should be adjusted based on specific organizational size, geographic coverage, and regulatory requirements.</em></p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

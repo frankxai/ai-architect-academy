@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arc Extension - Technical Specifications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+            background: #0d1117;
+            color: #f0f6fc;
+            line-height: 1.6;
+        }
+
+        .specs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            border-radius: 12px;
+            border: 1px solid #374151;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .version-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .version-badge {
+            background: #374151;
+            color: #06d6a0;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #06d6a0;
+        }
+
+        .section {
+            background: #161b22;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #30363d;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #3b82f6 0%, #06d6a0 100%);
+            border-radius: 2px 0 0 2px;
+        }
+
+        .section h2 {
+            color: #06d6a0;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section h3 {
+            color: #3b82f6;
+            font-size: 18px;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .section h4 {
+            color: #f0f6fc;
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+        }
+
+        .section p {
+            color: #c9d1d9;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .section ul, .section ol {
+            color: #c9d1d9;
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #f0f6fc;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .code-header {
+            background: #21262d;
+            color: #7d8590;
+            padding: 8px 16px;
+            border-radius: 6px 6px 0 0;
+            border-bottom: 1px solid #30363d;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Architecture Diagrams */
+        .architecture-diagram {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .diagram-title {
+            color: #06d6a0;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .architecture-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            min-width: 800px;
+        }
+
+        .arch-component {
+            background: #21262d;
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+            min-width: 140px;
+            position: relative;
+        }
+
+        .arch-component.core {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .arch-component.agent {
+            border-color: #06d6a0;
+            background: rgba(6, 214, 160, 0.1);
+        }
+
+        .arch-component.external {
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .arch-component::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #3b82f6;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .arch-component:last-child::after {
+            display: none;
+        }
+
+        .component-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .component-desc {
+            font-size: 11px;
+            color: #7d8590;
+        }
+
+        /* API Specifications */
+        .api-spec {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .api-header {
+            background: #21262d;
+            padding: 12px 16px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .api-method {
+            background: #3b82f6;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .api-method.post {
+            background: #06d6a0;
+            color: #000;
+        }
+
+        .api-method.put {
+            background: #f59e0b;
+        }
+
+        .api-method.delete {
+            background: #ef4444;
+        }
+
+        .api-endpoint {
+            font-family: 'JetBrains Mono', monospace;
+            color: #f0f6fc;
+        }
+
+        .api-body {
+            padding: 16px;
+        }
+
+        .api-description {
+            color: #c9d1d9;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .api-params {
+            background: #161b22;
+            border-radius: 4px;
+            padding: 12px;
+        }
+
+        .api-params h5 {
+            color: #06d6a0;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .param-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #30363d;
+            font-size: 12px;
+        }
+
+        .param-item:last-child {
+            border-bottom: none;
+        }
+
+        .param-name {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .param-type {
+            color: #f59e0b;
+        }
+
+        .param-desc {
+            color: #7d8590;
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        /* Database Schema */
+        .schema-table {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .schema-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .schema-table th {
+            background: #21262d;
+            color: #06d6a0;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+            font-weight: bold;
+        }
+
+        .schema-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #30363d;
+            color: #c9d1d9;
+        }
+
+        .schema-table tr:hover {
+            background: #161b22;
+        }
+
+        .field-type {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .field-constraint {
+            color: #f59e0b;
+            font-size: 11px;
+        }
+
+        /* Technology Stack Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .tech-category {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            border-top: 3px solid #3b82f6;
+        }
+
+        .tech-category.frontend {
+            border-top-color: #06d6a0;
+        }
+
+        .tech-category.backend {
+            border-top-color: #f59e0b;
+        }
+
+        .tech-category.data {
+            border-top-color: #ef4444;
+        }
+
+        .tech-category h4 {
+            color: #f0f6fc;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-item {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tech-name {
+            color: #f0f6fc;
+            font-weight: 500;
+        }
+
+        .tech-version {
+            color: #7d8590;
+            font-size: 11px;
+            background: #21262d;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        /* Performance Metrics */
+        .perf-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .perf-metric {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .perf-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #06d6a0;
+            margin-bottom: 5px;
+        }
+
+        .perf-label {
+            color: #7d8590;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .perf-description {
+            color: #c9d1d9;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        /* Security Section */
+        .security-item {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-left: 4px solid #ef4444;
+            border-radius: 0 6px 6px 0;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .security-title {
+            color: #ef4444;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .security-desc {
+            color: #c9d1d9;
+            font-size: 13px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .specs-container {
+                padding: 20px 10px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .architecture-flow {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .arch-component::after {
+                content: '↓';
+                right: 50%;
+                top: 100%;
+                bottom: -20px;
+                transform: translateX(50%);
+            }
+
+            .tech-grid,
+            .perf-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .version-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="specs-container">
+        <div class="header">
+            <h1>Arc Extension</h1>
+            <div class="subtitle">Technical Specifications & Implementation Guide</div>
+            <div class="version-info">
+                <div class="version-badge">Architecture v1.0</div>
+                <div class="version-badge">API Spec v1.0</div>
+                <div class="version-badge">Implementation Ready</div>
+            </div>
+        </div>
+
+        <!-- System Architecture -->
+        <div class="section">
+            <h2>🏗️ System Architecture</h2>
+
+            <h3>High-Level Architecture</h3>
+            <div class="architecture-diagram">
+                <div class="diagram-title">Arc Extension System Overview</div>
+                <div class="architecture-flow">
+                    <div class="arch-component core">
+                        <div class="component-title">VS Code Extension</div>
+                        <div class="component-desc">Main entry point</div>
+                    </div>
+                    <div class="arch-component core">
+                        <div class="component-title">Orchestration Engine</div>
+                        <div class="component-desc">Task routing & management</div>
+                    </div>
+                    <div class="arch-component agent">
+                        <div class="component-title">Agent Pool</div>
+                        <div class="component-desc">5 AI agents</div>
+                    </div>
+                    <div class="arch-component external">
+                        <div class="component-title">Academy Dashboard</div>
+                        <div class="component-desc">Learning analytics</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Core Components</h3>
+
+            <h4>1. Extension Core</h4>
+            <div class="code-block">
+                <div class="code-header">src/extension.ts - Main Extension Entry Point</div>
+                <pre>
+export class ArcExtension {
+  private orchestrator: AgentOrchestrator;
+  private sessionManager: SessionManager;
+  private academySync: AcademySync;
+  private ui: CommandCenterUI;
+
+  async activate(context: vscode.ExtensionContext) {
+    // Initialize core systems
+    this.orchestrator = new AgentOrchestrator();
+    this.sessionManager = new SessionManager();
+    this.academySync = new AcademySync();
+    this.ui = new CommandCenterUI();
+
+    // Register commands and providers
+    this.registerCommands(context);
+    this.registerWebviewProviders(context);
+
+    // Start background services
+    await this.startServices();
+  }
+}
+                </pre>
+            </div>
+
+            <h4>2. Agent Orchestrator</h4>
+            <div class="code-block">
+                <div class="code-header">src/orchestrator/AgentOrchestrator.ts</div>
+                <pre>
+export class AgentOrchestrator {
+  private agents: Map&lt;AgentType, BaseAgent&gt;;
+  private taskClassifier: TaskClassifier;
+  private performanceTracker: PerformanceTracker;
+
+  async assignTask(task: Task): Promise&lt;TaskAssignment&gt; {
+    // Classify task type and requirements
+    const classification = await this.taskClassifier.classify(task);
+
+    // Find optimal agent based on:
+    // - Agent capabilities
+    // - Current availability
+    // - Historical performance
+    // - Task complexity
+    const optimalAgent = this.selectOptimalAgent(classification);
+
+    return {
+      agent: optimalAgent,
+      confidence: classification.confidence,
+      estimatedTime: classification.estimatedTime
+    };
+  }
+}
+                </pre>
+            </div>
+
+            <h4>3. Session Management</h4>
+            <div class="code-block">
+                <div class="code-header">src/session/SessionManager.ts</div>
+                <pre>
+export class SessionManager {
+  private activeSessions: Map&lt;string, WorkSession&gt;;
+  private gitWorktreeManager: GitWorktreeManager;
+
+  async createSession(config: SessionConfig): Promise&lt;WorkSession&gt; {
+    // Create isolated git worktree
+    const worktree = await this.gitWorktreeManager.create({
+      name: config.name,
+      baseBranch: config.baseBranch || 'main'
+    });
+
+    // Initialize session state
+    const session = new WorkSession({
+      id: generateId(),
+      name: config.name,
+      worktree,
+      agents: [],
+      created: new Date()
+    });
+
+    this.activeSessions.set(session.id, session);
+    return session;
+  }
+}
+                </pre>
+            </div>
+        </div>
+
+        <!-- Agent Integration Layer -->
+        <div class="section">
+            <h2>🤖 Agent Integration Layer</h2>
+
+            <h3>Base Agent Interface</h3>
+            <div class="code-block">
+                <div class="code-header">src/agents/BaseAgent.ts</div>
+                <pre>
+export abstract class BaseAgent {
+  abstract readonly type: AgentType;
+  abstract readonly capabilities: AgentCapability[];
+  abstract readonly name: string;
+
+  abstract async processTask(task: Task): Promise&lt;TaskResult&gt;;
+  abstract async isAvailable(): Promise&lt;boolean&gt;;
+  abstract async getStatus(): Promise&lt;AgentStatus&gt;;
+  abstract async healthCheck(): Promise&lt;HealthStatus&gt;;
+
+  // Common functionality
+  protected logInteraction(task: Task, result: TaskResult): void {
+    this.performanceTracker.record({
+      agent: this.type,
+      task: task.type,
+      duration: result.duration,
+      success: result.success,
+      timestamp: new Date()
+    });
+  }
+}
+                </pre>
+            </div>
+
+            <h3>Specific Agent Implementations</h3>
+
+            <h4>Claude Code Agent</h4>
+            <div class="code-block">
+                <div class="code-header">src/agents/ClaudeCodeAgent.ts</div>
+                <pre>
+export class ClaudeCodeAgent extends BaseAgent {
+  readonly type = AgentType.CLAUDE_CODE;
+  readonly capabilities = [
+    AgentCapability.CODE_ANALYSIS,
+    AgentCapability.DEBUGGING,
+    AgentCapability.REFACTORING,
+    AgentCapability.CODE_REVIEW
+  ];
+  readonly name = 'Claude Code';
+
+  private apiClient: ClaudeAPIClient;
+
+  async processTask(task: Task): Promise&lt;TaskResult&gt; {
+    const startTime = Date.now();
+
+    try {
+      // Format task for Claude Code API
+      const prompt = this.formatTaskPrompt(task);
+
+      // Execute via Claude Code
+      const response = await this.apiClient.complete({
+        prompt,
+        context: task.context,
+        files: task.files
+      });
+
+      const result = new TaskResult({
+        success: true,
+        output: response.content,
+        duration: Date.now() - startTime,
+        metadata: {
+          tokensUsed: response.tokensUsed,
+          model: response.model
+        }
+      });
+
+      this.logInteraction(task, result);
+      return result;
+
+    } catch (error) {
+      return new TaskResult({
+        success: false,
+        error: error.message,
+        duration: Date.now() - startTime
+      });
+    }
+  }
+}
+                </pre>
+            </div>
+
+            <h4>Kilo Code Agent</h4>
+            <div class="code-block">
+                <div class="code-header">src/agents/KiloCodeAgent.ts</div>
+                <pre>
+export class KiloCodeAgent extends BaseAgent {
+  readonly type = AgentType.KILO_CODE;
+  readonly capabilities = [
+    AgentCapability.ARCHITECTURE,
+    AgentCapability.TESTING,
+    AgentCapability.PERFORMANCE_OPTIMIZATION,
+    AgentCapability.CODE_GENERATION
+  ];
+  readonly name = 'Kilo Code';
+
+  private kiloClient: KiloCodeClient;
+
+  async processTask(task: Task): Promise&lt;TaskResult&gt; {
+    // Select appropriate Kilo mode based on task
+    const mode = this.selectKiloMode(task);
+
+    return await this.kiloClient.execute({
+      mode,
+      task: task.description,
+      context: task.context,
+      files: task.files
+    });
+  }
+
+  private selectKiloMode(task: Task): KiloMode {
+    if (task.type === TaskType.ARCHITECTURE) return KiloMode.ARCHITECT;
+    if (task.type === TaskType.TESTING) return KiloMode.TESTER;
+    if (task.type === TaskType.DEBUG) return KiloMode.DEBUGGER;
+    return KiloMode.CODER;
+  }
+}
+                </pre>
+            </div>
+        </div>
+
+        <!-- API Specifications -->
+        <div class="section">
+            <h2>📡 API Specifications</h2>
+
+            <h3>Core Extension APIs</h3>
+
+            <div class="api-spec">
+                <div class="api-header">
+                    <span class="api-method post">POST</span>
+                    <span class="api-endpoint">/api/tasks/assign</span>
+                </div>
+                <div class="api-body">
+                    <div class="api-description">Assign a task to an optimal AI agent</div>
+                    <div class="api-params">
+                        <h5>Request Parameters</h5>
+                        <div class="param-item">
+                            <span class="param-name">task</span>
+                            <span class="param-desc">Task description and requirements</span>
+                            <span class="param-type">TaskRequest</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-name">context</span>
+                            <span class="param-desc">Project context and relevant files</span>
+                            <span class="param-type">ProjectContext</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-name">preferences</span>
+                            <span class="param-desc">Agent preferences (optional)</span>
+                            <span class="param-type">AgentPreferences?</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-spec">
+                <div class="api-header">
+                    <span class="api-method">GET</span>
+                    <span class="api-endpoint">/api/agents/status</span>
+                </div>
+                <div class="api-body">
+                    <div class="api-description">Get status of all available agents</div>
+                    <div class="api-params">
+                        <h5>Response</h5>
+                        <div class="param-item">
+                            <span class="param-name">agents</span>
+                            <span class="param-desc">Array of agent status objects</span>
+                            <span class="param-type">AgentStatus[]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-spec">
+                <div class="api-header">
+                    <span class="api-method post">POST</span>
+                    <span class="api-endpoint">/api/sessions/create</span>
+                </div>
+                <div class="api-body">
+                    <div class="api-description">Create a new isolated development session</div>
+                    <div class="api-params">
+                        <h5>Request Parameters</h5>
+                        <div class="param-item">
+                            <span class="param-name">name</span>
+                            <span class="param-desc">Session name</span>
+                            <span class="param-type">string</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-name">baseBranch</span>
+                            <span class="param-desc">Git branch to fork from</span>
+                            <span class="param-type">string</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-name">agents</span>
+                            <span class="param-desc">Agents to include in session</span>
+                            <span class="param-type">AgentType[]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Academy Integration APIs</h3>
+
+            <div class="api-spec">
+                <div class="api-header">
+                    <span class="api-method post">POST</span>
+                    <span class="api-endpoint">/api/academy/sync</span>
+                </div>
+                <div class="api-body">
+                    <div class="api-description">Sync project progress with Academy dashboard</div>
+                    <div class="api-params">
+                        <h5>Request Parameters</h5>
+                        <div class="param-item">
+                            <span class="param-name">projectId</span>
+                            <span class="param-desc">Academy project identifier</span>
+                            <span class="param-type">string</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-name">progress</span>
+                            <span class="param-desc">Progress data and metrics</span>
+                            <span class="param-type">ProgressData</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-name">insights</span>
+                            <span class="param-desc">Learning insights and analytics</span>
+                            <span class="param-type">LearningInsights</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Database Schema -->
+        <div class="section">
+            <h2>🗄️ Database Schema</h2>
+
+            <h3>Local SQLite Schema</h3>
+
+            <h4>Tasks Table</h4>
+            <div class="schema-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Constraints</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">PRIMARY KEY</td>
+                            <td>Unique task identifier</td>
+                        </tr>
+                        <tr>
+                            <td>description</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">NOT NULL</td>
+                            <td>Task description</td>
+                        </tr>
+                        <tr>
+                            <td>type</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">NOT NULL</td>
+                            <td>Task category</td>
+                        </tr>
+                        <tr>
+                            <td>assigned_agent</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">NOT NULL</td>
+                            <td>Assigned agent type</td>
+                        </tr>
+                        <tr>
+                            <td>status</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">DEFAULT 'pending'</td>
+                            <td>Task status</td>
+                        </tr>
+                        <tr>
+                            <td>created_at</td>
+                            <td class="field-type">DATETIME</td>
+                            <td class="field-constraint">DEFAULT CURRENT_TIMESTAMP</td>
+                            <td>Creation timestamp</td>
+                        </tr>
+                        <tr>
+                            <td>completed_at</td>
+                            <td class="field-type">DATETIME</td>
+                            <td class="field-constraint">NULL</td>
+                            <td>Completion timestamp</td>
+                        </tr>
+                        <tr>
+                            <td>session_id</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">FOREIGN KEY</td>
+                            <td>Associated session</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>Agent Performance Table</h4>
+            <div class="schema-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Constraints</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td class="field-type">INTEGER</td>
+                            <td class="field-constraint">PRIMARY KEY AUTOINCREMENT</td>
+                            <td>Record ID</td>
+                        </tr>
+                        <tr>
+                            <td>agent_type</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">NOT NULL</td>
+                            <td>Agent identifier</td>
+                        </tr>
+                        <tr>
+                            <td>task_type</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">NOT NULL</td>
+                            <td>Task category</td>
+                        </tr>
+                        <tr>
+                            <td>duration_ms</td>
+                            <td class="field-type">INTEGER</td>
+                            <td class="field-constraint">NOT NULL</td>
+                            <td>Execution time</td>
+                        </tr>
+                        <tr>
+                            <td>success</td>
+                            <td class="field-type">BOOLEAN</td>
+                            <td class="field-constraint">NOT NULL</td>
+                            <td>Task success status</td>
+                        </tr>
+                        <tr>
+                            <td>user_rating</td>
+                            <td class="field-type">INTEGER</td>
+                            <td class="field-constraint">CHECK (user_rating BETWEEN 1 AND 5)</td>
+                            <td>User satisfaction rating</td>
+                        </tr>
+                        <tr>
+                            <td>timestamp</td>
+                            <td class="field-type">DATETIME</td>
+                            <td class="field-constraint">DEFAULT CURRENT_TIMESTAMP</td>
+                            <td>Record timestamp</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>Sessions Table</h4>
+            <div class="schema-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Constraints</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">PRIMARY KEY</td>
+                            <td>Session identifier</td>
+                        </tr>
+                        <tr>
+                            <td>name</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">NOT NULL</td>
+                            <td>Human-readable name</td>
+                        </tr>
+                        <tr>
+                            <td>worktree_path</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">NOT NULL UNIQUE</td>
+                            <td>Git worktree path</td>
+                        </tr>
+                        <tr>
+                            <td>base_branch</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">NOT NULL</td>
+                            <td>Source branch</td>
+                        </tr>
+                        <tr>
+                            <td>status</td>
+                            <td class="field-type">TEXT</td>
+                            <td class="field-constraint">DEFAULT 'active'</td>
+                            <td>Session status</td>
+                        </tr>
+                        <tr>
+                            <td>created_at</td>
+                            <td class="field-type">DATETIME</td>
+                            <td class="field-constraint">DEFAULT CURRENT_TIMESTAMP</td>
+                            <td>Creation timestamp</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="section">
+            <h2>⚙️ Technology Stack</h2>
+
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h4>Core Platform</h4>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <span class="tech-name">TypeScript</span>
+                            <span class="tech-version">^5.4.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">Node.js</span>
+                            <span class="tech-version">^20.11.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">VS Code Extension API</span>
+                            <span class="tech-version">^1.90.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">Webpack</span>
+                            <span class="tech-version">^5.88.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category frontend">
+                    <h4>Frontend & UI</h4>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <span class="tech-name">React</span>
+                            <span class="tech-version">^18.2.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">VS Code Webview API</span>
+                            <span class="tech-version">Latest</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">CSS Modules</span>
+                            <span class="tech-version">^7.0.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">React Hook Form</span>
+                            <span class="tech-version">^7.45.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category backend">
+                    <h4>AI & Integration</h4>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <span class="tech-name">Claude API</span>
+                            <span class="tech-version">v1.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">OpenAI API</span>
+                            <span class="tech-version">^4.0.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">Google AI SDK</span>
+                            <span class="tech-version">^0.3.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">Axios</span>
+                            <span class="tech-version">^1.6.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category data">
+                    <h4>Data & Storage</h4>
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <span class="tech-name">SQLite</span>
+                            <span class="tech-version">^3.42.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">better-sqlite3</span>
+                            <span class="tech-version">^8.7.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">WebSocket</span>
+                            <span class="tech-version">^8.14.0</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">simple-git</span>
+                            <span class="tech-version">^3.20.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Requirements -->
+        <div class="section">
+            <h2>⚡ Performance Requirements</h2>
+
+            <h3>Target Performance Metrics</h3>
+            <div class="perf-metrics">
+                <div class="perf-metric">
+                    <div class="perf-value">&lt; 2s</div>
+                    <div class="perf-label">Task Assignment</div>
+                    <div class="perf-description">Time to assign task to optimal agent</div>
+                </div>
+
+                <div class="perf-metric">
+                    <div class="perf-value">&lt; 500ms</div>
+                    <div class="perf-label">UI Response</div>
+                    <div class="perf-description">Interface responsiveness</div>
+                </div>
+
+                <div class="perf-metric">
+                    <div class="perf-value">&lt; 50MB</div>
+                    <div class="perf-label">Memory Usage</div>
+                    <div class="perf-description">Extension memory footprint</div>
+                </div>
+
+                <div class="perf-metric">
+                    <div class="perf-value">99.5%</div>
+                    <div class="perf-label">Uptime</div>
+                    <div class="perf-description">Extension availability</div>
+                </div>
+
+                <div class="perf-metric">
+                    <div class="perf-value">&lt; 1s</div>
+                    <div class="perf-label">Academy Sync</div>
+                    <div class="perf-description">Dashboard synchronization</div>
+                </div>
+
+                <div class="perf-metric">
+                    <div class="perf-value">5 agents</div>
+                    <div class="perf-label">Concurrent Agents</div>
+                    <div class="perf-description">Simultaneous agent support</div>
+                </div>
+            </div>
+
+            <h3>Performance Optimization Strategies</h3>
+            <ul>
+                <li><strong>Lazy Loading:</strong> Load agents and components on-demand</li>
+                <li><strong>Caching:</strong> Cache agent responses and task classifications</li>
+                <li><strong>Connection Pooling:</strong> Reuse agent API connections</li>
+                <li><strong>Background Processing:</strong> Handle heavy operations in background</li>
+                <li><strong>Memory Management:</strong> Implement proper cleanup and garbage collection</li>
+                <li><strong>Batch Operations:</strong> Group related API calls for efficiency</li>
+            </ul>
+        </div>
+
+        <!-- Security Considerations -->
+        <div class="section">
+            <h2>🔒 Security Considerations</h2>
+
+            <div class="security-item">
+                <div class="security-title">API Key Management</div>
+                <div class="security-desc">
+                    All AI service API keys are stored in VS Code's secure credential store using the SecretStorage API.
+                    Keys are encrypted at rest and never logged or transmitted in plain text.
+                </div>
+            </div>
+
+            <div class="security-item">
+                <div class="security-title">Code Isolation</div>
+                <div class="security-desc">
+                    Each session operates in an isolated git worktree to prevent cross-contamination of codebases.
+                    Agent operations are sandboxed and cannot access files outside the designated workspace.
+                </div>
+            </div>
+
+            <div class="security-item">
+                <div class="security-title">Data Privacy</div>
+                <div class="security-desc">
+                    User code and project data are only transmitted to AI services with explicit consent.
+                    Sensitive information (credentials, secrets) is automatically filtered before API calls.
+                </div>
+            </div>
+
+            <div class="security-item">
+                <div class="security-title">Network Security</div>
+                <div class="security-desc">
+                    All external API communications use HTTPS with certificate validation.
+                    Academy dashboard sync uses authenticated WebSocket connections with token-based auth.
+                </div>
+            </div>
+
+            <div class="security-item">
+                <div class="security-title">Input Validation</div>
+                <div class="security-desc">
+                    All user inputs and API responses are validated and sanitized to prevent injection attacks.
+                    Task descriptions and code snippets are filtered for malicious content.
+                </div>
+            </div>
+        </div>
+
+        <!-- Testing Strategy -->
+        <div class="section">
+            <h2>🧪 Testing Strategy</h2>
+
+            <h3>Test Categories</h3>
+
+            <h4>Unit Tests</h4>
+            <div class="code-block">
+                <div class="code-header">tests/unit/orchestrator.test.ts</div>
+                <pre>
+describe('AgentOrchestrator', () => {
+  let orchestrator: AgentOrchestrator;
+
+  beforeEach(() => {
+    orchestrator = new AgentOrchestrator();
+  });
+
+  it('should assign tasks to optimal agents', async () => {
+    const task = new Task({
+      type: TaskType.CODE_ANALYSIS,
+      description: 'Analyze function complexity'
+    });
+
+    const assignment = await orchestrator.assignTask(task);
+
+    expect(assignment.agent.type).toBe(AgentType.CLAUDE_CODE);
+    expect(assignment.confidence).toBeGreaterThan(0.8);
+  });
+
+  it('should handle agent unavailability', async () => {
+    // Mock Claude Code as unavailable
+    mockAgentUnavailable(AgentType.CLAUDE_CODE);
+
+    const task = new Task({
+      type: TaskType.CODE_ANALYSIS,
+      description: 'Analyze function complexity'
+    });
+
+    const assignment = await orchestrator.assignTask(task);
+
+    expect(assignment.agent.type).not.toBe(AgentType.CLAUDE_CODE);
+  });
+});
+                </pre>
+            </div>
+
+            <h4>Integration Tests</h4>
+            <div class="code-block">
+                <div class="code-header">tests/integration/session-management.test.ts</div>
+                <pre>
+describe('Session Management Integration', () => {
+  it('should create isolated sessions with git worktrees', async () => {
+    const sessionManager = new SessionManager();
+
+    const session = await sessionManager.createSession({
+      name: 'test-session',
+      baseBranch: 'main'
+    });
+
+    // Verify worktree creation
+    expect(fs.existsSync(session.worktree.path)).toBe(true);
+
+    // Verify git isolation
+    const gitStatus = await git.status({ dir: session.worktree.path });
+    expect(gitStatus.current).toBe('test-session');
+
+    // Cleanup
+    await sessionManager.destroySession(session.id);
+  });
+});
+                </pre>
+            </div>
+
+            <h3>Test Coverage Requirements</h3>
+            <ul>
+                <li><strong>Unit Tests:</strong> 90%+ code coverage</li>
+                <li><strong>Integration Tests:</strong> All critical workflows</li>
+                <li><strong>E2E Tests:</strong> Complete user journeys</li>
+                <li><strong>Performance Tests:</strong> Load and stress testing</li>
+                <li><strong>Security Tests:</strong> Penetration and vulnerability testing</li>
+            </ul>
+        </div>
+
+        <!-- Deployment & Distribution -->
+        <div class="section">
+            <h2>🚀 Deployment & Distribution</h2>
+
+            <h3>Build Process</h3>
+            <div class="code-block">
+                <div class="code-header">package.json - Build Scripts</div>
+                <pre>
+{
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "webpack --mode production",
+    "compile:dev": "webpack --mode development",
+    "watch": "webpack --mode development --watch",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src --ext .ts",
+    "package": "vsce package",
+    "publish": "vsce publish",
+    "deploy:academy": "npm run package && cp *.vsix ../academy-marketplace/"
+  }
+}
+                </pre>
+            </div>
+
+            <h3>Distribution Channels</h3>
+            <ul>
+                <li><strong>VS Code Marketplace:</strong> Public distribution for general users</li>
+                <li><strong>Academy Marketplace:</strong> Private distribution for Academy students</li>
+                <li><strong>GitHub Releases:</strong> Open source version and releases</li>
+                <li><strong>Direct Installation:</strong> VSIX files for enterprise users</li>
+            </ul>
+
+            <h3>Version Management</h3>
+            <div class="code-block">
+                <div class="code-header">Semantic Versioning Strategy</div>
+                <pre>
+MAJOR.MINOR.PATCH
+
+Major (X.0.0): Breaking changes, API changes
+Minor (0.X.0): New features, agent additions
+Patch (0.0.X): Bug fixes, performance improvements
+
+Examples:
+1.0.0 - Initial public release
+1.1.0 - Add Gemini agent support
+1.1.1 - Fix task assignment bug
+2.0.0 - New orchestration engine (breaking)
+                </pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

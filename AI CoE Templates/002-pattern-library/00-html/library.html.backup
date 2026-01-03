@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Pattern Library - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link active">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container section" role="main">
+        <header class="mb-lg">
+            <h1>Pattern Library</h1>
+            <p>Comprehensive collection of AI design patterns and configurations</p>
+        </header>
+
+        <section class="mb-xl">
+            <h2 id="horizontal-patterns"><i data-lucide="layers"></i> Horizontal Design Patterns</h2>
+            <p class="text-secondary mb-lg">Cross-industry AI solutions that can be applied across various business domains and sectors. These patterns provide foundational capabilities that deliver value regardless of industry vertical.</p>
+            
+            <h3 id="03-data-intelligence">03 Data Intelligence</h3>
+            <p class="text-secondary mb-md">Extract insights and knowledge from structured and unstructured data using advanced AI techniques including computer vision, natural language processing, and multi-modal analytics.</p>
+            <div class="grid grid-cols-2 mb-md">
+                    <div class="card">
+                        <h4><a href="13-solution-knowledge-mining.html">Design Pattern 13: Knowledge Mining & Discovery</a></h4>
+                        <p class="text-secondary mb-sm">Automatically extract, categorize, and connect insights from vast document repositories and knowledge bases using advanced NLP and graph analytics.</p>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="13-discovery-questions-knowledge-mining.html" class="btn btn-secondary">Questions</a><a href="13-bill-of-materials-knowledge-mining.html" class="btn btn-secondary">BOM</a><a href="13-technical-architecture-knowledge-mining.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="15-solution-multimodal-analytics.html">Design Pattern 15: Multi-Modal AI Analytics</a></h4>
+                        <p class="text-secondary mb-sm">Combine and analyze multiple data types (text, images, video, audio, sensor data) to provide comprehensive insights and enable richer AI decision-making.</p>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="15-discovery-questions-multimodal-analytics.html" class="btn btn-secondary">Questions</a><a href="15-bill-of-materials-multimodal-analytics.html" class="btn btn-secondary">BOM</a><a href="15-technical-architecture-multimodal-analytics.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="04-solution-visual-intelligence.html">Design Pattern 4: Visual Intelligence & Automation</a></h4>
+                        <p class="text-secondary mb-sm">Deploy computer vision capabilities for image recognition, object detection, quality inspection, and automated visual analysis across business processes.</p>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="04-discovery-questions-visual-intelligence.html" class="btn btn-secondary">Questions</a><a href="04-bill-of-materials-visual-intelligence.html" class="btn btn-secondary">BOM</a><a href="04-technical-architecture-visual-intelligence.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="08-solution-document-processing.html">Design Pattern 8: Intelligent Document Processing</a></h4>
+                        <p class="text-secondary mb-sm">Automate extraction, classification, and processing of information from documents using OCR, NLP, and machine learning for enhanced data workflows.</p>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="08-bill-of-materials-document-processing.html" class="btn btn-secondary">BOM</a><a href="08-technical-architecture-document-processing.html" class="btn btn-secondary">Architecture</a><a href="08-discovery-questions-document-processing.html" class="btn btn-secondary">Questions</a></div></div></div>
+            
+            <h3 id="02-customer-experience">02 Customer Experience</h3>
+            <p class="text-secondary mb-md">Enhance customer interactions and engagement through AI-powered personalization, content generation, conversational interfaces, and intelligent communication systems.</p>
+            <div class="grid grid-cols-2 mb-md">
+                    <div class="card">
+                        <h4><a href="11-solution-conversational-commerce.html">Design Pattern 11: Conversational Commerce & Services</a></h4>
+                        <p class="text-secondary mb-sm">Enable natural language interactions for commerce and customer service through intelligent chatbots, voice assistants, and conversational AI interfaces.</p>
+                        <p class="text-secondary">Pattern #11</p>
+                        <div class="flex mt-sm">
+                    <a href="11-discovery-questions-conversational-commerce.html" class="btn btn-secondary">Questions</a><a href="11-technical-architecture-conversational-commerce.html" class="btn btn-secondary">Architecture</a><a href="11-bill-of-materials-conversational-commerce.html" class="btn btn-secondary">BOM</a></div></div>
+                    <div class="card">
+                        <h4><a href="02-solution-language-understanding.html">Design Pattern 2: Language Understanding & Communication</a></h4>
+                        <p class="text-secondary mb-sm">Process and understand human language through advanced NLP techniques for sentiment analysis, intent recognition, and multilingual communication.</p>
+                        <p class="text-secondary">Pattern #02</p>
+                        <div class="flex mt-sm">
+                    <a href="02-technical-architecture-language-understanding.html" class="btn btn-secondary">Architecture</a><a href="02-bill-of-materials-language-understanding.html" class="btn btn-secondary">BOM</a><a href="02-discovery-questions-language-understanding.html" class="btn btn-secondary">Questions</a></div></div>
+                    <div class="card">
+                        <h4><a href="01-solution-content-generation.html">Design Pattern 1: Content Generation & Management</a></h4>
+                        <p class="text-secondary mb-sm">Automatically generate, optimize, and manage content across multiple formats and channels using generative AI and content management workflows.</p>
+                        <p class="text-secondary">Pattern #01</p>
+                        <div class="flex mt-sm">
+                    <a href="01-bill-of-materials-content-generation.html" class="btn btn-secondary">BOM</a><a href="01-discovery-questions-content-generation.html" class="btn btn-secondary">Questions</a><a href="01-technical-architecture-content-generation.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="09-solution-personalization-engine.html">Design Pattern 9: Real-time Personalization Engine</a></h4>
+                        <p class="text-secondary mb-sm">Deliver personalized experiences in real-time using machine learning to analyze user behavior, preferences, and context for dynamic content and recommendations.</p>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="09-bill-of-materials-personalization-engine.html" class="btn btn-secondary">BOM</a><a href="09-technical-architecture-personalization-engine.html" class="btn btn-secondary">Architecture</a><a href="09-discovery-questions-personalization-engine.html" class="btn btn-secondary">Questions</a></div></div></div><h3 id="06-business-process-intelligence">06 Business Process Intelligence</h3><div class="grid grid-cols-2 mb-md">
+                    <div class="card">
+                        <h4><a href="19-solution-procurement-intelligence.html">Design Pattern 19: Intelligent Procurement & Supply Chain Optimization</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="19-technical-architecture-procurement-intelligence.html" class="btn btn-secondary">Architecture</a><a href="19-discovery-questions-procurement-intelligence.html" class="btn btn-secondary">Questions</a><a href="19-bill-of-materials-procurement-intelligence.html" class="btn btn-secondary">BOM</a></div></div>
+                    <div class="card">
+                        <h4><a href="21-solution-insurance-rate-modeling.html">Design Pattern 21: Intelligent Insurance Rate Modeling</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="21-discovery-questions-insurance-rate-modeling.html" class="btn btn-secondary">Questions</a><a href="21-technical-architecture-insurance-rate-modeling.html" class="btn btn-secondary">Architecture</a><a href="21-bill-of-materials-insurance-rate-modeling.html" class="btn btn-secondary">BOM</a></div></div></div><h3 id="08-regulatory-intelligence">08 Regulatory Intelligence</h3><div class="grid grid-cols-2 mb-md">
+                    <div class="card">
+                        <h4><a href="30-solution-privacy-preserving-ai-analytics.html">Pattern 30: Privacy-Preserving AI Analytics</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="30-discovery-questions-privacy-preserving-ai-analytics.html" class="btn btn-secondary">Questions</a><a href="30-technical-architecture-privacy-preserving-ai-analytics.html" class="btn btn-secondary">Architecture</a><a href="30-bill-of-materials-privacy-preserving-ai-analytics.html" class="btn btn-secondary">BOM</a></div></div>
+                    <div class="card">
+                        <h4><a href="34-solution-ai-compliance-navigator.html">Pattern 34: AI Compliance Navigator</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="34-technical-architecture-ai-compliance-navigator.html" class="btn btn-secondary">Architecture</a><a href="34-discovery-questions-ai-compliance-navigator.html" class="btn btn-secondary">Questions</a><a href="34-bill-of-materials-ai-compliance-navigator.html" class="btn btn-secondary">BOM</a></div></div></div><h3 id="01-intelligent-operations">01 Intelligent Operations</h3><div class="grid grid-cols-2 mb-md">
+                    <div class="card">
+                        <h4><a href="06-solution-orchestration-workflow.html">Design Pattern 6: Intelligent Orchestration & Workflow Automation</a></h4>
+                        <p class="text-secondary">Pattern #06</p>
+                        <div class="flex mt-sm">
+                    <a href="06-bill-of-materials-orchestration-workflow.html" class="btn btn-secondary">BOM</a><a href="06-technical-architecture-orchestration-workflow.html" class="btn btn-secondary">Architecture</a><a href="06-discovery-questions-orchestration-workflow.html" class="btn btn-secondary">Questions</a></div></div>
+                    <div class="card">
+                        <h4><a href="03-solution-decision-support.html">Design Pattern 3: Intelligent Decision Support</a></h4>
+                        <p class="text-secondary">Pattern #03</p>
+                        <div class="flex mt-sm">
+                    <a href="03-technical-architecture-decision-support.html" class="btn btn-secondary">Architecture</a><a href="03-discovery-questions-decision-support.html" class="btn btn-secondary">Questions</a><a href="03-bill-of-materials-decision-support.html" class="btn btn-secondary">BOM</a></div></div>
+                    <div class="card">
+                        <h4><a href="07-solution-predictive-operations.html">Design Pattern 7: Predictive Operations & Maintenance</a></h4>
+                        <p class="text-secondary">Pattern #07</p>
+                        <div class="flex mt-sm">
+                    <a href="07-technical-architecture-predictive-operations.html" class="btn btn-secondary">Architecture</a><a href="07-discovery-questions-predictive-operations.html" class="btn btn-secondary">Questions</a><a href="07-bill-of-materials-predictive-operations.html" class="btn btn-secondary">BOM</a></div></div>
+                    <div class="card">
+                        <h4><a href="14-solution-autonomous-optimization.html">Design Pattern 14: Autonomous Process Optimization</a></h4>
+                        <p class="text-secondary">Pattern #14</p>
+                        <div class="flex mt-sm">
+                    <a href="14-discovery-questions-autonomous-optimization.html" class="btn btn-secondary">Questions</a><a href="14-bill-of-materials-autonomous-optimization.html" class="btn btn-secondary">BOM</a><a href="14-technical-architecture-autonomous-optimization.html" class="btn btn-secondary">Architecture</a></div></div></div><h3 id="04-platform-enablement">04 Platform Enablement</h3><div class="grid grid-cols-2 mb-md">
+                    <div class="card">
+                        <h4><a href="10-solution-security-compliance.html">Design Pattern 10: AI-Powered Security & Compliance</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="10-discovery-questions-security-compliance.html" class="btn btn-secondary">Questions</a><a href="10-bill-of-materials-security-compliance.html" class="btn btn-secondary">BOM</a><a href="10-technical-architecture-security-compliance.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="12-solution-synthetic-data.html">Design Pattern 12: Synthetic Data & Testing</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="12-discovery-questions-synthetic-data.html" class="btn btn-secondary">Questions</a><a href="12-technical-architecture-synthetic-data.html" class="btn btn-secondary">Architecture</a><a href="12-bill-of-materials-synthetic-data.html" class="btn btn-secondary">BOM</a></div></div>
+                    <div class="card">
+                        <h4><a href="05-solution-rapid-innovation.html">Design Pattern 5: Rapid Innovation & Experimentation</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="05-discovery-questions-rapid-innovation.html" class="btn btn-secondary">Questions</a><a href="05-technical-architecture-rapid-innovation.html" class="btn btn-secondary">Architecture</a><a href="05-bill-of-materials-rapid-innovation.html" class="btn btn-secondary">BOM</a></div></div></div><h3 id="05-ai-infrastructure">05 Ai Infrastructure</h3><div class="grid grid-cols-2 mb-md">
+                    <div class="card">
+                        <h4><a href="17-solution-model-lifecycle-management.html">Design Pattern 17: AI Model Lifecycle Management (MLOps)</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="17-discovery-questions-model-lifecycle-management.html" class="btn btn-secondary">Questions</a><a href="17-technical-architecture-model-lifecycle-management.html" class="btn btn-secondary">Architecture</a><a href="17-bill-of-materials-model-lifecycle-management.html" class="btn btn-secondary">BOM</a></div></div>
+                    <div class="card">
+                        <h4><a href="18-solution-ai-governance-compliance.html">Design Pattern 18: AI Governance & Compliance Framework</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="18-discovery-questions-ai-governance-compliance.html" class="btn btn-secondary">Questions</a><a href="18-bill-of-materials-ai-governance-compliance.html" class="btn btn-secondary">BOM</a><a href="18-technical-architecture-ai-governance-compliance.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="20-solution-performance-optimization.html">Design Pattern 20: AI Performance Optimization & Auto-Scaling</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="20-technical-architecture-performance-optimization.html" class="btn btn-secondary">Architecture</a><a href="20-discovery-questions-performance-optimization.html" class="btn btn-secondary">Questions</a><a href="20-bill-of-materials-performance-optimization.html" class="btn btn-secondary">BOM</a></div></div>
+                    <div class="card">
+                        <h4><a href="16-solution-multicloud-orchestration.html">Design Pattern 16: Multi-Cloud AI Orchestration</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="16-technical-architecture-multicloud-orchestration.html" class="btn btn-secondary">Architecture</a><a href="16-discovery-questions-multicloud-orchestration.html" class="btn btn-secondary">Questions</a><a href="16-bill-of-materials-multicloud-orchestration.html" class="btn btn-secondary">BOM</a></div></div></div></section><section class="mb-xl"><h2 id="vertical-patterns"><i data-lucide="target"></i> Vertical Design Patterns</h2><h3 id="10-energy-distribution-intelligence">10 Energy Distribution Intelligence</h3><div class="grid grid-cols-2 mb-md">
+                    <div class="card">
+                        <h4><a href="23-solution-regulatory-compliance-energy.html">Pattern 23: Regulatory Compliance & Reporting for Energy</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="23-bill-of-materials-regulatory-compliance-energy.html" class="btn btn-secondary">BOM</a><a href="23-technical-architecture-regulatory-compliance-energy.html" class="btn btn-secondary">Architecture</a><a href="23-discovery-questions-regulatory-compliance-energy.html" class="btn btn-secondary">Questions</a></div></div>
+                    <div class="card">
+                        <h4><a href="21-solution-energy-market-trading.html">Pattern 21: Energy Market Trading & Optimization</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="21-discovery-questions-energy-market-trading.html" class="btn btn-secondary">Questions</a><a href="21-bill-of-materials-energy-market-trading.html" class="btn btn-secondary">BOM</a><a href="21-technical-architecture-energy-market-trading.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="28-solution-gis-intelligence.html">Pattern 28: Geographic Information Systems (GIS) Intelligence</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="28-technical-architecture-gis-intelligence.html" class="btn btn-secondary">Architecture</a><a href="28-bill-of-materials-gis-intelligence.html" class="btn btn-secondary">BOM</a><a href="28-discovery-questions-gis-intelligence.html" class="btn btn-secondary">Questions</a></div></div>
+                    <div class="card">
+                        <h4><a href="24-solution-multi-modal-energy-data-fusion.html">Pattern 24: Multi-Modal Energy Data Fusion</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="24-bill-of-materials-multi-modal-energy-data-fusion.html" class="btn btn-secondary">BOM</a><a href="24-technical-architecture-multi-modal-energy-data-fusion.html" class="btn btn-secondary">Architecture</a><a href="24-discovery-questions-multi-modal-energy-data-fusion.html" class="btn btn-secondary">Questions</a></div></div>
+                    <div class="card">
+                        <h4><a href="26-solution-energy-customer-analytics.html">Pattern 26: Energy Customer Analytics & Engagement</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="26-discovery-questions-energy-customer-analytics.html" class="btn btn-secondary">Questions</a><a href="26-bill-of-materials-energy-customer-analytics.html" class="btn btn-secondary">BOM</a><a href="26-technical-architecture-energy-customer-analytics.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="25-solution-smart-grid-resilience.html">Pattern 25: Smart Grid Resilience & Self-Healing</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="25-bill-of-materials-smart-grid-resilience.html" class="btn btn-secondary">BOM</a><a href="25-technical-architecture-smart-grid-resilience.html" class="btn btn-secondary">Architecture</a><a href="25-discovery-questions-smart-grid-resilience.html" class="btn btn-secondary">Questions</a></div></div></div><h3 id="09-genomic-public-health-intelligence">09 Genomic Public Health Intelligence</h3><div class="grid grid-cols-2 mb-md">
+                    <div class="card">
+                        <h4><a href="26-solution-genomic-sequence-processing.html">Design Pattern 26: Genomic Sequence Processing & Analysis</a></h4>
+                        <p class="text-secondary">Pattern #26</p>
+                        <div class="flex mt-sm">
+                    <a href="26-discovery-questions-genomic-sequence-processing.html" class="btn btn-secondary">Questions</a><a href="26-bill-of-materials-genomic-sequence-processing.html" class="btn btn-secondary">BOM</a><a href="26-technical-architecture-genomic-sequence-processing.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="31-solution-pathogen-evolution-tracking.html">Pattern 31: Pathogen Evolution & Transmission Tracking</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="31-discovery-questions-pathogen-evolution-tracking.html" class="btn btn-secondary">Questions</a><a href="31-technical-architecture-pathogen-evolution-tracking.html" class="btn btn-secondary">Architecture</a><a href="31-bill-of-materials-pathogen-evolution-tracking.html" class="btn btn-secondary">BOM</a></div></div>
+                    <div class="card">
+                        <h4><a href="32-solution-population-genomics-privacy.html">Pattern 17: Population Genomics & Privacy-Preserving Analytics</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="32-discovery-questions-population-genomics-privacy.html" class="btn btn-secondary">Questions</a><a href="32-bill-of-materials-population-genomics-privacy.html" class="btn btn-secondary">BOM</a><a href="32-technical-architecture-population-genomics-privacy.html" class="btn btn-secondary">Architecture</a></div></div>
+                    <div class="card">
+                        <h4><a href="33-solution-regulatory-genomic-compliance.html">Pattern 20: Regulatory Genomic Compliance & Reporting</a></h4>
+                        <p class="text-secondary">Pattern #N/A</p>
+                        <div class="flex mt-sm">
+                    <a href="33-technical-architecture-regulatory-genomic-compliance.html" class="btn btn-secondary">Architecture</a><a href="33-bill-of-materials-regulatory-genomic-compliance.html" class="btn btn-secondary">BOM</a><a href="33-discovery-questions-regulatory-genomic-compliance.html" class="btn btn-secondary">Questions</a></div></div></div></section><section><h2 id="configurations"><i data-lucide="settings"></i> Configurations</h2><div class="grid grid-cols-3">
+            <div class="card">
+                <h4><a href="05-workflow-orchestration-config.html">Workflow Orchestration Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="05-workflow-orchestration-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="04-personalization-engine-config.html">Personalization Engine Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="04-personalization-engine-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="11-regulatory-compliance-config.html">Regulatory Compliance Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="11-regulatory-compliance-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="12-integration-patterns-config.html">Integration Patterns Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="12-integration-patterns-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="08-realtime-streaming-config.html">Real-Time Streaming Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="08-realtime-streaming-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="03-fraud-detection-algorithm-config.html">Fraud Detection Algorithm Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="03-fraud-detection-algorithm-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="10-model-performance-optimization-config.html">Model Performance Optimization Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="10-model-performance-optimization-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="09-synthetic-data-generation-config.html">Synthetic Data Generation Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="09-synthetic-data-generation-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="02-computer-vision-optimization-config.html">Computer Vision Optimization Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="02-computer-vision-optimization-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="07-multilingual-nlp-config.html">Multi-Language NLP Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="07-multilingual-nlp-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="06-predictive-analytics-config.html">Predictive Analytics Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="06-predictive-analytics-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            
+            <div class="card">
+                <h4><a href="01-ocr-model-selection-config.html">OCR Model Selection Configuration</a></h4>
+                <p class="text-secondary">Configuration guide</p>
+                <a href="01-ocr-model-selection-config.html" class="btn btn-primary mt-sm">View Config</a>
+            </div>
+            </div></section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:15 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

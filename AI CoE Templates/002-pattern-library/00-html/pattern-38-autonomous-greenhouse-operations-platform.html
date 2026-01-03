@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Pattern 38: Autonomous Greenhouse Operations Platform - Oracle AI Pattern Library</title>
+    <link rel="stylesheet" href="006-oracle-aicoe-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-brand">
+                <i data-lucide="wrench"></i> Oracle AI Pattern Library
+            </a>
+                <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="roadmap.html" class="nav-link">Roadmap</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="section">
+            <div class="container-reading">
+        
+        <div class="breadcrumbs mb-md">
+            <p class="text-secondary"><a href="../index.html">Pattern Library</a> / Roadmap</p>
+        </div>
+        
+        <article class="card">
+            <h1 id="pattern-38-autonomous-greenhouse-operations-platform">Pattern 38: Autonomous Greenhouse Operations Platform</h1>
+<p><metadata>
+  pattern_id: "38"
+  pattern_name: "Autonomous Greenhouse Operations Platform"
+  category: "Vertical - Agriculture/Sustainability"
+  subcategory: "Autonomous Agricultural Operations"
+  priority: "Medium-High"
+  maturity_level: "Concept"
+  last_updated: "2025-01-23"
+  version: "1.0"
+  document_type: "Candidate Pattern"
+  source_customer: "Advanced Agriculture Operations Use Case"
+  market_demand: "Growing"
+  business_impact: "High"
+</metadata></p>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>The Autonomous Greenhouse Operations Platform pattern addresses the critical challenges of modern agricultural operations through comprehensive AI automation, predictive analytics, and multi-agent system coordination. This pattern transforms traditional labor-intensive greenhouse management into a fully autonomous, intelligent system capable of managing complete crop cycles, optimizing resource utilization, ensuring food safety compliance, and delivering sustainable agricultural outcomes with minimal human intervention.</p>
+<h3 id="key-value-proposition">Key Value Proposition</h3>
+<ul>
+<li><strong>50-70% reduction</strong> in manual labor requirements through autonomous management</li>
+<li><strong>Multi-agent AI coordination</strong> managing climate, irrigation, health monitoring, logistics, and safety systems</li>
+<li><strong>Predictive maintenance</strong> with 72-hour advance notice and 91.8% confidence</li>
+<li><strong>Resource optimization</strong> achieving 30-45% energy cost reduction and 25-35% water efficiency improvement</li>
+<li><strong>Food safety intelligence</strong> with real-time contamination prevention and blockchain audit trails</li>
+<li><strong>Autonomous crop cycle management</strong> with 95% consistency in operational best practices implementation</li>
+</ul>
+<h2 id="business-problem-analysis">Business Problem Analysis</h2>
+<h3 id="current-state-challenges">Current State Challenges</h3>
+<p><strong>Labor Shortages and Skills Gap</strong>
+- Agricultural labor shortages increasing costs by 25-40% globally
+- Specialized greenhouse management expertise increasingly difficult to find and retain
+- Manual decision-making insufficient for processing volume and velocity of modern greenhouse data
+- Inconsistent implementation of best practices due to human variability</p>
+<p><strong>Operational Complexity and Inefficiency</strong>
+- 15-20% unplanned downtime due to equipment failures
+- Energy and water representing 40-60% of operational costs with suboptimal utilization
+- Manual monitoring limited to 2-3 times per week leading to delayed issue detection
+- Reactive approach to problems resulting in 10-15% crop loss from preventable issues</p>
+<p><strong>Food Safety and Compliance Challenges</strong>
+- Manual inspection protocols insufficient for modern food safety requirements
+- Contamination incidents can result in facility shutdowns and multi-million dollar recalls
+- Difficulty maintaining comprehensive audit trails and compliance documentation
+- Real-time contamination detection capabilities lacking</p>
+<p><strong>Resource Management and Sustainability</strong>
+- Static scheduling and reactive controls missing dynamic optimization opportunities
+- Limited integration of renewable energy and sustainable practices
+- Difficulty achieving carbon-neutral operations despite increasing regulatory requirements
+- Inefficient resource allocation during varying demand periods</p>
+<h3 id="market-context">Market Context</h3>
+<p>The global smart greenhouse market is projected to reach $5.6 billion by 2027, driven by increasing food security concerns, labor shortages, and sustainability requirements. Controlled environment agriculture (CEA) is experiencing 15-20% annual growth, with autonomous systems representing the fastest-growing segment.</p>
+<h3 id="gap-analysis-vs-existing-patterns">Gap Analysis vs Existing Patterns</h3>
+<p><strong>Pattern 7 (Predictive Operations)</strong>: Covers predictive maintenance but lacks agricultural domain specifics and multi-agent coordination
+<strong>Pattern 14 (Autonomous Optimization)</strong>: Addresses optimization but not comprehensive agricultural operations management
+<strong>Pattern 15 (Multi-Modal Analytics)</strong>: Provides sensor fusion but not agriculture-specific autonomous decision-making</p>
+<h2 id="technical-architecture">Technical Architecture</h2>
+<h3 id="core-aiml-components">Core AI/ML Components</h3>
+<p><strong>1. Multi-Agent Coordination System</strong>
+- <strong>Climate Control Agent</strong>: Temperature, humidity, CO2, and lighting management with environmental optimization
+- <strong>Irrigation Management Agent</strong>: Water and nutrient delivery with precision agriculture techniques
+- <strong>Health Monitoring Agent</strong>: Plant disease detection, pest management, and growth optimization
+- <strong>Logistics Coordination Agent</strong>: Inventory management, scheduling, and supply chain optimization
+- <strong>Safety and Compliance Agent</strong>: Food safety monitoring, regulatory compliance, and audit trail generation</p>
+<p><strong>2. Predictive Analytics and Maintenance Engine</strong>
+- <strong>Equipment Health Monitoring</strong>: IoT sensor integration with vibration, temperature, pressure, and flow rate analysis
+- <strong>Failure Prediction Models</strong>: LSTM neural networks and ensemble methods predicting equipment failures 24-72 hours in advance
+- <strong>Resource Demand Forecasting</strong>: Time series analysis predicting water, energy, and nutrient requirements
+- <strong>Crop Yield Prediction</strong>: Computer vision and growth modeling for harvest planning and quality assessment</p>
+<p><strong>3. Computer Vision and Monitoring Systems</strong>
+- <strong>Multi-Spectral Plant Analysis</strong>: RGB, hyperspectral, and thermal imaging for comprehensive plant health assessment
+- <strong>Disease and Pest Detection</strong>: Deep learning models (YOLO, ResNet) with 98.5% accuracy in pathogen identification
+- <strong>Growth Stage Classification</strong>: Automated phenotyping and developmental stage recognition
+- <strong>Quality Assessment</strong>: Automated grading and quality control with market prediction integration</p>
+<p><strong>4. Resource Optimization Intelligence</strong>
+- <strong>Energy Management</strong>: Dynamic pricing integration with renewable energy optimization and grid services participation
+- <strong>Water Use Optimization</strong>: Precision irrigation with real-time plant stress monitoring and weather integration
+- <strong>Climate Optimization</strong>: Multi-objective optimization balancing growth conditions, energy efficiency, and resource utilization
+- <strong>Supply Chain Intelligence</strong>: Predictive ordering, inventory optimization, and logistics coordination</p>
+<h3 id="oracle-cloud-integration-architecture">Oracle Cloud Integration Architecture</h3>
+<p><strong>AI/ML and Compute Services</strong>
+- OCI AI Vision Service for plant health and quality assessment
+- OCI Data Science for custom agricultural analytics models
+- OCI GPU instances for computer vision processing and complex optimization
+- OCI Functions for event-driven automation and response systems</p>
+<p><strong>IoT and Edge Computing</strong>
+- Oracle IoT Intelligent Applications for sensor data integration and edge processing
+- OCI Edge Services for local processing and reduced latency
+- Oracle Mobile Hub for field worker applications and remote monitoring
+- OCI Streaming for real-time sensor data processing</p>
+<p><strong>Data Management and Analytics</strong>
+- Oracle Database 23ai with spatial data support for greenhouse mapping and optimization
+- Oracle Analytics Cloud for operational dashboards and business intelligence
+- OCI Object Storage for historical data, images, and compliance documentation
+- Oracle Blockchain Platform for food safety audit trails and supply chain transparency</p>
+<p><strong>Integration and Automation</strong>
+- Oracle Integration Cloud for agricultural equipment and system connectivity
+- Oracle Process Automation for workflow orchestration and approval processes
+- OCI Events for real-time response and coordination between agents
+- OCI Monitoring and Logging for comprehensive operational visibility</p>
+<h3 id="specialized-agricultural-integrations">Specialized Agricultural Integrations</h3>
+<p><strong>Environmental Control Systems</strong>
+- HVAC system integration for climate management
+- LED lighting system control with spectrum optimization
+- CO2 injection system management
+- Irrigation and fertigation system automation</p>
+<p><strong>Monitoring and Sensor Networks</strong>
+- Soil moisture and nutrient sensors
+- Environmental monitoring (temperature, humidity, CO2, light)
+- Plant health and growth monitoring systems
+- Water quality and treatment system sensors</p>
+<h2 id="implementation-methodology">Implementation Methodology</h2>
+<h3 id="phase-1-foundation-and-basic-automation-months-1-6">Phase 1: Foundation and Basic Automation (Months 1-6)</h3>
+<p><strong>Objectives</strong>: Establish core infrastructure and predictive maintenance capabilities</p>
+<p><strong>Key Activities</strong>:
+- Deploy Oracle Cloud infrastructure and IoT integration platform
+- Implement basic sensor networks and environmental monitoring
+- Establish predictive maintenance capabilities for critical equipment
+- Create initial computer vision systems for plant health monitoring
+- Deploy basic climate control automation</p>
+<p><strong>Success Metrics</strong>:
+- 90% reduction in unplanned equipment downtime
+- Basic automation of climate control systems
+- Computer vision deployment with 95% plant health detection accuracy
+- Foundation for advanced AI capabilities established</p>
+<p><strong>Investment</strong>: $500K-$750K
+<strong>Expected ROI</strong>: 150-200% within 18 months</p>
+<h3 id="phase-2-intelligence-and-crop-optimization-months-7-12">Phase 2: Intelligence and Crop Optimization (Months 7-12)</h3>
+<p><strong>Objectives</strong>: Deploy advanced AI capabilities and automated crop management</p>
+<p><strong>Key Activities</strong>:
+- Implement multi-agent coordination system
+- Deploy advanced computer vision for disease detection and quality assessment
+- Establish resource optimization engines for energy and water management
+- Create automated crop cycle management capabilities
+- Implement predictive analytics for yield optimization</p>
+<p><strong>Success Metrics</strong>:
+- 85% reduction in crop loss from disease and pests
+- 30-45% reduction in energy costs through optimization
+- 25-35% improvement in water use efficiency
+- Automated crop cycle management with 95% consistency</p>
+<p><strong>Investment</strong>: $300K-$500K
+<strong>Expected ROI</strong>: 200-300% within 24 months</p>
+<h3 id="phase-3-autonomy-and-advanced-intelligence-months-13-18">Phase 3: Autonomy and Advanced Intelligence (Months 13-18)</h3>
+<p><strong>Objectives</strong>: Achieve full autonomous operations and advanced AI capabilities</p>
+<p><strong>Key Activities</strong>:
+- Deploy complete multi-agent autonomous management system
+- Implement advanced food safety and compliance automation
+- Establish blockchain-based audit trails and supply chain integration
+- Create advanced predictive analytics for market optimization
+- Deploy continuous learning and system optimization capabilities</p>
+<p><strong>Success Metrics</strong>:
+- 50-70% reduction in manual labor requirements
+- 90% reduction in contamination incidents
+- Complete autonomous crop cycle management
+- Advanced market integration and optimization</p>
+<p><strong>Investment</strong>: $400K-$600K
+<strong>Expected ROI</strong>: 300-500% within 36 months</p>
+<h2 id="use-case-scenarios">Use Case Scenarios</h2>
+<h3 id="scenario-1-autonomous-disease-prevention-and-management">Scenario 1: Autonomous Disease Prevention and Management</h3>
+<p><strong>Context</strong>: AI detection system identifies early signs of bacterial infection in tomato crop section</p>
+<p><strong>Multi-Agent Response Flow</strong>:
+1. <strong>Health Monitoring Agent</strong>: Computer vision detects disease signatures 5 days before human-visible symptoms
+2. <strong>Analysis and Classification</strong>: AI identifies specific bacterial pathogen with 97% confidence
+3. <strong>Impact Assessment</strong>: System calculates potential spread patterns and crop loss projections
+4. <strong>Automated Containment</strong>: Climate Control Agent modifies microclimate to inhibit pathogen growth
+5. <strong>Precision Treatment</strong>: Robotic systems apply targeted antimicrobial treatments to affected areas only
+6. <strong>Monitoring and Tracking</strong>: Continuous surveillance tracks treatment effectiveness and prevents spread
+7. <strong>Supply Chain Notification</strong>: Logistics Agent updates harvest schedules and market commitments
+8. <strong>Compliance Documentation</strong>: Safety Agent generates complete audit trail for regulatory requirements</p>
+<p><strong>Business Value</strong>: 85% reduction in crop loss, 40% decrease in treatment costs, maintained food safety certification</p>
+<h3 id="scenario-2-dynamic-resource-optimization-during-peak-demand">Scenario 2: Dynamic Resource Optimization During Peak Demand</h3>
+<p><strong>Context</strong>: Unexpected heatwave increases energy costs by 200% while accelerating crop water needs</p>
+<p><strong>Resource Management Response</strong>:
+1. <strong>Environmental Prediction</strong>: Weather integration predicts 5-day extreme temperature period
+2. <strong>Energy Price Forecasting</strong>: AI analyzes utility pricing and predicts optimal energy usage timing
+3. <strong>Crop Need Assessment</strong>: Plant stress monitoring calculates increased water and cooling requirements
+4. <strong>Optimization Algorithm</strong>: Multi-objective optimization balances crop health, costs, and resource constraints
+5. <strong>Automated Execution</strong>: 
+   - Thermal mass pre-cooling during low-rate periods
+   - Irrigation scheduling optimization to minimize peak energy usage
+   - LED lighting spectrum adjustment to reduce heat generation
+   - Grid services participation during peak demand periods
+6. <strong>Continuous Adjustment</strong>: Real-time monitoring and adjustment based on actual conditions
+7. <strong>Performance Tracking</strong>: Comprehensive analysis of optimization effectiveness and ROI</p>
+<p><strong>Business Value</strong>: 35% energy cost reduction during crisis period, maintained optimal growing conditions, generated additional revenue through grid services</p>
+<h3 id="scenario-3-fully-autonomous-harvest-optimization">Scenario 3: Fully Autonomous Harvest Optimization</h3>
+<p><strong>Context</strong>: AI systems manage complete harvest cycle from ripeness prediction to market delivery</p>
+<p><strong>Autonomous Harvest Flow</strong>:
+1. <strong>Ripeness Prediction</strong>: Computer vision and sensor fusion predict optimal harvest timing 7 days in advance
+2. <strong>Market Analysis</strong>: AI analyzes commodity prices, weather patterns, and demand forecasts
+3. <strong>Quality Assessment</strong>: Continuous monitoring of fruit quality development and grade predictions
+4. <strong>Logistics Coordination</strong>: Automated scheduling of harvesting resources and transportation
+5. <strong>Dynamic Optimization</strong>: Real-time adjustment of harvest timing based on market conditions
+6. <strong>Quality Control</strong>: Automated grading and sorting with blockchain quality certification
+7. <strong>Supply Chain Integration</strong>: Seamless coordination with distribution networks and customers
+8. <strong>Performance Analytics</strong>: Comprehensive analysis of harvest efficiency and market performance</p>
+<p><strong>Business Value</strong>: 20-30% improvement in harvest value through optimal timing, 95% quality consistency, complete audit trail</p>
+<h2 id="business-value-and-roi-analysis">Business Value and ROI Analysis</h2>
+<h3 id="quantitative-benefits">Quantitative Benefits</h3>
+<p><strong>Operational Efficiency</strong>
+- 50-70% reduction in manual labor requirements
+- 60% reduction in unplanned downtime through predictive maintenance
+- 95% consistency in operational best practices implementation
+- 85% reduction in crop loss from preventable causes</p>
+<p><strong>Resource Optimization</strong>
+- 30-45% reduction in energy costs through intelligent management
+- 25-35% improvement in water use efficiency
+- 40% decrease in pesticide and treatment chemical usage
+- Carbon neutral operations achievement through renewable integration</p>
+<p><strong>Quality and Safety</strong>
+- 90% reduction in contamination incidents
+- 100% elimination of contaminated product reaching market
+- 15-25% increase in overall yield quality and quantity
+- Premium pricing opportunities through verified safety standards</p>
+<h3 id="financial-impact-5-year-projection">Financial Impact (5-Year Projection)</h3>
+<p><strong>Investment Requirements</strong>
+- Year 1: $750K (foundation and basic automation)
+- Year 2: $400K (intelligence and optimization)
+- Year 3: $500K (full autonomy deployment)
+- Years 4-5: $200K/year (maintenance and enhancement)
+- Total Investment: $2.05M</p>
+<p><strong>Annual Benefits (Mature System)</strong>
+- Labor cost reduction: $400K-$600K
+- Resource cost savings: $300K-$500K
+- Yield improvement revenue: $200K-$300K
+- Quality premium revenue: $150K-$250K
+- Risk mitigation value: $500K+ (avoided losses)
+- Total Annual Benefits: $1.55M-$2.15M</p>
+<p><strong>Return on Investment</strong>
+- Payback Period: 14-18 months
+- 5-Year NPV: $6M-$12M per facility
+- IRR: 285%</p>
+<h2 id="market-assessment-and-adoption-potential">Market Assessment and Adoption Potential</h2>
+<h3 id="target-market-size">Target Market Size</h3>
+<ul>
+<li>Global smart greenhouse market: $5.6B by 2027</li>
+<li>Controlled environment agriculture: $40.6B market with 15% CAGR</li>
+<li>Agricultural automation: $11.5B market opportunity</li>
+</ul>
+<h3 id="customer-segments">Customer Segments</h3>
+<p><strong>Primary Targets</strong>:
+- Commercial greenhouse operations (vegetables, herbs, flowers)
+- Indoor farming and vertical agriculture companies
+- Research institutions and agricultural universities
+- High-value crop producers requiring precision control</p>
+<p><strong>Secondary Targets</strong>:
+- Traditional farmers transitioning to controlled environment agriculture
+- Food processing companies seeking supply chain integration
+- Agricultural technology companies and service providers
+- Government agricultural research facilities</p>
+<h3 id="competitive-differentiation">Competitive Differentiation</h3>
+<ul>
+<li><strong>Complete Autonomy</strong>: Full multi-agent coordination vs. single-function automation</li>
+<li><strong>Oracle Integration</strong>: Comprehensive enterprise integration capabilities</li>
+<li><strong>Food Safety Focus</strong>: Integrated safety and compliance with blockchain verification</li>
+<li><strong>Sustainability Intelligence</strong>: Advanced resource optimization and carbon neutrality capabilities</li>
+</ul>
+<h2 id="risk-assessment-and-mitigation">Risk Assessment and Mitigation</h2>
+<h3 id="technical-risks">Technical Risks</h3>
+<p><strong>AI System Reliability</strong>: Comprehensive redundancy, human oversight capabilities, gradual automation deployment
+<strong>Sensor Network Failures</strong>: Multiple sensor types, cross-validation, automated calibration systems
+<strong>Integration Complexity</strong>: Phased implementation, proven Oracle integration patterns</p>
+<h3 id="business-risks">Business Risks</h3>
+<p><strong>Market Adoption Rate</strong>: Pilot programs, demonstration facilities, ROI validation studies
+<strong>Regulatory Changes</strong>: Built-in compliance frameworks, flexible adaptation capabilities
+<strong>Technology Evolution</strong>: Continuous learning capabilities, modular architecture for upgrades</p>
+<h3 id="operational-risks">Operational Risks</h3>
+<p><strong>Food Safety Incidents</strong>: Multiple safety layers, blockchain audit trails, comprehensive insurance
+<strong>Climate System Failures</strong>: Backup systems, emergency protocols, rapid response capabilities
+<strong>Skills Requirements</strong>: Comprehensive training programs, remote monitoring capabilities</p>
+<h2 id="development-roadmap-and-resource-requirements">Development Roadmap and Resource Requirements</h2>
+<h3 id="development-team-requirements">Development Team Requirements</h3>
+<ul>
+<li>Agricultural Technology Solution Architect: 1 FTE</li>
+<li>AI/ML Engineers (Agricultural Specialization): 2 FTE</li>
+<li>IoT and Sensor Integration Specialists: 2 FTE</li>
+<li>Agricultural Domain Experts: 2 FTE</li>
+<li>Computer Vision Engineers: 1 FTE</li>
+<li>Automation and Robotics Engineers: 1 FTE</li>
+</ul>
+<h3 id="technology-dependencies">Technology Dependencies</h3>
+<ul>
+<li>Oracle Cloud Infrastructure with IoT and edge computing capabilities</li>
+<li>Computer vision and ML model development platforms</li>
+<li>Agricultural sensor networks and monitoring equipment</li>
+<li>Robotic systems for automated interventions</li>
+<li>Blockchain platform for audit trail verification</li>
+</ul>
+<h3 id="partnership-requirements">Partnership Requirements</h3>
+<ul>
+<li>Agricultural equipment manufacturers and integrators</li>
+<li>Sensor and monitoring technology providers</li>
+<li>Robotic systems and automation companies</li>
+<li>Agricultural research institutions and universities</li>
+<li>Food safety and regulatory compliance experts</li>
+</ul>
+<h2 id="success-criteria-and-kpis">Success Criteria and KPIs</h2>
+<h3 id="technical-success-criteria">Technical Success Criteria</h3>
+<ul>
+<li>Automation level: 85%+ of routine operations autonomous</li>
+<li>System reliability: 99.5% uptime for critical systems</li>
+<li>Prediction accuracy: 95%+ for crop health and yield</li>
+<li>Response time: Real-time for critical alerts</li>
+</ul>
+<h3 id="business-success-criteria">Business Success Criteria</h3>
+<ul>
+<li>Labor reduction: 50-70% decrease in manual requirements</li>
+<li>Cost savings: 35%+ in operational costs</li>
+<li>Yield improvement: 20%+ increase in crop value</li>
+<li>ROI achievement: 300%+ return within 5 years</li>
+</ul>
+<h3 id="market-success-criteria">Market Success Criteria</h3>
+<ul>
+<li>Customer adoption: 25+ facilities within 3 years</li>
+<li>Geographic expansion: Deployment across 5+ agricultural regions</li>
+<li>Industry recognition: Leading agricultural AI platform positioning</li>
+<li>Technology leadership: 3+ patent applications filed</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>The Autonomous Greenhouse Operations Platform pattern addresses a critical and rapidly growing market opportunity in sustainable agriculture and food production. The pattern's comprehensive approach to autonomous operations, multi-agent coordination, and sustainability optimization provides clear differentiation in the agricultural technology market while addressing fundamental challenges of food security, labor shortages, and environmental sustainability.</p>
+<p>The pattern's foundation in real agricultural challenges combined with Oracle's strengths in enterprise AI, cloud infrastructure, and IoT integration creates a compelling value proposition for commercial greenhouse operators and the broader controlled environment agriculture market.</p>
+<p><strong>Recommendation</strong>: Develop as medium-priority pattern with pilot facility partnership, focusing on demonstration of complete autonomous capabilities and comprehensive ROI validation for rapid market expansion.</p>
+        </article>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="section text-center">
+        <div class="container">
+            <p class="text-secondary">Generated on 2025-08-27 10:02:17 | Oracle AI Center of Excellence</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
