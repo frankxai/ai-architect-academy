@@ -1,0 +1,194 @@
+# OCI GenAI RAG Architecture
+# Compile: d2 --layout=tala oci-genai-rag.d2 oci-genai-rag.svg
+
+direction: down
+
+title: OCI GenAI RAG Architecture {
+  near: top-center
+  style.font-size: 28
+  style.bold: true
+}
+
+# ==== USERS ====
+users: Users {
+  shape: person
+  style.fill: "#607D8B"
+}
+
+# ==== PRESENTATION LAYER ====
+presentation: Presentation Layer {
+  style.fill: "#E3F2FD"
+  style.stroke: "#1976D2"
+
+  web: Web Application {
+    shape: rectangle
+    style.fill: "#2196F3"
+    style.font-color: "#FFF"
+  }
+
+  mobile: Mobile App {
+    shape: rectangle
+    style.fill: "#2196F3"
+    style.font-color: "#FFF"
+  }
+}
+
+# ==== NETWORK LAYER ====
+network: Network Layer {
+  style.fill: "#FFF3E0"
+  style.stroke: "#F57C00"
+
+  lb: Load Balancer {
+    shape: hexagon
+    style.fill: "#FF9800"
+    style.font-color: "#FFF"
+  }
+
+  waf: Web Application Firewall {
+    shape: hexagon
+    style.fill: "#FF9800"
+    style.font-color: "#FFF"
+  }
+
+  apigw: API Gateway {
+    shape: hexagon
+    style.fill: "#FF9800"
+    style.font-color: "#FFF"
+  }
+}
+
+# ==== APPLICATION LAYER ====
+application: Application Layer {
+  style.fill: "#F3E5F5"
+  style.stroke: "#7B1FA2"
+
+  oke: OKE Cluster {
+    shape: rectangle
+    style.fill: "#9C27B0"
+    style.font-color: "#FFF"
+
+    pod1: App Pod 1
+    pod2: App Pod 2
+    pod3: App Pod N
+  }
+
+  functions: OCI Functions {
+    shape: step
+    style.fill: "#AB47BC"
+    style.font-color: "#FFF"
+  }
+}
+
+# ==== AI LAYER ====
+ai: AI Services Layer {
+  style.fill: "#E8F5E9"
+  style.stroke: "#388E3C"
+
+  agent: GenAI Agent {
+    shape: rectangle
+    style.fill: "#4CAF50"
+    style.font-color: "#FFF"
+    style.stroke-width: 3
+
+    router: Query Router
+    rag: RAG Tool
+    chat: Chat Handler
+  }
+
+  dac: Dedicated AI Cluster {
+    shape: rectangle
+    style.fill: "#66BB6A"
+    style.font-color: "#FFF"
+    style.stroke-width: 3
+
+    gpu1: GPU Node 1
+    gpu2: GPU Node 2
+    gpuN: GPU Node N
+  }
+
+  endpoint: GenAI Endpoint {
+    shape: rectangle
+    style.fill: "#81C784"
+
+    model: Command R+ {
+      style.fill: "#A5D6A7"
+    }
+  }
+}
+
+# ==== DATA LAYER ====
+data: Data Layer {
+  style.fill: "#FFEBEE"
+  style.stroke: "#C62828"
+
+  kb: Knowledge Base {
+    shape: cylinder
+    style.fill: "#EF5350"
+    style.font-color: "#FFF"
+  }
+
+  objstore: Object Storage {
+    shape: cylinder
+    style.fill: "#E57373"
+    style.font-color: "#FFF"
+
+    docs: Documents
+    pdfs: PDFs
+    images: Images
+  }
+
+  adb: Autonomous Database {
+    shape: cylinder
+    style.fill: "#EF9A9A"
+
+    vectors: Vector Store
+    metadata: Metadata
+  }
+}
+
+# ==== CONNECTIONS ====
+users -> presentation.web: HTTPS
+users -> presentation.mobile: HTTPS
+
+presentation.web -> network.lb
+presentation.mobile -> network.lb
+
+network.lb -> network.waf: Traffic
+network.waf -> network.apigw: Filtered
+
+network.apigw -> application.oke: REST API
+network.apigw -> application.functions: Events
+
+application.oke -> ai.agent: Chat Request {
+  style.stroke: "#4CAF50"
+  style.stroke-width: 2
+}
+
+ai.agent -> data.kb: RAG Query {
+  style.stroke: "#4CAF50"
+  style.stroke-width: 2
+}
+
+ai.agent -> ai.endpoint: Generate {
+  style.stroke: "#4CAF50"
+  style.stroke-width: 2
+}
+
+ai.endpoint -> ai.dac: Inference {
+  style.stroke: "#4CAF50"
+  style.stroke-width: 3
+}
+
+data.kb -> data.objstore: Fetch Documents
+data.kb -> data.adb: Vector Search
+
+# ==== LEGEND ====
+legend: Legend {
+  style.fill: "#FAFAFA"
+  near: bottom-right
+
+  l1: "Green: AI/GenAI Services"
+  l2: "Orange: Network/Gateway"
+  l3: "Purple: Application/Compute"
+  l4: "Red: Data/Storage"
+}

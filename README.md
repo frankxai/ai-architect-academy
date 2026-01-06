@@ -30,9 +30,10 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 
 | Category | Count | Highlights |
 |----------|-------|------------|
+| **AI Architect Command Center** | NEW! | 22 skills, 6 tracks, certification program |
 | **Claude Code Skills** | 80+ | AI Architecture, Cloud, Creative, Personal Dev, Development |
 | **Agent Teams** | 60+ | Multi-agent orchestration, AGI research, safety auditing |
-| **Learning Paths** | 12 | Including AGI Research and 4 World Problems tracks |
+| **Learning Paths** | 13 | Including AGI Research, World Problems, and Command Center |
 | **Design Patterns** | 20+ | Multi-agent, AI Gateway, RAG Production, LLMOps |
 | **Dashboard Pages** | 8 | Skills Catalog, AGI Research, Offering, Agents |
 
@@ -215,6 +216,45 @@ Build systems for financial inclusion, supply chain optimization, and economic p
 
 ---
 
+## AI Architect Command Center (NEW!)
+
+Transform Claude Code into your expert AI Architecture assistant with the **AI Architect Command Center**.
+
+### Quick Start
+```bash
+cd claude-ai-architect/
+claude
+/design-solution "Customer support AI with RAG"
+```
+
+### What It Includes
+| Component | Description |
+|-----------|-------------|
+| **22 Expert Skills** | OCI GenAI, multi-cloud, agents, security, FinOps |
+| **Knowledge Base** | Deep documentation on DACs, RAG, multi-cloud |
+| **Templates** | D2 diagrams, Terraform modules, discovery questions |
+| **MCP Servers** | Custom OCI and Terraform operations |
+| **SaaS Curriculum** | 12-week certification program |
+
+### Slash Commands
+| Command | Purpose |
+|---------|---------|
+| `/design-solution` | End-to-end AI solution design |
+| `/deploy-genai` | Deploy OCI GenAI DAC |
+| `/build-rag` | Build RAG system |
+| `/draw-architecture` | Generate D2 diagrams |
+| `/security-review` | Security assessment |
+| `/optimize-costs` | Cost optimization |
+
+### Certification Path
+- **Associate** (20h): Foundation + OCI GenAI
+- **Professional** (50h): + Multi-Cloud + Agents
+- **Expert** (80h): + Enterprise + Advanced
+
+[Explore the Command Center →](claude-ai-architect/README.md) | [Start the Learning Path →](02-learning-paths/ai-architect-command-center.md)
+
+---
+
 ## Enterprise AI Design Patterns
 
 Production-ready patterns for enterprise AI:
@@ -246,6 +286,7 @@ Prompt management, model serving, LLM-specific monitoring, fine-tuning pipelines
 ## Launch Tracks
 | Audience | Go-To Path | Weekly Rhythm | Anchor Assets |
 | --- | --- | --- | --- |
+| **AI Architects (NEW!)** | [`02-learning-paths/ai-architect-command-center.md`](02-learning-paths/ai-architect-command-center.md) | Solution design, deployment, certification | Command Center, 22 skills, D2 diagrams |
 | **Launchpad (100h)** | [`02-learning-paths/100-hour-ai-architect.md`](02-learning-paths/100-hour-ai-architect.md) | Retrieval, agents, governance, storytelling | RAG on Supabase → Eval Harness → Vector Benchmarks |
 | **Creators & Educators** | [`02-learning-paths/beginner.md`](02-learning-paths/beginner.md) & [`02-learning-paths/professional.md`](02-learning-paths/professional.md) | Weekly demos, retros, publish cadence | `03-awesome/`, `09-articles/`, poster + hero imagery |
 | **Enterprise & AI CoE** | [`02-learning-paths/bootcamp.md`](02-learning-paths/bootcamp.md) | Vision alignment, ops rituals, launch narratives | Patterns, Governance toolkit, Collaboration playbooks |

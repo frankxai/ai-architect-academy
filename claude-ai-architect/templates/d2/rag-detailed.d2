@@ -1,0 +1,173 @@
+# RAG System Detailed Architecture
+# Complete RAG pipeline with all components
+
+title: RAG System - Detailed Architecture {
+  shape: text
+  near: top-center
+  style.font-size: 24
+}
+
+direction: right
+
+# Document Ingestion Pipeline
+ingestion: Document Ingestion {
+  style.fill: "#E8F5E9"
+  style.border-radius: 8
+
+  sources: Data Sources {
+    pdfs: PDF Files
+    docs: Word Docs
+    web: Web Pages
+    db: Databases { shape: cylinder }
+  }
+
+  loader: Document Loader {
+    style.fill: "#4A90D9"
+    style.font-color: white
+  }
+
+  chunker: Chunking Engine {
+    style.fill: "#FF6B00"
+    style.font-color: white
+  }
+
+  embedder: Embedding Model {
+    style.fill: "#9B59B6"
+    style.font-color: white
+  }
+
+  sources -> loader: Extract
+  loader -> chunker: Raw Text
+  chunker -> embedder: Chunks
+}
+
+# Vector Storage
+storage: Vector Storage {
+  style.fill: "#E3F2FD"
+  style.border-radius: 8
+
+  vector_db: Vector Index {
+    shape: cylinder
+    style.fill: "#4A90D9"
+    style.font-color: white
+  }
+
+  metadata: Metadata Store {
+    shape: cylinder
+  }
+
+  doc_store: Document Store {
+    shape: cylinder
+  }
+}
+
+# Query Pipeline
+query: Query Pipeline {
+  style.fill: "#FFF3E0"
+  style.border-radius: 8
+
+  user_query: User Query {
+    shape: person
+  }
+
+  query_embed: Query Embedding {
+    style.fill: "#9B59B6"
+    style.font-color: white
+  }
+
+  retriever: Retriever {
+    shape: hexagon
+    style.fill: "#FF6B00"
+    style.font-color: white
+  }
+
+  reranker: Reranker {
+    style.fill: "#3AA76D"
+    style.font-color: white
+  }
+
+  user_query -> query_embed
+  query_embed -> retriever
+  retriever -> reranker
+}
+
+# Generation
+generation: Response Generation {
+  style.fill: "#F3E5F5"
+  style.border-radius: 8
+
+  context_builder: Context Builder {
+    style.fill: "#4A90D9"
+    style.font-color: white
+  }
+
+  llm: GenAI LLM {
+    shape: hexagon
+    style.fill: "#FF6B00"
+    style.font-color: white
+  }
+
+  response: Response {
+    style.fill: "#3AA76D"
+    style.font-color: white
+  }
+
+  citations: Citations {
+    style.fill: "#95A5A6"
+  }
+
+  context_builder -> llm
+  llm -> response
+  llm -> citations
+}
+
+# Main Flow Connections
+ingestion.embedder -> storage.vector_db: Store Vectors
+ingestion.chunker -> storage.doc_store: Store Docs
+ingestion.loader -> storage.metadata: Store Metadata
+
+query.retriever -> storage.vector_db: Similarity Search {
+  style.stroke: "#FF6B00"
+  style.stroke-width: 2
+}
+
+storage.vector_db -> query.reranker: Top-K Results
+
+query.reranker -> generation.context_builder: Ranked Chunks
+storage.doc_store -> generation.context_builder: Full Text
+
+# Configuration Panel
+config: Configuration {
+  style.fill: "#FAFAFA"
+  style.border-radius: 4
+
+  settings: |md
+    **Chunking**
+    - Size: 1000 tokens
+    - Overlap: 200 tokens
+    - Strategy: Semantic
+
+    **Retrieval**
+    - Top-K: 10
+    - Similarity: Cosine
+    - Hybrid: Yes
+
+    **Generation**
+    - Model: Command R+
+    - Temperature: 0.3
+    - Max Tokens: 1000
+  |
+}
+
+# Metrics
+metrics: Quality Metrics {
+  style.fill: "#ECEFF1"
+  style.border-radius: 4
+
+  data: |md
+    - Retrieval Recall: 85%
+    - Answer Accuracy: 92%
+    - Citation Rate: 95%
+    - Latency P95: 2.1s
+  |
+}

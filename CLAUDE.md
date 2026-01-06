@@ -15,20 +15,65 @@ This is the AI Architect Academy - a comprehensive learning platform for enterpr
 3. **MCP Integration** - Model Context Protocol servers and patterns
 4. **Oracle Cloud Infrastructure** - OCI AI services, deployment, governance
 
-## Skills Available
-The following skills are synced in `/mnt/c/Users/Frank/claude-ai-architect/skills/`:
+## AI Architect Command Center
+The `claude-ai-architect/` directory contains the AI Architect Command Center - a comprehensive toolkit that transforms Claude Code into an expert AI architecture assistant:
+
+### Quick Start
+```bash
+cd claude-ai-architect/
+claude
+/design-solution "Your AI solution description"
+```
+
+### Key Commands
+- `/design-solution` - End-to-end AI solution design
+- `/deploy-genai` - Deploy OCI GenAI DAC
+- `/build-rag` - Build RAG system
+- `/draw-architecture` - Generate D2 diagrams
+- `/security-review` - Security assessment
+- `/optimize-costs` - Cost optimization
+
+### SaaS Curriculum
+See `claude-ai-architect/saas-curriculum/` for:
+- 12-week structured learning curriculum
+- 6 learning tracks (Foundation → Advanced)
+- Certification path (Associate → Expert)
+- Hands-on projects and assessments
+
+## Skills Available (22+)
+Located in `claude-ai-architect/skills/`:
 - `oracle-adk` - Oracle Agent Development Kit
 - `oracle-agent-spec` - Oracle Open Agent Specification
 - `oci-services-expert` - Oracle Cloud Infrastructure expertise
+- `genai-dac-specialist` - Dedicated AI Clusters deployment
 - `mcp-architecture` - MCP server design patterns
 - `mcp-2025-patterns` - Latest MCP best practices
 - `agentic-orchestration` - Multi-agent coordination
 - `claude-sdk` - Claude Agent SDK patterns
 - `langgraph-patterns` - LangGraph workflow patterns
 - `openai-agentkit` - OpenAI Agents SDK
+- `architecture-diagramming` - D2/Mermaid diagrams
+- `rag-expert` - RAG systems and knowledge bases
+- `ai-security-expert` - AI security and guardrails
+- `enterprise-ai-patterns` - Enterprise AI Gateway, FinOps
+- `aws-ai-services` - AWS Bedrock integration
+- `azure-ai-services` - Azure OpenAI integration
+- `multi-cloud-ai-architect` - Cross-cloud AI patterns
+- `terraform-iac` - Infrastructure as Code
+- `finops-ai` - Cost optimization
+- `kubernetes-ai` - K8s for AI workloads
+- `nvidia-nim` - NVIDIA NIM inference
+- `huggingface-trainer` - Model fine-tuning
 
 ## Project Structure
 ```
+claude-ai-architect/  - AI Architect Command Center (NEW)
+├── skills/           - 22+ expert AI skills
+├── knowledge-base/   - OCI GenAI, multi-cloud docs
+├── templates/        - D2 diagrams, Terraform modules
+├── saas-curriculum/  - SaaS learning curriculum
+└── mcp-servers/      - Custom MCP servers
+
 00-getting-started/   - Onboarding and setup guides
 01-design-patterns/   - Architecture patterns and blueprints
 02-learning-paths/    - Structured learning journeys
