@@ -1,7 +1,9 @@
 ---
 name: AWS AI Services Expert
 description: Build AI applications on AWS using Bedrock, SageMaker, and AI/ML services with best practices for enterprise deployment
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "AWS Bedrock Claude/Llama"
 triggers:
   - AWS Bedrock
   - SageMaker

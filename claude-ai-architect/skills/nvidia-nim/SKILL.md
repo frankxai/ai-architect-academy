@@ -1,6 +1,9 @@
 ---
 name: nvidia-nim
 description: NVIDIA NIM inference microservices for deploying AI models with OpenAI-compatible APIs, self-hosted or cloud
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "NVIDIA NIM 1.x"
 ---
 
 # NVIDIA NIM Expert Skill

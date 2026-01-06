@@ -1,7 +1,9 @@
 ---
 name: Architecture Diagramming Expert
 description: Create professional architecture diagrams using D2, Draw.io, Mermaid, and OCI official icons for enterprise-grade visualizations
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "D2 0.7+"
 triggers:
   - diagram
   - architecture diagram

@@ -1,7 +1,9 @@
 ---
 name: HuggingFace Model Trainer
 description: Train and fine-tune LLMs using HuggingFace TRL, Transformers, and cloud GPU infrastructure with SFT, DPO, GRPO methods
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "TRL 0.12+, Transformers 4.47+"
 triggers:
   - fine-tuning
   - model training

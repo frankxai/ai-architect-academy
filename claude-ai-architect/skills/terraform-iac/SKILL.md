@@ -1,7 +1,9 @@
 ---
 name: Terraform IaC Expert
 description: Infrastructure as Code for AI workloads using Terraform across AWS, Azure, GCP, and OCI
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "Terraform 1.10+"
 resources: resources/modules.tf
 triggers:
   - terraform

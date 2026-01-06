@@ -1,7 +1,9 @@
 ---
 name: Oracle ADK Expert
 description: Build production agentic applications on OCI using Oracle Agent Development Kit with multi-agent orchestration, function tools, and enterprise patterns
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "Oracle ADK 1.0, OCI GenAI GA"
 ---
 
 # Oracle ADK Expert Skill

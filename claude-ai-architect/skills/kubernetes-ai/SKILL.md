@@ -1,7 +1,9 @@
 ---
 name: Kubernetes AI Expert
 description: Deploy and operate AI workloads on Kubernetes with GPU scheduling, model serving, and MLOps patterns
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "Kubernetes 1.31"
 resources: resources/manifests.yaml
 triggers:
   - kubernetes

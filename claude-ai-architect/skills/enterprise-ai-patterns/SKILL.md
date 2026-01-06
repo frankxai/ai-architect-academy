@@ -1,7 +1,9 @@
 ---
 name: Enterprise AI Patterns
 description: Production-grade AI architecture patterns for enterprise - security, governance, scalability, and operational excellence
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "2026 Enterprise Patterns"
 triggers:
   - enterprise AI
   - production AI
