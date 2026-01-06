@@ -8,11 +8,24 @@ Track current work items. Persists across context resets.
 
 ## Queued
 
-- [ ] Split 12 oversized skills (see Backlog)
+- [ ] Split 8 remaining oversized skills (see Backlog)
 - [ ] Add more D2 templates
 
 ## Completed (Recent)
 
+- [x] **Vendor-neutral overhaul + Knowledge automation** (2026-01-06)
+  - Fixed GPT version to 5.2 (was incorrectly 5.1)
+  - Made repo vendor-neutral with best-of-breed recommendations
+  - Added Vercel AI SDK 6, OpenRouter, Railway to recommended stack
+  - Created `/update-knowledge` command for automated version updates
+  - Created `skills/knowledge-updater` skill (23rd skill)
+  - Overhauled VERSION-TRACKING.md with comprehensive tech coverage
+- [x] **Version tracking overhaul** (2026-01-06)
+  - Updated all 22 skills to v1.1.0 with proper metadata
+  - Added `last_updated` and `external_version` to all skills
+  - Created `dev-docs/VERSION-TRACKING.md` for centralized version management
+  - Updated CLAUDE.md model selection (Claude Opus 4.5, Sonnet 4.5, GPT-5.2)
+  - Updated CONTEXT.md with recent changes
 - [x] **Best practices evolution** (2026-01-05)
   - Restructured CLAUDE.md (371→108 lines, WHAT/WHY/HOW format)
   - Created 5 slash commands in .claude/commands/

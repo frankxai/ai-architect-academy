@@ -1,10 +1,11 @@
 ---
 name: agentic-orchestration
 description: Patterns for multi-agent coordination, task decomposition, handoffs, and workflow orchestration. Best practices for building and managing agent systems.
-version: 1.0.0
-last_updated: 2025-12-19
-external_version: "Claude Agent SDK 2025"
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "Claude Opus 4.5, LangGraph 1.0, OpenAI Agents 0.6.4"
 changelog: |
+  - 1.1.0: Updated for 2026 agent frameworks (LangGraph 1.0 GA, OpenAI Agents 0.6.4)
   - 1.0.0: Initial skill with orchestration patterns from Claude Agent SDK and FrankX system
 ---
 

@@ -1,7 +1,9 @@
 ---
 name: Claude SDK Expert
 description: Build autonomous AI agents using Claude Agent SDK with computer use, tool calling, MCP integration, and production best practices
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "Claude Opus 4.5, Sonnet 4.5"
 resources: resources/code-examples.py
 ---
 
@@ -12,7 +14,7 @@ Build autonomous AI agents using Claude Agent SDK, leveraging computer use, tool
 
 ## SDK Overview
 
-### Claude Agent SDK (2025)
+### Claude Agent SDK (2026)
 Enables building autonomous agents that control computers, write files, run commands, and iterate on work.
 
 **Core Philosophy:** Give Claude a computer to unlock agent effectiveness beyond chat.
@@ -129,12 +131,15 @@ Show real-time progress to build user trust.
 
 **Implementation:** `resources/code-examples.py`
 
-## Model Selection
+## Model Selection (January 2026)
 
-| Model | Best For | Cost | Speed |
-|-------|----------|------|-------|
-| **claude-sonnet-4-5** | Complex reasoning, computer use, multi-step tasks | $$$ | Medium |
-| **claude-haiku-4** | Simple tasks, format conversions, high-throughput | $ | Fast |
+| Model | Best For | Pricing (per M tokens) | Speed |
+|-------|----------|------------------------|-------|
+| **claude-opus-4-5** | Flagship reasoning, complex agents, highest accuracy | $5 in / $25 out | Slower |
+| **claude-sonnet-4-5** | Best balance - coding, agents, computer use | $3 in / $15 out | Medium |
+| **claude-haiku-4** | Simple tasks, format conversions, high-throughput | $0.25 in / $1.25 out | Fast |
+
+**Note**: Opus 4.5 achieved 80.9% on SWE-bench Verified. Sonnet 4.5 supports 1M token context with beta header.
 
 ## Testing Agents
 

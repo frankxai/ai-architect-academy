@@ -1,7 +1,9 @@
 ---
 name: AI Security Expert
 description: Enterprise AI security - OWASP LLM Top 10, prompt injection defense, guardrails, PII protection
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "OWASP LLM Top 10 v2"
 resources: resources/security-patterns.py
 triggers:
   - AI security

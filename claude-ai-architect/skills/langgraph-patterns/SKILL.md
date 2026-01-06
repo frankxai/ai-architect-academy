@@ -1,7 +1,9 @@
 ---
 name: LangGraph Patterns Expert
 description: Build production-grade agentic workflows with LangGraph using graph-based orchestration, state machines, human-in-the-loop, and advanced control flow
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "LangGraph 1.0 GA, langgraph-sdk 0.3.1"
 ---
 
 # LangGraph Patterns Expert Skill
@@ -9,13 +11,17 @@ version: 1.0.0
 ## Purpose
 Master LangGraph for building production-ready AI agents with fine-grained control, checkpointing, streaming, and complex state management.
 
+## LangGraph 1.0 (GA - October 2025)
+
+LangGraph 1.0 is the first stable major release in the durable agent framework space. After powering agents at Uber, LinkedIn, and Klarna, it's officially production-ready.
+
 ## Core Philosophy
 
 **LangGraph is:** An orchestration framework with both declarative and imperative APIs focused on control and durability for production agents.
 
 **Not:** High-level abstractions that hide complexity - instead provides building blocks for full control.
 
-**Migration:** LangGraph replaces legacy AgentExecutor - migrate all old code.
+**BREAKING CHANGE (v1.0):** `langgraph.prebuilt` is deprecated. Use `langchain.agents` instead for prebuilt components.
 
 ## The Six Production Features
 
