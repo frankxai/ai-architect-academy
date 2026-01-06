@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "upgrade": "npx @next/codemod@canary upgrade latest"
+    "upgrade": "npx @next/codemod@canary upgrade latest",
+    "ops:daily": "node scripts/create-daily-brief.mjs",
+    "ops:weekly": "node scripts/create-weekly-brief.mjs",
+    "ops:brief": "node scripts/create-content-brief.mjs"
   },
   "dependencies": {
     "next": "^16.1.0",
