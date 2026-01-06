@@ -1,0 +1,186 @@
+# Multi-Cloud AI Architecture
+# Compile: d2 --layout=tala multi-cloud-ai.d2 multi-cloud-ai.svg
+
+direction: down
+
+title: Multi-Cloud AI Architecture {
+  near: top-center
+  style.font-size: 28
+  style.bold: true
+}
+
+# ==== CLIENTS ====
+clients: Clients {
+  style.fill: "#ECEFF1"
+
+  web: Web Apps {
+    shape: rectangle
+  }
+  mobile: Mobile {
+    shape: rectangle
+  }
+  api: API Clients {
+    shape: rectangle
+  }
+}
+
+# ==== AI GATEWAY ====
+gateway: AI Gateway {
+  shape: hexagon
+  style.fill: "#263238"
+  style.font-color: "#FFF"
+  style.stroke-width: 3
+
+  auth: Authentication
+  routing: Smart Routing
+  cache: Response Cache
+  fallback: Fallback Logic
+}
+
+# ==== CLOUD PROVIDERS ====
+clouds: Cloud Providers {
+  grid-rows: 1
+  grid-columns: 3
+  grid-gap: 20
+
+  # OCI
+  oci: Oracle Cloud (OCI) {
+    style.fill: "#FFEBEE"
+    style.stroke: "#C74634"
+    style.stroke-width: 3
+
+    dac: Dedicated AI Cluster {
+      style.fill: "#C74634"
+      style.font-color: "#FFF"
+    }
+
+    genai: GenAI Service {
+      style.fill: "#E57373"
+
+      command: Command R+
+      llama: Llama 3.1
+      embed: Cohere Embed
+    }
+
+    adb: Autonomous DB {
+      shape: cylinder
+      style.fill: "#EF9A9A"
+    }
+
+    objstore: Object Storage {
+      shape: cylinder
+      style.fill: "#FFCDD2"
+    }
+  }
+
+  # Azure
+  azure: Microsoft Azure {
+    style.fill: "#E3F2FD"
+    style.stroke: "#0078D4"
+    style.stroke-width: 3
+
+    openai: Azure OpenAI {
+      style.fill: "#0078D4"
+      style.font-color: "#FFF"
+
+      gpt4: GPT-4 Turbo
+      gpt35: GPT-3.5
+      dalle: DALL-E 3
+    }
+
+    cognitive: Cognitive Services {
+      style.fill: "#42A5F5"
+      style.font-color: "#FFF"
+    }
+
+    cosmos: Cosmos DB {
+      shape: cylinder
+      style.fill: "#90CAF9"
+    }
+  }
+
+  # AWS
+  aws: Amazon Web Services {
+    style.fill: "#FFF3E0"
+    style.stroke: "#FF9900"
+    style.stroke-width: 3
+
+    bedrock: Amazon Bedrock {
+      style.fill: "#FF9900"
+      style.font-color: "#FFF"
+
+      claude: Claude 3.5
+      titan: Titan
+      llama_aws: Llama 2
+    }
+
+    sagemaker: SageMaker {
+      style.fill: "#FFB74D"
+    }
+
+    s3: S3 {
+      shape: cylinder
+      style.fill: "#FFCC80"
+    }
+  }
+}
+
+# ==== INTERCONNECT ====
+interconnect: OCI-Azure Interconnect {
+  style.fill: "#E8F5E9"
+  style.stroke: "#4CAF50"
+  style.stroke-width: 2
+
+  latency: "~2ms latency"
+  egress: "Reduced egress costs"
+}
+
+# ==== CONNECTIONS ====
+clients -> gateway: HTTPS {
+  style.stroke-width: 2
+}
+
+gateway -> clouds.oci.genai: Primary (Cost Efficient) {
+  style.stroke: "#C74634"
+  style.stroke-width: 3
+}
+
+gateway -> clouds.azure.openai: GPT-4 Tasks {
+  style.stroke: "#0078D4"
+  style.stroke-width: 2
+}
+
+gateway -> clouds.aws.bedrock: Claude Tasks {
+  style.stroke: "#FF9900"
+  style.stroke-width: 2
+}
+
+# Interconnect
+clouds.oci <-> interconnect: Private Link {
+  style.stroke: "#4CAF50"
+  style.stroke-width: 2
+}
+
+interconnect <-> clouds.azure: Private Link {
+  style.stroke: "#4CAF50"
+  style.stroke-width: 2
+}
+
+# Internal connections
+clouds.oci.genai -> clouds.oci.dac
+clouds.oci.genai -> clouds.oci.adb
+clouds.oci.adb -> clouds.oci.objstore
+
+clouds.azure.openai -> clouds.azure.cosmos
+clouds.aws.bedrock -> clouds.aws.s3
+
+# ==== LEGEND ====
+legend: Routing Logic {
+  style.fill: "#FAFAFA"
+  near: bottom-center
+
+  r1: "1. Cost: OCI GenAI (lowest cost)"
+  r2: "2. Capability: Azure OpenAI (GPT-4)"
+  r3: "3. Fallback: AWS Bedrock (Claude)"
+  r4: "4. OCI↔Azure: 2ms via Interconnect"
+}

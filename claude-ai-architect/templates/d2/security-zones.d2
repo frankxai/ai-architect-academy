@@ -1,0 +1,192 @@
+# AI Security Zones Architecture
+# Network segmentation for AI workloads
+
+title: AI Security Zones - Defense in Depth {
+  shape: text
+  near: top-center
+  style.font-size: 24
+}
+
+direction: down
+
+# External Zone
+external: External (Untrusted) {
+  style.fill: "#FFEBEE"
+  style.border-radius: 8
+
+  internet: Internet {
+    shape: cloud
+  }
+
+  attackers: Threat Actors {
+    shape: person
+    style.fill: "#E74C3C"
+  }
+}
+
+# DMZ
+dmz: DMZ (Public Subnet) {
+  style.fill: "#FFF3E0"
+  style.border-radius: 8
+
+  waf: WAF {
+    shape: hexagon
+    style.fill: "#FF6B00"
+    style.font-color: white
+  }
+
+  lb: Load Balancer {
+    shape: hexagon
+    style.fill: "#4A90D9"
+    style.font-color: white
+  }
+
+  apigw: API Gateway {
+    style.fill: "#4A90D9"
+    style.font-color: white
+  }
+
+  ddos: DDoS Protection {
+    style.fill: "#9B59B6"
+    style.font-color: white
+  }
+
+  waf -> lb
+  lb -> apigw
+  ddos -> waf
+}
+
+# Application Zone
+app: Application Zone (Private Subnet) {
+  style.fill: "#E3F2FD"
+  style.border-radius: 8
+
+  auth: Auth Service {
+    style.fill: "#3AA76D"
+    style.font-color: white
+  }
+
+  prompt_guard: Prompt Guard {
+    style.fill: "#E74C3C"
+    style.font-color: white
+  }
+
+  app_servers: App Servers
+
+  output_filter: Output Filter {
+    style.fill: "#E74C3C"
+    style.font-color: white
+  }
+
+  auth -> prompt_guard
+  prompt_guard -> app_servers
+  app_servers -> output_filter
+}
+
+# AI Zone
+ai: AI Zone (Private Subnet) {
+  style.fill: "#E8F5E9"
+  style.border-radius: 8
+
+  genai: GenAI DAC {
+    shape: cylinder
+    style.fill: "#FF6B00"
+    style.font-color: white
+  }
+
+  rag: RAG Agent {
+    style.fill: "#3AA76D"
+    style.font-color: white
+  }
+
+  model_registry: Model Registry {
+    shape: cylinder
+  }
+
+  content_mod: Content Moderation {
+    style.fill: "#9B59B6"
+    style.font-color: white
+  }
+}
+
+# Data Zone
+data: Data Zone (Private Subnet) {
+  style.fill: "#F3E5F5"
+  style.border-radius: 8
+
+  kb: Knowledge Bases {
+    shape: cylinder
+    style.fill: "#4A90D9"
+    style.font-color: white
+  }
+
+  object_storage: Object Storage {
+    shape: cylinder
+  }
+
+  vault: Vault (Secrets) {
+    shape: cylinder
+    style.fill: "#E74C3C"
+    style.font-color: white
+  }
+
+  db: Encrypted DB {
+    shape: cylinder
+    style.fill: "#9B59B6"
+    style.font-color: white
+  }
+}
+
+# Security Services
+security: Security Services {
+  style.fill: "#ECEFF1"
+  style.border-radius: 8
+
+  cloud_guard: Cloud Guard
+  audit: Audit Logs {
+    shape: cylinder
+  }
+  siem: SIEM Integration
+  kms: KMS (Encryption)
+}
+
+# Connections
+external.internet -> dmz.ddos: HTTPS Only {
+  style.stroke: "#E74C3C"
+  style.stroke-width: 2
+}
+
+dmz.apigw -> app.auth: Authenticated {
+  style.stroke: "#3AA76D"
+}
+
+app.output_filter -> ai.genai: Validated {
+  style.stroke: "#4A90D9"
+}
+
+ai.rag -> data.kb: Service Gateway {
+  style.stroke: "#9B59B6"
+}
+
+ai.genai -> data.object_storage: Internal Only {
+  style.stroke: "#9B59B6"
+}
+
+dmz -> security.audit: Logs
+app -> security.audit: Logs
+ai -> security.audit: Logs
+data -> security.audit: Logs
+
+# Security Controls Annotation
+controls: Security Controls {
+  shape: text
+  near: bottom-center
+
+  text: |md
+    **Layer Controls:**
+    - DMZ: WAF, DDoS, TLS termination
+    - App: Auth, prompt injection defense
+    - AI: Content moderation, rate limiting
+    - Data: Encryption, access control
+  |
+}

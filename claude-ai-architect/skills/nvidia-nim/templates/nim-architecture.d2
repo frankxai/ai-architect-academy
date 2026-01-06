@@ -1,0 +1,182 @@
+# NVIDIA NIM Architecture Diagram Template
+# Generate with: d2 --layout=tala nim-architecture.d2 nim-architecture.svg
+
+direction: right
+
+title: NVIDIA NIM Architecture {
+  near: top-center
+  shape: text
+  style.font-size: 24
+  style.bold: true
+}
+
+# Clients Layer
+clients: Clients {
+  style.fill: "#E8F5E9"
+
+  web: Web App {
+    icon: https://icons.terrastruct.com/essentials%2F112-browser.svg
+  }
+  mobile: Mobile App {
+    icon: https://icons.terrastruct.com/essentials%2F110-smartphone.svg
+  }
+  agents: AI Agents {
+    icon: https://icons.terrastruct.com/tech%2F064-robot.svg
+  }
+  cli: CLI Tools {
+    icon: https://icons.terrastruct.com/essentials%2F087-terminal.svg
+  }
+}
+
+# API Gateway Layer
+gateway: API Gateway {
+  style.fill: "#E3F2FD"
+  style.stroke: "#1976D2"
+
+  lb: Load Balancer {
+    shape: diamond
+  }
+  auth: Auth & Rate Limiting
+  router: Request Router
+}
+
+clients.web -> gateway.lb
+clients.mobile -> gateway.lb
+clients.agents -> gateway.lb
+clients.cli -> gateway.lb
+
+gateway.lb -> gateway.auth
+gateway.auth -> gateway.router
+
+# NIM Deployment Options
+nim: NVIDIA NIM {
+  style.fill: "#FFF3E0"
+  style.stroke: "#76B900"
+  style.stroke-width: 3
+
+  cloud: NIM Cloud API {
+    style.fill: "#DCEDC8"
+
+    endpoint: integrate.api.nvidia.com
+    models: "Llama 3.1, Mixtral, Nemotron"
+    billing: Pay-per-token
+  }
+
+  self_hosted: Self-Hosted NIM {
+    style.fill: "#B3E5FC"
+
+    container: Docker Container
+    gpu: NVIDIA GPU
+    triton: Triton Server
+    tensorrt: TensorRT-LLM
+  }
+
+  hybrid: Hybrid Setup {
+    style.fill: "#F3E5F5"
+
+    routing: Intelligent Routing
+    fallback: Failover Logic
+    cost: Cost Optimization
+  }
+}
+
+gateway.router -> nim.cloud.endpoint: Cloud Path
+gateway.router -> nim.self_hosted.container: On-Prem Path
+gateway.router -> nim.hybrid.routing: Hybrid Path
+
+nim.hybrid.routing -> nim.cloud.endpoint: Burst
+nim.hybrid.routing -> nim.self_hosted.container: Baseline
+
+# Model Types
+models: Available Models {
+  style.fill: "#FCE4EC"
+
+  llm: LLM Models {
+    llama: Llama 3.1 (8B/70B/405B)
+    mixtral: Mixtral 8x22B
+    nemotron: Nemotron 340B
+  }
+
+  embed: Embedding Models {
+    e5: NV-EmbedQA-E5
+    embed_v2: NV-Embed-V2
+  }
+
+  vlm: Vision Models {
+    phi3: Phi-3 Vision
+    vila: VILA 1.5
+  }
+
+  rerank: Reranking Models {
+    mistral: NV-RerankQA-Mistral
+  }
+}
+
+nim.cloud.models -> models.llm
+nim.cloud.models -> models.embed
+nim.cloud.models -> models.vlm
+nim.self_hosted -> models.llm
+nim.self_hosted -> models.embed
+
+# Integration Layer
+integrations: Integrations {
+  style.fill: "#E0F7FA"
+
+  langchain: LangChain {
+    icon: https://avatars.githubusercontent.com/u/126733545
+  }
+  llamaindex: LlamaIndex
+  mcp: MCP Protocol
+  nemo: NeMo Agent Toolkit
+}
+
+nim -> integrations
+
+# Observability
+observability: Observability {
+  style.fill: "#ECEFF1"
+
+  metrics: Prometheus Metrics
+  traces: OpenTelemetry
+  logs: Structured Logging
+  phoenix: Phoenix/Langfuse
+}
+
+nim -> observability
+
+# Security
+security: Security {
+  style.fill: "#FFEBEE"
+  style.stroke: "#D32F2F"
+
+  guardrails: NeMo Guardrails
+  pii: PII Protection
+  auth: API Key Management
+  network: Network Policies
+}
+
+gateway.auth -> security
+nim -> security.guardrails
+
+# Infrastructure
+infra: Infrastructure Options {
+  style.fill: "#F5F5F5"
+
+  kubernetes: Kubernetes + Helm
+  docker: Docker Compose
+  workbench: AI Workbench
+  cloud_providers: "AWS, Azure, GCP, OCI"
+}
+
+nim.self_hosted -> infra
+
+# Legend
+legend: Legend {
+  near: bottom-center
+  style.fill: "#FAFAFA"
+  style.stroke: "#9E9E9E"
+
+  cloud_style: Cloud API (Pay-per-token) {style.fill: "#DCEDC8"}
+  self_style: Self-Hosted (Fixed cost) {style.fill: "#B3E5FC"}
+  hybrid_style: Hybrid (Optimized) {style.fill: "#F3E5F5"}
+}

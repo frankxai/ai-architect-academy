@@ -1,0 +1,135 @@
+# AI Gateway Architecture
+# Multi-provider routing with caching and failover
+
+title: AI Gateway - Multi-Provider Routing {
+  shape: text
+  near: top-center
+  style.font-size: 24
+}
+
+direction: down
+
+# Client Layer
+clients: Client Applications {
+  style.fill: "#E8F5E9"
+  style.border-radius: 8
+
+  web: Web App
+  mobile: Mobile App
+  api: API Clients
+  internal: Internal Services
+}
+
+# Gateway Layer
+gateway: AI Gateway (OCI) {
+  style.fill: "#E3F2FD"
+  style.border-radius: 8
+
+  auth: Authentication {
+    style.fill: "#4A90D9"
+    style.font-color: white
+  }
+
+  rate: Rate Limiter {
+    style.fill: "#4A90D9"
+    style.font-color: white
+  }
+
+  router: Smart Router {
+    shape: hexagon
+    style.fill: "#FF6B00"
+    style.font-color: white
+  }
+
+  cache: Response Cache {
+    shape: cylinder
+    style.fill: "#95A5A6"
+  }
+
+  fallback: Fallback Handler {
+    style.fill: "#E74C3C"
+    style.font-color: white
+  }
+
+  auth -> rate: Validated
+  rate -> router: Allowed
+  router -> cache: Check
+  router -> fallback: On Error
+}
+
+# Provider Layer
+providers: AI Providers {
+  style.fill: "#FFF3E0"
+  style.border-radius: 8
+
+  oci: OCI GenAI {
+    style.fill: "#FF6B00"
+    style.font-color: white
+
+    dac: DAC Cluster {
+      shape: cylinder
+    }
+    ondemand: On-Demand
+  }
+
+  azure: Azure OpenAI {
+    style.fill: "#0078D4"
+    style.font-color: white
+
+    gpt4: GPT-4 Turbo
+    gpt35: GPT-3.5 Turbo
+  }
+
+  aws: AWS Bedrock {
+    style.fill: "#FF9900"
+    style.font-color: white
+
+    claude: Claude 3.5
+    llama: Llama 3
+  }
+}
+
+# Monitoring Layer
+monitoring: Observability {
+  style.fill: "#F3E5F5"
+  style.border-radius: 8
+
+  metrics: Metrics {
+    shape: cylinder
+  }
+  logs: Logs {
+    shape: cylinder
+  }
+  alerts: Alerts
+  dashboard: Dashboard
+}
+
+# Connections
+clients -> gateway: HTTPS/REST
+
+gateway.router -> providers.oci: 60% Traffic {
+  style.stroke: "#FF6B00"
+  style.stroke-width: 3
+}
+
+gateway.router -> providers.azure: 30% Traffic {
+  style.stroke: "#0078D4"
+  style.stroke-width: 2
+}
+
+gateway.router -> providers.aws: 10% Fallback {
+  style.stroke: "#FF9900"
+  style.stroke-dash: 5
+}
+
+gateway -> monitoring: Telemetry
+
+# Legend
+legend: Legend {
+  style.fill: "#FAFAFA"
+  style.border-radius: 4
+
+  primary: "─── Primary Route"
+  secondary: "─── Secondary Route"
+  fallback: "- - - Fallback Route"
+}

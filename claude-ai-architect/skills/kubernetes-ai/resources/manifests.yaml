@@ -1,0 +1,372 @@
+# Kubernetes AI Manifests Reference
+# Reference from SKILL.md for deployment patterns
+
+# ============================================================
+# GPU WORKLOAD SCHEDULING
+# ============================================================
+
+---
+# GPU Operator Test Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gpu-test
+spec:
+  containers:
+  - name: cuda-test
+    image: nvcr.io/nvidia/cuda:12.2.0-base-ubuntu22.04
+    command: ["nvidia-smi"]
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+  restartPolicy: Never
+
+---
+# LLM Inference Pod with GPU
+apiVersion: v1
+kind: Pod
+metadata:
+  name: llm-inference
+spec:
+  containers:
+  - name: inference
+    image: your-inference-image
+    resources:
+      limits:
+        nvidia.com/gpu: 2
+        memory: "64Gi"
+        cpu: "16"
+      requests:
+        nvidia.com/gpu: 2
+        memory: "64Gi"
+        cpu: "16"
+  nodeSelector:
+    nvidia.com/gpu.product: "NVIDIA-A100-SXM4-80GB"
+  tolerations:
+  - key: "nvidia.com/gpu"
+    operator: "Exists"
+    effect: "NoSchedule"
+
+---
+# MIG Slice Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mig-workload
+spec:
+  containers:
+  - name: inference
+    image: your-inference-image
+    resources:
+      limits:
+        nvidia.com/mig-3g.40gb: 1
+
+# ============================================================
+# vLLM DEPLOYMENT
+# ============================================================
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vllm-llama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vllm-llama
+  template:
+    metadata:
+      labels:
+        app: vllm-llama
+    spec:
+      containers:
+      - name: vllm
+        image: vllm/vllm-openai:latest
+        args:
+        - --model=meta-llama/Llama-3.1-8B-Instruct
+        - --tensor-parallel-size=1
+        - --max-model-len=8192
+        - --gpu-memory-utilization=0.9
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+            memory: "32Gi"
+        env:
+        - name: HF_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: huggingface-token
+              key: token
+        volumeMounts:
+        - name: model-cache
+          mountPath: /root/.cache/huggingface
+      volumes:
+      - name: model-cache
+        persistentVolumeClaim:
+          claimName: model-cache-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-llama
+spec:
+  selector:
+    app: vllm-llama
+  ports:
+  - port: 8000
+    targetPort: 8000
+  type: ClusterIP
+
+# ============================================================
+# TRITON INFERENCE SERVER
+# ============================================================
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: triton-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: triton-server
+  template:
+    metadata:
+      labels:
+        app: triton-server
+    spec:
+      containers:
+      - name: triton
+        image: nvcr.io/nvidia/tritonserver:24.01-py3
+        args:
+        - tritonserver
+        - --model-repository=s3://bucket/models
+        - --model-control-mode=poll
+        - --repository-poll-secs=30
+        ports:
+        - containerPort: 8000
+        - containerPort: 8001
+        - containerPort: 8002
+        resources:
+          limits:
+            nvidia.com/gpu: 2
+            memory: "64Gi"
+        livenessProbe:
+          httpGet:
+            path: /v2/health/live
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /v2/health/ready
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 10
+
+# ============================================================
+# TEXT GENERATION INFERENCE (TGI)
+# ============================================================
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tgi-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tgi-server
+  template:
+    metadata:
+      labels:
+        app: tgi-server
+    spec:
+      containers:
+      - name: tgi
+        image: ghcr.io/huggingface/text-generation-inference:2.0
+        args:
+        - --model-id=meta-llama/Llama-3.1-8B-Instruct
+        - --quantize=bitsandbytes-nf4
+        - --max-input-length=4096
+        - --max-total-tokens=8192
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+            memory: "24Gi"
+        env:
+        - name: HUGGING_FACE_HUB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: hf-token
+              key: token
+
+# ============================================================
+# AUTOSCALING
+# ============================================================
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: llm-inference-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: llm-inference
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Pods
+    pods:
+      metric:
+        name: DCGM_FI_DEV_GPU_UTIL
+      target:
+        type: AverageValue
+        averageValue: "80"
+  - type: External
+    external:
+      metric:
+        name: inference_queue_length
+      target:
+        type: AverageValue
+        averageValue: "50"
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Pods
+        value: 2
+        periodSeconds: 60
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Pods
+        value: 1
+        periodSeconds: 120
+
+---
+# KEDA ScaledObject
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: llm-inference-scaler
+spec:
+  scaleTargetRef:
+    name: llm-inference
+  minReplicaCount: 1
+  maxReplicaCount: 20
+  triggers:
+  - type: prometheus
+    metadata:
+      serverAddress: http://prometheus:9090
+      metricName: inference_requests_pending
+      threshold: "100"
+      query: sum(inference_requests_pending{service="llm-inference"})
+
+# ============================================================
+# NETWORKING
+# ============================================================
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ai-api-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1s"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - api.ai-platform.com
+    secretName: ai-api-tls
+  rules:
+  - host: api.ai-platform.com
+    http:
+      paths:
+      - path: /v1
+        pathType: Prefix
+        backend:
+          service:
+            name: ai-gateway
+            port:
+              number: 8000
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: llm-inference-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: llm-inference
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: ai-gateway
+    ports:
+    - port: 8000
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: model-cache
+    ports:
+    - port: 8080
+  - to:
+    - namespaceSelector: {}
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - port: 53
+      protocol: UDP
+
+# ============================================================
+# MONITORING
+# ============================================================
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: llm-inference-monitor
+spec:
+  selector:
+    matchLabels:
+      app: llm-inference
+  endpoints:
+  - port: metrics
+    interval: 15s
+    path: /metrics
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: dcgm-exporter
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dcgm-exporter
+  endpoints:
+  - port: metrics
+    interval: 15s

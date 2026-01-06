@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+.terraform.lock.hcl
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.pem
+*.key
+credentials.json
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Generated diagrams (keep templates)
+*.svg
+*.png
+!templates/**/*.svg
+!templates/**/*.png
+
+# Node modules (for MCP servers)
+node_modules/

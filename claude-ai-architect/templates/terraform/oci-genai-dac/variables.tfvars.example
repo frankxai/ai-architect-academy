@@ -1,0 +1,29 @@
+# OCI GenAI DAC - Example Variables
+# Copy to terraform.tfvars and fill in your values
+
+# Required
+tenancy_ocid   = "ocid1.tenancy.oc1..your-tenancy-ocid"
+compartment_id = "ocid1.compartment.oc1..your-compartment-ocid"
+region         = "us-chicago-1"
+
+# Project Settings
+project_name = "my-genai-project"
+environment  = "prod"
+
+# Hosting Cluster
+hosting_cluster_units = 10        # 1-50 units (1 unit = 1 endpoint slot)
+hosting_unit_shape    = "LARGE_COHERE"
+
+# Model
+model_id                  = "cohere.command-r-plus"
+enable_content_moderation = true
+
+# Fine-Tuning (optional)
+enable_finetuning_cluster = false
+finetuning_cluster_units  = 4
+
+# Tags
+freeform_tags = {
+  "CostCenter" = "AI-Platform"
+  "Owner"      = "ai-team@company.com"
+}
