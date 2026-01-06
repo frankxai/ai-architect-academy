@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User & Auth
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  role          UserRole  @default(STUDENT)
+  
+  accounts      Account[]
+  sessions      Session[]
+  
+  // Student Relations
+  purchases     Purchase[]
+  reviews       Review[]
+  
+  // Professor Relations
+  professorProfile ProfessorProfile?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+enum UserRole {
+  STUDENT
+  PROFESSOR
+  ADMIN
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Marketplace Models
+
+model ProfessorProfile {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  user            User      @relation(fields: [userId], references: [id])
+  
+  displayName     String
+  bio             String?   @db.Text
+  expertise       String[]
+  
+  // Stripe Connect
+  stripeAccountId String?
+  stripeOnboarded Boolean   @default(false)
+  
+  listings        PatternListing[]
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model PatternListing {
+  id          String   @id @default(cuid())
+  professorId String
+  professor   ProfessorProfile @relation(fields: [professorId], references: [id])
+  
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  price       Float    // In USD
+  isPublished Boolean  @default(false)
+  
+  // Content
+  techStack   String[]
+  difficulty  Difficulty @default(INTERMEDIATE)
+  repoUrl     String?    // Link to private repo access
+  
+  purchases   Purchase[]
+  reviews     Review[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+}
+
+model Purchase {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  
+  listingId     String
+  listing       PatternListing @relation(fields: [listingId], references: [id])
+  
+  amount        Float
+  stripeSessionId String @unique
+  
+  createdAt     DateTime @default(now())
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int      // 1-5
+  comment   String?  @db.Text
+  
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  
+  listingId String
+  listing   PatternListing @relation(fields: [listingId], references: [id])
+  
+  createdAt DateTime @default(now())
+}
