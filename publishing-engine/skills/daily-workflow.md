@@ -22,7 +22,7 @@ Execute the complete daily publishing cycle: research, identify opportunities, c
 4. Note any repos with unusual star velocity
 ```
 
-**Output**: `daily-brief-[date].md` in `/research/` folder
+**Output**: `ops/daily-briefs/[date].md` (create via `npm run ops:daily`)
 
 ### Step 2: ArXiv & Research Scan (10 min)
 ```
@@ -55,6 +55,8 @@ Execute the complete daily publishing cycle: research, identify opportunities, c
 3. Select 1-2 pieces to create/update
 4. Determine content type for each
 ```
+
+Optional: create a content brief via `npm run ops:brief -- --type=concept --slug=agentic-rag`.
 
 **Priority Criteria**:
 - High volume + Low quality existing answers
