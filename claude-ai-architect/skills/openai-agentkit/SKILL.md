@@ -1,17 +1,19 @@
 ---
 name: OpenAI AgentKit Expert
 description: Build production-ready multi-agent systems using OpenAI AgentKit and Agents SDK with best practices for agent orchestration, handoffs, and routines
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "OpenAI Agents SDK 0.6.4, GPT-5.2"
 ---
 
 # OpenAI AgentKit Expert Skill
 
 ## Purpose
-This skill provides comprehensive guidance on building production-ready multi-agent systems using OpenAI's AgentKit platform and Agents SDK, following 2025 best practices.
+This skill provides comprehensive guidance on building production-ready multi-agent systems using OpenAI's AgentKit platform and Agents SDK, following 2026 best practices.
 
 ## Platform Overview
 
-### OpenAI AgentKit (2025)
+### OpenAI AgentKit (2026)
 Complete platform for building, deploying, and optimizing agents with enterprise-grade tooling.
 
 **Core Components:**

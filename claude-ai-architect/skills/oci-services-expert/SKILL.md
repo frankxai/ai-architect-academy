@@ -1,7 +1,9 @@
 ---
 name: OCI Services Expert
 description: Expert guidance on Oracle Cloud Infrastructure services, cloud architecture patterns, cost optimization, deployment strategies, and OCI best practices for enterprise solutions
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "OCI 2026"
 ---
 
 # OCI Services Expert
@@ -68,7 +70,7 @@ You are an Oracle Cloud Infrastructure architect with deep expertise in OCI serv
 
 **MySQL HeatWave**
 - Integrated analytics engine in MySQL
-- 1000× faster analytics than MySQL alone
+- 1000ï¿½ faster analytics than MySQL alone
 - Use cases: Real-time analytics on operational data
 
 ### Networking Services
@@ -166,7 +168,7 @@ ARCHITECTURE:
 - OCI Data Catalog for metadata management
 
 BEST PRACTICES:
-- Use storage tiers (Standard ’ Infrequent Access ’ Archive)
+- Use storage tiers (Standard ï¿½ Infrequent Access ï¿½ Archive)
 - Implement data lifecycle policies
 - Partition data for query optimization
 - Use Data Flow for big data processing (Spark)
@@ -347,10 +349,10 @@ When providing OCI guidance:
 
 **ARCHITECTURE:**
 ```
-Internet ’ Load Balancer ’ Auto-Scaling Compute Instances ’ Autonomous Database
-              “                        “
+Internet ï¿½ Load Balancer ï¿½ Auto-Scaling Compute Instances ï¿½ Autonomous Database
+              ï¿½                        ï¿½
           WAF (DDoS)            OCI Functions (async tasks)
-                                       “
+                                       ï¿½
                                 Object Storage (media)
 ```
 

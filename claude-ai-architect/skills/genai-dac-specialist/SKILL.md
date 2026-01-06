@@ -1,7 +1,9 @@
 ---
 name: GenAI DAC Specialist
 description: Expert in OCI Generative AI Dedicated AI Clusters - deployment, fine-tuning, optimization, and production operations
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "OCI GenAI GA"
 triggers:
   - dedicated ai cluster
   - DAC

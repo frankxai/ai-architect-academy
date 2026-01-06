@@ -1,16 +1,17 @@
 ---
 name: mcp-2025-patterns
-description: Current best practices for Model Context Protocol server design, implementation, and integration. Updated patterns for 2025 MCP ecosystem including multi-server orchestration, security, and performance.
-version: 1.0.0
-last_updated: 2025-12-19
-external_version: "MCP Specification 2025"
+description: Current best practices for Model Context Protocol server design, implementation, and integration. Updated patterns for 2026 MCP ecosystem including multi-server orchestration, security, and performance.
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "MCP Specification 1.0, Next.js DevTools MCP"
 changelog: |
+  - 1.1.0: Updated for MCP 1.0 stable spec, Next.js 16.1 DevTools MCP server
   - 1.0.0: Initial skill with 2025 MCP patterns and best practices
 ---
 
-# MCP 2025 Patterns
+# MCP 2026 Patterns
 
-This skill covers current best practices for Model Context Protocol (MCP) server design, implementation, and integration as of late 2025.
+This skill covers current best practices for Model Context Protocol (MCP) server design, implementation, and integration as of early 2026.
 
 ---
 

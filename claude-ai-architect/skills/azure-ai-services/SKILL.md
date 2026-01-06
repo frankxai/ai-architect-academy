@@ -1,7 +1,9 @@
 ---
 name: Azure AI Services Expert
 description: Build AI applications on Azure using Azure OpenAI, Cognitive Services, and ML services with enterprise patterns
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "Azure OpenAI GPT-5.2"
 triggers:
   - Azure OpenAI
   - Azure AI

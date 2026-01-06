@@ -50,14 +50,25 @@ Skills activate automatically based on keywords in your queries. See `.claude/se
 
 ## Quick Reference
 
-### Model Selection
-| Model | Best For | Cost |
-|-------|----------|------|
-| Command R+ | Complex reasoning, RAG | $$$ |
-| Command R | General purpose | $$ |
-| Llama 3.1 70B | Open source | $$$ |
-| GPT-4 Turbo | Best capability | $$$$ |
-| Claude Sonnet | Best balance | $$$ |
+### Model Selection (January 2026)
+| Model | Best For | Access |
+|-------|----------|--------|
+| **GPT-5.2 Pro** | Hardest problems, 93% GPQA | OpenAI, Azure, OpenRouter |
+| **Claude Opus 4.5** | Complex agents, 81% SWE-bench | Anthropic, Bedrock, Vertex |
+| **Claude Sonnet 4.5** | Best balance - fast + capable | Anthropic, Bedrock, Vertex |
+| **GPT-5.2 Thinking** | Deep reasoning, polished output | OpenAI, Azure, OpenRouter |
+| **Llama 3.3 70B** | Open source, fine-tunable | OpenRouter, self-hosted |
+
+### Recommended Stack (Vendor-Neutral)
+| Layer | Best-of-Breed | Why |
+|-------|---------------|-----|
+| **AI Gateway** | [OpenRouter](https://openrouter.ai) | 300+ models, auto-fallback, unified API |
+| **AI SDK** | [Vercel AI SDK 6](https://ai-sdk.dev) | Agents, streaming, React/Next.js native |
+| **Hosting** | Vercel / Railway | Zero-config, edge functions |
+| **Vector DB** | Supabase pgvector / Pinecone | Managed, scalable |
+| **Infra** | Terraform | Multi-cloud IaC |
+
+**Note**: See `dev-docs/VERSION-TRACKING.md` for current versions.
 
 ### DAC Sizing (OCI)
 | Traffic | Units | Monthly |
