@@ -44,7 +44,7 @@ npm install -g vercel
 1. Go to https://vercel.com
 2. Click "Add New Project"
 3. Import your GitHub repository: `AI-Architect-Academy`
-4. Select root directory or: `academy-dashboard/`
+4. Select root directory or: `academy-platform/`
 
 ### Step 3: Configure Build Settings
 
@@ -52,20 +52,44 @@ npm install -g vercel
 
 **Build Command:**
 ```bash
-cd academy-dashboard && npm run build
+cd academy-platform && npm run build
 ```
 
 **Output Directory:**
 ```
-academy-dashboard/.next
+academy-platform/.next
 ```
 
 **Install Command:**
 ```bash
-cd academy-dashboard && npm install
+cd academy-platform && npm install
 ```
 
-**Root Directory:** `academy-dashboard` (or leave blank if deploying from root)
+**Root Directory:** `academy-platform` (or leave blank if deploying from root)
+
+---
+
+## 🧭 Marketing + Media Publishing Site (Publishing Engine)
+
+Deploy the public knowledge hub separately so it can scale content and SEO without impacting the SaaS app.
+
+### Vercel Configuration (Publishing Engine)
+**Root Directory:** `publishing-engine`
+
+**Build Command:**
+```bash
+cd publishing-engine && npm run build
+```
+
+**Output Directory:**
+```
+publishing-engine/.next
+```
+
+**Install Command:**
+```bash
+cd publishing-engine && npm install
+```
 
 ### Step 4: Environment Variables
 
