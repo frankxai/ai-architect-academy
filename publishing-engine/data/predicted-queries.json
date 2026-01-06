@@ -1,0 +1,208 @@
+{
+  "metadata": {
+    "generated": "2026-01-06",
+    "model_version": "1.0",
+    "confidence_threshold": 0.6
+  },
+  "priority_1_immediate": [
+    {
+      "query": "What is Agentic RAG?",
+      "category": "definition",
+      "signals": ["langgraph_docs", "arxiv_papers", "github_trending"],
+      "volume_estimate": "high",
+      "current_answer_quality": "low",
+      "priority_score": 95,
+      "recommended_content_type": "concept",
+      "target_url": "/concepts/agentic-rag/"
+    },
+    {
+      "query": "How to build multi-agent systems with LangGraph?",
+      "category": "how-to",
+      "signals": ["langchain_release", "github_stars", "community_questions"],
+      "volume_estimate": "high",
+      "current_answer_quality": "medium",
+      "priority_score": 92,
+      "recommended_content_type": "guide",
+      "target_url": "/guides/langgraph-multi-agent/"
+    },
+    {
+      "query": "What is MCP (Model Context Protocol)?",
+      "category": "definition",
+      "signals": ["anthropic_release", "claude_code", "emerging_standard"],
+      "volume_estimate": "high",
+      "current_answer_quality": "low",
+      "priority_score": 90,
+      "recommended_content_type": "concept",
+      "target_url": "/concepts/model-context-protocol/"
+    },
+    {
+      "query": "How to implement AI guardrails?",
+      "category": "how-to",
+      "signals": ["enterprise_adoption", "safety_focus", "regulatory"],
+      "volume_estimate": "high",
+      "current_answer_quality": "low",
+      "priority_score": 88,
+      "recommended_content_type": "guide",
+      "target_url": "/guides/ai-guardrails-implementation/"
+    },
+    {
+      "query": "RAG vs Fine-tuning: When to use which?",
+      "category": "comparison",
+      "signals": ["evergreen_question", "decision_query", "high_volume"],
+      "volume_estimate": "very_high",
+      "current_answer_quality": "medium",
+      "priority_score": 87,
+      "recommended_content_type": "compare",
+      "target_url": "/compare/rag-vs-fine-tuning/"
+    }
+  ],
+  "priority_2_this_week": [
+    {
+      "query": "Best vector database for RAG in 2026?",
+      "category": "comparison",
+      "signals": ["dated_content_needed", "multiple_options", "decision_query"],
+      "volume_estimate": "high",
+      "current_answer_quality": "outdated",
+      "priority_score": 82,
+      "recommended_content_type": "compare",
+      "target_url": "/compare/vector-databases-2026/"
+    },
+    {
+      "query": "How to evaluate LLM application quality?",
+      "category": "how-to",
+      "signals": ["llmops_trend", "production_focus", "growing_need"],
+      "volume_estimate": "medium",
+      "current_answer_quality": "low",
+      "priority_score": 80,
+      "recommended_content_type": "guide",
+      "target_url": "/guides/llm-evaluation/"
+    },
+    {
+      "query": "What is semantic chunking?",
+      "category": "definition",
+      "signals": ["rag_sophistication", "technical_term", "implementation_need"],
+      "volume_estimate": "medium",
+      "current_answer_quality": "low",
+      "priority_score": 78,
+      "recommended_content_type": "concept",
+      "target_url": "/concepts/semantic-chunking/"
+    },
+    {
+      "query": "Claude Code vs Cursor vs Continue IDE comparison",
+      "category": "comparison",
+      "signals": ["ai_coding_tools", "decision_query", "high_interest"],
+      "volume_estimate": "high",
+      "current_answer_quality": "fragmented",
+      "priority_score": 85,
+      "recommended_content_type": "compare",
+      "target_url": "/compare/ai-coding-assistants/"
+    },
+    {
+      "query": "How to reduce LLM API costs?",
+      "category": "how-to",
+      "signals": ["cost_concern", "production_focus", "practical_need"],
+      "volume_estimate": "high",
+      "current_answer_quality": "medium",
+      "priority_score": 79,
+      "recommended_content_type": "guide",
+      "target_url": "/guides/llm-cost-optimization/"
+    }
+  ],
+  "priority_3_this_month": [
+    {
+      "query": "What is hybrid search in RAG?",
+      "category": "definition",
+      "signals": ["rag_pattern", "technical_concept", "growing_adoption"],
+      "volume_estimate": "medium",
+      "current_answer_quality": "medium",
+      "priority_score": 72
+    },
+    {
+      "query": "AI agent memory systems explained",
+      "category": "definition",
+      "signals": ["emerging_concept", "agent_sophistication", "research_topic"],
+      "volume_estimate": "medium",
+      "current_answer_quality": "low",
+      "priority_score": 70
+    },
+    {
+      "query": "How to implement semantic caching for LLMs?",
+      "category": "how-to",
+      "signals": ["cost_optimization", "performance_pattern", "practical"],
+      "volume_estimate": "medium",
+      "current_answer_quality": "low",
+      "priority_score": 68
+    },
+    {
+      "query": "LangGraph vs CrewAI vs AutoGen comparison",
+      "category": "comparison",
+      "signals": ["framework_choice", "decision_query", "multiple_options"],
+      "volume_estimate": "medium",
+      "current_answer_quality": "fragmented",
+      "priority_score": 75
+    },
+    {
+      "query": "AI governance framework for enterprises",
+      "category": "how-to",
+      "signals": ["enterprise_adoption", "compliance_need", "regulatory"],
+      "volume_estimate": "medium",
+      "current_answer_quality": "low",
+      "priority_score": 70
+    }
+  ],
+  "emerging_watch_list": [
+    {
+      "query": "What is Constitutional AI?",
+      "category": "definition",
+      "signals": ["anthropic_research", "safety_focus", "emerging"],
+      "volume_estimate": "growing",
+      "monitoring_since": "2026-01-01"
+    },
+    {
+      "query": "How does model routing work?",
+      "category": "definition",
+      "signals": ["cost_optimization", "multi_model", "emerging"],
+      "volume_estimate": "growing",
+      "monitoring_since": "2026-01-01"
+    },
+    {
+      "query": "Multi-modal RAG systems",
+      "category": "how-to",
+      "signals": ["vision_models", "advanced_rag", "research"],
+      "volume_estimate": "growing",
+      "monitoring_since": "2025-12-15"
+    },
+    {
+      "query": "Structured output validation for LLMs",
+      "category": "how-to",
+      "signals": ["production_need", "reliability", "emerging_pattern"],
+      "volume_estimate": "growing",
+      "monitoring_since": "2026-01-01"
+    },
+    {
+      "query": "AI agent handoff patterns",
+      "category": "pattern",
+      "signals": ["multi_agent", "orchestration", "emerging"],
+      "volume_estimate": "growing",
+      "monitoring_since": "2025-12-01"
+    }
+  ],
+  "content_calendar_q1_2026": {
+    "week_1": [
+      "What is Agentic RAG?",
+      "How to build multi-agent systems with LangGraph?"
+    ],
+    "week_2": [
+      "What is MCP (Model Context Protocol)?",
+      "RAG vs Fine-tuning: When to use which?"
+    ],
+    "week_3": [
+      "How to implement AI guardrails?",
+      "Claude Code vs Cursor vs Continue IDE comparison"
+    ],
+    "week_4": [
+      "Best vector database for RAG in 2026?",
+      "How to evaluate LLM application quality?"
+    ]
+  }
+}
