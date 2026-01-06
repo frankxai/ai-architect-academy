@@ -173,6 +173,9 @@ export default function OfferingPage() {
             <Button variant="ghost" size="sm" onClick={() => window.location.href = '/'}>
               Dashboard
             </Button>
+            <Button variant="ghost" size="sm" onClick={() => window.location.href = '/vision'}>
+              Vision
+            </Button>
             <Button variant="ghost" size="sm" onClick={() => window.location.href = '/agents'}>
               Agents
             </Button>

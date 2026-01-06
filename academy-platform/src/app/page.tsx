@@ -115,6 +115,7 @@ export default function Home() {
 
             <nav className="hidden md:flex items-center gap-2">
               {[
+                { label: 'Vision', href: '/vision', icon: Target },
                 { label: 'Agents', href: '/agents', icon: Bot },
                 { label: 'Skills', href: '/skills', icon: Sparkles },
                 { label: 'AGI Research', href: '/agi-research', icon: Brain },
