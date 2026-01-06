@@ -41,7 +41,10 @@ claude-ai-architect/
 
 | Date | Change | Impact |
 |------|--------|--------|
-| | | |
+| 2026-01-06 | Updated all 22 skills to v1.1.0 with current versions | All metadata now includes last_updated, external_version |
+| 2026-01-06 | Created VERSION-TRACKING.md | Centralized version tracking for all technologies |
+| 2026-01-06 | Updated CLAUDE.md model selection | Claude Opus 4.5, Sonnet 4.5, GPT-5.2 |
+| 2026-01-05 | Best practices evolution | CLAUDE.md restructured, 5 slash commands created |
 
 ## External Dependencies
 

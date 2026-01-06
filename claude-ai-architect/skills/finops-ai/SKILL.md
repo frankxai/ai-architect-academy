@@ -1,7 +1,9 @@
 ---
 name: FinOps AI Expert
 description: Cost optimization for AI workloads - model selection, GPU sizing, commitment strategies, and multi-cloud cost management
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "2026 Cloud Pricing"
 triggers:
   - cost optimization
   - FinOps

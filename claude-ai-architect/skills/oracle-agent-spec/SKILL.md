@@ -1,7 +1,9 @@
 ---
 name: Oracle Agent Spec Expert
 description: Design framework-agnostic AI agents using Oracle's Open Agent Specification for portable, interoperable agentic systems with JSON/YAML definitions
-version: 1.0.0
+version: 1.1.0
+last_updated: 2026-01-06
+external_version: "Agent Spec 1.0"
 ---
 
 # Oracle Agent Spec Expert Skill
