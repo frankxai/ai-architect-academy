@@ -1,0 +1,171 @@
+---
+# GUIDE TEMPLATE
+# Use for: How-to queries ("How do I X?")
+# URL pattern: /guides/[slug]/
+---
+
+export const metadata = {
+  title: "How to [Action]: Step-by-Step Guide",
+  description: "[One-line description of what this guide teaches]",
+  lastUpdated: "YYYY-MM-DD",
+  author: "AI Architect Academy",
+  category: "guide",
+  difficulty: "beginner|intermediate|advanced",
+  timeToComplete: "X minutes",
+  prerequisites: ["prereq-1", "prereq-2"],
+  keywords: ["keyword1", "keyword2", "keyword3"],
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to [Action]",
+    "description": "[Description]",
+    "totalTime": "PTXhXm",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Step 1",
+        "text": "[Step description]"
+      }
+    ]
+  }
+}
+
+# How to [Action]: Complete Step-by-Step Guide
+
+{/* CRITICAL: First paragraph answers the query directly */}
+
+This guide shows you how to [achieve outcome] using [tools/technologies].
+By the end, you'll have [concrete deliverable] that [does what].
+[Estimated time: X minutes | Difficulty: Level]
+
+> **Quick Answer**: To [action], you need to [brief summary of key steps].
+> The most important consideration is [key insight].
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- [ ] [Prerequisite 1] - [Why needed]
+- [ ] [Prerequisite 2] - [Why needed]
+- [ ] [Prerequisite 3] - [Why needed]
+
+## What You'll Build
+
+[Description of the end result with screenshot or diagram if applicable]
+
+```
+[ASCII diagram of what we're building]
+```
+
+## Step 1: [First Action]
+
+{/* Each step should be atomic and testable */}
+
+[Explanation of what this step accomplishes]
+
+```bash
+# [Command description]
+[command]
+```
+
+**Expected output:**
+```
+[What the user should see]
+```
+
+### Why This Works
+
+[Brief explanation of why this step is necessary]
+
+## Step 2: [Second Action]
+
+[Explanation]
+
+```python
+# [Code description]
+[code]
+```
+
+**Checkpoint**: At this point, you should have [verifiable state].
+
+## Step 3: [Third Action]
+
+[Explanation]
+
+```python
+[code]
+```
+
+## Step 4: [Fourth Action]
+
+[Continue pattern...]
+
+## Testing Your Implementation
+
+Verify everything works:
+
+```bash
+# Test command
+[test]
+```
+
+**Success criteria:**
+- [ ] [Criterion 1]
+- [ ] [Criterion 2]
+- [ ] [Criterion 3]
+
+## Complete Code
+
+Here's the full implementation:
+
+```python
+# [filename].py
+# [Description]
+
+[Complete working code]
+```
+
+## Common Issues & Solutions
+
+### Issue: [Common Problem 1]
+**Symptom**: [What the user sees]
+**Cause**: [Why it happens]
+**Solution**: [How to fix]
+
+### Issue: [Common Problem 2]
+**Symptom**: [What the user sees]
+**Cause**: [Why it happens]
+**Solution**: [How to fix]
+
+## Next Steps
+
+Now that you've [accomplished goal], consider:
+
+1. **[Advanced topic 1]**: [Link and description]
+2. **[Related guide]**: [Link and description]
+3. **[Production considerations]**: [Link and description]
+
+## Frequently Asked Questions
+
+### Can I use [alternative] instead of [tool]?
+[Direct answer]
+
+### How do I handle [edge case]?
+[Direct answer]
+
+### What's the cost of running this in production?
+[Direct answer with specifics]
+
+## Related Guides
+
+- [Related Guide 1](/guides/related-1/) - [Brief description]
+- [Related Guide 2](/guides/related-2/) - [Brief description]
+
+## Sources
+
+- [Official Documentation](URL)
+- [GitHub Repository](URL)
+
+---
+
+*Last updated: [Date] • Tested with [Framework] v[X.X]*

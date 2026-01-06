@@ -8,6 +8,7 @@ We will use a **Single Repository (Monorepo)** approach.
 
 *   **Root (`/`)**: Contains the Open Source content, patterns, and curriculum.
 *   **Platform (`/academy-platform`)**: Contains the commercial Next.js application.
+*   **Publishing Engine (`/publishing-engine`)**: Public media + learning site for humans and AI agents.
 
 ### Why this strategy?
 1.  **Content-Code Unity:** The SaaS platform needs to read the Markdown files (`01-design-patterns/`, etc.) to render the curriculum. A Monorepo makes these files locally accessible during the build process without complex submodules or API calls.
@@ -25,14 +26,18 @@ ai-architect-academy/
 ├── 01-design-patterns/     # OSS Content (Knowledge Base)
 ├── 02-learning-paths/      # OSS Content (Curriculum)
 ├── academy-platform/       # SaaS Application (Next.js)
+├── publishing-engine/      # Marketing + Media Publishing (Next.js)
 │   ├── src/                # App Code
 │   └── package.json        # Platform Dependencies
+├── archive/
+│   └── marketing-site/     # Prototype (superseded by publishing-engine)
 └── legacy-saas-skeleton/   # Archived (Frozen)
 ```
 
 ### B. Synchronization Logic
 *   **OSS Sync (GitHub):** The entire repo is synced to GitHub. The root `README.md` represents the OSS project.
 *   **SaaS Sync (Vercel):** Vercel is connected to the **same GitHub repository** but is configured with a specific **Root Directory**.
+*   **Publishing Sync (Vercel):** A second Vercel project points to `publishing-engine` for the media/SEO site.
 
 ---
 
@@ -53,6 +58,12 @@ We define two distinct pipelines based on which files are modified in a Commit.
     1.  **Build:** Runs `next build` inside `academy-platform`.
     2.  **Test:** Runs unit tests (`npm test`).
     3.  **Deploy:** Vercel automatically deploys to `app.ai-architect-academy.com`.
+
+### Pipeline C: The Publishing Pipeline (Marketing + Media)
+*   **Trigger:** Changes to `publishing-engine/**`.
+*   **Action:**
+    1.  **Build:** Runs `next build` inside `publishing-engine`.
+    2.  **Deploy:** Vercel deploys the media site (e.g. `aiarchitectacademy.com`).
 
 ### Vercel Configuration (Crucial)
 To prevent the SaaS from rebuilding when you only change a `README.md` that *doesn't* matter, we use Vercel's **Ignored Build Step**.
@@ -99,9 +110,12 @@ Since `academy-platform` is just a folder, merge conflicts are handled via stand
     *   Root Directory: `academy-platform`
     *   Framework: Next.js
     *   Include Source Files: *Ensure Vercel has access to parent directories (monorepo default).*
+2.  [ ] **Vercel Project Settings (Publishing Engine):**
+    *   Root Directory: `publishing-engine`
+    *   Framework: Next.js
 
-2.  [ ] **GitHub Actions (`.github/workflows/ci.yml`):**
+3.  [ ] **GitHub Actions (`.github/workflows/ci.yml`):**
     *   Create a workflow that runs `npm run build` in `academy-platform` whenever code changes.
 
-3.  [ ] **Content Ingestion:**
+4.  [ ] **Content Ingestion:**
     *   Ensure `academy-platform` uses `fs.readFileSync` with `path.join(process.cwd(), '..')` to access the OSS content.
