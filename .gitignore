@@ -27,4 +27,9 @@ Arc/*.vsix
 # Build outputs
 dashboard/.next/
 academy-dashboard/.next/
+academy-platform/.next/
+marketing-site/.next/
+archive/marketing-site/.next/
+publishing-engine/.next/
+legacy-saas-skeleton/.next/
 *.tsbuildinfo

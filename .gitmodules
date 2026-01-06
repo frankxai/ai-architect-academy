@@ -4,3 +4,6 @@
 [submodule "Arc/integrations/kilo-fork/arc-kilocode"]
 	path = Arc/integrations/kilo-fork/arc-kilocode
 	url = https://github.com/frankxai/arc-kilocode
+[submodule "legacy-saas-skeleton"]
+	path = legacy-saas-skeleton
+	url = https://github.com/frankxai/saas-ai-architect-academy.git

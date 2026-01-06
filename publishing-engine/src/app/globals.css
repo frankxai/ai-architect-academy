@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  @apply bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent;
+}
+
+/* Card hover effect */
+.card-hover {
+  @apply transition-all duration-300 hover:scale-[1.02] hover:border-purple-500/50;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Code blocks - AI-optimized styling */
+pre {
+  @apply rounded-xl bg-slate-900 border border-slate-800 p-4 overflow-x-auto;
+}
+
+pre code {
+  @apply text-sm font-mono;
+}
+
+/* Inline code */
+:not(pre) > code {
+  @apply bg-slate-800 text-purple-400 rounded px-1.5 py-0.5 text-sm;
+}
+
+/* Tables - for comparison content */
+table {
+  @apply w-full border-collapse;
+}
+
+th {
+  @apply bg-slate-800 text-left p-3 font-semibold text-white border-b border-slate-700;
+}
+
+td {
+  @apply p-3 border-b border-slate-800 text-slate-300;
+}
+
+tr:hover td {
+  @apply bg-slate-900/50;
+}
+
+/* Blockquotes - for definitions */
+blockquote {
+  @apply border-l-4 border-purple-500 bg-purple-500/10 rounded-r-xl p-4 my-6;
+}
+
+blockquote p {
+  @apply text-slate-200 m-0;
+}
+
+/* Headings - semantic anchors for AI parsing */
+h1, h2, h3, h4 {
+  @apply scroll-mt-24;
+}
+
+h2 {
+  @apply text-2xl font-bold text-white mt-12 mb-4 pb-2 border-b border-slate-800;
+}
+
+h3 {
+  @apply text-xl font-semibold text-white mt-8 mb-3;
+}
+
+/* Lists */
+ul, ol {
+  @apply my-4 pl-6;
+}
+
+li {
+  @apply my-2;
+}
+
+ul li {
+  @apply list-disc;
+}
+
+ol li {
+  @apply list-decimal;
+}
+
+/* Links */
+a:not(.no-underline) {
+  @apply text-purple-400 hover:text-purple-300 transition-colors;
+}
+
+/* Focus states for accessibility */
+a:focus-visible, button:focus-visible {
+  @apply outline-none ring-2 ring-purple-500 ring-offset-2 ring-offset-slate-950;
+}
