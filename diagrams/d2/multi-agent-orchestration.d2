@@ -1,0 +1,199 @@
+# Multi-Agent Orchestration Pattern
+# Render: d2 multi-agent-orchestration.d2 multi-agent-orchestration.svg --theme 200
+
+direction: down
+
+title: |md
+  # Multi-Agent Orchestration
+  Supervisor pattern with specialized agents
+| {
+  near: top-center
+  shape: text
+  style.font-size: 24
+}
+
+# User Interface
+user: 👤 User {
+  shape: person
+  style.fill: "#06b6d4"
+  style.stroke: "#0891b2"
+}
+
+# Supervisor Agent
+supervisor: 🎯 Supervisor Agent {
+  style.fill: "#9333ea"
+  style.stroke: "#7c3aed"
+  style.font-color: "#ffffff"
+  style.font-size: 16
+  style.bold: true
+  style.border-radius: 12
+
+  router: 🔀 Task Router {
+    style.fill: "#a855f7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  state: 📊 State Manager {
+    style.fill: "#a855f7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  handoff: 🔄 Handoff Logic {
+    style.fill: "#a855f7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  router -> state
+  state -> handoff
+}
+
+# Specialist Agents
+specialists: Specialist Agents {
+  style.fill: "#f1f5f9"
+  style.stroke: "#334155"
+  style.border-radius: 12
+
+  research: 🔍 Research Agent {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    web: Web Search
+    docs: Doc Analysis
+  }
+
+  analyst: 📈 Analysis Agent {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    data: Data Processing
+    viz: Visualization
+  }
+
+  writer: ✍️ Writing Agent {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    draft: Draft Generation
+    edit: Editing & Polish
+  }
+
+  coder: 💻 Coding Agent {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    impl: Implementation
+    test: Testing
+  }
+}
+
+# Tools Layer
+tools: 🔧 Shared Tools {
+  style.fill: "#fef3c7"
+  style.stroke: "#f59e0b"
+  style.border-radius: 12
+
+  mcp: MCP Servers {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+
+    github: GitHub
+    db: Database
+    files: File System
+    browser: Browser
+  }
+
+  llm: LLM Pool {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+
+    claude: Claude
+    gpt: GPT-4
+    local: Local Model
+  }
+}
+
+# Memory
+memory: 💾 Shared Memory {
+  shape: cylinder
+  style.fill: "#e0f2fe"
+  style.stroke: "#0284c7"
+
+  context: Conversation Context
+  artifacts: Generated Artifacts
+  agent_state: Agent State
+}
+
+# Connections - User to Supervisor
+user -> supervisor: "Task Request" {
+  style.stroke-width: 3
+  style.stroke: "#06b6d4"
+}
+
+# Supervisor to Specialists
+supervisor.router -> specialists.research: "Research Task" {
+  style.stroke: "#06b6d4"
+  style.stroke-width: 2
+}
+supervisor.router -> specialists.analyst: "Analysis Task" {
+  style.stroke: "#334155"
+  style.stroke-width: 2
+}
+supervisor.router -> specialists.writer: "Writing Task" {
+  style.stroke: "#06b6d4"
+  style.stroke-width: 2
+}
+supervisor.router -> specialists.coder: "Coding Task" {
+  style.stroke: "#334155"
+  style.stroke-width: 2
+}
+
+# Tool access
+specialists.research -> tools.mcp: "Search" {
+  style.stroke-dash: 3
+  style.stroke: "#f59e0b"
+}
+specialists.coder -> tools.mcp: "Code" {
+  style.stroke-dash: 3
+  style.stroke: "#f59e0b"
+}
+specialists -> tools.llm: "Inference" {
+  style.stroke-dash: 3
+  style.stroke: "#f59e0b"
+}
+
+# Memory access
+supervisor.state <-> memory: "State Sync" {
+  style.stroke: "#0284c7"
+  style.stroke-dash: 5
+}
+specialists <-> memory: "Read/Write" {
+  style.stroke: "#0284c7"
+  style.stroke-dash: 5
+}
+
+# Handoff - specialists back to supervisor
+specialists.research -> supervisor.handoff: "Complete" {
+  style.stroke: "#22c55e"
+}
+specialists.analyst -> supervisor.handoff: "Complete" {
+  style.stroke: "#22c55e"
+}
+specialists.writer -> supervisor.handoff: "Complete" {
+  style.stroke: "#22c55e"
+}
+specialists.coder -> supervisor.handoff: "Complete" {
+  style.stroke: "#22c55e"
+}
+
+# Response to user
+supervisor -> user: "Final Response" {
+  style.stroke-width: 3
+  style.stroke: "#22c55e"
+}
