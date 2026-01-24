@@ -1,0 +1,208 @@
+# LangGraph State Machine Patterns
+# Render: d2 langgraph-patterns.d2 langgraph-patterns.svg --theme 200
+
+direction: down
+
+title: |md
+  # LangGraph Patterns
+  State machines for agentic workflows
+| {
+  near: top-center
+  shape: text
+  style.font-size: 24
+}
+
+# Entry Point
+start: START {
+  shape: circle
+  style.fill: "#22c55e"
+  style.stroke: "#16a34a"
+}
+
+# State Definitions
+states: 📦 Graph State {
+  style.fill: "#f8fafc"
+  style.stroke: "#94a3b8"
+  style.border-radius: 12
+
+  messages: "messages: List[Message]" {
+    style.fill: "#e2e8f0"
+    style.border-radius: 8
+  }
+
+  context: "context: Dict" {
+    style.fill: "#e2e8f0"
+    style.border-radius: 8
+  }
+
+  next_step: "next_step: str" {
+    style.fill: "#e2e8f0"
+    style.border-radius: 8
+  }
+}
+
+# Nodes
+nodes: Nodes {
+  style.fill: "#f0fdfa"
+  style.stroke: "#14b8a6"
+  style.border-radius: 12
+
+  router: 🔀 Router Node {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  researcher: 🔍 Research Node {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  analyst: 📊 Analysis Node {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  writer: ✍️ Writer Node {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  reviewer: 👀 Review Node {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+}
+
+# Conditional Edges
+edges: Conditional Routing {
+  style.fill: "#faf5ff"
+  style.stroke: "#a855f7"
+  style.border-radius: 12
+
+  condition: 🎯 should_continue() {
+    shape: diamond
+    style.fill: "#9333ea"
+    style.font-color: "#ffffff"
+  }
+
+  human: 👤 Human-in-Loop {
+    shape: diamond
+    style.fill: "#9333ea"
+    style.font-color: "#ffffff"
+  }
+}
+
+# Tools
+tools: 🔧 Tool Nodes {
+  style.fill: "#fef3c7"
+  style.stroke: "#f59e0b"
+  style.border-radius: 12
+
+  search: Web Search {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+  }
+
+  code: Code Execution {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+  }
+
+  db: Database Query {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+  }
+}
+
+# Checkpointer
+checkpoint: 💾 Checkpointer {
+  shape: cylinder
+  style.fill: "#e0f2fe"
+  style.stroke: "#0284c7"
+
+  sqlite: SQLite
+  postgres: PostgreSQL
+  memory: In-Memory
+}
+
+# End
+end: END {
+  shape: circle
+  style.fill: "#ef4444"
+  style.stroke: "#dc2626"
+}
+
+# Connections - Main Flow
+start -> nodes.router: "Input" {
+  style.stroke-width: 2
+  style.stroke: "#22c55e"
+}
+
+nodes.router -> edges.condition: "Classify" {
+  style.stroke: "#9333ea"
+  style.stroke-width: 2
+}
+
+# Conditional branches
+edges.condition -> nodes.researcher: "research" {
+  style.stroke: "#06b6d4"
+}
+edges.condition -> nodes.analyst: "analyze" {
+  style.stroke: "#06b6d4"
+}
+edges.condition -> nodes.writer: "write" {
+  style.stroke: "#06b6d4"
+}
+edges.condition -> end: "done" {
+  style.stroke: "#ef4444"
+  style.stroke-width: 2
+}
+
+# Tool calls
+nodes.researcher -> tools.search: "Tool Call" {
+  style.stroke-dash: 3
+  style.stroke: "#f59e0b"
+}
+nodes.analyst -> tools.db: "Tool Call" {
+  style.stroke-dash: 3
+  style.stroke: "#f59e0b"
+}
+
+# Human approval
+nodes.writer -> edges.human: "Review?" {
+  style.stroke: "#9333ea"
+}
+edges.human -> nodes.reviewer: "approve" {
+  style.stroke: "#22c55e"
+}
+edges.human -> nodes.writer: "revise" {
+  style.stroke: "#f59e0b"
+}
+
+# Back to router (cycle)
+nodes.researcher -> nodes.router: "Result" {
+  style.stroke: "#64748b"
+}
+nodes.analyst -> nodes.router: "Result" {
+  style.stroke: "#64748b"
+}
+nodes.reviewer -> nodes.router: "Result" {
+  style.stroke: "#64748b"
+}
+
+# State persistence
+nodes -> checkpoint: "Persist State" {
+  style.stroke-dash: 5
+  style.stroke: "#0284c7"
+}
+
+# State access
+states -> nodes: "Read/Write" {
+  style.stroke-dash: 5
+  style.stroke: "#94a3b8"
+}

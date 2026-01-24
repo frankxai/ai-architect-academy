@@ -1,0 +1,248 @@
+# Claude Agent SDK Patterns
+# Render: d2 claude-sdk-patterns.d2 claude-sdk-patterns.svg --theme 200
+
+direction: down
+
+title: |md
+  # Claude Agent SDK
+  Building autonomous agents with Claude
+| {
+  near: top-center
+  shape: text
+  style.font-size: 24
+}
+
+# Agent Core
+agent: 🤖 Claude Agent {
+  style.fill: "#9333ea"
+  style.stroke: "#7c3aed"
+  style.font-color: "#ffffff"
+  style.bold: true
+  style.border-radius: 12
+
+  model: claude-sonnet-4-20250514 {
+    style.fill: "#a855f7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  system: System Prompt {
+    style.fill: "#a855f7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  tools: Tool Definitions {
+    style.fill: "#a855f7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  loop: Agentic Loop {
+    style.fill: "#c4b5fd"
+    style.border-radius: 8
+  }
+}
+
+# Tool Categories
+tool_types: 🔧 Tool Types {
+  style.fill: "#fef3c7"
+  style.stroke: "#f59e0b"
+  style.border-radius: 12
+
+  bash: 💻 Bash Tool {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    cmd: "Execute shell commands"
+  }
+
+  computer: 🖥️ Computer Use {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    desc: "GUI automation"
+  }
+
+  text: 📝 Text Editor {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    desc: "File editing"
+  }
+
+  mcp: 🔌 MCP Tools {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    desc: "External integrations"
+  }
+
+  custom: ⚙️ Custom Tools {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    desc: "Your functions"
+  }
+}
+
+# Agentic Loop Detail
+loop_detail: Agentic Loop Pattern {
+  style.fill: "#f0fdfa"
+  style.stroke: "#14b8a6"
+  style.border-radius: 12
+
+  think: 🧠 Think {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  plan: 📋 Plan {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  act: ⚡ Act (Tool Call) {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  observe: 👁️ Observe {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  decide: 🎯 Decide {
+    shape: diamond
+    style.fill: "#22c55e"
+    style.font-color: "#ffffff"
+  }
+
+  think -> plan -> act -> observe -> decide
+  decide -> think: "Continue" {
+    style.stroke: "#f59e0b"
+    style.stroke-dash: 3
+  }
+}
+
+# Safety Controls
+safety: 🛡️ Safety Controls {
+  style.fill: "#fee2e2"
+  style.stroke: "#ef4444"
+  style.border-radius: 12
+
+  permissions: Permission System {
+    style.fill: "#fca5a5"
+    style.border-radius: 8
+
+    read: "Read-only mode"
+    execute: "Execution approval"
+    write: "Write permissions"
+  }
+
+  limits: Resource Limits {
+    style.fill: "#fca5a5"
+    style.border-radius: 8
+
+    tokens: "Max tokens"
+    time: "Timeout"
+    calls: "Max tool calls"
+  }
+
+  hooks: Lifecycle Hooks {
+    style.fill: "#fca5a5"
+    style.border-radius: 8
+
+    pre: "Pre-execution"
+    post: "Post-execution"
+  }
+}
+
+# Output
+output: 📤 Agent Output {
+  style.fill: "#dcfce7"
+  style.stroke: "#22c55e"
+  style.border-radius: 12
+
+  response: Final Response {
+    style.fill: "#22c55e"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  artifacts: Generated Artifacts {
+    style.fill: "#86efac"
+    style.border-radius: 8
+
+    code: "Code files"
+    docs: "Documents"
+    data: "Data outputs"
+  }
+
+  history: Conversation History {
+    shape: cylinder
+    style.fill: "#bbf7d0"
+  }
+}
+
+# Input
+input: 📥 User Input {
+  style.fill: "#e0f2fe"
+  style.stroke: "#0284c7"
+  style.border-radius: 12
+
+  task: Task Description {
+    style.fill: "#0284c7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  context: Context Files {
+    style.fill: "#7dd3fc"
+    style.border-radius: 8
+  }
+}
+
+# Connections
+input.task -> agent: "Initialize" {
+  style.stroke-width: 3
+  style.stroke: "#0284c7"
+}
+
+agent.tools -> tool_types: "Register" {
+  style.stroke: "#f59e0b"
+  style.stroke-width: 2
+}
+
+agent.loop -> loop_detail: "Execute" {
+  style.stroke: "#14b8a6"
+  style.stroke-width: 2
+}
+
+tool_types -> safety.permissions: "Check" {
+  style.stroke-dash: 3
+  style.stroke: "#ef4444"
+}
+
+loop_detail.decide -> output.response: "Complete" {
+  style.stroke-width: 3
+  style.stroke: "#22c55e"
+}
+
+loop_detail.act -> tool_types: "Call" {
+  style.stroke: "#f59e0b"
+}
+
+safety.hooks -> agent: "Monitor" {
+  style.stroke-dash: 5
+  style.stroke: "#ef4444"
+}
