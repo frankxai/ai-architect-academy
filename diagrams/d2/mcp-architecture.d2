@@ -1,0 +1,219 @@
+# Model Context Protocol (MCP) Architecture
+# Render: d2 mcp-architecture.d2 mcp-architecture.svg --theme 200
+
+direction: right
+
+title: |md
+  # MCP Architecture
+  Model Context Protocol server patterns
+| {
+  near: top-center
+  shape: text
+  style.font-size: 24
+}
+
+# Host Application
+host: 🖥️ MCP Host {
+  style.fill: "#f0fdfa"
+  style.stroke: "#14b8a6"
+  style.border-radius: 12
+
+  claude: Claude Desktop {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  vscode: VS Code + Cline {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  custom: Custom Host App {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+}
+
+# MCP Client (inside host)
+client: 🔌 MCP Client {
+  style.fill: "#faf5ff"
+  style.stroke: "#a855f7"
+  style.border-radius: 12
+
+  transport: Transport Layer {
+    style.fill: "#c4b5fd"
+    style.border-radius: 8
+
+    stdio: stdio
+    sse: SSE
+    ws: WebSocket
+  }
+
+  protocol: Protocol Handler {
+    style.fill: "#9333ea"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+}
+
+# MCP Servers
+servers: 🔧 MCP Servers {
+  style.fill: "#f8fafc"
+  style.stroke: "#334155"
+  style.border-radius: 12
+
+  filesystem: 📁 Filesystem Server {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    read: read_file
+    write: write_file
+    list: list_directory
+  }
+
+  github: 🐙 GitHub Server {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    repos: list_repos
+    issues: create_issue
+    pr: create_pr
+  }
+
+  database: 🗄️ Database Server {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    query: execute_query
+    schema: get_schema
+    insert: insert_row
+  }
+
+  web: 🌐 Web Server {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+
+    fetch: fetch_url
+    scrape: scrape_page
+    search: web_search
+  }
+}
+
+# Capabilities
+capabilities: MCP Capabilities {
+  style.fill: "#fef3c7"
+  style.stroke: "#f59e0b"
+  style.border-radius: 12
+
+  tools_cap: 🔧 Tools {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+
+    desc: "Functions LLM can call"
+  }
+
+  resources: 📚 Resources {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+
+    desc: "Data LLM can read"
+  }
+
+  prompts: 💬 Prompts {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+
+    desc: "Template prompts"
+  }
+
+  sampling: 🎲 Sampling {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+
+    desc: "LLM completion requests"
+  }
+}
+
+# External Systems
+external: 🌍 External Systems {
+  style.fill: "#fee2e2"
+  style.stroke: "#ef4444"
+  style.border-radius: 12
+
+  api: REST APIs {
+    style.fill: "#fca5a5"
+    style.border-radius: 8
+  }
+
+  db: Databases {
+    shape: cylinder
+    style.fill: "#fca5a5"
+  }
+
+  cloud: Cloud Services {
+    style.fill: "#fca5a5"
+    style.border-radius: 8
+  }
+}
+
+# Connections - Host to Client
+host.claude -> client.protocol: "Initialize" {
+  style.stroke-width: 2
+  style.stroke: "#14b8a6"
+}
+host.vscode -> client.protocol: "Initialize" {
+  style.stroke-width: 2
+  style.stroke: "#14b8a6"
+}
+host.custom -> client.protocol: "Initialize" {
+  style.stroke-width: 2
+  style.stroke: "#14b8a6"
+}
+
+# Client to Servers
+client.transport -> servers.filesystem: "stdio" {
+  style.stroke: "#9333ea"
+  style.stroke-width: 2
+}
+client.transport -> servers.github: "stdio" {
+  style.stroke: "#9333ea"
+  style.stroke-width: 2
+}
+client.transport -> servers.database: "stdio" {
+  style.stroke: "#9333ea"
+  style.stroke-width: 2
+}
+client.transport -> servers.web: "SSE" {
+  style.stroke: "#9333ea"
+  style.stroke-width: 2
+}
+
+# Servers to Capabilities
+servers -> capabilities: "Expose" {
+  style.stroke-dash: 3
+  style.stroke: "#f59e0b"
+}
+
+# Servers to External
+servers.github -> external.api: "API Calls" {
+  style.stroke: "#ef4444"
+}
+servers.database -> external.db: "Queries" {
+  style.stroke: "#ef4444"
+}
+servers.web -> external.cloud: "HTTP" {
+  style.stroke: "#ef4444"
+}
+
+# Bidirectional protocol
+client.protocol <-> servers: "JSON-RPC 2.0" {
+  style.stroke: "#64748b"
+  style.stroke-dash: 5
+}

@@ -437,7 +437,7 @@ Production-ready patterns for enterprise AI:
 
 ## Architecture Diagrams
 
-Beautiful, version-controlled diagrams using D2 (Terrastruct):
+Beautiful, version-controlled diagrams using D2 (Terrastruct). **6 production-ready architectures:**
 
 ### Production RAG System
 <p align="center">
@@ -452,6 +452,21 @@ Beautiful, version-controlled diagrams using D2 (Terrastruct):
 ### Multi-Cloud AI Gateway
 <p align="center">
   <img src="assets/diagrams/ai-gateway.svg" alt="Multi-Cloud AI Gateway" width="100%"/>
+</p>
+
+### LangGraph State Machine Patterns
+<p align="center">
+  <img src="assets/diagrams/langgraph-patterns.svg" alt="LangGraph State Machine Patterns" width="100%"/>
+</p>
+
+### MCP (Model Context Protocol) Architecture
+<p align="center">
+  <img src="assets/diagrams/mcp-architecture.svg" alt="MCP Architecture" width="100%"/>
+</p>
+
+### Claude Agent SDK Patterns
+<p align="center">
+  <img src="assets/diagrams/claude-sdk-patterns.svg" alt="Claude Agent SDK Patterns" width="100%"/>
 </p>
 
 **Diagrams as Code:** All diagrams are defined in `diagrams/d2/` and auto-rendered via GitHub Actions.
