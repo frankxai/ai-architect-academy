@@ -1,0 +1,76 @@
+name: Render Diagrams
+
+on:
+  push:
+    paths:
+      - 'diagrams/**/*.d2'
+      - 'diagrams/**/*.py'
+  workflow_dispatch:
+
+jobs:
+  render-d2:
+    name: Render D2 Diagrams
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install D2
+        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+
+      - name: Create output directory
+        run: mkdir -p assets/diagrams
+
+      - name: Render D2 diagrams
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          for f in diagrams/d2/*.d2; do
+            if [ -f "$f" ]; then
+              name=$(basename "${f%.d2}")
+              echo "Rendering $f -> assets/diagrams/$name.svg"
+              d2 "$f" "assets/diagrams/$name.svg" --theme 200
+            fi
+          done
+
+      - name: Commit rendered diagrams
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: render D2 diagrams [skip ci]"
+          file_pattern: "assets/diagrams/*.svg"
+
+  render-python:
+    name: Render Python Diagrams
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install diagrams
+          sudo apt-get update && sudo apt-get install -y graphviz
+
+      - name: Create output directory
+        run: mkdir -p assets/diagrams
+
+      - name: Render Python diagrams
+        run: |
+          cd diagrams/python
+          for f in *.py; do
+            if [ -f "$f" ]; then
+              echo "Rendering $f"
+              python "$f"
+            fi
+          done
+          mv *.png ../../assets/diagrams/ 2>/dev/null || true
+
+      - name: Commit rendered diagrams
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: render Python diagrams [skip ci]"
+          file_pattern: "assets/diagrams/*.png"
