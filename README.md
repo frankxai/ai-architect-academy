@@ -476,7 +476,27 @@ Beautiful, version-controlled diagrams using D2 (Terrastruct). **6 production-re
 d2 diagrams/d2/rag-production.d2 output.svg --theme 200
 ```
 
-[See all diagrams →](diagrams/)
+[See all diagrams →](diagrams/) | [Interactive Version →](interactive-diagrams/)
+
+---
+
+## Interactive Diagrams
+
+Want to explore these architectures interactively? The **Interactive Diagrams Dashboard** lets you:
+
+- **Drag & rearrange** nodes to understand relationships
+- **Zoom & pan** through complex architectures
+- **Explore** RAG, Multi-Agent, and MCP patterns hands-on
+
+```bash
+# Run locally
+cd interactive-diagrams
+npm install && npm run dev
+```
+
+Or deploy to Vercel with one click:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AI-Architect-Academy/ai-architect-academy/tree/main/interactive-diagrams)
 
 ---
 
@@ -485,7 +505,7 @@ d2 diagrams/d2/rag-production.d2 output.svg --theme 200
 | Platform | URL |
 |----------|-----|
 | **GitHub Pages** | [ai-architect-academy.github.io](https://ai-architect-academy.github.io/ai-architect-academy/) |
-| **Dashboard** | [ai-architect-academy.vercel.app](https://ai-architect-academy.vercel.app) |
+| **Interactive Diagrams** | [Deploy to Vercel](interactive-diagrams/) |
 | **Local** | `scripts/serve.sh` → `http://localhost:8080` |
 
 ---
