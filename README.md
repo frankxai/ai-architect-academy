@@ -13,121 +13,266 @@
   <a href="#quick-start"><img src="https://img.shields.io/badge/Quick%20Start-5%20min-success?style=flat-square" alt="Quick Start"/></a>
   <a href="#skills-library"><img src="https://img.shields.io/badge/Skills-80+-blue?style=flat-square" alt="Skills"/></a>
   <a href="#learning-paths"><img src="https://img.shields.io/badge/Learning%20Paths-13-purple?style=flat-square" alt="Learning Paths"/></a>
-  <a href="https://github.com/frankxai/ai-architect-academy/stargazers"><img src="https://img.shields.io/github/stars/frankxai/ai-architect-academy?style=flat-square" alt="Stars"/></a>
+  <a href="https://github.com/AI-Architect-Academy/ai-architect-academy/stargazers"><img src="https://img.shields.io/github/stars/AI-Architect-Academy/ai-architect-academy?style=flat-square" alt="Stars"/></a>
+  <a href="#architecture-gallery"><img src="https://img.shields.io/badge/Diagrams-6-ff6b6b?style=flat-square" alt="Diagrams"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/></a>
 </p>
 
 <p align="center">
-  <a href="#coding-agents-first">Why Coding Agents First</a> •
+  <a href="#architecture-gallery">Architecture Gallery</a> •
   <a href="#quick-start">Quick Start</a> •
   <a href="#skills-library">Skills</a> •
   <a href="#learning-paths">Paths</a> •
-  <a href="#agent-teams">Agents</a> •
   <a href="#certification">Certification</a>
 </p>
 
+---
+
+## Architecture Gallery
+
+> **Visual-first learning.** Every concept has a diagram. Every diagram is code.
+
+<table>
+<tr>
+<td width="50%">
+
+### 🔍 Production RAG System
+<a href="assets/diagrams/rag-production.svg">
+  <img src="assets/diagrams/rag-production.svg" alt="Production RAG Architecture"/>
+</a>
+<sub>Enterprise-grade retrieval augmented generation</sub>
+
+</td>
+<td width="50%">
+
+### 🤖 Multi-Agent Orchestration
+<a href="assets/diagrams/multi-agent-orchestration.svg">
+  <img src="assets/diagrams/multi-agent-orchestration.svg" alt="Multi-Agent Orchestration"/>
+</a>
+<sub>Supervisor pattern with specialist agents</sub>
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### ☁️ Multi-Cloud AI Gateway
+<a href="assets/diagrams/ai-gateway.svg">
+  <img src="assets/diagrams/ai-gateway.svg" alt="Multi-Cloud AI Gateway"/>
+</a>
+<sub>Intelligent routing across AWS, Azure, GCP, OCI</sub>
+
+</td>
+<td width="50%">
+
+### 🔀 LangGraph State Machines
+<a href="assets/diagrams/langgraph-patterns.svg">
+  <img src="assets/diagrams/langgraph-patterns.svg" alt="LangGraph State Machine Patterns"/>
+</a>
+<sub>Agentic workflows with conditional routing</sub>
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🔌 MCP Architecture
+<a href="assets/diagrams/mcp-architecture.svg">
+  <img src="assets/diagrams/mcp-architecture.svg" alt="MCP Architecture"/>
+</a>
+<sub>Model Context Protocol server patterns</sub>
+
+</td>
+<td width="50%">
+
+### 🧠 Claude Agent SDK
+<a href="assets/diagrams/claude-sdk-patterns.svg">
+  <img src="assets/diagrams/claude-sdk-patterns.svg" alt="Claude Agent SDK Patterns"/>
+</a>
+<sub>Agentic loop with tools and safety controls</sub>
+
+</td>
+</tr>
+</table>
+
 <p align="center">
-  <img src="assets/ai-architect-campus.png" alt="AI Architect Academy Campus" width="800"/>
+  <a href="interactive-diagrams/"><strong>🎮 Explore Interactive Diagrams →</strong></a>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="diagrams/"><strong>📐 Diagrams as Code →</strong></a>
 </p>
 
 ---
 
-## The Vision
+## The Philosophy
 
-> **Every lesson writes code. Every skill builds agents. Every project deploys to production.**
+<table>
+<tr>
+<td width="60%">
+
+### Every lesson writes code. Every skill builds agents. Every project deploys to production.
+
+**Traditional learning:** Read docs → Watch videos → Maybe build something
+
+**AI Architect Academy:** Build agents immediately with slash commands
+
+| Instead of... | Do this |
+|---------------|---------|
+| Reading about RAG | `/build-rag` - Build one now |
+| Studying orchestration | `/orchestrate` - Run agent swarms |
+| Watching MCP tutorials | `/mcp-server` - Create your own |
+| Reading cloud docs | `/deploy-multicloud` - Deploy live |
+
+</td>
+<td width="40%" align="center">
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                        AI ARCHITECT ACADEMY V4                               │
-│                     "Coding Agents First" Philosophy                         │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│   🎯 MISSION CONTROL                  🧠 SKILLS LIBRARY (80+)               │
-│   ├─ CLAUDE.md activates skills       ├─ Agent Frameworks (12)              │
-│   ├─ /commands for everything         ├─ Multi-Cloud AI (16)                │
-│   ├─ Progress tracking                ├─ MCP & Integration (10)             │
-│   └─ Auto-skill routing               ├─ RAG & Knowledge (8)                │
-│                                        ├─ Enterprise & Security (12)         │
-│   📚 LEARNING PATHS (13)              ├─ Evaluation & Testing (8)           │
-│   ├─ AI Architect Foundation          └─ Production & DevOps (10+)          │
-│   ├─ Agent Developer                                                         │
-│   ├─ Multi-Cloud Architect           🔧 HANDS-ON PROJECTS (100+)            │
-│   ├─ Enterprise AI Lead               ├─ Build Your First Agent             │
-│   ├─ AGI Research Track               ├─ Multi-Agent RAG System             │
-│   └─ World Problems AI                ├─ Enterprise AI Gateway              │
-│                                        ├─ Cross-Cloud Deployment             │
-│   🤖 AGENT TEAMS (60+)                └─ Production Agent Swarm             │
-│   ├─ Cloud & Infrastructure                                                  │
-│   ├─ AI/ML Engineering               🏆 CERTIFICATION                       │
-│   ├─ Enterprise Architecture          ├─ Associate AI Architect             │
-│   ├─ Delivery & Operations            ├─ Professional AI Architect          │
-│   └─ AGI Research                     └─ Expert AI Architect                │
-│                                                                              │
-└─────────────────────────────────────────────────────────────────────────────┘
+   🎯 CODING AGENTS FIRST
+
+   ┌─────────────────┐
+   │   80+ Skills    │
+   │   13 Paths      │
+   │   100+ Projects │
+   │   6 Diagrams    │
+   └────────┬────────┘
+            │
+            ▼
+   ┌─────────────────┐
+   │  /slash-command │
+   │  → Build Now    │
+   └─────────────────┘
 ```
 
----
-
-## Coding Agents First
-
-Traditional learning: Read docs → Watch videos → Maybe build something
-
-**AI Architect Academy**: Learn by building agents immediately
-
-| Old Way | Academy Way |
-|---------|-------------|
-| Read about RAG systems | `/build-rag` - Build one in 10 minutes |
-| Study orchestration theory | `/orchestrate` - Run multi-agent swarms |
-| Watch MCP tutorials | `/mcp-server` - Create your own server |
-| Read cloud docs | `/deploy-multicloud` - Deploy across 4 clouds |
-
-**Every skill is immediately actionable with a slash command.**
+</td>
+</tr>
+</table>
 
 ---
 
 ## Quick Start
 
-### 1. Clone the Academy
-
 ```bash
-git clone https://github.com/frankxai/ai-architect-academy.git
+# 1. Clone
+git clone https://github.com/AI-Architect-Academy/ai-architect-academy.git
 cd ai-architect-academy
-```
 
-### 2. Start Claude Code
-
-```bash
+# 2. Start Claude Code
 claude
-```
 
-### 3. Choose Your Path
-
-```bash
-# See all available commands
-/academy
-
-# Start building immediately
+# 3. Build something
 /design-solution "Customer support AI with RAG"
-
-# Or follow a learning path
-/learn foundation
 ```
 
-### What's Available
+<table>
+<tr>
+<td>
+
+### Available Commands
 
 | Command | Purpose |
 |---------|---------|
-| `/academy` | Full menu of options |
+| `/academy` | Full menu |
 | `/skills` | Browse 80+ skills |
-| `/learn <path>` | Start a learning path |
-| `/project <name>` | Begin a hands-on project |
-| `/certify` | Start certification assessment |
+| `/learn <path>` | Start learning path |
+| `/project <name>` | Hands-on project |
+| `/certify` | Certification |
+
+</td>
+<td>
+
+### First Steps
+
+```bash
+# See everything available
+/academy
+
+# Start with fundamentals
+/learn foundation
+
+# Or jump straight to building
+/build-rag
+```
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## Skills Library
 
 ### 80+ Production-Ready Skills
+
+<table>
+<tr>
+<td width="33%">
+
+**🏗️ Agent Frameworks**
+- Claude SDK
+- Oracle ADK
+- LangGraph
+- OpenAI AgentKit
+- CrewAI
+- AutoGen
+
+</td>
+<td width="33%">
+
+**☁️ Multi-Cloud AI**
+- OCI Services
+- AWS Bedrock
+- Azure OpenAI
+- GCP Vertex AI
+- Terraform
+- Kubernetes
+
+</td>
+<td width="33%">
+
+**🔌 MCP & Integration**
+- MCP Architecture
+- MCP 2025 Patterns
+- Tool Use
+- API Integration
+- Database Agents
+
+</td>
+</tr>
+<tr>
+<td width="33%">
+
+**📊 RAG & Knowledge**
+- RAG Expert
+- Vector Databases
+- Embeddings
+- Chunking
+- Knowledge Graphs
+
+</td>
+<td width="33%">
+
+**🔒 Enterprise Security**
+- AI Security
+- Guardrails
+- Compliance
+- Responsible AI
+- Red Teaming
+
+</td>
+<td width="33%">
+
+**📈 Evaluation & Ops**
+- LangFuse
+- LangSmith
+- Benchmarks
+- Monitoring
+- CI/CD
+
+</td>
+</tr>
+</table>
+
+<details>
+<summary><strong>📋 View Full Skills List (80+)</strong></summary>
 
 <details>
 <summary><strong>🏗️ Agent Frameworks (12 skills)</strong></summary>
@@ -245,6 +390,8 @@ claude
 
 </details>
 
+</details>
+
 ---
 
 ## Learning Paths
@@ -252,261 +399,124 @@ claude
 ### Choose Your Journey
 
 ```mermaid
-graph TD
-    A[Start Here] --> B{Your Background?}
-    B -->|New to AI| C[Foundation Path]
-    B -->|Developer| D[Agent Developer Path]
-    B -->|Architect| E[Multi-Cloud Path]
-    B -->|Leader| F[Enterprise Lead Path]
-    B -->|Researcher| G[AGI Research Path]
-    B -->|Impact| H[World Problems Path]
-
-    C --> I[Certification]
-    D --> I
-    E --> I
-    F --> I
-    G --> I
-    H --> I
+graph LR
+    A[🚀 Start] --> B{Background?}
+    B -->|New to AI| C[Foundation]
+    B -->|Developer| D[Agent Dev]
+    B -->|Architect| E[Multi-Cloud]
+    B -->|Leader| F[Enterprise]
+    C --> G[🏆 Certified]
+    D --> G
+    E --> G
+    F --> G
 ```
 
-### 13 Learning Paths
+<table>
+<tr>
+<td width="50%">
 
-| Path | Hours | Focus | Start Command |
-|------|-------|-------|---------------|
-| **Foundation** | 20h | Claude SDK, MCP basics, first agents | `/learn foundation` |
-| **Agent Developer** | 40h | Multi-agent, RAG, tool use, testing | `/learn agents` |
-| **Multi-Cloud Architect** | 40h | AWS, Azure, GCP, OCI patterns | `/learn multicloud` |
-| **Enterprise Lead** | 30h | Security, governance, FinOps | `/learn enterprise` |
-| **100-Hour Launchpad** | 100h | Full AI architect curriculum | `/learn launchpad` |
-| **AGI Research** | 80-100h | Alignment, safety, world models | `/learn agi` |
-| **Climate AI** | 100h | Carbon optimization, sustainability | `/learn climate` |
-| **Health AI** | 120h | Drug discovery, diagnostics | `/learn health` |
-| **Education AI** | 100h | Adaptive tutoring, accessibility | `/learn education` |
-| **Economic AI** | 100h | Financial inclusion, supply chain | `/learn economic` |
-| **Bootcamp** | 40h | Intensive enterprise training | `/learn bootcamp` |
-| **Micro-Learning** | Variable | 45-minute modules | `/learn micro` |
-| **Command Center** | 77h | Full certification program | `/learn command-center` |
+### Core Paths
 
----
+| Path | Hours | Start |
+|------|-------|-------|
+| **Foundation** | 20h | `/learn foundation` |
+| **Agent Developer** | 40h | `/learn agents` |
+| **Multi-Cloud** | 40h | `/learn multicloud` |
+| **Enterprise Lead** | 30h | `/learn enterprise` |
+| **100-Hour Launchpad** | 100h | `/learn launchpad` |
 
-## Agent Teams
+</td>
+<td width="50%">
 
-### 60+ Specialized Agents
+### Specialty Paths
 
-The Academy orchestrates specialized agent teams organized into departments:
+| Path | Hours | Start |
+|------|-------|-------|
+| **AGI Research** | 80h | `/learn agi` |
+| **Climate AI** | 100h | `/learn climate` |
+| **Health AI** | 120h | `/learn health` |
+| **Education AI** | 100h | `/learn education` |
+| **Bootcamp** | 40h | `/learn bootcamp` |
 
-#### Cloud & Infrastructure Department
-- **OCI Architect Agent** — Enterprise cloud architecture
-- **Terraform Orchestrator** — Infrastructure automation
-- **Kubernetes Specialist** — Container orchestration
-- **Cost Optimizer Agent** — FinOps and budget management
-
-#### AI/ML Engineering Department
-- **RAG Builder Agent** — Production RAG systems
-- **Agent Orchestrator** — Multi-agent coordination
-- **Model Evaluator Agent** — LLM evaluation and benchmarking
-- **Prompt Engineer Agent** — Prompt optimization
-
-#### Enterprise Architecture Department
-- **Solution Architect Agent** — End-to-end solution design
-- **Integration Specialist** — System integration patterns
-- **Security Architect Agent** — AI security and compliance
-- **Data Architect Agent** — Data pipeline design
-
-#### AGI Research Department (New!)
-- **AGI Researcher Agent** — Architecture capability assessment
-- **Alignment Checker Agent** — AI alignment evaluation
-- **World Model Builder Agent** — Domain-specific world models
-- **Safety Auditor Agent** — Comprehensive safety audits
+</td>
+</tr>
+</table>
 
 ---
 
 ## Certification
 
-### Prove Your Skills
+<table>
+<tr>
+<td align="center" width="33%">
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    CERTIFICATION LADDER                          │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│   ┌─────────────────────────────────────────────────────────┐   │
-│   │  🥇 EXPERT AI ARCHITECT (80h)                            │   │
-│   │  • All paths completed + capstone                        │   │
-│   │  • Production multi-cloud agent system                   │   │
-│   │  • Red team security review passed                       │   │
-│   └─────────────────────────────────────────────────────────┘   │
-│                          ▲                                       │
-│   ┌─────────────────────────────────────────────────────────┐   │
-│   │  🥈 PROFESSIONAL AI ARCHITECT (50h)                      │   │
-│   │  • Foundation + Multi-Cloud + Agents                     │   │
-│   │  • 5 projects deployed                                   │   │
-│   │  • Multi-cloud deployment demonstrated                   │   │
-│   └─────────────────────────────────────────────────────────┘   │
-│                          ▲                                       │
-│   ┌─────────────────────────────────────────────────────────┐   │
-│   │  🥉 ASSOCIATE AI ARCHITECT (20h)                         │   │
-│   │  • Foundation + OCI GenAI                                │   │
-│   │  • 2 projects completed                                  │   │
-│   │  • Skills assessment passed                              │   │
-│   └─────────────────────────────────────────────────────────┘   │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
-```
+### 🥉 Associate
+**20 hours**
+
+Foundation + OCI GenAI
+2 projects completed
 
 ```bash
-# Check your progress
-/certify status
-
-# Take assessment
 /certify assess associate
-
-# Submit capstone
-/certify submit expert --project ./my-capstone
 ```
 
----
+</td>
+<td align="center" width="33%">
 
-## Synthesized Intelligence
+### 🥈 Professional
+**50 hours**
 
-This academy incorporates patterns from the world's best AI repositories:
-
-| Repository | Stars | What We Synthesized |
-|------------|-------|---------------------|
-| [LangChain](https://github.com/langchain-ai/langchain) | 200K+ | Modular architecture, composable chains |
-| [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) | 167K | Autonomous agent patterns |
-| [n8n](https://github.com/n8n-io/n8n) | 150K+ | Automation + AI integration |
-| [LangFlow](https://github.com/logspace-ai/langflow) | 140K | Visual builder patterns |
-| [Dify](https://github.com/langgenius/dify) | 114K+ | Production-ready workflows |
-| [RAGFlow](https://github.com/infiniflow/ragflow) | 70K+ | RAG pipeline patterns |
-| [MetaGPT](https://github.com/geekan/MetaGPT) | 45K+ | Software company simulation |
-| [CrewAI](https://github.com/crewAIInc/crewAI) | 20K+ | Role-based multi-agent |
-| [awesome-ai-agents](https://github.com/e2b-dev/awesome-ai-agents) | 10K+ | Curated agent catalog |
-
----
-
-## AI Architect Command Center
-
-Transform Claude Code into your expert AI Architecture assistant.
-
-### Quick Start
-```bash
-cd claude-ai-architect/
-claude
-/design-solution "Customer support AI with RAG"
-```
-
-### Components
-
-| Component | Description |
-|-----------|-------------|
-| **22 Expert Skills** | OCI GenAI, multi-cloud, agents, security, FinOps |
-| **Knowledge Base** | Deep documentation on DACs, RAG, multi-cloud |
-| **Templates** | D2 diagrams, Terraform modules, discovery questions |
-| **MCP Servers** | Custom OCI and Terraform operations |
-
-### Key Commands
-
-| Command | Purpose |
-|---------|---------|
-| `/design-solution` | End-to-end AI solution design |
-| `/deploy-genai` | Deploy OCI GenAI DAC |
-| `/build-rag` | Build RAG system |
-| `/draw-architecture` | Generate D2 diagrams |
-| `/security-review` | Security assessment |
-| `/optimize-costs` | Cost optimization |
-
-[Explore the Command Center →](claude-ai-architect/README.md)
-
----
-
-## Design Patterns
-
-Production-ready patterns for enterprise AI:
-
-| Pattern | Description | Link |
-|---------|-------------|------|
-| **Multi-Agent Orchestration** | Coordinate multiple specialized agents | [View →](01-design-patterns/multi-agent-orchestration-pattern.md) |
-| **AI Gateway** | Centralized gateway for multi-provider AI | [View →](01-design-patterns/ai-gateway-pattern.md) |
-| **RAG Production** | Production RAG with hybrid search | [View →](01-design-patterns/rag-production-pattern.md) |
-| **LLMOps** | Prompt management, monitoring, governance | [View →](01-design-patterns/llm-ops-pattern.md) |
-
-[See all 20+ patterns →](01-design-patterns/)
-
----
-
-## Architecture Diagrams
-
-Beautiful, version-controlled diagrams using D2 (Terrastruct). **6 production-ready architectures:**
-
-### Production RAG System
-<p align="center">
-  <img src="assets/diagrams/rag-production.svg" alt="Production RAG Architecture" width="100%"/>
-</p>
-
-### Multi-Agent Orchestration
-<p align="center">
-  <img src="assets/diagrams/multi-agent-orchestration.svg" alt="Multi-Agent Orchestration" width="100%"/>
-</p>
-
-### Multi-Cloud AI Gateway
-<p align="center">
-  <img src="assets/diagrams/ai-gateway.svg" alt="Multi-Cloud AI Gateway" width="100%"/>
-</p>
-
-### LangGraph State Machine Patterns
-<p align="center">
-  <img src="assets/diagrams/langgraph-patterns.svg" alt="LangGraph State Machine Patterns" width="100%"/>
-</p>
-
-### MCP (Model Context Protocol) Architecture
-<p align="center">
-  <img src="assets/diagrams/mcp-architecture.svg" alt="MCP Architecture" width="100%"/>
-</p>
-
-### Claude Agent SDK Patterns
-<p align="center">
-  <img src="assets/diagrams/claude-sdk-patterns.svg" alt="Claude Agent SDK Patterns" width="100%"/>
-</p>
-
-**Diagrams as Code:** All diagrams are defined in `diagrams/d2/` and auto-rendered via GitHub Actions.
+Foundation + Multi-Cloud + Agents
+5 projects deployed
 
 ```bash
-# Render locally
-d2 diagrams/d2/rag-production.d2 output.svg --theme 200
+/certify assess professional
 ```
 
-[See all diagrams →](diagrams/) | [Interactive Version →](interactive-diagrams/)
+</td>
+<td align="center" width="33%">
+
+### 🥇 Expert
+**80 hours**
+
+All paths + Capstone
+Red team review passed
+
+```bash
+/certify submit expert
+```
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## Interactive Diagrams
 
-Want to explore these architectures interactively? The **Interactive Diagrams Dashboard** lets you:
-
-- **Drag & rearrange** nodes to understand relationships
-- **Zoom & pan** through complex architectures
-- **Explore** RAG, Multi-Agent, and MCP patterns hands-on
+Want to explore architectures interactively? Drag, zoom, and rearrange nodes.
 
 ```bash
-# Run locally
 cd interactive-diagrams
 npm install && npm run dev
 ```
-
-Or deploy to Vercel with one click:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AI-Architect-Academy/ai-architect-academy/tree/main/interactive-diagrams)
 
 ---
 
-## Run the Experience
+## Synthesized Intelligence
 
-| Platform | URL |
-|----------|-----|
-| **GitHub Pages** | [ai-architect-academy.github.io](https://ai-architect-academy.github.io/ai-architect-academy/) |
-| **Interactive Diagrams** | [Deploy to Vercel](interactive-diagrams/) |
-| **Local** | `scripts/serve.sh` → `http://localhost:8080` |
+Patterns from the world's best AI repositories:
+
+| Repository | Stars | What We Learned |
+|------------|-------|-----------------|
+| [LangChain](https://github.com/langchain-ai/langchain) | 200K+ | Modular chains |
+| [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) | 167K | Autonomous patterns |
+| [n8n](https://github.com/n8n-io/n8n) | 150K+ | Automation + AI |
+| [Dify](https://github.com/langgenius/dify) | 114K+ | Production workflows |
+| [RAGFlow](https://github.com/infiniflow/ragflow) | 70K+ | RAG pipelines |
+| [CrewAI](https://github.com/crewAIInc/crewAI) | 20K+ | Multi-agent roles |
 
 ---
 
@@ -514,59 +524,39 @@ Or deploy to Vercel with one click:
 
 ```
 ai-architect-academy/
-├── claude-ai-architect/     # AI Architect Command Center
-│   ├── skills/              # 22+ expert skills
-│   ├── knowledge-base/      # OCI GenAI, multi-cloud docs
-│   └── templates/           # D2 diagrams, Terraform modules
-├── diagrams/                # Diagrams as Code
-│   ├── d2/                  # D2 source files (beautiful architecture)
-│   └── python/              # Python Diagrams (official cloud icons)
-├── assets/diagrams/         # Pre-rendered SVG/PNG diagrams
-├── 00-getting-started/      # Onboarding guides
-├── 01-design-patterns/      # 20+ architecture patterns
-├── 02-learning-paths/       # 13 learning paths
-│   ├── agi-research/        # AGI research curriculum
-│   └── world-problems/      # Climate, Health, Education, Economic AI
-├── 03-awesome/              # Curated resources
-├── 04-templates/            # Discovery, strategy, product templates
-├── 05-projects/             # 100+ hands-on projects
-├── 06-agent-workflows/      # Agent orchestration patterns
-├── 07-evaluation/           # Testing and evaluation
-├── 08-governance/           # AI governance and compliance
-├── academy-platform/        # Next.js web platform
-└── academy-dashboard/       # React dashboard
+├── 📐 diagrams/                # Diagrams as Code (D2, Python)
+├── 🖼️ assets/diagrams/         # Pre-rendered SVG diagrams
+├── 🎮 interactive-diagrams/    # React Flow interactive version
+├── 🎯 claude-ai-architect/     # AI Architect Command Center
+│   ├── skills/                 # 22+ expert skills
+│   └── knowledge-base/         # Deep documentation
+├── 📚 01-design-patterns/      # 20+ architecture patterns
+├── 🛤️ 02-learning-paths/       # 13 learning paths
+├── 🔧 05-projects/             # 100+ hands-on projects
+└── 🔒 08-governance/           # AI governance & compliance
 ```
 
 ---
 
 ## Contributing
 
-We welcome contributions!
-
-- **Add Skills**: Create new expert skills
-- **Build Projects**: Add hands-on challenges
-- **Improve Docs**: Enhance explanations
-- **Share Patterns**: Document production patterns
+We welcome contributions! Add skills, build projects, improve docs, share patterns.
 
 ```bash
-git clone https://github.com/frankxai/ai-architect-academy.git
-cd ai-architect-academy
-# See CONTRIBUTING.md for guidelines
+git clone https://github.com/AI-Architect-Academy/ai-architect-academy.git
+# See CONTRIBUTING.md
 ```
 
 ---
 
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
----
-
 <p align="center">
-  <strong>Ready to become an AI Architect?</strong><br/>
-  <code>git clone https://github.com/frankxai/ai-architect-academy.git && cd ai-architect-academy && claude</code>
+  <strong>Ready to become an AI Architect?</strong>
 </p>
 
+```bash
+git clone https://github.com/AI-Architect-Academy/ai-architect-academy.git && cd ai-architect-academy && claude
+```
+
 <p align="center">
-  <sub>Built with Claude Code • Synthesized from top GitHub repositories • Coding Agents First</sub>
+  <sub>Built with Claude Code • Synthesized from top GitHub repos • Coding Agents First</sub>
 </p>
