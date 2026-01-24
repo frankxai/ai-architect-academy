@@ -1,0 +1,194 @@
+# Production RAG System Architecture
+# Render: d2 rag-production.d2 rag-production.svg --theme 200
+
+direction: right
+
+title: |md
+  # Production RAG System
+  Enterprise-grade retrieval augmented generation
+| {
+  near: top-center
+  shape: text
+  style.font-size: 24
+}
+
+# Data Ingestion Layer
+ingestion: Data Ingestion {
+  style.fill: "#f8fafc"
+  style.stroke: "#94a3b8"
+  style.border-radius: 8
+
+  docs: 📄 Documents {
+    shape: cylinder
+    style.fill: "#e2e8f0"
+    style.stroke: "#334155"
+  }
+
+  loader: 📥 Document Loader {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  chunker: ✂️ Semantic Chunker {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  docs -> loader: "PDF, DOCX, MD"
+  loader -> chunker: "Raw Text"
+}
+
+# Embedding Layer
+embedding: Embedding Generation {
+  style.fill: "#f0fdfa"
+  style.stroke: "#14b8a6"
+  style.border-radius: 8
+
+  model: 🧠 Embedding Model {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  cache: 💾 Embedding Cache {
+    shape: cylinder
+    style.fill: "#e0f2fe"
+    style.stroke: "#0284c7"
+  }
+}
+
+# Vector Storage
+storage: Vector Database {
+  style.fill: "#faf5ff"
+  style.stroke: "#a855f7"
+  style.border-radius: 8
+
+  vectordb: 🗄️ Pinecone / pgvector {
+    shape: cylinder
+    style.fill: "#9333ea"
+    style.font-color: "#ffffff"
+  }
+
+  index: 🔢 HNSW Index {
+    style.fill: "#c4b5fd"
+    style.border-radius: 8
+  }
+}
+
+# Query Pipeline
+query: Query Pipeline {
+  style.fill: "#f0fdf4"
+  style.stroke: "#22c55e"
+  style.border-radius: 8
+
+  input: 👤 User Query {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  embed_q: 🔄 Query Embedding {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  search: 🔍 Semantic Search {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  rerank: ⚡ Cross-Encoder Rerank {
+    style.fill: "#9333ea"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+}
+
+# Generation
+generation: Response Generation {
+  style.fill: "#fffbeb"
+  style.stroke: "#f59e0b"
+  style.border-radius: 8
+
+  context: 📋 Context Assembly {
+    style.fill: "#334155"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  llm: 🤖 Claude / GPT-4 {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  response: 💬 Response + Citations {
+    style.fill: "#06b6d4"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+}
+
+# Monitoring
+monitoring: Observability {
+  style.fill: "#fef3c7"
+  style.stroke: "#f59e0b"
+  style.border-radius: 8
+
+  langfuse: 📊 LangFuse Traces {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+  }
+
+  evals: 📈 Evaluation Metrics {
+    style.fill: "#fbbf24"
+    style.border-radius: 8
+  }
+}
+
+# Connections - Ingestion Flow
+ingestion.chunker -> embedding.model: "Chunks" {
+  style.stroke: "#334155"
+  style.stroke-width: 2
+}
+embedding.model -> embedding.cache: "Cache"
+embedding.model -> storage.vectordb: "Vectors" {
+  style.stroke: "#9333ea"
+  style.stroke-width: 2
+}
+storage.vectordb -> storage.index
+
+# Connections - Query Flow
+query.input -> query.embed_q: "Text"
+query.embed_q -> embedding.model: "Embed" {
+  style.stroke-dash: 3
+}
+query.embed_q -> query.search: "Query Vector"
+query.search -> storage.vectordb: "ANN Search" {
+  style.stroke: "#9333ea"
+  style.stroke-width: 2
+}
+storage.vectordb -> query.rerank: "Top-K Results"
+query.rerank -> generation.context: "Reranked Docs" {
+  style.stroke: "#22c55e"
+  style.stroke-width: 2
+}
+generation.context -> generation.llm: "Prompt + Context"
+generation.llm -> generation.response: "Answer" {
+  style.stroke: "#06b6d4"
+  style.stroke-width: 2
+}
+
+# Monitoring connections
+generation.llm -> monitoring.langfuse: "Traces" {
+  style.stroke-dash: 5
+  style.stroke: "#f59e0b"
+}
+generation.response -> monitoring.evals: "Metrics" {
+  style.stroke-dash: 5
+  style.stroke: "#f59e0b"
+}
