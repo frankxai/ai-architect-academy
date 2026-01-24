@@ -1,0 +1,182 @@
+# Multi-Cloud AI Gateway Pattern
+# Render: d2 ai-gateway.d2 ai-gateway.svg --theme 200
+
+direction: right
+
+title: |md
+  # Multi-Cloud AI Gateway
+  Intelligent routing across providers
+| {
+  near: top-center
+  shape: text
+  style.font-size: 24
+}
+
+# Clients
+clients: 📱 Client Applications {
+  style.fill: "#f1f5f9"
+  style.stroke: "#64748b"
+  style.border-radius: 12
+
+  web: Web App
+  mobile: Mobile App
+  api: API Clients
+}
+
+# Gateway Layer
+gateway: 🚀 AI Gateway {
+  style.fill: "#9333ea"
+  style.stroke: "#7c3aed"
+  style.font-color: "#ffffff"
+  style.border-radius: 12
+
+  auth: 🔐 Auth & Rate Limit {
+    style.fill: "#a855f7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  router: 🔀 Intelligent Router {
+    style.fill: "#a855f7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  cache: 💾 Response Cache {
+    shape: cylinder
+    style.fill: "#c4b5fd"
+    style.border-radius: 8
+  }
+
+  fallback: 🔄 Fallback Logic {
+    style.fill: "#a855f7"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  auth -> router
+  router -> cache
+  router -> fallback
+}
+
+# Cloud Providers
+aws: ☁️ AWS {
+  style.fill: "#fef3c7"
+  style.stroke: "#f59e0b"
+  style.border-radius: 12
+
+  bedrock: Bedrock {
+    style.fill: "#f59e0b"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  claude_aws: Claude
+  llama: Llama 3
+  titan: Titan
+}
+
+azure: ☁️ Azure {
+  style.fill: "#dbeafe"
+  style.stroke: "#3b82f6"
+  style.border-radius: 12
+
+  openai_azure: Azure OpenAI {
+    style.fill: "#3b82f6"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  gpt4: GPT-4
+  gpt4o: GPT-4o
+}
+
+gcp: ☁️ Google Cloud {
+  style.fill: "#dcfce7"
+  style.stroke: "#22c55e"
+  style.border-radius: 12
+
+  vertex: Vertex AI {
+    style.fill: "#22c55e"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  gemini: Gemini 2.0
+  palm: PaLM 2
+}
+
+oci: ☁️ Oracle Cloud {
+  style.fill: "#fee2e2"
+  style.stroke: "#ef4444"
+  style.border-radius: 12
+
+  genai: OCI GenAI {
+    style.fill: "#ef4444"
+    style.font-color: "#ffffff"
+    style.border-radius: 8
+  }
+
+  cohere: Cohere
+  meta: Meta Llama
+}
+
+# Observability
+observability: 📊 Observability {
+  style.fill: "#f0fdfa"
+  style.stroke: "#14b8a6"
+  style.border-radius: 12
+
+  metrics: Metrics & Costs
+  traces: Distributed Traces
+  alerts: Alerting
+}
+
+# Connections - Client to Gateway
+clients -> gateway.auth: "API Request" {
+  style.stroke-width: 2
+  style.stroke: "#64748b"
+}
+
+# Gateway to Providers
+gateway.router -> aws.bedrock: "Claude, Llama" {
+  style.stroke: "#f59e0b"
+  style.stroke-width: 2
+}
+
+gateway.router -> azure.openai_azure: "GPT-4" {
+  style.stroke: "#3b82f6"
+  style.stroke-width: 2
+}
+
+gateway.router -> gcp.vertex: "Gemini" {
+  style.stroke: "#22c55e"
+  style.stroke-width: 2
+}
+
+gateway.router -> oci.genai: "Cohere, Llama" {
+  style.stroke: "#ef4444"
+  style.stroke-width: 2
+}
+
+# Fallback connections
+gateway.fallback -> aws.bedrock {
+  style.stroke-dash: 3
+  style.stroke: "#64748b"
+}
+gateway.fallback -> azure.openai_azure {
+  style.stroke-dash: 3
+  style.stroke: "#64748b"
+}
+
+# Observability
+gateway -> observability: "Telemetry" {
+  style.stroke-dash: 5
+  style.stroke: "#14b8a6"
+}
+
+# Response back to clients
+gateway -> clients: "AI Response" {
+  style.stroke-width: 2
+  style.stroke: "#06b6d4"
+}
