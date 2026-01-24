@@ -35,22 +35,30 @@ python multi_cloud_gateway.py
 
 ```
 diagrams/
-├── d2/                          # D2 diagram source files
-│   ├── rag-production.d2        # Production RAG architecture
-│   └── multi-agent-orchestration.d2  # Multi-agent patterns
-├── python/                      # Python Diagrams source files
-│   └── multi_cloud_gateway.py   # Multi-cloud AI gateway
-└── README.md                    # This file
+├── d2/                              # D2 diagram source files
+│   ├── rag-production.d2            # Production RAG architecture
+│   ├── multi-agent-orchestration.d2 # Multi-agent patterns
+│   ├── ai-gateway.d2                # Multi-cloud AI gateway
+│   ├── langgraph-patterns.d2        # LangGraph state machines
+│   ├── mcp-architecture.d2          # MCP server architecture
+│   └── claude-sdk-patterns.d2       # Claude Agent SDK patterns
+├── python/                          # Python Diagrams source files
+│   └── multi_cloud_gateway.py       # Multi-cloud AI gateway
+└── README.md                        # This file
 ```
 
 ## Available Diagrams
 
-### D2 Diagrams
+### D2 Diagrams (6 total)
 
 | Diagram | Description | Render Command |
 |---------|-------------|----------------|
 | `rag-production.d2` | Production RAG system with ingestion, embedding, retrieval, and generation | `d2 d2/rag-production.d2 out.svg --theme 200` |
 | `multi-agent-orchestration.d2` | Supervisor pattern with specialist agents | `d2 d2/multi-agent-orchestration.d2 out.svg --theme 200` |
+| `ai-gateway.d2` | Multi-cloud AI gateway routing across AWS, Azure, GCP, OCI | `d2 d2/ai-gateway.d2 out.svg --theme 200` |
+| `langgraph-patterns.d2` | LangGraph state machine patterns with conditional routing | `d2 d2/langgraph-patterns.d2 out.svg --theme 200` |
+| `mcp-architecture.d2` | MCP server architecture with tools, resources, prompts | `d2 d2/mcp-architecture.d2 out.svg --theme 200` |
+| `claude-sdk-patterns.d2` | Claude Agent SDK agentic loop and tool patterns | `d2 d2/claude-sdk-patterns.d2 out.svg --theme 200` |
 
 ### Python Diagrams
 
