@@ -36,12 +36,14 @@ export default function PatternDetailPage({ params }: { params: { slug: string }
             ol: (props) => <ol className="list-decimal pl-6 mt-3 space-y-2 text-sm" {...props} />,
             li: (props) => <li className="leading-relaxed" {...props} />,
             a: (props) => <a className="text-primary underline underline-offset-4" {...props} />,
-            code: ({ inline, ...props }) =>
-              inline ? (
-                <code className="rounded bg-muted px-1 py-0.5 text-xs" {...props} />
+            code: ({ className, children, ...props }) => {
+              const isInline = !className?.includes('language-')
+              return isInline ? (
+                <code className="rounded bg-muted px-1 py-0.5 text-xs" {...props}>{children}</code>
               ) : (
-                <code className="text-xs" {...props} />
-              ),
+                <code className="text-xs" {...props}>{children}</code>
+              )
+            },
             pre: (props) => (
               <pre className="rounded-md bg-muted p-4 text-xs overflow-x-auto mt-4" {...props} />
             ),
