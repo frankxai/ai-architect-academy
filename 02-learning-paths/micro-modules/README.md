@@ -18,6 +18,7 @@ Rapid-fire modules designed for 45-minute deep dives. Each micro-lesson pairs a 
 | Governance & Risk | [Policy Automation Quick Start](governance-policy-automation.md) | Automate DPIA + policy workflows with Checklists + GitOps | 45 min |
 | Storytelling & Adoption | [Executive Narrative Builder](storytelling-exec-brief.md) | Translate technical progress into board-ready updates | 35 min |
 | Storytelling & Adoption | [Adoption & ROI Metrics](storytelling-adoption-metrics.md) | Define and track outcome metrics for AI products | 40 min |
+| Collaboration & Rituals | [Slack Agent Collaboration Playbook](collaboration-slack-agent-workflows.md) | Orchestrate channel, Canvas, and List workflows with the AI Architect bot | 45 min |
 | Creator Systems | [Creator Content Orchestration Sprint](creator-content-orchestration.md) | Build a brief-to-publish pipeline with compliant guardrails | 50 min |
 | Evaluation & QA | [Creator Evaluation Scorecards](creator-evaluation-scorecards.md) | Operationalise tone, accuracy, and CTA scoring for assets | 40 min |
 | Growth & Insights | [Creator Analytics Feedback Loop](creator-analytics-feedback-loop.md) | Feed engagement data into prompts and experiment plans | 45 min |
