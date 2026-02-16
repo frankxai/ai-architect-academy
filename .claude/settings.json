@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "bash .claude/hooks/academy-welcome.sh",
+        "timeout": 5000
+      }
+    ]
+  }
+}

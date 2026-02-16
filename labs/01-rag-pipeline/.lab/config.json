@@ -1,0 +1,16 @@
+{
+  "id": "01-rag-pipeline",
+  "title": "Fix the Broken RAG Pipeline",
+  "difficulty": "intermediate",
+  "estimatedMinutes": 45,
+  "objectives": [
+    "Diagnose retrieval quality issues in a RAG system",
+    "Implement proper chunking strategies",
+    "Add hybrid search (semantic + keyword)",
+    "Evaluate retrieval accuracy with metrics"
+  ],
+  "prerequisites": ["Basic Python", "Understanding of embeddings"],
+  "skills": ["rag-expert", "embedding-strategies", "chunking-patterns"],
+  "hints": 3,
+  "checkpoints": ["diagnose", "chunk", "search", "evaluate"]
+}
