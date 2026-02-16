@@ -1,0 +1,19 @@
+{
+  "name": "academy-kb-mcp",
+  "version": "1.0.0",
+  "description": "Academy Knowledge Base MCP Server - Lab 03",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "node --test tests/"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^22.0.0"
+  }
+}
