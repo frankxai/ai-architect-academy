@@ -1,0 +1,304 @@
+{
+  "name": "ai-architect-academy",
+  "displayName": "AI Architect Academy",
+  "version": "1.0.0",
+  "description": "Install one extension. Transform your coding agent into an AI architecture learning environment.",
+  "author": {
+    "name": "FrankX",
+    "url": "https://frankx.ai",
+    "email": "frank@frankx.ai"
+  },
+  "homepage": "https://aiarchitectacademy.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frankxai/ai-architect-academy"
+  },
+  "license": "MIT",
+  "keywords": [
+    "ai-architecture",
+    "learning-platform",
+    "coding-agent",
+    "claude-code",
+    "cline",
+    "cursor",
+    "windsurf",
+    "socratic-teaching",
+    "interactive-labs",
+    "multi-cloud",
+    "oci",
+    "rag",
+    "agents",
+    "mcp"
+  ],
+  "categories": [
+    "education",
+    "ai-architecture",
+    "agent-skills",
+    "cloud-computing",
+    "enterprise-ai"
+  ],
+  "platforms": {
+    "claude-code": {
+      "supported": true,
+      "status": "stable",
+      "config": {
+        "instructorEngine": "CLAUDE.md",
+        "commandsDir": ".claude/commands",
+        "hooksDir": ".claude/hooks",
+        "skillRules": ".claude/skill-rules.json",
+        "progressFile": ".academy/progress.json"
+      },
+      "features": {
+        "socraticMode": true,
+        "progressTracking": true,
+        "skillActivation": "auto",
+        "interactiveLabs": 3,
+        "dashboardIntegration": true
+      }
+    },
+    "cline": {
+      "supported": true,
+      "status": "stable",
+      "config": {
+        "rulesFile": ".clinerules/academy-instructor.md",
+        "skillsDir": ".cline/skills",
+        "progressFile": ".academy/progress.json"
+      },
+      "features": {
+        "socraticMode": true,
+        "progressTracking": true,
+        "skillActivation": "auto",
+        "interactiveLabs": 3,
+        "dashboardIntegration": true
+      }
+    },
+    "cursor": {
+      "supported": true,
+      "status": "beta",
+      "config": {
+        "rulesFile": ".cursorrules",
+        "skillsDir": ".cursor/skills",
+        "progressFile": ".academy/progress.json"
+      },
+      "features": {
+        "socraticMode": true,
+        "progressTracking": true,
+        "skillActivation": "auto",
+        "interactiveLabs": 3,
+        "dashboardIntegration": true
+      }
+    },
+    "windsurf": {
+      "supported": true,
+      "status": "beta",
+      "config": {
+        "rulesFile": ".windsurfrules",
+        "skillsDir": ".windsurf/skills",
+        "progressFile": ".academy/progress.json"
+      },
+      "features": {
+        "socraticMode": true,
+        "progressTracking": true,
+        "skillActivation": "auto",
+        "interactiveLabs": 3,
+        "dashboardIntegration": true
+      }
+    }
+  },
+  "labs": [
+    {
+      "id": "01-rag-pipeline",
+      "name": "Fix the Broken RAG Pipeline",
+      "description": "Debug chunking, search, and context assembly in a production RAG system",
+      "difficulty": "intermediate",
+      "estimatedTime": "45m",
+      "language": "python",
+      "objectives": [
+        "Identify and fix chunk_size/overlap configuration bugs",
+        "Implement hybrid search (semantic + keyword)",
+        "Optimize context length for LLM consumption"
+      ],
+      "skills": ["rag-expert", "python-pro", "vector-search"],
+      "path": "labs/01-rag-pipeline"
+    },
+    {
+      "id": "02-multi-agent-system",
+      "name": "Build a Multi-Agent System",
+      "description": "Implement a coordinator that orchestrates Researcher, Analyst, and Writer agents",
+      "difficulty": "advanced",
+      "estimatedTime": "60m",
+      "language": "python",
+      "objectives": [
+        "Implement the Coordinator class with agent orchestration",
+        "Add error handling and retry logic",
+        "Test multi-agent workflow end-to-end"
+      ],
+      "skills": ["multi-agent-patterns", "python-pro", "async-patterns"],
+      "path": "labs/02-multi-agent-system"
+    },
+    {
+      "id": "03-mcp-server",
+      "name": "Build Your Own MCP Server",
+      "description": "Create a TypeScript MCP server with 3 tools for Claude Code",
+      "difficulty": "advanced",
+      "estimatedTime": "60m",
+      "language": "typescript",
+      "objectives": [
+        "Implement 3 MCP tools following protocol spec",
+        "Add proper error handling and validation",
+        "Test server integration with Claude Code"
+      ],
+      "skills": ["mcp-architecture", "typescript-pro", "tool-design"],
+      "path": "labs/03-mcp-server"
+    }
+  ],
+  "skillPacks": [
+    {
+      "id": "core",
+      "name": "Core AI Architecture",
+      "skills": 22,
+      "categories": ["rag", "agents", "mcp", "architecture"],
+      "source": "claude-ai-architect"
+    },
+    {
+      "id": "oci",
+      "name": "Oracle Cloud Specialist",
+      "skills": 9,
+      "categories": ["oci", "genai", "cloud"],
+      "source": "oci-ai-architects/claude-code-oci-ai-architect-skills"
+    },
+    {
+      "id": "multi-cloud",
+      "name": "Multi-Cloud AI Patterns",
+      "skills": 22,
+      "categories": ["aws", "azure", "gcp", "oci", "terraform"],
+      "source": "oci-ai-architects/multi-cloud-ai-architect"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise & Security",
+      "skills": 12,
+      "categories": ["security", "compliance", "governance", "cost"],
+      "source": "claude-ai-architect/skills/enterprise"
+    }
+  ],
+  "externalRepositories": [
+    {
+      "name": "claude-code-oci-ai-architect-skills",
+      "url": "https://github.com/oci-ai-architects/claude-code-oci-ai-architect-skills",
+      "type": "skill-pack",
+      "skills": 9,
+      "integration": "plugin"
+    },
+    {
+      "name": "multi-cloud-ai-architect",
+      "url": "https://github.com/oci-ai-architects/multi-cloud-ai-architect",
+      "type": "knowledge-base",
+      "skills": 22,
+      "integration": "submodule"
+    },
+    {
+      "name": "cline-oci-ai-architect-skills",
+      "url": "https://github.com/oci-ai-architects/cline-oci-ai-architect-skills",
+      "type": "cross-platform-skills",
+      "skills": 10,
+      "platforms": ["cline", "cursor", "roocode", "windsurf"]
+    },
+    {
+      "name": "cline-oci-ai-engineer",
+      "url": "https://github.com/oci-ai-architects/cline-oci-ai-engineer",
+      "type": "workflows",
+      "workflows": 11
+    },
+    {
+      "name": "oci-ai-architect",
+      "url": "https://github.com/oci-ai-architects/oci-ai-architect",
+      "type": "reference",
+      "patterns": "20+"
+    }
+  ],
+  "dashboard": {
+    "enabled": true,
+    "port": 3721,
+    "features": {
+      "labProgress": true,
+      "skillMastery": true,
+      "learningPaths": true,
+      "certification": true,
+      "activityLog": true
+    },
+    "premium": {
+      "url": "https://aiarchitectacademy.com",
+      "features": [
+        "Cloud-synced progress",
+        "Advanced skill packs",
+        "1:1 architecture reviews",
+        "Deep-dive resource docs",
+        "AI Architect certification",
+        "Team dashboards & analytics"
+      ]
+    }
+  },
+  "certification": {
+    "levels": [
+      {
+        "id": "associate",
+        "name": "Associate AI Architect",
+        "requirements": {
+          "labsCompleted": 2,
+          "minAvgScore": 70
+        }
+      },
+      {
+        "id": "professional",
+        "name": "Professional AI Architect",
+        "requirements": {
+          "labsCompleted": 3,
+          "learningPathModules": 2
+        }
+      },
+      {
+        "id": "expert",
+        "name": "Expert AI Architect",
+        "requirements": {
+          "labsCompleted": 3,
+          "minAvgScore": 85,
+          "capstoneProject": true,
+          "securityReview": true
+        }
+      }
+    ],
+    "verificationUrl": "https://aiarchitectacademy.com/verify"
+  },
+  "installation": {
+    "command": "./install.sh",
+    "postInstall": [
+      "Progress tracker initialized at .academy/progress.json",
+      "Skills organized in skills/ directory",
+      "Dashboard available at ./dashboard/open.sh"
+    ],
+    "requirements": {
+      "git": ">=2.0.0",
+      "node": ">=18.0.0 (for dashboard)",
+      "python": ">=3.8 (for Python labs)"
+    }
+  },
+  "documentation": {
+    "readme": "README.md",
+    "quickStart": "#quick-start",
+    "labs": "#interactive-labs",
+    "skills": "#skills-library",
+    "certification": "#certification",
+    "premium": "https://aiarchitectacademy.com"
+  },
+  "support": {
+    "issues": "https://github.com/frankxai/ai-architect-academy/issues",
+    "discord": "https://discord.gg/ai-architect-academy",
+    "email": "support@aiarchitectacademy.com"
+  },
+  "analytics": {
+    "trackProgress": true,
+    "anonymousUsage": true,
+    "optOut": "Set ACADEMY_ANALYTICS=false in environment"
+  }
+}
