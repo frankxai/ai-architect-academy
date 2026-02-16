@@ -5,6 +5,10 @@
 <h1 align="center">AI Architect Academy</h1>
 
 <p align="center">
+  <img src="assets/ai-architect-professor.png" alt="AI Architect Academy" width="600"/>
+</p>
+
+<p align="center">
   <strong>Install one extension. Transform your coding agent into an AI architecture learning environment.</strong><br/>
   Build production AI systems, master multi-cloud patterns, and become an expert AI architect — inside your terminal.
 </p>
