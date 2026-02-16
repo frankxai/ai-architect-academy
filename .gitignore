@@ -12,9 +12,18 @@ Arc/*.vsix
 # Internal documentation (private)
 .internal/
 
-# Claude Code local config
-.claude/
+# Claude Code local config (keep commands/ tracked, ignore local settings)
+.claude/settings.local.json
 .claude.bak
+
+# Student progress (personal to each learner)
+.academy/progress.json
+
+# Lab build artifacts
+labs/03-mcp-server/dist/
+labs/03-mcp-server/node_modules/
+labs/*/__pycache__/
+labs/*/.pytest_cache/
 
 # Ignore vscode AI rules
 .github/instructions/codacy.instructions.md

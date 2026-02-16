@@ -1,0 +1,16 @@
+{
+  "id": "03-mcp-server",
+  "title": "Build Your Own MCP Server",
+  "difficulty": "advanced",
+  "estimatedMinutes": 60,
+  "objectives": [
+    "Understand the Model Context Protocol",
+    "Implement tool definitions with JSON Schema",
+    "Handle tool calls and return structured results",
+    "Test MCP server with Claude Code"
+  ],
+  "prerequisites": ["Lab 01", "TypeScript basics", "Understanding of JSON-RPC"],
+  "skills": ["mcp-architecture", "mcp-2025-patterns"],
+  "hints": 3,
+  "checkpoints": ["schema", "handler", "tools", "integration"]
+}
