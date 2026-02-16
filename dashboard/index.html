@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Architect Academy — Progress Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <span class="logo-icon">&#9670;</span>
+                    <h1>AI Architect Academy</h1>
+                </div>
+                <span class="badge">v1.0</span>
+            </div>
+            <div class="header-right">
+                <span class="platform-badge" id="platform-badge">Claude Code</span>
+                <a href="https://aiarchitectacademy.com" class="premium-link" target="_blank">Go Premium</a>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat-value" id="labs-completed">0</span>
+                <span class="stat-label">Labs Completed</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="avg-score">—</span>
+                <span class="stat-label">Avg Score</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="skills-activated">0</span>
+                <span class="stat-label">Skills Used</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="time-invested">0h</span>
+                <span class="stat-label">Time Invested</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="cert-level">—</span>
+                <span class="stat-label">Certification</span>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Labs Section -->
+            <section class="card labs-card">
+                <h2>Interactive Labs</h2>
+                <div class="labs-list">
+                    <div class="lab-item" id="lab-01">
+                        <div class="lab-header">
+                            <span class="lab-number">01</span>
+                            <div class="lab-info">
+                                <h3>Fix the Broken RAG Pipeline</h3>
+                                <p>Debug chunking, search, and context assembly</p>
+                            </div>
+                            <div class="lab-status" id="lab-01-status">
+                                <span class="status-dot not-started"></span>
+                                <span>Not Started</span>
+                            </div>
+                        </div>
+                        <div class="lab-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="lab-01-progress" style="width: 0%"></div>
+                            </div>
+                            <span class="lab-score" id="lab-01-score">—</span>
+                        </div>
+                    </div>
+
+                    <div class="lab-item" id="lab-02">
+                        <div class="lab-header">
+                            <span class="lab-number">02</span>
+                            <div class="lab-info">
+                                <h3>Build a Multi-Agent System</h3>
+                                <p>Implement coordinator orchestration pattern</p>
+                            </div>
+                            <div class="lab-status" id="lab-02-status">
+                                <span class="status-dot not-started"></span>
+                                <span>Not Started</span>
+                            </div>
+                        </div>
+                        <div class="lab-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="lab-02-progress" style="width: 0%"></div>
+                            </div>
+                            <span class="lab-score" id="lab-02-score">—</span>
+                        </div>
+                    </div>
+
+                    <div class="lab-item" id="lab-03">
+                        <div class="lab-header">
+                            <span class="lab-number">03</span>
+                            <div class="lab-info">
+                                <h3>Build Your Own MCP Server</h3>
+                                <p>TypeScript MCP server with 3 tools</p>
+                            </div>
+                            <div class="lab-status" id="lab-03-status">
+                                <span class="status-dot not-started"></span>
+                                <span>Not Started</span>
+                            </div>
+                        </div>
+                        <div class="lab-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="lab-03-progress" style="width: 0%"></div>
+                            </div>
+                            <span class="lab-score" id="lab-03-score">—</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skill Radar -->
+            <section class="card radar-card">
+                <h2>Skill Mastery</h2>
+                <canvas id="skill-radar" width="320" height="320"></canvas>
+                <div class="radar-legend" id="radar-legend"></div>
+            </section>
+
+            <!-- Learning Paths -->
+            <section class="card paths-card">
+                <h2>Learning Paths</h2>
+                <div class="paths-list">
+                    <div class="path-item">
+                        <div class="path-header">
+                            <span class="path-name">Foundation</span>
+                            <span class="path-hours">20h</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill foundation" id="path-foundation" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="path-item">
+                        <div class="path-header">
+                            <span class="path-name">Agent Developer</span>
+                            <span class="path-hours">40h</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill agent" id="path-agent" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="path-item">
+                        <div class="path-header">
+                            <span class="path-name">Multi-Cloud Architect</span>
+                            <span class="path-hours">40h</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill cloud" id="path-cloud" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="path-item">
+                        <div class="path-header">
+                            <span class="path-name">Enterprise Lead</span>
+                            <span class="path-hours">30h</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill enterprise" id="path-enterprise" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="path-item">
+                        <div class="path-header">
+                            <span class="path-name">Intensive Bootcamp</span>
+                            <span class="path-hours">40h</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill bootcamp" id="path-bootcamp" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certification -->
+            <section class="card cert-card">
+                <h2>Certification Progress</h2>
+                <div class="cert-levels">
+                    <div class="cert-level" id="cert-associate">
+                        <div class="cert-icon locked">A</div>
+                        <h3>Associate</h3>
+                        <p>2 labs, avg >= 70</p>
+                    </div>
+                    <div class="cert-level" id="cert-professional">
+                        <div class="cert-icon locked">P</div>
+                        <h3>Professional</h3>
+                        <p>All labs + 2 modules</p>
+                    </div>
+                    <div class="cert-level" id="cert-expert">
+                        <div class="cert-icon locked">E</div>
+                        <h3>Expert</h3>
+                        <p>All labs (85+) + capstone</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Log -->
+            <section class="card activity-card">
+                <h2>Recent Activity</h2>
+                <div class="activity-list" id="activity-list">
+                    <div class="activity-empty">
+                        <p>No activity yet. Run <code>/start-lab 01</code> to begin.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Premium CTA -->
+            <section class="card premium-card">
+                <div class="premium-content">
+                    <h2>Unlock Premium</h2>
+                    <p>Cloud-synced progress, advanced skill packs, AI Architect certification, team dashboards</p>
+                    <a href="https://aiarchitectacademy.com" class="premium-button" target="_blank">
+                        aiarchitectacademy.com
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>AI Architect Academy v1.0</span>
+            <span>Built by <a href="https://frankx.ai" target="_blank">FrankX</a></span>
+            <span>The era of watching videos to learn code is over.</span>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
