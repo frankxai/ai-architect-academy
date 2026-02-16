@@ -1,0 +1,76 @@
+{
+  "_version": "1.0.0",
+  "_description": "Academy skill activation rules — adapted from ACOS v10 lazy-loading pattern",
+  "_maxConcurrent": 3,
+  "rules": [
+    {
+      "skill": "rag-expert",
+      "path": "claude-ai-architect/skills/rag-expert/SKILL.md",
+      "triggers": ["rag", "retrieval", "knowledge base", "vector search", "embeddings"],
+      "priority": 1,
+      "context": "lab-01"
+    },
+    {
+      "skill": "mcp-architecture",
+      "path": "claude-ai-architect/skills/mcp-architecture/SKILL.md",
+      "triggers": ["mcp", "model context protocol", "tool use", "mcp server"],
+      "priority": 1,
+      "context": "lab-03"
+    },
+    {
+      "skill": "agentic-orchestration",
+      "path": "claude-ai-architect/skills/agentic-orchestration/SKILL.md",
+      "triggers": ["multi-agent", "orchestration", "coordinator", "agent swarm"],
+      "priority": 1,
+      "context": "lab-02"
+    },
+    {
+      "skill": "claude-sdk",
+      "path": "claude-ai-architect/skills/claude-sdk/SKILL.md",
+      "triggers": ["claude sdk", "agent sdk", "anthropic agent", "claude agent"],
+      "priority": 2
+    },
+    {
+      "skill": "oracle-adk",
+      "path": "claude-ai-architect/skills/oracle-adk/SKILL.md",
+      "triggers": ["oracle adk", "oci agent", "oracle agent"],
+      "priority": 2
+    },
+    {
+      "skill": "langgraph-patterns",
+      "path": "claude-ai-architect/skills/langgraph-patterns/SKILL.md",
+      "triggers": ["langgraph", "state machine", "graph agent"],
+      "priority": 2
+    },
+    {
+      "skill": "ai-security-expert",
+      "path": "claude-ai-architect/skills/ai-security-expert/SKILL.md",
+      "triggers": ["security", "guardrails", "prompt injection", "red team"],
+      "priority": 2
+    },
+    {
+      "skill": "oci-services-expert",
+      "path": "claude-ai-architect/skills/oci-services-expert/SKILL.md",
+      "triggers": ["oci", "oracle cloud", "oke", "oci genai"],
+      "priority": 3
+    },
+    {
+      "skill": "terraform-iac",
+      "path": "claude-ai-architect/skills/terraform-iac/SKILL.md",
+      "triggers": ["terraform", "infrastructure as code", "iac"],
+      "priority": 3
+    },
+    {
+      "skill": "finops-ai",
+      "path": "claude-ai-architect/skills/finops-ai/SKILL.md",
+      "triggers": ["cost", "finops", "budget", "optimization"],
+      "priority": 3
+    },
+    {
+      "skill": "architecture-diagramming",
+      "path": "claude-ai-architect/skills/architecture-diagramming/SKILL.md",
+      "triggers": ["diagram", "d2", "mermaid", "architecture diagram"],
+      "priority": 3
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "02-multi-agent-system",
+  "title": "Build a Multi-Agent Research System",
+  "difficulty": "advanced",
+  "estimatedMinutes": 60,
+  "objectives": [
+    "Design agent communication protocols",
+    "Implement a coordinator pattern",
+    "Build specialized worker agents",
+    "Handle agent failures gracefully"
+  ],
+  "prerequisites": ["Lab 01", "Async Python", "Understanding of agent patterns"],
+  "skills": ["agentic-orchestration", "claude-sdk"],
+  "hints": 3,
+  "checkpoints": ["design", "coordinator", "workers", "orchestrate"]
+}
