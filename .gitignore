@@ -42,3 +42,12 @@ archive/marketing-site/.next/
 publishing-engine/.next/
 legacy-saas-skeleton/.next/
 *.tsbuildinfo
+
+# Starlight/ACOS temporary files
+.agent/
+*.log
+.system_generated/
+.next-backup/
+temp-*.json
+link-checker-report.json
+link-checker-report.txt
