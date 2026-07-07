@@ -2,6 +2,8 @@
 
 > Reference architecture for building production-grade agentic applications on Oracle Cloud Infrastructure using the Agent Development Kit.
 
+Independent project. Not affiliated with, endorsed by, or sponsored by Oracle. Uses public Oracle/OCI technical concepts only.
+
 ## Architecture Overview
 
 ```
