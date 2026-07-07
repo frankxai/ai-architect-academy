@@ -8,29 +8,29 @@
 ## 🎯 Core Constraints & Considerations
 
 ### **Frank's Situation**
-- ✅ Oracle AI Architect (day job, 40 hours/week)
+- ✅ Former AI architect at Oracle; verify any continuing employment/IP obligations before monetizing
 - ✅ Multiple projects (AI Music Academy, Arcanea, AI Architect Academy)
 - ✅ AI Architect Academy is NOT main passion (but has value)
 - ✅ Want maximum automation and passive income
 - ✅ Available time: 5-15 hours/week for this project
 - ✅ Domain owned: aiarchitectacademy.com
 
-### **Critical Legal Consideration: Oracle Employment**
+### **Critical Legal Consideration: Oracle / Former Employment Boundaries**
 
 **MUST RESOLVE BEFORE MONETIZING:**
 
-**Typical Tech Employment Agreements Include:**
-1. **IP Assignment Clause**: Anything you create may belong to Oracle
-2. **Conflict of Interest**: Can't compete with employer's business
-3. **Moonlighting Policy**: May require disclosure/approval for side income
-4. **Non-Compete**: May restrict certain business activities
+**Typical tech employment agreements may include continuing obligations:**
+1. **IP Assignment Clause**: Work created during employment may have assignment implications
+2. **Confidentiality**: Do not use Oracle/customer confidential material
+3. **Conflict of Interest / Moonlighting History**: Verify whether any disclosures or approvals were required
+4. **Non-Compete / Non-Solicit**: May restrict certain business activities depending on jurisdiction and contract
 
 **Action Items:**
 - [ ] Review Oracle employment contract (especially IP/invention assignment)
-- [ ] Check Oracle's side project policy handbook
+- [ ] Check any former-employer side project, confidentiality, and post-employment obligations
 - [ ] Determine if AI training/education competes with Oracle University
-- [ ] Consider formal disclosure to manager/legal department
-- [ ] Get written approval if required
+- [ ] Do not use Oracle logos, internal assets, customer examples, private pricing, or roadmap material
+- [ ] Get qualified legal review before monetizing Oracle/OCI-branded content
 
 **Risk Assessment:**
 - **Low Risk**: Pure open source with no monetization
@@ -991,5 +991,5 @@
 ---
 
 *Last Updated: 2025-12-10*
-*Author: Frank (Oracle AI Architect)*
+*Author: Frank (former AI architect at Oracle)*
 *Purpose: Strategic knowledge base for business model and execution decisions*

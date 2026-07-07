@@ -10,6 +10,10 @@
 </p>
 
 <p align="center">
+  <em>Independent project. Not affiliated with, endorsed by, or sponsored by Oracle.</em>
+</p>
+
+<p align="center">
   <a href="#quick-start"><img src="https://img.shields.io/badge/Quick%20Start-2%20min-success?style=flat-square" alt="Quick Start"/></a>
   <a href="#interactive-labs"><img src="https://img.shields.io/badge/Labs-3%20Interactive-ff6b6b?style=flat-square" alt="Labs"/></a>
   <a href="#skills-library"><img src="https://img.shields.io/badge/Skills-80+-blue?style=flat-square" alt="Skills"/></a>

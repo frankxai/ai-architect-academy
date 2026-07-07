@@ -3,6 +3,8 @@
 
 > **TL;DR:** We're building an open-source AI architecture education platform with a SaaS layer. Current state: 80% vision clarity, 40% built. Time to productive: **2-4 weeks with focused execution**. Path to revenue: Open-source community → SaaS platform → Enterprise deals.
 
+> **Disclaimer:** Independent project. Not affiliated with, endorsed by, or sponsored by Oracle.
+
 ---
 
 ## 🎯 Executive Status
@@ -230,11 +232,11 @@ More Students → More Deployments → More Feedback → Better Patterns
 - Early access to platform features
 - Potential to become a professor (earn 70% revenue share)
 
-**As an Oracle AI Architect:**
-- Validate patterns with real customer scenarios
-- Build reusable assets for Oracle customer engagements
-- Establish thought leadership in Oracle AI ecosystem
-- Potential for Oracle-sponsored patterns and workshops
+**From former Oracle AI architecture experience:**
+- Validate patterns against public, reusable enterprise architecture scenarios
+- Build reusable assets for public Oracle/OCI learning where appropriate
+- Establish thought leadership in enterprise AI architecture
+- Do not imply Oracle sponsorship, endorsement, customer access, or use of confidential material
 
 ### **Contribution Areas**
 
@@ -808,6 +810,6 @@ This is not a solo journey. This is a community-driven platform that needs:
 ---
 
 *Document created: 2025-12-10*
-*Author: Frank (Oracle AI Architect)*
+*Author: Frank (former AI architect at Oracle)*
 *Purpose: Strategy and execution plan for AI Architect Academy*
 *Status: Living document (will evolve with execution and learning)*

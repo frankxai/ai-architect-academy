@@ -1,5 +1,7 @@
 # OCI for AI Architects (Oracle Cloud Infrastructure)
 
+Independent project. Not affiliated with, endorsed by, or sponsored by Oracle. OCI references are public technical references only.
+
 Key Services
 - GenAI Service: managed access to foundation models
 - Oracle Database 23ai: AI Vector Search + JSON Relational Duality
