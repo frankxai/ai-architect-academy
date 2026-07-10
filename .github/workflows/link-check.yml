@@ -10,15 +10,54 @@ jobs:
   lychee:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Select changed documentation
+        id: changed-docs
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUSH_BASE_SHA: ${{ github.event.before }}
+          PUSH_HEAD_SHA: ${{ github.sha }}
+        run: |
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            base="$PR_BASE_SHA"
+            head="$PR_HEAD_SHA"
+          elif [[ "$EVENT_NAME" == "push" ]]; then
+            base="$PUSH_BASE_SHA"
+            head="$PUSH_HEAD_SHA"
+          else
+            base="HEAD^"
+            head="HEAD"
+          fi
+
+          git diff --name-only --diff-filter=ACMR -z "$base" "$head" |
+            while IFS= read -r -d '' file; do
+              case "$file" in
+                *.md|docs/*.html) printf '%s\n' "$file" ;;
+              esac
+            done > "$RUNNER_TEMP/lychee-inputs.txt"
+
+          if [[ -s "$RUNNER_TEMP/lychee-inputs.txt" ]]; then
+            echo "has-targets=true" >> "$GITHUB_OUTPUT"
+            echo "Checking changed documentation:"
+            cat "$RUNNER_TEMP/lychee-inputs.txt"
+          else
+            echo "has-targets=false" >> "$GITHUB_OUTPUT"
+            echo "No changed Markdown or HTML files to check."
+          fi
       - name: Run lychee link checker
+        if: steps.changed-docs.outputs.has-targets == 'true'
         uses: lycheeverse/lychee-action@v2
         with:
+          failIfEmpty: false
           args: >-
             --verbose
             --no-progress
-            --exclude-mail
             --max-redirects 5
-            './**/*.md' './docs/**/*.html'
+            --files-from '${{ runner.temp }}/lychee-inputs.txt'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

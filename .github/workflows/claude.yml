@@ -15,6 +15,11 @@ on:
         description: 'Task for Claude to perform'
         required: true
         default: 'Review and analyze the repository'
+      confirm_external_send:
+        description: 'Confirm this human-initiated external model call'
+        required: true
+        type: boolean
+        default: false
 
 env:
   CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
@@ -30,26 +35,44 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         fetch-depth: 0
     
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
-        node-version: '18'
-    
+        node-version: '24'
+
+    - name: Gate external assistant
+      id: assistant-gate
+      env:
+        CONFIRMED: ${{ inputs.confirm_external_send }}
+        HAS_CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY != '' }}
+      run: |
+        if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" && "$CONFIRMED" == "true" && "$HAS_CLAUDE_API_KEY" == "true" ]]; then
+          echo "enabled=true" >> "$GITHUB_OUTPUT"
+          echo "External assistant explicitly enabled for this manual run."
+        else
+          echo "enabled=false" >> "$GITHUB_OUTPUT"
+          echo "External assistant skipped: a manual dispatch, explicit confirmation, and configured key are required."
+        fi
+
     - name: Install dependencies
+      if: steps.assistant-gate.outputs.enabled == 'true'
       run: |
-        npm install --save-dev @anthropic-ai/sdk
-        npm install --save-dev @octokit/rest
-    
+        mkdir -p "$RUNNER_TEMP/claude-assistant"
+        cd "$RUNNER_TEMP/claude-assistant"
+        npm init -y
+        npm install --ignore-scripts --no-audit --no-fund @anthropic-ai/sdk @octokit/rest
+
     - name: Create Claude interaction script
+      if: steps.assistant-gate.outputs.enabled == 'true'
       run: |
-        cat > claude-interaction.js << 'EOF'
-        const Anthropic = require('@anthropic-ai/sdk');
-        const { Octokit } = require('@octokit/rest');
-        const fs = require('fs');
+        cat > "$RUNNER_TEMP/claude-assistant/claude-interaction.mjs" << 'EOF'
+        import Anthropic from '@anthropic-ai/sdk';
+        import { Octokit } from '@octokit/rest';
+        import fs from 'node:fs';
         
         async function main() {
           const anthropic = new Anthropic({
@@ -134,10 +157,12 @@ jobs:
         EOF
     
     - name: Run Claude interaction
+      if: steps.assistant-gate.outputs.enabled == 'true'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         INPUT_TASK_DESCRIPTION: ${{ github.event.inputs.task_description }}
-      run: node claude-interaction.js
+      working-directory: ${{ runner.temp }}/claude-assistant
+      run: node claude-interaction.mjs
     
     - name: Summary
       run: |
@@ -145,4 +170,4 @@ jobs:
         echo "Event: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
         echo "Repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
         echo "Branch: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
-        echo "Claude interaction completed successfully ✅" >> $GITHUB_STEP_SUMMARY
+        echo "External assistant enabled: ${{ steps.assistant-gate.outputs.enabled }}" >> $GITHUB_STEP_SUMMARY
