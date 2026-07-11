@@ -1,0 +1,89 @@
+{
+  "version": "2026-07-10",
+  "task": "Create a truthful consolidation bridge for aiarchitectacademy.com.",
+  "surface": "Legacy-domain transition page",
+  "audience": "Visitors arriving through the legacy AI Architect Academy address",
+  "first_read": "The learning path continues at the canonical Starlight Intelligence Academy.",
+  "standards": [
+    "Premium Intelligence Web OS: quality-gates.md",
+    "Starlight estate: WEB_EXPERIENCE_STANDARD.md",
+    "Design agent standards: PREMIUM_ASSET_STANDARD.md"
+  ],
+  "references": [
+    {
+      "label": "Starlight brand world",
+      "source": "Premium Intelligence Web OS: brand-worlds.md",
+      "reason": "Defines the precise, quiet, high-trust material and copy posture."
+    },
+    {
+      "label": "Provider audit canonical decision",
+      "source": "frankx-domain-command/audits/2026-07-10-wave-0-redirect-provider-audit.md",
+      "reason": "Confirms the canonical target is the Academy root because /architect is 404."
+    }
+  ],
+  "direction": {
+    "keep": [
+      "One clear destination",
+      "Editorial typography",
+      "Operational trust",
+      "Visible manual control"
+    ],
+    "avoid": [
+      "Duplicate academy claims",
+      "Generic SaaS cards",
+      "Decorative motion",
+      "Unknown-rights media"
+    ],
+    "signature": "A single canonical handoff presented as a quiet system-state transition.",
+    "system": [
+      "Dark Starlight surface",
+      "One pale-green primary action",
+      "No runtime motion",
+      "Mobile-first single-column composition"
+    ]
+  },
+  "asset_quality": {
+    "tier": "C",
+    "source_method": "browser-capture",
+    "provenance": "owned",
+    "why_premium": "The exact, accessible transition UI is the correct evidence for a legacy redirect surface.",
+    "shortcut_risk": "low",
+    "context_tested": true
+  },
+  "artifacts": [
+    {
+      "path_or_url": "https://aiarchitectacademy-aaa8zdebe-starlight-intelligence.vercel.app",
+      "kind": "web",
+      "inspected": true,
+      "notes": "Corrected Git preview inspected at 1440, 390, 320, 640, and 641 pixels plus reduced motion; authenticated verification was required because deployment protection intercepts public requests."
+    }
+  ],
+  "checks": [
+    {
+      "name": "asset-tier",
+      "status": "pass",
+      "evidence": "Tier C exact interface selected; no decorative asset is needed."
+    },
+    {
+      "name": "export-inspection",
+      "status": "pass",
+      "evidence": "Desktop and mobile captures inspected; 390px viewport has zero horizontal overflow."
+    },
+    {
+      "name": "visual-qa",
+      "status": "pass",
+      "evidence": "1440px/390px composition pass; 640px reflow has scrollWidth=clientWidth; first Tab focuses /continue with a solid outline; reduced motion resolves to static auto behavior."
+    }
+  ],
+  "score": {
+    "total": 28,
+    "max": 30,
+    "notes": "5 first read, 4 brand distinctiveness, 4 craft, 5 accessibility/responsiveness, 5 factual/provenance, 5 intended usefulness."
+  },
+  "decision": "ship",
+  "known_risks": [
+    "The protected pre-mapping production deployment remains the rollback reference until the native main deployment is verified.",
+    "Deployment protection intercepts unauthenticated public preview requests.",
+    "Domain attachment, TLS, DNS, and IONOS changes remain outside this release boundary."
+  ]
+}
