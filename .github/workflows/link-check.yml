@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Select changed documentation
         id: changed-docs
         shell: bash
@@ -29,6 +30,9 @@ jobs:
           elif [[ "$EVENT_NAME" == "push" ]]; then
             base="$PUSH_BASE_SHA"
             head="$PUSH_HEAD_SHA"
+            if [[ "$base" =~ ^0+$ ]]; then
+              base=$(printf '' | git hash-object -t tree --stdin)
+            fi
           else
             base="HEAD^"
             head="HEAD"

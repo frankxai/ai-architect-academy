@@ -5,19 +5,19 @@
   "audience": "Visitors arriving through the legacy AI Architect Academy address",
   "first_read": "The learning path continues at the canonical Starlight Intelligence Academy.",
   "standards": [
-    "C:/Users/frank/starlight/repos/_intelligence/quality-gates.md",
-    "C:/Users/frank/starlight/repos/WEB_EXPERIENCE_STANDARD.md",
-    "C:/Users/frank/starlight/repos/design-agent-standards/PREMIUM_ASSET_STANDARD.md"
+    "Premium Intelligence Web OS: quality-gates.md",
+    "Starlight estate: WEB_EXPERIENCE_STANDARD.md",
+    "Design agent standards: PREMIUM_ASSET_STANDARD.md"
   ],
   "references": [
     {
       "label": "Starlight brand world",
-      "source": "C:/Users/frank/starlight/repos/_intelligence/brand-worlds.md",
+      "source": "Premium Intelligence Web OS: brand-worlds.md",
       "reason": "Defines the precise, quiet, high-trust material and copy posture."
     },
     {
       "label": "Provider audit canonical decision",
-      "source": "C:/Users/frank/starlight/repos/frankx-domain-command/audits/2026-07-10-wave-0-redirect-provider-audit.md",
+      "source": "frankx-domain-command/audits/2026-07-10-wave-0-redirect-provider-audit.md",
       "reason": "Confirms the canonical target is the Academy root because /architect is 404."
     }
   ],
@@ -52,10 +52,10 @@
   },
   "artifacts": [
     {
-      "path_or_url": "https://aiarchitectacademy-a4dflqd9k-starlight-intelligence.vercel.app",
+      "path_or_url": "https://aiarchitectacademy-aaa8zdebe-starlight-intelligence.vercel.app",
       "kind": "web",
       "inspected": true,
-      "notes": "Source-equivalent artifact inspected at 1440px and 390px; live deployment verified through the authenticated Vercel path because deployment protection intercepts public requests."
+      "notes": "Corrected Git preview inspected at 1440, 390, 320, 640, and 641 pixels plus reduced motion; authenticated verification was required because deployment protection intercepts public requests."
     }
   ],
   "checks": [
@@ -82,9 +82,8 @@
   },
   "decision": "ship",
   "known_risks": [
-    "The existing Vercel project is Git-linked to an empty sibling repo, not this canonical source repo.",
-    "Vercel assigned the one manual deployment a production target despite no --prod flag; the project still has no custom domain.",
+    "The protected pre-mapping production deployment remains the rollback reference until the native main deployment is verified.",
     "Deployment protection intercepts unauthenticated public preview requests.",
-    "Domain attachment, TLS, DNS, rollback, merge, and Git integration changes remain human-gated."
+    "Domain attachment, TLS, DNS, and IONOS changes remain outside this release boundary."
   ]
 }
