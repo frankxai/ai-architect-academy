@@ -10,7 +10,7 @@ const config = JSON.parse(await readFile(new URL("../vercel.json", import.meta.u
 test("declares one exact canonical destination", () => {
   const canonicalLinks = html.match(/<link rel="canonical" href="[^"]+"/g) ?? [];
   assert.deepEqual(canonicalLinks, [`<link rel="canonical" href="${destination}"`]);
-  assert.match(html, new RegExp(`<meta property="og:url" content="${destination}"`));
+  assert.ok(html.includes(`<meta property="og:url" content="${destination}"`));
   assert.doesNotMatch(html, /starlightintelligence\.academy\/architect/i);
 });
 
@@ -22,7 +22,7 @@ test("keeps the transition truthful and avoids a duplicate offer", () => {
 
 test("exposes a visible destination and a permanent continuation route", () => {
   assert.match(html, /href="\/continue"[^>]*>Continue to the Academy<\/a>/);
-  assert.match(html, new RegExp(`href="${destination}"`));
+  assert.ok(html.includes(`href="${destination}"`));
   assert.deepEqual(config.redirects, [
     {
       source: "/continue",
