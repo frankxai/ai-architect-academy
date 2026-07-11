@@ -39,6 +39,7 @@
       }
 
       body {
+        min-height: 100vh;
         min-height: 100svh;
         margin: 0;
         color: var(--ink);
@@ -58,6 +59,7 @@
 
       .shell {
         width: min(1180px, calc(100% - 48px));
+        min-height: 100vh;
         min-height: 100svh;
         margin: 0 auto;
         display: grid;
@@ -119,7 +121,7 @@
       h1 {
         max-width: 14ch;
         margin: 0;
-        font-size: clamp(3.4rem, 8.4vw, 7.9rem);
+        font-size: clamp(3.2rem, calc(1.5rem + 8vw), 7.9rem);
         font-weight: 560;
         letter-spacing: -0.066em;
         line-height: 0.9;
@@ -204,7 +206,6 @@
 
         h1 {
           max-width: 10ch;
-          font-size: clamp(3.2rem, 18vw, 5.3rem);
         }
 
         .actions {
