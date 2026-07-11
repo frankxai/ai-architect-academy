@@ -57,3 +57,12 @@ test("includes accessible structure, focus treatment, and responsive safeguards"
   assert.match(html, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(html, /min-width: 320px/);
 });
+
+test("keeps viewport height compatible and heading type fluid across the mobile breakpoint", () => {
+  assert.equal((html.match(/min-height: 100vh;\s*min-height: 100svh;/g) ?? []).length, 2);
+  assert.match(html, /font-size: clamp\(3\.2rem, calc\(1\.5rem \+ 8vw\), 7\.9rem\);/);
+
+  const mobileRules = html.match(/@media \(max-width: 640px\)[\s\S]*?@media \(prefers-reduced-motion/)?.[0];
+  assert.ok(mobileRules);
+  assert.doesNotMatch(mobileRules, /h1\s*\{[^}]*font-size:/);
+});
