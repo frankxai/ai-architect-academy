@@ -1,0 +1,8 @@
+{
+  "name": "aiarchitectacademy-consolidation-bridge",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  }
+}
