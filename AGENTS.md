@@ -4,10 +4,19 @@ This repo is part of the FrankX / Starlight / Arcanea agent estate.
 
 ## Classification
 
-- Repo: $title
-- Class: $Classification
-- Default health command: $HealthCommand
-- Remote: $Remote
+- Repo: ai-architect-academy
+- Class: template-study
+- Default health command: `git status`
+- Remote: https://github.com/frankxai/ai-architect-academy
+
+## What This Repo Is
+
+The world's first coding-agent-native learning platform: a Claude Code instructor engine
+(`CLAUDE.md`) that teaches AI architecture Socratically inside the terminal via `/academy` and
+interactive labs. Labs live in `labs/01-rag-pipeline`, `labs/02-multi-agent-system`,
+`labs/03-mcp-server`. Skills/knowledge base in `claude-ai-architect/`. Student progress tracked in
+`.academy/progress.json` (gitignored). See `CLAUDE.md` for the full instructor protocol, command
+reference, and architecture map before making changes here.
 
 ## Agent Rules
 
