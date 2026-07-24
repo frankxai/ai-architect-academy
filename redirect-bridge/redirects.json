@@ -1,0 +1,14 @@
+[
+  {
+    "source": "/",
+    "destination": "https://starlightintelligence.academy/",
+    "statusCode": 308,
+    "preserveQueryParams": false
+  },
+  {
+    "source": "/continue",
+    "destination": "https://starlightintelligence.academy/",
+    "statusCode": 308,
+    "preserveQueryParams": false
+  }
+]
