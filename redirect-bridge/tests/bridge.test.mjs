@@ -6,6 +6,7 @@ const destination = "https://starlightintelligence.academy/";
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const robots = await readFile(new URL("../robots.txt", import.meta.url), "utf8");
 const config = JSON.parse(await readFile(new URL("../vercel.json", import.meta.url), "utf8"));
+const redirects = JSON.parse(await readFile(new URL("../redirects.json", import.meta.url), "utf8"));
 
 test("declares one exact canonical destination", () => {
   const canonicalLinks = html.match(/<link rel="canonical" href="[^"]+"/g) ?? [];
@@ -20,21 +21,33 @@ test("keeps the transition truthful and avoids a duplicate offer", () => {
   assert.doesNotMatch(html, /guaranteed|certification|cohort|price|discount|limited seats|job placement/i);
 });
 
-test("permanently redirects both the domain root and continuation route", () => {
+test("permanently redirects both legacy routes without leaking query parameters", () => {
   assert.match(html, /href="\/continue"[^>]*>Continue to the Academy<\/a>/);
   assert.ok(html.includes(`href="${destination}"`));
-  assert.deepEqual(config.redirects, [
+  assert.equal(config.bulkRedirectsPath, "redirects.json");
+  assert.equal(config.redirects, undefined);
+  assert.deepEqual(redirects, [
     {
       source: "/",
       destination,
-      permanent: true,
+      statusCode: 308,
+      preserveQueryParams: false,
     },
     {
       source: "/continue",
       destination,
-      permanent: true,
+      statusCode: 308,
+      preserveQueryParams: false,
     },
   ]);
+
+  for (const input of ["/?utm_source=legacy", "/continue?ref=old-academy"]) {
+    const request = new URL(input, "https://aiarchitectacademy.com");
+    const rule = redirects.find(({ source }) => source === request.pathname);
+    assert.equal(rule?.destination, destination);
+    assert.equal(rule?.statusCode, 308);
+    assert.equal(rule?.preserveQueryParams, false);
+  }
 });
 
 test("is intentionally noindex while allowing crawlers to observe the directive", () => {
