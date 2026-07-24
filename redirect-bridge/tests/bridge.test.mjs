@@ -20,10 +20,15 @@ test("keeps the transition truthful and avoids a duplicate offer", () => {
   assert.doesNotMatch(html, /guaranteed|certification|cohort|price|discount|limited seats|job placement/i);
 });
 
-test("exposes a visible destination and a permanent continuation route", () => {
+test("permanently redirects both the domain root and continuation route", () => {
   assert.match(html, /href="\/continue"[^>]*>Continue to the Academy<\/a>/);
   assert.ok(html.includes(`href="${destination}"`));
   assert.deepEqual(config.redirects, [
+    {
+      source: "/",
+      destination,
+      permanent: true,
+    },
     {
       source: "/continue",
       destination,
