@@ -1,0 +1,29 @@
+changelog:
+  exclude:
+    labels:
+      - skip-changelog
+      - no-user-impact
+  categories:
+    - title: Consolidation and routing
+      labels:
+        - consolidation
+        - routing
+        - migration
+    - title: Learning experience and curriculum
+      labels:
+        - feature
+        - curriculum
+        - learning
+        - experience
+    - title: Trust, security, and governance
+      labels:
+        - security
+        - governance
+        - reliability
+        - compliance
+    - title: Documentation and evidence
+      labels:
+        - documentation
+    - title: Other meaningful changes
+      labels:
+        - "*"

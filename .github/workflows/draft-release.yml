@@ -1,0 +1,60 @@
+name: Draft GitHub release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ai-architect-academy-draft-release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  draft-release:
+    name: Validate tag and create draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out full history
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Require annotated semantic-version tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          if [[ ! "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Expected an annotated tag such as v1.2.3; received $tag" >&2
+            exit 1
+          fi
+          if [[ "$(git cat-file -t "$tag")" != "tag" ]]; then
+            echo "$tag must be an annotated tag." >&2
+            exit 1
+          fi
+
+      - name: Require commit reachable from main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          commit="$(git rev-list -n 1 "$GITHUB_REF_NAME")"
+          if ! git merge-base --is-ancestor "$commit" origin/main; then
+            echo "$GITHUB_REF_NAME does not point to a commit reachable from origin/main." >&2
+            exit 1
+          fi
+
+      - name: Create draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release create "$GITHUB_REF_NAME" \
+            --draft \
+            --generate-notes \
+            --title "$GITHUB_REF_NAME"
