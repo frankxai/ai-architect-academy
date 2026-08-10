@@ -6,7 +6,7 @@
 
 Create a release candidate only when a coherent curriculum, lab, learning-tool, consolidation, routing, trust, security, or repository-governance contract changes. Do not release quiet weeks, formatting-only edits, raw content refreshes without audience impact, or dependency churn that does not change supported behavior.
 
-Portfolio discovery may run weekly through [`frankx-domain-command` PR #34](https://github.com/frankxai/frankx-domain-command/pull/34), but this repository adds no second schedule. Human review decides whether evidence warrants a release.
+Portfolio discovery may run weekly through the private portfolio control plane, but this public repository adds no second schedule or private control-plane link. Human review decides whether evidence warrants a release.
 
 ## Versioned support contract
 
