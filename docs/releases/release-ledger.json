@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0",
+  "updatedAt": "2026-08-10",
+  "repository": {
+    "owner": "frankxai",
+    "name": "ai-architect-academy",
+    "visibility": "public",
+    "role": "consolidated-learning-support",
+    "publicDomain": "aiarchitectacademy.com",
+    "indexing": "noindex"
+  },
+  "production": {
+    "vercelProject": "aiarchitectacademy",
+    "projectId": "prj_EhWOyjmGYVOo8Z90tcmgGc1GP5rH",
+    "rootDirectory": "redirect-bridge",
+    "latestObservedDeployment": "dpl_DatvXzKVQDfGCMAbGVJpMDEzQErG",
+    "latestObservedCommit": "8b216c9914b6105c7c19b2f063ea6a7581c81113",
+    "deploymentState": "READY",
+    "liveVerification": "custom-domain-contract-mismatch-observed"
+  },
+  "releasePolicy": {
+    "githubReleaseMode": "draft-only",
+    "versioning": "annotated-semantic-tags-only",
+    "cadence": "meaningful-change-only",
+    "productionProof": "post-deploy-route-audit-required",
+    "canonicalDestination": "https://starlightintelligence.academy/",
+    "canonicalUpdates": "starlight-intelligence-academy",
+    "publicChangelog": "canonical-destination-only",
+    "domainMutation": "human-gated"
+  },
+  "releases": [
+    {
+      "slug": "repository-media-governance",
+      "status": "merged",
+      "mergedThrough": "2026-08-10",
+      "recordedAt": "2026-08-10",
+      "title": "Repository media governance",
+      "summary": "Added a trusted, dependency-free media guard that blocks new repository bloat and protects its own policy roots without changing the Academy product or redirect behavior.",
+      "category": "trust-and-governance",
+      "audience": "maintainers-and-reviewers",
+      "highlights": [
+        "Enforced bounded file, sidecar, governed-media, and total pull-request size limits with explicit archive and binary-format exclusions.",
+        "Validated the trusted base policy before inspecting an untrusted pull-request tree and required exact-head approval for policy changes."
+      ],
+      "sourcePullRequests": [21],
+      "limitations": [
+        "This governance change did not correct, promote, or verify the custom-domain redirect contract."
+      ]
+    },
+    {
+      "slug": "academy-consolidation-bridge",
+      "status": "merged",
+      "mergedThrough": "2026-07-24",
+      "recordedAt": "2026-08-10",
+      "title": "Academy consolidation bridge",
+      "summary": "Consolidated the legacy AI Architect Academy address into Starlight Intelligence Academy through a noindex bridge and permanent route contract.",
+      "category": "consolidation-and-routing",
+      "audience": "legacy-visitors-and-operators",
+      "highlights": [
+        "Added a restrained transition surface that names the canonical Academy without a duplicate offer, enrollment claim, or automatic forwarding timer.",
+        "Defined exact 308 redirects for the root and /continue routes, stripped query parameters, and applied restrictive security and noindex headers.",
+        "Reconnected the existing Vercel project to the canonical repository with redirect-bridge as its root directory."
+      ],
+      "sourcePullRequests": [18, 19],
+      "limitations": [
+        "A direct 2026-08-10 live probe observed HTTP 200 legacy Next.js output on both the root and /continue routes instead of the repository's 308 contract.",
+        "Domain, DNS, alias, TLS, and production-promotion changes remain human-gated and were not performed by this release foundation."
+      ]
+    },
+    {
+      "slug": "slack-collaboration-micro-module",
+      "status": "merged",
+      "mergedThrough": "2026-02-10",
+      "recordedAt": "2026-08-10",
+      "title": "Slack collaboration micro-module",
+      "summary": "Added a Slack-focused collaboration lesson and reusable prompt vault covering channel, Canvas, and List workflows for agent-supported teams.",
+      "category": "learning-experience",
+      "audience": "students-and-team-operators",
+      "highlights": [
+        "Registered a new collaboration lesson in the micro-learning atlas.",
+        "Added a reusable Slack collaboration prompt vault for team workflows."
+      ],
+      "sourcePullRequests": [17],
+      "limitations": [
+        "This is historical curriculum content, not evidence of a hosted Slack integration or current third-party service availability."
+      ]
+    },
+    {
+      "slug": "experience-hub-and-navigation",
+      "status": "merged",
+      "mergedThrough": "2025-09-17",
+      "recordedAt": "2026-08-10",
+      "title": "Experience hub and navigation",
+      "summary": "Reworked the documentation experience around a unified Academy story, refreshed navigation and topic surfaces, and expanded discoverability assets.",
+      "category": "experience-and-discovery",
+      "audience": "learners-and-resource-readers",
+      "highlights": [
+        "Added the Experience hub, refreshed homepage and topic navigation, and documented brand voice and audience personas.",
+        "Expanded the static site, search index, sitemap, diagrams, issue templates, and resource presentation."
+      ],
+      "sourcePullRequests": [13, 14],
+      "limitations": [
+        "The historical static experience was later superseded by the consolidation bridge and is not the canonical public Academy surface."
+      ]
+    },
+    {
+      "slug": "search-and-agentic-swarms",
+      "status": "merged",
+      "mergedThrough": "2025-09-13",
+      "recordedAt": "2026-08-10",
+      "title": "Search and agentic swarms",
+      "summary": "Added repository-wide documentation search and a runnable Agentic Code Swarms learning module with examples, orchestration code, and a Streamlit interface.",
+      "category": "curriculum-and-tooling",
+      "audience": "ai-architecture-learners",
+      "highlights": [
+        "Generated a static search index and client-side search UI with section filtering and navigation links.",
+        "Added Python swarm primitives, examples, a SaaS planner, a Streamlit interface, learning-path documentation, and toolchain guidance."
+      ],
+      "sourcePullRequests": [10, 11],
+      "limitations": [
+        "The merged module included historical runtime examples and generated artifacts; this ledger does not certify their present dependency, security, or production readiness."
+      ]
+    },
+    {
+      "slug": "visual-evidence-and-readme",
+      "status": "merged",
+      "mergedThrough": "2025-09-04",
+      "recordedAt": "2026-08-10",
+      "title": "Visual evidence and README refresh",
+      "summary": "Added a repeatable screenshot capture path, repository screenshots, and clearer context across the README, patterns, projects, and resource lists.",
+      "category": "documentation-and-evidence",
+      "audience": "learners-and-contributors",
+      "highlights": [
+        "Added a Puppeteer screenshot workflow and initial index and project captures.",
+        "Refreshed the README and added contextual descriptions across major learning and resource documents."
+      ],
+      "sourcePullRequests": [9],
+      "limitations": [
+        "These historical screenshots describe the former static experience and are not current visual proof for the consolidated public destination."
+      ]
+    }
+  ]
+}
