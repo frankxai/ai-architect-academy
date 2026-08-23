@@ -145,7 +145,7 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md) for guidelines.
 - [AI Architect Start Guide](../00-getting-started/AI-ARCHITECT-START-HERE.md)
 
 **Get Help:**
-- [Discussions](https://github.com/frankxai/ai-architect-academy/discussions)
+- Discussions
 - [Issues](https://github.com/frankxai/ai-architect-academy/issues)
 
 ---

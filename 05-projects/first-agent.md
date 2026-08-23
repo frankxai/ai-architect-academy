@@ -519,8 +519,8 @@ Your agent works correctly if:
 
 ## Resources
 
-- [Claude SDK Documentation](https://docs.anthropic.com/en/docs/agents)
-- [Tool Use Guide](https://docs.anthropic.com/en/docs/tool-use)
+- [Claude SDK Documentation](https://platform.claude.com/docs/en/api/agent-sdk/overview)
+- [Tool Use Guide](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)
 - Agent Patterns
 
 ---

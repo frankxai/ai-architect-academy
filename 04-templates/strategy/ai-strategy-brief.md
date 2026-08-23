@@ -512,4 +512,4 @@ Head of AI CoE
 
 ---
 
-*This template is part of the AI Architect Academy. Contribute | [Discuss](https://github.com/frankxai/AI-Architect-Academy/discussions)*
+*This template is part of the AI Architect Academy. Contribute | Discuss*

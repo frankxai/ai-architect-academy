@@ -323,7 +323,7 @@ This repository gives you:
 
 ---
 
-**Questions?** [Open a discussion](https://github.com/frankxai/AI-Architect-Academy/discussions)
+**Questions?** Open a discussion
 **Issues?** [Report them](https://github.com/frankxai/AI-Architect-Academy/issues)
 **Contributions?** [Submit a PR](https://github.com/frankxai/AI-Architect-Academy/pulls)
 

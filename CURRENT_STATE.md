@@ -337,7 +337,7 @@ You get:
 - What's confusing or unclear?
 
 **Share via:**
-- [GitHub Discussions](https://github.com/frankxai/AI-Architect-Academy/discussions)
+- GitHub Discussions
 - [GitHub Issues](https://github.com/frankxai/AI-Architect-Academy/issues)
 - [Pull Requests](https://github.com/frankxai/AI-Architect-Academy/pulls)
 

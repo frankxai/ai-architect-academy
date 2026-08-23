@@ -30,7 +30,7 @@ Traditional course:     Read docs → Watch videos → Maybe build something
 AI Architect Academy:   Clone repo → Open Claude Code → Build with an instructor
 ```
 
-When you open this repo in [Claude Code](https://docs.anthropic.com/en/docs/claude-code), the agent becomes your **personal AI architecture instructor**. It knows your progress, guides you with questions (not answers), and reviews your work like a senior engineer.
+When you open this repo in [Claude Code](https://code.claude.com/docs), the agent becomes your **personal AI architecture instructor**. It knows your progress, guides you with questions (not answers), and reviews your work like a senior engineer.
 
 **The medium is the message.** You learn to build AI systems by building AI systems — with an AI.
 
@@ -188,7 +188,7 @@ Auto-activated by context. You never need to load them manually.
 
 ## Built With
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — The agent runtime
+- [Claude Code](https://code.claude.com/docs) — The agent runtime
 - [Model Context Protocol](https://modelcontextprotocol.io/) — Tool integration standard
 - ACOS patterns — Skill activation, hooks, and progress tracking adapted from the [Agentic Creator OS](https://github.com/frankxai/agentic-creator-os)
 
