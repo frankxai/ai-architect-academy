@@ -24,6 +24,8 @@ labs/03-mcp-server/dist/
 labs/03-mcp-server/node_modules/
 labs/*/__pycache__/
 labs/*/.pytest_cache/
+__pycache__/
+*.pyc
 
 # Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
