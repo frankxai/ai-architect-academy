@@ -1,0 +1,29 @@
+name: Confidential Audit
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ai-architect-academy-confidential-audit-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Confidential material audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run confidential-material audit
+        run: node scripts/audit-confidential.mjs
