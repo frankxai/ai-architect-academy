@@ -461,7 +461,7 @@ related: [related documents]
 ---
 
 💡 **Found this helpful?** Star the repo and share with your network!
-🐛 **Found an issue?** [Open an issue](https://github.com/yourusername/AI-Architect-Academy/issues)
+🐛 **Found an issue?** [Open an issue](https://github.com/frankxai/AI-Architect-Academy/issues)
 🤝 **Want to contribute?** [See CONTRIBUTING.md](CONTRIBUTING.md)
 ```
 

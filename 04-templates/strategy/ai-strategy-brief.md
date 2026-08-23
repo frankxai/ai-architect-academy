@@ -481,7 +481,6 @@ Head of AI CoE
 
 **📋 Templates:**
 - [Transformation Blueprint](transformation-blueprint.md) - Detailed 12-month execution plan
-- [Business Case Calculator](business-case-calculator.md) - ROI modeling tool
 - [Technical Architecture](../architecture/technical-architecture.md) - System design template
 
 **📚 Learning Path:**
@@ -513,4 +512,4 @@ Head of AI CoE
 
 ---
 
-*This template is part of the AI Architect Academy. [Contribute](../../../../CONTRIBUTING.md) | [Discuss](https://github.com/yourusername/AI-Architect-Academy/discussions)*
+*This template is part of the AI Architect Academy. [Contribute](../../../../CONTRIBUTING.md) | [Discuss](https://github.com/frankxai/AI-Architect-Academy/discussions)*

@@ -1,7 +1,7 @@
 # AI Design Pattern Library
 
 ## Overview
-This comprehensive library contains Oracle's AI design patterns organized by business domain and technical capability. Each pattern provides complete implementation guidance including solution architecture, technical specifications, discovery questions, and bill of materials.
+This comprehensive library contains vendor-neutral enterprise AI solution patterns organized by business domain and technical capability. Each pattern provides complete implementation guidance including solution architecture, technical architecture, discovery questions, and bill of materials.
 
 ## Library Structure
 

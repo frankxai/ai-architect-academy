@@ -323,9 +323,9 @@ This repository gives you:
 
 ---
 
-**Questions?** [Open a discussion](https://github.com/yourusername/AI-Architect-Academy/discussions)
-**Issues?** [Report them](https://github.com/yourusername/AI-Architect-Academy/issues)
-**Contributions?** [Submit a PR](https://github.com/yourusername/AI-Architect-Academy/pulls)
+**Questions?** [Open a discussion](https://github.com/frankxai/AI-Architect-Academy/discussions)
+**Issues?** [Report them](https://github.com/frankxai/AI-Architect-Academy/issues)
+**Contributions?** [Submit a PR](https://github.com/frankxai/AI-Architect-Academy/pulls)
 
 ---
 

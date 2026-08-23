@@ -203,7 +203,7 @@ Labs are in `labs/` — each has source code, tests, data, and a `.lab/config.js
 ## Existing Knowledge Base
 
 The `claude-ai-architect/` directory contains:
-- `skills/` — 22+ expert skills (RAG, MCP, multi-cloud, security, etc.)
+- `skills/` — 23 expert skills (RAG, MCP, multi-cloud, security, etc.)
 - `knowledge-base/` — OCI GenAI, multi-cloud patterns, infrastructure docs
 - `templates/` — D2 diagrams, Terraform modules
 - `saas-curriculum/` — 12-week structured curriculum
@@ -227,7 +227,7 @@ ai-architect-academy/
 │   ├── 02-multi-agent-system/   # Build orchestrator (Python)
 │   └── 03-mcp-server/           # Build MCP server (TypeScript)
 ├── claude-ai-architect/         # Skills + knowledge base
-│   ├── skills/                  # 22+ domain skills
+│   ├── skills/                  # 23 domain skills
 │   ├── knowledge-base/          # Reference material
 │   └── saas-curriculum/         # Structured curriculum
 ├── 01-design-patterns/          # Architecture patterns

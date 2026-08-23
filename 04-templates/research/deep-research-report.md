@@ -589,4 +589,4 @@ $[Y]M/year (based on research findings)
 
 ---
 
-*This template is part of the AI Architect Academy. [Contribute](../../../../CONTRIBUTING.md) | [Discuss](https://github.com/yourusername/AI-Architect-Academy/discussions)*
+*This template is part of the AI Architect Academy. [Contribute](../../../../CONTRIBUTING.md) | [Discuss](https://github.com/frankxai/AI-Architect-Academy/discussions)*
