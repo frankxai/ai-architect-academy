@@ -557,7 +557,7 @@ $[Y]M/year (based on research findings)
 **📋 Templates:**
 - [AI Strategy Brief](../strategy/ai-strategy-brief.md) - Use research to inform strategy
 - [Transformation Blueprint](../strategy/transformation-blueprint.md) - Implement findings
-- [Technical Architecture](../architecture/technical-architecture.md) - Design system based on research
+- Technical Architecture - Design system based on research
 
 **📚 Learning Path:**
 - [Researcher Quickstart](../../00-getting-started/researcher-quickstart.md)

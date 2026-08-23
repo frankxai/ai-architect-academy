@@ -660,7 +660,7 @@ Head of AI CoE (Month 1)
 - [AI Strategy Brief](ai-strategy-brief.md) - Executive strategy (read first)
 
 **🔗 Supporting Templates:**
-- [Technical Architecture](../architecture/technical-architecture.md)
+- Technical Architecture
 - [Use Case Template](../architecture/solution-design.md)
 - [Risk Assessment](../governance/risk-assessment.md)
 

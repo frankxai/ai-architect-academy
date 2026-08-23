@@ -97,7 +97,7 @@ Vision → Strategy → Execution → Scaling → Governance
 3. Transformation: [04-templates/transformation-blueprint.md](04-templates/transformation-blueprint.md)
 4. Governance: [08-governance/](08-governance/) → Compliance frameworks
 5. Platforms: [13-platforms/](13-platforms/) → Enterprise architectures
-6. ROI: [04-templates/business-case.md](04-templates/business-case.md)
+6. ROI: 04-templates/business-case.md
 
 **Deliverables:**
 - ✅ AI Strategy Brief (executive summary)
@@ -190,7 +190,7 @@ AI-Architect-Academy/
 │   ├── developer/
 │   └── student/
 │
-├── 03-templates/               # ENHANCED from 04-templates
+├── 04-templates/               # ENHANCED from 04-templates
 │   ├── strategy/
 │   │   ├── ai-strategy-brief.md
 │   │   ├── transformation-blueprint.md
@@ -322,7 +322,7 @@ Learn by building, create portfolio, get hired
 ## ⭐ Quick Links
 
 - 📚 [Learning Paths](02-learning-paths/) - Structured curricula
-- 🎨 [Templates](03-templates/) - Strategy, architecture, research
+- 🎨 [Templates](04-templates/) - Strategy, architecture, research
 - 🔧 [Patterns](04-patterns/) - Production-ready code
 - 🚀 [Projects](05-reference-projects/) - Full implementations
 - 🤖 [Agent Workflows](06-agent-workflows/) - Multi-agent orchestration

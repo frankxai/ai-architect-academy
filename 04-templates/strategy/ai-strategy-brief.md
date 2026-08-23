@@ -481,7 +481,7 @@ Head of AI CoE
 
 **📋 Templates:**
 - [Transformation Blueprint](transformation-blueprint.md) - Detailed 12-month execution plan
-- [Technical Architecture](../architecture/technical-architecture.md) - System design template
+- Technical Architecture - System design template
 
 **📚 Learning Path:**
 - [Enterprise Leader Quickstart](../../00-getting-started/enterprise-quickstart.md)

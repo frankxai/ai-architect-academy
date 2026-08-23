@@ -152,7 +152,7 @@ code my-project/ai-strategy-brief.md
 - **Time to complete:** 4-8 hours
 - **Output:** Complete solution design
 
-**[Technical Architecture](architecture/technical-architecture.md)**
+**Technical Architecture**
 - **Use for:** Detailed technical specs
 - **Audience:** Engineering teams
 - **Time to complete:** 8-16 hours

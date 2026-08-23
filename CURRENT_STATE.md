@@ -176,7 +176,7 @@ You get:
 3. Deploy and adapt
 
 **Documenting work:**
-1. Use [templates](03-templates/)
+1. Use [templates](04-templates/)
 2. Customize for your needs
 3. Save time on formatting
 
