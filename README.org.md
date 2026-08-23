@@ -61,12 +61,12 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 
 ## Operate with Confidence
 - **Evaluation stack:** [Metrics](07-evaluation/metrics.md), [Eval harness](07-evaluation/eval-harness.md), and [promptfoo integrations](05-projects/evals-langfuse.md).
-- **Guardrails & governance:** [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model risk](08-governance/model-risk.md), and [Governance checklists](08-governance/checklists.md).
+- **Guardrails & governance:** [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model risk](08-governance/model-risk.md), and Governance checklists.
 - **Observability & retros:** [Retrospective with AI](15-workflows/retrospective-with-ai.md), [AI Briefing](15-workflows/ai-briefing.md), [Escalation Guide](16-collaboration/escalation-guide.md).
 
 ## Dashboard & Agents
 - Launch the **AI Architect Dashboard** (`dashboard/README.md`) for a Next.js control centre powered by the Vercel AI SDK, React Flow, and Langfuse-ready hooks.
-- Wire your own assistants with [`dashboard/AGENT.md`](dashboard/AGENT.md): connect OpenRouter, OpenAI, Anthropic, or local models via Open WebUI/Big-AGI.
+- Wire your own assistants with `dashboard/AGENT.md`: connect OpenRouter, OpenAI, Anthropic, or local models via Open WebUI/Big-AGI.
 - Drop telemetry, embeddings, and eval outputs from the dashboard back into the repo’s playbooks to keep narrative and metrics in sync.
 
 ## Tell the Story

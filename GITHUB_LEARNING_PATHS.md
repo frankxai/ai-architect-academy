@@ -93,8 +93,8 @@ Vision → Strategy → Execution → Scaling → Governance
 
 **Repository Navigation:**
 1. Start: [README.md](README.md) → Enterprise quickstart
-2. Strategy: [04-templates/ai-strategy-brief.md](04-templates/ai-strategy-brief.md)
-3. Transformation: [04-templates/transformation-blueprint.md](04-templates/transformation-blueprint.md)
+2. Strategy: 04-templates/ai-strategy-brief.md
+3. Transformation: 04-templates/transformation-blueprint.md
 4. Governance: [08-governance/](08-governance/) → Compliance frameworks
 5. Platforms: [13-platforms/](13-platforms/) → Enterprise architectures
 6. ROI: 04-templates/business-case.md
@@ -295,27 +295,27 @@ AI-Architect-Academy/
 
 ## 🎯 Choose Your Path
 
-### 🏗️ [AI Architect](00-getting-started/architect-quickstart.md)
+### 🏗️ AI Architect
 Build production AI systems with proven patterns and frameworks
 → **Start Here:** AI Strategy Brief → Transformation Blueprint → Deploy
 
-### 🔬 [Researcher](00-getting-started/researcher-quickstart.md)
+### 🔬 Researcher
 Conduct cutting-edge AI research with reproducible experiments
 → **Start Here:** Deep Research → Experiment Design → Publish
 
-### 👨‍🏫 [Professor/Instructor](00-getting-started/professor-quickstart.md)
+### 👨‍🏫 Professor/Instructor
 Teach AI architecture with industry-proven curriculum
 → **Start Here:** Course Syllabus → Lab Materials → Partner
 
-### 🏢 [Enterprise Leader](00-getting-started/enterprise-quickstart.md)
+### 🏢 Enterprise Leader
 Transform your organization with AI strategy and governance
 → **Start Here:** Strategy Brief → Business Case → Pilot
 
-### 💻 [Developer](00-getting-started/developer-quickstart.md)
+### 💻 Developer
 Code AI systems with multi-agent workflows
 → **Start Here:** Clone Pattern → Deploy → Iterate
 
-### 🎓 [Student](00-getting-started/student-quickstart.md)
+### 🎓 Student
 Learn by building, create portfolio, get hired
 → **Start Here:** Choose Project → Build → Showcase
 
@@ -323,8 +323,8 @@ Learn by building, create portfolio, get hired
 
 - 📚 [Learning Paths](02-learning-paths/) - Structured curricula
 - 🎨 [Templates](04-templates/) - Strategy, architecture, research
-- 🔧 [Patterns](04-patterns/) - Production-ready code
-- 🚀 [Projects](05-reference-projects/) - Full implementations
+- 🔧 Patterns - Production-ready code
+- 🚀 Projects - Full implementations
 - 🤖 [Agent Workflows](06-agent-workflows/) - Multi-agent orchestration
 - 🏛️ [Governance](08-governance/) - EU AI Act, compliance
 
@@ -336,7 +336,7 @@ Partner with us to:
 - Collaborate on research
 - Place students in top companies
 
-[Learn More →](13-university-program/)
+Learn More →
 
 ## 🏢 For Enterprises
 
@@ -346,7 +346,7 @@ Transform with:
 - Governance Framework
 - ROI Calculator
 
-[Get Started →](12-enterprise/)
+Get Started →
 
 ## 🤝 Contributing
 
@@ -434,16 +434,16 @@ related: [related documents]
 **📍 You are here:** [Path] → [Category] → [This Document]
 
 **🎯 Prerequisites:**
-- [Link to prereq 1](path/to/prereq1.md)
-- [Link to prereq 2](path/to/prereq2.md)
+- Link to prereq 1
+- Link to prereq 2
 
 **⏭️ Next Steps:**
-- [Link to next 1](path/to/next1.md)
-- [Link to next 2](path/to/next2.md)
+- Link to next 1
+- Link to next 2
 
 **🔗 Related:**
-- [Link to related 1](path/to/related1.md)
-- [Link to related 2](path/to/related2.md)
+- Link to related 1
+- Link to related 2
 ```
 
 **Footer Navigation:**
@@ -452,11 +452,11 @@ related: [related documents]
 
 ## 🧭 Navigation
 
-**← Previous:** [Previous Document](path/to/prev.md)
-**↑ Up:** [Parent Category](path/to/parent.md)
-**→ Next:** [Next Document](path/to/next.md)
+**← Previous:** Previous Document
+**↑ Up:** Parent Category
+**→ Next:** Next Document
 
-**📚 Learning Path:** [Your Path Home](02-learning-paths/your-path/)
+**📚 Learning Path:** Your Path Home
 
 ---
 

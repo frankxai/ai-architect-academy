@@ -24,8 +24,8 @@
 Start with something you need to build:
 
 - **Need a chatbot?** → [RAG Chatbot Pattern](../patterns/chatbots/basic-chatbot/)
-- **Building an agent?** → [ReAct Agent Pattern](../patterns/agent-frameworks/react-agent/)
-- **Multi-modal AI?** → [Vision + Text Pattern](../patterns/multimodal/vision-text/)
+- **Building an agent?** → ReAct Agent Pattern
+- **Multi-modal AI?** → Vision + Text Pattern
 
 ### 2. Choose Your Build Approach
 
@@ -80,7 +80,7 @@ Start with something you need to build:
 **[01-design-patterns/](../01-design-patterns/)** - Pattern library
 **[08-governance/](../08-governance/)** - EU AI Act, compliance
 **[07-evaluation/](../07-evaluation/)** - Metrics and benchmarks
-**[AI CoE Templates/](../AI%20CoE%20Templates/)** - Enterprise templates
+**AI CoE Templates/** - Enterprise templates
 
 ---
 
@@ -304,7 +304,7 @@ A: GitHub Discussions and Issues. We keep it focused on the work.
 - → [Design Patterns](../01-design-patterns/)
 
 **Governance and compliance:**
-- → [EU AI Act](../08-governance/eu-ai-act/)
+- → EU AI Act
 - → [Compliance Frameworks](../08-governance/)
 
 ---

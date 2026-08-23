@@ -316,7 +316,7 @@ After discovery session, document:
 1. [Workshop Agenda](workshop-agenda.md) - Plan deeper dive sessions
 2. [Use Case Template](../product/use-case-template.md) - Document specific use cases
 3. [AI Strategy Brief](../strategy/ai-strategy-brief.md) - Executive summary
-4. [Solution Design](../architecture/solution-design.md) - Technical approach
+4. Solution Design - Technical approach
 
 ---
 
