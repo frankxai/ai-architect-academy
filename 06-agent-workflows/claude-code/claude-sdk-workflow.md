@@ -670,6 +670,6 @@ def read_file(path):
 ## Resources
 
 - [Claude Agent SDK Docs](https://docs.claude.com/en/api/agent-sdk)
-- [Computer Use Guide](https://docs.anthropic.com/en/docs/agents/computer-use)
+- [Computer Use Guide](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool)
 - [MCP Servers](https://modelcontextprotocol.io)
 - [Tool Use Best Practices](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)

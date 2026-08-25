@@ -81,7 +81,7 @@ V3 → Full Marketplace (Current)
 
 ## 🎨 Frontend Pages
 
-### 1. Professor Dashboard ([/professor/page.tsx](academy-dashboard/app/professor/page.tsx))
+### 1. Professor Dashboard (/professor/page.tsx)
 **Features:**
 - Real-time revenue stats
 - 7-day revenue trend chart
@@ -94,7 +94,7 @@ V3 → Full Marketplace (Current)
 - Average Rating
 - Active Patterns
 
-### 2. Marketplace Browse ([/marketplace/page.tsx](academy-dashboard/app/marketplace/page.tsx))
+### 2. Marketplace Browse (/marketplace/page.tsx)
 **Features:**
 - Pattern grid with featured badges
 - Advanced filters (search, difficulty, price, sort)
@@ -105,7 +105,7 @@ V3 → Full Marketplace (Current)
   - Sales count
   - CTA buttons (Get Free / Purchase)
 
-### 3. Landing Page Updated ([/page.tsx](academy-dashboard/app/page.tsx))
+### 3. Landing Page Updated (/page.tsx)
 **New V3 Features:**
 - Updated hero: "Learn by building"
 - Three-sided marketplace section

@@ -71,7 +71,7 @@ cd ai-architect-academy
   ├── technical-architecture.md # 130 bytes (stub)
   └── workshop-agenda.md     # 116 bytes (stub)
 
-/03-templates/              # NEW structure we created
+/04-templates/              # NEW structure we created
   ├── strategy/
   ├── architecture/
   ├── research/
@@ -197,7 +197,7 @@ cd ai-architect-academy
 ├── 15-workflows/
 ├── 16-collaboration/
 ├── patterns/              # NEW (where?)
-├── 03-templates/          # NEW (overlaps with 04)
+├── 04-templates/          # NEW (overlaps with 04)
 ├── 06-agent-workflows/    # NEW (overlaps with 15)
 ├── AI CoE Templates/      # RICH (where should this go?)
 ├── academy-dashboard/
@@ -251,7 +251,7 @@ cd ai-architect-academy
    - Links to first valuable action
 
 2. **Consolidate Templates**
-   - Merge 04-templates + 03-templates + AI CoE templates
+   - Merge 04-templates + 04-templates + AI CoE templates
    - One `/templates` directory
    - Each template production-ready
 
@@ -311,7 +311,7 @@ cd ai-architect-academy
 - ❌ Basically empty placeholders
 - ❌ Not usable
 
-**03-templates/ (What we created)**
+**04-templates/ (What we created)**
 - ✅ AI Strategy Brief (comprehensive)
 - ✅ Transformation Blueprint (detailed)
 - ✅ Deep Research Report (complete)
@@ -331,7 +331,7 @@ cd ai-architect-academy
 **Immediate:**
 1. Delete stub files in `04-templates/`
 2. Move AI CoE templates to `/templates/`
-3. Merge our new `/03-templates/` content
+3. Merge our new `/04-templates/` content
 4. Create master template index
 
 **Result:**
@@ -340,7 +340,7 @@ cd ai-architect-academy
 ├── README.md              # Template index
 │
 ├── strategy/
-│   ├── ai-strategy-brief.md       # From 03-templates
+│   ├── ai-strategy-brief.md       # From 04-templates
 │   ├── transformation-blueprint.md
 │   └── business-case.md
 │
@@ -354,7 +354,7 @@ cd ai-architect-academy
 │   └── data-structure.md          # From AI CoE
 │
 ├── research/
-│   └── deep-research-report.md    # From 03-templates
+│   └── deep-research-report.md    # From 04-templates
 │
 ├── discovery/
 │   ├── workshop-agenda.md
@@ -405,7 +405,7 @@ cd ai-architect-academy
 1. **Consolidate Templates**
    - Create `/templates/` at root
    - Move AI CoE templates
-   - Merge 03-templates content
+   - Merge 04-templates content
    - Delete 04-templates stubs
    - Create template index
 

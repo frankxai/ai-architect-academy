@@ -184,7 +184,7 @@ Measure accuracy, latency, tool efficiency.
 
 **Documentation:**
 - [Agent SDK Docs](https://docs.claude.com/en/api/agent-sdk)
-- [Computer Use Guide](https://docs.anthropic.com/en/docs/agents/computer-use)
+- [Computer Use Guide](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool)
 - [MCP Integration](https://modelcontextprotocol.io)
 
 **GitHub:**

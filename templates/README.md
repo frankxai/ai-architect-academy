@@ -69,19 +69,19 @@ templates/
 ### 1. Pick Your Template
 
 **Need to present AI strategy to executives?**
-→ Use [`strategy/ai-strategy-brief.md`](strategy/ai-strategy-brief.md)
+→ Use `strategy/ai-strategy-brief.md`
 
 **Building a new AI product?**
-→ Use [`product/prd-template.md`](product/prd-template.md)
+→ Use `product/prd-template.md`
 
 **Designing system architecture?**
-→ Use [`architecture/solution-design.md`](architecture/solution-design.md)
+→ Use `architecture/solution-design.md`
 
 **Validating a technology?**
-→ Use [`research/deep-research-report.md`](research/deep-research-report.md)
+→ Use `research/deep-research-report.md`
 
 **Running client workshop?**
-→ Use [`discovery/workshop-agenda.md`](discovery/workshop-agenda.md)
+→ Use `discovery/workshop-agenda.md`
 
 ### 2. Copy and Customize
 
@@ -110,13 +110,13 @@ code my-project/ai-strategy-brief.md
 
 ### Strategy Templates
 
-**[AI Strategy Brief](strategy/ai-strategy-brief.md)**
+**AI Strategy Brief**
 - **Use for:** Executive presentations
 - **Audience:** C-suite, board, executives
 - **Time to complete:** 4-8 hours
 - **Output:** 10-15 page strategic document
 
-**[Transformation Blueprint](strategy/transformation-blueprint.md)**
+**Transformation Blueprint**
 - **Use for:** 12-month AI transformation plan
 - **Audience:** Executives, project sponsors
 - **Time to complete:** 8-16 hours
@@ -130,14 +130,14 @@ code my-project/ai-strategy-brief.md
 
 ### Product Templates
 
-**[PRD Template](product/prd-template.md)**
+**PRD Template**
 - **Use for:** Product requirements
 - **Audience:** Product managers, engineers
 - **Time to complete:** 4-8 hours
 - **Output:** Comprehensive PRD (20-30 pages)
 - **Source:** Enterprise-grade, 29KB template
 
-**[Use Case Template](product/use-case-template.md)**
+**Use Case Template**
 - **Use for:** Documenting business use cases
 - **Audience:** Business analysts, stakeholders
 - **Time to complete:** 1-2 hours per use case
@@ -146,19 +146,19 @@ code my-project/ai-strategy-brief.md
 
 ### Architecture Templates
 
-**[Solution Design](architecture/solution-design.md)**
+**Solution Design**
 - **Use for:** High-level system architecture
 - **Audience:** Architects, tech leads
 - **Time to complete:** 4-8 hours
 - **Output:** Complete solution design
 
-**[Technical Architecture](architecture/technical-architecture.md)**
+**Technical Architecture**
 - **Use for:** Detailed technical specs
 - **Audience:** Engineering teams
 - **Time to complete:** 8-16 hours
 - **Output:** Implementation-ready specs
 
-**[Data Structure](architecture/data-structure.md)**
+**Data Structure**
 - **Use for:** Data models and schemas
 - **Audience:** Data engineers, DBAs
 - **Time to complete:** 4-8 hours
@@ -167,7 +167,7 @@ code my-project/ai-strategy-brief.md
 
 ### Research Templates
 
-**[Deep Research Report](research/deep-research-report.md)**
+**Deep Research Report**
 - **Use for:** Technology evaluation, validation
 - **Audience:** Technical teams, stakeholders
 - **Time to complete:** 1-2 weeks
@@ -181,19 +181,19 @@ code my-project/ai-strategy-brief.md
 
 ### Discovery Templates
 
-**[Workshop Agenda](discovery/workshop-agenda.md)**
+**Workshop Agenda**
 - **Use for:** Client discovery sessions
 - **Audience:** Clients, stakeholders
 - **Time to complete:** 30 minutes
 - **Output:** Workshop plan
 
-**[Discovery Questions](discovery/discovery-questions.md)**
+**Discovery Questions**
 - **Use for:** Requirements gathering
 - **Audience:** Business stakeholders
 - **Time to complete:** 1 hour
 - **Output:** Interview guide
 
-**[Stakeholder Interview](discovery/stakeholder-interview.md)**
+**Stakeholder Interview**
 - **Use for:** One-on-one interviews
 - **Audience:** Key stakeholders
 - **Time to complete:** 30 minutes prep
@@ -201,14 +201,14 @@ code my-project/ai-strategy-brief.md
 
 ### Design Templates
 
-**[UI Guidelines](design/ui-guidelines.html)**
+**UI Guidelines**
 - **Use for:** Design system documentation
 - **Audience:** Designers, developers
 - **Time to complete:** Variable
 - **Output:** Design standards
 - **Source:** 27KB production guidelines
 
-**[Design System CSS](design/design-system.css)**
+**Design System CSS**
 - **Use for:** Consistent styling
 - **Audience:** Frontend developers
 - **Time to complete:** Use as-is
@@ -389,11 +389,11 @@ code my-project/ai-strategy-brief.md
 
 ### Most Popular Templates
 
-1. **[AI Strategy Brief](strategy/ai-strategy-brief.md)** - Executive presentations
-2. **[PRD Template](product/prd-template.md)** - Product requirements
-3. **[Solution Design](architecture/solution-design.md)** - System architecture
-4. **[Deep Research Report](research/deep-research-report.md)** - Technology validation
-5. **[Discovery Questions](discovery/discovery-questions.md)** - Client workshops
+1. **AI Strategy Brief** - Executive presentations
+2. **PRD Template** - Product requirements
+3. **Solution Design** - System architecture
+4. **Deep Research Report** - Technology validation
+5. **Discovery Questions** - Client workshops
 
 ### By Time Required
 
@@ -434,7 +434,7 @@ code my-project/ai-strategy-brief.md
 
 **[Patterns](../patterns/)** - Architecture patterns these templates document
 **[Workflows](../06-agent-workflows/)** - How to build systems
-**[For Professors](../for-professors/)** - Teaching materials
+**For Professors** - Teaching materials
 **[Governance](../08-governance/)** - Compliance frameworks
 
 ---
@@ -453,7 +453,7 @@ code my-project/ai-strategy-brief.md
 ---
 
 ← [Back to Main README](../README.md)
-→ [Browse Templates](strategy/)
+→ Browse Templates
 
 ---
 

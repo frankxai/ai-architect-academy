@@ -16,7 +16,7 @@
 <p align="center">
   <a href="#quick-start"><img src="https://img.shields.io/badge/Quick%20Start-2%20min-success?style=flat-square" alt="Quick Start"/></a>
   <a href="#interactive-labs"><img src="https://img.shields.io/badge/Labs-3%20Interactive-ff6b6b?style=flat-square" alt="Labs"/></a>
-  <a href="#skills-library"><img src="https://img.shields.io/badge/Skills-80+-blue?style=flat-square" alt="Skills"/></a>
+  <a href="#skills-library"><img src="https://img.shields.io/badge/Skills-23-blue?style=flat-square" alt="Skills"/></a>
   <a href="#learning-paths"><img src="https://img.shields.io/badge/Paths-5%20Tracks-purple?style=flat-square" alt="Learning Paths"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/></a>
 </p>
@@ -30,7 +30,7 @@ Traditional course:     Read docs → Watch videos → Maybe build something
 AI Architect Academy:   Clone repo → Open Claude Code → Build with an instructor
 ```
 
-When you open this repo in [Claude Code](https://docs.anthropic.com/en/docs/claude-code), the agent becomes your **personal AI architecture instructor**. It knows your progress, guides you with questions (not answers), and reviews your work like a senior engineer.
+When you open this repo in [Claude Code](https://code.claude.com/docs), the agent becomes your **personal AI architecture instructor**. It knows your progress, guides you with questions (not answers), and reviews your work like a senior engineer.
 
 **The medium is the message.** You learn to build AI systems by building AI systems — with an AI.
 
@@ -134,12 +134,12 @@ ai-architect-academy/
 ├── .claude/
 │   ├── commands/                # /hint, /review, /next, /academy, etc.
 │   ├── hooks/                   # Session-start welcome, progress tracking
-│   └── skill-rules.json         # Auto-activation rules for 80+ skills
+│   └── skill-rules.json         # Auto-activation rules for 23 skills
 ├── labs/                        # Interactive coding labs
 │   ├── 01-rag-pipeline/         # Python — fix broken RAG (3 bugs)
 │   ├── 02-multi-agent-system/   # Python — build coordinator pattern
 │   └── 03-mcp-server/           # TypeScript — build MCP server
-├── claude-ai-architect/         # Knowledge base + 22 expert skills
+├── claude-ai-architect/         # Knowledge base + 23 expert skills
 │   ├── skills/                  # RAG, MCP, multi-cloud, security, etc.
 │   ├── knowledge-base/          # OCI GenAI, infrastructure docs
 │   ├── templates/               # D2 diagrams, Terraform modules
@@ -155,7 +155,7 @@ ai-architect-academy/
 
 2. **Interactive Labs** (`labs/`) — Real codebases with real bugs and real test suites. The student writes code. The instructor guides. Tests are the judge.
 
-3. **Knowledge Base** (`claude-ai-architect/skills/`) — 22+ deep-dive skills that auto-activate based on context. Working on RAG? The RAG skill loads. Building an MCP server? The MCP patterns load.
+3. **Knowledge Base** (`claude-ai-architect/skills/`) — 23 deep-dive skills that auto-activate based on context. Working on RAG? The RAG skill loads. Building an MCP server? The MCP patterns load.
 
 ---
 
@@ -171,34 +171,24 @@ ai-architect-academy/
 
 ---
 
-## Certification
-
-| Level | Requirements |
-|-------|-------------|
-| **Associate** | Complete 2 labs with avg score >= 70 |
-| **Professional** | Complete all 3 labs + 2 learning path modules |
-| **Expert** | All labs (avg >= 85) + capstone project + security review |
-
----
-
-## Skills Library (80+)
+## Skills Library (23)
 
 Auto-activated by context. You never need to load them manually.
 
 | Category | Count | Examples |
 |----------|-------|---------|
-| Agent Frameworks | 12 | Claude SDK, Oracle ADK, LangGraph, OpenAI Agents, CrewAI |
-| Multi-Cloud AI | 16 | OCI, AWS Bedrock, Azure OpenAI, Vertex AI, Terraform |
-| MCP & Integration | 10 | MCP architecture, server builder, tool use patterns |
-| RAG & Knowledge | 8 | Vector DBs, chunking, retrieval strategies, knowledge graphs |
-| Enterprise & Security | 12 | Guardrails, compliance, audit logging, red teaming |
-| Evaluation & Production | 18 | LangFuse, LangSmith, CI/CD, monitoring, scaling |
+| Agent Frameworks | 6 | Claude SDK, Oracle ADK, Oracle Agent Spec, LangGraph, OpenAI Agent Kit, Agentic Orchestration |
+| Multi-Cloud AI | 7 | OCI, AWS, Azure, NVIDIA NIM, Kubernetes, Terraform, Multi-Cloud Architect |
+| MCP & Integration | 2 | MCP architecture, MCP 2025 patterns |
+| RAG & Knowledge | 1 | RAG expert |
+| Enterprise & Security | 3 | AI security, enterprise AI patterns, GenAI DAC specialist |
+| Evaluation & Production | 4 | Architecture diagramming, FinOps for AI, HuggingFace trainer, knowledge updater |
 
 ---
 
 ## Built With
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — The agent runtime
+- [Claude Code](https://code.claude.com/docs) — The agent runtime
 - [Model Context Protocol](https://modelcontextprotocol.io/) — Tool integration standard
 - ACOS patterns — Skill activation, hooks, and progress tracking adapted from the [Agentic Creator OS](https://github.com/frankxai/agentic-creator-os)
 
@@ -211,6 +201,8 @@ PRs welcome. If you want to add a lab, create a `labs/[id]-[name]/` directory wi
 - Source code (broken or scaffolded)
 - `tests/` — Test suite
 - `README.md` — Mission briefing
+
+Before opening a PR, run the confidential-material audit locally: `node scripts/audit-confidential.mjs`. It also runs in CI on every push and pull request (`.github/workflows/confidential-audit.yml`).
 
 ---
 

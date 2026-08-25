@@ -557,17 +557,17 @@ $[Y]M/year (based on research findings)
 **📋 Templates:**
 - [AI Strategy Brief](../strategy/ai-strategy-brief.md) - Use research to inform strategy
 - [Transformation Blueprint](../strategy/transformation-blueprint.md) - Implement findings
-- [Technical Architecture](../architecture/technical-architecture.md) - Design system based on research
+- Technical Architecture - Design system based on research
 
 **📚 Learning Path:**
-- [Researcher Quickstart](../../00-getting-started/researcher-quickstart.md)
-- [Research Methods Guide](../../11-community/awesome-resources/research-methods.md)
-- [Publishing Guide](../../09-research/publishing-guide.md)
+- Researcher Quickstart
+- Research Methods Guide
+- Publishing Guide
 
 **🔗 Next Steps:**
 - Validated findings → [Create Strategy Brief](../strategy/ai-strategy-brief.md)
-- Build POC → [Solution Design Template](../architecture/solution-design.md)
-- Publish research → [Publication Template](publication-template.md)
+- Build POC → Solution Design Template
+- Publish research → Publication Template
 
 ---
 
@@ -583,10 +583,10 @@ $[Y]M/year (based on research findings)
 
 📍 **You are here:** Researcher → Research → Deep Research Report
 
-← **Previous:** [Research Methodology](../../11-community/awesome-resources/research-methods.md)
-→ **Next:** [Publish Findings](publication-template.md)
+← **Previous:** Research Methodology
+→ **Next:** Publish Findings
 ↑ **Up:** [Research Templates](.)
 
 ---
 
-*This template is part of the AI Architect Academy. [Contribute](../../../../CONTRIBUTING.md) | [Discuss](https://github.com/yourusername/AI-Architect-Academy/discussions)*
+*This template is part of the AI Architect Academy. Contribute | Discuss*

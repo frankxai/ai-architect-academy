@@ -240,7 +240,7 @@
 **Next Steps:**
 - → [Discovery Questions](discovery-questions.md) - Detailed question list
 - → [AI Strategy Brief](../strategy/ai-strategy-brief.md) - Document findings
-- → [Solution Design](../architecture/solution-design.md) - Architecture doc
+- → Solution Design - Architecture doc
 - → [Use Case Template](../product/use-case-template.md) - Document use cases
 
 ---

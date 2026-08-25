@@ -658,17 +658,16 @@ Head of AI CoE (Month 1)
 
 **📋 Prerequisites:**
 - [AI Strategy Brief](ai-strategy-brief.md) - Executive strategy (read first)
-- [Business Case](business-case.md) - ROI justification
 
 **🔗 Supporting Templates:**
-- [Technical Architecture](../architecture/technical-architecture.md)
-- [Use Case Template](../architecture/solution-design.md)
-- [Risk Assessment](../governance/risk-assessment.md)
+- Technical Architecture
+- Use Case Template
+- Risk Assessment
 
 **📚 Learning Resources:**
-- [Enterprise Quickstart](../../00-getting-started/enterprise-quickstart.md)
-- [Transformation Case Studies](../../12-enterprise/case-studies/)
-- [Governance Framework](../governance/ai-governance-framework.md)
+- Enterprise Quickstart
+- Transformation Case Studies
+- Governance Framework
 
 ---
 
@@ -680,4 +679,4 @@ Head of AI CoE (Month 1)
 
 ---
 
-*This template is part of the AI Architect Academy. [Contribute](../../../../CONTRIBUTING.md) | [Discuss](https://github.com/yourusername/AI-Architect-Academy/discussions)*
+*This template is part of the AI Architect Academy. Contribute | Discuss*

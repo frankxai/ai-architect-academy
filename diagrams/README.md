@@ -160,7 +160,7 @@ for f in d2/*.d2; do
 done
 
 # Then reference in markdown
-# ![RAG Architecture](assets/diagrams/rag-production.svg)
+# !RAG Architecture
 ```
 
 ## CI/CD Auto-Rendering

@@ -32,13 +32,13 @@ You’re here because you want to ship real AI value, guide stakeholders with co
 - **Evaluation First:** Instrument with [metrics](07-evaluation/metrics.md), [promptfoo harnesses](05-projects/evals-langfuse.md), and the [Retrospective with AI workflow](15-workflows/retrospective-with-ai.md) before you scale access.
 
 ## 4. Instrument, Govern, and Operate
-- Establish guardrails with [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model Risk](08-governance/model-risk.md), and the [Governance checklists](08-governance/checklists.md).
+- Establish guardrails with [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model Risk](08-governance/model-risk.md), and the Governance checklists.
 - Monitor costs, latency, and regressions using [Langfuse traces](05-projects/evals-langfuse.md) plus the Topics deep dives on [observability](docs/topics/observability.html) and [guardrails](docs/topics/guardrails.html).
 - Document team rituals with [AI Pair Programming](15-workflows/ai-pair-programming.md), [PR Review with Agents](15-workflows/pr-review-with-agents.md), [AI Briefing](15-workflows/ai-briefing.md), and the [Escalation Guide](16-collaboration/escalation-guide.md).
 
 ## 5. Launch the Dashboard & Agents
-- Boot the [AI Architect Dashboard](dashboard/README.md) to orchestrate projects with the Vercel AI SDK, React Flow diagrams, and Langfuse-ready observability.
-- Connect coding assistants, OpenRouter, or local models by following [`dashboard/AGENT.md`](dashboard/AGENT.md).
+- Boot the AI Architect Dashboard to orchestrate projects with the Vercel AI SDK, React Flow diagrams, and Langfuse-ready observability.
+- Connect coding assistants, OpenRouter, or local models by following `dashboard/AGENT.md`.
 - Sync outputs back into the repo: store architecture briefs, eval logs, and visuals alongside the patterns and workflows they support.
 
 ## 6. Amplify and Share the Story

@@ -128,9 +128,9 @@ Build topical authority through connected content:
 
 ```markdown
 ## Related Concepts
-- [Vector Databases](/concepts/vector-databases/) - Where RAG stores embeddings
-- [Semantic Chunking](/patterns/semantic-chunking/) - How to split documents
-- [Hybrid Search](/patterns/hybrid-search/) - Combining vector and keyword search
+- Vector Databases - Where RAG stores embeddings
+- Semantic Chunking - How to split documents
+- Hybrid Search - Combining vector and keyword search
 ```
 
 ### 8. FAQ Section

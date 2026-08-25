@@ -62,6 +62,8 @@ jobs:
             --verbose
             --no-progress
             --max-redirects 5
+            --exclude-path node_modules
+            --exclude-file .lycheeignore
             --files-from '${{ runner.temp }}/lychee-inputs.txt'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -497,7 +497,7 @@ EOF
 d2 diagrams/d2/rag-system.d2 assets/diagrams/rag-system.svg --theme 200
 
 # 3. Reference in markdown
-# ![RAG System](assets/diagrams/rag-system.svg)
+# !RAG System
 
 # 4. Commit both source and rendered
 git add diagrams/ assets/diagrams/

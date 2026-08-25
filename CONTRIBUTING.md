@@ -205,7 +205,7 @@ claude
 
 ## Community
 
-- **Discussions:** [GitHub Discussions](https://github.com/frankxai/ai-architect-academy/discussions)
+- **Discussions:** GitHub Discussions
 - **Issues:** [GitHub Issues](https://github.com/frankxai/ai-architect-academy/issues)
 
 ### Issue Templates

@@ -9,7 +9,7 @@
 **Practical resources for AI architects:**
 
 1. **[Patterns](../patterns/)** - Production-ready architectures (RAG, agents, multi-modal)
-2. **[Templates](../03-templates/)** - Documents you actually use (strategy briefs, technical designs)
+2. **[Templates](../04-templates/)** - Documents you actually use (strategy briefs, technical designs)
 3. **[Workflows](../06-agent-workflows/)** - Build faster with Claude Code (recommended) or your tool of choice
 4. **[Projects](../05-projects/)** - Full reference implementations
 
@@ -24,8 +24,8 @@
 Start with something you need to build:
 
 - **Need a chatbot?** → [RAG Chatbot Pattern](../patterns/chatbots/basic-chatbot/)
-- **Building an agent?** → [ReAct Agent Pattern](../patterns/agent-frameworks/react-agent/)
-- **Multi-modal AI?** → [Vision + Text Pattern](../patterns/multimodal/vision-text/)
+- **Building an agent?** → ReAct Agent Pattern
+- **Multi-modal AI?** → Vision + Text Pattern
 
 ### 2. Choose Your Build Approach
 
@@ -64,11 +64,11 @@ Start with something you need to build:
 - Working code, not toy examples
 - Deployment guides included
 
-**[03-templates/](../03-templates/)**
-- [AI Strategy Brief](../03-templates/strategy/ai-strategy-brief.md) - For executives
-- [Transformation Blueprint](../03-templates/strategy/transformation-blueprint.md) - 12-month plan
-- [Technical Architecture](../03-templates/architecture/technical-architecture.md) - System design
-- [Deep Research Report](../03-templates/research/deep-research-report.md) - Validation
+**[04-templates/](../04-templates/)**
+- [AI Strategy Brief](../04-templates/strategy/ai-strategy-brief.md) - For executives
+- [Transformation Blueprint](../04-templates/strategy/transformation-blueprint.md) - 12-month plan
+- Technical Architecture - System design
+- [Deep Research Report](../04-templates/research/deep-research-report.md) - Validation
 
 **[06-agent-workflows/](../06-agent-workflows/)**
 - Claude Code workflows (recommended)
@@ -80,7 +80,7 @@ Start with something you need to build:
 **[01-design-patterns/](../01-design-patterns/)** - Pattern library
 **[08-governance/](../08-governance/)** - EU AI Act, compliance
 **[07-evaluation/](../07-evaluation/)** - Metrics and benchmarks
-**[AI CoE Templates/](../AI%20CoE%20Templates/)** - Enterprise templates
+**AI CoE Templates/** - Enterprise templates
 
 ---
 
@@ -137,7 +137,7 @@ Result: Working chatbot with vector search
 ### 2. Client Presentation
 
 **You need:** Strategy document + technical design
-**Use:** [03-templates/strategy/](../03-templates/strategy/)
+**Use:** [04-templates/strategy/](../04-templates/strategy/)
 
 ```
 1. AI Strategy Brief → Executive summary
@@ -149,7 +149,7 @@ Result: Working chatbot with vector search
 ### 3. Research and Validation
 
 **You need:** Evaluate technologies, prove feasibility
-**Use:** [03-templates/research/](../03-templates/research/)
+**Use:** [04-templates/research/](../04-templates/research/)
 
 ```
 1. Deep Research Report → Document findings
@@ -236,7 +236,7 @@ Afternoon:
 
 ### Right Now (5 minutes)
 - [ ] Browse [patterns/](../patterns/) - Find something interesting
-- [ ] Read one [template](../03-templates/) - See if it's useful
+- [ ] Read one [template](../04-templates/) - See if it's useful
 - [ ] Star the repo ⭐ - If you find it valuable
 
 ### This Week (2 hours)
@@ -296,15 +296,15 @@ A: GitHub Discussions and Issues. We keep it focused on the work.
 - → [Follow a Workflow](../06-agent-workflows/claude-code/)
 
 **Need documentation:**
-- → [Use Templates](../03-templates/)
-- → [Copy and customize](../03-templates/strategy/)
+- → [Use Templates](../04-templates/)
+- → [Copy and customize](../04-templates/strategy/)
 
 **Learning systematically:**
 - → [Learning Paths](../02-learning-paths/)
 - → [Design Patterns](../01-design-patterns/)
 
 **Governance and compliance:**
-- → [EU AI Act](../08-governance/eu-ai-act/)
+- → EU AI Act
 - → [Compliance Frameworks](../08-governance/)
 
 ---
@@ -323,9 +323,9 @@ This repository gives you:
 
 ---
 
-**Questions?** [Open a discussion](https://github.com/yourusername/AI-Architect-Academy/discussions)
-**Issues?** [Report them](https://github.com/yourusername/AI-Architect-Academy/issues)
-**Contributions?** [Submit a PR](https://github.com/yourusername/AI-Architect-Academy/pulls)
+**Questions?** Open a discussion
+**Issues?** [Report them](https://github.com/frankxai/AI-Architect-Academy/issues)
+**Contributions?** [Submit a PR](https://github.com/frankxai/AI-Architect-Academy/pulls)
 
 ---
 

@@ -55,7 +55,7 @@ Leverage the Vercel AI SDK to power composable chat, RAG, and agent experiences 
     baseURL: process.env.OPENWEBUI_URL ?? 'http://localhost:3001/v1',
   });
   ```
-- Document the setup in [`dashboard/AGENT.md`](../dashboard/AGENT.md) so teammates can replicate your environment.
+- Document the setup in `dashboard/AGENT.md` so teammates can replicate your environment.
 
 ## Observability Hooks
 - Wrap `streamText` with Langfuse logging (see `05-projects/evals-langfuse.md`) or add custom spans to track latency and cost.

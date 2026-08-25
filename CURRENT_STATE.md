@@ -176,7 +176,7 @@ You get:
 3. Deploy and adapt
 
 **Documenting work:**
-1. Use [templates](03-templates/)
+1. Use [templates](04-templates/)
 2. Customize for your needs
 3. Save time on formatting
 
@@ -280,9 +280,9 @@ You get:
 ## 📊 Current Metrics (Honest)
 
 ### Repository Stats
-- **Stars:** [Current number]
-- **Forks:** [Current number]
-- **Contributors:** [Current number]
+- **Stars:** 2
+- **Forks:** 1
+- **Contributors:** 2
 - **Patterns:** 10+
 - **Templates:** 15+
 
@@ -337,9 +337,9 @@ You get:
 - What's confusing or unclear?
 
 **Share via:**
-- [GitHub Discussions](https://github.com/yourusername/AI-Architect-Academy/discussions)
-- [GitHub Issues](https://github.com/yourusername/AI-Architect-Academy/issues)
-- [Pull Requests](https://github.com/yourusername/AI-Architect-Academy/pulls)
+- GitHub Discussions
+- [GitHub Issues](https://github.com/frankxai/AI-Architect-Academy/issues)
+- [Pull Requests](https://github.com/frankxai/AI-Architect-Academy/pulls)
 
 ---
 

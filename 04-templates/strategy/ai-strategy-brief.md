@@ -481,18 +481,17 @@ Head of AI CoE
 
 **📋 Templates:**
 - [Transformation Blueprint](transformation-blueprint.md) - Detailed 12-month execution plan
-- [Business Case Calculator](business-case-calculator.md) - ROI modeling tool
-- [Technical Architecture](../architecture/technical-architecture.md) - System design template
+- Technical Architecture - System design template
 
 **📚 Learning Path:**
-- [Enterprise Leader Quickstart](../../00-getting-started/enterprise-quickstart.md)
-- [AI Governance Framework](../governance/ai-governance-framework.md)
-- [Case Studies](../../12-enterprise/case-studies/)
+- Enterprise Leader Quickstart
+- AI Governance Framework
+- Case Studies
 
 **🎯 Next Steps:**
 - After approval → [Create Transformation Blueprint](transformation-blueprint.md)
 - For deep research → [Deep Research Report Template](../research/deep-research-report.md)
-- For architecture → [Solution Design Template](../architecture/solution-design.md)
+- For architecture → Solution Design Template
 
 ---
 
@@ -507,10 +506,10 @@ Head of AI CoE
 
 📍 **You are here:** Enterprise → Strategy → AI Strategy Brief
 
-← **Previous:** [Enterprise Quickstart](../../00-getting-started/enterprise-quickstart.md)
+← **Previous:** Enterprise Quickstart
 → **Next:** [Transformation Blueprint](transformation-blueprint.md)
 ↑ **Up:** [Strategy Templates](.)
 
 ---
 
-*This template is part of the AI Architect Academy. [Contribute](../../../../CONTRIBUTING.md) | [Discuss](https://github.com/yourusername/AI-Architect-Academy/discussions)*
+*This template is part of the AI Architect Academy. Contribute | Discuss*

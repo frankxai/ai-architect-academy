@@ -136,7 +136,7 @@ def calculate(expression: str) -> dict:
             return operators[type(node.op)](left, right)
         elif isinstance(node, ast.UnaryOp):  # Unary operations (like -5)
             operand = safe_eval(node.operand)
-            return operators[type(node.op)](operand)
+            return operatorstype(node.op)
         else:
             raise ValueError(f"Unsupported operation: {type(node)}")
 
@@ -301,7 +301,7 @@ Be concise but helpful."""
 
                 # Execute the tool
                 if tool_name in TOOL_FUNCTIONS:
-                    result = TOOL_FUNCTIONS[tool_name](**tool_input)
+                    result = TOOL_FUNCTIONStool_name
                 else:
                     result = {"error": f"Unknown tool: {tool_name}"}
 
@@ -511,17 +511,17 @@ Your agent works correctly if:
 
 | Project | Builds On |
 |---------|-----------|
-| [Multi-Agent RAG System](multi-agent-rag.md) | Add retrieval and multiple agents |
-| [MCP Server Builder](mcp-server-builder.md) | Create reusable tools with MCP |
-| [Production Agent](production-agent.md) | Add logging, error handling, deployment |
+| Multi-Agent RAG System | Add retrieval and multiple agents |
+| MCP Server Builder | Create reusable tools with MCP |
+| Production Agent | Add logging, error handling, deployment |
 
 ---
 
 ## Resources
 
-- [Claude SDK Documentation](https://docs.anthropic.com/en/docs/agents)
-- [Tool Use Guide](https://docs.anthropic.com/en/docs/tool-use)
-- [Agent Patterns](../01-design-patterns/agent-patterns.md)
+- [Claude SDK Documentation](https://platform.claude.com/docs/en/api/agent-sdk/overview)
+- [Tool Use Guide](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)
+- Agent Patterns
 
 ---
 

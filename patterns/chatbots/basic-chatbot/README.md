@@ -56,7 +56,7 @@ Build and deploy your first AI-powered chatbot in under 2 hours using Claude Cod
 └──────────────────────────┘
 ```
 
-See [architecture/](./architecture/) for detailed diagrams.
+See architecture/ for detailed diagrams.
 
 ## 🚀 Quick Start (5 min)
 
@@ -101,7 +101,7 @@ See [AGENT_WORKFLOW.md](./AGENT_WORKFLOW.md) for step-by-step agent-assisted dev
 
 ### 2. Implementation Steps (1 hour)
 
-Follow the detailed guide: [IMPLEMENTATION.md](./IMPLEMENTATION.md)
+Follow the detailed guide: IMPLEMENTATION.md
 
 1. **Setup Project** (10 min)
 2. **Build API Endpoint** (20 min)
@@ -119,7 +119,7 @@ Follow the detailed guide: [IMPLEMENTATION.md](./IMPLEMENTATION.md)
 
 ### 4. Deployment (15 min)
 
-Follow: [deployment/DEPLOY.md](./deployment/DEPLOY.md)
+Follow: deployment/DEPLOY.md
 
 ## 🏭 Build with AI Agents
 
@@ -167,19 +167,19 @@ See full workflow: [AGENT_WORKFLOW.md](./AGENT_WORKFLOW.md)
 - PHI handling and encryption
 - Audit logging
 - Consent management
-- See: [industry-variants/healthcare/](./industry-variants/healthcare/)
+- See: industry-variants/healthcare/
 
 ### Financial Advisor Chatbot
 - Regulatory disclaimers
 - Risk warnings
 - Session encryption
-- See: [industry-variants/finance/](./industry-variants/finance/)
+- See: industry-variants/finance/
 
 ### Customer Support Chatbot
 - Ticketing integration
 - Escalation workflows
 - Analytics tracking
-- See: [industry-variants/support/](./industry-variants/support/)
+- See: industry-variants/support/
 
 ## 📦 What's Included
 

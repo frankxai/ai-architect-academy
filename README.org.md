@@ -1,9 +1,9 @@
 <p align="center"><img src="assets/logo.svg" width="420" alt="AI Architect Academy"></p>
 
 <p align="center">
-  <a href="https://github.com/frankxai/ai-architect-academy/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/frankxai/ai-architect-academy?style=flat-square"></a>
+  <a href="https://github.com/frankxai/ai-architect-academy"><img alt="Stars" src="https://img.shields.io/github/stars/frankxai/ai-architect-academy?style=flat-square"></a>
   <a href="https://github.com/frankxai/ai-architect-academy/pulls"><img alt="PRs" src="https://img.shields.io/badge/PRs-welcome-cyan?style=flat-square"></a>
-  <a href="https://ai-architect-academy.github.io/ai-architect-academy/"><img alt="Pages" src="https://img.shields.io/badge/Pages-live-green?style=flat-square"></a>
+  <a href="https://frankxai.github.io/ai-architect-academy/"><img alt="Pages" src="https://img.shields.io/badge/Pages-live-green?style=flat-square"></a>
 </p>
 
 # AI Architect Academy — Command Center for Visionary Builders
@@ -31,7 +31,7 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 - **Living curriculum.** Weekly plans, retros, and logbooks keep teams aligned as the stack evolves.
 
 ## Run the Experience
-- **Tour the live site:** [ai-architect-academy.github.io/ai-architect-academy](https://ai-architect-academy.github.io/ai-architect-academy/)
+- **Tour the live site:** [ai-architect-academy.github.io/ai-architect-academy](https://frankxai.github.io/ai-architect-academy/)
 - **Explore persona journeys:** [`docs/experience.html`](docs/experience.html) shows how builders, leaders, and storytellers navigate.
 - **Spin up locally:** `scripts/serve.sh` opens the site at `http://localhost:8080` for offline or private work.
 
@@ -61,12 +61,12 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 
 ## Operate with Confidence
 - **Evaluation stack:** [Metrics](07-evaluation/metrics.md), [Eval harness](07-evaluation/eval-harness.md), and [promptfoo integrations](05-projects/evals-langfuse.md).
-- **Guardrails & governance:** [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model risk](08-governance/model-risk.md), and [Governance checklists](08-governance/checklists.md).
+- **Guardrails & governance:** [Privacy & GDPR](08-governance/privacy-gdpr.md), [Model risk](08-governance/model-risk.md), and Governance checklists.
 - **Observability & retros:** [Retrospective with AI](15-workflows/retrospective-with-ai.md), [AI Briefing](15-workflows/ai-briefing.md), [Escalation Guide](16-collaboration/escalation-guide.md).
 
 ## Dashboard & Agents
 - Launch the **AI Architect Dashboard** (`dashboard/README.md`) for a Next.js control centre powered by the Vercel AI SDK, React Flow, and Langfuse-ready hooks.
-- Wire your own assistants with [`dashboard/AGENT.md`](dashboard/AGENT.md): connect OpenRouter, OpenAI, Anthropic, or local models via Open WebUI/Big-AGI.
+- Wire your own assistants with `dashboard/AGENT.md`: connect OpenRouter, OpenAI, Anthropic, or local models via Open WebUI/Big-AGI.
 - Drop telemetry, embeddings, and eval outputs from the dashboard back into the repo’s playbooks to keep narrative and metrics in sync.
 
 ## Tell the Story
@@ -81,4 +81,4 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 - Drop new visuals into `assets/` + `docs/assets/`
 - Open issues/PRs with context and links; see `04-templates/` for proposal and retro formats.
 
-**Live site:** https://ai-architect-academy.github.io/ai-architect-academy/ · **Clone & customise:** `git clone https://github.com/frankxai/ai-architect-academy.git`
+**Live site:** https://frankxai.github.io/ai-architect-academy/ · **Clone & customise:** `git clone https://github.com/frankxai/ai-architect-academy.git`
