@@ -18,7 +18,7 @@
   <a href="#interactive-labs"><img src="https://img.shields.io/badge/Labs-3%20Interactive-ff6b6b?style=flat-square" alt="Labs"/></a>
   <a href="#skills-library"><img src="https://img.shields.io/badge/Skills-23-blue?style=flat-square" alt="Skills"/></a>
   <a href="#learning-paths"><img src="https://img.shields.io/badge/Paths-5%20Tracks-purple?style=flat-square" alt="Learning Paths"/></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-FSL--1.1--ALv2-blue?style=flat-square" alt="License"/></a>
 </p>
 
 ---
