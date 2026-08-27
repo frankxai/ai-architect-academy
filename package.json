@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "puppeteer": "^22.12.1"
-  }
+  },
+  "license": "FSL-1.1-ALv2",
+  "author": "Frank Riemer <frank@frankx.ai>"
 }
-
