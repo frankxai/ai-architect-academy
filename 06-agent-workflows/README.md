@@ -23,6 +23,11 @@ This directory contains **step-by-step workflows** for building AI systems with 
 
 ## 🚀 Available Workflow
 
+### [Adopt the AI Architect plugin](plugin-adopt.md)
+- Run: the gated architecture team inside a customer repo (plugin, conductor, MCP, or skills.sh)
+- Time: 30 minutes
+- Prerequisites: Node 20+, a throwaway git repo, no cloud account required
+
 ### [Claude SDK Agent Workflow](claude-code/claude-sdk-workflow.md)
 - Build: Autonomous agent using the Claude Agent SDK — computer use, tool orchestration, MCP integration
 - Time: 45-60 minutes
