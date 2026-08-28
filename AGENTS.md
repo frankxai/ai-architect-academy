@@ -48,3 +48,16 @@ For any site, app, landing page, dashboard, visual identity, brand, motion, medi
 
 When motion, scroll, generated media, GIF/video, or premium polish matters, route through the Motion Design Studio plugin/skills and verify the result visually.
 
+<!-- STARLIGHT-EDITORIAL:START -->
+## Editorial contract
+
+Brand: **AI Architect Academy** (`ai-architect-academy`)
+
+- Read `CREATOR.md` before changing public or customer-facing copy.
+- Apply the registered brand voice and the shared editorial gate.
+- Reject generated prestige language, rhetorical contrast formulas, invented claims, and abstract labels that hide simple facts.
+- Keep public labels in sentence case.
+- Run the changed-copy editorial audit before release.
+
+Pinned source: https://github.com/frankxai/starlight-design-intelligence/blob/50ae34c7ac06e6c083f277ca96c3bde8f0a39b43/brand-packs/ai-architect-academy/COPY.md
+<!-- STARLIGHT-EDITORIAL:END -->
