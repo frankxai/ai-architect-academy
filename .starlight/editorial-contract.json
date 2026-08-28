@@ -1,0 +1,30 @@
+{
+  "schema_version": "starlight.editorial_contract.v1",
+  "brand_id": "ai-architect-academy",
+  "source": {
+    "repository": "frankxai/starlight-design-intelligence",
+    "ref": "50ae34c7ac06e6c083f277ca96c3bde8f0a39b43",
+    "profile": "brand-packs/ai-architect-academy/COPY.md",
+    "profile_sha256": "15f066f19f6159e8b35f58feacf31ce9eafbe0f6267a3031e6b0834f7911cbb2"
+  },
+  "content_roots": [
+    "app",
+    "components",
+    "content",
+    "data",
+    "lib",
+    "pages",
+    "src"
+  ],
+  "generated_files": [
+    "CREATOR.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "GEMINI.md",
+    ".github/copilot-instructions.md",
+    ".cursor/rules/editorial.mdc",
+    ".agents/skills/frank-brand-editor/SKILL.md",
+    ".github/workflows/starlight-editorial-contract.yml",
+    ".starlight/editorial-contract.json"
+  ]
+}
