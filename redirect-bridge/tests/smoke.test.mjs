@@ -15,14 +15,14 @@ const securityHeaders = {
   "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
 };
 
-function createFetch({ redirectLocation = destination, protectedStatus } = {}) {
+function createFetch({ redirectLocation = destination, protectedStatus, destinationStatus = 200 } = {}) {
   return async (input) => {
     const url = new URL(input);
 
     if (protectedStatus) {
       return new Response("protected", { status: protectedStatus });
     }
-    if (url.pathname === "/" || url.pathname === "/continue") {
+    if (url.origin === new URL(origin).origin && (url.pathname === "/" || url.pathname === "/continue")) {
       return new Response(null, {
         status: 308,
         headers: {
@@ -35,6 +35,14 @@ function createFetch({ redirectLocation = destination, protectedStatus } = {}) {
       return new Response("User-agent: *\nAllow: /\n", {
         status: 200,
         headers: securityHeaders,
+      });
+    }
+    if (url.href === destination) {
+      return new Response(destinationStatus === 200 ? "academy" : null, {
+        status: destinationStatus,
+        headers: {
+          "strict-transport-security": securityHeaders["strict-transport-security"],
+        },
       });
     }
 
@@ -66,6 +74,7 @@ test("returns a compact receipt for the complete public bridge contract", async 
     [
       ["/", 308],
       ["/continue", 308],
+      [destination, 200],
       ["/robots.txt", 200],
       ["/__academy_domain_contract_not_found__", 404],
     ],
@@ -80,6 +89,17 @@ test("fails when a redirect leaks the probe query into the destination", async (
       fetchImpl: createFetch({ redirectLocation: `${destination}?domain_contract=1` }),
     }),
     /redirected to .*domain_contract=1/,
+  );
+});
+
+test("fails when the canonical destination adds another redirect hop", async () => {
+  await assert.rejects(
+    verifyPublicContract({
+      origin,
+      destination,
+      fetchImpl: createFetch({ destinationStatus: 308 }),
+    }),
+    /canonical destination returned 308; expected 200/,
   );
 });
 

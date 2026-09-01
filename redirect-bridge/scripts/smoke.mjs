@@ -135,6 +135,13 @@ export async function verifyPublicContract({
     checks.push({ route: url.pathname, status: response.status, location: resolvedLocation });
   }
 
+  const destinationResponse = await request(fetchImpl, target);
+  if (destinationResponse.status !== 200) {
+    fail(`The canonical destination returned ${destinationResponse.status}; expected 200.`);
+  }
+  assertTransportSecurity(destinationResponse, target.href);
+  checks.push({ route: target.href, status: destinationResponse.status });
+
   const robotsUrl = new URL("/robots.txt", source);
   const robotsResponse = await request(fetchImpl, robotsUrl);
   if (robotsResponse.status !== 200) {
