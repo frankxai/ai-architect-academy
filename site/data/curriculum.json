@@ -1,0 +1,322 @@
+{
+  "measuredAt": "2026-09-01",
+  "repo": "https://github.com/frankxai/ai-architect-academy",
+  "sections": [
+    {
+      "id": "patterns",
+      "label": "Design patterns",
+      "dir": "01-design-patterns",
+      "items": [
+        {
+          "title": "AI Gateway Pattern",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/ai-gateway-pattern.md"
+        },
+        {
+          "title": "Pattern: Content Generation Platform",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/content-generation.md"
+        },
+        {
+          "title": "Pattern: Creator Studio Automation",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/creator-studio-automation.md"
+        },
+        {
+          "title": "Pattern: Decision Support Intelligence",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/decision-support.md"
+        },
+        {
+          "title": "Pattern: Energy Market Trading & Optimisation",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/energy-market-trading-optimization.md"
+        },
+        {
+          "title": "Pattern: Genomic Sequence Intelligence",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/genomic-sequence-processing.md"
+        },
+        {
+          "title": "Pattern: Geographic Intelligence Platform",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/gis-intelligence.md"
+        },
+        {
+          "title": "Pattern: Governance & Compliance Automation",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/governance-compliance.md"
+        },
+        {
+          "title": "Pattern: Insurance Rate Intelligence",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/insurance-rate-modeling.md"
+        },
+        {
+          "title": "LLMOps Pattern",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/llm-ops-pattern.md"
+        },
+        {
+          "title": "Pattern: Model & Prompt Lifecycle Management",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/model-lifecycle-management.md"
+        },
+        {
+          "title": "Multi-Agent Orchestration Pattern",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/multi-agent-orchestration-pattern.md"
+        },
+        {
+          "title": "Pattern: Intelligent Orchestration Workflow",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/orchestration-workflow.md"
+        },
+        {
+          "title": "Pattern: AI Performance Optimisation",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/performance-optimization.md"
+        },
+        {
+          "title": "RAG Production Pattern",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/rag-production-pattern.md"
+        },
+        {
+          "title": "Pattern: AI-Powered Vulnerability Management",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/vulnerability-management.md"
+        }
+      ],
+      "count": 16
+    },
+    {
+      "id": "labs",
+      "label": "Hands-on labs",
+      "dir": "labs",
+      "items": [
+        {
+          "title": "01-rag-pipeline",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/01-rag-pipeline"
+        },
+        {
+          "title": "02-multi-agent-system",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/02-multi-agent-system"
+        },
+        {
+          "title": "03-mcp-server",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/03-mcp-server"
+        }
+      ],
+      "count": 3
+    },
+    {
+      "id": "micro",
+      "label": "Micro-modules",
+      "dir": "02-learning-paths/micro-modules",
+      "items": [
+        {
+          "title": "LangGraph Planner Loop",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/agents-langgraph-planner.md"
+        },
+        {
+          "title": "Multi-Agent Handoff Lab",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/agents-multi-agent-handoff.md"
+        },
+        {
+          "title": "Micro-Module: Slack Agent Collaboration Playbook",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/collaboration-slack-agent-workflows.md"
+        },
+        {
+          "title": "Constitutional AI Guardrail Lab",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/constitutional-ai-guardrails.md"
+        },
+        {
+          "title": "Creator Analytics Feedback Loop",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/creator-analytics-feedback-loop.md"
+        },
+        {
+          "title": "Creator Content Orchestration Sprint",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/creator-content-orchestration.md"
+        },
+        {
+          "title": "Creator Evaluation Scorecards",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/creator-evaluation-scorecards.md"
+        },
+        {
+          "title": "Evaluation Automation Pipeline",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/evaluation-automation-pipeline.md"
+        },
+        {
+          "title": "Context Engineering for LLMs",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/foundations-context-engineering.md"
+        },
+        {
+          "title": "Evaluation Signals Primer",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/foundations-evaluation-signals.md"
+        },
+        {
+          "title": "Gemini Reasoning & Debate Sprint",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/gemini-reasoning-debate.md"
+        },
+        {
+          "title": "Model Risk Review Sprint",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/governance-model-risk-review.md"
+        },
+        {
+          "title": "Policy Automation Quick Start",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/governance-policy-automation.md"
+        },
+        {
+          "title": "Cost & Latency Playbook",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/operations-cost-optimization.md"
+        },
+        {
+          "title": "Langfuse Telemetry Sprints",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/operations-langfuse-telemetry.md"
+        },
+        {
+          "title": "Domain RAG Clinic (Healthcare)",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/retrieval-domain-rag-healthcare.md"
+        },
+        {
+          "title": "Hybrid Ranking Blueprint",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/retrieval-hybrid-ranking.md"
+        },
+        {
+          "title": "RAG Guardrails Fast Track",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/retrieval-rag-guardrails.md"
+        },
+        {
+          "title": "Adoption & ROI Metrics",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/storytelling-adoption-metrics.md"
+        },
+        {
+          "title": "Executive Narrative Builder",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/storytelling-exec-brief.md"
+        },
+        {
+          "title": "Tensor-Optimised Inference Playbook",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/tensor-optimised-inference.md"
+        }
+      ],
+      "count": 21
+    },
+    {
+      "id": "paths",
+      "label": "Learning paths",
+      "dir": "02-learning-paths",
+      "items": [
+        {
+          "title": "100-Hour AI Architect Plan",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/100-hour-ai-architect.md"
+        },
+        {
+          "title": "Learning Path: Agentic Code Swarms",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/agentic-code-swarms.md"
+        },
+        {
+          "title": "AI Architect Command Center - Learning Path",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/ai-architect-command-center.md"
+        },
+        {
+          "title": "Beginner Path (4 Weeks)",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/beginner.md"
+        },
+        {
+          "title": "Bootcamp Path (AI CoE Inspired)",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/bootcamp.md"
+        },
+        {
+          "title": "Learning Logbook",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/logbook.md"
+        },
+        {
+          "title": "Micro-Learning Playlists",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-learning.md"
+        },
+        {
+          "title": "Professional Path (6 Weeks)",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/professional.md"
+        },
+        {
+          "title": "AI Architect Self-Assessment",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/self-assessment.md"
+        }
+      ],
+      "count": 9
+    },
+    {
+      "id": "governance",
+      "label": "Governance",
+      "dir": "08-governance",
+      "items": [
+        {
+          "title": "AI Procurement Checklist",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/08-governance/AI-procurement-checklist.md"
+        },
+        {
+          "title": "Human Review & Oversight Checklist",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/08-governance/human-review-checklist.md"
+        },
+        {
+          "title": "Incident Response Playbook for AI Systems",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/08-governance/incident-response-checklist.md"
+        },
+        {
+          "title": "Model Risk Management",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/08-governance/model-risk.md"
+        },
+        {
+          "title": "Privacy & GDPR",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/08-governance/privacy-gdpr.md"
+        }
+      ],
+      "count": 5
+    },
+    {
+      "id": "evaluation",
+      "label": "Evaluation",
+      "dir": "07-evaluation",
+      "items": [
+        {
+          "title": "Eval Harness",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/07-evaluation/eval-harness.md"
+        },
+        {
+          "title": "Evaluation Metrics",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/07-evaluation/metrics.md"
+        }
+      ],
+      "count": 2
+    },
+    {
+      "id": "workflows",
+      "label": "Workflows",
+      "dir": "15-workflows",
+      "items": [
+        {
+          "title": "Workflows: Agentic Code Swarms",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows/agentic-swarms.md"
+        },
+        {
+          "title": "AI Briefing Template",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows/ai-briefing.md"
+        },
+        {
+          "title": "AI Pair Programming (Daily Flow)",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows/ai-pair-programming.md"
+        },
+        {
+          "title": "Issue Triage with Linear/GitHub",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows/issue-triage-with-linear.md"
+        },
+        {
+          "title": "Peer Review Ritual",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows/peer-review.md"
+        },
+        {
+          "title": "Postmortem Template for AI Initiatives",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows/postmortem.md"
+        },
+        {
+          "title": "PR Review with AI Agents",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows/pr-review-with-agents.md"
+        },
+        {
+          "title": "Repo Maintenance with AI",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows/repo-maintenance-with-ai.md"
+        },
+        {
+          "title": "Retrospective with AI Assistant",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows/retrospective-with-ai.md"
+        }
+      ],
+      "count": 9
+    }
+  ]
+}
