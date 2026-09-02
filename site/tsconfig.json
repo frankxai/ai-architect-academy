@@ -13,6 +13,9 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
+    // academy-graph is executed directly by `node --test`, whose native type
+    // stripping requires explicit .ts specifiers on relative imports.
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",

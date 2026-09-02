@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
+    "test": "node --test lib/academy-graph/academy-graph.test.ts",
     "sync:curriculum": "node scripts/sync-curriculum.mjs"
   },
   "dependencies": {
