@@ -1,0 +1,487 @@
+{
+  "generatedBy": "hand-seeded 2026-08-31 from PRODUCT-RELEASE-GATE.md inventory + PROPERTIES-REGISTRY.md",
+  "doctrine": "DEMAND-CAPTURE-STANDARD.md",
+  "note": "Canonical product ids. Every waitlist signup, funnel link and demand report keys on `id`. A product not listed here cannot take money (PRODUCT-RELEASE-GATE.md) and cannot run a waitlist (this file). Add the row before you build the page. Offer design (gift, founding, milestones) is defined in DEMAND-CAPTURE-OFFERS.md; a milestone with no publishedAt was never a commitment, and one past atCount with no honouredAt is a P0 for steward-revenue.",
+  "stages": {
+    "concept": "Idea only. Waitlist may run to test demand. No claims about delivery date.",
+    "building": "Under construction. Waitlist runs. Milestones may be published.",
+    "gated": "Built, running PRODUCT-RELEASE-GATE G0-G5. Waitlist runs, founding cohort may be priced.",
+    "live": "Holds a fresh gate PASS receipt. Checkout open."
+  },
+  "products": [
+    {
+      "id": "creative-ai-toolkit",
+      "name": "Creative AI Toolkit",
+      "brand": "FrankX",
+      "surface": "frankx.ai",
+      "stage": "building",
+      "listType": "premium-packs",
+      "priceHypothesis": {
+        "band": "49-99",
+        "currency": "EUR",
+        "evidence": "none yet - the waitlist price_band field is the evidence"
+      },
+      "buyer": "Creators using AI daily who want a curated system, not another prompt dump",
+      "mustBeat": [
+        "free prompt megathreads on X",
+        "God of Prompt (~$97)",
+        "generic Notion AI templates"
+      ],
+      "gate": "G1 FAIL 2026-07-18 - CTA pointed at a dead Gumroad link",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 50,
+        "foundingCohort": 100
+      },
+      "gift": {
+        "name": "Three complete prompt patterns, with their evals",
+        "deliverable": "pattern.md + examples.md + promptfoo eval each. The eval is the differentiator — nobody in the genre ships tests",
+        "assetPath": null,
+        "status": "on-disk"
+      },
+      "founding": [
+        "Every future pattern free for life",
+        "Named in the library",
+        "Submit-a-pattern rights with attribution"
+      ],
+      "milestones": [
+        {
+          "atCount": 100,
+          "commitment": "The eval harness ships open-source.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "creation-chronicles",
+      "name": "Creation Chronicles",
+      "brand": "FrankX",
+      "surface": "frankx.ai",
+      "stage": "building",
+      "listType": "creation-chronicles",
+      "priceHypothesis": {
+        "band": "0-29",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "Readers following the build-in-public arc who want the long-form record",
+      "mustBeat": [
+        "free Substack build logs",
+        "Every.to membership"
+      ],
+      "gate": "G1 FAIL 2026-07-18 - CTA pointed at a dead Gumroad link",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 50,
+        "foundingCohort": 100
+      },
+      "gift": {
+        "name": "One full chronicle entry",
+        "deliverable": "A real build episode with the numbers that were wrong and what they actually were",
+        "assetPath": null,
+        "status": "needs-packaging"
+      },
+      "founding": [
+        "Lifetime access",
+        "Named in the record",
+        "The raw measurement scripts"
+      ],
+      "milestones": [
+        {
+          "atCount": 100,
+          "commitment": "The estate's live metrics dashboard goes public.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "arcanea-mcp",
+      "name": "Arcanea MCP",
+      "brand": "Arcanea",
+      "surface": "arcanea.ai",
+      "stage": "gated",
+      "listType": "arcanea",
+      "priceHypothesis": {
+        "band": "19-49/mo",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "Agent builders who need generation inside their harness and cannot tell good output from bad",
+      "mustBeat": [
+        "MUAPI free official MCP (100+ models)",
+        "fal.ai official MCP (600+ models)"
+      ],
+      "differentiator": "TRUTH.md 3b - the Gemini TASTE scorer is the only surveyed component no competitor has. Lead with trust, never model count.",
+      "gate": "UNGATED",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 50,
+        "foundingCohort": 100
+      },
+      "gift": {
+        "name": "The TASTE scorer, standalone",
+        "deliverable": "Runnable Gemini output-quality rubric + scoring schema, pasteable into any harness against any generator",
+        "assetPath": null,
+        "status": "on-disk"
+      },
+      "founding": [
+        "Price lock for life",
+        "Name in CONTRIBUTORS.md in the published npm package",
+        "Vote on which direct provider adapter ships first"
+      ],
+      "milestones": [
+        {
+          "atCount": 100,
+          "commitment": "Direct provider adapters ship — MUAPI becomes a convenience, not a dependency.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "arcanea-subscription",
+      "name": "Arcanea app subscription",
+      "brand": "Arcanea",
+      "surface": "arcanea.ai",
+      "stage": "building",
+      "listType": "arcanea",
+      "priceHypothesis": {
+        "band": "9-19/mo",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "Readers and worldbuilders inside the Arcanea canon",
+      "mustBeat": [
+        "free fan wikis",
+        "Janitor-class BYOK roleplay frontends"
+      ],
+      "differentiator": "TRUTH.md 3b - the scarce good is canon, not frontends",
+      "gate": "UNGATED",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 50,
+        "foundingCohort": 250
+      },
+      "gift": {
+        "name": "One sealed canon document",
+        "deliverable": "A real Codex entry from the locked canon, formatted as it ships in the product",
+        "assetPath": null,
+        "status": "needs-packaging"
+      },
+      "founding": [
+        "Founding sigil",
+        "Named in the world in-fiction founder register",
+        "Lifetime price lock"
+      ],
+      "milestones": [
+        {
+          "atCount": 250,
+          "commitment": "The canon API opens — bring your own frontend.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "gencreator-templates",
+      "name": "GenCreator templates",
+      "brand": "GenCreator",
+      "surface": "gencreator.ai",
+      "stage": "building",
+      "listType": "premium-packs",
+      "priceHypothesis": {
+        "band": "29-79",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "Solo operators shipping a site or product surface this week",
+      "mustBeat": [
+        "free shadcn blocks",
+        "Tailwind UI (~$299)",
+        "Framer template marketplace"
+      ],
+      "gate": "UNGATED",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 50,
+        "foundingCohort": 100
+      },
+      "gift": {
+        "name": "One complete production template",
+        "deliverable": "A full page/section: markup, tokens, motion, and the brief it was built from",
+        "assetPath": null,
+        "status": "on-disk"
+      },
+      "founding": [
+        "Every future template free for life",
+        "Priority on requests",
+        "Named in the template repo"
+      ],
+      "milestones": [
+        {
+          "atCount": 100,
+          "commitment": "The Roblox asset pack ships first.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "ai-architect-academy",
+      "name": "AI Architect Academy",
+      "brand": "FrankX",
+      "surface": "aiarchitectacademy.com",
+      "stage": "concept",
+      "listType": "courses-waitlist",
+      "priceHypothesis": {
+        "band": "299-999",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "Engineers and architects being asked to lead AI work they have not done before",
+      "mustBeat": [
+        "free Anthropic/OpenAI docs and cookbooks",
+        "Maven cohort courses (~$1-2k)",
+        "DeepLearning.AI short courses (free)"
+      ],
+      "gate": "UNGATED",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 100,
+        "foundingCohort": 50
+      },
+      "gift": {
+        "name": "The ADR template plus one worked ADR",
+        "deliverable": "A real AI system decision with the reasoning, the rejected options, and what getting it wrong cost",
+        "assetPath": "repos/ai-architect-academy/site/app/adr/page.tsx",
+        "status": "on-site"
+      },
+      "founding": [
+        "Founding cohort price lock",
+        "Named in course materials",
+        "Direct input on curriculum order",
+        "Lifetime access to revisions"
+      ],
+      "milestones": [
+        {
+          "atCount": 100,
+          "commitment": "Cohort 1 gets scheduled.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "books-arcanea-legends",
+      "name": "Chronicles of Arcanea - Book 1",
+      "brand": "Arcanea",
+      "surface": "frankx.ai + KDP",
+      "stage": "building",
+      "listType": "arcanea",
+      "priceHypothesis": {
+        "band": "5-15",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "Fantasy readers; the canon entry point",
+      "mustBeat": [
+        "any traditionally published epic fantasy debut"
+      ],
+      "gate": "UNGATED - EPUB built, covers and epubcheck missing (TRUTH.md 3)",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 100,
+        "foundingCohort": 100
+      },
+      "gift": {
+        "name": "Chapter 1 as a finished EPUB, plus the map",
+        "deliverable": "One real chapter in the real format with real typesetting; the map is the shareable",
+        "assetPath": null,
+        "status": "needs-packaging"
+      },
+      "founding": [
+        "Name in the print edition acknowledgements",
+        "First-edition cover file",
+        "Signed digital plate"
+      ],
+      "milestones": [
+        {
+          "atCount": 100,
+          "commitment": "Book 1 gets a narrated audio edition.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "realityarchitect-vault",
+      "name": "RealityArchitect Vault",
+      "brand": "RealityArchitect",
+      "surface": "realityarchitect.ai",
+      "stage": "concept",
+      "listType": "premium-packs",
+      "priceHypothesis": {
+        "band": "49-149",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "People running their life on a written personal contract",
+      "mustBeat": [
+        "free Obsidian PKM vaults",
+        "Thomas Frank Notion systems (~$129)"
+      ],
+      "gate": "UNGATED",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 50,
+        "foundingCohort": 100
+      },
+      "gift": {
+        "name": "The reality.md starter contract",
+        "deliverable": "The spec, one filled worked example, and the agent protocol (READ/SURFACE/PROPOSE/LOG/GUARD)",
+        "assetPath": null,
+        "status": "on-disk"
+      },
+      "founding": [
+        "Lifetime access to every future vault revision",
+        "Named in founders.json shipped with the vault",
+        "Input on the v1 spec"
+      ],
+      "milestones": [
+        {
+          "atCount": 100,
+          "commitment": "reality.md v1.0 is ratified and published as an open spec.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "visual-creation-loop",
+      "name": "Visual Creation Loop",
+      "brand": "Starlight",
+      "surface": "starlightintelligence.org",
+      "stage": "building",
+      "listType": "premium-packs",
+      "priceHypothesis": {
+        "band": "79-199",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "Operators who need repeatable on-brand visual output from agents",
+      "mustBeat": [
+        "raw Midjourney/NB2 access",
+        "Canva Magic Studio"
+      ],
+      "gate": "FAIL 2026-08-05 - 5 x P0, receipt on file. NOT SELLABLE.",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 50,
+        "foundingCohort": 50
+      },
+      "gift": {
+        "name": "The brand-lock prompt kit",
+        "deliverable": "The token/style contract for repeatable on-brand agent output, plus 3 before/after pairs",
+        "assetPath": null,
+        "status": "needs-packaging"
+      },
+      "founding": [
+        "Price lock",
+        "Named",
+        "Founding cohort sees the P0 fix log as it closes"
+      ],
+      "milestones": [
+        {
+          "atCount": 0,
+          "commitment": "Founding access opens when all five P0s close — receipt published.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "agentic-income",
+      "name": "Agentic Income",
+      "brand": "Income",
+      "surface": "agenticincome.ai",
+      "stage": "concept",
+      "listType": "premium-packs",
+      "priceHypothesis": {
+        "band": "99-299",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "Operators trying to make agents produce recurring revenue, not demos",
+      "mustBeat": [
+        "free YouTube automation content",
+        "the make-money-with-AI genre (low trust, high volume)"
+      ],
+      "gate": "UNGATED",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 100,
+        "foundingCohort": 100
+      },
+      "gift": {
+        "name": "One complete, working revenue loop",
+        "deliverable": "The spec, the code, and the real numbers including what it cost to run",
+        "assetPath": null,
+        "status": "needs-writing"
+      },
+      "founding": [
+        "Price lock",
+        "Named",
+        "Each new loop first",
+        "The loop ledger with real figures"
+      ],
+      "milestones": [
+        {
+          "atCount": 100,
+          "commitment": "The loop ledger opens — every loop with its real P&L, including the losers.",
+          "publishedAt": null,
+          "honouredAt": null
+        }
+      ]
+    },
+    {
+      "id": "akamoto-prophecies",
+      "name": "The Forgotten Prophecies",
+      "brand": "Arcanea",
+      "surface": "akamoto.io",
+      "stage": "concept",
+      "listType": "arcanea",
+      "priceHypothesis": {
+        "band": "0-29",
+        "currency": "EUR",
+        "evidence": "none yet"
+      },
+      "buyer": "Readers of slow, literary dark fantasy who want a serial they can hold, and listeners who found the Akamoto / Nonakamito / Jade Green personas first",
+      "mustBeat": [
+        "Royal Road free serials",
+        "Substack fiction newsletters",
+        "Wattpad"
+      ],
+      "differentiator": "The texts are the product. Canon-adjacent to Arcanea (Akamoto = Prime Luminor of Foresight) without contradicting CANON_LOCKED's 'no named prophecies' rule: these are the forgotten ones, and they name no one.",
+      "gate": "UNGATED",
+      "waitlist": {
+        "enabled": true,
+        "publicCountThreshold": 50,
+        "foundingCohort": 100
+      },
+      "gift": {
+        "name": "The first three fragments, complete, in the reading format",
+        "deliverable": "Three prophecy fragments readable in full on akamoto.io before any email is asked for",
+        "assetPath": "repos/akamoto/content/prophecies.ts",
+        "status": "on-site"
+      },
+      "founding": [
+        "Named in the Register of Readers, in-fiction",
+        "Price lock for life",
+        "Lifetime access to the growing text"
+      ],
+      "milestones": []
+    }
+  ]
+}
