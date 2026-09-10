@@ -23,16 +23,21 @@ This directory contains **step-by-step workflows** for building AI systems with 
 
 ## 🚀 Available Workflow
 
+### [Adopt the AI Architect plugin](plugin-adopt.md)
+- Run: the gated architecture team inside a customer repo (plugin, conductor, MCP, or skills.sh)
+- Time: 30 minutes
+- Prerequisites: Node 20+, a throwaway git repo, no cloud account required
+
 ### [Claude SDK Agent Workflow](claude-code/claude-sdk-workflow.md)
 - Build: Autonomous agent using the Claude Agent SDK — computer use, tool orchestration, MCP integration
 - Time: 45-60 minutes
 - Prerequisites: Python 3.10+, Anthropic API key
 
-This is the only workflow currently in this directory. Workflows for other tools (Cursor, Copilot, manual) or other build targets (RAG chatbot, ReAct agent, multi-modal) don't exist yet — see [Contributing](#-contributing-workflows) if you want to add one.
+Two workflows live here. Plugin adopt is the gated architecture team. The Claude SDK lab is a separate build exercise. Other tools (Cursor, Copilot, manual) or build targets (RAG chatbot, ReAct agent, multi-modal) are not workflows yet — see [Contributing](#-contributing-workflows).
 
 ### How to Use It
 
-1. **Open the workflow markdown** — `claude-code/claude-sdk-workflow.md`
+1. **Open the workflow markdown** — start with `plugin-adopt.md`, or `claude-code/claude-sdk-workflow.md` for the SDK lab
 2. **Read the architecture overview** - Understand what you're building
 3. **Copy prompts one by one** - Into Claude Code interface
 4. **Review generated code** - Understand, don't just copy-paste
@@ -46,8 +51,9 @@ This is the only workflow currently in this directory. Workflows for other tools
 ```
 06-agent-workflows/
 ├── README.md                    # You are here
+├── plugin-adopt.md              # Gated AI Architect plugin / conductor / MCP
 └── claude-code/
-    └── claude-sdk-workflow.md   # The only workflow that exists today
+    └── claude-sdk-workflow.md   # Claude Agent SDK lab
 ```
 
 ---
@@ -138,6 +144,7 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md) for guidelines.
 ## ⚡ Quick Links
 
 **Get Started:**
+- [Adopt the AI Architect plugin](plugin-adopt.md)
 - [Claude SDK Agent Workflow](claude-code/claude-sdk-workflow.md)
 
 **Learn More:**
