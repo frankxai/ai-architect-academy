@@ -41,6 +41,37 @@ const faq = [
   ],
 ]
 
+// Stage names and output paths are the plugin's own contract (frankxai/ai-architect README, "What /architect writes").
+const stages = [
+  ['frame', '00-frame.md', 'The outcome, the non-goals, and the observation that would kill the project'],
+  ['discover', '01-discovery.md', 'What is known, and what is marked unknown instead of assumed'],
+  ['flow', '02-user-flows.md', 'Every path through the system, and where a person steps in'],
+  ['decide', 'SYSTEM.md · adr/', 'The decisions that are expensive to undo, each marked MADE or OPEN with its evidence'],
+  ['cost', '04-roi.md', 'The return model, and the prices it assumes'],
+  ['secure', '05-trust-boundary.md', 'What the model and its tools are allowed to reach'],
+  ['prove', '06-evals/', 'The eval cases and the grading rubric'],
+  ['operate', '07-runbook.md', 'The workflow, the SOP, and the runbook'],
+  ['verify', 'receipts/', 'An independent verifier re-checks each evidence pointer in a fresh context'],
+]
+
+const installs: { who: string; what: string; commands: string[] }[] = [
+  {
+    who: 'Claude Code',
+    what: 'The full team, as /architect',
+    commands: ['/plugin marketplace add frankxai/ai-architect', '/plugin install ai-architect@frankx'],
+  },
+  {
+    who: 'Codex, Cursor, Gemini CLI',
+    what: "The team's skills, for other harnesses",
+    commands: ['npx skills add frankxai/ai-architect'],
+  },
+  {
+    who: 'Any skill host',
+    what: 'The architect skills pack',
+    commands: ['npx skills add frankxai/skills'],
+  },
+]
+
 const patterns = curriculum.sections.find((s) => s.id === 'patterns')
 const labs = curriculum.sections.find((s) => s.id === 'labs')
 const total = curriculum.sections.reduce((n, s) => n + s.count, 0)
@@ -58,8 +89,8 @@ export default function Home() {
           what getting it wrong costs. That is the course.
         </p>
         <p className="measure mt-4 text-lg" style={{ color: 'var(--ink-2)' }}>
-          You finish able to write the six decision records for a system you own, defend them in a review you did not
-          call, and reverse any of them without losing the work.
+          You finish able to write the six decision records for a system you own, and defend them in a review you did
+          not call.
         </p>
         <p className="measure mt-4 text-lg" style={{ color: 'var(--ink-2)' }}>
           It is not scheduled and it has no price. The people on the waitlist decide both.
@@ -133,6 +164,73 @@ export default function Home() {
             </li>
           ))}
         </ol>
+      </section>
+
+      <section id="team" className="rule py-16" aria-labelledby="team-title">
+        <div className="grid gap-10 md:grid-cols-[1fr_1.4fr]">
+          <div>
+            <p className="eyebrow">Free today, in your own repository</p>
+            <h2 id="team-title" className="mt-3 text-3xl leading-tight">
+              An architecture team you can run today.
+            </h2>
+          </div>
+          <div className="measure space-y-4" style={{ color: 'var(--ink-2)' }}>
+            <p>
+              The AI Architect plugin runs architecture work as gated stages inside the coding agent you already use, on
+              your own model keys. Each stage writes its evidence into <code className="mono">docs/architecture/</code>{' '}
+              in your repository. A red gate stops the run. No account, no hosted service, Apache-2.0.
+            </p>
+            <p>
+              It never writes your application code, and it stops at the gates a person owns: publishing, spending,
+              credentials, anything destructive. The plugin produces the records. The cohort is where a person reads
+              yours and tells you which one you will regret.
+            </p>
+          </div>
+        </div>
+
+        <ol className="stages mt-10" aria-label="The nine stages and what each leaves in your repository">
+          {stages.map(([stage, file, body]) => (
+            <li key={stage}>
+              <span className="stage-name">{stage}</span>
+              <code className="mono stage-file">{file}</code>
+              <span className="stage-body">{body}</span>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-[1.35fr_1fr_1fr]">
+          {installs.map((i) => (
+            <div key={i.who} className="flex flex-col gap-2">
+              <p className="eyebrow">{i.who}</p>
+              <p className="text-base" style={{ fontWeight: 600 }}>
+                {i.what}
+              </p>
+              {i.commands.map((c) => (
+                <pre key={c} className="cmd">
+                  <code>{c}</code>
+                </pre>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <p className="measure mt-8 text-base" style={{ color: 'var(--ink-2)' }}>
+          Running an AI practice rather than one system? The{' '}
+          <a className="link" href="https://github.com/frankxai/ai-coe">
+            AI CoE operating model
+          </a>{' '}
+          governs the organisation around the team: intake, review, trust tiers, and the weekly review that decides
+          which skills stay in use. Source for the team:{' '}
+          <a className="link" href="https://github.com/frankxai/ai-architect">
+            github.com/frankxai/ai-architect
+          </a>
+          .
+        </p>
+        <p className="mt-8">
+          <Link href="#waitlist" className="btn btn-primary">
+            Join the cohort waitlist
+          </Link>
+        </p>
       </section>
 
       <section className="rule py-16" aria-labelledby="gift">

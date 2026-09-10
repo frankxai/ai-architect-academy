@@ -113,6 +113,63 @@ textarea:focus-visible {
   border-color: var(--ink);
 }
 
+.mono {
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+  font-size: 0.875em;
+}
+
+.cmd {
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 0.375rem;
+  padding: 0.6rem 0.8rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+}
+
+/* One continuous run of stages: the order is the lifecycle, so it reads as a single object, not nine cards. */
+.stages {
+  border-top: 1px solid var(--ink);
+}
+
+.stages li {
+  display: grid;
+  grid-template-columns: 7rem 12rem 1fr;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.stage-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.stage-file {
+  color: var(--cobalt-ink);
+}
+
+.stage-body {
+  color: var(--ink-2);
+}
+
+@media (max-width: 48rem) {
+  .stages li {
+    grid-template-columns: 6rem 1fr;
+    gap: 0.25rem 1rem;
+  }
+
+  .stage-body {
+    grid-column: 2;
+  }
+}
+
 .night {
   background: var(--night);
   color: var(--night-paper);

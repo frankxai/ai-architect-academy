@@ -55,6 +55,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/adr" className="hover:text-cobalt">
               Free ADR
             </Link>
+            <Link href="/#team" className="hover:text-cobalt">
+              Agent team
+            </Link>
             <Link href="/#waitlist" className="hover:text-cobalt">
               Waitlist
             </Link>
