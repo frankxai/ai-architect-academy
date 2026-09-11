@@ -254,6 +254,22 @@ textarea:focus-visible {
   font-size: 1.15rem;
 }
 
+.reveal {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.9rem 0;
+}
+
+.reveal summary {
+  cursor: pointer;
+  color: var(--cobalt);
+  font-weight: 500;
+}
+
+.reveal summary:hover {
+  color: var(--cobalt-ink);
+}
+
 .fix {
   list-style: decimal;
   padding-left: 1.25rem;

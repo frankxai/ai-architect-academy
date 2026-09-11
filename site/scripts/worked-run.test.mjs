@@ -31,8 +31,13 @@ test('the receipt tally and the contract check are internally consistent', () =>
   }
 })
 
+test('every run is marked a fixture, because the page presents it as one', () => {
+  for (const run of data.runs) assert.ok(run.fixture === true && run.fixtureNote, run.id)
+})
+
 test('the featured run has a finding with a fix, and says it is a fixture', () => {
-  const [featured] = data.runs
+  const featured = data.runs.find((r) => r.id === data.featured)
+  assert.ok(featured, `featured run ${data.featured} missing`)
   assert.match(featured.finding.title, /^F1 — /)
   assert.ok(featured.finding.fix.length >= 1)
   assert.match(featured.fixtureNote, /fixture|worked example/i)

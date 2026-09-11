@@ -10,7 +10,7 @@ author, can say what the product is without reading thirty files and picking.
 
 This contract fixes which file wins, for each kind of claim.
 
-## The four sources
+## The sources
 
 | Claim | Single source | Generated views | Generator |
 |---|---|---|---|
@@ -18,6 +18,12 @@ This contract fixes which file wins, for each kind of claim.
 | **Inventory** — how much material exists | the repository's own directories | `site/data/curriculum.json` | `site/scripts/sync-curriculum.mjs` |
 | **Teaching prose** — patterns, labs, governance | the markdown file at the path a graph node names in `provenance.source` / `repoPath` | links out from the site | none; linked, never duplicated |
 | **Commercial state** — stage, gate, price band | `starlight/graph/products.graph.json`, row `ai-architect-academy` | the waitlist copy | read at build time |
+| **Worked examples** — what the agent team leaves in a repository | the fixture runs under `examples/` in `frankxai/ai-architect` (Apache-2.0) | `/worked-run`, via `site/data/worked-run.json` | `site/scripts/sync-worked-run.mjs`, which also runs the plugin's `check-artifacts` gate |
+
+Added 2026-09-11: the worked-examples row is the one place rule 2 is relaxed. Excerpts are allowed
+because they are generated from the plugin's files, attributed with the plugin version and licence,
+labelled as fixtures on every card, and regenerated rather than edited; the script refuses to write
+if a run is not marked a fixture.
 
 Nothing else is a source. Everything else is either a view or is stale.
 
