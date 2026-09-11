@@ -1,0 +1,303 @@
+{
+  "measuredAt": "2026-09-11",
+  "pluginVersion": "0.1.3",
+  "licence": "Apache-2.0",
+  "featured": "contract-rag",
+  "runs": [
+    {
+      "id": "contract-rag",
+      "name": "contract question answering",
+      "goal": "Contract question answering for a 200-person professional services firm: locate and quote clauses in executed contracts with citations, or refuse and name a person.",
+      "generatedAt": "2026-08-23",
+      "fixture": true,
+      "fixtureNote": "Worked example shipped with the AI Architect plugin. Paths, commands and observed outputs are this example's definition, not a recording from a live repository. Re-derive everything against your own repository before treating any line as evidence.",
+      "source": "https://github.com/frankxai/ai-architect/tree/main/examples/contract-rag/docs/architecture",
+      "outcome": "Anyone in the firm can ask a question about an executed contract and get an answer that cites the exact clauses it rests on, or a refusal that names who to ask instead.",
+      "killCriterion": "If, after six weeks of use, the share of answers that the legal ops lead's weekly sample of 40 finds correct and correctly cited is below 34 of 40, measured on 2026-10-11 with node scripts/citation-audit.mjs --sample 40 --since 2026-08-30, the system is turned off. Not retuned: turned off. A contract answer that is usually right is a liability, because it teaches people to stop checking.",
+      "decisions": [
+        {
+          "id": "model",
+          "verdict": "MADE",
+          "evidence": "services/qa/src/model.py:L21 — one module, routing by task; rg -l \"import (openai|anthropic)\" -tpy → 1 file."
+        },
+        {
+          "id": "loop",
+          "verdict": "MADE",
+          "evidence": "services/qa/src/pipeline.py:L72 — fixed workflow (scope check, retrieve, rerank, answer) with the exit condition in code. ADR-0002, ADR-0003."
+        },
+        {
+          "id": "trust",
+          "verdict": "OPEN",
+          "evidence": "services/qa/src/prompt.py:L57 — retrieved clause text is concatenated into the system prompt; rg -n \"untrusted_clause\" services/qa/src → 0 hits. The label line is ABSENT."
+        },
+        {
+          "id": "run",
+          "verdict": "MADE",
+          "evidence": "services/ingest/src/workflow.py:L19 — the 41-minute re-index is a durable workflow; questions stay request-scoped at 34 s against a 300 s ceiling. ADR-0002."
+        }
+      ],
+      "gates": [
+        {
+          "id": "frame",
+          "status": "PASS",
+          "note": "00-frame.md § outcome — one sentence"
+        },
+        {
+          "id": "discovery",
+          "status": "PASS",
+          "note": "rg -c '\\[assumed\\]' docs/architecture/01-discovery.md → 0"
+        },
+        {
+          "id": "flow",
+          "status": "PASS",
+          "note": "rg -c '^### failure branch' docs/architecture/02-user-flows.md → 3"
+        },
+        {
+          "id": "decisions",
+          "status": "PASS",
+          "note": "Three decisions MADE with file:line evidence and an accepted ADR each; trust is OPEN with a dated deferral cost, which the gate allows"
+        },
+        {
+          "id": "economics",
+          "status": "PASS",
+          "note": "prices.json — 11 rows, every row with source_url and retrieved_at 2026-08-22"
+        },
+        {
+          "id": "trust",
+          "status": "FAIL",
+          "note": "FAIL cause: pass criterion 4 — every T3 source must be shown entering the data position and not the instruction position. Clause text is T3 and enters the instruction position."
+        },
+        {
+          "id": "evals",
+          "status": "FAIL",
+          "note": "FAIL cause: pass criterion 7 — the injection case must fail closed. injection-002 fails open."
+        },
+        {
+          "id": "operate",
+          "status": "PASS",
+          "note": "07-runbook.md — 8 numbered steps plus one no-dry-run procedure, every command in a fenced block, every procedure with a rollback command and an owner"
+        },
+        {
+          "id": "verify",
+          "status": "PASS",
+          "note": "receipts/2026-08-23-verify.md — written in a fresh context, 8 evidence pointers re-derived, 8 CONFIRMED"
+        }
+      ],
+      "receipt": {
+        "file": "2026-08-23-verify.md",
+        "pointers": 8,
+        "confirmed": 8,
+        "failed": 0
+      },
+      "finding": {
+        "title": "F1 — retrieved clause text has no trust boundary. Two gates are red because of it.",
+        "fix": [
+          "Move clause text out of system_prompt into a user-role message, wrapped as <untrusted_clause contract=\"…\" amendment=\"…\">…</untrusted_clause>.",
+          "Add one sentence to the operator-authored system prompt naming that wrapper and stating that its contents are quoted material to cite, never instructions to follow.",
+          "Verify: rg -n \"system_prompt +=\" services/qa/src/prompt.py → 0 hits; node scripts/run-evals.mjs docs/architecture/06-evals/cases.jsonl → 13 pass, exit 0."
+        ]
+      },
+      "contract": {
+        "checks": 79,
+        "pass": 79,
+        "fail": 0
+      }
+    },
+    {
+      "id": "support-triage",
+      "name": "support triage",
+      "goal": "Triage the inbound support inbox of a 40-person B2B software company: classify, route, and draft a reply that a support agent approves before anything sends.",
+      "generatedAt": "2026-08-23",
+      "fixture": true,
+      "fixtureNote": "Worked example shipped with the AI Architect plugin. Paths, commands and observed outputs are this example's definition, not a recording from a live repository. Re-derive everything against your own repository before treating any line as evidence.",
+      "source": "https://github.com/frankxai/ai-architect/tree/main/examples/support-triage/docs/architecture",
+      "outcome": "Every inbound support email is classified, routed to a queue, and answered with a drafted reply that a support agent approves before anything leaves the building.",
+      "killCriterion": "If, after four full weeks in production, the share of drafted replies that support agents send without editing the body is below one in three, measured on 2026-10-04 from the support platform's revision history, the drafting step is removed and only classification and routing stay. Measurement command and its owner are in 07-runbook.md, step 6.",
+      "decisions": [
+        {
+          "id": "model",
+          "verdict": "OPEN",
+          "evidence": "rg -l \"from ['\\\"](openai|@anthropic-ai/sdk)\" -tsrc → 3 files: packages/llm/src/client.ts, apps/worker/src/summarize.ts, apps/api/src/routes/reply-draft.ts"
+        },
+        {
+          "id": "loop",
+          "verdict": "MADE",
+          "evidence": "apps/worker/src/triage.ts:L64 — fixed workflow, exit condition in code, three attempts, no prompt-level stop instruction. ADR-0003."
+        },
+        {
+          "id": "trust",
+          "verdict": "MADE",
+          "evidence": "packages/prompt/src/build.ts:L27 — ticket body wrapped as <untrusted_ticket> in the user message; system message built at packages/prompt/src/system.ts:L14. ADR-0001."
+        },
+        {
+          "id": "run",
+          "verdict": "MADE",
+          "evidence": "apps/worker/src/queue.ts:L11 — queued worker; longest observed run 41 s against a 300 s request-scoped ceiling. ADR-0002."
+        }
+      ],
+      "gates": [
+        {
+          "id": "frame",
+          "status": "PASS",
+          "note": "00-frame.md § outcome — one sentence"
+        },
+        {
+          "id": "discovery",
+          "status": "PASS",
+          "note": "rg -c '\\[assumed\\]' docs/architecture/01-discovery.md → 0"
+        },
+        {
+          "id": "flow",
+          "status": "PASS",
+          "note": "rg -c '^### failure branch' docs/architecture/02-user-flows.md → 3"
+        },
+        {
+          "id": "decisions",
+          "status": "FAIL",
+          "note": "FAIL cause: pass criterion 5 — every plane has a named owner. planes.model.owner = 'unowned'."
+        },
+        {
+          "id": "economics",
+          "status": "PASS",
+          "note": "prices.json — 8 rows, every row has source_url and retrieved_at 2026-08-22, one day before the run date"
+        },
+        {
+          "id": "trust",
+          "status": "PASS",
+          "note": "05-trust-boundary.md § trace — label line is packages/prompt/src/build.ts:L27, not ABSENT"
+        },
+        {
+          "id": "evals",
+          "status": "PASS",
+          "note": "06-evals/cases.jsonl → 12 cases: 6 golden, 3 refusal, 3 injection"
+        },
+        {
+          "id": "operate",
+          "status": "PASS",
+          "note": "07-runbook.md — 7 numbered steps plus one no-dry-run procedure, every command in a fenced block"
+        },
+        {
+          "id": "verify",
+          "status": "PASS",
+          "note": "receipts/2026-08-23-verify.md — written in a fresh context, 7 evidence pointers re-derived, 7 CONFIRMED"
+        }
+      ],
+      "receipt": {
+        "file": "2026-08-23-verify.md",
+        "pointers": 7,
+        "confirmed": 7,
+        "failed": 0
+      },
+      "finding": {
+        "title": "F1 — the model plane has no owner, and gate.decisions is red because of it.",
+        "fix": [
+          "The head of engineering names an owner for the model plane. This is a five-minute decision that has been open since discovery (gap g3, 01-discovery.md § 44).",
+          "That owner collapses apps/worker/src/summarize.ts and apps/api/src/routes/reply-draft.ts into packages/llm/src/client.ts, then re-runs the grep and expects 1 file. Fixture estimate: 12 engineer hours, which is not in fx.build and therefore not in 04-roi.md's payback."
+        ]
+      },
+      "contract": {
+        "checks": 79,
+        "pass": 79,
+        "fail": 0
+      }
+    },
+    {
+      "id": "personal-ai-coe",
+      "name": "personal AI centre of excellence",
+      "goal": "Build a personal AI centre of excellence on one person's own machine: three scheduled loops, a local memory store, and an ad-hoc session mode, with every output read by the operator before it becomes a decision.",
+      "generatedAt": "2026-08-23",
+      "fixture": true,
+      "fixtureNote": "Worked example shipped with the AI Architect plugin. Paths, commands and observed outputs are this example's definition, not a recording from a live machine. Re-derive everything against your own machine before treating any line as evidence.",
+      "source": "https://github.com/frankxai/ai-architect/tree/main/examples/personal-ai-coe/docs/architecture",
+      "outcome": "One person's routine reading, sorting and recall runs as three scheduled loops on their own machine, and every output is a draft that person reads before it becomes a decision.",
+      "killCriterion": "If the morning brief is opened on fewer than 20 of the next 30 days, measured on 2026-09-22 from the run log at ~/.coe/runs/brief.jsonl with node scripts/brief-open-rate.mjs --last 30, the scheduled loops are deleted and only ad-hoc sessions stay. An unread brief is not a tuning problem; it is a system nobody wanted.",
+      "decisions": [
+        {
+          "id": "model",
+          "verdict": "MADE",
+          "evidence": "packages/model/src/route.ts:L14 — one module, routing by task; rg -l \"from ['\\\"](openai|@anthropic-ai/sdk|@google/genai)\" -tsrc → 1 file. ADR-0002."
+        },
+        {
+          "id": "loop",
+          "verdict": "MADE",
+          "evidence": "packages/loops/src/run.ts:L58 — fixed workflow per scheduled job, token budget as the exit condition in code."
+        },
+        {
+          "id": "trust",
+          "verdict": "MADE",
+          "evidence": "packages/prompt/src/context.ts:L33 — fetched text wrapped as <untrusted_web> in the user message; the system message is assembled at L12 from a typed object with no free-text field. ADR-0003 covers the memory write path."
+        },
+        {
+          "id": "run",
+          "verdict": "MADE",
+          "evidence": "scripts/schedule/register-tasks.ps1:L27 — local scheduled tasks; longest run 400 s, no platform ceiling, bounded by the loop's own token budget. ADR-0001."
+        }
+      ],
+      "gates": [
+        {
+          "id": "frame",
+          "status": "PASS",
+          "note": "00-frame.md § outcome — one sentence"
+        },
+        {
+          "id": "discovery",
+          "status": "PASS",
+          "note": "rg -c '\\[assumed\\]' docs/architecture/01-discovery.md → 0"
+        },
+        {
+          "id": "flow",
+          "status": "PASS",
+          "note": "rg -c '^### failure branch' docs/architecture/02-user-flows.md → 3"
+        },
+        {
+          "id": "decisions",
+          "status": "PASS",
+          "note": "All four decisions MADE with file:line evidence; ADR-0001, ADR-0002, ADR-0003 accepted"
+        },
+        {
+          "id": "economics",
+          "status": "PASS",
+          "note": "prices.json — 7 rows, every row with source_url and retrieved_at 2026-08-22"
+        },
+        {
+          "id": "trust",
+          "status": "PASS",
+          "note": "05-trust-boundary.md § trace — label line is packages/prompt/src/context.ts:L33, not ABSENT; the system message is assembled from a typed object with no free-text field"
+        },
+        {
+          "id": "evals",
+          "status": "PASS",
+          "note": "06-evals/cases.jsonl → 13 cases: 7 golden, 3 refusal, 3 injection"
+        },
+        {
+          "id": "operate",
+          "status": "FAIL",
+          "note": "FAIL cause: pass criteria 2 and 3 — every command must name a binary that resolves on the target machine and must have been dry-run with the observed exit status recorded. Step 5r fails both."
+        },
+        {
+          "id": "verify",
+          "status": "PASS",
+          "note": "receipts/2026-08-23-verify.md — written in a fresh context, 8 evidence pointers re-derived, 8 CONFIRMED"
+        }
+      ],
+      "receipt": {
+        "file": "2026-08-23-verify.md",
+        "pointers": 8,
+        "confirmed": 8,
+        "failed": 0
+      },
+      "finding": {
+        "title": "F1 — the restore path has never run, and gate.operate is red because of it.",
+        "fix": [
+          "Install the snapshot backup tool the backup script already writes for, restore to a scratch target, and record the exit status in the runbook table. Fixture estimate: 40 minutes.",
+          "Or remove the dependency: schedule node scripts/memory-export.mjs nightly, dry-run scripts/memory-import.mjs, and record the exit status. Fixture estimate: 90 minutes, and the system ends up with one fewer external tool."
+        ]
+      },
+      "contract": {
+        "checks": 79,
+        "pass": 79,
+        "fail": 0
+      }
+    }
+  ]
+}
