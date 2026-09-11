@@ -13,6 +13,7 @@ const body = `# AI Architect Academy
 ## Read without signing up
 
 - [Worked ADR and template](${SITE}/adr): one AI system decision record, worked end to end, plus the blank template.
+- [A worked team run](${SITE}/worked-run): one complete run of the agent team, with the gates that failed, the finding, and the verifier's receipt. A labelled fixture.
 - [Everything that exists](${SITE}/curriculum): every pattern, lab and module, each linked to its source file.
 - [Source repository](${curriculum.repo}): the material the cohort is built from. Licence: FSL-1.1-ALv2; curriculum prose is reserved.
 

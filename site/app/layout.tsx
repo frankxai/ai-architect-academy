@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/" className="display text-lg whitespace-nowrap">
             AI Architect Academy
           </Link>
-          <nav aria-label="Primary" className="flex gap-5 text-sm whitespace-nowrap sm:gap-6">
+          <nav aria-label="Primary" className="flex flex-wrap gap-x-5 gap-y-1 text-sm whitespace-nowrap sm:gap-x-6">
             <Link href="/curriculum" className="hover:text-cobalt">
               What exists
             </Link>
@@ -57,6 +57,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <Link href="/#team" className="hover:text-cobalt">
               Agent team
+            </Link>
+            <Link href="/worked-run" className="hover:text-cobalt">
+              Worked run
             </Link>
             <Link href="/#waitlist" className="hover:text-cobalt">
               Waitlist

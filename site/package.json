@@ -9,8 +9,9 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "test": "node --test lib/academy-graph/academy-graph.test.ts",
-    "sync:curriculum": "node scripts/sync-curriculum.mjs"
+    "test": "node --test lib/academy-graph/academy-graph.test.ts scripts/worked-run.test.mjs",
+    "sync:curriculum": "node scripts/sync-curriculum.mjs",
+    "sync:worked-run": "node scripts/sync-worked-run.mjs"
   },
   "dependencies": {
     "next": "16.3.4",

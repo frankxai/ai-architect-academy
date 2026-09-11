@@ -248,9 +248,12 @@ export default function Home() {
               record are on this site, free, with no form in front of them. If they are not obviously worth more than
               the docs, do not join the list.
             </p>
-            <p className="mt-6">
+            <p className="mt-6 flex flex-wrap gap-3">
               <Link href="/adr" className="btn btn-quiet">
                 Read the worked ADR
+              </Link>
+              <Link href="/worked-run" className="btn btn-quiet">
+                See a full team run, red gates included
               </Link>
             </p>
           </div>

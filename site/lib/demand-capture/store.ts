@@ -5,8 +5,10 @@ import type { DemandSignal } from './types'
  * any of the estate properties with zero new dependencies.
  */
 
-const KV_URL = process.env.KV_REST_API_URL
-const KV_TOKEN = process.env.KV_REST_API_TOKEN
+// The estate's Upstash store is attached through the legacy Upstash integration, which injects
+// UPSTASH_REDIS_REST_*; the Vercel KV marketplace product injects KV_REST_API_*. Same REST protocol.
+const KV_URL = process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL
+const KV_TOKEN = process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN
 const RESEND_KEY = process.env.RESEND_API_KEY
 const RESEND_AUDIENCE = process.env.RESEND_AUDIENCE_ID
 

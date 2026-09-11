@@ -1,5 +1,24 @@
 # Domain recovery — aiarchitectacademy.com
 
+## Status 2026-09-11 — DNS done, two settings left
+
+Re-checked 2026-09-11. DNS is on Vercel now (apex `216.150.16.129` / `216.150.1.129`), the domain
+answers HTTPS from Vercel, and it serves `redirect-bridge`'s 308 to starlightintelligence.academy —
+exactly the failure predicted below, because Root Directory is still `redirect-bridge`
+(`vercel project inspect aiarchitectacademy`). Frank ruled the Academy its own brand (issue #27).
+
+Left, both Frank's (an agent's attempt to set them was refused by its permission layer):
+
+1. Vercel → `aiarchitectacademy` → Root Directory `site`, preset Next.js.
+2. Vercel → Integrations → Upstash (`icfg_UXNOZu7SbIIkOffbQAJ3C5qd`) → add project
+   `aiarchitectacademy`. It injects `UPSTASH_REDIS_REST_URL` / `_TOKEN`, which the site's waitlist
+   store reads since PR #30. Then merge PR #30.
+
+Steps 1–3 of the IONOS section below are complete; everything after "How to know it worked" still
+applies. The rest of this file is the 2026-09-02 diagnosis, kept as history.
+
+---
+
 Diagnosis 2026-09-02, read-only (`nslookup`, `curl -I`). No DNS record, alias, env var, or Vercel
 setting was changed. Everything below is an observation or an instruction for Frank.
 
