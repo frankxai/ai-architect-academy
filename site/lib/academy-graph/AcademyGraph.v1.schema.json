@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiarchitectacademy.com/schema/AcademyGraph.v1.json",
+  "title": "AcademyGraph.v1",
+  "description": "Typed substrate for the AI Architect Academy. Every node and edge carries owner, provenance, version, visibility, and an evaluation rule. Competency is granted only against evidenced artifacts; see site/lib/academy-graph/advance.ts.",
+  "type": "object",
+  "required": ["schema", "version", "owner", "measuredAt", "nodes", "edges"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "AcademyGraph.v1" },
+    "version": { "$ref": "#/$defs/semver" },
+    "owner": { "type": "string", "minLength": 1 },
+    "measuredAt": { "$ref": "#/$defs/isoDate" },
+    "nodes": { "type": "array", "items": { "$ref": "#/$defs/node" }, "minItems": 1 },
+    "edges": { "type": "array", "items": { "$ref": "#/$defs/edge" } }
+  },
+  "$defs": {
+    "semver": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "isoDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}" },
+    "visibility": { "enum": ["public", "cohort", "private"] },
+    "provenance": {
+      "type": "object",
+      "required": ["source", "method", "measuredAt"],
+      "additionalProperties": false,
+      "properties": {
+        "source": { "type": "string", "minLength": 1 },
+        "method": {
+          "enum": ["authored", "repo-scan", "learner-submitted", "reviewer-attested"]
+        },
+        "measuredAt": { "$ref": "#/$defs/isoDate" }
+      }
+    },
+    "evaluationRule": {
+      "description": "How the node is judged. 'reference-only' is legal and must carry a rationale; omitting the field is not legal.",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["kind", "evalId"],
+          "additionalProperties": false,
+          "properties": { "kind": { "const": "eval" }, "evalId": { "type": "string" } }
+        },
+        {
+          "type": "object",
+          "required": ["kind", "reviewId"],
+          "additionalProperties": false,
+          "properties": { "kind": { "const": "review" }, "reviewId": { "type": "string" } }
+        },
+        {
+          "type": "object",
+          "required": ["kind", "rationale"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": { "const": "reference-only" },
+            "rationale": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "evidenceRule": {
+      "type": "object",
+      "required": ["accepts", "minimumCount", "maxAgeDays"],
+      "additionalProperties": false,
+      "properties": {
+        "accepts": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["repo-url", "deploy-url", "eval-run", "reviewer-attestation"] }
+        },
+        "minimumCount": { "type": "integer", "minimum": 1 },
+        "maxAgeDays": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "nodeBase": {
+      "type": "object",
+      "required": ["id", "kind", "title", "owner", "version", "visibility", "provenance", "evaluationRule"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z]+:[a-z0-9-]+$" },
+        "kind": {
+          "enum": [
+            "Competency",
+            "Pattern",
+            "FailureMode",
+            "Lab",
+            "Project",
+            "Artifact",
+            "Evidence",
+            "Eval",
+            "Review",
+            "Prerequisite",
+            "Role",
+            "Portfolio"
+          ]
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 },
+        "version": { "$ref": "#/$defs/semver" },
+        "visibility": { "$ref": "#/$defs/visibility" },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "evaluationRule": { "$ref": "#/$defs/evaluationRule" }
+      }
+    },
+    "node": {
+      "allOf": [{ "$ref": "#/$defs/nodeBase" }],
+      "oneOf": [
+        {
+          "properties": {
+            "kind": { "const": "Competency" },
+            "level": { "enum": ["foundation", "practitioner", "architect"] },
+            "claim": { "type": "string", "minLength": 1 },
+            "prerequisites": { "type": "array", "items": { "type": "string" } },
+            "requiredArtifacts": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "requiredEvals": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "requiredReviews": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["level", "claim", "prerequisites", "requiredArtifacts", "requiredEvals", "requiredReviews"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Pattern" },
+            "problem": { "type": "string" },
+            "appliesWhen": { "type": "array", "items": { "type": "string" } },
+            "repoPath": { "type": "string" },
+            "knownFailureModes": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["problem", "appliesWhen", "repoPath", "knownFailureModes"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "FailureMode" },
+            "pattern": { "type": "string" },
+            "symptom": { "type": "string" },
+            "detection": { "type": "string" },
+            "mitigation": { "type": "string" },
+            "injectable": { "type": "boolean" }
+          },
+          "required": ["pattern", "symptom", "detection", "mitigation", "injectable"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Lab" },
+            "repoPath": { "type": "string" },
+            "estimatedHours": { "type": "number", "exclusiveMinimum": 0 },
+            "produces": { "type": "array", "items": { "type": "string" } },
+            "teaches": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["repoPath", "estimatedHours", "produces", "teaches"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Project" },
+            "brief": { "type": "string" },
+            "grants": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "stages": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["id", "ordinal", "title", "decision", "artifact", "evals", "reviews", "evidenceRule"],
+                "additionalProperties": false,
+                "properties": {
+                  "id": { "type": "string" },
+                  "ordinal": { "type": "integer", "minimum": 1 },
+                  "title": { "type": "string" },
+                  "decision": { "type": "string" },
+                  "artifact": { "type": "string" },
+                  "evals": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+                  "reviews": { "type": "array", "items": { "type": "string" } },
+                  "evidenceRule": { "$ref": "#/$defs/evidenceRule" }
+                }
+              }
+            }
+          },
+          "required": ["brief", "stages", "grants"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Artifact" },
+            "artifactKind": {
+              "enum": [
+                "system-brief",
+                "architecture-decision-record",
+                "tool-authority-matrix",
+                "eval-harness",
+                "threat-model",
+                "cost-model",
+                "deployment-record",
+                "incident-report",
+                "portfolio-page"
+              ]
+            },
+            "format": { "enum": ["markdown", "json", "code", "url"] },
+            "requiredSections": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "publicSafe": { "type": "boolean" },
+            "redactionRule": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["artifactKind", "format", "requiredSections", "publicSafe", "redactionRule"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Evidence" },
+            "evidenceKind": { "enum": ["repo-url", "deploy-url", "eval-run", "reviewer-attestation"] },
+            "artifact": { "type": "string" },
+            "locator": { "type": "string", "minLength": 1 },
+            "verifiedAt": { "$ref": "#/$defs/isoDate" },
+            "verifiedBy": { "type": "string", "minLength": 1 }
+          },
+          "required": ["evidenceKind", "artifact", "locator", "verifiedAt", "verifiedBy"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Eval" },
+            "target": { "type": "string" },
+            "passThreshold": { "type": "number", "minimum": 0, "maximum": 1 },
+            "assertions": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["id", "description", "check"],
+                "additionalProperties": false,
+                "properties": {
+                  "id": { "type": "string" },
+                  "description": { "type": "string" },
+                  "check": { "type": "string", "minLength": 1 }
+                }
+              }
+            }
+          },
+          "required": ["target", "assertions", "passThreshold"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Review" },
+            "target": { "type": "string" },
+            "rubric": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "reviewerRole": { "type": "string" },
+            "requiresIndependentReviewer": { "const": true }
+          },
+          "required": ["target", "rubric", "reviewerRole", "requiresIndependentReviewer"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Prerequisite" },
+            "of": { "type": "string" },
+            "requires": { "type": "array", "items": { "type": "string" } },
+            "rule": { "enum": ["all", "any"] }
+          },
+          "required": ["of", "requires", "rule"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Role" },
+            "competencies": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "notAClaimOf": { "type": "string", "minLength": 1 }
+          },
+          "required": ["competencies", "notAClaimOf"]
+        },
+        {
+          "properties": {
+            "kind": { "const": "Portfolio" },
+            "learnerId": { "type": "string" },
+            "entries": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["competency", "grantedAt", "artifacts", "publicEvidence"],
+                "additionalProperties": false,
+                "properties": {
+                  "competency": { "type": "string" },
+                  "grantedAt": { "$ref": "#/$defs/isoDate" },
+                  "artifacts": { "type": "array", "items": { "type": "string" } },
+                  "publicEvidence": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          },
+          "required": ["learnerId", "entries"]
+        }
+      ]
+    },
+    "edge": {
+      "type": "object",
+      "required": ["id", "kind", "from", "to", "owner", "version", "visibility", "provenance", "evaluationRule"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "kind": {
+          "enum": [
+            "requires",
+            "produces",
+            "evidences",
+            "evaluates",
+            "grants",
+            "teaches",
+            "breaks-as",
+            "targets",
+            "projects"
+          ]
+        },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "owner": { "type": "string", "minLength": 1 },
+        "version": { "$ref": "#/$defs/semver" },
+        "visibility": { "$ref": "#/$defs/visibility" },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "evaluationRule": { "$ref": "#/$defs/evaluationRule" }
+      }
+    }
+  }
+}
