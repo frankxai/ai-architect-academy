@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/:path*',
-        has: [{ type: 'host', value: '(www\.)?aiarchitect\.community' }],
+        has: [{ type: 'host', value: '(www\\.)?aiarchitect\\.community' }],
         destination: 'https://aiarchitectacademy.com/:path*',
         permanent: true,
       },
