@@ -4,7 +4,7 @@
 
 **Configuration ID:** CONFIG-002  
 **Pattern Alignment:** Visual Intelligence (#4), Decision Support (#3), Predictive Operations (#7)  
-**Customer Cases:** Solidarity Insurance Damage Assessment, Greenhouse Crop Monitoring, Healthcare Imaging  
+**Customer Cases:** Insurance Damage Assessment, Greenhouse Crop Monitoring, Healthcare Imaging  
 **Complexity Level:** Advanced  
 **Oracle Services:** OCI Vision, OCI Data Science, OCI AI Services
 

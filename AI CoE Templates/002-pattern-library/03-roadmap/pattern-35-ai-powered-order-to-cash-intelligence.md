@@ -10,14 +10,14 @@
   last_updated: "2025-01-23"
   version: "1.0"
   document_type: "Candidate Pattern"
-  source_customer: "Enovis - Medical Device Manufacturing"
+  source_customer: "Medical device manufacturer"
   market_demand: "High"
   business_impact: "Critical"
 </metadata>
 
 ## Executive Summary
 
-The AI-Powered Order-to-Cash Intelligence pattern addresses the critical gap in enterprise order processing automation by providing end-to-end intelligent order management across multiple channels, formats, and regional business models. Based on Enovis medical device manufacturing requirements, this pattern transforms traditional manual order processing into a fully automated, AI-driven system capable of handling diverse input formats while maintaining accuracy, compliance, and customer service excellence.
+The AI-Powered Order-to-Cash Intelligence pattern addresses the critical gap in enterprise order processing automation by providing end-to-end intelligent order management across multiple channels, formats, and regional business models. Based on MedTech medical device manufacturing requirements, this pattern transforms traditional manual order processing into a fully automated, AI-driven system capable of handling diverse input formats while maintaining accuracy, compliance, and customer service excellence.
 
 ### Key Value Proposition
 - **60% reduction** in order processing time through automation
@@ -328,8 +328,8 @@ The global order management software market is projected to reach $7.8 billion b
 
 ## Conclusion
 
-The AI-Powered Order-to-Cash Intelligence pattern represents a critical addition to the Oracle AICOE pattern library, addressing a universal business challenge with significant revenue impact potential. The pattern's foundation in real customer requirements (Enovis) combined with broad market applicability makes it a high-priority development candidate.
+The AI-Powered Order-to-Cash Intelligence pattern represents a critical addition to the AI CoE pattern library, addressing a universal business challenge with significant revenue impact potential. The pattern's foundation in real customer requirements (MedTech) combined with broad market applicability makes it a high-priority development candidate.
 
 The pattern's comprehensive approach to multi-channel order processing, regional compliance, and intelligent automation provides clear differentiation in the market while leveraging Oracle's core strengths in enterprise applications and cloud infrastructure.
 
-**Recommendation**: Prioritize for immediate development with Enovis as pilot customer and primary design partner.
+**Recommendation**: Prioritize for immediate development with MedTech as pilot customer and primary design partner.

@@ -4,7 +4,7 @@
 
 **Configuration ID:** CONFIG-008  
 **Pattern Alignment:** Multi-Modal AI Analytics (#15), Performance Optimization (#20), Decision Support (#3)  
-**Customer Cases:** Asiacell Network Monitoring, Greenhouse IoT Data Streams, Financial Trading Analytics  
+**Customer Cases:** Telecom Network Monitoring, Greenhouse IoT Data Streams, Financial Trading Analytics  
 **Complexity Level:** Advanced  
 **Oracle Services:** OCI Streaming, OCI Events, OCI Functions, Oracle Stream Analytics, OCI Monitoring
 
