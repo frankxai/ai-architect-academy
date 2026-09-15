@@ -10,14 +10,14 @@
   last_updated: "2025-01-23"
   version: "1.0"
   document_type: "Candidate Pattern"
-  source_customer: "Solidarity Insurance - Comprehensive AI Transformation"
+  source_customer: "Insurance carrier"
   market_demand: "Medium-High"
   business_impact: "High"
 </metadata>
 
 ## Executive Summary
 
-The Insurance Process Intelligence Platform pattern addresses the comprehensive digital transformation needs of insurance companies through integrated AI-powered operations spanning claims management, customer analytics, fraud detection, and regulatory compliance. Based on Solidarity Insurance's comprehensive AI transformation requirements, this pattern delivers automated claims processing, predictive analytics, personalized customer experiences, and intelligent risk assessment across all insurance products and services.
+The Insurance Process Intelligence Platform pattern addresses the comprehensive digital transformation needs of insurance companies through integrated AI-powered operations spanning claims management, customer analytics, fraud detection, and regulatory compliance. Based on Insurance's comprehensive AI transformation requirements, this pattern delivers automated claims processing, predictive analytics, personalized customer experiences, and intelligent risk assessment across all insurance products and services.
 
 ### Key Value Proposition
 - **60% reduction** in claims processing time through automated damage assessment and cost estimation
@@ -358,8 +358,8 @@ The global insurance software market is projected to reach $35.7 billion by 2027
 
 ## Conclusion
 
-The Insurance Process Intelligence Platform pattern represents a comprehensive solution for insurance industry digital transformation, addressing the full spectrum of insurance operations through integrated AI capabilities. The pattern's foundation in Solidarity Insurance's transformation requirements combined with broad applicability across the insurance sector makes it a strategic medium-high priority development candidate.
+The Insurance Process Intelligence Platform pattern represents a comprehensive solution for insurance industry digital transformation, addressing the full spectrum of insurance operations through integrated AI capabilities. The pattern's foundation in Insurance's transformation requirements combined with broad applicability across the insurance sector makes it a strategic medium-high priority development candidate.
 
 The pattern's comprehensive integration of claims automation, customer analytics, fraud detection, and predictive underwriting provides clear differentiation in the competitive insurance technology market while leveraging Oracle's extensive insurance application portfolio and AI capabilities.
 
-**Recommendation**: Develop as medium-high priority vertical pattern with Solidarity Insurance as pilot customer, followed by expansion across property & casualty and multi-line insurance markets with similar comprehensive transformation requirements.
+**Recommendation**: Develop as medium-high priority vertical pattern with Insurance as pilot customer, followed by expansion across property & casualty and multi-line insurance markets with similar comprehensive transformation requirements.

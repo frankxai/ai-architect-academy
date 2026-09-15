@@ -4,7 +4,7 @@
 
 **Configuration ID:** CONFIG-003  
 **Pattern Alignment:** Decision Support (#3), Predictive Operations (#7), Security & Compliance (#10)  
-**Customer Cases:** Solidarity Insurance Claims Fraud, Banking Transaction Fraud, Healthcare Claims Anomalies  
+**Customer Cases:** Insurance Claims Fraud, Banking Transaction Fraud, Healthcare Claims Anomalies  
 **Complexity Level:** Advanced  
 **Oracle Services:** OCI Data Science, Oracle Database 23ai, OCI Anomaly Detection, OCI Streaming
 

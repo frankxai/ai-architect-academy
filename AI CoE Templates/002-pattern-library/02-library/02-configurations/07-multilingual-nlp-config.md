@@ -4,7 +4,7 @@
 
 **Configuration ID:** CONFIG-007  
 **Pattern Alignment:** Language Understanding & Communication (#2), Conversational Commerce (#11), Content Generation (#1)  
-**Customer Cases:** Asiacell Arabic/English Support, European Multi-Language Services, Global Customer Support  
+**Customer Cases:** Telecom Arabic/English Support, European Multi-Language Services, Global Customer Support  
 **Complexity Level:** Advanced  
 **Oracle Services:** OCI Language, Oracle Digital Assistant, Oracle Analytics Cloud, OCI Data Science
 
@@ -132,7 +132,7 @@ cross_language_config:
 
 ## Industry-Specific Applications
 
-### Telecommunications (Asiacell-style)
+### Telecommunications (Telecom-style)
 ```yaml
 telecom_config:
   customer_support:

@@ -10,14 +10,14 @@
   last_updated: "2025-01-23"
   version: "1.0"
   document_type: "Candidate Pattern"
-  source_customer: "Updraft - Legal Industry Compliance"
+  source_customer: "Legal-sector firm"
   market_demand: "Critical"
   business_impact: "Critical"
 </metadata>
 
 ## Executive Summary
 
-The AI-Enhanced Compliance Navigator pattern addresses the critical challenge of regulatory compliance management through Large Language Models (LLMs) and advanced AI technologies. Based on Updraft's legal industry requirements, this pattern transforms manual compliance processes into an intelligent, automated system capable of interpreting complex regulatory texts, mapping requirements to operational controls, detecting compliance gaps, and ensuring continuous regulatory adherence across evolving legal landscapes.
+The AI-Enhanced Compliance Navigator pattern addresses the critical challenge of regulatory compliance management through Large Language Models (LLMs) and advanced AI technologies. Based on Legal's legal industry requirements, this pattern transforms manual compliance processes into an intelligent, automated system capable of interpreting complex regulatory texts, mapping requirements to operational controls, detecting compliance gaps, and ensuring continuous regulatory adherence across evolving legal landscapes.
 
 ### Key Value Proposition
 - **LLM-powered regulatory interpretation** with natural language processing of complex legal documents
@@ -368,8 +368,8 @@ The global governance, risk, and compliance (GRC) market is projected to reach $
 
 ## Conclusion
 
-The AI-Enhanced Compliance Navigator pattern addresses a critical and rapidly growing market need for intelligent regulatory compliance management. The pattern's foundation in real customer requirements (Updraft) combined with broad market applicability across regulated industries makes it a strategic high-priority development candidate.
+The AI-Enhanced Compliance Navigator pattern addresses a critical and rapidly growing market need for intelligent regulatory compliance management. The pattern's foundation in real customer requirements (Legal) combined with broad market applicability across regulated industries makes it a strategic high-priority development candidate.
 
 The pattern's unique combination of LLM-powered regulatory intelligence, automated compliance workflows, blockchain-verified audit trails, and predictive risk management provides clear differentiation in the compliance technology market while leveraging Oracle's strengths in enterprise AI and cloud infrastructure.
 
-**Recommendation**: Prioritize for immediate development with Updraft as pilot customer, followed by rapid expansion into financial services, healthcare, and other heavily regulated industries.
+**Recommendation**: Prioritize for immediate development with Legal as pilot customer, followed by rapid expansion into financial services, healthcare, and other heavily regulated industries.

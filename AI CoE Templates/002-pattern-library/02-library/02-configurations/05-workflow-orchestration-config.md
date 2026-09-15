@@ -4,7 +4,7 @@
 
 **Configuration ID:** CONFIG-005  
 **Pattern Alignment:** Intelligent Orchestration & Workflow Automation (#6), Decision Support (#3), Process Optimization (#14)  
-**Customer Cases:** Enovis Order-to-Cash Automation, Insurance Claims Processing, Healthcare Patient Flow  
+**Customer Cases:** MedTech Order-to-Cash Automation, Insurance Claims Processing, Healthcare Patient Flow  
 **Complexity Level:** Advanced  
 **Oracle Services:** Oracle Integration Cloud, OCI Events, OCI Functions, Oracle Process Cloud Service
 

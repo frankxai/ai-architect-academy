@@ -4,7 +4,7 @@
 
 **Configuration ID:** CONFIG-004  
 **Pattern Alignment:** Real-time Personalization Engine (#9), Customer Experience (#2), Conversational Commerce (#11)  
-**Customer Cases:** Asiacell Customer Personalization, E-commerce Recommendations, Banking Product Suggestions  
+**Customer Cases:** Telecom Customer Personalization, E-commerce Recommendations, Banking Product Suggestions  
 **Complexity Level:** Advanced  
 **Oracle Services:** OCI Data Science, Oracle Database 23ai, OCI Streaming, Oracle Digital Assistant
 
@@ -119,7 +119,7 @@ cultural_config:
 
 ## Industry-Specific Variations
 
-### Telecommunications (Asiacell-style)
+### Telecommunications (Telecom-style)
 ```yaml
 telecom_config:
   customer_segments:

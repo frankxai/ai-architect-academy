@@ -4,7 +4,7 @@
 
 **Configuration ID:** CONFIG-001  
 **Pattern Alignment:** Document Processing (#8), Language Understanding (#2)  
-**Customer Cases:** Enovis Order-to-Cash, Solidarity Insurance Claims, Medical Records Processing  
+**Customer Cases:** MedTech Order-to-Cash, Insurance Claims, Medical Records Processing  
 **Complexity Level:** Intermediate  
 **Oracle Services:** OCI Document Understanding, OCI Vision, OCI Language
 
