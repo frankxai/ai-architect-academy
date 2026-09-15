@@ -1,0 +1,3 @@
+# cases.lock pins a digest of the fixture bytes. Line-ending conversion on checkout would change those bytes
+# and make an untouched lab exit 2 before the learner has done anything, so fixtures are never converted.
+fixtures/* -text
