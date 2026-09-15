@@ -1,0 +1,146 @@
+{
+  "measuredAt": "2026-09-15",
+  "path": "curriculum/production-agent-systems",
+  "modules": [
+    {
+      "order": 1,
+      "slug": "01-system-brief",
+      "title": "System brief",
+      "files": {
+        "README": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/01-system-brief/README.md",
+        "exercise": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/01-system-brief/exercise.md",
+        "rubric": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/01-system-brief/rubric.md"
+      },
+      "labs": []
+    },
+    {
+      "order": 2,
+      "slug": "02-architecture-decision",
+      "title": "Architecture decision",
+      "files": {
+        "README": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/02-architecture-decision/README.md",
+        "exercise": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/02-architecture-decision/exercise.md",
+        "rubric": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/02-architecture-decision/rubric.md"
+      },
+      "labs": [
+        {
+          "slug": "02-multi-agent-system",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/02-multi-agent-system"
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "slug": "03-tool-authority-model",
+      "title": "Tool and authority model",
+      "files": {
+        "README": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/03-tool-authority-model/README.md",
+        "exercise": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/03-tool-authority-model/exercise.md",
+        "rubric": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/03-tool-authority-model/rubric.md"
+      },
+      "labs": [
+        {
+          "slug": "02-multi-agent-system",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/02-multi-agent-system"
+        },
+        {
+          "slug": "03-mcp-server",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/03-mcp-server"
+        },
+        {
+          "slug": "04-eval-harness",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/04-eval-harness"
+        },
+        {
+          "slug": "05-tool-authority-gate",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/05-tool-authority-gate"
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "slug": "04-eval-harness",
+      "title": "Eval harness",
+      "files": {
+        "README": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/04-eval-harness/README.md",
+        "exercise": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/04-eval-harness/exercise.md",
+        "rubric": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/04-eval-harness/rubric.md"
+      },
+      "labs": [
+        {
+          "slug": "01-rag-pipeline",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/01-rag-pipeline"
+        },
+        {
+          "slug": "04-eval-harness",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/04-eval-harness"
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "slug": "05-threat-model",
+      "title": "Threat model",
+      "files": {
+        "README": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/05-threat-model/README.md",
+        "exercise": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/05-threat-model/exercise.md",
+        "rubric": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/05-threat-model/rubric.md"
+      },
+      "labs": [
+        {
+          "slug": "05-tool-authority-gate",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/05-tool-authority-gate"
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "slug": "06-cost-model",
+      "title": "Cost model",
+      "files": {
+        "README": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/06-cost-model/README.md",
+        "exercise": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/06-cost-model/exercise.md",
+        "rubric": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/06-cost-model/rubric.md"
+      },
+      "labs": []
+    },
+    {
+      "order": 7,
+      "slug": "07-deployment",
+      "title": "Deployment",
+      "files": {
+        "README": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/07-deployment/README.md",
+        "exercise": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/07-deployment/exercise.md",
+        "rubric": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/07-deployment/rubric.md"
+      },
+      "labs": []
+    },
+    {
+      "order": 8,
+      "slug": "08-incident-simulation",
+      "title": "Incident simulation",
+      "files": {
+        "README": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/08-incident-simulation/README.md",
+        "exercise": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/08-incident-simulation/exercise.md",
+        "rubric": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/08-incident-simulation/rubric.md"
+      },
+      "labs": [
+        {
+          "slug": "05-tool-authority-gate",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/05-tool-authority-gate"
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "slug": "09-portfolio-proof",
+      "title": "Public-safe portfolio proof",
+      "files": {
+        "README": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/09-portfolio-proof/README.md",
+        "exercise": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/09-portfolio-proof/exercise.md",
+        "rubric": "https://github.com/frankxai/ai-architect-academy/blob/main/curriculum/production-agent-systems/09-portfolio-proof/rubric.md"
+      },
+      "labs": []
+    }
+  ]
+}

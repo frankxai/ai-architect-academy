@@ -1,0 +1,16 @@
+{
+  "id": "04-eval-harness",
+  "title": "Make the Eval Harness Able to Fail",
+  "difficulty": "intermediate",
+  "estimatedMinutes": 60,
+  "objectives": [
+    "Make a seeded regression produce a non-zero exit code",
+    "Treat scorer errors as failures, never as passes",
+    "Stop a run from rewriting its own fixtures",
+    "Refuse to run when fixtures changed without a signed relock"
+  ],
+  "prerequisites": ["Lab 01", "Basic Python", "Comfort with argparse and exit codes"],
+  "skills": ["agentic-orchestration"],
+  "hints": 3,
+  "checkpoints": ["reproduce", "exit-code", "scorer-errors", "fixture-lock"]
+}

@@ -107,12 +107,15 @@ State file: `.academy/progress.json`
       "timeSpentMinutes": 0
     },
     "02-multi-agent-system": { "...same schema..." },
-    "03-mcp-server": { "...same schema..." }
+    "03-mcp-server": { "...same schema..." },
+    "04-eval-harness": { "...same schema..." },
+    "05-tool-authority-gate": { "...same schema..." }
   },
-  "skills": [],
-  "certificateLevel": null
+  "skills": []
 }
 ```
+
+The `labs` keys are the directories under `labs/` that contain a `.lab/config.json`; add a key when a lab is added. There is no certificate field, because there is no certification.
 
 Update this file after: starting a lab, completing a checkpoint, using a hint, receiving a review, viewing a solution.
 
