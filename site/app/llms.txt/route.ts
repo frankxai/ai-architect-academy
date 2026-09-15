@@ -1,8 +1,13 @@
 import curriculum from '@/data/curriculum.json'
+import { projectProductionAgentSystems as project } from '@/lib/academy-graph'
 
 export const dynamic = 'force-static'
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aiarchitectacademy.com'
+
+const stages = project.stages
+  .map((s) => `${s.ordinal}. [${s.title}](${SITE}/path/${s.id.replace(/^stage:/, '')}): ${s.decision}`)
+  .join('\n')
 
 const sections = curriculum.sections.map((s) => `- ${s.label}: ${s.count} (${curriculum.repo}/tree/main/${s.dir})`).join('\n')
 
@@ -16,6 +21,12 @@ const body = `# AI Architect Academy
 - [A worked team run](${SITE}/worked-run): one complete run of the agent team, with the gates that failed, the finding, and the verifier's receipt. A labelled fixture.
 - [Everything that exists](${SITE}/curriculum): every pattern, lab and module, each linked to its source file.
 - [Source repository](${curriculum.repo}): the material the cohort is built from. Licence: FSL-1.1-ALv2; curriculum prose is reserved.
+
+## The path: ${project.title}
+
+${project.brief} Each stage has a lesson, an exercise and a rubric in the repository, and an eval that can fail.
+
+${stages}
 
 ## Measured inventory (${curriculum.measuredAt})
 

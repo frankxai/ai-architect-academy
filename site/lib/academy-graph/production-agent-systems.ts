@@ -275,6 +275,45 @@ export const labMcpServer: Lab = {
   teaches: ['pattern:bounded-tool-authority'],
 }
 
+// Labs 04 and 05 were built for stages that had no runnable exercise. Each ships a starter whose tests fail for
+// the failure mode the stage teaches, and a reference solution under .lab/solution/ that turns every test green.
+
+export const labEvalHarness: Lab = {
+  id: 'lab:04-eval-harness',
+  kind: 'Lab',
+  title: 'Make the eval harness able to fail',
+  owner: OWNER,
+  version: V,
+  visibility: 'public',
+  provenance: { source: 'labs/04-eval-harness', method: 'repo-scan', measuredAt: '2026-09-15' },
+  evaluationRule: {
+    kind: 'reference-only',
+    rationale: 'Labs build fluency. Only the flagship project grants competency.',
+  },
+  repoPath: 'labs/04-eval-harness',
+  estimatedHours: 1,
+  produces: [],
+  teaches: ['pattern:eval-before-deploy'],
+}
+
+export const labToolAuthorityGate: Lab = {
+  id: 'lab:05-tool-authority-gate',
+  kind: 'Lab',
+  title: "Bound the agent's tool authority",
+  owner: OWNER,
+  version: V,
+  visibility: 'public',
+  provenance: { source: 'labs/05-tool-authority-gate', method: 'repo-scan', measuredAt: '2026-09-15' },
+  evaluationRule: {
+    kind: 'reference-only',
+    rationale: 'Labs build fluency. Only the flagship project grants competency.',
+  },
+  repoPath: 'labs/05-tool-authority-gate',
+  estimatedHours: 1.25,
+  produces: [],
+  teaches: ['pattern:bounded-tool-authority'],
+}
+
 // --- Artifacts ---------------------------------------------------------------
 
 type ArtifactSeed = Pick<
@@ -877,6 +916,20 @@ export const edges: readonly AcademyEdge[] = [
     to: patternEvalHarness.id,
     ...edgeBase,
   },
+  {
+    id: 'edge:lab-eval-harness-teaches-eval',
+    kind: 'teaches',
+    from: labEvalHarness.id,
+    to: patternEvalHarness.id,
+    ...edgeBase,
+  },
+  {
+    id: 'edge:lab-tool-authority-gate-teaches-authority',
+    kind: 'teaches',
+    from: labToolAuthorityGate.id,
+    to: patternToolAuthority.id,
+    ...edgeBase,
+  },
   ...stages.map(
     (s): AcademyEdge => ({
       id: `edge:${s.id}-produces-${s.artifact}`,
@@ -922,6 +975,8 @@ export const productionAgentSystemsGraph: AcademyGraph = {
     labRagPipeline,
     labMultiAgent,
     labMcpServer,
+    labEvalHarness,
+    labToolAuthorityGate,
     ...artifacts,
     ...evals,
     ...reviews,

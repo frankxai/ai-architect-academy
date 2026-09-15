@@ -1,20 +1,14 @@
 import Link from 'next/link'
 import curriculum from '@/data/curriculum.json'
 import { Waitlist } from '@/components/Waitlist'
+import { competencyShipProduction as competency, projectProductionAgentSystems as project } from '@/lib/academy-graph'
 
-const decisions = [
-  ['Scope the first system to one job', 'With a failure you can measure before you build. Most AI projects die of ambition, not of models.'],
-  ['Choose retrieval, fine-tuning, or neither, with a test', 'Run it before anyone has an opinion. Then write the record that says why.'],
-  ['Draw the agent boundary before production draws it for you', 'What the model decides, what code decides, what a person decides.'],
-  ['Write the eval before the feature', 'The one you write first, the one you write when something breaks, and the one that stops a release.'],
-  ['Budget the failure modes', 'Latency, tokens, wrong answers, and who pays for each. Budgets, not hopes.'],
-  ['Run governance that survives a real organisation', 'A decision record, a review, a kill criterion. Three documents, kept.'],
-]
+const claim = competency.claim.charAt(0).toLowerCase() + competency.claim.slice(1)
 
 const founding = [
   'The launch price, whatever it is set at, held for you for as long as the course runs.',
   'Named in the course materials.',
-  'A say in the order the six decisions are taught.',
+  'A say in the order the stages are taught.',
   'Every later revision of the material, without paying again.',
 ]
 
@@ -29,7 +23,7 @@ const faq = [
   ],
   [
     'What would it actually be?',
-    'The working intention: live sessions on the six decisions, applied to a system you bring, with your decision records read and reviewed between sessions, in a group small enough that every record gets read. Length, hours and size are not fixed. The waitlist answers set them.',
+    'The working intention: live sessions on the stages of the path, applied to a system you bring, with your decision records read and reviewed between sessions, in a group small enough that every record gets read. Length, hours and size are not fixed. The waitlist answers set them.',
   ],
   [
     'What do I get today?',
@@ -89,8 +83,7 @@ export default function Home() {
           what getting it wrong costs. That is the course.
         </p>
         <p className="measure mt-4 text-lg" style={{ color: 'var(--ink-2)' }}>
-          You finish able to write the six decision records for a system you own, and defend them in a review you did
-          not call.
+          One path, {project.stages.length} stages, and one competency granted only against evidence: {claim}
         </p>
         <p className="measure mt-4 text-lg" style={{ color: 'var(--ink-2)' }}>
           It is not scheduled and it has no price. The people on the waitlist decide both.
@@ -145,25 +138,32 @@ export default function Home() {
       <section className="rule py-16" aria-labelledby="shape">
         <p className="eyebrow">The shape of the cohort</p>
         <h2 id="shape" className="mt-3 max-w-3xl text-3xl leading-tight">
-          Six decisions, in the order you have to make them.
+          The decisions, in the order production forces them on you.
         </h2>
         <p className="measure mt-5" style={{ color: 'var(--ink-2)' }}>
-          A working outline, not a syllabus. It changes with what the waitlist tells us. Nothing below is a promise of
-          a module.
+          Every stage has a free lesson, an exercise, a rubric, and an eval that can fail. The cohort is where a person
+          reads what you produced.
         </p>
         <ol className="mt-10 grid gap-px overflow-hidden rounded-lg border" style={{ borderColor: 'var(--rule)', background: 'var(--rule)' }}>
-          {decisions.map(([title, body], i) => (
-            <li key={title} className="grid gap-3 bg-paper p-6 sm:grid-cols-[3.5rem_14rem_1fr] sm:gap-6">
+          {project.stages.map((stage) => (
+            <li key={stage.id} className="grid gap-3 bg-paper p-6 sm:grid-cols-[3.5rem_14rem_1fr] sm:gap-6">
               <span className="display text-2xl" style={{ color: 'var(--ink-3)' }}>
-                {String(i + 1).padStart(2, '0')}
+                {String(stage.ordinal).padStart(2, '0')}
               </span>
               <h3 className="text-lg" style={{ fontFamily: 'var(--font-body)', fontWeight: 600 }}>
-                {title}
+                <Link href={`/path/${stage.id.replace(/^stage:/, '')}`} className="hover:text-cobalt">
+                  {stage.title}
+                </Link>
               </h3>
-              <p style={{ color: 'var(--ink-2)' }}>{body}</p>
+              <p style={{ color: 'var(--ink-2)' }}>{stage.decision}</p>
             </li>
           ))}
         </ol>
+        <p className="mt-8">
+          <Link href="/path" className="btn btn-quiet">
+            Walk the whole path
+          </Link>
+        </p>
       </section>
 
       <section id="team" className="rule py-16" aria-labelledby="team-title">

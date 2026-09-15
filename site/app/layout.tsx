@@ -49,6 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             AI Architect Academy
           </Link>
           <nav aria-label="Primary" className="flex flex-wrap gap-x-5 gap-y-1 text-sm whitespace-nowrap sm:gap-x-6">
+            <Link href="/path" className="hover:text-cobalt">
+              The path
+            </Link>
             <Link href="/curriculum" className="hover:text-cobalt">
               What exists
             </Link>
