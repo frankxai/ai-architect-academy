@@ -7,16 +7,32 @@ on:
       - 'diagrams/**/*.py'
   workflow_dispatch:
 
+concurrency:
+  group: render-diagrams-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  render-d2:
-    name: Render D2 Diagrams
+  render:
+    name: Render Diagrams
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install D2
         run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install diagrams
+          sudo apt-get update && sudo apt-get install -y graphviz
 
       - name: Create output directory
         run: mkdir -p assets/diagrams
@@ -32,32 +48,6 @@ jobs:
             fi
           done
 
-      - name: Commit rendered diagrams
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: render D2 diagrams [skip ci]"
-          file_pattern: "assets/diagrams/*.svg"
-
-  render-python:
-    name: Render Python Diagrams
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          pip install diagrams
-          sudo apt-get update && sudo apt-get install -y graphviz
-
-      - name: Create output directory
-        run: mkdir -p assets/diagrams
-
       - name: Render Python diagrams
         run: |
           cd diagrams/python
@@ -72,5 +62,5 @@ jobs:
       - name: Commit rendered diagrams
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: render Python diagrams [skip ci]"
-          file_pattern: "assets/diagrams/*.png"
+          commit_message: "chore: render diagrams [skip ci]"
+          file_pattern: "assets/diagrams/*.svg assets/diagrams/*.png"
