@@ -1,5 +1,5 @@
 {
-  "measuredAt": "2026-09-10",
+  "measuredAt": "2026-09-15",
   "repo": "https://github.com/frankxai/ai-architect-academy",
   "sections": [
     {
@@ -90,9 +90,17 @@
         {
           "title": "03-mcp-server",
           "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/03-mcp-server"
+        },
+        {
+          "title": "04-eval-harness",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/04-eval-harness"
+        },
+        {
+          "title": "05-tool-authority-gate",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/05-tool-authority-gate"
         }
       ],
-      "count": 3
+      "count": 5
     },
     {
       "id": "micro",

@@ -19,9 +19,13 @@ Display progress:
 ```
 Your Academy Progress
 ━━━━━━━━━━━━━━━━━━━━
-Lab 01: RAG Pipeline      [COMPLETED ✓] Score: 87/100
-Lab 02: Multi-Agent System [IN PROGRESS] Checkpoint: coordinator
-Lab 03: MCP Server         [NOT STARTED]
+Lab 01: RAG Pipeline          [COMPLETED ✓] Score: 87/100
+Lab 02: Multi-Agent System     [IN PROGRESS] Checkpoint: coordinator
+Lab 03: MCP Server             [NOT STARTED]
+Lab 04: Eval Harness           [NOT STARTED]
+Lab 05: Tool Authority Gate    [NOT STARTED]
 
 Next recommended: Continue Lab 02 — implement the coordinator pipeline
 ```
+
+The lab list is every directory under `labs/` that has a `.lab/config.json`; read the titles from those files rather than from this example.

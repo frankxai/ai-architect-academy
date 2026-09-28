@@ -107,12 +107,15 @@ State file: `.academy/progress.json`
       "timeSpentMinutes": 0
     },
     "02-multi-agent-system": { "...same schema..." },
-    "03-mcp-server": { "...same schema..." }
+    "03-mcp-server": { "...same schema..." },
+    "04-eval-harness": { "...same schema..." },
+    "05-tool-authority-gate": { "...same schema..." }
   },
-  "skills": [],
-  "certificateLevel": null
+  "skills": []
 }
 ```
+
+The `labs` keys are the directories under `labs/` that contain a `.lab/config.json`; add a key when a lab is added. There is no certificate field, because there is no certification.
 
 Update this file after: starting a lab, completing a checkpoint, using a hint, receiving a review, viewing a solution.
 
@@ -145,6 +148,7 @@ Skills are in `claude-ai-architect/skills/` — read the SKILL.md when activated
 |---------|---------|
 | `/academy` | Main menu — labs, commands, paths |
 | `/start-lab [id]` | Begin or resume an interactive lab |
+| `/module [NN]` | Socratic session over a flagship-path stage: decision, exercise, rubric self-check |
 | `/hint` | Get a Socratic hint (escalating, not answers) |
 | `/review` | Architect review — run tests + score + feedback |
 | `/next` | What to do next based on progress |
@@ -164,6 +168,8 @@ Skills are in `claude-ai-architect/skills/` — read the SKILL.md when activated
 | 01 | Fix the Broken RAG Pipeline | Intermediate | 45m | Debug chunking, search, context assembly |
 | 02 | Build a Multi-Agent System | Advanced | 60m | Coordinator pattern, message passing, error handling |
 | 03 | Build Your Own MCP Server | Advanced | 60m | TypeScript MCP server with 3 tools |
+| 04 | Make the Eval Harness Able to Fail | Intermediate | 60m | Exit codes that reach CI, scorer errors as failures, locked fixtures |
+| 05 | Bound the Agent's Tool Authority | Advanced | 75m | A gate the model cannot talk past, one principal per side effect, a revocable matrix |
 
 Labs are in `labs/` — each has source code, tests, data, and a `.lab/config.json`.
 
@@ -181,13 +187,17 @@ Labs are in `labs/` — each has source code, tests, data, and a `.lab/config.js
 
 ---
 
-## Certification
+## The Flagship Path and What It Grants
 
-| Level | Requirements |
-|-------|-------------|
-| **Associate** | Complete 2 labs with avg score >= 70 |
-| **Professional** | Complete all 3 labs + 2 learning path modules |
-| **Expert** | All labs (avg >= 85) + capstone project + security review |
+The flagship path is **Production agent systems**: nine stages defined in
+`site/lib/academy-graph/production-agent-systems.ts`, each with a module under
+`curriculum/production-agent-systems/NN-*/` (README.md lesson, exercise.md, rubric.md). Use `/module NN` to
+run a Socratic session over a stage.
+
+There is no certification and no score tiers. The graph defines one competency, *Ship a production agent
+system*, granted only when every stage's artifact exists with evidence outside the learner's own claim, every
+eval passes, and both independent reviews pass (`advanceCapability` in `site/lib/academy-graph/advance.ts`).
+Never tell a learner they are certified, and never grant or imply a level from lab scores.
 
 ---
 
@@ -225,7 +235,11 @@ ai-architect-academy/
 ├── labs/                        # Interactive coding labs
 │   ├── 01-rag-pipeline/         # Fix broken RAG (Python)
 │   ├── 02-multi-agent-system/   # Build orchestrator (Python)
-│   └── 03-mcp-server/           # Build MCP server (TypeScript)
+│   ├── 03-mcp-server/           # Build MCP server (TypeScript)
+│   ├── 04-eval-harness/         # Make a harness able to fail (Python)
+│   └── 05-tool-authority-gate/  # Bound tool authority (Python)
+├── curriculum/
+│   └── production-agent-systems/ # Nine stage modules: lesson, exercise, rubric
 ├── claude-ai-architect/         # Skills + knowledge base
 │   ├── skills/                  # 23 domain skills
 │   ├── knowledge-base/          # Reference material

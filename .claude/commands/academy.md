@@ -12,8 +12,13 @@ Display the main academy menu:
 ║  /start-lab 01   Fix a Broken RAG Pipeline      [45 min]    ║
 ║  /start-lab 02   Build a Multi-Agent System     [60 min]    ║
 ║  /start-lab 03   Build Your Own MCP Server      [60 min]    ║
+║  /start-lab 04   Make the Eval Harness Able     [60 min]    ║
+║                  to Fail                                     ║
+║  /start-lab 05   Bound the Agent's Tool         [75 min]    ║
+║                  Authority                                   ║
 ║                                                              ║
 ║  COMMANDS                                                    ║
+║  /module NN      Socratic session on flagship module NN      ║
 ║  /hint           Get a clue (Socratic — not the answer)     ║
 ║  /review         Get an architect review of your code       ║
 ║  /next           See what to do next                        ║
