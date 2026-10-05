@@ -1,0 +1,176 @@
+{
+  "schema": "AcademySourceRegister.v1",
+  "owner": "Frank Riemer",
+  "policy": "docs/ACADEMY-SYSTEM.md#knowledge-and-reasoning",
+  "fullTextIngested": false,
+  "sources": [
+    {
+      "id": "vercel-functions",
+      "kind": "documentation",
+      "title": "Vercel Functions",
+      "url": "https://vercel.com/docs/functions",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "deployment",
+        "cost-model"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "vercel-mcp",
+      "kind": "documentation",
+      "title": "Deploy MCP servers on Vercel",
+      "url": "https://vercel.com/docs/mcp/deploy-mcp-servers-to-vercel",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "tool-authority-model",
+        "deployment"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "railway-templates",
+      "kind": "documentation",
+      "title": "Railway template creation",
+      "url": "https://docs.railway.com/templates/create",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "deployment",
+        "cost-model"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "railway-kickbacks",
+      "kind": "documentation",
+      "title": "Railway template kickbacks",
+      "url": "https://docs.railway.com/templates/kickbacks",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "cost-model"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "cloudflare-agents",
+      "kind": "documentation",
+      "title": "Cloudflare Agents",
+      "url": "https://developers.cloudflare.com/agents/",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "architecture-decision",
+        "tool-authority-model",
+        "deployment"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "cloud-run-jobs",
+      "kind": "documentation",
+      "title": "Cloud Run jobs",
+      "url": "https://cloud.google.com/run/docs/create-jobs",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "deployment",
+        "eval-harness"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "langfuse-hosting",
+      "kind": "documentation",
+      "title": "Langfuse self hosting",
+      "url": "https://langfuse.com/self-hosting",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "eval-harness",
+        "incident-simulation"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "langfuse-railway",
+      "kind": "documentation",
+      "title": "Community Langfuse v3 Railway deployment",
+      "url": "https://langfuse.com/self-hosting/deployment/railway",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "deployment",
+        "incident-simulation"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "ddia",
+      "kind": "book",
+      "title": "Designing Data-Intensive Applications, 2nd Edition \u2014 Martin Kleppmann and Chris Riccomini",
+      "url": "https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 365,
+      "decisionStages": [
+        "architecture-decision",
+        "deployment",
+        "incident-simulation"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "release-it",
+      "kind": "book",
+      "title": "Release It! Second Edition \u2014 Michael Nygard",
+      "url": "https://store.pragprog.com/titles/mnee2/release-it-second-edition/",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 365,
+      "decisionStages": [
+        "threat-model",
+        "deployment",
+        "incident-simulation"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "hard-parts",
+      "kind": "book",
+      "title": "Software Architecture: The Hard Parts \u2014 Neal Ford, Mark Richards, Pramod Sadalage and Zhamak Dehghani",
+      "url": "https://www.oreilly.com/library/view/software-architecture-the/9781492086888/",
+      "metadataReviewedAt": "2026-10-05",
+      "reviewAfterDays": 365,
+      "decisionStages": [
+        "system-brief",
+        "architecture-decision",
+        "tool-authority-model"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    }
+  ]
+}

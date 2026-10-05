@@ -1,8 +1,13 @@
 import curriculum from '@/data/curriculum.json'
+import { projectProductionAgentSystems as project } from '@/lib/academy-graph'
 
 export const dynamic = 'force-static'
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aiarchitectacademy.com'
+
+const stages = project.stages
+  .map((s) => `${s.ordinal}. [${s.title}](${SITE}/path/${s.id.replace(/^stage:/, '')}): ${s.decision}`)
+  .join('\n')
 
 const sections = curriculum.sections.map((s) => `- ${s.label}: ${s.count} (${curriculum.repo}/tree/main/${s.dir})`).join('\n')
 
@@ -17,6 +22,12 @@ const body = `# AI Architect Academy
 - [Everything that exists](${SITE}/curriculum): every pattern, lab and module, each linked to its source file.
 - [Source repository](${curriculum.repo}): the material the cohort is built from. Licence: FSL-1.1-ALv2; curriculum prose is reserved.
 
+## The path: ${project.title}
+
+${project.brief} Each stage has a lesson, an exercise and a rubric in the repository, and an eval that can fail.
+
+${stages}
+
 ## Measured inventory (${curriculum.measuredAt})
 
 ${sections}
@@ -29,6 +40,13 @@ The AI Architect plugin runs architecture work as gated stages (frame, discover,
 - The team's skills for Codex, Cursor, Gemini CLI: npx skills add frankxai/ai-architect (per-harness execution: https://github.com/frankxai/ai-architect#install)
 - Architect skills (MCP, orchestration, model routing, context): npx skills add frankxai/skills
 - Organisation around the team: https://github.com/frankxai/ai-coe
+
+## Shared human and agent entry
+
+- [Choose your entry](${SITE}/start): separate human and agent roads through the same artifact and evaluation contract.
+- [Machine manifest](${SITE}/.well-known/academy.json): graph-derived stages, public artifact fields, evaluation assertions, canonical team and skills, and commercial availability.
+- [Deployment boundaries](${SITE}/architectures): source templates and reference designs with explicit proof obligations.
+- Licensed resource access is not activated. No payment or reading grants a competency. Agents need a server-verified entitlement and a human sponsor; the model never grants itself authority.
 
 ## For agents acting for a person
 
