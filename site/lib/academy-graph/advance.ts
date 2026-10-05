@@ -28,6 +28,8 @@ import { ACADEMY_GRAPH_VERSION } from './types.ts'
 
 export type RefusalCode =
   | 'unknown-competency'
+  | 'graph-invalid'
+  | 'invalid-as-of'
   | 'prerequisite-not-met'
   | 'artifact-not-submitted'
   | 'no-evidence'
@@ -35,11 +37,17 @@ export type RefusalCode =
   | 'evidence-stale'
   | 'evidence-kind-not-accepted'
   | 'evidence-self-attested'
+  | 'evidence-invalid'
+  | 'evidence-date-invalid'
+  | 'evidence-future'
+  | 'evidence-duplicate'
   | 'eval-never-run'
+  | 'eval-run-invalid'
   | 'eval-below-threshold'
   | 'review-missing'
   | 'review-not-passed'
   | 'review-not-independent'
+  | 'review-invalid'
 
 export interface Refusal {
   readonly code: RefusalCode
@@ -54,8 +62,21 @@ export type AdvanceResult =
 
 const DAY_MS = 86_400_000
 
+/** Date.parse normalises impossible dates such as February 30; never accept that as evidence. */
+function instant(value: string): number {
+  if (!/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2}))?$/.test(value)) return NaN
+  const day = value.slice(0, 10)
+  const dayMs = Date.parse(day)
+  if (!Number.isFinite(dayMs) || new Date(dayMs).toISOString().slice(0, 10) !== day) return NaN
+  return Date.parse(value)
+}
+
+/** A date-only assessment covers that UTC calendar day; a timestamp is an exact cutoff. */
+const assessmentInstant = (asOf: string): number =>
+  instant(asOf) + (asOf.length === 10 ? DAY_MS - 1 : 0)
+
 const daysBetween = (isoLater: string, isoEarlier: string): number =>
-  (Date.parse(isoLater) - Date.parse(isoEarlier)) / DAY_MS
+  (instant(isoLater) - instant(isoEarlier)) / DAY_MS
 
 function nodeIndex(graph: AcademyGraph) {
   const byId = new Map(graph.nodes.map((n) => [n.id, n]))
@@ -102,13 +123,33 @@ function checkEvidence(
   }
 
   const usable: Evidence[] = []
+  const ids = new Set<string>()
+  const locators = new Set<string>()
   for (const e of forArtifact) {
+    if (!e.locator?.trim() || !e.verifiedBy?.trim()) {
+      refusals.push({ code: 'evidence-invalid', subject: e.id, detail: 'Evidence needs a non-empty locator and a named verifier.' })
+      continue
+    }
+    if (ids.has(e.id) || locators.has(e.locator.trim())) {
+      refusals.push({ code: 'evidence-duplicate', subject: e.id, detail: 'An evidence id or locator may count only once per artifact.' })
+      continue
+    }
+    ids.add(e.id)
+    locators.add(e.locator.trim())
     if (!rule.accepts.includes(e.evidenceKind)) {
       refusals.push({
         code: 'evidence-kind-not-accepted',
         subject: e.id,
         detail: `${e.evidenceKind} is not accepted for ${artifact.title}; accepted: ${rule.accepts.join(', ')}.`,
       })
+      continue
+    }
+    if (!Number.isFinite(instant(e.verifiedAt))) {
+      refusals.push({ code: 'evidence-date-invalid', subject: e.id, detail: `Invalid ISO verification date: ${e.verifiedAt}.` })
+      continue
+    }
+    if (instant(e.verifiedAt) > assessmentInstant(asOf)) {
+      refusals.push({ code: 'evidence-future', subject: e.id, detail: `Evidence verified after the assessment date ${asOf} cannot count.` })
       continue
     }
     if (daysBetween(asOf, e.verifiedAt) > rule.maxAgeDays) {
@@ -171,9 +212,33 @@ export function advanceCapability(
 
   const refusals: Refusal[] = []
 
+  if (!Number.isFinite(instant(asOf))) {
+    return { granted: false, competency: competencyId, refusals: [{ code: 'invalid-as-of', subject: competencyId, detail: `Invalid ISO assessment date: ${asOf}.` }] }
+  }
+  if (new Set(graph.nodes.map((n) => n.id)).size !== graph.nodes.length) {
+    return { granted: false, competency: competencyId, refusals: [{ code: 'graph-invalid', subject: competencyId, detail: 'Graph node ids must be unique.' }] }
+  }
+  for (const [name, ids] of [
+    ['requiredArtifacts', competency.requiredArtifacts],
+    ['requiredEvals', competency.requiredEvals],
+    ['requiredReviews', competency.requiredReviews],
+  ] as const) {
+    if (ids.length === 0 || new Set(ids).size !== ids.length) {
+      refusals.push({ code: 'graph-invalid', subject: competencyId, detail: `${name} must contain distinct requirements and cannot be empty.` })
+    }
+  }
+
   for (const prereqId of competency.prerequisites) {
     const prereq = idx.prerequisite(prereqId)
-    if (!prereq || prereq.requires.length === 0) continue
+    if (!prereq || prereq.kind !== 'Prerequisite' || prereq.of !== competencyId) {
+      refusals.push({ code: 'graph-invalid', subject: prereqId, detail: 'Required prerequisite is missing or belongs to another competency.' })
+      continue
+    }
+    if (prereq.requires.some((id) => idx.competency(id)?.kind !== 'Competency')) {
+      refusals.push({ code: 'graph-invalid', subject: prereqId, detail: 'Prerequisite references an unresolved competency.' })
+      continue
+    }
+    if (prereq.requires.length === 0) continue
     const held = prereq.requires.filter((c) => learner.grantedCompetencies.includes(c))
     const met = prereq.rule === 'all' ? held.length === prereq.requires.length : held.length > 0
     if (!met) {
@@ -187,7 +252,15 @@ export function advanceCapability(
 
   for (const artifactId of competency.requiredArtifacts) {
     const artifact = idx.artifact(artifactId)
-    if (!artifact) continue
+    if (!artifact || artifact.kind !== 'Artifact') {
+      refusals.push({ code: 'graph-invalid', subject: artifactId, detail: 'Required artifact is missing or is not an Artifact node.' })
+      continue
+    }
+    const rule = evidenceRuleFor(graph, artifactId)
+    if (!Number.isInteger(rule.minimumCount) || rule.minimumCount < 1 || !Number.isFinite(rule.maxAgeDays) || rule.maxAgeDays < 0 || rule.accepts.length === 0) {
+      refusals.push({ code: 'graph-invalid', subject: artifactId, detail: 'Artifact evidence rule has no usable minimum, accepted kind or freshness window.' })
+      continue
+    }
     if (!learner.submittedArtifacts.includes(artifactId)) {
       refusals.push({
         code: 'artifact-not-submitted',
@@ -196,12 +269,20 @@ export function advanceCapability(
       })
       continue
     }
-    refusals.push(...checkEvidence(learner, artifact, evidenceRuleFor(graph, artifactId), asOf))
+    refusals.push(...checkEvidence(learner, artifact, rule, asOf))
   }
 
   for (const evalId of competency.requiredEvals) {
     const evaluation = idx.evaluation(evalId)
-    if (!evaluation) continue
+    if (!evaluation || evaluation.kind !== 'Eval' || idx.artifact(evaluation.target)?.kind !== 'Artifact' || !competency.requiredArtifacts.includes(evaluation.target)) {
+      refusals.push({ code: 'graph-invalid', subject: evalId, detail: 'Required eval is missing or does not target a required artifact.' })
+      continue
+    }
+    const expected = evaluation.assertions.map((a) => a.id)
+    if (expected.length === 0 || new Set(expected).size !== expected.length || !Number.isFinite(evaluation.passThreshold) || evaluation.passThreshold < 0 || evaluation.passThreshold > 1) {
+      refusals.push({ code: 'graph-invalid', subject: evalId, detail: 'Eval must declare distinct assertions and a threshold between zero and one.' })
+      continue
+    }
     const runs = learner.evalRuns.filter((r) => r.evalId === evalId)
     if (runs.length === 0) {
       refusals.push({
@@ -211,21 +292,35 @@ export function advanceCapability(
       })
       continue
     }
-    const latest = runs.reduce((a, b) => (Date.parse(a.ranAt) >= Date.parse(b.ranAt) ? a : b))
-    const total = latest.passedAssertions.length + latest.failedAssertions.length
-    const ratio = total === 0 ? 0 : latest.passedAssertions.length / total
-    if (ratio < evaluation.passThreshold) {
-      refusals.push({
-        code: 'eval-below-threshold',
-        subject: evalId,
-        detail: `Latest run ${latest.ranAt} passed ${latest.passedAssertions.length}/${total}; threshold ${evaluation.passThreshold}. Failed: ${latest.failedAssertions.join(', ') || 'none recorded'}.`,
-      })
+    if (runs.some((r) => !Number.isFinite(instant(r.ranAt)) || instant(r.ranAt) > assessmentInstant(asOf))) {
+      refusals.push({ code: 'eval-run-invalid', subject: evalId, detail: 'Eval run dates must be valid ISO dates at or before the assessment date.' })
+      continue
+    }
+    const latestAt = Math.max(...runs.map((r) => instant(r.ranAt)))
+    // Tied timestamps provide no ordering; any failure at the latest time blocks the grant.
+    for (const latest of runs.filter((r) => instant(r.ranAt) === latestAt)) {
+      const recorded = [...latest.passedAssertions, ...latest.failedAssertions]
+      if (latest.artifact !== evaluation.target || recorded.length !== expected.length || new Set(recorded).size !== recorded.length || recorded.some((id) => !expected.includes(id))) {
+        refusals.push({ code: 'eval-run-invalid', subject: evalId, detail: `Run must target ${evaluation.target} and record each declared assertion exactly once: ${expected.join(', ')}.` })
+        continue
+      }
+      const ratio = latest.passedAssertions.length / expected.length
+      if (ratio < evaluation.passThreshold) {
+        refusals.push({
+          code: 'eval-below-threshold',
+          subject: evalId,
+          detail: `Latest run ${latest.ranAt} passed ${latest.passedAssertions.length}/${expected.length}; threshold ${evaluation.passThreshold}. Failed: ${latest.failedAssertions.join(', ') || 'none recorded'}.`,
+        })
+      }
     }
   }
 
   for (const reviewId of competency.requiredReviews) {
     const review = idx.review(reviewId)
-    if (!review) continue
+    if (!review || review.kind !== 'Review' || idx.artifact(review.target)?.kind !== 'Artifact' || !competency.requiredArtifacts.includes(review.target)) {
+      refusals.push({ code: 'graph-invalid', subject: reviewId, detail: 'Required review is missing or does not target a required artifact.' })
+      continue
+    }
     const verdicts = learner.reviews.filter((v) => v.reviewId === reviewId)
     if (verdicts.length === 0) {
       refusals.push({
@@ -235,23 +330,31 @@ export function advanceCapability(
       })
       continue
     }
-    const latest = verdicts.reduce((a, b) =>
-      Date.parse(a.reviewedAt) >= Date.parse(b.reviewedAt) ? a : b,
-    )
-    if (review.requiresIndependentReviewer && latest.reviewer === learner.learnerId) {
-      refusals.push({
-        code: 'review-not-independent',
-        subject: reviewId,
-        detail: 'The author reviewed their own artifact. The verdict does not count.',
-      })
+    if (verdicts.some((v) => !Number.isFinite(instant(v.reviewedAt)) || instant(v.reviewedAt) > assessmentInstant(asOf))) {
+      refusals.push({ code: 'review-invalid', subject: reviewId, detail: 'Review dates must be valid ISO dates at or before the assessment date.' })
       continue
     }
-    if (latest.verdict !== 'pass') {
-      refusals.push({
-        code: 'review-not-passed',
-        subject: reviewId,
-        detail: `Latest verdict ${latest.verdict} from ${latest.reviewer} on ${latest.reviewedAt}.`,
-      })
+    const latestAt = Math.max(...verdicts.map((v) => instant(v.reviewedAt)))
+    for (const latest of verdicts.filter((v) => instant(v.reviewedAt) === latestAt)) {
+      if (latest.artifact !== review.target || !latest.reviewer?.trim()) {
+        refusals.push({ code: 'review-invalid', subject: reviewId, detail: `Review must name a reviewer and target ${review.target}.` })
+        continue
+      }
+      if (review.requiresIndependentReviewer && latest.reviewer === learner.learnerId) {
+        refusals.push({
+          code: 'review-not-independent',
+          subject: reviewId,
+          detail: 'The author reviewed their own artifact. The verdict does not count.',
+        })
+        continue
+      }
+      if (latest.verdict !== 'pass') {
+        refusals.push({
+          code: 'review-not-passed',
+          subject: reviewId,
+          detail: `Latest verdict ${latest.verdict} from ${latest.reviewer} on ${latest.reviewedAt}.`,
+        })
+      }
     }
   }
 
@@ -278,6 +381,9 @@ export function projectPortfolio(
   for (const competencyId of learner.grantedCompetencies) {
     const competency = idx.competency(competencyId)
     if (!competency || competency.kind !== 'Competency') continue
+    // LearnerState may come from an import. A supplied grant cannot bypass the same
+    // gate used to earn it, and stale evidence no longer supports a current claim.
+    if (!advanceCapability(graph, learner, competencyId, asOf).granted) continue
 
     const publicArtifacts = competency.requiredArtifacts.filter((id) => {
       const a = idx.artifact(id)

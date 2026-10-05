@@ -9,12 +9,14 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "test": "node --test lib/academy-graph/academy-graph.test.ts scripts/worked-run.test.mjs",
+    "test": "node --test lib/academy-graph/academy-graph.test.ts lib/academy-graph/experience.test.ts lib/resource-access/handler.test.ts scripts/worked-run.test.mjs scripts/modules.test.mjs scripts/source-register.test.mjs ../curriculum/production-agent-systems/03-tool-authority-model/check-authority-matrix.test.mjs",
     "sync:curriculum": "node scripts/sync-curriculum.mjs",
-    "sync:worked-run": "node scripts/sync-worked-run.mjs"
+    "sync:worked-run": "node scripts/sync-worked-run.mjs",
+    "sync:modules": "node scripts/sync-modules.mjs",
+    "verify": "pnpm type-check && pnpm test && pnpm build"
   },
   "dependencies": {
-    "next": "16.3.4",
+    "next": "16.3.8",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },

@@ -1,0 +1,16 @@
+{
+  "id": "05-tool-authority-gate",
+  "title": "Bound the Agent's Tool Authority",
+  "difficulty": "advanced",
+  "estimatedMinutes": 75,
+  "objectives": [
+    "Trace how an instruction inside a tool result becomes a side-effecting call",
+    "Enforce granted authority in the executor, where the model cannot author it",
+    "Give every side-effecting tool its own principal with a revocation path",
+    "Export a tool authority matrix that the stage eval accepts"
+  ],
+  "prerequisites": ["Lab 02", "Basic Python", "dataclasses"],
+  "skills": ["ai-security-expert", "mcp-architecture"],
+  "hints": 3,
+  "checkpoints": ["trace", "gate", "principals", "matrix"]
+}
