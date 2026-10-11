@@ -1,0 +1,704 @@
+{
+  "schema": "ai-architect-solution/v1",
+  "id": "customer-rd-portal",
+  "title": "Customer intelligence, made inspectable.",
+  "subtitle": "A working portal for architecture decisions. The cloud workloads shown remain visual specifications.",
+  "owner": "Customer solution owner (illustrative role)",
+  "fixture": true,
+  "visibility": "public",
+  "source_revision": "ad80fdd9a01cb5077d604b53c3dc5882fd49b0bb",
+  "authorship": {
+    "drafter": "OpenAI Codex",
+    "model": "exact model identifier not supplied by host",
+    "human_editor": null,
+    "independent_review": "pending"
+  },
+  "brief": {
+    "customer_job": "Compare a company R&D portal architecture, inspect evidence, and export a portable specification.",
+    "baseline": "Separate mockups, slide diagrams and deployment notes drift apart.",
+    "acceptance": "One specification produces consistent component IDs, provider views, honest evidence states and portable exports.",
+    "non_goals": [
+      "No live inference",
+      "No private tenant portal",
+      "No provisioned workload",
+      "No invented partner/customer result"
+    ]
+  },
+  "profiles": [
+    {
+      "id": "gcp",
+      "provider": "Google Cloud",
+      "title": "Cloud Run + Gemini",
+      "decision": "Google-first identity and data estate; provider model availability and region must be verified.",
+      "maturity": "visualized",
+      "sophistication": "A2",
+      "sources": [
+        "gcp-center",
+        "gcp-models",
+        "gcp-run",
+        "gcp-samples"
+      ],
+      "nodes": [
+        {
+          "id": "portal",
+          "label": "Customer portal",
+          "service": "Cloud Run",
+          "icon": "cloud_run",
+          "x": 50,
+          "y": 100,
+          "owner": "customer platform owner",
+          "boundary": "browser",
+          "data_class": "public"
+        },
+        {
+          "id": "control",
+          "label": "Trusted API",
+          "service": "Cloud Run",
+          "icon": "cloud_run",
+          "x": 360,
+          "y": 100,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "model",
+          "label": "Model adapter",
+          "service": "Gemini / Agent Platform",
+          "icon": "vertexai",
+          "x": 670,
+          "y": 100,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "data",
+          "label": "Project records",
+          "service": "Cloud SQL",
+          "icon": "cloud_sql",
+          "x": 50,
+          "y": 325,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "objects",
+          "label": "Source artifacts",
+          "service": "Cloud Storage",
+          "icon": "cloud_storage",
+          "x": 360,
+          "y": 325,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "review",
+          "label": "Review owner",
+          "service": "Human approval",
+          "icon": null,
+          "x": 670,
+          "y": 325,
+          "owner": "acceptance owner",
+          "boundary": "human",
+          "data_class": "customer-confidential-design"
+        }
+      ],
+      "edges": [
+        {
+          "id": "request",
+          "from": "portal",
+          "to": "control",
+          "kind": "data",
+          "label": "Authorized request",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "infer",
+          "from": "control",
+          "to": "model",
+          "kind": "data",
+          "label": "Scoped model input",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "records",
+          "from": "control",
+          "to": "data",
+          "kind": "data",
+          "label": "Project access",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "artifact",
+          "from": "data",
+          "to": "objects",
+          "kind": "data",
+          "label": "Source references",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "approve",
+          "from": "review",
+          "to": "control",
+          "kind": "control",
+          "label": "Exact-input approval",
+          "data_class": "approval-metadata",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "answer",
+          "from": "model",
+          "to": "control",
+          "kind": "data",
+          "label": "Model output validation",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "respond",
+          "from": "control",
+          "to": "portal",
+          "kind": "data",
+          "label": "Validated draft response",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        }
+      ],
+      "receipts": [],
+      "production_blockers": [
+        "Tenant authorization and source ACLs",
+        "Live provider/model configuration",
+        "Persistent effects and restart recovery",
+        "Accepted-result evaluation",
+        "Owner, alerts, rollback and observed customer journey"
+      ]
+    },
+    {
+      "id": "vercel",
+      "provider": "Vercel",
+      "title": "Request-scoped web application",
+      "decision": "Choose for interactive web delivery; long jobs require a separately proven durable runtime.",
+      "maturity": "visualized",
+      "sophistication": "A2",
+      "sources": [
+        "vercel-template",
+        "vercel-config"
+      ],
+      "nodes": [
+        {
+          "id": "portal",
+          "label": "Customer portal",
+          "service": "Next.js on Vercel",
+          "icon": null,
+          "x": 50,
+          "y": 100,
+          "owner": "customer platform owner",
+          "boundary": "browser",
+          "data_class": "public"
+        },
+        {
+          "id": "control",
+          "label": "Trusted API",
+          "service": "Server authorization",
+          "icon": null,
+          "x": 360,
+          "y": 100,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "model",
+          "label": "Model adapter",
+          "service": "AI SDK / provider API",
+          "icon": null,
+          "x": 670,
+          "y": 100,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "data",
+          "label": "Project records",
+          "service": "Customer Postgres",
+          "icon": null,
+          "x": 50,
+          "y": 325,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "objects",
+          "label": "Source artifacts",
+          "service": "Approved object storage",
+          "icon": null,
+          "x": 360,
+          "y": 325,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "review",
+          "label": "Review owner",
+          "service": "Human approval",
+          "icon": null,
+          "x": 670,
+          "y": 325,
+          "owner": "acceptance owner",
+          "boundary": "human",
+          "data_class": "customer-confidential-design"
+        }
+      ],
+      "edges": [
+        {
+          "id": "request",
+          "from": "portal",
+          "to": "control",
+          "kind": "data",
+          "label": "Authorized request",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "infer",
+          "from": "control",
+          "to": "model",
+          "kind": "data",
+          "label": "Scoped model input",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "records",
+          "from": "control",
+          "to": "data",
+          "kind": "data",
+          "label": "Project access",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "artifact",
+          "from": "data",
+          "to": "objects",
+          "kind": "data",
+          "label": "Source references",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "approve",
+          "from": "review",
+          "to": "control",
+          "kind": "control",
+          "label": "Exact-input approval",
+          "data_class": "approval-metadata",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "answer",
+          "from": "model",
+          "to": "control",
+          "kind": "data",
+          "label": "Model output validation",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "respond",
+          "from": "control",
+          "to": "portal",
+          "kind": "data",
+          "label": "Validated draft response",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        }
+      ],
+      "receipts": [],
+      "production_blockers": [
+        "Tenant authorization and source ACLs",
+        "Live provider/model configuration",
+        "Persistent effects and restart recovery",
+        "Accepted-result evaluation",
+        "Owner, alerts, rollback and observed customer journey"
+      ]
+    },
+    {
+      "id": "railway",
+      "provider": "Railway",
+      "title": "Container + durable worker design",
+      "decision": "Choose when continuous container execution earns its operating cost; database checkpoints remain to be implemented.",
+      "maturity": "visualized",
+      "sophistication": "A2",
+      "sources": [
+        "railway-template",
+        "railway-config"
+      ],
+      "nodes": [
+        {
+          "id": "portal",
+          "label": "Customer portal",
+          "service": "Web container",
+          "icon": null,
+          "x": 50,
+          "y": 100,
+          "owner": "customer platform owner",
+          "boundary": "browser",
+          "data_class": "public"
+        },
+        {
+          "id": "control",
+          "label": "Trusted API",
+          "service": "Authorized service",
+          "icon": null,
+          "x": 360,
+          "y": 100,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "model",
+          "label": "Model adapter",
+          "service": "Customer model API",
+          "icon": null,
+          "x": 670,
+          "y": 100,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "data",
+          "label": "Project records",
+          "service": "Postgres + job state",
+          "icon": null,
+          "x": 50,
+          "y": 325,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "objects",
+          "label": "Source artifacts",
+          "service": "Approved object storage",
+          "icon": null,
+          "x": 360,
+          "y": 325,
+          "owner": "customer platform owner",
+          "boundary": "trusted-service",
+          "data_class": "customer-confidential-design"
+        },
+        {
+          "id": "review",
+          "label": "Review owner",
+          "service": "Human approval",
+          "icon": null,
+          "x": 670,
+          "y": 325,
+          "owner": "acceptance owner",
+          "boundary": "human",
+          "data_class": "customer-confidential-design"
+        }
+      ],
+      "edges": [
+        {
+          "id": "request",
+          "from": "portal",
+          "to": "control",
+          "kind": "data",
+          "label": "Authorized request",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "infer",
+          "from": "control",
+          "to": "model",
+          "kind": "data",
+          "label": "Scoped model input",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "records",
+          "from": "control",
+          "to": "data",
+          "kind": "data",
+          "label": "Project access",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "artifact",
+          "from": "data",
+          "to": "objects",
+          "kind": "data",
+          "label": "Source references",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "approve",
+          "from": "review",
+          "to": "control",
+          "kind": "control",
+          "label": "Exact-input approval",
+          "data_class": "approval-metadata",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "answer",
+          "from": "model",
+          "to": "control",
+          "kind": "data",
+          "label": "Model output validation",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        },
+        {
+          "id": "respond",
+          "from": "control",
+          "to": "portal",
+          "kind": "data",
+          "label": "Validated draft response",
+          "data_class": "customer-confidential-design",
+          "encryption": "TLS required in deployment"
+        }
+      ],
+      "receipts": [],
+      "production_blockers": [
+        "Tenant authorization and source ACLs",
+        "Live provider/model configuration",
+        "Persistent effects and restart recovery",
+        "Accepted-result evaluation",
+        "Owner, alerts, rollback and observed customer journey"
+      ]
+    },
+    {
+      "id": "local",
+      "provider": "Local",
+      "title": "Customer-owned workbench",
+      "decision": "Choose for portable, local preparation; customer agent and keys remain the runtime.",
+      "maturity": "visualized",
+      "sophistication": "A0",
+      "sources": [
+        "react-flow",
+        "c4"
+      ],
+      "nodes": [
+        {
+          "id": "portal",
+          "label": "Customer portal",
+          "service": "Offline HTML",
+          "icon": null,
+          "x": 50,
+          "y": 100,
+          "owner": "local viewer",
+          "boundary": "offline-browser",
+          "data_class": "public-synthetic"
+        },
+        {
+          "id": "render",
+          "label": "Local rendering",
+          "service": "Browser JavaScript",
+          "icon": null,
+          "x": 360,
+          "y": 100,
+          "owner": "local viewer",
+          "boundary": "offline-browser",
+          "data_class": "public-synthetic"
+        },
+        {
+          "id": "spec",
+          "label": "Embedded specification",
+          "service": "Public synthetic JSON",
+          "icon": null,
+          "x": 670,
+          "y": 100,
+          "owner": "local viewer",
+          "boundary": "offline-browser",
+          "data_class": "public-synthetic"
+        },
+        {
+          "id": "exports",
+          "label": "Portable downloads",
+          "service": "Browser Blob export",
+          "icon": null,
+          "x": 50,
+          "y": 325,
+          "owner": "local viewer",
+          "boundary": "offline-browser",
+          "data_class": "public-synthetic"
+        },
+        {
+          "id": "review",
+          "label": "Viewer interaction",
+          "service": "Local review simulation",
+          "icon": null,
+          "x": 360,
+          "y": 325,
+          "owner": "local viewer",
+          "boundary": "human",
+          "data_class": "public-synthetic"
+        }
+      ],
+      "edges": [
+        {
+          "id": "interact",
+          "from": "portal",
+          "to": "render",
+          "kind": "control",
+          "label": "Local UI event",
+          "data_class": "public-synthetic",
+          "encryption": "Offline browser; no network request"
+        },
+        {
+          "id": "read",
+          "from": "render",
+          "to": "spec",
+          "kind": "data",
+          "label": "Read embedded fixture",
+          "data_class": "public-synthetic",
+          "encryption": "Offline browser; no network request"
+        },
+        {
+          "id": "download",
+          "from": "render",
+          "to": "exports",
+          "kind": "data",
+          "label": "Create local export",
+          "data_class": "public-synthetic",
+          "encryption": "Offline browser; no network request"
+        },
+        {
+          "id": "simulate",
+          "from": "review",
+          "to": "portal",
+          "kind": "control",
+          "label": "Local review simulation",
+          "data_class": "public-synthetic",
+          "encryption": "Offline browser; no network request"
+        }
+      ],
+      "receipts": [],
+      "production_blockers": [
+        "This view describes the offline demonstration only; no model workflow executes."
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": "frame",
+      "title": "Customer result",
+      "state": "concept",
+      "owner": "Solution owner",
+      "proof": "Accepted job and baseline"
+    },
+    {
+      "id": "discover",
+      "title": "Evidence and constraints",
+      "state": "concept",
+      "owner": "Research owner",
+      "proof": "Rights, data and official sources"
+    },
+    {
+      "id": "flow",
+      "title": "Experience specification",
+      "state": "visualized",
+      "owner": "Experience owner",
+      "proof": "Screen states and service blueprint"
+    },
+    {
+      "id": "decide",
+      "title": "Architecture alternatives",
+      "state": "visualized",
+      "owner": "Principal architect",
+      "proof": "Boundaries, IDs and decisions"
+    },
+    {
+      "id": "cost",
+      "title": "Customer economics",
+      "state": "concept",
+      "owner": "Economics owner",
+      "proof": "Assumptions and all-attempt ledger"
+    },
+    {
+      "id": "secure",
+      "title": "Trust and identity",
+      "state": "concept",
+      "owner": "Security owner",
+      "proof": "Tenant/tool authorization cases"
+    },
+    {
+      "id": "prove",
+      "title": "Evaluation",
+      "state": "concept",
+      "owner": "Evaluation owner",
+      "proof": "Positive, adverse and recovery cases"
+    },
+    {
+      "id": "operate",
+      "title": "Deployment and recovery",
+      "state": "concept",
+      "owner": "Operations owner",
+      "proof": "Runbook, telemetry, rollback"
+    },
+    {
+      "id": "verify",
+      "title": "Independent acceptance",
+      "state": "concept",
+      "owner": "Independent verifier",
+      "proof": "Exact-revision review and receipt"
+    }
+  ],
+  "use_cases": [
+    {
+      "title": "Support triage",
+      "hypothesis": "Reduce queue time while agents review replies.",
+      "metric": "Accepted routing; correction and review time",
+      "state": "hypothesis"
+    },
+    {
+      "title": "Invoice exceptions",
+      "hypothesis": "Extract evidence and route disputed fields.",
+      "metric": "Correct exceptions; duplicate-payment prevention",
+      "state": "hypothesis"
+    },
+    {
+      "title": "Technical knowledge",
+      "hypothesis": "Retrieve permitted evidence with citations.",
+      "metric": "Citation correctness; ACL-denial rate",
+      "state": "hypothesis"
+    },
+    {
+      "title": "Industry research",
+      "hypothesis": "Build traceable R&D briefs for decisions.",
+      "metric": "Accepted brief; source freshness; decision time",
+      "state": "hypothesis"
+    }
+  ],
+  "economics": {
+    "tasks": 1000,
+    "adoption": 0.6,
+    "acceptance": 0.8,
+    "minutes_saved": 12,
+    "hourly_value": 60,
+    "monthly_cost": 1200,
+    "provider_consumption": null,
+    "currency": "EUR",
+    "basis": "illustrative assumptions; capacity value, not measured revenue"
+  },
+  "sources": "sources.json"
+}

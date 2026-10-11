@@ -1,0 +1,15 @@
+# Customer solution library candidate, 11 October 2026
+
+Owning acceptance issue: https://github.com/frankxai/ai-architect-academy/issues/35. Intended job: an architect can inspect customer experience, compare provider boundaries, export a synthetic design, and find the working book/reference source without confusing designs with production.
+
+Base Academy revision: eb1d26d99a2d4644bf815262317b5fd19b26a1d3. Upstream engine revision: ad80fdd9a01cb5077d604b53c3dc5882fd49b0bb (AI Architect draft PR12). Scope: /library, primary navigation, architecture link, sitemap/llms discovery, one source projection script/test, and generated public synthetic reference. No second competency graph or capability/commercial grant is added. The prose book remains linked to its immutable source.
+
+The CONTENT-CONTRACT extension admits a specifically attributed Apache-2.0 example projection. The package retains an Apache LICENSE and separate Google icon/trademark rights. The standalone HTML contains source revision and exact license/attribution; its bound solution specification and manifest retain the upstream fixture hash. The projection changes provenance metadata, appends the standalone notice and pins the book link; it does not add model/provider execution.
+
+Validation: pnpm type-check, 60 repository tests, and production Next build; synthetic DOM interactions separately checked profile switching, 16 topology downloads, tabs, simulation/reset, encyclopedia search and calculator bounds. A rendered-browser/viewport check remains open: local Chrome launch was rejected by the host socket boundary. Template configurations are supplied for the static portal; cloud/container acceptance, live inference, customer access/isolation/recovery and measured economics have no receipts.
+
+Separate evidence lanes: source implemented; engine local compiler/HTTP dry-run tests passed; Academy production bundle built; provider/public-domain promotion pending; customer benefit unknown. No final-book editorial or accountable-author review is inferred from mechanical tests. The new view follows the existing paper/ink/cobalt design and reduced-motion behavior; Windows-host Design Taste Kernel files were inaccessible here, so full design-kernel/flagship certification is not claimed. The independent agent review is linked in the PR/handoff at the final source head.
+
+Rollback: revert this proposal to remove the library route/nav and generated snapshot. The demonstration persists no customer state, so no data migration is needed. Source freshness deadlines are enforced by the compiler; rebuilds after expiration require current primary review. Existing portfolio/execution ownership remains authoritative; this source package creates no new scheduled controller.
+
+Human acceptance still owns publishing, Vercel settings, environment variables, DNS, credentials and spend under AGENTS.md. Preview or READY status does not establish production acceptance or customer usefulness. The next acceptance step is an exact-head preview/navigation/viewport review, followed by the authorized customer lane and runtime evidence; issue35 remains open.

@@ -1,0 +1,153 @@
+{
+  "schema": "ai-architect-export/v1",
+  "solution_id": "customer-rd-portal",
+  "spec_sha256": "5a6b2621a7e9452065a0f92ec51cab985e5395737057f30e595bf57fe2a7833a",
+  "compiler_sha256": "859310c81c81878e1c87298ab03e805b6e625176ba42ca728bbe3314406554ca",
+  "portal_template_sha256": "f7a2d60f5fe1f89266cd687117f7fdeaa07a51c687120c73626aee918f5fac63",
+  "source_revision": "ad80fdd9a01cb5077d604b53c3dc5882fd49b0bb",
+  "fixture": true,
+  "portal_state": "compiled",
+  "workload_state": "visualized",
+  "workload_states": {
+    "gcp": "visualized",
+    "vercel": "visualized",
+    "railway": "visualized",
+    "local": "visualized"
+  },
+  "provider_deployment": null,
+  "model_run": null,
+  "files": [
+    {
+      "path": "Dockerfile",
+      "sha256": "a0aa67c0027aca8e92411e5ef434d366830916298c38544355ba2ad8f122c47e"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "README.md",
+      "sha256": "185440b75ab0deeacb2901beb68dc421c7be682ed266d7735a3ecac679a19f88"
+    },
+    {
+      "path": "ecosystem.md",
+      "sha256": "a362391fc515de8a5da953b14edae07b30eaf56bcbd9e134a69471acec4dc199"
+    },
+    {
+      "path": "encyclopedia.json",
+      "sha256": "d17664fb81777a60edff524c95031bd9af1c358249158c84690a9e73c0bcc9c1"
+    },
+    {
+      "path": "encyclopedia.md",
+      "sha256": "44ea8a31747c930c77ff929f08d514a095f69c6199d006147394baf0769f9002"
+    },
+    {
+      "path": "execution-plan.md",
+      "sha256": "57ce955dd362c9bc0f721659f4c1e2505d1630cb25551581b6bd12724d8b09bf"
+    },
+    {
+      "path": "gcp.drawio",
+      "sha256": "3bd29dcc9951f57af7a6e2bff69e80e9786a59056b1fafc4751b47abc029a3e6"
+    },
+    {
+      "path": "gcp.mmd",
+      "sha256": "c1f28142e5b344691a12d1d3286ce8b0245946f048e613ae92d9eb0589b29b02"
+    },
+    {
+      "path": "gcp.reactflow.json",
+      "sha256": "1769357bd5ae84b610977dc5e12998db29669d8aad8947178be0f597428d4aac"
+    },
+    {
+      "path": "gcp.svg",
+      "sha256": "9ece127a52fc9aca6476fecb43cede0d4e1dafb5f3e69abf54a2c2892faf366a"
+    },
+    {
+      "path": "icon-registry.json",
+      "sha256": "d3d8e584624fadbca9ded98153be2d1ac7181cb0c8feb7c9ed5cc77c60e16b10"
+    },
+    {
+      "path": "index.html",
+      "sha256": "e1b0f168ab87c000c2c002a478a5375ef498bf62bc2dd3402c30f3665b33e310"
+    },
+    {
+      "path": "local.drawio",
+      "sha256": "690f8d8383b205235aadb780994647fddce8e1f934e2f54e2c67a85b2946fb81"
+    },
+    {
+      "path": "local.mmd",
+      "sha256": "5782780310d967b39652eecec0cd0333841bbafca250f03b8c68c6195096a99b"
+    },
+    {
+      "path": "local.reactflow.json",
+      "sha256": "b1ea25c345d6a1c55058a8e6796c1b5f54d9a65ab5a6c92ba3831b5de1161465"
+    },
+    {
+      "path": "local.svg",
+      "sha256": "fd3ce39b4853a4f72b251bdb78826a5e53f16fffbbe7e31eab71358546af119d"
+    },
+    {
+      "path": "method.md",
+      "sha256": "fa75ed6845ac7e5278b525eb86fb3ca3dc9a6a707cc355da7ddbf5faf4b206a9"
+    },
+    {
+      "path": "nginx.conf",
+      "sha256": "fce8439efa351e612a38d876dfe65ba4b0b6f219e2133a573d2c9b2992cfc006"
+    },
+    {
+      "path": "railway.drawio",
+      "sha256": "58137917a1cba8e9ec976f297e7c83fee7e22726910f6a8bfdf2662d613d53f3"
+    },
+    {
+      "path": "railway.json",
+      "sha256": "00d0b4e84baef3985f6925c533a070548722915d4287435e411dd1527a1d8320"
+    },
+    {
+      "path": "railway.mmd",
+      "sha256": "1f9b6824d3fed5cd778e32054e9586d19ddfebead1a7a9238ff7ff891dc6d9a8"
+    },
+    {
+      "path": "railway.reactflow.json",
+      "sha256": "608e42553e8054ff5e0aef406c96354e56e47a52646a92f7a21f03eb669df774"
+    },
+    {
+      "path": "railway.svg",
+      "sha256": "80868c14129b294f4dac356b04875f26527c943663fa391140214de25a26ac5f"
+    },
+    {
+      "path": "solution.json",
+      "sha256": "5a6b2621a7e9452065a0f92ec51cab985e5395737057f30e595bf57fe2a7833a"
+    },
+    {
+      "path": "sources.json",
+      "sha256": "6dfa91b727cc2c3d88c390f5e95b444994a65ee003d790fc0f540e405a1c0cfb"
+    },
+    {
+      "path": "vercel.drawio",
+      "sha256": "1ca9a50c132ff9be9d629a65d83f76e95d1783a4ba6a4798d76feb989fe88b41"
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "92107c59873f1aa6b8c0f3c075da765dd62f1e729df8b5bf0116d687c2933b7a"
+    },
+    {
+      "path": "vercel.mmd",
+      "sha256": "1a50197f61f559b966bb7782967d7a6a55782b9c4f279ce826581c4ad76ea583"
+    },
+    {
+      "path": "vercel.reactflow.json",
+      "sha256": "b7564869f79043ab84ba14259e4bcf2e9d6c82a0fed6496db8a914392d56896b"
+    },
+    {
+      "path": "vercel.svg",
+      "sha256": "14c4bb3fd76bd83258afa02c7b27bc2b36a0b27b5ba03878f695da8a14e4491e"
+    },
+    {
+      "path": "visual-recipes.md",
+      "sha256": "228d1014a28f83a12d18dc77e4a61cc680c060fae08c5b140a0c6132541823a2"
+    }
+  ],
+  "source_repository": "https://github.com/frankxai/ai-architect",
+  "source_license": "Apache-2.0",
+  "upstream_fixture_sha256": "9fb3de5bd24fe0319b780ac34541af630b1afa62e4e40be29f32e06625abbc1c",
+  "projection_transform": "bind specification source revision; append standalone license and attribution; pin book link"
+}

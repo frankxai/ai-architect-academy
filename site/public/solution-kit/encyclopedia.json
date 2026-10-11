@@ -1,0 +1,356 @@
+[
+  {
+    "id": "EA01",
+    "title": "Accepted outcome",
+    "decision": "Define the human result and denominator before agent activity",
+    "alternative": "Keep a human-led baseline with sampled acceptance before introducing automation.",
+    "failure_to_test": "Plausible output that fails the actual task",
+    "required_artifact": "Frozen cases, acceptance owner, result ledger",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA02",
+    "title": "Model seam",
+    "decision": "Separate provider credentials, transport and capability policy",
+    "alternative": "Use one direct provider integration while documenting the deliberate lock-in and migration boundary.",
+    "failure_to_test": "Fallback changes privacy or tool behavior",
+    "required_artifact": "Provider adapter contract and differential eval",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA03",
+    "title": "Context contract",
+    "decision": "Admit sources by rights, purpose, freshness and user access",
+    "alternative": "Use a curated static corpus with human publication approval instead of live retrieval.",
+    "failure_to_test": "Unauthorized or obsolete retrieval",
+    "required_artifact": "Source ledger, ACL cases and deletion propagation",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA04",
+    "title": "Workflow versus agent",
+    "decision": "Use a fixed workflow until decisions require open reasoning",
+    "alternative": "Use a deterministic state machine when the route and tool set can be specified.",
+    "failure_to_test": "Autonomous detours inflate cost without value",
+    "required_artifact": "Baseline comparison and bounded stop rule",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA05",
+    "title": "Durable execution",
+    "decision": "Persist effects and checkpoints beyond request life",
+    "alternative": "Use a short synchronous request when no durable side effect or long-running job is needed.",
+    "failure_to_test": "Duplicate action after restart or timeout",
+    "required_artifact": "Idempotency key, restart and cancellation tests",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA06",
+    "title": "Tool authority",
+    "decision": "Trusted gateway checks actor, tenant, input and resource",
+    "alternative": "Use read-only tools and explicit human execution for consequential effects.",
+    "failure_to_test": "Prompt injection expands permissions",
+    "required_artifact": "Typed tool contracts and denial fixtures",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA07",
+    "title": "Customer experience",
+    "decision": "Make progress, correction, stop and export visible",
+    "alternative": "Use a guided form with previews and explicit approval instead of a conversational interface.",
+    "failure_to_test": "Attractive screen conceals stale/failing work",
+    "required_artifact": "Service blueprint and tested interaction states",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA08",
+    "title": "Topology",
+    "decision": "One ID registry backs every component and edge",
+    "alternative": "Use a versioned static component diagram when collaborative graph editing has no customer value.",
+    "failure_to_test": "Diagram and deployment describe different systems",
+    "required_artifact": "Canonical graph and semantic export checks",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center",
+      "c4"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA09",
+    "title": "Data flow",
+    "decision": "Classify every transferred payload and trust crossing",
+    "alternative": "Minimize transfers and compute beside the governed data instead of copying the corpus.",
+    "failure_to_test": "Trace captures personal data or secrets",
+    "required_artifact": "Data inventory, access tests, trace redaction",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA10",
+    "title": "Human review",
+    "decision": "Bind review to exact artifacts and decision rights",
+    "alternative": "Use automated policy checks only for reversible low-impact actions with a measured error budget.",
+    "failure_to_test": "Review applies to a changed release",
+    "required_artifact": "Immutable receipt and change invalidation",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA11",
+    "title": "Cost per accepted result",
+    "decision": "Count failures, retries, review and support",
+    "alternative": "Keep the manual baseline if total accepted-result cost exceeds the value created.",
+    "failure_to_test": "Cheap inference hides expensive correction",
+    "required_artifact": "Full-attempt cost ledger and baseline",
+    "owner": "AI Architect reference maintainer",
+    "sources": [],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA12",
+    "title": "Consumption",
+    "decision": "Attribute actual billable workload usage",
+    "alternative": "Track customer value alone when provider workload metering is unavailable; leave consumption unknown.",
+    "failure_to_test": "Credits/API resale counted as platform demand",
+    "required_artifact": "Metered service/account/region ledger",
+    "owner": "AI Architect reference maintainer",
+    "sources": [],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA13",
+    "title": "Provider portability",
+    "decision": "Define the export boundary and replacement test",
+    "alternative": "Accept a managed proprietary service when its time-to-value benefit exceeds a quantified exit cost.",
+    "failure_to_test": "Claimed neutrality fails on proprietary state",
+    "required_artifact": "Export/import and adapter contract cases",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA14",
+    "title": "Operational readiness",
+    "decision": "Name owner, SLO, alert, recovery and teardown",
+    "alternative": "Keep the system as a sandbox until an operating owner and recovery evidence exist.",
+    "failure_to_test": "READY deployment cannot complete customer journey",
+    "required_artifact": "Domain/revision receipt and incident drill",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA15",
+    "title": "Intelligence level",
+    "decision": "Select deterministic, assistive, workflow or bounded agent",
+    "alternative": "Use a single model call with structured output before adding tools, memory or delegation.",
+    "failure_to_test": "Extra agents only add latency and agreement bias",
+    "required_artifact": "Controlled comparative evaluation",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA16",
+    "title": "Research provenance",
+    "decision": "Separate fact, inference, proposal and uncertainty",
+    "alternative": "Publish an explicit unverified proposal when primary evidence is unavailable.",
+    "failure_to_test": "Agent-written certainty outruns sources",
+    "required_artifact": "Claim/source ledger and expiry dependency map",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA17",
+    "title": "Visual evidence",
+    "decision": "Select exact code/spec diagrams or conceptual generated media",
+    "alternative": "Use conceptual generated imagery for narrative scenes; use code for exact topology.",
+    "failure_to_test": "Wrong icon or arrow changes meaning",
+    "required_artifact": "Format policy, icon registry and export review",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-icons",
+      "react-flow"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA18",
+    "title": "Industry solution",
+    "decision": "Ground use case in observed work and sector constraints",
+    "alternative": "Use a horizontal solution only after proving the sector has no additional workflow or data requirements.",
+    "failure_to_test": "Generic automation misses actual operating needs",
+    "required_artifact": "Current industry sources and customer pilot",
+    "owner": "AI Architect reference maintainer",
+    "sources": [
+      "gcp-center"
+    ],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA19",
+    "title": "Partner status",
+    "decision": "Distinguish upstream project, target and signed relationship",
+    "alternative": "List an upstream dependency or candidate openly until an authorized relationship is documented.",
+    "failure_to_test": "Logo falsely suggests endorsement",
+    "required_artifact": "Agreement/status/expiry record",
+    "owner": "AI Architect reference maintainer",
+    "sources": [],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  },
+  {
+    "id": "EA20",
+    "title": "Invention status",
+    "decision": "Distinguish original proposal, benchmarked contribution and legal claim",
+    "alternative": "Reuse an existing upstream pattern when prior-art review finds the proposed mechanism already established.",
+    "failure_to_test": "Combination presented as patented novelty",
+    "required_artifact": "Prior-art investigation and independent experiment",
+    "owner": "AI Architect reference maintainer",
+    "sources": [],
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "maturity": "authored-reference",
+    "claim_class": "prescription",
+    "runtime_verified": false,
+    "source_role": "contextual-reading; authored prescription, not external validation"
+  }
+]
