@@ -2,18 +2,19 @@
   "name": "aiarchitectacademy-site",
   "version": "0.1.0",
   "private": true,
-  "description": "aiarchitectacademy.com — waitlist-first surface for the AI Architect Academy cohort, plus the free ADR.",
+  "description": "aiarchitectacademy.com \u2014 waitlist-first surface for the AI Architect Academy cohort, plus the free ADR.",
   "packageManager": "pnpm@11.5.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "test": "node --test lib/academy-graph/academy-graph.test.ts lib/academy-graph/experience.test.ts lib/resource-access/handler.test.ts scripts/worked-run.test.mjs scripts/modules.test.mjs scripts/source-register.test.mjs ../curriculum/production-agent-systems/03-tool-authority-model/check-authority-matrix.test.mjs",
+    "test": "node --test lib/academy-graph/academy-graph.test.ts lib/academy-graph/experience.test.ts lib/resource-access/handler.test.ts scripts/worked-run.test.mjs scripts/modules.test.mjs scripts/source-register.test.mjs ../curriculum/production-agent-systems/03-tool-authority-model/check-authority-matrix.test.mjs scripts/solution-library.test.mjs",
     "sync:curriculum": "node scripts/sync-curriculum.mjs",
     "sync:worked-run": "node scripts/sync-worked-run.mjs",
     "sync:modules": "node scripts/sync-modules.mjs",
-    "verify": "pnpm type-check && pnpm test && pnpm build"
+    "verify": "pnpm type-check && pnpm test && pnpm build",
+    "sync:solution-library": "node scripts/sync-solution-library.mjs"
   },
   "dependencies": {
     "next": "16.3.8",

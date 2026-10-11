@@ -1,0 +1,38 @@
+{
+  "cloud_run": {
+    "path": "icons/cloud_run.svg",
+    "source": "https://services.google.com/fh/files/misc/google-cloud-legacy-icons.zip",
+    "source_page": "https://cloud.google.com/icons",
+    "sha256": "97e1db08021eecae2a8c5124f382a9b451dc63deecaa87825dc5b396fab59c37",
+    "generation": "official-legacy-console",
+    "checked_on": "2026-10-11",
+    "rights": "Google product icon; trademark retained; not covered by repository Apache license"
+  },
+  "vertexai": {
+    "path": "icons/vertexai.svg",
+    "source": "https://services.google.com/fh/files/misc/google-cloud-legacy-icons.zip",
+    "source_page": "https://cloud.google.com/icons",
+    "sha256": "d6a643fad5de9e513bba05af22b685572e5e06b92c3e5495b7ecf56666ff79c0",
+    "generation": "official-legacy-console",
+    "checked_on": "2026-10-11",
+    "rights": "Google product icon; trademark retained; not covered by repository Apache license"
+  },
+  "cloud_storage": {
+    "path": "icons/cloud_storage.svg",
+    "source": "https://services.google.com/fh/files/misc/google-cloud-legacy-icons.zip",
+    "source_page": "https://cloud.google.com/icons",
+    "sha256": "2528d1bf4dce824c66e5a1421e22e1153e0661b296a48d310886d5cd09921fef",
+    "generation": "official-legacy-console",
+    "checked_on": "2026-10-11",
+    "rights": "Google product icon; trademark retained; not covered by repository Apache license"
+  },
+  "cloud_sql": {
+    "path": "icons/cloud_sql.svg",
+    "source": "https://services.google.com/fh/files/misc/google-cloud-legacy-icons.zip",
+    "source_page": "https://cloud.google.com/icons",
+    "sha256": "ffdf8329a098d53313f4a8b10449b33e1cf9f139aaeb4a53e6564c1fad6b8b1b",
+    "generation": "official-legacy-console",
+    "checked_on": "2026-10-11",
+    "rights": "Google product icon; trademark retained; not covered by repository Apache license"
+  }
+}

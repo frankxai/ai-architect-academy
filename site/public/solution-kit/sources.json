@@ -1,0 +1,189 @@
+[
+  {
+    "id": "gcp-center",
+    "title": "Google Cloud Architecture Center",
+    "url": "https://cloud.google.com/architecture",
+    "resolved_url": "https://docs.cloud.google.com/architecture",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "Reference architecture catalog and deployment guidance.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "gcp-icons",
+    "title": "Google Cloud official icons",
+    "url": "https://cloud.google.com/icons",
+    "resolved_url": "https://cloud.google.com/icons",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "Official current icon library exposes core, category and legacy icon sets.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "gemini-api",
+    "title": "Gemini API model catalog",
+    "url": "https://ai.google.dev/gemini-api/docs/models",
+    "resolved_url": "https://ai.google.dev/gemini-api/docs/models",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-10-18",
+    "scoped_claim": "Catalog lists gemini-3.8-flash as stable and gemini-3.1-pro-preview as preview; deployment availability requires separate check.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "gcp-models",
+    "title": "Google Cloud model catalog",
+    "url": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+    "resolved_url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/google-models",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-10-18",
+    "scoped_claim": "Current resolved documentation uses Gemini Enterprise Agent Platform; historical Vertex AI naming remains in samples and product icons.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "gcp-run",
+    "title": "Cloud Run AI use cases",
+    "url": "https://docs.cloud.google.com/run/docs/ai/use-cases",
+    "resolved_url": "https://docs.cloud.google.com/run/docs/ai/use-cases",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "Cloud Run describes container-based agents, model integration and RAG use cases.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "gcp-samples",
+    "title": "Google Cloud generative AI samples",
+    "url": "https://github.com/GoogleCloudPlatform/generative-ai",
+    "resolved_url": "https://github.com/GoogleCloudPlatform/generative-ai",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "Public upstream sample repository; no sample was executed in this pass.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "vercel-template",
+    "title": "Vercel chatbot upstream",
+    "url": "https://github.com/vercel/ai-chatbot",
+    "resolved_url": "https://github.com/vercel/chatbot",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "Upstream URL resolves to vercel/chatbot; no install or deployment evidence imported.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "vercel-config",
+    "title": "Vercel project configuration",
+    "url": "https://vercel.com/docs/project-configuration",
+    "resolved_url": "https://vercel.com/docs/project-configuration",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-10-18",
+    "scoped_claim": "Project configuration is separate from the depicted workload and account deployment state.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "railway-template",
+    "title": "Railway templates",
+    "url": "https://docs.railway.com/guides/templates",
+    "resolved_url": "https://docs.railway.com/templates",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "Reusable service configurations and template distribution are available; eligibility is not established.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "railway-config",
+    "title": "Railway config as code",
+    "url": "https://docs.railway.com/reference/config-as-code",
+    "resolved_url": "https://docs.railway.com/config-as-code/reference",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-10-18",
+    "scoped_claim": "Provider config format; deployment and config acceptance are pending.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "react-flow",
+    "title": "React Flow",
+    "url": "https://reactflow.dev/learn",
+    "resolved_url": "https://reactflow.dev/learn",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "React Flow is an interactive node/edge UI library; exported JSON is not an installed editor.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "c4",
+    "title": "C4 model",
+    "url": "https://c4model.com/",
+    "resolved_url": "https://c4model.com/",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "Architecture view methodology; current portal SVG is a component view, not complete C4 conformance.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "azure-ai",
+    "title": "Azure AI architecture",
+    "url": "https://learn.microsoft.com/azure/well-architected/ai/architecture-pattern",
+    "resolved_url": "https://learn.microsoft.com/azure/well-architected/ai/architecture-pattern",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "Official AI architectural guidance; candidate integration only.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "aws-genai",
+    "title": "AWS GenAI Lens",
+    "url": "https://aws.amazon.com/blogs/architecture/announcing-the-updated-aws-well-architected-generative-ai-lens/",
+    "resolved_url": "https://aws.amazon.com/blogs/architecture/announcing-the-updated-aws-well-architected-generative-ai-lens/",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-11-11",
+    "scoped_claim": "Official GenAI architecture guidance; not an implementation receipt.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "openai-images",
+    "title": "OpenAI Responses image generation",
+    "url": "https://developers.openai.com/api/docs/guides/tools-image-generation",
+    "resolved_url": "https://developers.openai.com/api/docs/guides/tools-image-generation",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-10-18",
+    "scoped_claim": "Guide recommends GPT Image 2.5 Sunburst for precise edits and Flare for fast generation; no model was invoked.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "openai-image-api",
+    "title": "OpenAI image generation API",
+    "url": "https://developers.openai.com/api/reference/resources/images/methods/generate",
+    "resolved_url": "https://developers.openai.com/api/reference/resources/images/methods/generate",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-10-18",
+    "scoped_claim": "API lists dated Sunburst/Flare snapshots and transparent PNG/WebP output; account access remains unverified.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  },
+  {
+    "id": "openai-deprecations",
+    "title": "OpenAI API deprecations",
+    "url": "https://developers.openai.com/api/docs/deprecations",
+    "resolved_url": "https://developers.openai.com/api/docs/deprecations",
+    "checked_on": "2026-10-11",
+    "review_by": "2026-10-18",
+    "scoped_claim": "API chatgpt-image-latest alias removal is scheduled for 1 December 2026; this is not a claim about ChatGPT UI availability.",
+    "evidence": "official-page-inspected",
+    "runtime_verified": false
+  }
+]

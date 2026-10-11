@@ -1,0 +1,19 @@
+flowchart TB
+  %% component-id: portal
+  n_portal["Customer portal: Offline HTML"]
+  %% component-id: render
+  n_render["Local rendering: Browser JavaScript"]
+  %% component-id: spec
+  n_spec["Embedded specification: Public synthetic JSON"]
+  %% component-id: exports
+  n_exports["Portable downloads: Browser Blob export"]
+  %% component-id: review
+  n_review["Viewer interaction: Local review simulation"]
+  %% relationship-id: interact; kind: control
+  n_portal -.->|"Local UI event"| n_render
+  %% relationship-id: read; kind: data
+  n_render -->|"Read embedded fixture"| n_spec
+  %% relationship-id: download; kind: data
+  n_render -->|"Create local export"| n_exports
+  %% relationship-id: simulate; kind: control
+  n_review -.->|"Local review simulation"| n_portal

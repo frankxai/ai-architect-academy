@@ -1,0 +1,27 @@
+flowchart TB
+  %% component-id: portal
+  n_portal["Customer portal: Next.js on Vercel"]
+  %% component-id: control
+  n_control["Trusted API: Server authorization"]
+  %% component-id: model
+  n_model["Model adapter: AI SDK / provider API"]
+  %% component-id: data
+  n_data["Project records: Customer Postgres"]
+  %% component-id: objects
+  n_objects["Source artifacts: Approved object storage"]
+  %% component-id: review
+  n_review["Review owner: Human approval"]
+  %% relationship-id: request; kind: data
+  n_portal -->|"Authorized request"| n_control
+  %% relationship-id: infer; kind: data
+  n_control -->|"Scoped model input"| n_model
+  %% relationship-id: records; kind: data
+  n_control -->|"Project access"| n_data
+  %% relationship-id: artifact; kind: data
+  n_data -->|"Source references"| n_objects
+  %% relationship-id: approve; kind: control
+  n_review -.->|"Exact-input approval"| n_control
+  %% relationship-id: answer; kind: data
+  n_model -->|"Model output validation"| n_control
+  %% relationship-id: respond; kind: data
+  n_control -->|"Validated draft response"| n_portal

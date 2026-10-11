@@ -1,0 +1,141 @@
+{
+  "nodes": [
+    {
+      "id": "portal",
+      "type": "default",
+      "position": {
+        "x": 50,
+        "y": 100
+      },
+      "data": {
+        "label": "Customer portal",
+        "service": "Offline HTML",
+        "owner": "local viewer",
+        "boundary": "offline-browser",
+        "data_class": "public-synthetic",
+        "icon": null
+      }
+    },
+    {
+      "id": "render",
+      "type": "default",
+      "position": {
+        "x": 360,
+        "y": 100
+      },
+      "data": {
+        "label": "Local rendering",
+        "service": "Browser JavaScript",
+        "owner": "local viewer",
+        "boundary": "offline-browser",
+        "data_class": "public-synthetic",
+        "icon": null
+      }
+    },
+    {
+      "id": "spec",
+      "type": "default",
+      "position": {
+        "x": 670,
+        "y": 100
+      },
+      "data": {
+        "label": "Embedded specification",
+        "service": "Public synthetic JSON",
+        "owner": "local viewer",
+        "boundary": "offline-browser",
+        "data_class": "public-synthetic",
+        "icon": null
+      }
+    },
+    {
+      "id": "exports",
+      "type": "default",
+      "position": {
+        "x": 50,
+        "y": 325
+      },
+      "data": {
+        "label": "Portable downloads",
+        "service": "Browser Blob export",
+        "owner": "local viewer",
+        "boundary": "offline-browser",
+        "data_class": "public-synthetic",
+        "icon": null
+      }
+    },
+    {
+      "id": "review",
+      "type": "default",
+      "position": {
+        "x": 360,
+        "y": 325
+      },
+      "data": {
+        "label": "Viewer interaction",
+        "service": "Local review simulation",
+        "owner": "local viewer",
+        "boundary": "human",
+        "data_class": "public-synthetic",
+        "icon": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "interact",
+      "source": "portal",
+      "target": "render",
+      "label": "Local UI event",
+      "style": {
+        "strokeDasharray": "6 4"
+      },
+      "data": {
+        "kind": "control",
+        "data_class": "public-synthetic",
+        "encryption": "Offline browser; no network request"
+      }
+    },
+    {
+      "id": "read",
+      "source": "render",
+      "target": "spec",
+      "label": "Read embedded fixture",
+      "data": {
+        "kind": "data",
+        "data_class": "public-synthetic",
+        "encryption": "Offline browser; no network request"
+      }
+    },
+    {
+      "id": "download",
+      "source": "render",
+      "target": "exports",
+      "label": "Create local export",
+      "data": {
+        "kind": "data",
+        "data_class": "public-synthetic",
+        "encryption": "Offline browser; no network request"
+      }
+    },
+    {
+      "id": "simulate",
+      "source": "review",
+      "target": "portal",
+      "label": "Local review simulation",
+      "style": {
+        "strokeDasharray": "6 4"
+      },
+      "data": {
+        "kind": "control",
+        "data_class": "public-synthetic",
+        "encryption": "Offline browser; no network request"
+      }
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}
