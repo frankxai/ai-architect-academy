@@ -19,6 +19,11 @@ test('library binds one immutable upstream source with separate code and icon ri
   const u=new URL(item.href);assert.equal(u.hostname,'github.com');assert.ok(u.pathname.startsWith('/frankxai/ai-architect/blob/'+data.sourceRevision+'/'));
  }
  assert.ok(data.book.every(c=>Number.isInteger(c.words)&&c.words>0));
+ for(const file of ['practice.html','guide.html','guide.md'])assert.ok(read('public/solution-kit/'+file).toString().includes(data.sourceRevision),file);
+ assert.ok(!/\]\(\.\.\//.test(read('public/solution-kit/guide.md').toString()));
+ const practice=JSON.parse(read('public/solution-kit/practice.json'));
+ assert.equal(data.qualityGateCount,practice.gates.length);assert.equal(data.metricCount,practice.metrics.length);
+ assert.ok(practice.metrics.every(m=>m.observed===null));
 });
 test('all portable files match the evidence manifest and retain synthetic workload limits',()=>{
  assert.equal(spec.fixture,true);assert.equal(spec.visibility,'public');assert.equal(manifest.provider_deployment,null);assert.equal(manifest.model_run,null);

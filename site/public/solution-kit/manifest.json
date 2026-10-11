@@ -1,10 +1,13 @@
 {
   "schema": "ai-architect-export/v1",
   "solution_id": "customer-rd-portal",
-  "spec_sha256": "5a6b2621a7e9452065a0f92ec51cab985e5395737057f30e595bf57fe2a7833a",
-  "compiler_sha256": "859310c81c81878e1c87298ab03e805b6e625176ba42ca728bbe3314406554ca",
-  "portal_template_sha256": "f7a2d60f5fe1f89266cd687117f7fdeaa07a51c687120c73626aee918f5fac63",
-  "source_revision": "ad80fdd9a01cb5077d604b53c3dc5882fd49b0bb",
+  "spec_sha256": "8d7fe289970d01e08dd18caa6f9ea8ebfba694a4173cf0916359a37c159ced49",
+  "compiler_sha256": "007bfef148c70116d661bb706d263b7d60d30098d36c23bcfe8457be5a1df258",
+  "portal_template_sha256": "f749027260de35134de724e7b50a2eee918b1e3ec3c75f5eaa4aa75abe891a16",
+  "practice_template_sha256": "20cb0b07b946d7acf9aacc05957cee1cc8f7d7d9b61f416dac4af5e4790f9db3",
+  "practice_domain_sha256": "2bab6745ec8a8f9953807cf16aec5a6f726cab1bbfe433546848103751c87b07",
+  "practice_contract_sha256": "b62585b49c794963ee3a49c2827d71275e1e5d2f77a513cf6fa1158b2ef49189",
+  "source_revision": "2bd0e453911f71ae2bb30ada80f6a08ec938f451",
   "fixture": true,
   "portal_state": "compiled",
   "workload_state": "visualized",
@@ -27,7 +30,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "185440b75ab0deeacb2901beb68dc421c7be682ed266d7735a3ecac679a19f88"
+      "sha256": "5d49a382cabc74ed4bfbada92a05c245fe51d79d3c035b4eb00fbceb6a2c0926"
+    },
+    {
+      "path": "design.tokens.json",
+      "sha256": "9088c51a2d318f350f24870db010d072ac37969a19af7002c4f2ad927c160dc8"
     },
     {
       "path": "ecosystem.md",
@@ -62,12 +69,24 @@
       "sha256": "9ece127a52fc9aca6476fecb43cede0d4e1dafb5f3e69abf54a2c2892faf366a"
     },
     {
+      "path": "guide.html",
+      "sha256": "dcb36c80be49aaf84a135a6e1c057e57f8d9a79f993ada5c8896657d99df99d7"
+    },
+    {
+      "path": "guide.md",
+      "sha256": "034e03e1e4b9129c79e2ae3632233040020685b0e5b9c32a4d9603ff53dc83a8"
+    },
+    {
       "path": "icon-registry.json",
       "sha256": "d3d8e584624fadbca9ded98153be2d1ac7181cb0c8feb7c9ed5cc77c60e16b10"
     },
     {
       "path": "index.html",
-      "sha256": "e1b0f168ab87c000c2c002a478a5375ef498bf62bc2dd3402c30f3665b33e310"
+      "sha256": "78f24d0a9690cc95001419bb380d1f8dd2f67d326b938c2cbfbc95ef7c141285"
+    },
+    {
+      "path": "living-design.md",
+      "sha256": "71a5ef5f2ccbfa56c9ab698648f675a32299eccb801c9e023ed58692c074aab4"
     },
     {
       "path": "local.drawio",
@@ -94,6 +113,18 @@
       "sha256": "fce8439efa351e612a38d876dfe65ba4b0b6f219e2133a573d2c9b2992cfc006"
     },
     {
+      "path": "practice.html",
+      "sha256": "7d6ae00e262dc5811c6d1dc74a3a9a2950b464d8379933fe7e6428b29f161651"
+    },
+    {
+      "path": "practice.json",
+      "sha256": "b62585b49c794963ee3a49c2827d71275e1e5d2f77a513cf6fa1158b2ef49189"
+    },
+    {
+      "path": "practice.mjs",
+      "sha256": "2bab6745ec8a8f9953807cf16aec5a6f726cab1bbfe433546848103751c87b07"
+    },
+    {
       "path": "railway.drawio",
       "sha256": "58137917a1cba8e9ec976f297e7c83fee7e22726910f6a8bfdf2662d613d53f3"
     },
@@ -115,11 +146,11 @@
     },
     {
       "path": "solution.json",
-      "sha256": "5a6b2621a7e9452065a0f92ec51cab985e5395737057f30e595bf57fe2a7833a"
+      "sha256": "8d7fe289970d01e08dd18caa6f9ea8ebfba694a4173cf0916359a37c159ced49"
     },
     {
       "path": "sources.json",
-      "sha256": "6dfa91b727cc2c3d88c390f5e95b444994a65ee003d790fc0f540e405a1c0cfb"
+      "sha256": "d4451c3514e50c0048cb0037e2298407939ed74d15d1017e92eefefbff308ea8"
     },
     {
       "path": "vercel.drawio",
