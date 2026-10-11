@@ -1,0 +1,153 @@
+{
+  "$description": "AI Architect portable practice projection. DTCG 2025.10 format-shaped exchange; no importer conformance claim.",
+  "primitive": {
+    "color": {
+      "$type": "color",
+      "paper": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9647058823529412,
+            0.9529411764705882,
+            0.9254901960784314
+          ],
+          "alpha": 1
+        }
+      },
+      "surface": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "alpha": 1
+        }
+      },
+      "ink": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.08627450980392157,
+            0.09019607843137255,
+            0.11372549019607843
+          ],
+          "alpha": 1
+        }
+      },
+      "muted": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.22745098039215686,
+            0.23529411764705882,
+            0.27450980392156865
+          ],
+          "alpha": 1
+        }
+      },
+      "cobalt": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.12156862745098039,
+            0.23137254901960785,
+            0.8392156862745098
+          ],
+          "alpha": 1
+        }
+      },
+      "rule": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8392156862745098,
+            0.8196078431372549,
+            0.7764705882352941
+          ],
+          "alpha": 1
+        }
+      }
+    }
+  },
+  "semantic": {
+    "$type": "color",
+    "paper": {
+      "$value": "{primitive.color.paper}"
+    },
+    "surface": {
+      "$value": "{primitive.color.surface}"
+    },
+    "ink": {
+      "$value": "{primitive.color.ink}"
+    },
+    "muted": {
+      "$value": "{primitive.color.muted}"
+    },
+    "cobalt": {
+      "$value": "{primitive.color.cobalt}"
+    },
+    "rule": {
+      "$value": "{primitive.color.rule}"
+    }
+  },
+  "space": {
+    "$type": "dimension",
+    "4": {
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      }
+    },
+    "8": {
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      }
+    },
+    "16": {
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      }
+    },
+    "24": {
+      "$value": {
+        "value": 24,
+        "unit": "px"
+      }
+    },
+    "32": {
+      "$value": {
+        "value": 32,
+        "unit": "px"
+      }
+    }
+  },
+  "motion": {
+    "duration": {
+      "$type": "duration",
+      "$value": {
+        "value": 180,
+        "unit": "ms"
+      }
+    }
+  },
+  "font": {
+    "body": {
+      "$type": "fontFamily",
+      "$value": [
+        "system-ui",
+        "sans-serif"
+      ]
+    },
+    "display": {
+      "$type": "fontFamily",
+      "$value": [
+        "Georgia",
+        "serif"
+      ]
+    }
+  }
+}

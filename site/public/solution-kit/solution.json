@@ -6,7 +6,7 @@
   "owner": "Customer solution owner (illustrative role)",
   "fixture": true,
   "visibility": "public",
-  "source_revision": "ad80fdd9a01cb5077d604b53c3dc5882fd49b0bb",
+  "source_revision": "2bd0e453911f71ae2bb30ada80f6a08ec938f451",
   "authorship": {
     "drafter": "OpenAI Codex",
     "model": "exact model identifier not supplied by host",

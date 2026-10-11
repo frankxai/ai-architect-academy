@@ -1,0 +1,339 @@
+{
+  "schema": "ai-architect-practice/v1",
+  "fixture": true,
+  "policy_state": "proposed",
+  "as_of": "2026-10-11",
+  "owner": "AI Architect maintainer",
+  "owning_issue": "https://github.com/frankxai/ai-architect-academy/issues/35",
+  "job": "Take one research workflow from draft through a visible failure, correction and portable evidence export.",
+  "scope": "Offline deterministic practice; no account, hosted execution or real-model call.",
+  "products": [
+    {
+      "id": "engine",
+      "name": "AI Architect",
+      "job": "Portable architecture method, scoped agents and checks",
+      "state": "existing source + working examples",
+      "url": "https://github.com/frankxai/ai-architect"
+    },
+    {
+      "id": "studio",
+      "name": "Practice Studio",
+      "job": "One project, design alternatives, correction and owned export",
+      "state": "offline prototype; hosted placement pending",
+      "url": "https://github.com/frankxai/ai-architect/pull/12"
+    },
+    {
+      "id": "academy",
+      "name": "AI Architect Academy",
+      "job": "Teaching and independent assessment on the existing graph",
+      "state": "existing site; learner acceptance remains open",
+      "url": "https://github.com/frankxai/ai-architect-academy/issues/35"
+    },
+    {
+      "id": "guide",
+      "name": "AI Architect Guide",
+      "job": "Living technical reference with source and claim ledgers",
+      "state": "working edition; final author/specialist gates pending",
+      "url": "https://github.com/frankxai/ai-architect/tree/main/guide"
+    },
+    {
+      "id": "personal-book",
+      "name": "Building Intelligence That Compounds",
+      "job": "Frank’s doctrine through author-approved lived decisions",
+      "state": "planned; manuscript home and final title unresolved",
+      "url": "https://github.com/frankxai/ai-architect/blob/main/guide/strategy/authority-system.md"
+    },
+    {
+      "id": "briefing",
+      "name": "Briefing / annual Ultimate",
+      "job": "Explain source changes and freeze a dated accepted package",
+      "state": "existing strategy; no new publishing scheduler",
+      "url": "https://github.com/frankxai/ai-architect/blob/main/guide/strategy/authority-system.md"
+    }
+  ],
+  "tools": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "job": "Canonical code, contracts, prose, source IDs and review receipts",
+      "limit": "A PR or green build alone does not prove customer success",
+      "url": "https://github.com/frankxai/ai-architect",
+      "sources": [
+        "github-docs"
+      ]
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "job": "Editable screen hierarchy, components, tokens and design review",
+      "limit": "Design projection; connected Starter MCP limit currently blocks composition",
+      "url": "https://developers.figma.com/docs/plugins/",
+      "sources": [
+        "figma-api",
+        "design-tokens"
+      ]
+    },
+    {
+      "id": "canva",
+      "name": "Canva",
+      "job": "Editable presentation, workbook and distribution master",
+      "limit": "Distribution projection; not executable architecture authority",
+      "url": "https://www.canva.dev/docs/connect/",
+      "sources": [
+        "canva-api",
+        "design-tokens"
+      ]
+    },
+    {
+      "id": "html5",
+      "name": "HTML5 / SVG",
+      "job": "Working offline interaction and exact diagram rendering",
+      "limit": "Deterministic prototype does not establish hosted privacy or inference",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "sources": [
+        "wcag22"
+      ]
+    },
+    {
+      "id": "motion",
+      "name": "Hyperframes / Remotion",
+      "job": "Optional narrated workflow or product demonstration export",
+      "limit": "Evaluate once interaction/script pass; no new runtime dependency here",
+      "url": "https://www.remotion.dev/docs/",
+      "sources": [
+        "remotion-docs"
+      ]
+    },
+    {
+      "id": "durable",
+      "name": "Workflow / isolated runner",
+      "job": "Candidate durable work and isolated implementation behind scoped contracts",
+      "limit": "Provider capability documentation is separate from this product’s verification",
+      "url": "https://vercel.com/docs/workflows",
+      "sources": [
+        "vercel-workflow",
+        "vercel-sandbox"
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "id": "correctness",
+      "title": "Correctness",
+      "owner": "Eval engineer",
+      "artifact": "cases + reference artifacts",
+      "failure": "Unsupported or stale claims reach acceptance",
+      "observed": null
+    },
+    {
+      "id": "authority",
+      "title": "Authority",
+      "owner": "Trust reviewer",
+      "artifact": "scope + denied-action cases",
+      "failure": "Unauthorized tool action or data crossing",
+      "observed": null
+    },
+    {
+      "id": "reliability",
+      "title": "Recovery",
+      "owner": "Delivery engineer",
+      "artifact": "restart + duplicate-effect traces",
+      "failure": "Lost work or duplicated irreversible effect",
+      "observed": null
+    },
+    {
+      "id": "experience",
+      "title": "Experience",
+      "owner": "Design reviewer",
+      "artifact": "browser task + keyboard/mobile review",
+      "failure": "Core decision or export cannot be completed",
+      "observed": null
+    },
+    {
+      "id": "economics",
+      "title": "Customer value",
+      "owner": "Economics analyst",
+      "artifact": "baseline + accepted-result cost ledger",
+      "failure": "Cost omits failed attempts or correction",
+      "observed": null
+    },
+    {
+      "id": "consumption",
+      "title": "Provider consumption",
+      "owner": "Billing owner",
+      "artifact": "service/account/region metering reconciliation",
+      "failure": "External usage or credits counted twice",
+      "observed": null
+    },
+    {
+      "id": "portability",
+      "title": "Ownership",
+      "owner": "Platform owner",
+      "artifact": "fresh-host export/restore receipt",
+      "failure": "Customer cannot recover their owned work",
+      "observed": null
+    },
+    {
+      "id": "freshness",
+      "title": "Source freshness",
+      "owner": "Source editor",
+      "artifact": "source-impact and link review",
+      "failure": "Changed documentation silently retains old claims",
+      "observed": null
+    },
+    {
+      "id": "review",
+      "title": "Independent acceptance",
+      "owner": "Independent verifier",
+      "artifact": "exact-revision review + disposition",
+      "failure": "Maker self-approves or changed artifact inherits review",
+      "observed": null
+    }
+  ],
+  "metrics": [
+    {
+      "id": "accepted-results",
+      "gate": "correctness",
+      "definition": "Accepted customer tasks / all eligible initiated customer tasks",
+      "denominator": "All eligible initiated tasks; abandoned tasks remain in the denominator; retries counted in cost rather than as new tasks",
+      "window": "Pilot window declared before collection",
+      "target": "Proposed: >= 80%; calibrate to task consequence",
+      "observed": null
+    },
+    {
+      "id": "unsupported-claims",
+      "gate": "correctness",
+      "definition": "Unsupported material claims / material claims inspected",
+      "denominator": "Material claims in held-out outputs",
+      "window": "Each candidate evaluation",
+      "target": "Proposed hard gate: 0 accepted unsupported material claims",
+      "observed": null
+    },
+    {
+      "id": "scope-denials",
+      "gate": "authority",
+      "definition": "Denied forbidden actions / attempted forbidden actions",
+      "denominator": "Adversarial forbidden tool/data actions",
+      "window": "Each candidate evaluation",
+      "target": "Hard gate: all specified forbidden actions denied",
+      "observed": null
+    },
+    {
+      "id": "recovery",
+      "gate": "reliability",
+      "definition": "Jobs recovered without lost work / injected interrupted jobs",
+      "denominator": "Jobs interrupted at specified persistence boundaries",
+      "window": "Each candidate release",
+      "target": "Proposed hard gate: all scoped interruption cases recover",
+      "observed": null
+    },
+    {
+      "id": "duplicate-effects",
+      "gate": "reliability",
+      "definition": "Duplicate external effects / replayed effect attempts",
+      "denominator": "Retries and duplicate deliveries",
+      "window": "Each candidate release",
+      "target": "Hard gate: 0 duplicate governed effects",
+      "observed": null
+    },
+    {
+      "id": "time-to-value",
+      "gate": "experience",
+      "definition": "Median and p95 elapsed time from entry to accepted artifact",
+      "denominator": "Consenting pilot starters; failures recorded separately",
+      "window": "Pilot cohort and declared window",
+      "target": "Proposed: median <= 45 minutes for the first bounded lab",
+      "observed": null
+    },
+    {
+      "id": "unaided-completion",
+      "gate": "experience",
+      "definition": "Unaided accepted completions / consenting pilot starters",
+      "denominator": "All consenting starters including non-completers",
+      "window": "Pilot cohort and declared window",
+      "target": "Proposed: >= 80%; small samples remain directional",
+      "observed": null
+    },
+    {
+      "id": "accessibility",
+      "gate": "experience",
+      "definition": "Critical tasks completed using keyboard and narrow viewport",
+      "denominator": "Declared entry/check/correction/export/restore task inventory",
+      "window": "Each browser candidate",
+      "target": "Hard gate: all core tasks usable; no critical accessibility findings",
+      "observed": null
+    },
+    {
+      "id": "web-performance",
+      "gate": "experience",
+      "definition": "p75 LCP / INP / CLS on actual devices",
+      "denominator": "Real-user page views by device class; lab results separate",
+      "window": "Declared 28-day period after activation",
+      "target": "Proposed: LCP <= 2.5 s, INP <= 200 ms, CLS <= 0.1",
+      "observed": null
+    },
+    {
+      "id": "cost-per-accepted",
+      "gate": "economics",
+      "definition": "All-attempt inference + hosting + review + support cost / accepted outputs",
+      "denominator": "Accepted outputs in same period and currency",
+      "window": "Pilot billing period",
+      "target": "Proposed: <= customer-approved unit budget",
+      "observed": null
+    },
+    {
+      "id": "realized-benefit",
+      "gate": "economics",
+      "definition": "Observed redeployed capacity or financial value minus full delivery cost",
+      "denominator": "Consenting eligible customer tasks with comparable baseline",
+      "window": "Pilot and follow-up period",
+      "target": "Proposed: positive after correction and adoption; capacity is not revenue",
+      "observed": null
+    },
+    {
+      "id": "metering-reconciliation",
+      "gate": "consumption",
+      "definition": "Attributed billable provider cost reconciled to invoices",
+      "denominator": "Selected account/service/region billable usage; net of credits",
+      "window": "Billing period",
+      "target": "Proposed: reconcile within agreed tolerance; no duplicated external API cost",
+      "observed": null
+    },
+    {
+      "id": "restore-fidelity",
+      "gate": "portability",
+      "definition": "Equivalent restored projects / exported test projects",
+      "denominator": "All specified export/import fixtures and a clean host",
+      "window": "Each candidate release",
+      "target": "Hard gate: all scoped restores reproduce owned artifacts",
+      "observed": null
+    },
+    {
+      "id": "expired-sources",
+      "gate": "freshness",
+      "definition": "Records past review_by / required source records",
+      "denominator": "Sources affecting current public claims and executable templates",
+      "window": "Release and scheduled existing controller review",
+      "target": "Hard gate: 0 overdue required volatile sources",
+      "observed": null
+    },
+    {
+      "id": "link-review",
+      "gate": "freshness",
+      "definition": "Broken or unresolved required locators / required locators inspected",
+      "denominator": "Public source and product links; auth walls classified separately",
+      "window": "Each candidate/source review",
+      "target": "Hard gate: broken required links fixed or explicitly held",
+      "observed": null
+    },
+    {
+      "id": "independent-disposition",
+      "gate": "review",
+      "definition": "Resolved blocking findings / blocking findings raised",
+      "denominator": "Exact candidate independently reviewed",
+      "window": "Each release candidate",
+      "target": "Hard gate: all blockers disposed; author approval separate",
+      "observed": null
+    }
+  ]
+}
