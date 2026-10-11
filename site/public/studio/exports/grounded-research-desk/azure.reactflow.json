@@ -1,0 +1,386 @@
+{
+  "schema": "ai-architect-reactflow/v1",
+  "pattern": "grounded-research-desk",
+  "provider": "azure",
+  "nodes": [
+    {
+      "id": "analyst",
+      "type": "architecture",
+      "position": {
+        "x": 40,
+        "y": 220
+      },
+      "data": {
+        "label": "Analyst",
+        "role": "user",
+        "layer": "people",
+        "detail": "Asks, reads, forwards or flags.",
+        "dataClass": "internal",
+        "service": "Person",
+        "serviceId": null,
+        "docs": null,
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "workspace",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 220
+      },
+      "data": {
+        "label": "Research workspace",
+        "role": "experience",
+        "layer": "people",
+        "detail": "Ask box, cited answer, passage viewer, flag action.",
+        "dataClass": "internal",
+        "service": "Azure Static Web Apps",
+        "serviceId": "azure.static-web-apps",
+        "docs": "https://azure.microsoft.com/products/app-service/static",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "sso",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 40
+      },
+      "data": {
+        "label": "Workforce sign-in",
+        "role": "identity",
+        "layer": "control",
+        "detail": "SSO with group claims mapped to document permissions.",
+        "dataClass": "identity",
+        "service": "Microsoft Entra ID",
+        "serviceId": "azure.entra",
+        "docs": "https://www.microsoft.com/security/business/identity-access/microsoft-entra-id",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "answer-api",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 220
+      },
+      "data": {
+        "label": "Answer API",
+        "role": "api",
+        "layer": "control",
+        "detail": "Authorizes, scopes the corpus by permission, enforces a per-question budget.",
+        "dataClass": "confidential",
+        "service": "Azure Container Apps",
+        "serviceId": "azure.container-apps",
+        "docs": "https://azure.microsoft.com/products/container-apps",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "gateway",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 40
+      },
+      "data": {
+        "label": "Model gateway",
+        "role": "gateway",
+        "layer": "control",
+        "detail": "Routing, fallback, budget, cache and token logs.",
+        "dataClass": "confidential",
+        "service": "API Management AI gateway",
+        "serviceId": "azure.apim",
+        "docs": "https://learn.microsoft.com/azure/api-management/genai-gateway-capabilities",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "model",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 40
+      },
+      "data": {
+        "label": "Generation model",
+        "role": "model",
+        "layer": "intelligence",
+        "detail": "Writes only from supplied passages and returns passage IDs per claim.",
+        "dataClass": "confidential",
+        "service": "Foundry Models (Microsoft Foundry)",
+        "serviceId": "azure.foundry-models",
+        "docs": "https://learn.microsoft.com/en-us/azure/ai-foundry/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "index",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 400
+      },
+      "data": {
+        "label": "Hybrid retrieval index",
+        "role": "retrieval",
+        "layer": "knowledge",
+        "detail": "Keyword and vector search with permission tags on every chunk.",
+        "dataClass": "confidential",
+        "service": "Azure AI Search",
+        "serviceId": "azure.ai-search",
+        "docs": "https://azure.microsoft.com/products/ai-services/ai-search",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "ingest",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 400
+      },
+      "data": {
+        "label": "Ingestion pipeline",
+        "role": "ingest",
+        "layer": "knowledge",
+        "detail": "Parse, chunk, embed and copy source permissions to each chunk.",
+        "dataClass": "confidential",
+        "service": "Document Intelligence",
+        "serviceId": "azure.document-intelligence",
+        "docs": "https://azure.microsoft.com/products/ai-services/ai-document-intelligence",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "corpus",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 400
+      },
+      "data": {
+        "label": "Source corpus",
+        "role": "objects",
+        "layer": "knowledge",
+        "detail": "Versioned documents with owners and review dates.",
+        "dataClass": "confidential",
+        "service": "Azure Blob Storage",
+        "serviceId": "azure.blob",
+        "docs": "https://azure.microsoft.com/products/storage/blobs",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "ledger",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 400
+      },
+      "data": {
+        "label": "Answer ledger",
+        "role": "store",
+        "layer": "knowledge",
+        "detail": "Question, answer, passage IDs, model, cost and feedback.",
+        "dataClass": "confidential",
+        "service": "Azure Cosmos DB",
+        "serviceId": "azure.cosmos",
+        "docs": "https://azure.microsoft.com/products/cosmos-db",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "traces",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 40
+      },
+      "data": {
+        "label": "Traces and cost",
+        "role": "observability",
+        "layer": "assurance",
+        "detail": "Latency, tokens, cache hits and refusals per team.",
+        "dataClass": "operational",
+        "service": "Azure Monitor + Application Insights",
+        "serviceId": "azure.monitor",
+        "docs": "https://azure.microsoft.com/products/monitor",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "evals",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 220
+      },
+      "data": {
+        "label": "Eval harness",
+        "role": "evals",
+        "layer": "assurance",
+        "detail": "Frozen question set with expected passages and must-refuse cases.",
+        "dataClass": "internal",
+        "service": "Foundry evaluations",
+        "serviceId": "azure.foundry-evaluations",
+        "docs": "https://learn.microsoft.com/en-us/azure/ai-foundry/",
+        "officialIcon": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "ask",
+      "source": "analyst",
+      "target": "workspace",
+      "label": "Question",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "internal"
+      }
+    },
+    {
+      "id": "signin",
+      "source": "workspace",
+      "target": "sso",
+      "label": "SSO and group claims",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "identity"
+      }
+    },
+    {
+      "id": "request",
+      "source": "workspace",
+      "target": "answer-api",
+      "label": "Question with scope token",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "internal"
+      }
+    },
+    {
+      "id": "retrieve",
+      "source": "answer-api",
+      "target": "index",
+      "label": "Permission-filtered query",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "generate",
+      "source": "answer-api",
+      "target": "gateway",
+      "label": "Prompt with top passages",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "route",
+      "source": "gateway",
+      "target": "model",
+      "label": "Model call",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "record",
+      "source": "answer-api",
+      "target": "ledger",
+      "label": "Answer, citations, trace ID",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "respond",
+      "source": "answer-api",
+      "target": "workspace",
+      "label": "Cited answer or refusal",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "source-change",
+      "source": "corpus",
+      "target": "ingest",
+      "label": "New or changed document",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "index-write",
+      "source": "ingest",
+      "target": "index",
+      "label": "Chunks, embeddings, permission tags",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "telemetry",
+      "source": "gateway",
+      "target": "traces",
+      "label": "Tokens, latency, cost",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "telemetry",
+        "dataClass": "operational"
+      }
+    },
+    {
+      "id": "replay",
+      "source": "evals",
+      "target": "answer-api",
+      "label": "Replay frozen questions per release",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "internal"
+      }
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}

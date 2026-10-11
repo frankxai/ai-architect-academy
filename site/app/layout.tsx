@@ -55,6 +55,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/architectures" className="hover:text-cobalt">
               Architectures
             </Link>
+            <Link href="/studio" className="hover:text-cobalt">
+              Studio
+            </Link>
             <Link href="/path" className="hover:text-cobalt">
               The path
             </Link>

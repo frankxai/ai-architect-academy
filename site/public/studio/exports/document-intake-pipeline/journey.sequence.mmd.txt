@@ -1,0 +1,37 @@
+%% Document intake pipeline: request journey and team handoffs. Generated.
+sequenceDiagram
+  autonumber
+  actor n_senders as Suppliers and claimants
+  participant n_intake as Upload portal and inbox
+  participant n_landing as Landing bucket
+  participant n_queue as Intake queue
+  participant n_pipeline as Extraction workflow
+  participant n_parser as Layout and OCR parser
+  participant n_gateway as Model gateway
+  participant n_model as Extraction model
+  participant n_rules as Validation and master data
+  participant n_ledger as Case and field ledger
+  participant n_erp as ERP or claims system
+  participant n_exceptions as Exception console
+  participant n_evals as Field-level eval set
+  participant n_traces as Pipeline telemetry
+  Note over n_senders: Receive and keep the original
+  n_senders->>n_intake: Document
+  n_intake->>n_landing: Original with content hash
+  n_landing-->>n_queue: Object created event
+  Note over n_queue: Parse the layout
+  n_queue-->>n_pipeline: Start run keyed by hash
+  n_pipeline->>n_parser: Pages
+  Note over n_pipeline: Extract to a schema
+  n_pipeline->>n_gateway: Layout text and schema
+  n_gateway->>n_model: Model call
+  Note over n_pipeline: Validate against the business
+  n_pipeline->>n_rules: Fields to check
+  n_pipeline->>n_ledger: Fields, coordinates, rule results
+  Note over n_pipeline: Post once, or ask a person
+  n_pipeline->>n_erp: Post with idempotency key
+  n_pipeline-->>n_exceptions: Exception with failing field
+  n_exceptions-->>n_pipeline: Corrected field resumes run
+  Note over n_evals: Measure per supplier layout
+  n_evals-->>n_pipeline: Replay labelled set per release
+  n_pipeline-->>n_traces: Step timings and cost

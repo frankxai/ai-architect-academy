@@ -1,0 +1,328 @@
+workspace "Enterprise MCP tool hub" "Domain teams publish typed MCP servers for their systems. Agent clients reach them only through an authorization server and a policy gateway that binds tokens to an audience, enforces per-tool scopes and rate limits, brokers backend credentials and records every call." {
+  !identifiers hierarchical
+  model {
+    clients = person "Agent clients" "Claude, coding agents, internal agents acting for a person."
+    systems = softwareSystem "Systems of record" "Unchanged backends with their own permissions." "External"
+    workload = softwareSystem "Enterprise MCP tool hub" "Company tools for Claude and every other agent, behind one door with scopes and a log." {
+      catalog_ui = container "Tool catalog and consent" "Browse tools, see scopes, grant or revoke access." "experience" "people"
+      authz = container "Authorization server" "OAuth 2.1 with audience-bound tokens and short lifetimes." "identity" "control"
+      edge = container "Edge protection" "TLS, rate limits, anomaly blocking." "edge" "control"
+      mcp_gateway = container "MCP policy gateway" "Per-tool scopes, input schema checks, quotas, kill switch." "gateway" "control"
+      guardrail = container "Content guardrail" "Detects secrets and injection text in tool inputs and outputs." "guardrail" "control"
+      servers = container "Domain MCP servers" "CRM, tickets, docs, HR read-only; owned by domain teams." "tools" "intelligence"
+      broker = container "Credential broker" "Exchanges the user token for a short-lived backend credential." "secrets" "control"
+      registry = container "Tool registry" "Tool versions, owners, scopes, approval state." "store" "knowledge"
+      audit = container "Audit ledger" "Who, which client, which tool, which scope, result." "analytics" "knowledge"
+      owners = container "Tool owners" "Approve new tools and scope changes." "review" "assurance"
+      traces = container "Traces and alerts" "Latency, errors, unusual call patterns." "observability" "assurance"
+      contracts = container "Tool contract tests" "Schema, permission and denial tests per tool version." "evals" "assurance"
+    }
+    clients -> workload.mcp_gateway "List tools" "data, internal"
+    clients -> workload.authz "OAuth consent, audience-bound token" "control, identity"
+    workload.catalog_ui -> workload.authz "Grant or revoke scopes" "control, identity"
+    clients -> workload.edge "Tool call with token" "data, confidential"
+    workload.edge -> workload.mcp_gateway "Rate-checked call" "data, confidential"
+    workload.mcp_gateway -> workload.guardrail "Input and output scan" "control, confidential"
+    workload.mcp_gateway -> workload.registry "Scope and version lookup" "control, internal"
+    workload.mcp_gateway -> workload.servers "Authorized call" "data, confidential"
+    workload.servers -> workload.broker "Token exchange" "control, secret"
+    workload.servers -> systems "Backend call as the user" "data, confidential"
+    workload.mcp_gateway -> workload.audit "Call record" "data, confidential"
+    workload.owners -> workload.registry "Approve tool or scope change" "control, internal"
+    workload.mcp_gateway -> workload.traces "Latency and errors" "telemetry, operational"
+    workload.contracts -> workload.servers "Contract tests per version" "control, internal"
+    gcp = deploymentEnvironment "Google Cloud" {
+      deploymentNode "Google Cloud" {
+        node0 = deploymentNode "Cloud Run" {
+          containerInstance workload.catalog_ui
+        }
+        node1 = deploymentNode "Identity Platform" {
+          containerInstance workload.authz
+        }
+        node2 = deploymentNode "Cloud Armor + Load Balancing" {
+          containerInstance workload.edge
+        }
+        node3 = deploymentNode "Apigee (AI gateway policies)" {
+          containerInstance workload.mcp_gateway
+        }
+        node4 = deploymentNode "Model Armor" {
+          containerInstance workload.guardrail
+        }
+        node5 = deploymentNode "MCP server on Cloud Run" {
+          containerInstance workload.servers
+        }
+        node6 = deploymentNode "Secret Manager" {
+          containerInstance workload.broker
+        }
+        node7 = deploymentNode "Firestore" {
+          containerInstance workload.registry
+        }
+        node8 = deploymentNode "BigQuery + Looker Studio" {
+          containerInstance workload.audit
+        }
+        node9 = deploymentNode "Review console on Cloud Run" {
+          containerInstance workload.owners
+        }
+        node10 = deploymentNode "Cloud Logging, Monitoring, Trace" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Evaluation service (Agent Platform)" {
+          containerInstance workload.contracts
+        }
+      }
+    }
+    vercel = deploymentEnvironment "Vercel" {
+      deploymentNode "Vercel" {
+        node0 = deploymentNode "Next.js on Vercel" {
+          containerInstance workload.catalog_ui
+        }
+        node1 = deploymentNode "Identity provider via Marketplace" {
+          containerInstance workload.authz
+        }
+        node2 = deploymentNode "Vercel Firewall + BotID" {
+          containerInstance workload.edge
+        }
+        node3 = deploymentNode "AI Gateway" {
+          containerInstance workload.mcp_gateway
+        }
+        node4 = deploymentNode "Guardrail middleware (AI SDK)" {
+          containerInstance workload.guardrail
+        }
+        node5 = deploymentNode "MCP server on Vercel Functions" {
+          containerInstance workload.servers
+        }
+        node6 = deploymentNode "Sensitive env vars + OIDC" {
+          containerInstance workload.broker
+        }
+        node7 = deploymentNode "Edge Config" {
+          containerInstance workload.registry
+        }
+        node8 = deploymentNode "Neon Postgres via Marketplace" {
+          containerInstance workload.audit
+        }
+        node9 = deploymentNode "Review console (app route)" {
+          containerInstance workload.owners
+        }
+        node10 = deploymentNode "Vercel Observability + drains" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.contracts
+        }
+      }
+    }
+    cloudflare = deploymentEnvironment "Cloudflare" {
+      deploymentNode "Cloudflare" {
+        node0 = deploymentNode "Workers static assets" {
+          containerInstance workload.catalog_ui
+        }
+        node1 = deploymentNode "Cloudflare Access" {
+          containerInstance workload.authz
+        }
+        node2 = deploymentNode "WAF, Bot Management, Turnstile" {
+          containerInstance workload.edge
+        }
+        node3 = deploymentNode "AI Gateway" {
+          containerInstance workload.mcp_gateway
+        }
+        node4 = deploymentNode "AI Gateway guardrails" {
+          containerInstance workload.guardrail
+        }
+        node5 = deploymentNode "MCP server on Workers" {
+          containerInstance workload.servers
+        }
+        node6 = deploymentNode "Secrets Store" {
+          containerInstance workload.broker
+        }
+        node7 = deploymentNode "Workers KV" {
+          containerInstance workload.registry
+        }
+        node8 = deploymentNode "Workers Analytics Engine" {
+          containerInstance workload.audit
+        }
+        node9 = deploymentNode "Review app behind Access" {
+          containerInstance workload.owners
+        }
+        node10 = deploymentNode "Workers Observability + AI Gateway logs" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.contracts
+        }
+      }
+    }
+    aws = deploymentEnvironment "AWS" {
+      deploymentNode "AWS" {
+        node0 = deploymentNode "Amplify Hosting" {
+          containerInstance workload.catalog_ui
+        }
+        node1 = deploymentNode "AgentCore Identity" {
+          containerInstance workload.authz
+        }
+        node2 = deploymentNode "CloudFront + AWS WAF" {
+          containerInstance workload.edge
+        }
+        node3 = deploymentNode "Bedrock inference profiles + usage plans" {
+          containerInstance workload.mcp_gateway
+        }
+        node4 = deploymentNode "Bedrock Guardrails" {
+          containerInstance workload.guardrail
+        }
+        node5 = deploymentNode "AgentCore Gateway (MCP)" {
+          containerInstance workload.servers
+        }
+        node6 = deploymentNode "AWS Secrets Manager" {
+          containerInstance workload.broker
+        }
+        node7 = deploymentNode "Amazon DynamoDB" {
+          containerInstance workload.registry
+        }
+        node8 = deploymentNode "CloudWatch + X-Ray" {
+          containerInstance workload.audit
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Review console (app route)" {
+          containerInstance workload.owners
+        }
+        node10 = deploymentNode "Bedrock Evaluations" {
+          containerInstance workload.contracts
+        }
+      }
+    }
+    azure = deploymentEnvironment "Microsoft Azure" {
+      deploymentNode "Microsoft Azure" {
+        node0 = deploymentNode "Azure Static Web Apps" {
+          containerInstance workload.catalog_ui
+        }
+        node1 = deploymentNode "Microsoft Entra ID" {
+          containerInstance workload.authz
+        }
+        node2 = deploymentNode "Azure Front Door + WAF" {
+          containerInstance workload.edge
+        }
+        node3 = deploymentNode "API Management AI gateway" {
+          containerInstance workload.mcp_gateway
+        }
+        node4 = deploymentNode "Azure AI Content Safety" {
+          containerInstance workload.guardrail
+        }
+        node5 = deploymentNode "Azure Functions" {
+          containerInstance workload.servers
+        }
+        node6 = deploymentNode "Azure Key Vault" {
+          containerInstance workload.broker
+        }
+        node7 = deploymentNode "Azure Cosmos DB" {
+          containerInstance workload.registry
+        }
+        node8 = deploymentNode "Cost Management exports + Power BI" {
+          containerInstance workload.audit
+        }
+        node9 = deploymentNode "Review console (app route)" {
+          containerInstance workload.owners
+        }
+        node10 = deploymentNode "Azure Monitor + Application Insights" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Foundry evaluations" {
+          containerInstance workload.contracts
+        }
+      }
+    }
+    railway = deploymentEnvironment "Railway" {
+      deploymentNode "Railway" {
+        node0 = deploymentNode "Railway service (container)" {
+          containerInstance workload.catalog_ui
+          containerInstance workload.servers
+        }
+        node1 = deploymentNode "App-managed OIDC sign-in" {
+          containerInstance workload.authz
+        }
+        node2 = deploymentNode "Railway public networking + external WAF" {
+          containerInstance workload.edge
+        }
+        node3 = deploymentNode "Self-hosted model gateway service" {
+          containerInstance workload.mcp_gateway
+        }
+        node4 = deploymentNode "Guardrail middleware in the API" {
+          containerInstance workload.guardrail
+        }
+        node5 = deploymentNode "Sealed variables" {
+          containerInstance workload.broker
+        }
+        node6 = deploymentNode "Railway Postgres" {
+          containerInstance workload.registry
+          containerInstance workload.audit
+        }
+        node7 = deploymentNode "Review console (app route)" {
+          containerInstance workload.owners
+        }
+        node8 = deploymentNode "Railway logs + OpenTelemetry export" {
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.contracts
+        }
+      }
+    }
+  }
+  views {
+    container workload "containers" {
+      include *
+      autolayout lr
+    }
+    deployment workload gcp "deploy-gcp" {
+      include *
+      autolayout lr
+    }
+    deployment workload vercel "deploy-vercel" {
+      include *
+      autolayout lr
+    }
+    deployment workload cloudflare "deploy-cloudflare" {
+      include *
+      autolayout lr
+    }
+    deployment workload aws "deploy-aws" {
+      include *
+      autolayout lr
+    }
+    deployment workload azure "deploy-azure" {
+      include *
+      autolayout lr
+    }
+    deployment workload railway "deploy-railway" {
+      include *
+      autolayout lr
+    }
+    styles {
+      element "Person" {
+        shape person
+      }
+      element "External" {
+        background #6b6e7a
+        color #ffffff
+      }
+      element "people" {
+        background #8AB4FF
+        color #0f1017
+      }
+      element "control" {
+        background #B9A7FF
+        color #0f1017
+      }
+      element "intelligence" {
+        background #5EE6CF
+        color #0f1017
+      }
+      element "knowledge" {
+        background #FFC07A
+        color #0f1017
+      }
+      element "assurance" {
+        background #FF9FCB
+        color #0f1017
+      }
+    }
+  }
+}

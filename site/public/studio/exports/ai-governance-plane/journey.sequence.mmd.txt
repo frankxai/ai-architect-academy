@@ -1,0 +1,34 @@
+%% AI governance plane: request journey and team handoffs. Generated.
+sequenceDiagram
+  autonumber
+  actor n_teams as Product teams
+  participant n_portal as Developer portal
+  participant n_identity as Workload identity
+  participant n_policy as Model catalog and routing policy
+  participant n_board as AI review board
+  participant n_gateway as Central AI gateway
+  participant n_guardrails as Guardrails
+  participant n_models as Approved model pool
+  participant n_keys as Provider keys and BYOK
+  participant n_lake as Telemetry and cost lake
+  participant n_chargeback as Chargeback dashboards
+  participant n_pipelines as CI/CD pipelines
+  participant n_gate as Release eval gate
+  Note over n_teams: Register a workload
+  n_teams->>n_portal: Workload registration
+  n_portal-->>n_identity: Workload-bound key
+  n_portal->>n_policy: Models, budget, data class
+  Note over n_board: Approve what is new
+  n_board-->>n_policy: Approval for new model or data class
+  Note over n_teams: Route every call
+  n_teams->>n_gateway: Model calls with workload key
+  n_gateway-->>n_guardrails: Scan request and response
+  n_gateway-->>n_policy: Routing and budget lookup
+  n_gateway->>n_models: Routed call
+  n_models-->>n_keys: Provider credential
+  Note over n_gateway: Attribute every cent
+  n_gateway-->>n_lake: Call record
+  n_lake->>n_chargeback: Cost per workload
+  Note over n_pipelines: Block regressions before customers see them
+  n_pipelines-->>n_gate: Run workload evals
+  n_gate->>n_portal: Pass or block with diff

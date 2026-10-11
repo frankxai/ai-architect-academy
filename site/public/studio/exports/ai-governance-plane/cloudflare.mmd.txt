@@ -1,0 +1,56 @@
+%% AI governance plane on cloudflare. Generated; edit the catalog, not this file.
+flowchart LR
+  subgraph people["People and channels"]
+    n_teams["Product teams<br/><small>Person</small>"]:::people
+    n_portal["Developer portal<br/><small>Workers static assets</small>"]:::people
+    n_pipelines["CI/CD pipelines<br/><small>External system</small>"]:::people
+  end
+  subgraph control["Control and trust"]
+    n_identity["Workload identity<br/><small>Cloudflare Access</small>"]:::control
+    n_gateway["Central AI gateway<br/><small>AI Gateway</small>"]:::control
+    n_guardrails["Guardrails<br/><small>AI Gateway guardrails</small>"]:::control
+    n_keys["Provider keys and BYOK<br/><small>Secrets Store</small>"]:::control
+  end
+  subgraph intelligence["Intelligence and work"]
+    n_models["Approved model pool<br/><small>Workers AI models</small>"]:::intelligence
+  end
+  subgraph knowledge["Knowledge and records"]
+    n_policy["Model catalog and routing policy<br/><small>Workers KV</small>"]:::knowledge
+    n_chargeback["Chargeback dashboards<br/><small>Workers Analytics Engine</small>"]:::knowledge
+  end
+  subgraph assurance["Assurance and operations"]
+    n_lake["Telemetry and cost lake<br/><small>R2</small>"]:::assurance
+    n_gate["Release eval gate<br/><small>Eval harness in CI</small>"]:::assurance
+    n_board["AI review board<br/><small>Review app behind Access</small>"]:::assurance
+  end
+  %% flow request-access (data, internal)
+  n_teams -->|"Workload registration"| n_portal
+  %% flow issue (control, identity)
+  n_portal -.->|"Workload-bound key"| n_identity
+  %% flow register (data, internal)
+  n_portal -->|"Models, budget, data class"| n_policy
+  %% flow approve (control, internal)
+  n_board -.->|"Approval for new model or data class"| n_policy
+  %% flow traffic (data, confidential)
+  n_teams -->|"Model calls with workload key"| n_gateway
+  %% flow check (control, confidential)
+  n_gateway -.->|"Scan request and response"| n_guardrails
+  %% flow route-policy (control, internal)
+  n_gateway -.->|"Routing and budget lookup"| n_policy
+  %% flow route (data, confidential)
+  n_gateway -->|"Routed call"| n_models
+  %% flow authenticate (control, secret)
+  n_models -.->|"Provider credential"| n_keys
+  %% flow emit (telemetry, operational)
+  n_gateway -.-o|"Call record"| n_lake
+  %% flow attribute (data, operational)
+  n_lake -->|"Cost per workload"| n_chargeback
+  %% flow gate-run (control, internal)
+  n_pipelines -.->|"Run workload evals"| n_gate
+  %% flow gate-result (data, internal)
+  n_gate -->|"Pass or block with diff"| n_portal
+  classDef people fill:#8AB4FF22,stroke:#8AB4FF,color:#0f1017
+  classDef control fill:#B9A7FF22,stroke:#B9A7FF,color:#0f1017
+  classDef intelligence fill:#5EE6CF22,stroke:#5EE6CF,color:#0f1017
+  classDef knowledge fill:#FFC07A22,stroke:#FFC07A,color:#0f1017
+  classDef assurance fill:#FF9FCB22,stroke:#FF9FCB,color:#0f1017

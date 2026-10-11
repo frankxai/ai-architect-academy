@@ -1,0 +1,304 @@
+workspace "Grounded research desk" "Analysts ask questions of a governed corpus and receive answers in which every claim links to a retrieved passage the asker is allowed to read. Unsupported questions are refused, not guessed." {
+  !identifiers hierarchical
+  model {
+    analyst = person "Analyst" "Asks, reads, forwards or flags."
+    workload = softwareSystem "Grounded research desk" "Answers that cite the exact passage, or say they cannot." {
+      workspace = container "Research workspace" "Ask box, cited answer, passage viewer, flag action." "experience" "people"
+      sso = container "Workforce sign-in" "SSO with group claims mapped to document permissions." "identity" "control"
+      answer_api = container "Answer API" "Authorizes, scopes the corpus by permission, enforces a per-question budget." "api" "control"
+      gateway = container "Model gateway" "Routing, fallback, budget, cache and token logs." "gateway" "control"
+      model = container "Generation model" "Writes only from supplied passages and returns passage IDs per claim." "model" "intelligence"
+      index = container "Hybrid retrieval index" "Keyword and vector search with permission tags on every chunk." "retrieval" "knowledge"
+      ingest = container "Ingestion pipeline" "Parse, chunk, embed and copy source permissions to each chunk." "ingest" "knowledge"
+      corpus = container "Source corpus" "Versioned documents with owners and review dates." "objects" "knowledge"
+      ledger = container "Answer ledger" "Question, answer, passage IDs, model, cost and feedback." "store" "knowledge"
+      traces = container "Traces and cost" "Latency, tokens, cache hits and refusals per team." "observability" "assurance"
+      evals = container "Eval harness" "Frozen question set with expected passages and must-refuse cases." "evals" "assurance"
+    }
+    analyst -> workload.workspace "Question" "data, internal"
+    workload.workspace -> workload.sso "SSO and group claims" "control, identity"
+    workload.workspace -> workload.answer_api "Question with scope token" "data, internal"
+    workload.answer_api -> workload.index "Permission-filtered query" "data, confidential"
+    workload.answer_api -> workload.gateway "Prompt with top passages" "data, confidential"
+    workload.gateway -> workload.model "Model call" "data, confidential"
+    workload.answer_api -> workload.ledger "Answer, citations, trace ID" "data, confidential"
+    workload.answer_api -> workload.workspace "Cited answer or refusal" "data, confidential"
+    workload.corpus -> workload.ingest "New or changed document" "data, confidential"
+    workload.ingest -> workload.index "Chunks, embeddings, permission tags" "data, confidential"
+    workload.gateway -> workload.traces "Tokens, latency, cost" "telemetry, operational"
+    workload.evals -> workload.answer_api "Replay frozen questions per release" "control, internal"
+    gcp = deploymentEnvironment "Google Cloud" {
+      deploymentNode "Google Cloud" {
+        node0 = deploymentNode "Cloud Run" {
+          containerInstance workload.workspace
+          containerInstance workload.answer_api
+        }
+        node1 = deploymentNode "Identity-Aware Proxy" {
+          containerInstance workload.sso
+        }
+        node2 = deploymentNode "Apigee (AI gateway policies)" {
+          containerInstance workload.gateway
+        }
+        node3 = deploymentNode "Gemini 3.8 Flash (Agent Platform)" {
+          containerInstance workload.model
+        }
+        node4 = deploymentNode "Agent Search" {
+          containerInstance workload.index
+        }
+        node5 = deploymentNode "RAG Engine (Agent Platform)" {
+          containerInstance workload.ingest
+        }
+        node6 = deploymentNode "Cloud Storage" {
+          containerInstance workload.corpus
+        }
+        node7 = deploymentNode "Firestore" {
+          containerInstance workload.ledger
+        }
+        node8 = deploymentNode "Cloud Logging, Monitoring, Trace" {
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Evaluation service (Agent Platform)" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    vercel = deploymentEnvironment "Vercel" {
+      deploymentNode "Vercel" {
+        node0 = deploymentNode "Next.js on Vercel" {
+          containerInstance workload.workspace
+        }
+        node1 = deploymentNode "Identity provider via Marketplace" {
+          containerInstance workload.sso
+        }
+        node2 = deploymentNode "Vercel Functions (Fluid compute)" {
+          containerInstance workload.answer_api
+        }
+        node3 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node4 = deploymentNode "Claude Sonnet 5 via AI Gateway" {
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "Neon Postgres + pgvector" {
+          containerInstance workload.index
+        }
+        node6 = deploymentNode "Vercel Workflow" {
+          containerInstance workload.ingest
+        }
+        node7 = deploymentNode "Vercel Blob" {
+          containerInstance workload.corpus
+        }
+        node8 = deploymentNode "Neon Postgres via Marketplace" {
+          containerInstance workload.ledger
+        }
+        node9 = deploymentNode "Vercel Observability + drains" {
+          containerInstance workload.traces
+        }
+        node10 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    cloudflare = deploymentEnvironment "Cloudflare" {
+      deploymentNode "Cloudflare" {
+        node0 = deploymentNode "Workers static assets" {
+          containerInstance workload.workspace
+        }
+        node1 = deploymentNode "Cloudflare Access" {
+          containerInstance workload.sso
+        }
+        node2 = deploymentNode "Workers" {
+          containerInstance workload.answer_api
+        }
+        node3 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node4 = deploymentNode "Workers AI models" {
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "AI Search" {
+          containerInstance workload.index
+          containerInstance workload.ingest
+        }
+        node6 = deploymentNode "R2" {
+          containerInstance workload.corpus
+        }
+        node7 = deploymentNode "D1" {
+          containerInstance workload.ledger
+        }
+        node8 = deploymentNode "Workers Observability + AI Gateway logs" {
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    aws = deploymentEnvironment "AWS" {
+      deploymentNode "AWS" {
+        node0 = deploymentNode "Amplify Hosting" {
+          containerInstance workload.workspace
+        }
+        node1 = deploymentNode "IAM Identity Center" {
+          containerInstance workload.sso
+        }
+        node2 = deploymentNode "API Gateway + Lambda" {
+          containerInstance workload.answer_api
+        }
+        node3 = deploymentNode "Bedrock inference profiles + usage plans" {
+          containerInstance workload.gateway
+        }
+        node4 = deploymentNode "Claude on Amazon Bedrock" {
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "Bedrock Knowledge Bases" {
+          containerInstance workload.index
+          containerInstance workload.ingest
+        }
+        node6 = deploymentNode "Amazon S3" {
+          containerInstance workload.corpus
+        }
+        node7 = deploymentNode "Amazon DynamoDB" {
+          containerInstance workload.ledger
+        }
+        node8 = deploymentNode "CloudWatch + X-Ray" {
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Bedrock Evaluations" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    azure = deploymentEnvironment "Microsoft Azure" {
+      deploymentNode "Microsoft Azure" {
+        node0 = deploymentNode "Azure Static Web Apps" {
+          containerInstance workload.workspace
+        }
+        node1 = deploymentNode "Microsoft Entra ID" {
+          containerInstance workload.sso
+        }
+        node2 = deploymentNode "Azure Container Apps" {
+          containerInstance workload.answer_api
+        }
+        node3 = deploymentNode "API Management AI gateway" {
+          containerInstance workload.gateway
+        }
+        node4 = deploymentNode "Foundry Models (Microsoft Foundry)" {
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "Azure AI Search" {
+          containerInstance workload.index
+        }
+        node6 = deploymentNode "Document Intelligence" {
+          containerInstance workload.ingest
+        }
+        node7 = deploymentNode "Azure Blob Storage" {
+          containerInstance workload.corpus
+        }
+        node8 = deploymentNode "Azure Cosmos DB" {
+          containerInstance workload.ledger
+        }
+        node9 = deploymentNode "Azure Monitor + Application Insights" {
+          containerInstance workload.traces
+        }
+        node10 = deploymentNode "Foundry evaluations" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    railway = deploymentEnvironment "Railway" {
+      deploymentNode "Railway" {
+        node0 = deploymentNode "Railway service (container)" {
+          containerInstance workload.workspace
+          containerInstance workload.answer_api
+        }
+        node1 = deploymentNode "App-managed OIDC sign-in" {
+          containerInstance workload.sso
+        }
+        node2 = deploymentNode "Self-hosted model gateway service" {
+          containerInstance workload.gateway
+        }
+        node3 = deploymentNode "Model provider API (Claude, Gemini)" {
+          containerInstance workload.model
+        }
+        node4 = deploymentNode "Railway Postgres + pgvector" {
+          containerInstance workload.index
+        }
+        node5 = deploymentNode "Railway worker service" {
+          containerInstance workload.ingest
+        }
+        node6 = deploymentNode "S3-compatible object storage" {
+          containerInstance workload.corpus
+        }
+        node7 = deploymentNode "Railway Postgres" {
+          containerInstance workload.ledger
+        }
+        node8 = deploymentNode "Railway logs + OpenTelemetry export" {
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+  }
+  views {
+    container workload "containers" {
+      include *
+      autolayout lr
+    }
+    deployment workload gcp "deploy-gcp" {
+      include *
+      autolayout lr
+    }
+    deployment workload vercel "deploy-vercel" {
+      include *
+      autolayout lr
+    }
+    deployment workload cloudflare "deploy-cloudflare" {
+      include *
+      autolayout lr
+    }
+    deployment workload aws "deploy-aws" {
+      include *
+      autolayout lr
+    }
+    deployment workload azure "deploy-azure" {
+      include *
+      autolayout lr
+    }
+    deployment workload railway "deploy-railway" {
+      include *
+      autolayout lr
+    }
+    styles {
+      element "Person" {
+        shape person
+      }
+      element "External" {
+        background #6b6e7a
+        color #ffffff
+      }
+      element "people" {
+        background #8AB4FF
+        color #0f1017
+      }
+      element "control" {
+        background #B9A7FF
+        color #0f1017
+      }
+      element "intelligence" {
+        background #5EE6CF
+        color #0f1017
+      }
+      element "knowledge" {
+        background #FFC07A
+        color #0f1017
+      }
+      element "assurance" {
+        background #FF9FCB
+        color #0f1017
+      }
+    }
+  }
+}

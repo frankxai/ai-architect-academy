@@ -1,4 +1,5 @@
 import curriculum from '@/data/curriculum.json'
+import studio from '@/data/studio-catalog.json'
 import { projectProductionAgentSystems as project } from '@/lib/academy-graph'
 
 export const dynamic = 'force-static'
@@ -9,6 +10,8 @@ const stages = project.stages
   .map((s) => `${s.ordinal}. [${s.title}](${SITE}/path/${s.id.replace(/^stage:/, '')}): ${s.decision}`)
   .join('\n')
 
+const studioProviders = new Intl.ListFormat('en', { type: 'conjunction' }).format(studio.providers.map((p) => p.name))
+
 const sections = curriculum.sections.map((s) => `- ${s.label}: ${s.count} (${curriculum.repo}/tree/main/${s.dir})`).join('\n')
 
 const body = `# AI Architect Academy
@@ -18,6 +21,7 @@ const body = `# AI Architect Academy
 ## Read without signing up
 
 - [Architecture library](${SITE}/library): immutable book links, encyclopedia, and a public synthetic portal with exact diagram exports. Depicted workloads are visualized; no production competency is granted.
+- [Studio](${SITE}/studio): workload patterns realized on ${studioProviders}, with interactive diagrams, customer and provider ledgers, exact exports and one-click templates. Designs, not deployments; every name records how it was verified.
 
 - [Worked ADR and template](${SITE}/adr): one AI system decision record, worked end to end, plus the blank template.
 - [A worked team run](${SITE}/worked-run): one complete run of the agent team, with the gates that failed, the finding, and the verifier's receipt. A labelled fixture.

@@ -1,0 +1,510 @@
+{
+  "schema": "ai-architect-reactflow/v1",
+  "pattern": "agentic-operations-workflow",
+  "provider": "cloudflare",
+  "nodes": [
+    {
+      "id": "requester",
+      "type": "architecture",
+      "position": {
+        "x": 40,
+        "y": 220
+      },
+      "data": {
+        "label": "Requester",
+        "role": "user",
+        "layer": "people",
+        "detail": "Submits a need and answers clarifying questions.",
+        "dataClass": "internal",
+        "service": "Person",
+        "serviceId": null,
+        "docs": null,
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "portal",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 220
+      },
+      "data": {
+        "label": "Request portal",
+        "role": "experience",
+        "layer": "people",
+        "detail": "Intake form, live status, decision record.",
+        "dataClass": "internal",
+        "service": "Workers static assets",
+        "serviceId": "cf.workers-assets",
+        "docs": "https://developers.cloudflare.com/workers/static-assets/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "api",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 220
+      },
+      "data": {
+        "label": "Request API",
+        "role": "api",
+        "layer": "control",
+        "detail": "Validates intake, opens a run with a budget.",
+        "dataClass": "internal",
+        "service": "Workers",
+        "serviceId": "cf.workers",
+        "docs": "https://developers.cloudflare.com/workers/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "workflow",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 220
+      },
+      "data": {
+        "label": "Durable orchestration",
+        "role": "workflow",
+        "layer": "intelligence",
+        "detail": "Steps survive restarts; waits for days without compute.",
+        "dataClass": "confidential",
+        "service": "Workflows",
+        "serviceId": "cf.workflows",
+        "docs": "https://developers.cloudflare.com/workflows/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "coordinator",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 40
+      },
+      "data": {
+        "label": "Coordinator agent",
+        "role": "orchestrator",
+        "layer": "intelligence",
+        "detail": "Plans, assigns sub-tasks, merges findings, resolves disagreement.",
+        "dataClass": "confidential",
+        "service": "Agents SDK (Durable Objects)",
+        "serviceId": "cf.agents",
+        "docs": "https://developers.cloudflare.com/agents/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "specialists",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 40
+      },
+      "data": {
+        "label": "Specialist agents",
+        "role": "agent",
+        "layer": "intelligence",
+        "detail": "Sourcing, policy and cost analysis, each with its own tools and budget slice.",
+        "dataClass": "confidential",
+        "service": "Agents SDK (Durable Objects)",
+        "serviceId": "cf.agents",
+        "docs": "https://developers.cloudflare.com/agents/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "gateway",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 40
+      },
+      "data": {
+        "label": "Model gateway",
+        "role": "gateway",
+        "layer": "control",
+        "detail": "Shared budget across all agents in a run.",
+        "dataClass": "confidential",
+        "service": "AI Gateway",
+        "serviceId": "cf.ai-gateway",
+        "docs": "https://developers.cloudflare.com/ai-gateway/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "model",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 40
+      },
+      "data": {
+        "label": "Reasoning models",
+        "role": "model",
+        "layer": "intelligence",
+        "detail": "Larger model for planning, smaller for routine checks.",
+        "dataClass": "confidential",
+        "service": "Workers AI models",
+        "serviceId": "cf.workers-ai",
+        "docs": "https://developers.cloudflare.com/workers-ai/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "tools",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 220
+      },
+      "data": {
+        "label": "Tool gateway (MCP)",
+        "role": "tools",
+        "layer": "intelligence",
+        "detail": "Supplier catalog, policy rules, quote email, order create (approval-gated).",
+        "dataClass": "confidential",
+        "service": "MCP server on Workers",
+        "serviceId": "cf.mcp",
+        "docs": "https://developers.cloudflare.com/agents/model-context-protocol/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "sandbox",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 40
+      },
+      "data": {
+        "label": "Analysis sandbox",
+        "role": "sandbox",
+        "layer": "intelligence",
+        "detail": "Runs generated cost models with no network access.",
+        "dataClass": "confidential",
+        "service": "Sandbox SDK (Containers)",
+        "serviceId": "cf.sandbox",
+        "docs": "https://developers.cloudflare.com/sandbox/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "tasks",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 400
+      },
+      "data": {
+        "label": "Task queue",
+        "role": "queue",
+        "layer": "intelligence",
+        "detail": "Fan-out with deduplication keys.",
+        "dataClass": "confidential",
+        "service": "Queues",
+        "serviceId": "cf.queues",
+        "docs": "https://developers.cloudflare.com/queues/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "run-ledger",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 400
+      },
+      "data": {
+        "label": "Run ledger",
+        "role": "store",
+        "layer": "knowledge",
+        "detail": "Plan, assignments, findings, spend, decisions.",
+        "dataClass": "confidential",
+        "service": "D1",
+        "serviceId": "cf.d1",
+        "docs": "https://developers.cloudflare.com/d1/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "approver",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 400
+      },
+      "data": {
+        "label": "Approver",
+        "role": "review",
+        "layer": "assurance",
+        "detail": "Approves, rejects or asks for changes in one view.",
+        "dataClass": "confidential",
+        "service": "Review app behind Access",
+        "serviceId": "cf.review",
+        "docs": "https://developers.cloudflare.com/cloudflare-one/policies/access/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "erp",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 220
+      },
+      "data": {
+        "label": "ERP and supplier systems",
+        "role": "system",
+        "layer": "people",
+        "detail": "Receives the order with an idempotency key.",
+        "dataClass": "confidential",
+        "service": "External system",
+        "serviceId": null,
+        "docs": null,
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "traces",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 400
+      },
+      "data": {
+        "label": "Run traces",
+        "role": "observability",
+        "layer": "assurance",
+        "detail": "Per-agent spend, steps and outcome.",
+        "dataClass": "operational",
+        "service": "Workers Observability + AI Gateway logs",
+        "serviceId": "cf.observability",
+        "docs": "https://developers.cloudflare.com/workers/observability/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "evals",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 400
+      },
+      "data": {
+        "label": "Coordination evals",
+        "role": "evals",
+        "layer": "assurance",
+        "detail": "Same cases run as A2 workflow and A4 team; uplift reported.",
+        "dataClass": "internal",
+        "service": "Eval harness in CI",
+        "serviceId": "portable.evals",
+        "docs": "https://github.com/frankxai/ai-architect/tree/main/evals",
+        "officialIcon": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "request",
+      "source": "requester",
+      "target": "portal",
+      "label": "Need and constraints",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "internal"
+      }
+    },
+    {
+      "id": "open",
+      "source": "portal",
+      "target": "api",
+      "label": "Validated intake",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "internal"
+      }
+    },
+    {
+      "id": "start",
+      "source": "api",
+      "target": "workflow",
+      "label": "Start run with budget",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "plan",
+      "source": "workflow",
+      "target": "coordinator",
+      "label": "Plan step",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "assign",
+      "source": "coordinator",
+      "target": "tasks",
+      "label": "Sub-tasks with dedup keys",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "work",
+      "source": "tasks",
+      "target": "specialists",
+      "label": "Dispatch",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "think",
+      "source": "specialists",
+      "target": "gateway",
+      "label": "Calls within budget slice",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "infer",
+      "source": "gateway",
+      "target": "model",
+      "label": "Model call",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "use-tools",
+      "source": "specialists",
+      "target": "tools",
+      "label": "Catalog, policy, quote requests",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "analyse",
+      "source": "specialists",
+      "target": "sandbox",
+      "label": "Generated cost model",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "findings",
+      "source": "specialists",
+      "target": "run-ledger",
+      "label": "Findings with evidence",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "approve",
+      "source": "workflow",
+      "target": "approver",
+      "label": "Approval request with merged findings",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "decision",
+      "source": "approver",
+      "target": "workflow",
+      "label": "Decision resumes run",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "order",
+      "source": "tools",
+      "target": "erp",
+      "label": "Order create with idempotency key",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "telemetry",
+      "source": "gateway",
+      "target": "traces",
+      "label": "Spend per agent",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "telemetry",
+        "dataClass": "operational"
+      }
+    },
+    {
+      "id": "compare",
+      "source": "evals",
+      "target": "api",
+      "label": "A2 versus A4 replay",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "internal"
+      }
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}

@@ -1,0 +1,65 @@
+%% Agentic operations workflow on cloudflare. Generated; edit the catalog, not this file.
+flowchart LR
+  subgraph people["People and channels"]
+    n_requester["Requester<br/><small>Person</small>"]:::people
+    n_portal["Request portal<br/><small>Workers static assets</small>"]:::people
+    n_erp["ERP and supplier systems<br/><small>External system</small>"]:::people
+  end
+  subgraph control["Control and trust"]
+    n_api["Request API<br/><small>Workers</small>"]:::control
+    n_gateway["Model gateway<br/><small>AI Gateway</small>"]:::control
+  end
+  subgraph intelligence["Intelligence and work"]
+    n_workflow["Durable orchestration<br/><small>Workflows</small>"]:::intelligence
+    n_coordinator["Coordinator agent<br/><small>Agents SDK (Durable Objects)</small>"]:::intelligence
+    n_specialists["Specialist agents<br/><small>Agents SDK (Durable Objects)</small>"]:::intelligence
+    n_model["Reasoning models<br/><small>Workers AI models</small>"]:::intelligence
+    n_tools["Tool gateway (MCP)<br/><small>MCP server on Workers</small>"]:::intelligence
+    n_sandbox["Analysis sandbox<br/><small>Sandbox SDK (Containers)</small>"]:::intelligence
+    n_tasks["Task queue<br/><small>Queues</small>"]:::intelligence
+  end
+  subgraph knowledge["Knowledge and records"]
+    n_run_ledger["Run ledger<br/><small>D1</small>"]:::knowledge
+  end
+  subgraph assurance["Assurance and operations"]
+    n_approver["Approver<br/><small>Review app behind Access</small>"]:::assurance
+    n_traces["Run traces<br/><small>Workers Observability + AI Gateway logs</small>"]:::assurance
+    n_evals["Coordination evals<br/><small>Eval harness in CI</small>"]:::assurance
+  end
+  %% flow request (data, internal)
+  n_requester -->|"Need and constraints"| n_portal
+  %% flow open (data, internal)
+  n_portal -->|"Validated intake"| n_api
+  %% flow start (control, confidential)
+  n_api -.->|"Start run with budget"| n_workflow
+  %% flow plan (control, confidential)
+  n_workflow -.->|"Plan step"| n_coordinator
+  %% flow assign (control, confidential)
+  n_coordinator -.->|"Sub-tasks with dedup keys"| n_tasks
+  %% flow work (control, confidential)
+  n_tasks -.->|"Dispatch"| n_specialists
+  %% flow think (data, confidential)
+  n_specialists -->|"Calls within budget slice"| n_gateway
+  %% flow infer (data, confidential)
+  n_gateway -->|"Model call"| n_model
+  %% flow use-tools (data, confidential)
+  n_specialists -->|"Catalog, policy, quote requests"| n_tools
+  %% flow analyse (data, confidential)
+  n_specialists -->|"Generated cost model"| n_sandbox
+  %% flow findings (data, confidential)
+  n_specialists -->|"Findings with evidence"| n_run_ledger
+  %% flow approve (control, confidential)
+  n_workflow -.->|"Approval request with merged findings"| n_approver
+  %% flow decision (control, confidential)
+  n_approver -.->|"Decision resumes run"| n_workflow
+  %% flow order (data, confidential)
+  n_tools -->|"Order create with idempotency key"| n_erp
+  %% flow telemetry (telemetry, operational)
+  n_gateway -.-o|"Spend per agent"| n_traces
+  %% flow compare (control, internal)
+  n_evals -.->|"A2 versus A4 replay"| n_api
+  classDef people fill:#8AB4FF22,stroke:#8AB4FF,color:#0f1017
+  classDef control fill:#B9A7FF22,stroke:#B9A7FF,color:#0f1017
+  classDef intelligence fill:#5EE6CF22,stroke:#5EE6CF,color:#0f1017
+  classDef knowledge fill:#FFC07A22,stroke:#FFC07A,color:#0f1017
+  classDef assurance fill:#FF9FCB22,stroke:#FF9FCB,color:#0f1017

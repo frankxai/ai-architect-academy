@@ -1,0 +1,59 @@
+%% Support resolution agent on railway. Generated; edit the catalog, not this file.
+flowchart LR
+  subgraph people["People and channels"]
+    n_customer["Customer<br/><small>Person</small>"]:::people
+    n_channels["Chat and email channels<br/><small>Railway service (container)</small>"]:::people
+    n_commerce["Order and payment systems<br/><small>External system</small>"]:::people
+  end
+  subgraph control["Control and trust"]
+    n_edge["Edge protection<br/><small>Railway public networking + external WAF</small>"]:::control
+    n_conversation_api["Conversation API<br/><small>Railway service (container)</small>"]:::control
+    n_gateway["Model gateway<br/><small>Self-hosted model gateway service</small>"]:::control
+  end
+  subgraph intelligence["Intelligence and work"]
+    n_agent["Resolution agent<br/><small>Railway worker service</small>"]:::intelligence
+    n_model["Reasoning model<br/><small>Model provider API (Claude, Gemini)</small>"]:::intelligence
+    n_tools["Tool server (MCP)<br/><small>Railway service (container)</small>"]:::intelligence
+    n_case_state["Case state<br/><small>Railway Redis</small>"]:::intelligence
+  end
+  subgraph knowledge["Knowledge and records"]
+    n_policy_index["Policy and help index<br/><small>Railway Postgres + pgvector</small>"]:::knowledge
+  end
+  subgraph assurance["Assurance and operations"]
+    n_desk["Human agent desk<br/><small>Review console (app route)</small>"]:::assurance
+    n_traces["Traces, cost, CSAT<br/><small>Railway logs + OpenTelemetry export</small>"]:::assurance
+    n_scenarios["Scenario evals<br/><small>Eval harness in CI</small>"]:::assurance
+  end
+  %% flow contact (data, personal)
+  n_customer -->|"Message"| n_channels
+  %% flow screen (control, operational)
+  n_channels -.->|"Bot and rate checks"| n_edge
+  %% flow open-case (data, personal)
+  n_channels -->|"Verified session and message"| n_conversation_api
+  %% flow delegate (control, personal)
+  n_conversation_api -.->|"Case with authority table"| n_agent
+  %% flow plan (data, personal)
+  n_agent -->|"State and policy context"| n_gateway
+  %% flow infer (data, personal)
+  n_gateway -->|"Model call"| n_model
+  %% flow ground (data, internal)
+  n_agent -->|"Policy lookup"| n_policy_index
+  %% flow act (data, personal)
+  n_agent -->|"Typed tool call"| n_tools
+  %% flow effect (data, personal)
+  n_tools -->|"Read or capped write with idempotency key"| n_commerce
+  %% flow remember (data, personal)
+  n_agent -->|"Step, result, budget"| n_case_state
+  %% flow handoff (control, personal)
+  n_agent -.->|"Transfer with case summary"| n_desk
+  %% flow reply (data, personal)
+  n_conversation_api -->|"Answer, confirmation or transfer notice"| n_channels
+  %% flow telemetry (telemetry, operational)
+  n_gateway -.-o|"Spend and latency per case"| n_traces
+  %% flow simulate (control, internal)
+  n_scenarios -.->|"Simulated contacts per release"| n_conversation_api
+  classDef people fill:#8AB4FF22,stroke:#8AB4FF,color:#0f1017
+  classDef control fill:#B9A7FF22,stroke:#B9A7FF,color:#0f1017
+  classDef intelligence fill:#5EE6CF22,stroke:#5EE6CF,color:#0f1017
+  classDef knowledge fill:#FFC07A22,stroke:#FFC07A,color:#0f1017
+  classDef assurance fill:#FF9FCB22,stroke:#FF9FCB,color:#0f1017

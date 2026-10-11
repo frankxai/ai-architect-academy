@@ -1,0 +1,41 @@
+%% Agentic operations workflow: request journey and team handoffs. Generated.
+sequenceDiagram
+  autonumber
+  actor n_requester as Requester
+  participant n_portal as Request portal
+  participant n_api as Request API
+  participant n_workflow as Durable orchestration
+  participant n_coordinator as Coordinator agent
+  participant n_tasks as Task queue
+  participant n_specialists as Specialist agents
+  participant n_gateway as Model gateway
+  participant n_model as Reasoning models
+  participant n_tools as Tool gateway (MCP)
+  participant n_sandbox as Analysis sandbox
+  participant n_run_ledger as Run ledger
+  participant n_approver as Approver
+  participant n_erp as ERP and supplier systems
+  participant n_evals as Coordination evals
+  participant n_traces as Run traces
+  Note over n_requester: Frame the request
+  n_requester->>n_portal: Need and constraints
+  n_portal->>n_api: Validated intake
+  n_api-->>n_workflow: Start run with budget
+  Note over n_workflow: Plan and assign
+  n_workflow-->>n_coordinator: Plan step
+  n_coordinator-->>n_tasks: Sub-tasks with dedup keys
+  n_tasks-->>n_specialists: Dispatch
+  Note over n_specialists: Specialists work in parallel
+  n_specialists->>n_gateway: Calls within budget slice
+  n_gateway->>n_model: Model call
+  n_specialists->>n_tools: Catalog, policy, quote requests
+  n_specialists->>n_sandbox: Generated cost model
+  n_specialists->>n_run_ledger: Findings with evidence
+  Note over n_workflow: Resolve disagreement, then ask
+  n_workflow-->>n_approver: Approval request with merged findings
+  Note over n_approver: Decide, then act once
+  n_approver-->>n_workflow: Decision resumes run
+  n_tools->>n_erp: Order create with idempotency key
+  Note over n_evals: Prove the team earns its cost
+  n_evals-->>n_api: A2 versus A4 replay
+  n_gateway-->>n_traces: Spend per agent
