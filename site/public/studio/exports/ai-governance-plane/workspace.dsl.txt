@@ -1,0 +1,310 @@
+workspace "AI governance plane" "A shared platform sits in front of all model traffic. Product teams get approved models, keys and budgets through a portal; every call is routed, cached, scanned and attributed; releases pass an evaluation gate; finance sees cost per workload and per accepted result." {
+  !identifiers hierarchical
+  model {
+    teams = person "Product teams" "Request models, keys and budgets; ship workloads."
+    pipelines = softwareSystem "CI/CD pipelines" "Call the gate before promotion." "External"
+    workload = softwareSystem "AI governance plane" "One gateway, one budget ledger, one release gate for every AI workload in the company." {
+      portal = container "Developer portal" "Model catalog, key issuance, budgets, eval results." "experience" "people"
+      identity = container "Workload identity" "Keys and tokens bound to a workload and environment." "identity" "control"
+      gateway = container "Central AI gateway" "Routing, fallback, cache, quotas, attribution tags." "gateway" "control"
+      guardrails = container "Guardrails" "PII redaction, injection and secret detection, content policy." "guardrail" "control"
+      policy = container "Model catalog and routing policy" "Approved models, regions, data classes, fallbacks per workload." "store" "knowledge"
+      models = container "Approved model pool" "Several providers and sizes behind one interface." "model" "intelligence"
+      keys = container "Provider keys and BYOK" "Held by the plane, never by teams." "secrets" "control"
+      lake = container "Telemetry and cost lake" "Every call: workload, model, tokens, latency, cache, cost." "observability" "assurance"
+      chargeback = container "Chargeback dashboards" "Cost per workload, per team and per accepted result." "analytics" "knowledge"
+      gate = container "Release eval gate" "Workload eval suites run in CI; regression blocks deploy." "evals" "assurance"
+      board = container "AI review board" "Approves new models, data classes and high-risk workloads." "review" "assurance"
+    }
+    teams -> workload.portal "Workload registration" "data, internal"
+    workload.portal -> workload.identity "Workload-bound key" "control, identity"
+    workload.portal -> workload.policy "Models, budget, data class" "data, internal"
+    workload.board -> workload.policy "Approval for new model or data class" "control, internal"
+    teams -> workload.gateway "Model calls with workload key" "data, confidential"
+    workload.gateway -> workload.guardrails "Scan request and response" "control, confidential"
+    workload.gateway -> workload.policy "Routing and budget lookup" "control, internal"
+    workload.gateway -> workload.models "Routed call" "data, confidential"
+    workload.models -> workload.keys "Provider credential" "control, secret"
+    workload.gateway -> workload.lake "Call record" "telemetry, operational"
+    workload.lake -> workload.chargeback "Cost per workload" "data, operational"
+    pipelines -> workload.gate "Run workload evals" "control, internal"
+    workload.gate -> workload.portal "Pass or block with diff" "data, internal"
+    gcp = deploymentEnvironment "Google Cloud" {
+      deploymentNode "Google Cloud" {
+        node0 = deploymentNode "Cloud Run" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "Identity Platform" {
+          containerInstance workload.identity
+        }
+        node2 = deploymentNode "Apigee (AI gateway policies)" {
+          containerInstance workload.gateway
+        }
+        node3 = deploymentNode "Model Armor" {
+          containerInstance workload.guardrails
+        }
+        node4 = deploymentNode "Firestore" {
+          containerInstance workload.policy
+        }
+        node5 = deploymentNode "Gemini 3.8 Flash (Agent Platform)" {
+          containerInstance workload.models
+        }
+        node6 = deploymentNode "Secret Manager" {
+          containerInstance workload.keys
+        }
+        node7 = deploymentNode "BigQuery + Looker Studio" {
+          containerInstance workload.lake
+          containerInstance workload.chargeback
+        }
+        node8 = deploymentNode "Evaluation service (Agent Platform)" {
+          containerInstance workload.gate
+        }
+        node9 = deploymentNode "Review console on Cloud Run" {
+          containerInstance workload.board
+        }
+      }
+    }
+    vercel = deploymentEnvironment "Vercel" {
+      deploymentNode "Vercel" {
+        node0 = deploymentNode "Next.js on Vercel" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "Identity provider via Marketplace" {
+          containerInstance workload.identity
+        }
+        node2 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node3 = deploymentNode "Guardrail middleware (AI SDK)" {
+          containerInstance workload.guardrails
+        }
+        node4 = deploymentNode "Edge Config" {
+          containerInstance workload.policy
+        }
+        node5 = deploymentNode "Claude Sonnet 5 via AI Gateway" {
+          containerInstance workload.models
+        }
+        node6 = deploymentNode "Sensitive env vars + OIDC" {
+          containerInstance workload.keys
+        }
+        node7 = deploymentNode "Vercel Observability + drains" {
+          containerInstance workload.lake
+        }
+        node8 = deploymentNode "Neon Postgres via Marketplace" {
+          containerInstance workload.chargeback
+        }
+        node9 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.gate
+        }
+        node10 = deploymentNode "Review console (app route)" {
+          containerInstance workload.board
+        }
+      }
+    }
+    cloudflare = deploymentEnvironment "Cloudflare" {
+      deploymentNode "Cloudflare" {
+        node0 = deploymentNode "Workers static assets" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "Cloudflare Access" {
+          containerInstance workload.identity
+        }
+        node2 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node3 = deploymentNode "AI Gateway guardrails" {
+          containerInstance workload.guardrails
+        }
+        node4 = deploymentNode "Workers KV" {
+          containerInstance workload.policy
+        }
+        node5 = deploymentNode "Workers AI models" {
+          containerInstance workload.models
+        }
+        node6 = deploymentNode "Secrets Store" {
+          containerInstance workload.keys
+        }
+        node7 = deploymentNode "R2" {
+          containerInstance workload.lake
+        }
+        node8 = deploymentNode "Workers Analytics Engine" {
+          containerInstance workload.chargeback
+        }
+        node9 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.gate
+        }
+        node10 = deploymentNode "Review app behind Access" {
+          containerInstance workload.board
+        }
+      }
+    }
+    aws = deploymentEnvironment "AWS" {
+      deploymentNode "AWS" {
+        node0 = deploymentNode "Amplify Hosting" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "Amazon Cognito" {
+          containerInstance workload.identity
+        }
+        node2 = deploymentNode "Bedrock inference profiles + usage plans" {
+          containerInstance workload.gateway
+        }
+        node3 = deploymentNode "Bedrock Guardrails" {
+          containerInstance workload.guardrails
+        }
+        node4 = deploymentNode "Amazon DynamoDB" {
+          containerInstance workload.policy
+        }
+        node5 = deploymentNode "Claude on Amazon Bedrock" {
+          containerInstance workload.models
+        }
+        node6 = deploymentNode "AWS Secrets Manager" {
+          containerInstance workload.keys
+        }
+        node7 = deploymentNode "CloudWatch + X-Ray" {
+          containerInstance workload.lake
+        }
+        node8 = deploymentNode "Cost and Usage Reports + QuickSight" {
+          containerInstance workload.chargeback
+        }
+        node9 = deploymentNode "Bedrock Evaluations" {
+          containerInstance workload.gate
+        }
+        node10 = deploymentNode "Review console (app route)" {
+          containerInstance workload.board
+        }
+      }
+    }
+    azure = deploymentEnvironment "Microsoft Azure" {
+      deploymentNode "Microsoft Azure" {
+        node0 = deploymentNode "Azure Static Web Apps" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "Microsoft Entra ID" {
+          containerInstance workload.identity
+        }
+        node2 = deploymentNode "API Management AI gateway" {
+          containerInstance workload.gateway
+        }
+        node3 = deploymentNode "Azure AI Content Safety" {
+          containerInstance workload.guardrails
+        }
+        node4 = deploymentNode "Azure Cosmos DB" {
+          containerInstance workload.policy
+        }
+        node5 = deploymentNode "Foundry Models (Microsoft Foundry)" {
+          containerInstance workload.models
+        }
+        node6 = deploymentNode "Azure Key Vault" {
+          containerInstance workload.keys
+        }
+        node7 = deploymentNode "Azure Monitor + Application Insights" {
+          containerInstance workload.lake
+        }
+        node8 = deploymentNode "Cost Management exports + Power BI" {
+          containerInstance workload.chargeback
+        }
+        node9 = deploymentNode "Foundry evaluations" {
+          containerInstance workload.gate
+        }
+        node10 = deploymentNode "Review console (app route)" {
+          containerInstance workload.board
+        }
+      }
+    }
+    railway = deploymentEnvironment "Railway" {
+      deploymentNode "Railway" {
+        node0 = deploymentNode "Railway service (container)" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "App-managed OIDC sign-in" {
+          containerInstance workload.identity
+        }
+        node2 = deploymentNode "Self-hosted model gateway service" {
+          containerInstance workload.gateway
+        }
+        node3 = deploymentNode "Guardrail middleware in the API" {
+          containerInstance workload.guardrails
+        }
+        node4 = deploymentNode "Railway Postgres" {
+          containerInstance workload.policy
+          containerInstance workload.chargeback
+        }
+        node5 = deploymentNode "Model provider API (Claude, Gemini)" {
+          containerInstance workload.models
+        }
+        node6 = deploymentNode "Sealed variables" {
+          containerInstance workload.keys
+        }
+        node7 = deploymentNode "Railway logs + OpenTelemetry export" {
+          containerInstance workload.lake
+        }
+        node8 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.gate
+        }
+        node9 = deploymentNode "Review console (app route)" {
+          containerInstance workload.board
+        }
+      }
+    }
+  }
+  views {
+    container workload "containers" {
+      include *
+      autolayout lr
+    }
+    deployment workload gcp "deploy-gcp" {
+      include *
+      autolayout lr
+    }
+    deployment workload vercel "deploy-vercel" {
+      include *
+      autolayout lr
+    }
+    deployment workload cloudflare "deploy-cloudflare" {
+      include *
+      autolayout lr
+    }
+    deployment workload aws "deploy-aws" {
+      include *
+      autolayout lr
+    }
+    deployment workload azure "deploy-azure" {
+      include *
+      autolayout lr
+    }
+    deployment workload railway "deploy-railway" {
+      include *
+      autolayout lr
+    }
+    styles {
+      element "Person" {
+        shape person
+      }
+      element "External" {
+        background #6b6e7a
+        color #ffffff
+      }
+      element "people" {
+        background #8AB4FF
+        color #0f1017
+      }
+      element "control" {
+        background #B9A7FF
+        color #0f1017
+      }
+      element "intelligence" {
+        background #5EE6CF
+        color #0f1017
+      }
+      element "knowledge" {
+        background #FFC07A
+        color #0f1017
+      }
+      element "assurance" {
+        background #FF9FCB
+        color #0f1017
+      }
+    }
+  }
+}

@@ -1,0 +1,448 @@
+{
+  "schema": "ai-architect-reactflow/v1",
+  "pattern": "document-intake-pipeline",
+  "provider": "railway",
+  "nodes": [
+    {
+      "id": "senders",
+      "type": "architecture",
+      "position": {
+        "x": 40,
+        "y": 220
+      },
+      "data": {
+        "label": "Suppliers and claimants",
+        "role": "user",
+        "layer": "people",
+        "detail": "Upload or email documents.",
+        "dataClass": "confidential",
+        "service": "Person",
+        "serviceId": null,
+        "docs": null,
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "intake",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 220
+      },
+      "data": {
+        "label": "Upload portal and inbox",
+        "role": "experience",
+        "layer": "people",
+        "detail": "Accepts PDF, image and email; returns a receipt ID.",
+        "dataClass": "confidential",
+        "service": "Railway service (container)",
+        "serviceId": "railway.service",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "landing",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 220
+      },
+      "data": {
+        "label": "Landing bucket",
+        "role": "objects",
+        "layer": "knowledge",
+        "detail": "Immutable original, content hash as key.",
+        "dataClass": "confidential",
+        "service": "S3-compatible object storage",
+        "serviceId": "railway.objects",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "queue",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 40
+      },
+      "data": {
+        "label": "Intake queue",
+        "role": "queue",
+        "layer": "intelligence",
+        "detail": "One message per document; dead-letter after 3 attempts.",
+        "dataClass": "confidential",
+        "service": "Railway Redis",
+        "serviceId": "railway.redis",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "pipeline",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 220
+      },
+      "data": {
+        "label": "Extraction workflow",
+        "role": "workflow",
+        "layer": "intelligence",
+        "detail": "Durable steps: parse, extract, validate, decide, post.",
+        "dataClass": "confidential",
+        "service": "Railway worker service",
+        "serviceId": "railway.worker",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "parser",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 40
+      },
+      "data": {
+        "label": "Layout and OCR parser",
+        "role": "ingest",
+        "layer": "knowledge",
+        "detail": "Text, tables and coordinates per page.",
+        "dataClass": "confidential",
+        "service": "Railway worker service",
+        "serviceId": "railway.worker",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "gateway",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 40
+      },
+      "data": {
+        "label": "Model gateway",
+        "role": "gateway",
+        "layer": "control",
+        "detail": "Routing and per-document spend cap.",
+        "dataClass": "confidential",
+        "service": "Self-hosted model gateway service",
+        "serviceId": "railway.gateway",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "model",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 40
+      },
+      "data": {
+        "label": "Extraction model",
+        "role": "model",
+        "layer": "intelligence",
+        "detail": "Structured output against the document schema, with page coordinates per field.",
+        "dataClass": "confidential",
+        "service": "Model provider API (Claude, Gemini)",
+        "serviceId": "railway.model-api",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "rules",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 220
+      },
+      "data": {
+        "label": "Validation and master data",
+        "role": "tools",
+        "layer": "intelligence",
+        "detail": "Supplier lookup, VAT check, PO match, arithmetic.",
+        "dataClass": "confidential",
+        "service": "Railway service (container)",
+        "serviceId": "railway.service",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "ledger",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 400
+      },
+      "data": {
+        "label": "Case and field ledger",
+        "role": "store",
+        "layer": "knowledge",
+        "detail": "Every field, its source coordinates, confidence and rule results.",
+        "dataClass": "confidential",
+        "service": "Railway Postgres",
+        "serviceId": "railway.postgres",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "exceptions",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 400
+      },
+      "data": {
+        "label": "Exception console",
+        "role": "review",
+        "layer": "assurance",
+        "detail": "Shows the failing field beside the document region.",
+        "dataClass": "confidential",
+        "service": "Review console (app route)",
+        "serviceId": "portable.review",
+        "docs": "https://github.com/frankxai/ai-architect",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "erp",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 220
+      },
+      "data": {
+        "label": "ERP or claims system",
+        "role": "system",
+        "layer": "people",
+        "detail": "Receives posts with an idempotency key.",
+        "dataClass": "confidential",
+        "service": "External system",
+        "serviceId": null,
+        "docs": null,
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "traces",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 40
+      },
+      "data": {
+        "label": "Pipeline telemetry",
+        "role": "observability",
+        "layer": "assurance",
+        "detail": "Throughput, queue age, cost per document.",
+        "dataClass": "operational",
+        "service": "Railway logs + OpenTelemetry export",
+        "serviceId": "railway.observability",
+        "docs": "https://docs.railway.com/",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "evals",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 400
+      },
+      "data": {
+        "label": "Field-level eval set",
+        "role": "evals",
+        "layer": "assurance",
+        "detail": "Labelled documents per supplier layout.",
+        "dataClass": "confidential",
+        "service": "Eval harness in CI",
+        "serviceId": "portable.evals",
+        "docs": "https://github.com/frankxai/ai-architect/tree/main/evals",
+        "officialIcon": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "submit",
+      "source": "senders",
+      "target": "intake",
+      "label": "Document",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "store-original",
+      "source": "intake",
+      "target": "landing",
+      "label": "Original with content hash",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "enqueue",
+      "source": "landing",
+      "target": "queue",
+      "label": "Object created event",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "start",
+      "source": "queue",
+      "target": "pipeline",
+      "label": "Start run keyed by hash",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "parse",
+      "source": "pipeline",
+      "target": "parser",
+      "label": "Pages",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "extract",
+      "source": "pipeline",
+      "target": "gateway",
+      "label": "Layout text and schema",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "infer",
+      "source": "gateway",
+      "target": "model",
+      "label": "Model call",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "validate",
+      "source": "pipeline",
+      "target": "rules",
+      "label": "Fields to check",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "record",
+      "source": "pipeline",
+      "target": "ledger",
+      "label": "Fields, coordinates, rule results",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "post",
+      "source": "pipeline",
+      "target": "erp",
+      "label": "Post with idempotency key",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "except",
+      "source": "pipeline",
+      "target": "exceptions",
+      "label": "Exception with failing field",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "resolve",
+      "source": "exceptions",
+      "target": "pipeline",
+      "label": "Corrected field resumes run",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "telemetry",
+      "source": "pipeline",
+      "target": "traces",
+      "label": "Step timings and cost",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "telemetry",
+        "dataClass": "operational"
+      }
+    },
+    {
+      "id": "score",
+      "source": "evals",
+      "target": "pipeline",
+      "label": "Replay labelled set per release",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}

@@ -1,0 +1,326 @@
+workspace "Document intake pipeline" "Incoming documents are parsed, extracted to a typed schema, validated against master data and business rules, and posted to the system of record exactly once. Anything that fails validation goes to an exception queue with the failing field and evidence." {
+  !identifiers hierarchical
+  model {
+    senders = person "Suppliers and claimants" "Upload or email documents."
+    erp = softwareSystem "ERP or claims system" "Receives posts with an idempotency key." "External"
+    workload = softwareSystem "Document intake pipeline" "Invoices, claims and forms become validated records. Exceptions reach a person with the reason attached." {
+      intake = container "Upload portal and inbox" "Accepts PDF, image and email; returns a receipt ID." "experience" "people"
+      landing = container "Landing bucket" "Immutable original, content hash as key." "objects" "knowledge"
+      queue = container "Intake queue" "One message per document; dead-letter after 3 attempts." "queue" "intelligence"
+      pipeline = container "Extraction workflow" "Durable steps: parse, extract, validate, decide, post." "workflow" "intelligence"
+      parser = container "Layout and OCR parser" "Text, tables and coordinates per page." "ingest" "knowledge"
+      gateway = container "Model gateway" "Routing and per-document spend cap." "gateway" "control"
+      model = container "Extraction model" "Structured output against the document schema, with page coordinates per field." "model" "intelligence"
+      rules = container "Validation and master data" "Supplier lookup, VAT check, PO match, arithmetic." "tools" "intelligence"
+      ledger = container "Case and field ledger" "Every field, its source coordinates, confidence and rule results." "store" "knowledge"
+      exceptions = container "Exception console" "Shows the failing field beside the document region." "review" "assurance"
+      traces = container "Pipeline telemetry" "Throughput, queue age, cost per document." "observability" "assurance"
+      evals = container "Field-level eval set" "Labelled documents per supplier layout." "evals" "assurance"
+    }
+    senders -> workload.intake "Document" "data, confidential"
+    workload.intake -> workload.landing "Original with content hash" "data, confidential"
+    workload.landing -> workload.queue "Object created event" "control, confidential"
+    workload.queue -> workload.pipeline "Start run keyed by hash" "control, confidential"
+    workload.pipeline -> workload.parser "Pages" "data, confidential"
+    workload.pipeline -> workload.gateway "Layout text and schema" "data, confidential"
+    workload.gateway -> workload.model "Model call" "data, confidential"
+    workload.pipeline -> workload.rules "Fields to check" "data, confidential"
+    workload.pipeline -> workload.ledger "Fields, coordinates, rule results" "data, confidential"
+    workload.pipeline -> erp "Post with idempotency key" "data, confidential"
+    workload.pipeline -> workload.exceptions "Exception with failing field" "control, confidential"
+    workload.exceptions -> workload.pipeline "Corrected field resumes run" "control, confidential"
+    workload.pipeline -> workload.traces "Step timings and cost" "telemetry, operational"
+    workload.evals -> workload.pipeline "Replay labelled set per release" "control, confidential"
+    gcp = deploymentEnvironment "Google Cloud" {
+      deploymentNode "Google Cloud" {
+        node0 = deploymentNode "Cloud Run" {
+          containerInstance workload.intake
+        }
+        node1 = deploymentNode "Cloud Storage" {
+          containerInstance workload.landing
+        }
+        node2 = deploymentNode "Eventarc" {
+          containerInstance workload.queue
+        }
+        node3 = deploymentNode "Workflows" {
+          containerInstance workload.pipeline
+        }
+        node4 = deploymentNode "Document AI" {
+          containerInstance workload.parser
+        }
+        node5 = deploymentNode "Apigee (AI gateway policies)" {
+          containerInstance workload.gateway
+        }
+        node6 = deploymentNode "Gemini 3.8 Flash (Agent Platform)" {
+          containerInstance workload.model
+        }
+        node7 = deploymentNode "MCP server on Cloud Run" {
+          containerInstance workload.rules
+        }
+        node8 = deploymentNode "AlloyDB for PostgreSQL" {
+          containerInstance workload.ledger
+        }
+        node9 = deploymentNode "Review console on Cloud Run" {
+          containerInstance workload.exceptions
+        }
+        node10 = deploymentNode "Cloud Logging, Monitoring, Trace" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Evaluation service (Agent Platform)" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    vercel = deploymentEnvironment "Vercel" {
+      deploymentNode "Vercel" {
+        node0 = deploymentNode "Next.js on Vercel" {
+          containerInstance workload.intake
+        }
+        node1 = deploymentNode "Vercel Blob" {
+          containerInstance workload.landing
+        }
+        node2 = deploymentNode "Vercel Queues" {
+          containerInstance workload.queue
+        }
+        node3 = deploymentNode "Vercel Workflow" {
+          containerInstance workload.pipeline
+        }
+        node4 = deploymentNode "Claude Sonnet 5 via AI Gateway" {
+          containerInstance workload.parser
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node6 = deploymentNode "MCP server on Vercel Functions" {
+          containerInstance workload.rules
+        }
+        node7 = deploymentNode "Neon Postgres via Marketplace" {
+          containerInstance workload.ledger
+        }
+        node8 = deploymentNode "Review console (app route)" {
+          containerInstance workload.exceptions
+        }
+        node9 = deploymentNode "Vercel Observability + drains" {
+          containerInstance workload.traces
+        }
+        node10 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    cloudflare = deploymentEnvironment "Cloudflare" {
+      deploymentNode "Cloudflare" {
+        node0 = deploymentNode "Workers static assets" {
+          containerInstance workload.intake
+        }
+        node1 = deploymentNode "R2" {
+          containerInstance workload.landing
+        }
+        node2 = deploymentNode "Queues" {
+          containerInstance workload.queue
+        }
+        node3 = deploymentNode "Workflows" {
+          containerInstance workload.pipeline
+        }
+        node4 = deploymentNode "Workers AI models" {
+          containerInstance workload.parser
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node6 = deploymentNode "MCP server on Workers" {
+          containerInstance workload.rules
+        }
+        node7 = deploymentNode "D1" {
+          containerInstance workload.ledger
+        }
+        node8 = deploymentNode "Review app behind Access" {
+          containerInstance workload.exceptions
+        }
+        node9 = deploymentNode "Workers Observability + AI Gateway logs" {
+          containerInstance workload.traces
+        }
+        node10 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    aws = deploymentEnvironment "AWS" {
+      deploymentNode "AWS" {
+        node0 = deploymentNode "Amplify Hosting" {
+          containerInstance workload.intake
+        }
+        node1 = deploymentNode "Amazon S3" {
+          containerInstance workload.landing
+        }
+        node2 = deploymentNode "Amazon EventBridge" {
+          containerInstance workload.queue
+        }
+        node3 = deploymentNode "Step Functions" {
+          containerInstance workload.pipeline
+        }
+        node4 = deploymentNode "Amazon Textract" {
+          containerInstance workload.parser
+        }
+        node5 = deploymentNode "Bedrock inference profiles + usage plans" {
+          containerInstance workload.gateway
+        }
+        node6 = deploymentNode "Claude on Amazon Bedrock" {
+          containerInstance workload.model
+        }
+        node7 = deploymentNode "AgentCore Gateway (MCP)" {
+          containerInstance workload.rules
+        }
+        node8 = deploymentNode "Amazon DynamoDB" {
+          containerInstance workload.ledger
+        }
+        node9 = deploymentNode "Review console (app route)" {
+          containerInstance workload.exceptions
+        }
+        node10 = deploymentNode "CloudWatch + X-Ray" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Bedrock Evaluations" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    azure = deploymentEnvironment "Microsoft Azure" {
+      deploymentNode "Microsoft Azure" {
+        node0 = deploymentNode "Azure Static Web Apps" {
+          containerInstance workload.intake
+        }
+        node1 = deploymentNode "Azure Blob Storage" {
+          containerInstance workload.landing
+        }
+        node2 = deploymentNode "Azure Event Grid" {
+          containerInstance workload.queue
+        }
+        node3 = deploymentNode "Durable Functions" {
+          containerInstance workload.pipeline
+        }
+        node4 = deploymentNode "Document Intelligence" {
+          containerInstance workload.parser
+        }
+        node5 = deploymentNode "API Management AI gateway" {
+          containerInstance workload.gateway
+        }
+        node6 = deploymentNode "Foundry Models (Microsoft Foundry)" {
+          containerInstance workload.model
+        }
+        node7 = deploymentNode "MCP server on Container Apps" {
+          containerInstance workload.rules
+        }
+        node8 = deploymentNode "Azure Cosmos DB" {
+          containerInstance workload.ledger
+        }
+        node9 = deploymentNode "Review console (app route)" {
+          containerInstance workload.exceptions
+        }
+        node10 = deploymentNode "Azure Monitor + Application Insights" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Foundry evaluations" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    railway = deploymentEnvironment "Railway" {
+      deploymentNode "Railway" {
+        node0 = deploymentNode "Railway service (container)" {
+          containerInstance workload.intake
+          containerInstance workload.rules
+        }
+        node1 = deploymentNode "S3-compatible object storage" {
+          containerInstance workload.landing
+        }
+        node2 = deploymentNode "Railway Redis" {
+          containerInstance workload.queue
+        }
+        node3 = deploymentNode "Railway worker service" {
+          containerInstance workload.pipeline
+          containerInstance workload.parser
+        }
+        node4 = deploymentNode "Self-hosted model gateway service" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Model provider API (Claude, Gemini)" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "Railway Postgres" {
+          containerInstance workload.ledger
+        }
+        node7 = deploymentNode "Review console (app route)" {
+          containerInstance workload.exceptions
+        }
+        node8 = deploymentNode "Railway logs + OpenTelemetry export" {
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+  }
+  views {
+    container workload "containers" {
+      include *
+      autolayout lr
+    }
+    deployment workload gcp "deploy-gcp" {
+      include *
+      autolayout lr
+    }
+    deployment workload vercel "deploy-vercel" {
+      include *
+      autolayout lr
+    }
+    deployment workload cloudflare "deploy-cloudflare" {
+      include *
+      autolayout lr
+    }
+    deployment workload aws "deploy-aws" {
+      include *
+      autolayout lr
+    }
+    deployment workload azure "deploy-azure" {
+      include *
+      autolayout lr
+    }
+    deployment workload railway "deploy-railway" {
+      include *
+      autolayout lr
+    }
+    styles {
+      element "Person" {
+        shape person
+      }
+      element "External" {
+        background #6b6e7a
+        color #ffffff
+      }
+      element "people" {
+        background #8AB4FF
+        color #0f1017
+      }
+      element "control" {
+        background #B9A7FF
+        color #0f1017
+      }
+      element "intelligence" {
+        background #5EE6CF
+        color #0f1017
+      }
+      element "knowledge" {
+        background #FFC07A
+        color #0f1017
+      }
+      element "assurance" {
+        background #FF9FCB
+        color #0f1017
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+%% Grounded research desk: request journey and team handoffs. Generated.
+sequenceDiagram
+  autonumber
+  actor n_analyst as Analyst
+  participant n_workspace as Research workspace
+  participant n_sso as Workforce sign-in
+  participant n_answer_api as Answer API
+  participant n_index as Hybrid retrieval index
+  participant n_gateway as Model gateway
+  participant n_model as Generation model
+  participant n_ledger as Answer ledger
+  participant n_corpus as Source corpus
+  participant n_ingest as Ingestion pipeline
+  participant n_evals as Eval harness
+  participant n_traces as Traces and cost
+  Note over n_analyst: Ask under your own identity
+  n_analyst->>n_workspace: Question
+  n_workspace-->>n_sso: SSO and group claims
+  n_workspace->>n_answer_api: Question with scope token
+  Note over n_answer_api: Retrieve only what they may read
+  n_answer_api->>n_index: Permission-filtered query
+  Note over n_answer_api: Write from passages, not memory
+  n_answer_api->>n_gateway: Prompt with top passages
+  n_gateway->>n_model: Model call
+  Note over n_answer_api: Answer, or refuse plainly
+  n_answer_api->>n_workspace: Cited answer or refusal
+  n_answer_api->>n_ledger: Answer, citations, trace ID
+  Note over n_corpus: Keep the corpus current
+  n_corpus->>n_ingest: New or changed document
+  n_ingest->>n_index: Chunks, embeddings, permission tags
+  Note over n_evals: Prove it on every release
+  n_evals-->>n_answer_api: Replay frozen questions per release
+  n_gateway-->>n_traces: Tokens, latency, cost

@@ -1,0 +1,59 @@
+%% Enterprise MCP tool hub on aws. Generated; edit the catalog, not this file.
+flowchart LR
+  subgraph people["People and channels"]
+    n_clients["Agent clients<br/><small>Person</small>"]:::people
+    n_catalog_ui["Tool catalog and consent<br/><small>Amplify Hosting</small>"]:::people
+    n_systems["Systems of record<br/><small>External system</small>"]:::people
+  end
+  subgraph control["Control and trust"]
+    n_authz["Authorization server<br/><small>AgentCore Identity</small>"]:::control
+    n_edge["Edge protection<br/><small>CloudFront + AWS WAF</small>"]:::control
+    n_mcp_gateway["MCP policy gateway<br/><small>Bedrock inference profiles + usage plans</small>"]:::control
+    n_guardrail["Content guardrail<br/><small>Bedrock Guardrails</small>"]:::control
+    n_broker["Credential broker<br/><small>AWS Secrets Manager</small>"]:::control
+  end
+  subgraph intelligence["Intelligence and work"]
+    n_servers["Domain MCP servers<br/><small>AgentCore Gateway (MCP)</small>"]:::intelligence
+  end
+  subgraph knowledge["Knowledge and records"]
+    n_registry["Tool registry<br/><small>Amazon DynamoDB</small>"]:::knowledge
+    n_audit["Audit ledger<br/><small>CloudWatch + X-Ray</small>"]:::knowledge
+  end
+  subgraph assurance["Assurance and operations"]
+    n_owners["Tool owners<br/><small>Review console (app route)</small>"]:::assurance
+    n_traces["Traces and alerts<br/><small>CloudWatch + X-Ray</small>"]:::assurance
+    n_contracts["Tool contract tests<br/><small>Bedrock Evaluations</small>"]:::assurance
+  end
+  %% flow discover (data, internal)
+  n_clients -->|"List tools"| n_mcp_gateway
+  %% flow authorize (control, identity)
+  n_clients -.->|"OAuth consent, audience-bound token"| n_authz
+  %% flow consent (control, identity)
+  n_catalog_ui -.->|"Grant or revoke scopes"| n_authz
+  %% flow call (data, confidential)
+  n_clients -->|"Tool call with token"| n_edge
+  %% flow admit (data, confidential)
+  n_edge -->|"Rate-checked call"| n_mcp_gateway
+  %% flow inspect (control, confidential)
+  n_mcp_gateway -.->|"Input and output scan"| n_guardrail
+  %% flow policy (control, internal)
+  n_mcp_gateway -.->|"Scope and version lookup"| n_registry
+  %% flow forward (data, confidential)
+  n_mcp_gateway -->|"Authorized call"| n_servers
+  %% flow exchange (control, secret)
+  n_servers -.->|"Token exchange"| n_broker
+  %% flow execute (data, confidential)
+  n_servers -->|"Backend call as the user"| n_systems
+  %% flow log (data, confidential)
+  n_mcp_gateway -->|"Call record"| n_audit
+  %% flow approve (control, internal)
+  n_owners -.->|"Approve tool or scope change"| n_registry
+  %% flow telemetry (telemetry, operational)
+  n_mcp_gateway -.-o|"Latency and errors"| n_traces
+  %% flow verify (control, internal)
+  n_contracts -.->|"Contract tests per version"| n_servers
+  classDef people fill:#8AB4FF22,stroke:#8AB4FF,color:#0f1017
+  classDef control fill:#B9A7FF22,stroke:#B9A7FF,color:#0f1017
+  classDef intelligence fill:#5EE6CF22,stroke:#5EE6CF,color:#0f1017
+  classDef knowledge fill:#FFC07A22,stroke:#FFC07A,color:#0f1017
+  classDef assurance fill:#FF9FCB22,stroke:#FF9FCB,color:#0f1017

@@ -1,0 +1,317 @@
+workspace "In-product copilot" "A SaaS product embeds an assistant that answers from the tenant's own data and proposes typed, reversible actions the user confirms. Every call carries the tenant ID through retrieval, the model gateway and the usage meter, so isolation and billing are provable." {
+  !identifiers hierarchical
+  model {
+    tenant_user = person "Tenant user" "Works in the product; opens the copilot in context."
+    workload = softwareSystem "In-product copilot" "Help inside the product, scoped to one tenant, metered to the cent." {
+      product = container "Product UI with copilot panel" "Streams answers; shows proposed actions with a diff." "experience" "people"
+      edge = container "Edge protection" "Per-tenant rate limits and abuse controls." "edge" "control"
+      identity = container "Tenant identity" "Session with tenant ID and role claims." "identity" "control"
+      copilot_api = container "Copilot API" "Resolves tenant scope; refuses calls without it." "api" "control"
+      gateway = container "Model gateway" "Per-tenant budget, cache key includes tenant ID." "gateway" "control"
+      model = container "Assistant model" "Fast model for answers; larger model for complex actions." "model" "intelligence"
+      tenant_index = container "Tenant-partitioned index" "Namespace per tenant; no cross-tenant query path." "retrieval" "knowledge"
+      actions = container "Product actions" "Typed, reversible operations; writes need user confirmation." "tools" "intelligence"
+      app_db = container "Product database" "Tenant data with row-level security." "store" "knowledge"
+      meter = container "Usage meter" "Tokens and actions per tenant, exported to billing." "analytics" "knowledge"
+      traces = container "Traces" "Per-tenant latency, errors, refusals." "observability" "assurance"
+      evals = container "Release evals" "Task set per feature plus cross-tenant probes." "evals" "assurance"
+    }
+    tenant_user -> workload.product "Question in context" "data, tenant"
+    workload.product -> workload.edge "Tenant rate limits" "control, operational"
+    workload.product -> workload.copilot_api "Question and screen context" "data, tenant"
+    workload.copilot_api -> workload.identity "Resolve tenant from session" "control, identity"
+    workload.copilot_api -> workload.tenant_index "Tenant namespace query" "data, tenant"
+    workload.copilot_api -> workload.gateway "Prompt tagged with tenant" "data, tenant"
+    workload.gateway -> workload.model "Model call" "data, tenant"
+    workload.copilot_api -> workload.actions "Proposed action (dry run)" "data, tenant"
+    workload.actions -> workload.app_db "Confirmed write with undo token" "data, tenant"
+    workload.gateway -> workload.meter "Tokens per tenant" "telemetry, operational"
+    workload.copilot_api -> workload.traces "Latency and refusals" "telemetry, operational"
+    workload.evals -> workload.copilot_api "Cross-tenant probes per release" "control, internal"
+    gcp = deploymentEnvironment "Google Cloud" {
+      deploymentNode "Google Cloud" {
+        node0 = deploymentNode "Cloud Run" {
+          containerInstance workload.product
+          containerInstance workload.copilot_api
+        }
+        node1 = deploymentNode "Cloud Armor + Load Balancing" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Identity Platform" {
+          containerInstance workload.identity
+        }
+        node3 = deploymentNode "Apigee (AI gateway policies)" {
+          containerInstance workload.gateway
+        }
+        node4 = deploymentNode "Gemini 3.8 Flash (Agent Platform)" {
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "AlloyDB for PostgreSQL" {
+          containerInstance workload.tenant_index
+          containerInstance workload.app_db
+        }
+        node6 = deploymentNode "MCP server on Cloud Run" {
+          containerInstance workload.actions
+        }
+        node7 = deploymentNode "BigQuery + Looker Studio" {
+          containerInstance workload.meter
+        }
+        node8 = deploymentNode "Cloud Logging, Monitoring, Trace" {
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Evaluation service (Agent Platform)" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    vercel = deploymentEnvironment "Vercel" {
+      deploymentNode "Vercel" {
+        node0 = deploymentNode "Next.js on Vercel" {
+          containerInstance workload.product
+        }
+        node1 = deploymentNode "Vercel Firewall + BotID" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Identity provider via Marketplace" {
+          containerInstance workload.identity
+        }
+        node3 = deploymentNode "Vercel Functions (Fluid compute)" {
+          containerInstance workload.copilot_api
+        }
+        node4 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Claude Sonnet 5 via AI Gateway" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "Neon Postgres + pgvector" {
+          containerInstance workload.tenant_index
+        }
+        node7 = deploymentNode "MCP server on Vercel Functions" {
+          containerInstance workload.actions
+        }
+        node8 = deploymentNode "Neon Postgres via Marketplace" {
+          containerInstance workload.app_db
+          containerInstance workload.meter
+        }
+        node9 = deploymentNode "Vercel Observability + drains" {
+          containerInstance workload.traces
+        }
+        node10 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    cloudflare = deploymentEnvironment "Cloudflare" {
+      deploymentNode "Cloudflare" {
+        node0 = deploymentNode "Workers static assets" {
+          containerInstance workload.product
+        }
+        node1 = deploymentNode "WAF, Bot Management, Turnstile" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Cloudflare Access" {
+          containerInstance workload.identity
+        }
+        node3 = deploymentNode "Workers" {
+          containerInstance workload.copilot_api
+        }
+        node4 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Workers AI models" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "Vectorize" {
+          containerInstance workload.tenant_index
+        }
+        node7 = deploymentNode "MCP server on Workers" {
+          containerInstance workload.actions
+        }
+        node8 = deploymentNode "D1" {
+          containerInstance workload.app_db
+        }
+        node9 = deploymentNode "Workers Analytics Engine" {
+          containerInstance workload.meter
+        }
+        node10 = deploymentNode "Workers Observability + AI Gateway logs" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    aws = deploymentEnvironment "AWS" {
+      deploymentNode "AWS" {
+        node0 = deploymentNode "Amplify Hosting" {
+          containerInstance workload.product
+        }
+        node1 = deploymentNode "CloudFront + AWS WAF" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Amazon Cognito" {
+          containerInstance workload.identity
+        }
+        node3 = deploymentNode "API Gateway + Lambda" {
+          containerInstance workload.copilot_api
+        }
+        node4 = deploymentNode "Bedrock inference profiles + usage plans" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Claude on Amazon Bedrock" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "Aurora PostgreSQL" {
+          containerInstance workload.tenant_index
+          containerInstance workload.app_db
+        }
+        node7 = deploymentNode "AgentCore Gateway (MCP)" {
+          containerInstance workload.actions
+        }
+        node8 = deploymentNode "Cost and Usage Reports + QuickSight" {
+          containerInstance workload.meter
+        }
+        node9 = deploymentNode "CloudWatch + X-Ray" {
+          containerInstance workload.traces
+        }
+        node10 = deploymentNode "Bedrock Evaluations" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    azure = deploymentEnvironment "Microsoft Azure" {
+      deploymentNode "Microsoft Azure" {
+        node0 = deploymentNode "Azure Static Web Apps" {
+          containerInstance workload.product
+        }
+        node1 = deploymentNode "Azure Front Door + WAF" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Microsoft Entra ID" {
+          containerInstance workload.identity
+        }
+        node3 = deploymentNode "Azure Container Apps" {
+          containerInstance workload.copilot_api
+        }
+        node4 = deploymentNode "API Management AI gateway" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Foundry Models (Microsoft Foundry)" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "Azure AI Search" {
+          containerInstance workload.tenant_index
+        }
+        node7 = deploymentNode "MCP server on Container Apps" {
+          containerInstance workload.actions
+        }
+        node8 = deploymentNode "Azure Cosmos DB" {
+          containerInstance workload.app_db
+        }
+        node9 = deploymentNode "Cost Management exports + Power BI" {
+          containerInstance workload.meter
+        }
+        node10 = deploymentNode "Azure Monitor + Application Insights" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Foundry evaluations" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    railway = deploymentEnvironment "Railway" {
+      deploymentNode "Railway" {
+        node0 = deploymentNode "Railway service (container)" {
+          containerInstance workload.product
+          containerInstance workload.copilot_api
+          containerInstance workload.actions
+        }
+        node1 = deploymentNode "Railway public networking + external WAF" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "App-managed OIDC sign-in" {
+          containerInstance workload.identity
+        }
+        node3 = deploymentNode "Self-hosted model gateway service" {
+          containerInstance workload.gateway
+        }
+        node4 = deploymentNode "Model provider API (Claude, Gemini)" {
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "Railway Postgres + pgvector" {
+          containerInstance workload.tenant_index
+        }
+        node6 = deploymentNode "Railway Postgres" {
+          containerInstance workload.app_db
+          containerInstance workload.meter
+        }
+        node7 = deploymentNode "Railway logs + OpenTelemetry export" {
+          containerInstance workload.traces
+        }
+        node8 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+  }
+  views {
+    container workload "containers" {
+      include *
+      autolayout lr
+    }
+    deployment workload gcp "deploy-gcp" {
+      include *
+      autolayout lr
+    }
+    deployment workload vercel "deploy-vercel" {
+      include *
+      autolayout lr
+    }
+    deployment workload cloudflare "deploy-cloudflare" {
+      include *
+      autolayout lr
+    }
+    deployment workload aws "deploy-aws" {
+      include *
+      autolayout lr
+    }
+    deployment workload azure "deploy-azure" {
+      include *
+      autolayout lr
+    }
+    deployment workload railway "deploy-railway" {
+      include *
+      autolayout lr
+    }
+    styles {
+      element "Person" {
+        shape person
+      }
+      element "External" {
+        background #6b6e7a
+        color #ffffff
+      }
+      element "people" {
+        background #8AB4FF
+        color #0f1017
+      }
+      element "control" {
+        background #B9A7FF
+        color #0f1017
+      }
+      element "intelligence" {
+        background #5EE6CF
+        color #0f1017
+      }
+      element "knowledge" {
+        background #FFC07A
+        color #0f1017
+      }
+      element "assurance" {
+        background #FF9FCB
+        color #0f1017
+      }
+    }
+  }
+}

@@ -1,0 +1,356 @@
+workspace "Agentic operations workflow" "A durable workflow coordinates specialist agents through a multi-day business process such as a purchase request: gather quotes, check policy, analyse cost, request approval, then create the order exactly once. Coordination is used only where it measurably beats a single agent." {
+  !identifiers hierarchical
+  model {
+    requester = person "Requester" "Submits a need and answers clarifying questions."
+    erp = softwareSystem "ERP and supplier systems" "Receives the order with an idempotency key." "External"
+    workload = softwareSystem "Agentic operations workflow" "Several specialists, one budget, one approval gate, one record of what happened." {
+      portal = container "Request portal" "Intake form, live status, decision record." "experience" "people"
+      api = container "Request API" "Validates intake, opens a run with a budget." "api" "control"
+      workflow = container "Durable orchestration" "Steps survive restarts; waits for days without compute." "workflow" "intelligence"
+      coordinator = container "Coordinator agent" "Plans, assigns sub-tasks, merges findings, resolves disagreement." "orchestrator" "intelligence"
+      specialists = container "Specialist agents" "Sourcing, policy and cost analysis, each with its own tools and budget slice." "agent" "intelligence"
+      gateway = container "Model gateway" "Shared budget across all agents in a run." "gateway" "control"
+      model = container "Reasoning models" "Larger model for planning, smaller for routine checks." "model" "intelligence"
+      tools = container "Tool gateway (MCP)" "Supplier catalog, policy rules, quote email, order create (approval-gated)." "tools" "intelligence"
+      sandbox = container "Analysis sandbox" "Runs generated cost models with no network access." "sandbox" "intelligence"
+      tasks = container "Task queue" "Fan-out with deduplication keys." "queue" "intelligence"
+      run_ledger = container "Run ledger" "Plan, assignments, findings, spend, decisions." "store" "knowledge"
+      approver = container "Approver" "Approves, rejects or asks for changes in one view." "review" "assurance"
+      traces = container "Run traces" "Per-agent spend, steps and outcome." "observability" "assurance"
+      evals = container "Coordination evals" "Same cases run as A2 workflow and A4 team; uplift reported." "evals" "assurance"
+    }
+    requester -> workload.portal "Need and constraints" "data, internal"
+    workload.portal -> workload.api "Validated intake" "data, internal"
+    workload.api -> workload.workflow "Start run with budget" "control, confidential"
+    workload.workflow -> workload.coordinator "Plan step" "control, confidential"
+    workload.coordinator -> workload.tasks "Sub-tasks with dedup keys" "control, confidential"
+    workload.tasks -> workload.specialists "Dispatch" "control, confidential"
+    workload.specialists -> workload.gateway "Calls within budget slice" "data, confidential"
+    workload.gateway -> workload.model "Model call" "data, confidential"
+    workload.specialists -> workload.tools "Catalog, policy, quote requests" "data, confidential"
+    workload.specialists -> workload.sandbox "Generated cost model" "data, confidential"
+    workload.specialists -> workload.run_ledger "Findings with evidence" "data, confidential"
+    workload.workflow -> workload.approver "Approval request with merged findings" "control, confidential"
+    workload.approver -> workload.workflow "Decision resumes run" "control, confidential"
+    workload.tools -> erp "Order create with idempotency key" "data, confidential"
+    workload.gateway -> workload.traces "Spend per agent" "telemetry, operational"
+    workload.evals -> workload.api "A2 versus A4 replay" "control, internal"
+    gcp = deploymentEnvironment "Google Cloud" {
+      deploymentNode "Google Cloud" {
+        node0 = deploymentNode "Cloud Run" {
+          containerInstance workload.portal
+          containerInstance workload.api
+        }
+        node1 = deploymentNode "Workflows" {
+          containerInstance workload.workflow
+        }
+        node2 = deploymentNode "Agent Runtime (Agent Platform)" {
+          containerInstance workload.coordinator
+        }
+        node3 = deploymentNode "ADK agents on Agent Runtime" {
+          containerInstance workload.specialists
+        }
+        node4 = deploymentNode "Apigee (AI gateway policies)" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Gemini 3.8 Flash (Agent Platform)" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "MCP server on Cloud Run" {
+          containerInstance workload.tools
+        }
+        node7 = deploymentNode "Cloud Run jobs (sandboxed)" {
+          containerInstance workload.sandbox
+        }
+        node8 = deploymentNode "Cloud Tasks" {
+          containerInstance workload.tasks
+        }
+        node9 = deploymentNode "AlloyDB for PostgreSQL" {
+          containerInstance workload.run_ledger
+        }
+        node10 = deploymentNode "Review console on Cloud Run" {
+          containerInstance workload.approver
+        }
+        node11 = deploymentNode "Cloud Logging, Monitoring, Trace" {
+          containerInstance workload.traces
+        }
+        node12 = deploymentNode "Evaluation service (Agent Platform)" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    vercel = deploymentEnvironment "Vercel" {
+      deploymentNode "Vercel" {
+        node0 = deploymentNode "Next.js on Vercel" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "Vercel Functions (Fluid compute)" {
+          containerInstance workload.api
+        }
+        node2 = deploymentNode "Vercel Workflow" {
+          containerInstance workload.workflow
+        }
+        node3 = deploymentNode "AI SDK 7 agent loop (Fluid compute)" {
+          containerInstance workload.coordinator
+          containerInstance workload.specialists
+        }
+        node4 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Claude Sonnet 5 via AI Gateway" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "MCP server on Vercel Functions" {
+          containerInstance workload.tools
+        }
+        node7 = deploymentNode "Vercel Sandbox" {
+          containerInstance workload.sandbox
+        }
+        node8 = deploymentNode "Vercel Queues" {
+          containerInstance workload.tasks
+        }
+        node9 = deploymentNode "Neon Postgres via Marketplace" {
+          containerInstance workload.run_ledger
+        }
+        node10 = deploymentNode "Review console (app route)" {
+          containerInstance workload.approver
+        }
+        node11 = deploymentNode "Vercel Observability + drains" {
+          containerInstance workload.traces
+        }
+        node12 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    cloudflare = deploymentEnvironment "Cloudflare" {
+      deploymentNode "Cloudflare" {
+        node0 = deploymentNode "Workers static assets" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "Workers" {
+          containerInstance workload.api
+        }
+        node2 = deploymentNode "Workflows" {
+          containerInstance workload.workflow
+        }
+        node3 = deploymentNode "Agents SDK (Durable Objects)" {
+          containerInstance workload.coordinator
+          containerInstance workload.specialists
+        }
+        node4 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Workers AI models" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "MCP server on Workers" {
+          containerInstance workload.tools
+        }
+        node7 = deploymentNode "Sandbox SDK (Containers)" {
+          containerInstance workload.sandbox
+        }
+        node8 = deploymentNode "Queues" {
+          containerInstance workload.tasks
+        }
+        node9 = deploymentNode "D1" {
+          containerInstance workload.run_ledger
+        }
+        node10 = deploymentNode "Review app behind Access" {
+          containerInstance workload.approver
+        }
+        node11 = deploymentNode "Workers Observability + AI Gateway logs" {
+          containerInstance workload.traces
+        }
+        node12 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    aws = deploymentEnvironment "AWS" {
+      deploymentNode "AWS" {
+        node0 = deploymentNode "Amplify Hosting" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "API Gateway + Lambda" {
+          containerInstance workload.api
+        }
+        node2 = deploymentNode "Step Functions" {
+          containerInstance workload.workflow
+        }
+        node3 = deploymentNode "AgentCore Runtime" {
+          containerInstance workload.coordinator
+          containerInstance workload.specialists
+        }
+        node4 = deploymentNode "Bedrock inference profiles + usage plans" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Claude on Amazon Bedrock" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "AgentCore Gateway (MCP)" {
+          containerInstance workload.tools
+        }
+        node7 = deploymentNode "AgentCore Code Interpreter" {
+          containerInstance workload.sandbox
+        }
+        node8 = deploymentNode "Amazon SQS" {
+          containerInstance workload.tasks
+        }
+        node9 = deploymentNode "Amazon DynamoDB" {
+          containerInstance workload.run_ledger
+        }
+        node10 = deploymentNode "Review console (app route)" {
+          containerInstance workload.approver
+        }
+        node11 = deploymentNode "CloudWatch + X-Ray" {
+          containerInstance workload.traces
+        }
+        node12 = deploymentNode "Bedrock Evaluations" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    azure = deploymentEnvironment "Microsoft Azure" {
+      deploymentNode "Microsoft Azure" {
+        node0 = deploymentNode "Azure Static Web Apps" {
+          containerInstance workload.portal
+        }
+        node1 = deploymentNode "Azure Container Apps" {
+          containerInstance workload.api
+        }
+        node2 = deploymentNode "Durable Functions" {
+          containerInstance workload.workflow
+        }
+        node3 = deploymentNode "Foundry Agent Service" {
+          containerInstance workload.coordinator
+          containerInstance workload.specialists
+        }
+        node4 = deploymentNode "API Management AI gateway" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Foundry Models (Microsoft Foundry)" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "MCP server on Container Apps" {
+          containerInstance workload.tools
+        }
+        node7 = deploymentNode "Container Apps dynamic sessions" {
+          containerInstance workload.sandbox
+        }
+        node8 = deploymentNode "Azure Service Bus" {
+          containerInstance workload.tasks
+        }
+        node9 = deploymentNode "Azure Cosmos DB" {
+          containerInstance workload.run_ledger
+        }
+        node10 = deploymentNode "Review console (app route)" {
+          containerInstance workload.approver
+        }
+        node11 = deploymentNode "Azure Monitor + Application Insights" {
+          containerInstance workload.traces
+        }
+        node12 = deploymentNode "Foundry evaluations" {
+          containerInstance workload.evals
+        }
+      }
+    }
+    railway = deploymentEnvironment "Railway" {
+      deploymentNode "Railway" {
+        node0 = deploymentNode "Railway service (container)" {
+          containerInstance workload.portal
+          containerInstance workload.api
+          containerInstance workload.tools
+        }
+        node1 = deploymentNode "Railway worker service" {
+          containerInstance workload.workflow
+          containerInstance workload.coordinator
+          containerInstance workload.specialists
+        }
+        node2 = deploymentNode "Self-hosted model gateway service" {
+          containerInstance workload.gateway
+        }
+        node3 = deploymentNode "Model provider API (Claude, Gemini)" {
+          containerInstance workload.model
+        }
+        node4 = deploymentNode "Isolated sandbox service" {
+          containerInstance workload.sandbox
+        }
+        node5 = deploymentNode "Railway Redis" {
+          containerInstance workload.tasks
+        }
+        node6 = deploymentNode "Railway Postgres" {
+          containerInstance workload.run_ledger
+        }
+        node7 = deploymentNode "Review console (app route)" {
+          containerInstance workload.approver
+        }
+        node8 = deploymentNode "Railway logs + OpenTelemetry export" {
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.evals
+        }
+      }
+    }
+  }
+  views {
+    container workload "containers" {
+      include *
+      autolayout lr
+    }
+    deployment workload gcp "deploy-gcp" {
+      include *
+      autolayout lr
+    }
+    deployment workload vercel "deploy-vercel" {
+      include *
+      autolayout lr
+    }
+    deployment workload cloudflare "deploy-cloudflare" {
+      include *
+      autolayout lr
+    }
+    deployment workload aws "deploy-aws" {
+      include *
+      autolayout lr
+    }
+    deployment workload azure "deploy-azure" {
+      include *
+      autolayout lr
+    }
+    deployment workload railway "deploy-railway" {
+      include *
+      autolayout lr
+    }
+    styles {
+      element "Person" {
+        shape person
+      }
+      element "External" {
+        background #6b6e7a
+        color #ffffff
+      }
+      element "people" {
+        background #8AB4FF
+        color #0f1017
+      }
+      element "control" {
+        background #B9A7FF
+        color #0f1017
+      }
+      element "intelligence" {
+        background #5EE6CF
+        color #0f1017
+      }
+      element "knowledge" {
+        background #FFC07A
+        color #0f1017
+      }
+      element "assurance" {
+        background #FF9FCB
+        color #0f1017
+      }
+    }
+  }
+}

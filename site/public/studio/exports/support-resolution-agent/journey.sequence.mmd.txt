@@ -1,0 +1,37 @@
+%% Support resolution agent: request journey and team handoffs. Generated.
+sequenceDiagram
+  autonumber
+  actor n_customer as Customer
+  participant n_channels as Chat and email channels
+  participant n_edge as Edge protection
+  participant n_conversation_api as Conversation API
+  participant n_agent as Resolution agent
+  participant n_policy_index as Policy and help index
+  participant n_gateway as Model gateway
+  participant n_model as Reasoning model
+  participant n_tools as Tool server (MCP)
+  participant n_commerce as Order and payment systems
+  participant n_case_state as Case state
+  participant n_desk as Human agent desk
+  participant n_scenarios as Scenario evals
+  participant n_traces as Traces, cost, CSAT
+  Note over n_customer: Contact and verify
+  n_customer->>n_channels: Message
+  n_channels-->>n_edge: Bot and rate checks
+  n_channels->>n_conversation_api: Verified session and message
+  Note over n_conversation_api: Plan inside an authority table
+  n_conversation_api-->>n_agent: Case with authority table
+  n_agent->>n_policy_index: Policy lookup
+  n_agent->>n_gateway: State and policy context
+  n_gateway->>n_model: Model call
+  Note over n_agent: Act with typed tools
+  n_agent->>n_tools: Typed tool call
+  n_tools->>n_commerce: Read or capped write with idempotency key
+  n_agent->>n_case_state: Step, result, budget
+  Note over n_agent: Hand off with the case written
+  n_agent-->>n_desk: Transfer with case summary
+  Note over n_conversation_api: Confirm and close
+  n_conversation_api->>n_channels: Answer, confirmation or transfer notice
+  Note over n_scenarios: Rehearse before every release
+  n_scenarios-->>n_conversation_api: Simulated contacts per release
+  n_gateway-->>n_traces: Spend and latency per case

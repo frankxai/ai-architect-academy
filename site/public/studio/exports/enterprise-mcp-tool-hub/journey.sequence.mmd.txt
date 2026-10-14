@@ -1,0 +1,37 @@
+%% Enterprise MCP tool hub: request journey and team handoffs. Generated.
+sequenceDiagram
+  autonumber
+  actor n_clients as Agent clients
+  participant n_mcp_gateway as MCP policy gateway
+  participant n_authz as Authorization server
+  participant n_catalog_ui as Tool catalog and consent
+  participant n_edge as Edge protection
+  participant n_registry as Tool registry
+  participant n_guardrail as Content guardrail
+  participant n_servers as Domain MCP servers
+  participant n_broker as Credential broker
+  participant n_systems as Systems of record
+  participant n_audit as Audit ledger
+  participant n_owners as Tool owners
+  participant n_traces as Traces and alerts
+  participant n_contracts as Tool contract tests
+  Note over n_clients: Discover and consent
+  n_clients->>n_mcp_gateway: List tools
+  n_clients-->>n_authz: OAuth consent, audience-bound token
+  n_catalog_ui-->>n_authz: Grant or revoke scopes
+  Note over n_clients: Admit the call
+  n_clients->>n_edge: Tool call with token
+  n_edge->>n_mcp_gateway: Rate-checked call
+  n_mcp_gateway-->>n_registry: Scope and version lookup
+  Note over n_mcp_gateway: Scan what goes in and out
+  n_mcp_gateway-->>n_guardrail: Input and output scan
+  Note over n_mcp_gateway: Act as the person, not as a robot
+  n_mcp_gateway->>n_servers: Authorized call
+  n_servers-->>n_broker: Token exchange
+  n_servers->>n_systems: Backend call as the user
+  Note over n_mcp_gateway: Record and govern
+  n_mcp_gateway->>n_audit: Call record
+  n_owners-->>n_registry: Approve tool or scope change
+  n_mcp_gateway-->>n_traces: Latency and errors
+  Note over n_contracts: Test every tool version
+  n_contracts-->>n_servers: Contract tests per version

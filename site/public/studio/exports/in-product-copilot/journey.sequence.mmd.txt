@@ -1,0 +1,33 @@
+%% In-product copilot: request journey and team handoffs. Generated.
+sequenceDiagram
+  autonumber
+  actor n_tenant_user as Tenant user
+  participant n_product as Product UI with copilot panel
+  participant n_edge as Edge protection
+  participant n_copilot_api as Copilot API
+  participant n_identity as Tenant identity
+  participant n_tenant_index as Tenant-partitioned index
+  participant n_gateway as Model gateway
+  participant n_model as Assistant model
+  participant n_meter as Usage meter
+  participant n_actions as Product actions
+  participant n_app_db as Product database
+  participant n_evals as Release evals
+  participant n_traces as Traces
+  Note over n_tenant_user: Ask in context
+  n_tenant_user->>n_product: Question in context
+  n_product-->>n_edge: Tenant rate limits
+  n_product->>n_copilot_api: Question and screen context
+  Note over n_copilot_api: Resolve the tenant
+  n_copilot_api-->>n_identity: Resolve tenant from session
+  n_copilot_api->>n_tenant_index: Tenant namespace query
+  Note over n_copilot_api: Answer with a metered call
+  n_copilot_api->>n_gateway: Prompt tagged with tenant
+  n_gateway->>n_model: Model call
+  n_gateway-->>n_meter: Tokens per tenant
+  Note over n_copilot_api: Propose, confirm, apply
+  n_copilot_api->>n_actions: Proposed action (dry run)
+  n_actions->>n_app_db: Confirmed write with undo token
+  Note over n_evals: Probe isolation every release
+  n_evals-->>n_copilot_api: Cross-tenant probes per release
+  n_copilot_api-->>n_traces: Latency and refusals

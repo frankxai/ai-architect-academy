@@ -1,0 +1,59 @@
+%% Document intake pipeline on gcp. Generated; edit the catalog, not this file.
+flowchart LR
+  subgraph people["People and channels"]
+    n_senders["Suppliers and claimants<br/><small>Person</small>"]:::people
+    n_intake["Upload portal and inbox<br/><small>Cloud Run</small>"]:::people
+    n_erp["ERP or claims system<br/><small>External system</small>"]:::people
+  end
+  subgraph control["Control and trust"]
+    n_gateway["Model gateway<br/><small>Apigee (AI gateway policies)</small>"]:::control
+  end
+  subgraph intelligence["Intelligence and work"]
+    n_queue["Intake queue<br/><small>Eventarc</small>"]:::intelligence
+    n_pipeline["Extraction workflow<br/><small>Workflows</small>"]:::intelligence
+    n_model["Extraction model<br/><small>Gemini 3.8 Flash (Agent Platform)</small>"]:::intelligence
+    n_rules["Validation and master data<br/><small>MCP server on Cloud Run</small>"]:::intelligence
+  end
+  subgraph knowledge["Knowledge and records"]
+    n_landing["Landing bucket<br/><small>Cloud Storage</small>"]:::knowledge
+    n_parser["Layout and OCR parser<br/><small>Document AI</small>"]:::knowledge
+    n_ledger["Case and field ledger<br/><small>AlloyDB for PostgreSQL</small>"]:::knowledge
+  end
+  subgraph assurance["Assurance and operations"]
+    n_exceptions["Exception console<br/><small>Review console on Cloud Run</small>"]:::assurance
+    n_traces["Pipeline telemetry<br/><small>Cloud Logging, Monitoring, Trace</small>"]:::assurance
+    n_evals["Field-level eval set<br/><small>Evaluation service (Agent Platform)</small>"]:::assurance
+  end
+  %% flow submit (data, confidential)
+  n_senders -->|"Document"| n_intake
+  %% flow store-original (data, confidential)
+  n_intake -->|"Original with content hash"| n_landing
+  %% flow enqueue (control, confidential)
+  n_landing -.->|"Object created event"| n_queue
+  %% flow start (control, confidential)
+  n_queue -.->|"Start run keyed by hash"| n_pipeline
+  %% flow parse (data, confidential)
+  n_pipeline -->|"Pages"| n_parser
+  %% flow extract (data, confidential)
+  n_pipeline -->|"Layout text and schema"| n_gateway
+  %% flow infer (data, confidential)
+  n_gateway -->|"Model call"| n_model
+  %% flow validate (data, confidential)
+  n_pipeline -->|"Fields to check"| n_rules
+  %% flow record (data, confidential)
+  n_pipeline -->|"Fields, coordinates, rule results"| n_ledger
+  %% flow post (data, confidential)
+  n_pipeline -->|"Post with idempotency key"| n_erp
+  %% flow except (control, confidential)
+  n_pipeline -.->|"Exception with failing field"| n_exceptions
+  %% flow resolve (control, confidential)
+  n_exceptions -.->|"Corrected field resumes run"| n_pipeline
+  %% flow telemetry (telemetry, operational)
+  n_pipeline -.-o|"Step timings and cost"| n_traces
+  %% flow score (control, confidential)
+  n_evals -.->|"Replay labelled set per release"| n_pipeline
+  classDef people fill:#8AB4FF22,stroke:#8AB4FF,color:#0f1017
+  classDef control fill:#B9A7FF22,stroke:#B9A7FF,color:#0f1017
+  classDef intelligence fill:#5EE6CF22,stroke:#5EE6CF,color:#0f1017
+  classDef knowledge fill:#FFC07A22,stroke:#FFC07A,color:#0f1017
+  classDef assurance fill:#FF9FCB22,stroke:#FF9FCB,color:#0f1017

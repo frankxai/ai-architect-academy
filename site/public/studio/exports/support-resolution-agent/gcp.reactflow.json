@@ -1,0 +1,448 @@
+{
+  "schema": "ai-architect-reactflow/v1",
+  "pattern": "support-resolution-agent",
+  "provider": "gcp",
+  "nodes": [
+    {
+      "id": "customer",
+      "type": "architecture",
+      "position": {
+        "x": 40,
+        "y": 220
+      },
+      "data": {
+        "label": "Customer",
+        "role": "user",
+        "layer": "people",
+        "detail": "Writes in chat or email.",
+        "dataClass": "personal",
+        "service": "Person",
+        "serviceId": null,
+        "docs": null,
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "channels",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 220
+      },
+      "data": {
+        "label": "Chat and email channels",
+        "role": "experience",
+        "layer": "people",
+        "detail": "Web chat, email intake, transcript display.",
+        "dataClass": "personal",
+        "service": "Cloud Run",
+        "serviceId": "gcp.cloud-run",
+        "docs": "https://cloud.google.com/run",
+        "officialIcon": "cloud_run"
+      }
+    },
+    {
+      "id": "edge",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 40
+      },
+      "data": {
+        "label": "Edge protection",
+        "role": "edge",
+        "layer": "control",
+        "detail": "Bot mitigation and per-session rate limits.",
+        "dataClass": "operational",
+        "service": "Cloud Armor + Load Balancing",
+        "serviceId": "gcp.cloud-armor",
+        "docs": "https://cloud.google.com/security/products/armor",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "conversation-api",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 220
+      },
+      "data": {
+        "label": "Conversation API",
+        "role": "api",
+        "layer": "control",
+        "detail": "Verifies the customer, opens a case, holds the session token.",
+        "dataClass": "personal",
+        "service": "Cloud Run",
+        "serviceId": "gcp.cloud-run",
+        "docs": "https://cloud.google.com/run",
+        "officialIcon": "cloud_run"
+      }
+    },
+    {
+      "id": "agent",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 220
+      },
+      "data": {
+        "label": "Resolution agent",
+        "role": "orchestrator",
+        "layer": "intelligence",
+        "detail": "Bounded loop: max 8 steps, one tool call at a time, written authority table.",
+        "dataClass": "personal",
+        "service": "Agent Runtime (Agent Platform)",
+        "serviceId": "gcp.agent-runtime",
+        "docs": "https://docs.cloud.google.com/gemini-enterprise-agent-platform",
+        "officialIcon": "vertexai"
+      }
+    },
+    {
+      "id": "gateway",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 40
+      },
+      "data": {
+        "label": "Model gateway",
+        "role": "gateway",
+        "layer": "control",
+        "detail": "Routing, fallback and per-case spend cap.",
+        "dataClass": "personal",
+        "service": "Apigee (AI gateway policies)",
+        "serviceId": "gcp.apigee",
+        "docs": "https://cloud.google.com/apigee",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "model",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 40
+      },
+      "data": {
+        "label": "Reasoning model",
+        "role": "model",
+        "layer": "intelligence",
+        "detail": "Plans the next step; emits typed tool calls.",
+        "dataClass": "personal",
+        "service": "Gemini 3.8 Flash (Agent Platform)",
+        "serviceId": "gcp.gemini",
+        "docs": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/guides/gemini-3-8-flash",
+        "officialIcon": "vertexai"
+      }
+    },
+    {
+      "id": "tools",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 220
+      },
+      "data": {
+        "label": "Tool server (MCP)",
+        "role": "tools",
+        "layer": "intelligence",
+        "detail": "order.lookup, refund.issue (cap EUR 50), ticket.transfer; idempotency keys on writes.",
+        "dataClass": "personal",
+        "service": "MCP server on Cloud Run",
+        "serviceId": "gcp.cloud-run-mcp",
+        "docs": "https://cloud.google.com/run/docs/host-mcp-servers",
+        "officialIcon": "cloud_run"
+      }
+    },
+    {
+      "id": "policy-index",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 400
+      },
+      "data": {
+        "label": "Policy and help index",
+        "role": "retrieval",
+        "layer": "knowledge",
+        "detail": "Return rules, warranty terms, known issues.",
+        "dataClass": "internal",
+        "service": "Agent Search",
+        "serviceId": "gcp.agent-search",
+        "docs": "https://cloud.google.com/products/gemini-enterprise-agent-platform/agent-search",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "case-state",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 400
+      },
+      "data": {
+        "label": "Case state",
+        "role": "memory",
+        "layer": "intelligence",
+        "detail": "Conversation, verified identity, steps taken, budget left.",
+        "dataClass": "personal",
+        "service": "Firestore",
+        "serviceId": "gcp.firestore",
+        "docs": "https://cloud.google.com/firestore",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "commerce",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 220
+      },
+      "data": {
+        "label": "Order and payment systems",
+        "role": "system",
+        "layer": "people",
+        "detail": "Systems of record the tools call.",
+        "dataClass": "personal",
+        "service": "External system",
+        "serviceId": null,
+        "docs": null,
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "desk",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 400
+      },
+      "data": {
+        "label": "Human agent desk",
+        "role": "review",
+        "layer": "assurance",
+        "detail": "Receives transfers with summary, evidence and suggested next step.",
+        "dataClass": "personal",
+        "service": "Review console on Cloud Run",
+        "serviceId": "gcp.review-console",
+        "docs": "https://cloud.google.com/run",
+        "officialIcon": "cloud_run"
+      }
+    },
+    {
+      "id": "traces",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 40
+      },
+      "data": {
+        "label": "Traces, cost, CSAT",
+        "role": "observability",
+        "layer": "assurance",
+        "detail": "Per-case trace, tool outcomes, spend, satisfaction.",
+        "dataClass": "operational",
+        "service": "Cloud Logging, Monitoring, Trace",
+        "serviceId": "gcp.observability",
+        "docs": "https://cloud.google.com/products/observability",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "scenarios",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 400
+      },
+      "data": {
+        "label": "Scenario evals",
+        "role": "evals",
+        "layer": "assurance",
+        "detail": "Simulated customers with expected tool sequences and forbidden actions.",
+        "dataClass": "internal",
+        "service": "Evaluation service (Agent Platform)",
+        "serviceId": "gcp.evaluation",
+        "docs": "https://docs.cloud.google.com/gemini-enterprise-agent-platform",
+        "officialIcon": "vertexai"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "contact",
+      "source": "customer",
+      "target": "channels",
+      "label": "Message",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "screen",
+      "source": "channels",
+      "target": "edge",
+      "label": "Bot and rate checks",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "operational"
+      }
+    },
+    {
+      "id": "open-case",
+      "source": "channels",
+      "target": "conversation-api",
+      "label": "Verified session and message",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "delegate",
+      "source": "conversation-api",
+      "target": "agent",
+      "label": "Case with authority table",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "plan",
+      "source": "agent",
+      "target": "gateway",
+      "label": "State and policy context",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "infer",
+      "source": "gateway",
+      "target": "model",
+      "label": "Model call",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "ground",
+      "source": "agent",
+      "target": "policy-index",
+      "label": "Policy lookup",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "internal"
+      }
+    },
+    {
+      "id": "act",
+      "source": "agent",
+      "target": "tools",
+      "label": "Typed tool call",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "effect",
+      "source": "tools",
+      "target": "commerce",
+      "label": "Read or capped write with idempotency key",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "remember",
+      "source": "agent",
+      "target": "case-state",
+      "label": "Step, result, budget",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "handoff",
+      "source": "agent",
+      "target": "desk",
+      "label": "Transfer with case summary",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "reply",
+      "source": "conversation-api",
+      "target": "channels",
+      "label": "Answer, confirmation or transfer notice",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "personal"
+      }
+    },
+    {
+      "id": "telemetry",
+      "source": "gateway",
+      "target": "traces",
+      "label": "Spend and latency per case",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "telemetry",
+        "dataClass": "operational"
+      }
+    },
+    {
+      "id": "simulate",
+      "source": "scenarios",
+      "target": "conversation-api",
+      "label": "Simulated contacts per release",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "internal"
+      }
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}

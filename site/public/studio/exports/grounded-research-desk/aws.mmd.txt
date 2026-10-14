@@ -1,0 +1,53 @@
+%% Grounded research desk on aws. Generated; edit the catalog, not this file.
+flowchart LR
+  subgraph people["People and channels"]
+    n_analyst["Analyst<br/><small>Person</small>"]:::people
+    n_workspace["Research workspace<br/><small>Amplify Hosting</small>"]:::people
+  end
+  subgraph control["Control and trust"]
+    n_sso["Workforce sign-in<br/><small>IAM Identity Center</small>"]:::control
+    n_answer_api["Answer API<br/><small>API Gateway + Lambda</small>"]:::control
+    n_gateway["Model gateway<br/><small>Bedrock inference profiles + usage plans</small>"]:::control
+  end
+  subgraph intelligence["Intelligence and work"]
+    n_model["Generation model<br/><small>Claude on Amazon Bedrock</small>"]:::intelligence
+  end
+  subgraph knowledge["Knowledge and records"]
+    n_index["Hybrid retrieval index<br/><small>Bedrock Knowledge Bases</small>"]:::knowledge
+    n_ingest["Ingestion pipeline<br/><small>Bedrock Knowledge Bases</small>"]:::knowledge
+    n_corpus["Source corpus<br/><small>Amazon S3</small>"]:::knowledge
+    n_ledger["Answer ledger<br/><small>Amazon DynamoDB</small>"]:::knowledge
+  end
+  subgraph assurance["Assurance and operations"]
+    n_traces["Traces and cost<br/><small>CloudWatch + X-Ray</small>"]:::assurance
+    n_evals["Eval harness<br/><small>Bedrock Evaluations</small>"]:::assurance
+  end
+  %% flow ask (data, internal)
+  n_analyst -->|"Question"| n_workspace
+  %% flow signin (control, identity)
+  n_workspace -.->|"SSO and group claims"| n_sso
+  %% flow request (data, internal)
+  n_workspace -->|"Question with scope token"| n_answer_api
+  %% flow retrieve (data, confidential)
+  n_answer_api -->|"Permission-filtered query"| n_index
+  %% flow generate (data, confidential)
+  n_answer_api -->|"Prompt with top passages"| n_gateway
+  %% flow route (data, confidential)
+  n_gateway -->|"Model call"| n_model
+  %% flow record (data, confidential)
+  n_answer_api -->|"Answer, citations, trace ID"| n_ledger
+  %% flow respond (data, confidential)
+  n_answer_api -->|"Cited answer or refusal"| n_workspace
+  %% flow source-change (data, confidential)
+  n_corpus -->|"New or changed document"| n_ingest
+  %% flow index-write (data, confidential)
+  n_ingest -->|"Chunks, embeddings, permission tags"| n_index
+  %% flow telemetry (telemetry, operational)
+  n_gateway -.-o|"Tokens, latency, cost"| n_traces
+  %% flow replay (control, internal)
+  n_evals -.->|"Replay frozen questions per release"| n_answer_api
+  classDef people fill:#8AB4FF22,stroke:#8AB4FF,color:#0f1017
+  classDef control fill:#B9A7FF22,stroke:#B9A7FF,color:#0f1017
+  classDef intelligence fill:#5EE6CF22,stroke:#5EE6CF,color:#0f1017
+  classDef knowledge fill:#FFC07A22,stroke:#FFC07A,color:#0f1017
+  classDef assurance fill:#FF9FCB22,stroke:#FF9FCB,color:#0f1017

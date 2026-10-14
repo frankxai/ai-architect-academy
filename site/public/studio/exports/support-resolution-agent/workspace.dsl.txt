@@ -1,0 +1,328 @@
+workspace "Support resolution agent" "A bounded agent answers customer contacts, looks up orders and accounts through typed tools, performs low-risk actions within a written authority, and transfers everything else to a human with a complete case summary." {
+  !identifiers hierarchical
+  model {
+    customer = person "Customer" "Writes in chat or email."
+    commerce = softwareSystem "Order and payment systems" "Systems of record the tools call." "External"
+    workload = softwareSystem "Support resolution agent" "Resolves what it is allowed to resolve. Hands off the rest with the case already written." {
+      channels = container "Chat and email channels" "Web chat, email intake, transcript display." "experience" "people"
+      edge = container "Edge protection" "Bot mitigation and per-session rate limits." "edge" "control"
+      conversation_api = container "Conversation API" "Verifies the customer, opens a case, holds the session token." "api" "control"
+      agent = container "Resolution agent" "Bounded loop: max 8 steps, one tool call at a time, written authority table." "orchestrator" "intelligence"
+      gateway = container "Model gateway" "Routing, fallback and per-case spend cap." "gateway" "control"
+      model = container "Reasoning model" "Plans the next step; emits typed tool calls." "model" "intelligence"
+      tools = container "Tool server (MCP)" "order.lookup, refund.issue (cap EUR 50), ticket.transfer; idempotency keys on writes." "tools" "intelligence"
+      policy_index = container "Policy and help index" "Return rules, warranty terms, known issues." "retrieval" "knowledge"
+      case_state = container "Case state" "Conversation, verified identity, steps taken, budget left." "memory" "intelligence"
+      desk = container "Human agent desk" "Receives transfers with summary, evidence and suggested next step." "review" "assurance"
+      traces = container "Traces, cost, CSAT" "Per-case trace, tool outcomes, spend, satisfaction." "observability" "assurance"
+      scenarios = container "Scenario evals" "Simulated customers with expected tool sequences and forbidden actions." "evals" "assurance"
+    }
+    customer -> workload.channels "Message" "data, personal"
+    workload.channels -> workload.edge "Bot and rate checks" "control, operational"
+    workload.channels -> workload.conversation_api "Verified session and message" "data, personal"
+    workload.conversation_api -> workload.agent "Case with authority table" "control, personal"
+    workload.agent -> workload.gateway "State and policy context" "data, personal"
+    workload.gateway -> workload.model "Model call" "data, personal"
+    workload.agent -> workload.policy_index "Policy lookup" "data, internal"
+    workload.agent -> workload.tools "Typed tool call" "data, personal"
+    workload.tools -> commerce "Read or capped write with idempotency key" "data, personal"
+    workload.agent -> workload.case_state "Step, result, budget" "data, personal"
+    workload.agent -> workload.desk "Transfer with case summary" "control, personal"
+    workload.conversation_api -> workload.channels "Answer, confirmation or transfer notice" "data, personal"
+    workload.gateway -> workload.traces "Spend and latency per case" "telemetry, operational"
+    workload.scenarios -> workload.conversation_api "Simulated contacts per release" "control, internal"
+    gcp = deploymentEnvironment "Google Cloud" {
+      deploymentNode "Google Cloud" {
+        node0 = deploymentNode "Cloud Run" {
+          containerInstance workload.channels
+          containerInstance workload.conversation_api
+        }
+        node1 = deploymentNode "Cloud Armor + Load Balancing" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Agent Runtime (Agent Platform)" {
+          containerInstance workload.agent
+        }
+        node3 = deploymentNode "Apigee (AI gateway policies)" {
+          containerInstance workload.gateway
+        }
+        node4 = deploymentNode "Gemini 3.8 Flash (Agent Platform)" {
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "MCP server on Cloud Run" {
+          containerInstance workload.tools
+        }
+        node6 = deploymentNode "Agent Search" {
+          containerInstance workload.policy_index
+        }
+        node7 = deploymentNode "Firestore" {
+          containerInstance workload.case_state
+        }
+        node8 = deploymentNode "Review console on Cloud Run" {
+          containerInstance workload.desk
+        }
+        node9 = deploymentNode "Cloud Logging, Monitoring, Trace" {
+          containerInstance workload.traces
+        }
+        node10 = deploymentNode "Evaluation service (Agent Platform)" {
+          containerInstance workload.scenarios
+        }
+      }
+    }
+    vercel = deploymentEnvironment "Vercel" {
+      deploymentNode "Vercel" {
+        node0 = deploymentNode "Next.js on Vercel" {
+          containerInstance workload.channels
+        }
+        node1 = deploymentNode "Vercel Firewall + BotID" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Vercel Functions (Fluid compute)" {
+          containerInstance workload.conversation_api
+        }
+        node3 = deploymentNode "AI SDK 7 agent loop (Fluid compute)" {
+          containerInstance workload.agent
+        }
+        node4 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Claude Sonnet 5 via AI Gateway" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "MCP server on Vercel Functions" {
+          containerInstance workload.tools
+        }
+        node7 = deploymentNode "Neon Postgres + pgvector" {
+          containerInstance workload.policy_index
+        }
+        node8 = deploymentNode "Upstash Redis via Marketplace" {
+          containerInstance workload.case_state
+        }
+        node9 = deploymentNode "Review console (app route)" {
+          containerInstance workload.desk
+        }
+        node10 = deploymentNode "Vercel Observability + drains" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.scenarios
+        }
+      }
+    }
+    cloudflare = deploymentEnvironment "Cloudflare" {
+      deploymentNode "Cloudflare" {
+        node0 = deploymentNode "Workers static assets" {
+          containerInstance workload.channels
+        }
+        node1 = deploymentNode "WAF, Bot Management, Turnstile" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Workers" {
+          containerInstance workload.conversation_api
+        }
+        node3 = deploymentNode "Agents SDK (Durable Objects)" {
+          containerInstance workload.agent
+        }
+        node4 = deploymentNode "AI Gateway" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Workers AI models" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "MCP server on Workers" {
+          containerInstance workload.tools
+        }
+        node7 = deploymentNode "AI Search" {
+          containerInstance workload.policy_index
+        }
+        node8 = deploymentNode "Durable Objects (SQLite state)" {
+          containerInstance workload.case_state
+        }
+        node9 = deploymentNode "Review app behind Access" {
+          containerInstance workload.desk
+        }
+        node10 = deploymentNode "Workers Observability + AI Gateway logs" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.scenarios
+        }
+      }
+    }
+    aws = deploymentEnvironment "AWS" {
+      deploymentNode "AWS" {
+        node0 = deploymentNode "Amplify Hosting" {
+          containerInstance workload.channels
+        }
+        node1 = deploymentNode "CloudFront + AWS WAF" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "API Gateway + Lambda" {
+          containerInstance workload.conversation_api
+        }
+        node3 = deploymentNode "AgentCore Runtime" {
+          containerInstance workload.agent
+        }
+        node4 = deploymentNode "Bedrock inference profiles + usage plans" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Claude on Amazon Bedrock" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "AgentCore Gateway (MCP)" {
+          containerInstance workload.tools
+        }
+        node7 = deploymentNode "Bedrock Knowledge Bases" {
+          containerInstance workload.policy_index
+        }
+        node8 = deploymentNode "AgentCore Memory" {
+          containerInstance workload.case_state
+        }
+        node9 = deploymentNode "Review console (app route)" {
+          containerInstance workload.desk
+        }
+        node10 = deploymentNode "CloudWatch + X-Ray" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Bedrock Evaluations" {
+          containerInstance workload.scenarios
+        }
+      }
+    }
+    azure = deploymentEnvironment "Microsoft Azure" {
+      deploymentNode "Microsoft Azure" {
+        node0 = deploymentNode "Azure Static Web Apps" {
+          containerInstance workload.channels
+        }
+        node1 = deploymentNode "Azure Front Door + WAF" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Azure Container Apps" {
+          containerInstance workload.conversation_api
+        }
+        node3 = deploymentNode "Foundry Agent Service" {
+          containerInstance workload.agent
+        }
+        node4 = deploymentNode "API Management AI gateway" {
+          containerInstance workload.gateway
+        }
+        node5 = deploymentNode "Foundry Models (Microsoft Foundry)" {
+          containerInstance workload.model
+        }
+        node6 = deploymentNode "MCP server on Container Apps" {
+          containerInstance workload.tools
+        }
+        node7 = deploymentNode "Azure AI Search" {
+          containerInstance workload.policy_index
+        }
+        node8 = deploymentNode "Azure Cosmos DB" {
+          containerInstance workload.case_state
+        }
+        node9 = deploymentNode "Review console (app route)" {
+          containerInstance workload.desk
+        }
+        node10 = deploymentNode "Azure Monitor + Application Insights" {
+          containerInstance workload.traces
+        }
+        node11 = deploymentNode "Foundry evaluations" {
+          containerInstance workload.scenarios
+        }
+      }
+    }
+    railway = deploymentEnvironment "Railway" {
+      deploymentNode "Railway" {
+        node0 = deploymentNode "Railway service (container)" {
+          containerInstance workload.channels
+          containerInstance workload.conversation_api
+          containerInstance workload.tools
+        }
+        node1 = deploymentNode "Railway public networking + external WAF" {
+          containerInstance workload.edge
+        }
+        node2 = deploymentNode "Railway worker service" {
+          containerInstance workload.agent
+        }
+        node3 = deploymentNode "Self-hosted model gateway service" {
+          containerInstance workload.gateway
+        }
+        node4 = deploymentNode "Model provider API (Claude, Gemini)" {
+          containerInstance workload.model
+        }
+        node5 = deploymentNode "Railway Postgres + pgvector" {
+          containerInstance workload.policy_index
+        }
+        node6 = deploymentNode "Railway Redis" {
+          containerInstance workload.case_state
+        }
+        node7 = deploymentNode "Review console (app route)" {
+          containerInstance workload.desk
+        }
+        node8 = deploymentNode "Railway logs + OpenTelemetry export" {
+          containerInstance workload.traces
+        }
+        node9 = deploymentNode "Eval harness in CI" {
+          containerInstance workload.scenarios
+        }
+      }
+    }
+  }
+  views {
+    container workload "containers" {
+      include *
+      autolayout lr
+    }
+    deployment workload gcp "deploy-gcp" {
+      include *
+      autolayout lr
+    }
+    deployment workload vercel "deploy-vercel" {
+      include *
+      autolayout lr
+    }
+    deployment workload cloudflare "deploy-cloudflare" {
+      include *
+      autolayout lr
+    }
+    deployment workload aws "deploy-aws" {
+      include *
+      autolayout lr
+    }
+    deployment workload azure "deploy-azure" {
+      include *
+      autolayout lr
+    }
+    deployment workload railway "deploy-railway" {
+      include *
+      autolayout lr
+    }
+    styles {
+      element "Person" {
+        shape person
+      }
+      element "External" {
+        background #6b6e7a
+        color #ffffff
+      }
+      element "people" {
+        background #8AB4FF
+        color #0f1017
+      }
+      element "control" {
+        background #B9A7FF
+        color #0f1017
+      }
+      element "intelligence" {
+        background #5EE6CF
+        color #0f1017
+      }
+      element "knowledge" {
+        background #FFC07A
+        color #0f1017
+      }
+      element "assurance" {
+        background #FF9FCB
+        color #0f1017
+      }
+    }
+  }
+}

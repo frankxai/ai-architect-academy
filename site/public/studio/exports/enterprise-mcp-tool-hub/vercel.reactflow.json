@@ -1,0 +1,448 @@
+{
+  "schema": "ai-architect-reactflow/v1",
+  "pattern": "enterprise-mcp-tool-hub",
+  "provider": "vercel",
+  "nodes": [
+    {
+      "id": "clients",
+      "type": "architecture",
+      "position": {
+        "x": 40,
+        "y": 220
+      },
+      "data": {
+        "label": "Agent clients",
+        "role": "user",
+        "layer": "people",
+        "detail": "Claude, coding agents, internal agents acting for a person.",
+        "dataClass": "internal",
+        "service": "Person",
+        "serviceId": null,
+        "docs": null,
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "catalog-ui",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 400
+      },
+      "data": {
+        "label": "Tool catalog and consent",
+        "role": "experience",
+        "layer": "people",
+        "detail": "Browse tools, see scopes, grant or revoke access.",
+        "dataClass": "internal",
+        "service": "Next.js on Vercel",
+        "serviceId": "vercel.nextjs",
+        "docs": "https://vercel.com/docs/frameworks/nextjs",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "authz",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 40
+      },
+      "data": {
+        "label": "Authorization server",
+        "role": "identity",
+        "layer": "control",
+        "detail": "OAuth 2.1 with audience-bound tokens and short lifetimes.",
+        "dataClass": "identity",
+        "service": "Identity provider via Marketplace",
+        "serviceId": "vercel.auth",
+        "docs": "https://vercel.com/marketplace",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "edge",
+      "type": "architecture",
+      "position": {
+        "x": 340,
+        "y": 220
+      },
+      "data": {
+        "label": "Edge protection",
+        "role": "edge",
+        "layer": "control",
+        "detail": "TLS, rate limits, anomaly blocking.",
+        "dataClass": "operational",
+        "service": "Vercel Firewall + BotID",
+        "serviceId": "vercel.firewall",
+        "docs": "https://vercel.com/docs/vercel-firewall",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "mcp-gateway",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 220
+      },
+      "data": {
+        "label": "MCP policy gateway",
+        "role": "gateway",
+        "layer": "control",
+        "detail": "Per-tool scopes, input schema checks, quotas, kill switch.",
+        "dataClass": "confidential",
+        "service": "AI Gateway",
+        "serviceId": "vercel.ai-gateway",
+        "docs": "https://vercel.com/docs/ai-gateway",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "guardrail",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 40
+      },
+      "data": {
+        "label": "Content guardrail",
+        "role": "guardrail",
+        "layer": "control",
+        "detail": "Detects secrets and injection text in tool inputs and outputs.",
+        "dataClass": "confidential",
+        "service": "Guardrail middleware (AI SDK)",
+        "serviceId": "vercel.guardrail",
+        "docs": "https://ai-sdk.dev/docs/ai-sdk-core/middleware",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "servers",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 220
+      },
+      "data": {
+        "label": "Domain MCP servers",
+        "role": "tools",
+        "layer": "intelligence",
+        "detail": "CRM, tickets, docs, HR read-only; owned by domain teams.",
+        "dataClass": "confidential",
+        "service": "MCP server on Vercel Functions",
+        "serviceId": "vercel.mcp",
+        "docs": "https://vercel.com/docs/mcp",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "broker",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 40
+      },
+      "data": {
+        "label": "Credential broker",
+        "role": "secrets",
+        "layer": "control",
+        "detail": "Exchanges the user token for a short-lived backend credential.",
+        "dataClass": "secret",
+        "service": "Sensitive env vars + OIDC",
+        "serviceId": "vercel.env-oidc",
+        "docs": "https://vercel.com/docs/oidc",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "systems",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 220
+      },
+      "data": {
+        "label": "Systems of record",
+        "role": "system",
+        "layer": "people",
+        "detail": "Unchanged backends with their own permissions.",
+        "dataClass": "confidential",
+        "service": "External system",
+        "serviceId": null,
+        "docs": null,
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "registry",
+      "type": "architecture",
+      "position": {
+        "x": 640,
+        "y": 400
+      },
+      "data": {
+        "label": "Tool registry",
+        "role": "store",
+        "layer": "knowledge",
+        "detail": "Tool versions, owners, scopes, approval state.",
+        "dataClass": "internal",
+        "service": "Edge Config",
+        "serviceId": "vercel.edge-config",
+        "docs": "https://vercel.com/docs/edge-config",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "audit",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 400
+      },
+      "data": {
+        "label": "Audit ledger",
+        "role": "analytics",
+        "layer": "knowledge",
+        "detail": "Who, which client, which tool, which scope, result.",
+        "dataClass": "confidential",
+        "service": "Neon Postgres via Marketplace",
+        "serviceId": "vercel.neon",
+        "docs": "https://vercel.com/marketplace/neon",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "owners",
+      "type": "architecture",
+      "position": {
+        "x": 940,
+        "y": 400
+      },
+      "data": {
+        "label": "Tool owners",
+        "role": "review",
+        "layer": "assurance",
+        "detail": "Approve new tools and scope changes.",
+        "dataClass": "internal",
+        "service": "Review console (app route)",
+        "serviceId": "portable.review",
+        "docs": "https://github.com/frankxai/ai-architect",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "traces",
+      "type": "architecture",
+      "position": {
+        "x": 1240,
+        "y": 40
+      },
+      "data": {
+        "label": "Traces and alerts",
+        "role": "observability",
+        "layer": "assurance",
+        "detail": "Latency, errors, unusual call patterns.",
+        "dataClass": "operational",
+        "service": "Vercel Observability + drains",
+        "serviceId": "vercel.observability",
+        "docs": "https://vercel.com/docs/observability",
+        "officialIcon": null
+      }
+    },
+    {
+      "id": "contracts",
+      "type": "architecture",
+      "position": {
+        "x": 1540,
+        "y": 220
+      },
+      "data": {
+        "label": "Tool contract tests",
+        "role": "evals",
+        "layer": "assurance",
+        "detail": "Schema, permission and denial tests per tool version.",
+        "dataClass": "internal",
+        "service": "Eval harness in CI",
+        "serviceId": "portable.evals",
+        "docs": "https://github.com/frankxai/ai-architect/tree/main/evals",
+        "officialIcon": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "discover",
+      "source": "clients",
+      "target": "mcp-gateway",
+      "label": "List tools",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "internal"
+      }
+    },
+    {
+      "id": "authorize",
+      "source": "clients",
+      "target": "authz",
+      "label": "OAuth consent, audience-bound token",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "identity"
+      }
+    },
+    {
+      "id": "consent",
+      "source": "catalog-ui",
+      "target": "authz",
+      "label": "Grant or revoke scopes",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "identity"
+      }
+    },
+    {
+      "id": "call",
+      "source": "clients",
+      "target": "edge",
+      "label": "Tool call with token",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "admit",
+      "source": "edge",
+      "target": "mcp-gateway",
+      "label": "Rate-checked call",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "inspect",
+      "source": "mcp-gateway",
+      "target": "guardrail",
+      "label": "Input and output scan",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "policy",
+      "source": "mcp-gateway",
+      "target": "registry",
+      "label": "Scope and version lookup",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "internal"
+      }
+    },
+    {
+      "id": "forward",
+      "source": "mcp-gateway",
+      "target": "servers",
+      "label": "Authorized call",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "exchange",
+      "source": "servers",
+      "target": "broker",
+      "label": "Token exchange",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "secret"
+      }
+    },
+    {
+      "id": "execute",
+      "source": "servers",
+      "target": "systems",
+      "label": "Backend call as the user",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "log",
+      "source": "mcp-gateway",
+      "target": "audit",
+      "label": "Call record",
+      "type": "smoothstep",
+      "animated": true,
+      "data": {
+        "kind": "data",
+        "dataClass": "confidential"
+      }
+    },
+    {
+      "id": "approve",
+      "source": "owners",
+      "target": "registry",
+      "label": "Approve tool or scope change",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "internal"
+      }
+    },
+    {
+      "id": "telemetry",
+      "source": "mcp-gateway",
+      "target": "traces",
+      "label": "Latency and errors",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "telemetry",
+        "dataClass": "operational"
+      }
+    },
+    {
+      "id": "verify",
+      "source": "contracts",
+      "target": "servers",
+      "label": "Contract tests per version",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "kind": "control",
+        "dataClass": "internal"
+      }
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}

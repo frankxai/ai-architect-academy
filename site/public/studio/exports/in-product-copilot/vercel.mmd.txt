@@ -1,0 +1,54 @@
+%% In-product copilot on vercel. Generated; edit the catalog, not this file.
+flowchart LR
+  subgraph people["People and channels"]
+    n_tenant_user["Tenant user<br/><small>Person</small>"]:::people
+    n_product["Product UI with copilot panel<br/><small>Next.js on Vercel</small>"]:::people
+  end
+  subgraph control["Control and trust"]
+    n_edge["Edge protection<br/><small>Vercel Firewall + BotID</small>"]:::control
+    n_identity["Tenant identity<br/><small>Identity provider via Marketplace</small>"]:::control
+    n_copilot_api["Copilot API<br/><small>Vercel Functions (Fluid compute)</small>"]:::control
+    n_gateway["Model gateway<br/><small>AI Gateway</small>"]:::control
+  end
+  subgraph intelligence["Intelligence and work"]
+    n_model["Assistant model<br/><small>Claude Sonnet 5 via AI Gateway</small>"]:::intelligence
+    n_actions["Product actions<br/><small>MCP server on Vercel Functions</small>"]:::intelligence
+  end
+  subgraph knowledge["Knowledge and records"]
+    n_tenant_index["Tenant-partitioned index<br/><small>Neon Postgres + pgvector</small>"]:::knowledge
+    n_app_db["Product database<br/><small>Neon Postgres via Marketplace</small>"]:::knowledge
+    n_meter["Usage meter<br/><small>Neon Postgres via Marketplace</small>"]:::knowledge
+  end
+  subgraph assurance["Assurance and operations"]
+    n_traces["Traces<br/><small>Vercel Observability + drains</small>"]:::assurance
+    n_evals["Release evals<br/><small>Eval harness in CI</small>"]:::assurance
+  end
+  %% flow open (data, tenant)
+  n_tenant_user -->|"Question in context"| n_product
+  %% flow protect (control, operational)
+  n_product -.->|"Tenant rate limits"| n_edge
+  %% flow send (data, tenant)
+  n_product -->|"Question and screen context"| n_copilot_api
+  %% flow scope (control, identity)
+  n_copilot_api -.->|"Resolve tenant from session"| n_identity
+  %% flow retrieve (data, tenant)
+  n_copilot_api -->|"Tenant namespace query"| n_tenant_index
+  %% flow ask-model (data, tenant)
+  n_copilot_api -->|"Prompt tagged with tenant"| n_gateway
+  %% flow infer (data, tenant)
+  n_gateway -->|"Model call"| n_model
+  %% flow propose (data, tenant)
+  n_copilot_api -->|"Proposed action (dry run)"| n_actions
+  %% flow apply (data, tenant)
+  n_actions -->|"Confirmed write with undo token"| n_app_db
+  %% flow meter-usage (telemetry, operational)
+  n_gateway -.-o|"Tokens per tenant"| n_meter
+  %% flow telemetry (telemetry, operational)
+  n_copilot_api -.-o|"Latency and refusals"| n_traces
+  %% flow probe (control, internal)
+  n_evals -.->|"Cross-tenant probes per release"| n_copilot_api
+  classDef people fill:#8AB4FF22,stroke:#8AB4FF,color:#0f1017
+  classDef control fill:#B9A7FF22,stroke:#B9A7FF,color:#0f1017
+  classDef intelligence fill:#5EE6CF22,stroke:#5EE6CF,color:#0f1017
+  classDef knowledge fill:#FFC07A22,stroke:#FFC07A,color:#0f1017
+  classDef assurance fill:#FF9FCB22,stroke:#FF9FCB,color:#0f1017
