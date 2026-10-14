@@ -155,7 +155,7 @@
   "devDependencies": {
     "@types/node": "^26.6.5",
     "@types/vscode": "^1.140.0",
-    "@vscode/test-electron": "^2.3.3",
+    "@vscode/test-electron": "^3.1.0",
     "@vscode/vsce": "^3.6.0",
     "ts-loader": "^9.6.2",
     "tslib": "^2.6.2",
