@@ -58,6 +58,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/path" className="hover:text-cobalt">
               The path
             </Link>
+            <Link href="/library" className="hover:text-cobalt">
+              Library
+            </Link>
             <Link href="/curriculum" className="hover:text-cobalt">
               What exists
             </Link>

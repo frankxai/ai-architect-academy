@@ -9,6 +9,7 @@ export default function ArchitecturesPage() {
     <p className="eyebrow">Architecture practice / deployment boundaries</p>
     <h1 className="mt-5 max-w-3xl text-[clamp(2.4rem,6vw,4.2rem)] leading-[1.04]">Choose the lifetime.<br /><em>Then choose the cloud.</em></h1>
     <p className="measure mt-7 text-xl" style={{ color: 'var(--ink-2)' }}>A request, a job, an entity and a batch run have different failure modes. Make that decision before combining frameworks or opening a production tenant.</p>
+    <p className="mt-7"><Link className="link" href="/library">Inspect provider views in the portable solution library</Link></p>
     <div className="mt-14 space-y-12">{architectureProfiles.map(p => <section key={p.id} className="rule pt-8" aria-labelledby={`architecture-${p.id}`}>
       <div className="grid gap-6 md:grid-cols-[1fr_1.5fr]"><div><p className="eyebrow">{p.cloud}</p><h2 id={`architecture-${p.id}`} className="mt-3 text-3xl">{p.title}</h2><p className="mt-4 text-sm" style={{ color: 'var(--ink-3)' }}>{p.state}</p></div><div><p style={{ color: 'var(--ink-2)' }}>{p.decision}</p><p className="cmd mt-5">{p.shape}</p><p className="mt-5" style={{ color: 'var(--ink-2)' }}>{p.boundary}</p><h3 className="mt-6 text-xl">Evidence before production</h3><p className="mt-2" style={{ color: 'var(--ink-2)' }}>{p.proof}</p><p className="mt-6 flex flex-wrap gap-5"><a className="link" href={p.source}>Open the source</a><a className="link" href={p.docs}>Read current platform docs</a></p></div></div>
     </section>)}</div>

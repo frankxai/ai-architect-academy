@@ -1,0 +1,184 @@
+{
+  "schema": "ai-architect-export/v1",
+  "solution_id": "customer-rd-portal",
+  "spec_sha256": "a071364ab72ebd410be618940a52e10db93ca51312dfa1917daa99a4cc7576c3",
+  "compiler_sha256": "007bfef148c70116d661bb706d263b7d60d30098d36c23bcfe8457be5a1df258",
+  "portal_template_sha256": "f749027260de35134de724e7b50a2eee918b1e3ec3c75f5eaa4aa75abe891a16",
+  "practice_template_sha256": "20cb0b07b946d7acf9aacc05957cee1cc8f7d7d9b61f416dac4af5e4790f9db3",
+  "practice_domain_sha256": "2bab6745ec8a8f9953807cf16aec5a6f726cab1bbfe433546848103751c87b07",
+  "practice_contract_sha256": "b62585b49c794963ee3a49c2827d71275e1e5d2f77a513cf6fa1158b2ef49189",
+  "source_revision": "c43825efda384d9b29364d5e5fe7ba364b08a3fb",
+  "fixture": true,
+  "portal_state": "compiled",
+  "workload_state": "visualized",
+  "workload_states": {
+    "gcp": "visualized",
+    "vercel": "visualized",
+    "railway": "visualized",
+    "local": "visualized"
+  },
+  "provider_deployment": null,
+  "model_run": null,
+  "files": [
+    {
+      "path": "Dockerfile.txt",
+      "sha256": "a0aa67c0027aca8e92411e5ef434d366830916298c38544355ba2ad8f122c47e"
+    },
+    {
+      "path": "LICENSE.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "README.md",
+      "sha256": "5d49a382cabc74ed4bfbada92a05c245fe51d79d3c035b4eb00fbceb6a2c0926"
+    },
+    {
+      "path": "design.tokens.json",
+      "sha256": "9088c51a2d318f350f24870db010d072ac37969a19af7002c4f2ad927c160dc8"
+    },
+    {
+      "path": "ecosystem.md",
+      "sha256": "a362391fc515de8a5da953b14edae07b30eaf56bcbd9e134a69471acec4dc199"
+    },
+    {
+      "path": "encyclopedia.json",
+      "sha256": "d17664fb81777a60edff524c95031bd9af1c358249158c84690a9e73c0bcc9c1"
+    },
+    {
+      "path": "encyclopedia.md",
+      "sha256": "44ea8a31747c930c77ff929f08d514a095f69c6199d006147394baf0769f9002"
+    },
+    {
+      "path": "execution-plan.md",
+      "sha256": "57ce955dd362c9bc0f721659f4c1e2505d1630cb25551581b6bd12724d8b09bf"
+    },
+    {
+      "path": "gcp.drawio.xml",
+      "sha256": "3bd29dcc9951f57af7a6e2bff69e80e9786a59056b1fafc4751b47abc029a3e6"
+    },
+    {
+      "path": "gcp.mmd.txt",
+      "sha256": "c1f28142e5b344691a12d1d3286ce8b0245946f048e613ae92d9eb0589b29b02"
+    },
+    {
+      "path": "gcp.reactflow.json",
+      "sha256": "1769357bd5ae84b610977dc5e12998db29669d8aad8947178be0f597428d4aac"
+    },
+    {
+      "path": "gcp.svg",
+      "sha256": "9ece127a52fc9aca6476fecb43cede0d4e1dafb5f3e69abf54a2c2892faf366a"
+    },
+    {
+      "path": "guide.html",
+      "sha256": "0d67c0fe4a1ae7dd2e14fc6a520b88aaaf409be66c2e3b12a0139afd388ac35b"
+    },
+    {
+      "path": "guide.md",
+      "sha256": "1163c7071c3f8313973326bb059d4352f7ca5426a1d7f79e162c4bc783fd7071"
+    },
+    {
+      "path": "icon-registry.json",
+      "sha256": "d3d8e584624fadbca9ded98153be2d1ac7181cb0c8feb7c9ed5cc77c60e16b10"
+    },
+    {
+      "path": "index.html",
+      "sha256": "f5c4d75f24f16a64c8a21ee2fee09441ae147e4ecfcdfe33858c0c02f501bd42"
+    },
+    {
+      "path": "living-design.md",
+      "sha256": "71a5ef5f2ccbfa56c9ab698648f675a32299eccb801c9e023ed58692c074aab4"
+    },
+    {
+      "path": "local.drawio.xml",
+      "sha256": "690f8d8383b205235aadb780994647fddce8e1f934e2f54e2c67a85b2946fb81"
+    },
+    {
+      "path": "local.mmd.txt",
+      "sha256": "5782780310d967b39652eecec0cd0333841bbafca250f03b8c68c6195096a99b"
+    },
+    {
+      "path": "local.reactflow.json",
+      "sha256": "b1ea25c345d6a1c55058a8e6796c1b5f54d9a65ab5a6c92ba3831b5de1161465"
+    },
+    {
+      "path": "local.svg",
+      "sha256": "fd3ce39b4853a4f72b251bdb78826a5e53f16fffbbe7e31eab71358546af119d"
+    },
+    {
+      "path": "method.md",
+      "sha256": "fa75ed6845ac7e5278b525eb86fb3ca3dc9a6a707cc355da7ddbf5faf4b206a9"
+    },
+    {
+      "path": "nginx.conf.txt",
+      "sha256": "fce8439efa351e612a38d876dfe65ba4b0b6f219e2133a573d2c9b2992cfc006"
+    },
+    {
+      "path": "practice.html",
+      "sha256": "4dd809e1327740927d9b9085b0ab9bfb6a0a2a902ff05b78130cacb685e7b48a"
+    },
+    {
+      "path": "practice.json",
+      "sha256": "b62585b49c794963ee3a49c2827d71275e1e5d2f77a513cf6fa1158b2ef49189"
+    },
+    {
+      "path": "practice.mjs",
+      "sha256": "2bab6745ec8a8f9953807cf16aec5a6f726cab1bbfe433546848103751c87b07"
+    },
+    {
+      "path": "railway.drawio.xml",
+      "sha256": "58137917a1cba8e9ec976f297e7c83fee7e22726910f6a8bfdf2662d613d53f3"
+    },
+    {
+      "path": "railway.json",
+      "sha256": "00d0b4e84baef3985f6925c533a070548722915d4287435e411dd1527a1d8320"
+    },
+    {
+      "path": "railway.mmd.txt",
+      "sha256": "1f9b6824d3fed5cd778e32054e9586d19ddfebead1a7a9238ff7ff891dc6d9a8"
+    },
+    {
+      "path": "railway.reactflow.json",
+      "sha256": "608e42553e8054ff5e0aef406c96354e56e47a52646a92f7a21f03eb669df774"
+    },
+    {
+      "path": "railway.svg",
+      "sha256": "80868c14129b294f4dac356b04875f26527c943663fa391140214de25a26ac5f"
+    },
+    {
+      "path": "solution.json",
+      "sha256": "a071364ab72ebd410be618940a52e10db93ca51312dfa1917daa99a4cc7576c3"
+    },
+    {
+      "path": "sources.json",
+      "sha256": "d4451c3514e50c0048cb0037e2298407939ed74d15d1017e92eefefbff308ea8"
+    },
+    {
+      "path": "vercel.drawio.xml",
+      "sha256": "1ca9a50c132ff9be9d629a65d83f76e95d1783a4ba6a4798d76feb989fe88b41"
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "92107c59873f1aa6b8c0f3c075da765dd62f1e729df8b5bf0116d687c2933b7a"
+    },
+    {
+      "path": "vercel.mmd.txt",
+      "sha256": "1a50197f61f559b966bb7782967d7a6a55782b9c4f279ce826581c4ad76ea583"
+    },
+    {
+      "path": "vercel.reactflow.json",
+      "sha256": "b7564869f79043ab84ba14259e4bcf2e9d6c82a0fed6496db8a914392d56896b"
+    },
+    {
+      "path": "vercel.svg",
+      "sha256": "14c4bb3fd76bd83258afa02c7b27bc2b36a0b27b5ba03878f695da8a14e4491e"
+    },
+    {
+      "path": "visual-recipes.md",
+      "sha256": "228d1014a28f83a12d18dc77e4a61cc680c060fae08c5b140a0c6132541823a2"
+    }
+  ],
+  "source_repository": "https://github.com/frankxai/ai-architect",
+  "source_license": "Apache-2.0",
+  "upstream_fixture_sha256": "9fb3de5bd24fe0319b780ac34541af630b1afa62e4e40be29f32e06625abbc1c",
+  "projection_transform": "bind specification source revision; append standalone license and attribution; pin book link; publish sidecars with classified extensions"
+}

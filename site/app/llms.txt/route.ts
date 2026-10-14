@@ -17,6 +17,8 @@ const body = `# AI Architect Academy
 
 ## Read without signing up
 
+- [Architecture library](${SITE}/library): immutable book links, encyclopedia, and a public synthetic portal with exact diagram exports. Depicted workloads are visualized; no production competency is granted.
+
 - [Worked ADR and template](${SITE}/adr): one AI system decision record, worked end to end, plus the blank template.
 - [A worked team run](${SITE}/worked-run): one complete run of the agent team, with the gates that failed, the finding, and the verifier's receipt. A labelled fixture.
 - [Everything that exists](${SITE}/curriculum): every pattern, lab and module, each linked to its source file.

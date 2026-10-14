@@ -1,0 +1,187 @@
+{
+  "nodes": [
+    {
+      "id": "portal",
+      "type": "default",
+      "position": {
+        "x": 50,
+        "y": 100
+      },
+      "data": {
+        "label": "Customer portal",
+        "service": "Web container",
+        "owner": "customer platform owner",
+        "boundary": "browser",
+        "data_class": "public",
+        "icon": null
+      }
+    },
+    {
+      "id": "control",
+      "type": "default",
+      "position": {
+        "x": 360,
+        "y": 100
+      },
+      "data": {
+        "label": "Trusted API",
+        "service": "Authorized service",
+        "owner": "customer platform owner",
+        "boundary": "trusted-service",
+        "data_class": "customer-confidential-design",
+        "icon": null
+      }
+    },
+    {
+      "id": "model",
+      "type": "default",
+      "position": {
+        "x": 670,
+        "y": 100
+      },
+      "data": {
+        "label": "Model adapter",
+        "service": "Customer model API",
+        "owner": "customer platform owner",
+        "boundary": "trusted-service",
+        "data_class": "customer-confidential-design",
+        "icon": null
+      }
+    },
+    {
+      "id": "data",
+      "type": "default",
+      "position": {
+        "x": 50,
+        "y": 325
+      },
+      "data": {
+        "label": "Project records",
+        "service": "Postgres + job state",
+        "owner": "customer platform owner",
+        "boundary": "trusted-service",
+        "data_class": "customer-confidential-design",
+        "icon": null
+      }
+    },
+    {
+      "id": "objects",
+      "type": "default",
+      "position": {
+        "x": 360,
+        "y": 325
+      },
+      "data": {
+        "label": "Source artifacts",
+        "service": "Approved object storage",
+        "owner": "customer platform owner",
+        "boundary": "trusted-service",
+        "data_class": "customer-confidential-design",
+        "icon": null
+      }
+    },
+    {
+      "id": "review",
+      "type": "default",
+      "position": {
+        "x": 670,
+        "y": 325
+      },
+      "data": {
+        "label": "Review owner",
+        "service": "Human approval",
+        "owner": "acceptance owner",
+        "boundary": "human",
+        "data_class": "customer-confidential-design",
+        "icon": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "request",
+      "source": "portal",
+      "target": "control",
+      "label": "Authorized request",
+      "data": {
+        "kind": "data",
+        "data_class": "customer-confidential-design",
+        "encryption": "TLS required in deployment"
+      }
+    },
+    {
+      "id": "infer",
+      "source": "control",
+      "target": "model",
+      "label": "Scoped model input",
+      "data": {
+        "kind": "data",
+        "data_class": "customer-confidential-design",
+        "encryption": "TLS required in deployment"
+      }
+    },
+    {
+      "id": "records",
+      "source": "control",
+      "target": "data",
+      "label": "Project access",
+      "data": {
+        "kind": "data",
+        "data_class": "customer-confidential-design",
+        "encryption": "TLS required in deployment"
+      }
+    },
+    {
+      "id": "artifact",
+      "source": "data",
+      "target": "objects",
+      "label": "Source references",
+      "data": {
+        "kind": "data",
+        "data_class": "customer-confidential-design",
+        "encryption": "TLS required in deployment"
+      }
+    },
+    {
+      "id": "approve",
+      "source": "review",
+      "target": "control",
+      "label": "Exact-input approval",
+      "style": {
+        "strokeDasharray": "6 4"
+      },
+      "data": {
+        "kind": "control",
+        "data_class": "approval-metadata",
+        "encryption": "TLS required in deployment"
+      }
+    },
+    {
+      "id": "answer",
+      "source": "model",
+      "target": "control",
+      "label": "Model output validation",
+      "data": {
+        "kind": "data",
+        "data_class": "customer-confidential-design",
+        "encryption": "TLS required in deployment"
+      }
+    },
+    {
+      "id": "respond",
+      "source": "control",
+      "target": "portal",
+      "label": "Validated draft response",
+      "data": {
+        "kind": "data",
+        "data_class": "customer-confidential-design",
+        "encryption": "TLS required in deployment"
+      }
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  }
+}
