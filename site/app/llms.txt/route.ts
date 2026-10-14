@@ -22,6 +22,8 @@ const body = `# AI Architect Academy
 
 - [Architecture library](${SITE}/library): immutable book links, encyclopedia, and a public synthetic portal with exact diagram exports. Depicted workloads are visualized; no production competency is granted.
 - [Studio](${SITE}/studio): workload patterns realized on ${studioProviders}, with interactive diagrams, customer and provider ledgers, exact exports and one-click templates. Designs, not deployments; every name records how it was verified.
+- [Partners and programs](${SITE}/studio/partners): the platforms, model labs, standards and tools the catalog builds on, each with its program, its footprint in the catalog and a relationship status of none until a reference exists.
+- [Inventions](${SITE}/studio/inventions): dated field inventions tied to their primary records and the roles they shaped, plus the catalog's own proposed contributions with implementing files and falsifying experiments. Novelty unassessed.
 
 - [Worked ADR and template](${SITE}/adr): one AI system decision record, worked end to end, plus the blank template.
 - [A worked team run](${SITE}/worked-run): one complete run of the agent team, with the gates that failed, the finding, and the verifier's receipt. A labelled fixture.

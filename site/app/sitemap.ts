@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
+    { url: `${SITE}/studio/partners`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/studio/inventions`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/path`, changeFrequency: 'weekly', priority: 0.95 },
     ...project.stages.map((s) => ({
       url: `${SITE}/path/${s.id.replace(/^stage:/, '')}`,
