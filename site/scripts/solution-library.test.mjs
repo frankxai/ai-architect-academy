@@ -14,7 +14,7 @@ test('library binds one immutable upstream source with separate code and icon ri
  assert.ok(read('public/solution-kit/index.html').toString().includes('Source, license and icon rights'));
  assert.ok(read('public/solution-kit/index.html').toString().includes('Apache License'));
  assert.equal(manifest.source_license,'Apache-2.0');assert.match(data.license,/Google/);
- assert.ok(read('public/solution-kit/LICENSE').toString().includes('Apache License'));
+ assert.ok(read('public/solution-kit/LICENSE.txt').toString().includes('Apache License'));
  for(const item of [...data.book,...data.references]){
   const u=new URL(item.href);assert.equal(u.hostname,'github.com');assert.ok(u.pathname.startsWith('/frankxai/ai-architect/blob/'+data.sourceRevision+'/'));
  }
