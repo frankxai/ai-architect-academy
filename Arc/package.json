@@ -153,7 +153,7 @@
     "test": "echo 'No tests yet'"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30",
+    "@types/node": "^26.6.5",
     "@types/vscode": "^1.140.0",
     "@vscode/test-electron": "^2.3.3",
     "@vscode/vsce": "^3.6.0",
