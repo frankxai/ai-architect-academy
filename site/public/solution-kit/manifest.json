@@ -1,13 +1,13 @@
 {
   "schema": "ai-architect-export/v1",
   "solution_id": "customer-rd-portal",
-  "spec_sha256": "8d7fe289970d01e08dd18caa6f9ea8ebfba694a4173cf0916359a37c159ced49",
+  "spec_sha256": "a071364ab72ebd410be618940a52e10db93ca51312dfa1917daa99a4cc7576c3",
   "compiler_sha256": "007bfef148c70116d661bb706d263b7d60d30098d36c23bcfe8457be5a1df258",
   "portal_template_sha256": "f749027260de35134de724e7b50a2eee918b1e3ec3c75f5eaa4aa75abe891a16",
   "practice_template_sha256": "20cb0b07b946d7acf9aacc05957cee1cc8f7d7d9b61f416dac4af5e4790f9db3",
   "practice_domain_sha256": "2bab6745ec8a8f9953807cf16aec5a6f726cab1bbfe433546848103751c87b07",
   "practice_contract_sha256": "b62585b49c794963ee3a49c2827d71275e1e5d2f77a513cf6fa1158b2ef49189",
-  "source_revision": "2bd0e453911f71ae2bb30ada80f6a08ec938f451",
+  "source_revision": "c43825efda384d9b29364d5e5fe7ba364b08a3fb",
   "fixture": true,
   "portal_state": "compiled",
   "workload_state": "visualized",
@@ -21,11 +21,11 @@
   "model_run": null,
   "files": [
     {
-      "path": "Dockerfile",
+      "path": "Dockerfile.txt",
       "sha256": "a0aa67c0027aca8e92411e5ef434d366830916298c38544355ba2ad8f122c47e"
     },
     {
-      "path": "LICENSE",
+      "path": "LICENSE.txt",
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
     },
     {
@@ -53,11 +53,11 @@
       "sha256": "57ce955dd362c9bc0f721659f4c1e2505d1630cb25551581b6bd12724d8b09bf"
     },
     {
-      "path": "gcp.drawio",
+      "path": "gcp.drawio.xml",
       "sha256": "3bd29dcc9951f57af7a6e2bff69e80e9786a59056b1fafc4751b47abc029a3e6"
     },
     {
-      "path": "gcp.mmd",
+      "path": "gcp.mmd.txt",
       "sha256": "c1f28142e5b344691a12d1d3286ce8b0245946f048e613ae92d9eb0589b29b02"
     },
     {
@@ -70,11 +70,11 @@
     },
     {
       "path": "guide.html",
-      "sha256": "dcb36c80be49aaf84a135a6e1c057e57f8d9a79f993ada5c8896657d99df99d7"
+      "sha256": "0d67c0fe4a1ae7dd2e14fc6a520b88aaaf409be66c2e3b12a0139afd388ac35b"
     },
     {
       "path": "guide.md",
-      "sha256": "034e03e1e4b9129c79e2ae3632233040020685b0e5b9c32a4d9603ff53dc83a8"
+      "sha256": "1163c7071c3f8313973326bb059d4352f7ca5426a1d7f79e162c4bc783fd7071"
     },
     {
       "path": "icon-registry.json",
@@ -82,18 +82,18 @@
     },
     {
       "path": "index.html",
-      "sha256": "78f24d0a9690cc95001419bb380d1f8dd2f67d326b938c2cbfbc95ef7c141285"
+      "sha256": "f5c4d75f24f16a64c8a21ee2fee09441ae147e4ecfcdfe33858c0c02f501bd42"
     },
     {
       "path": "living-design.md",
       "sha256": "71a5ef5f2ccbfa56c9ab698648f675a32299eccb801c9e023ed58692c074aab4"
     },
     {
-      "path": "local.drawio",
+      "path": "local.drawio.xml",
       "sha256": "690f8d8383b205235aadb780994647fddce8e1f934e2f54e2c67a85b2946fb81"
     },
     {
-      "path": "local.mmd",
+      "path": "local.mmd.txt",
       "sha256": "5782780310d967b39652eecec0cd0333841bbafca250f03b8c68c6195096a99b"
     },
     {
@@ -109,12 +109,12 @@
       "sha256": "fa75ed6845ac7e5278b525eb86fb3ca3dc9a6a707cc355da7ddbf5faf4b206a9"
     },
     {
-      "path": "nginx.conf",
+      "path": "nginx.conf.txt",
       "sha256": "fce8439efa351e612a38d876dfe65ba4b0b6f219e2133a573d2c9b2992cfc006"
     },
     {
       "path": "practice.html",
-      "sha256": "7d6ae00e262dc5811c6d1dc74a3a9a2950b464d8379933fe7e6428b29f161651"
+      "sha256": "4dd809e1327740927d9b9085b0ab9bfb6a0a2a902ff05b78130cacb685e7b48a"
     },
     {
       "path": "practice.json",
@@ -125,7 +125,7 @@
       "sha256": "2bab6745ec8a8f9953807cf16aec5a6f726cab1bbfe433546848103751c87b07"
     },
     {
-      "path": "railway.drawio",
+      "path": "railway.drawio.xml",
       "sha256": "58137917a1cba8e9ec976f297e7c83fee7e22726910f6a8bfdf2662d613d53f3"
     },
     {
@@ -133,7 +133,7 @@
       "sha256": "00d0b4e84baef3985f6925c533a070548722915d4287435e411dd1527a1d8320"
     },
     {
-      "path": "railway.mmd",
+      "path": "railway.mmd.txt",
       "sha256": "1f9b6824d3fed5cd778e32054e9586d19ddfebead1a7a9238ff7ff891dc6d9a8"
     },
     {
@@ -146,14 +146,14 @@
     },
     {
       "path": "solution.json",
-      "sha256": "8d7fe289970d01e08dd18caa6f9ea8ebfba694a4173cf0916359a37c159ced49"
+      "sha256": "a071364ab72ebd410be618940a52e10db93ca51312dfa1917daa99a4cc7576c3"
     },
     {
       "path": "sources.json",
       "sha256": "d4451c3514e50c0048cb0037e2298407939ed74d15d1017e92eefefbff308ea8"
     },
     {
-      "path": "vercel.drawio",
+      "path": "vercel.drawio.xml",
       "sha256": "1ca9a50c132ff9be9d629a65d83f76e95d1783a4ba6a4798d76feb989fe88b41"
     },
     {
@@ -161,7 +161,7 @@
       "sha256": "92107c59873f1aa6b8c0f3c075da765dd62f1e729df8b5bf0116d687c2933b7a"
     },
     {
-      "path": "vercel.mmd",
+      "path": "vercel.mmd.txt",
       "sha256": "1a50197f61f559b966bb7782967d7a6a55782b9c4f279ce826581c4ad76ea583"
     },
     {
@@ -180,5 +180,5 @@
   "source_repository": "https://github.com/frankxai/ai-architect",
   "source_license": "Apache-2.0",
   "upstream_fixture_sha256": "9fb3de5bd24fe0319b780ac34541af630b1afa62e4e40be29f32e06625abbc1c",
-  "projection_transform": "bind specification source revision; append standalone license and attribution; pin book link"
+  "projection_transform": "bind specification source revision; append standalone license and attribution; pin book link; publish sidecars with classified extensions"
 }
