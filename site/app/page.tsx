@@ -1,7 +1,12 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import curriculum from '@/data/curriculum.json'
 import { Waitlist } from '@/components/Waitlist'
 import { competencyShipProduction as competency, projectProductionAgentSystems as project } from '@/lib/academy-graph'
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
 
 const claim = competency.claim.charAt(0).toLowerCase() + competency.claim.slice(1)
 
