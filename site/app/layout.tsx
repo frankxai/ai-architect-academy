@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
           </nav>
         </header>
-        <main id="main" className="mx-auto w-full max-w-5xl px-6 sm:px-8">
+        <main id="main" tabIndex={-1} className="mx-auto w-full max-w-5xl px-6 sm:px-8">
           {children}
         </main>
         <footer className="mx-auto w-full max-w-5xl px-6 pb-14 pt-10 sm:px-8">
