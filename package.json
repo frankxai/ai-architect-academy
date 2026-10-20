@@ -7,7 +7,7 @@
     "build:index": "node ./scripts/build-search-index.mjs"
   },
   "devDependencies": {
-    "puppeteer": "^25.13.0"
+    "puppeteer": "^25.14.0"
   },
   "license": "FSL-1.1-ALv2",
   "author": "Frank Riemer <frank@frankx.ai>"
