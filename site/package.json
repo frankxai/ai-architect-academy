@@ -18,6 +18,7 @@
     "sync:studio": "node scripts/sync-studio.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "@xyflow/react": "12.12.0",
     "next": "16.4.0",
     "react": "19.3.0",
