@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       'For the engineer who was just handed the AI work. Judgement and sequence, taught by building. Waitlist open, no date yet.',
     url: SITE,
   },
-  twitter: { card: 'summary' },
+  twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true },
 }
 
