@@ -3,3 +3,8 @@
 ^https?://localhost(:\d+)?
 ^https?://127\.0\.0\.1(:\d+)?
 ^https?://0\.0\.0\.0(:\d+)?
+^https?://ai-architect-academy\.github\.io/ai-architect-academy/?$
+^https?://github\.com/frankxai/ai-architect-academy/blob/main/08-governance/checklists\.md$
+^https?://github\.com/frankxai/ai-architect-academy/blob/main/dashboard/AGENT\.md$
+^https?://github\.com/frankxai/ai-architect-academy/tree/main/dashboard$
+^https?://ai-architect-academy\.github\.io/ai-architect-academy/assets/social-card\.svg$
