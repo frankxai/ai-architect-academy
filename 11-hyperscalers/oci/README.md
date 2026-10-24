@@ -23,3 +23,12 @@ Docs & Links
 - Oracle GenAI Service — https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm
 - Database 23ai Vector Search — https://www.oracle.com/database/ai/
 - JSON Relational Duality — https://www.oracle.com/database/json/
+
+Provider Packs
+- [pack-aws](https://github.com/frankxai/pack-aws)
+- [pack-azure](https://github.com/frankxai/pack-azure)
+- [pack-gcp](https://github.com/frankxai/pack-gcp)
+- [pack-oci](https://github.com/frankxai/pack-oci)
+- Cloudflare (Coming soon)
+- Vercel (Coming soon)
+- Railway (Coming soon)

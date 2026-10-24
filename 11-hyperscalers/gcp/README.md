@@ -20,3 +20,12 @@ Docs & Links
 - Vertex AI — https://cloud.google.com/vertex-ai
 - AlloyDB AI — https://cloud.google.com/alloydb/docs/ai
 - Cloud SQL pgvector — https://cloud.google.com/sql/docs/postgres/extensions/pgvector
+
+Provider Packs
+- [pack-aws](https://github.com/frankxai/pack-aws)
+- [pack-azure](https://github.com/frankxai/pack-azure)
+- [pack-gcp](https://github.com/frankxai/pack-gcp)
+- [pack-oci](https://github.com/frankxai/pack-oci)
+- Cloudflare (Coming soon)
+- Vercel (Coming soon)
+- Railway (Coming soon)
