@@ -19,6 +19,39 @@
 | Validation | QA validates latency, quality, cost. | Evaluation agent compares metrics vs baseline, surfaces regressions. | Promptfoo, metrics pipeline. |
 | Continuous Monitoring | Ops monitors and iterates. | Feedback agent alerts on drift, triggers playbook. | Alerting, retrospectives.
 
+## Architecture & Tuning Guide
+
+### Latency Budgets
+Set strict budgets to prevent cascading delays in multi-step AI workflows.
+- **Time to First Token (TTFT)**: Keep under 1s for streaming responses to maintain user engagement.
+- **Embedding Generation**: Aim for <100ms P95 latency.
+- **Vector Retrieval**: Target <50ms P95 latency for standard RAG pipelines.
+- **Total P95 Latency**: Keep end-to-end response time under 2s for non-streaming workflows.
+
+### Caching Strategies
+- **Embedding Caching**: Cache exact match queries or commonly embedded chunks using Redis to bypass inference.
+- **Retrieval Caching**: Store results for frequent semantic queries. Semantic caching (using a threshold distance to an existing cached embedding) avoids redundant database lookups.
+- **Prompt/KV Caching**: Reuse KV states for common system prompts or long contexts (e.g. vLLM paged attention) to speed up TTFT.
+
+### Batching & Scalability
+- **Dynamic Batching**: Group incoming requests within a narrow time window (e.g. 10-50ms) to maximize GPU utilization without blowing up individual request latency.
+- **Continuous Batching**: Eject completed sequences early and inject new ones instantly (vLLM style), drastically increasing inference throughput over static batching.
+
+### Model Choice Tradeoffs
+- **Premium vs. Distilled**: Use heavy models (GPT-4 class) for complex reasoning or extraction tasks. Default to distilled or specialized variants (e.g. Llama 8B, fine-tuned SLMs) for routine classification, summarization, or routing to save compute and cost.
+- **Router Fallbacks**: Implement semantic routers to direct simple queries to fast, cheap models and escalate to premium models only when confidence is low or query complexity demands it.
+
+### Vector Index Tuning (IVFFlat)
+For vector databases like pgvector, IVFFlat provides a good balance of speed and recall if tuned properly:
+- **`lists` Parameter**: Determines the number of clusters. A good rule of thumb is `rows / 1000` for up to 1M rows, or `sqrt(rows)` for >1M rows.
+- **`probes` Parameter**: Controls how many clusters are searched during retrieval. Higher `probes` yield better recall but higher latency. Start with `probes = max(1, round(lists / 10))` and adjust based on latency budgets.
+- **Build Index After Data Load**: Always create the IVFFlat index *after* inserting a representative dataset to ensure cluster centers are accurate.
+
+### Cost Controls
+- **Token Budgets & Prompt Truncation**: Strictly enforce maximum context lengths. Truncate long retrieval context to the top-K most relevant chunks to avoid unbounded token costs.
+- **Rate Limits & Quotas**: Implement per-user and per-tenant rate limits to prevent abuse and noisy neighbor problems. Use tiered quotas.
+- **Cost Anomaly Detection**: Tie billing APIs to alerting systems to detect runaway recursive agent loops or unexpected usage spikes instantly.
+
 ## Technical Architecture Stack
 1. **Observability:** Centralised metrics (Prometheus/Grafana), tracing (OpenTelemetry/Langfuse), logging (ELK).  
 2. **Load & Regression Testing:** Tools like k6/Locust, Promptfoo, synthetic dataset generator.  
