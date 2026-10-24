@@ -39,7 +39,7 @@ Contribute: PR new projects with a short description, difficulty, est_time, and 
 | 31 | Local Inference Prototype | edge | beginner | 6h | local, llama.cpp | [Link](https://github.com/ggerganov/llama.cpp) |
 | 32 | Orchestration with Temporal | orchestration | intermediate | 10h | temporal, workflows | [Link](https://github.com/temporalio/sdk-typescript) |
 | 33 | Vector DB Benchmarks | retrieval | advanced | 14h | qdrant, weaviate, milvus | [Link](https://github.com/qdrant/qdrant) |
-| 34 | Hybrid Reranking (ColBERT/LLM) | retrieval | advanced | 14h | rerank, colbert | [Link](https://weaviate.io/developers/weaviate/modules/retriever-vectorizer/reranker) |
+| 34 | Hybrid Reranking (ColBERT/LLM) | retrieval | advanced | 14h | rerank, colbert | [Link](https://docs.weaviate.io/weaviate/modules/retriever-vectorizer/reranker) |
 | 35 | Governance Checklist + DPIA | governance | beginner | 5h | gdpr, privacy | [Link](../08-governance/privacy-gdpr.md) |
 | 36 | Model Risk Register (LLM) | governance | intermediate | 7h | risk, governance | [Link](../08-governance/model-risk.md) |
 | 37 | SLA/SLO for LLM APIs | ops | intermediate | 7h | slo, budget | [Link](../06-toolchains/stack-reference.md) |

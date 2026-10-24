@@ -574,11 +574,11 @@
       "colbert"
     ],
     "links": {
-      "repo": "https://weaviate.io/developers/weaviate/modules/retriever-vectorizer/reranker"
+      "repo": "https://docs.weaviate.io/weaviate/modules/retriever-vectorizer/reranker"
     },
     "description": "Improve ranking with cross-encoder or LLM reranker.",
     "est_time": "14h",
-    "link": "https://weaviate.io/developers/weaviate/modules/retriever-vectorizer/reranker"
+    "link": "https://docs.weaviate.io/weaviate/modules/retriever-vectorizer/reranker"
   },
   {
     "id": "governance-dpia",
