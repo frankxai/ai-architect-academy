@@ -146,6 +146,7 @@ ai-architect-academy/
 │   └── saas-curriculum/         # 12-week structured curriculum
 ├── 01-design-patterns/          # 20+ architecture patterns
 ├── 02-learning-paths/           # Structured learning tracks
+├── 03-awesome/                  # Curated resources and examples
 └── 05-projects/                 # 100+ project ideas
 ```
 
@@ -159,7 +160,15 @@ ai-architect-academy/
 
 ---
 
-## Learning Paths
+## 🗺️ Start Here
+
+<p align="center">
+  <img src="assets/start-here.svg" alt="Start Here Journey" />
+</p>
+
+---
+
+## 🎓 Learning Paths
 
 | Path | Hours | Focus |
 |------|-------|-------|
@@ -168,6 +177,24 @@ ai-architect-academy/
 | **Multi-Cloud** | 40h | OCI, AWS, Azure, GCP patterns |
 | **Enterprise Lead** | 30h | Security, governance, compliance |
 | **Bootcamp** | 40h | Intensive: all labs + capstone |
+
+---
+
+## 🧩 Patterns
+
+Explore [01-design-patterns/](01-design-patterns/) for 20+ architecture blueprints covering Customer Experience, Decision Support, Platform Enablement, and more.
+
+---
+
+## 🚀 Projects
+
+Browse [05-projects/](05-projects/) to find 100+ practical builds for AI Architects, ranging from beginner RAG setups to advanced multi-agent orchestrations.
+
+---
+
+## 🌟 Awesome
+
+Check out [03-awesome/](03-awesome/) for curated resources, agent aggregators, vector DB benchmarks, and portfolio examples to model.
 
 ---
 
