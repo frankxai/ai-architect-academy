@@ -1,879 +1,202 @@
 [
   {
-    "id": "rag-supabase-citations",
-    "title": "RAG on Supabase with Citations",
-    "category": "RAG",
-    "difficulty": "beginner",
-    "est_hours": 10,
+    "title": "Domain RAG Healthcare",
+    "difficulty": "advanced",
+    "est_time": "14h",
     "tags": [
       "rag",
+      "healthcare"
+    ],
+    "link": "05-projects/domain-rag-healthcare"
+  },
+  {
+    "title": "Agentic SaaS Planner",
+    "difficulty": "intermediate",
+    "est_time": "10h",
+    "tags": [
+      "agents",
+      "saas"
+    ],
+    "link": "05-projects/agentic-saas-planner.md"
+  },
+  {
+    "title": "Vector Search pgvector",
+    "difficulty": "intermediate",
+    "est_time": "8h",
+    "tags": [
       "pgvector",
-      "openai"
+      "retrieval"
     ],
-    "links": {
-      "guide": "05-projects/rag-on-supabase.md",
-      "repo": "https://github.com/pgvector/pgvector"
-    },
-    "description": "Implement RAG with pgvector, enforce citations, and measure faithfulness."
+    "link": "05-projects/vector-search-pgvector.md"
   },
   {
-    "id": "hybrid-search",
-    "title": "Hybrid Search (BM25 + Vectors)",
-    "category": "retrieval",
+    "title": "Evals Langfuse",
     "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "bm25",
-      "vectors"
-    ],
-    "links": {
-      "guide": "03-awesome/awesome-vector-dbs.md"
-    },
-    "description": "Combine lexical and semantic search with re-ranking."
-  },
-  {
-    "id": "chunking-bench",
-    "title": "Chunking Strategies Benchmark",
-    "category": "retrieval",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "chunking",
-      "ragas"
-    ],
-    "links": {
-      "repo": "https://github.com/explodinggradients/ragas"
-    },
-    "description": "Compare chunk sizes and boundaries on retrieval quality."
-  },
-  {
-    "id": "evals-harness",
-    "title": "Evals Harness (Faithfulness, Coverage)",
-    "category": "evaluation",
-    "difficulty": "intermediate",
-    "est_hours": 8,
+    "est_time": "8h",
     "tags": [
       "evals",
       "langfuse"
     ],
-    "links": {
-      "repo": "https://github.com/langfuse/langfuse"
-    },
-    "description": "Trace prompts, build eval datasets, and score grounded answers."
+    "link": "05-projects/evals-langfuse.md"
   },
   {
-    "id": "cost-guardrails",
-    "title": "Cost Guardrails & Caching Layer",
-    "category": "ops",
+    "title": "Creator Evals",
     "difficulty": "intermediate",
-    "est_hours": 8,
+    "est_time": "10h",
     "tags": [
-      "cost",
-      "cache"
+      "evals",
+      "creators"
     ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Add caching, batching, and alerts to control spend."
+    "link": "05-projects/creator-evals"
   },
   {
-    "id": "agent-tools",
-    "title": "Agent with Tools (Web + DB)",
-    "category": "agents",
-    "difficulty": "intermediate",
-    "est_hours": 12,
+    "title": "Eval Automation",
+    "difficulty": "advanced",
+    "est_time": "12h",
+    "tags": [
+      "evals",
+      "automation"
+    ],
+    "link": "05-projects/eval-automation"
+  },
+  {
+    "title": "First Agent",
+    "difficulty": "beginner",
+    "est_time": "4h",
     "tags": [
       "agents",
-      "tools"
+      "getting-started"
     ],
-    "links": {
-      "repo": "https://github.com/langchain-ai/langgraph"
-    },
-    "description": "Build an agent that browses and queries a DB with safe tools."
+    "link": "05-projects/first-agent.md"
   },
   {
-    "id": "multi-agent-review",
-    "title": "Multi-Agent Workflow (Reviewer Loops)",
-    "category": "agents",
-    "difficulty": "advanced",
-    "est_hours": 16,
-    "tags": [
-      "agents",
-      "autogen"
-    ],
-    "links": {
-      "repo": "https://github.com/microsoft/autogen"
-    },
-    "description": "Create collaborating agents with a human reviewer gate."
-  },
-  {
-    "id": "obs-dashboard",
-    "title": "Observability Dash (Traces, Costs)",
-    "category": "observability",
+    "title": "RAG Pipeline Lab",
     "difficulty": "intermediate",
-    "est_hours": 8,
+    "est_time": "4h",
     "tags": [
-      "observability",
-      "tracing"
-    ],
-    "links": {
-      "repo": "https://github.com/langfuse/langfuse"
-    },
-    "description": "Build a dashboard for latency, cost, and evals."
-  },
-  {
-    "id": "prompt-registry",
-    "title": "Prompt Registry + Versioning",
-    "category": "mlops",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "prompts",
-      "versioning"
-    ],
-    "links": {
-      "repo": "https://github.com/promptfoo/promptfoo"
-    },
-    "description": "Track prompts, versions, and quality over time."
-  },
-  {
-    "id": "serve-vllm",
-    "title": "Model Serving with vLLM",
-    "category": "serving",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "serving",
-      "vllm"
-    ],
-    "links": {
-      "repo": "https://github.com/vllm-project/vllm"
-    },
-    "description": "Deploy a high\u2011throughput inference server with vLLM."
-  },
-  {
-    "id": "local-inference",
-    "title": "Local Inference Prototype",
-    "category": "edge",
-    "difficulty": "beginner",
-    "est_hours": 6,
-    "tags": [
-      "local",
-      "llama.cpp"
-    ],
-    "links": {
-      "repo": "https://github.com/ggerganov/llama.cpp"
-    },
-    "description": "Run a small LLM locally; compare to hosted."
-  },
-  {
-    "id": "orchestration-temporal",
-    "title": "Orchestration with Temporal",
-    "category": "orchestration",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "temporal",
-      "workflows"
-    ],
-    "links": {
-      "repo": "https://github.com/temporalio/sdk-typescript"
-    },
-    "description": "Coordinate AI and human tasks with retries and compensation."
-  },
-  {
-    "id": "vector-bench",
-    "title": "Vector DB Benchmarks",
-    "category": "retrieval",
-    "difficulty": "advanced",
-    "est_hours": 14,
-    "tags": [
-      "qdrant",
-      "weaviate",
-      "milvus"
-    ],
-    "links": {
-      "repo": "https://github.com/qdrant/qdrant"
-    },
-    "description": "Compare recall/latency/cost across vector databases."
-  },
-  {
-    "id": "rerank-colbert",
-    "title": "Hybrid Reranking (ColBERT/LLM)",
-    "category": "retrieval",
-    "difficulty": "advanced",
-    "est_hours": 14,
-    "tags": [
-      "rerank",
-      "colbert"
-    ],
-    "links": {
-      "repo": "https://weaviate.io/developers/weaviate/modules/retriever-vectorizer/reranker"
-    },
-    "description": "Improve ranking with cross-encoder or LLM reranker."
-  },
-  {
-    "id": "governance-dpia",
-    "title": "Governance Checklist + DPIA",
-    "category": "governance",
-    "difficulty": "beginner",
-    "est_hours": 5,
-    "tags": [
-      "gdpr",
-      "privacy"
-    ],
-    "links": {
-      "guide": "08-governance/privacy-gdpr.md"
-    },
-    "description": "Create DPIA and governance checklist for an AI app."
-  },
-  {
-    "id": "model-risk",
-    "title": "Model Risk Register (LLM)",
-    "category": "governance",
-    "difficulty": "intermediate",
-    "est_hours": 7,
-    "tags": [
-      "risk",
-      "governance"
-    ],
-    "links": {
-      "guide": "08-governance/model-risk.md"
-    },
-    "description": "Define risk taxonomy, controls, and monitoring plan."
-  },
-  {
-    "id": "llm-slos",
-    "title": "SLA/SLO for LLM APIs",
-    "category": "ops",
-    "difficulty": "intermediate",
-    "est_hours": 7,
-    "tags": [
-      "slo",
-      "budget"
-    ],
-    "links": {
-      "guide": "06-toolchains/stack-reference.md"
-    },
-    "description": "Document latency, error budgets, and cost SLOs."
-  },
-  {
-    "id": "streaming-rag",
-    "title": "Streaming RAG (Realtime Indexing)",
-    "category": "systems",
-    "difficulty": "advanced",
-    "est_hours": 14,
-    "tags": [
-      "streaming",
-      "dagster"
-    ],
-    "links": {
-      "repo": "https://github.com/dagster-io/dagster"
-    },
-    "description": "Ingest streams to update the index in near real-time."
-  },
-  {
-    "id": "multimodal-rag",
-    "title": "Multimodal RAG (Image+Text)",
-    "category": "multimodal",
-    "difficulty": "advanced",
-    "est_hours": 16,
-    "tags": [
-      "vision",
+      "lab",
       "rag"
     ],
-    "links": {
-      "repo": "https://github.com/huggingface/transformers"
-    },
-    "description": "Add image understanding to RAG and evaluate results."
+    "link": "labs/01-rag-pipeline"
   },
   {
-    "id": "retrieval-vs-finetune",
-    "title": "Retrieval + Fine-tune Comparison",
-    "category": "research",
+    "title": "Multi-Agent System Lab",
     "difficulty": "advanced",
-    "est_hours": 20,
+    "est_time": "6h",
     "tags": [
-      "rag",
-      "finetune"
+      "lab",
+      "agents"
     ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Quantify when retrieval suffices vs. fine-tuning."
+    "link": "labs/02-multi-agent-system"
   },
   {
-    "id": "citation-prompts",
-    "title": "Citation Enforcement Prompt Patterns",
-    "category": "rag",
-    "difficulty": "intermediate",
-    "est_hours": 6,
-    "tags": [
-      "prompting",
-      "citations"
-    ],
-    "links": {
-      "guide": "05-projects/rag-on-supabase.md"
-    },
-    "description": "Design prompts and checks that require citations and abstain on low confidence."
-  },
-  {
-    "id": "reranker-integration",
-    "title": "Reranker Integration (cross-encoder)",
-    "category": "retrieval",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "rerank"
-    ],
-    "links": {
-      "repo": "https://github.com/weaviate/weaviate"
-    },
-    "description": "Add cross-encoder reranking to improve result ordering."
-  },
-  {
-    "id": "pgvector-tuning",
-    "title": "pgvector Index Tuning (IVFFlat)",
-    "category": "retrieval",
-    "difficulty": "intermediate",
-    "est_hours": 6,
-    "tags": [
-      "pgvector",
-      "index"
-    ],
-    "links": {
-      "repo": "https://github.com/pgvector/pgvector"
-    },
-    "description": "Tune IVF params and measure recall/latency tradeoffs."
-  },
-  {
-    "id": "contamination-checks",
-    "title": "Data Contamination Checks",
-    "category": "evaluation",
+    "title": "MCP Server Lab",
     "difficulty": "advanced",
-    "est_hours": 10,
+    "est_time": "6h",
     "tags": [
-      "quality"
+      "lab",
+      "mcp"
     ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Detect training data leakage and prevent inflated metrics."
+    "link": "labs/03-mcp-server"
   },
   {
-    "id": "synthetic-data",
-    "title": "Synthetic Data Generation Pipeline",
-    "category": "platform",
+    "title": "Eval Harness Lab",
+    "difficulty": "intermediate",
+    "est_time": "5h",
+    "tags": [
+      "lab",
+      "evals"
+    ],
+    "link": "labs/04-eval-harness"
+  },
+  {
+    "title": "Tool Authority Gate Lab",
     "difficulty": "advanced",
-    "est_hours": 12,
+    "est_time": "6h",
     "tags": [
-      "synthetic"
-    ],
-    "links": {
-      "repo": "https://github.com/huggingface/transformers"
-    },
-    "description": "Generate synthetic QA pairs with controls and evaluate impact."
-  },
-  {
-    "id": "personal-kb",
-    "title": "Notes & Personal KB Integration",
-    "category": "systems",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "notes",
-      "kb"
-    ],
-    "links": {
-      "guide": "05-projects/rag-on-supabase.md"
-    },
-    "description": "Integrate user notes into retrieval and search."
-  },
-  {
-    "id": "risk-dashboard",
-    "title": "Risk & Compliance Dashboard",
-    "category": "governance",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "risk",
-      "gdpr"
-    ],
-    "links": {
-      "guide": "08-governance/model-risk.md"
-    },
-    "description": "Visualize risks, controls, and data flows."
-  },
-  {
-    "id": "gateway-fallbacks",
-    "title": "LLM Gateway: Fallbacks & Retries",
-    "category": "ops",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "gateway"
-    ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Implement policy-based routing, retries, and fallbacks."
-  },
-  {
-    "id": "cost-simulator",
-    "title": "LLM Cost Simulator",
-    "category": "ops",
-    "difficulty": "beginner",
-    "est_hours": 5,
-    "tags": [
-      "cost"
-    ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Estimate monthly spend under different usage patterns."
-  },
-  {
-    "id": "semantic-cache",
-    "title": "Semantic Cache with Hashing",
-    "category": "systems",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "cache"
-    ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Cache answers by semantic signature to cut cost/latency."
-  },
-  {
-    "id": "multilingual-rag",
-    "title": "Multilingual RAG",
-    "category": "rag",
-    "difficulty": "advanced",
-    "est_hours": 14,
-    "tags": [
-      "i18n"
-    ],
-    "links": {
-      "repo": "https://github.com/huggingface/transformers"
-    },
-    "description": "Support cross-lingual retrieval and answers."
-  },
-  {
-    "id": "fine-tune-vs-retrieval",
-    "title": "Fine-tune vs Retrieval Study",
-    "category": "research",
-    "difficulty": "advanced",
-    "est_hours": 18,
-    "tags": [
-      "finetune",
-      "rag"
-    ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Quantify when to fine-tune vs. rely on retrieval."
-  },
-  {
-    "id": "prompt-injection-defenses",
-    "title": "Prompt Injection Defenses",
-    "category": "security",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
+      "lab",
       "security"
     ],
-    "links": {
-      "repo": "https://github.com/OWASP/www-project-top-10-for-large-language-model-applications"
-    },
-    "description": "Implement filters and sandboxing to prevent prompt injection."
+    "link": "labs/05-tool-authority-gate"
   },
   {
-    "id": "content-moderation",
-    "title": "Content Moderation Pipeline",
-    "category": "security",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "moderation"
-    ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Moderate inputs/outputs with thresholds and appeals."
-  },
-  {
-    "id": "explainable-retrieval",
-    "title": "Explainable Retrieval (why these chunks)",
-    "category": "evaluation",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "explainability"
-    ],
-    "links": {
-      "repo": "https://github.com/explodinggradients/ragas"
-    },
-    "description": "Show contribution of chunks to the final answer."
-  },
-  {
-    "id": "kg-enrichment",
-    "title": "Knowledge Graph Enrichment",
-    "category": "systems",
+    "title": "Governance Compliance Pattern",
     "difficulty": "advanced",
-    "est_hours": 14,
+    "est_time": "8h",
     "tags": [
-      "kg"
+      "pattern",
+      "governance"
     ],
-    "links": {
-      "repo": "https://github.com/neo4j/neo4j"
-    },
-    "description": "Extract entities/relations and enrich a KG for better retrieval."
+    "link": "01-design-patterns/governance-compliance.md"
   },
   {
-    "id": "human-approval",
-    "title": "Human Approval Workflows (Temporal)",
-    "category": "orchestration",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "temporal",
-      "approvals"
-    ],
-    "links": {
-      "repo": "https://github.com/temporalio/sdk-typescript"
-    },
-    "description": "Add reviewer steps with retries and compensation logic."
-  },
-  {
-    "id": "canary-deploy",
-    "title": "Canary Deployment for LLM Apps",
-    "category": "mlops",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "canary"
-    ],
-    "links": {
-      "repo": "https://github.com/ray-project/ray"
-    },
-    "description": "Ship new versions safely with canary and rollback rules."
-  },
-  {
-    "id": "bluegreen-serve",
-    "title": "Blue/Green Serving (vLLM)",
-    "category": "serving",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "vllm",
-      "serve"
-    ],
-    "links": {
-      "repo": "https://github.com/vllm-project/vllm"
-    },
-    "description": "Cutover serving traffic between two versions reliably."
-  },
-  {
-    "id": "sla-alerts",
-    "title": "SLA Monitoring & Alerts",
-    "category": "ops",
-    "difficulty": "intermediate",
-    "est_hours": 8,
-    "tags": [
-      "slo",
-      "alerts"
-    ],
-    "links": {
-      "repo": "https://github.com/langfuse/langfuse"
-    },
-    "description": "Monitor latency, error, and cost SLOs; send alerts."
-  },
-  {
-    "id": "finance-kyc-docs",
-    "title": "Finance: KYC Document Processing",
-    "category": "industry-finance",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "ocr",
-      "ner",
-      "rag"
-    ],
-    "links": {
-      "repo": "https://github.com/huggingface/transformers"
-    },
-    "description": "Extract entities from KYC documents and ground answers with citations."
-  },
-  {
-    "id": "healthcare-ner",
-    "title": "Healthcare: Clinical NER and Summarization",
-    "category": "industry-healthcare",
+    "title": "Genomic Sequence Processing Pattern",
     "difficulty": "advanced",
-    "est_hours": 16,
+    "est_time": "14h",
     "tags": [
-      "ner",
-      "privacy"
+      "pattern",
+      "genomics"
     ],
-    "links": {
-      "repo": "https://github.com/huggingface/transformers"
-    },
-    "description": "De-identify PHI and summarize clinical notes responsibly."
+    "link": "01-design-patterns/genomic-sequence-processing.md"
   },
   {
-    "id": "energy-forecast",
-    "title": "Energy: Short-term Price Forecasting",
-    "category": "industry-energy",
-    "difficulty": "intermediate",
-    "est_hours": 12,
-    "tags": [
-      "forecast",
-      "timeseries"
-    ],
-    "links": {
-      "repo": "https://github.com/facebookresearch/Kats"
-    },
-    "description": "Forecast prices and evaluate trading strategies."
-  },
-  {
-    "id": "gov-foia",
-    "title": "Gov: FOIA Document Q&A",
-    "category": "industry-gov",
-    "difficulty": "intermediate",
-    "est_hours": 12,
-    "tags": [
-      "rag",
-      "gov"
-    ],
-    "links": {
-      "guide": "05-projects/rag-on-supabase.md"
-    },
-    "description": "RAG over public records with strict citations."
-  },
-  {
-    "id": "retail-search",
-    "title": "Retail: Semantic Product Search",
-    "category": "industry-retail",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "search",
-      "vectors"
-    ],
-    "links": {
-      "repo": "https://github.com/weaviate/weaviate"
-    },
-    "description": "Vector + keyword search over catalog and reviews."
-  },
-  {
-    "id": "legal-briefs",
-    "title": "Legal: Brief Drafting Assistant",
-    "category": "industry-legal",
+    "title": "GIS Intelligence Pattern",
     "difficulty": "advanced",
-    "est_hours": 18,
+    "est_time": "16h",
     "tags": [
-      "rag",
-      "safety"
+      "pattern",
+      "gis"
     ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Grounded drafting with sources and risk checks."
+    "link": "01-design-patterns/gis-intelligence.md"
   },
   {
-    "id": "manufacturing-predictive",
-    "title": "Mfg: Predictive Maintenance Assistant",
-    "category": "industry-mfg",
+    "title": "Oracle ADK Blueprint",
+    "difficulty": "intermediate",
+    "est_time": "12h",
+    "tags": [
+      "pattern",
+      "oracle"
+    ],
+    "link": "01-design-patterns/oracle-adk-blueprint.md"
+  },
+  {
+    "title": "Creator Studio Automation",
+    "difficulty": "intermediate",
+    "est_time": "14h",
+    "tags": [
+      "pattern",
+      "creator"
+    ],
+    "link": "01-design-patterns/creator-studio-automation.md"
+  },
+  {
+    "title": "Model Lifecycle Management",
     "difficulty": "advanced",
-    "est_hours": 16,
+    "est_time": "18h",
     "tags": [
-      "timeseries",
-      "anomaly"
+      "pattern",
+      "mlops"
     ],
-    "links": {
-      "repo": "https://github.com/pycaret/pycaret"
-    },
-    "description": "Forecast failures, suggest parts and procedures."
+    "link": "01-design-patterns/model-lifecycle-management.md"
   },
   {
-    "id": "education-tutor",
-    "title": "Education: Course Tutor with Citations",
-    "category": "industry-education",
+    "title": "Decision Support Pattern",
     "difficulty": "intermediate",
-    "est_hours": 12,
+    "est_time": "12h",
     "tags": [
-      "rag",
-      "evals"
+      "pattern",
+      "decision"
     ],
-    "links": {
-      "guide": "05-projects/rag-on-supabase.md"
-    },
-    "description": "Tutor aligned to course materials with evals."
+    "link": "01-design-patterns/decision-support.md"
   },
   {
-    "id": "news-summarizer",
-    "title": "Media: Multi-source News Summarizer",
-    "category": "industry-media",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "summarization"
-    ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Summarize multiple sources; show sources and stance."
-  },
-  {
-    "id": "travel-itinerary",
-    "title": "Travel: Personalized Itinerary Planner",
-    "category": "industry-travel",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "agents",
-      "tools"
-    ],
-    "links": {
-      "repo": "https://github.com/langchain-ai/langgraph"
-    },
-    "description": "Agents with tools: maps, flights, hotels; budget-aware."
-  },
-  {
-    "id": "supply-chain-qna",
-    "title": "Supply Chain: Policy Q&A",
-    "category": "industry-supply",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "rag",
-      "policy"
-    ],
-    "links": {
-      "guide": "05-projects/rag-on-supabase.md"
-    },
-    "description": "Grounded answers over SOPs and contracts."
-  },
-  {
-    "id": "banking-chat",
-    "title": "Banking: Customer Support Chat",
-    "category": "industry-finance",
-    "difficulty": "intermediate",
-    "est_hours": 12,
-    "tags": [
-      "chat",
-      "guardrails"
-    ],
-    "links": {
-      "repo": "https://github.com/langfuse/langfuse"
-    },
-    "description": "Policy-aware chat with redaction and escalation."
-  },
-  {
-    "id": "health-risk-score",
-    "title": "Healthcare: Readmission Risk Scoring",
-    "category": "industry-healthcare",
+    "title": "Energy Market Trading Optimization",
     "difficulty": "advanced",
-    "est_hours": 18,
+    "est_time": "20h",
     "tags": [
-      "ml",
-      "risk"
+      "pattern",
+      "energy"
     ],
-    "links": {
-      "repo": "https://github.com/scikit-learn/scikit-learn"
-    },
-    "description": "Model risk and generate patient-friendly summaries."
-  },
-  {
-    "id": "ins-underwriting",
-    "title": "Insurance: Underwriting Assistant",
-    "category": "industry-insurance",
-    "difficulty": "advanced",
-    "est_hours": 16,
-    "tags": [
-      "ocr",
-      "rag"
-    ],
-    "links": {
-      "repo": "https://github.com/tesseract-ocr/tesseract"
-    },
-    "description": "Extract from PDFs and ground recommendations."
-  },
-  {
-    "id": "gis-routing",
-    "title": "GIS: Optimal Routing Assistant",
-    "category": "industry-energy",
-    "difficulty": "advanced",
-    "est_hours": 16,
-    "tags": [
-      "gis",
-      "routing"
-    ],
-    "links": {
-      "repo": "https://github.com/Project-OSRM/osrm-backend"
-    },
-    "description": "Route planning with constraints and explanations."
-  },
-  {
-    "id": "cyber-triage",
-    "title": "Cyber: Incident Triage Assistant",
-    "category": "industry-cyber",
-    "difficulty": "advanced",
-    "est_hours": 16,
-    "tags": [
-      "security",
-      "triage"
-    ],
-    "links": {
-      "repo": "https://github.com/owasp/",
-      "guide": "08-governance/model-risk.md"
-    },
-    "description": "Triage incidents and suggest next steps; log evidence."
-  },
-  {
-    "id": "hr-policy",
-    "title": "HR: Policy Q&A with Approvals",
-    "category": "industry-hr",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "rag",
-      "approvals"
-    ],
-    "links": {
-      "repo": "https://github.com/temporalio/sdk-typescript"
-    },
-    "description": "Grounded answers with Temporal approval workflow."
-  },
-  {
-    "id": "sales-rfp",
-    "title": "Sales: RFP Assistant",
-    "category": "industry-sales",
-    "difficulty": "intermediate",
-    "est_hours": 12,
-    "tags": [
-      "rag",
-      "composer"
-    ],
-    "links": {
-      "repo": "https://github.com/openai/openai-cookbook"
-    },
-    "description": "Answer RFPs grounded on product docs and policies."
-  },
-  {
-    "id": "marketing-optimizer",
-    "title": "Marketing: Content Optimizer",
-    "category": "industry-marketing",
-    "difficulty": "intermediate",
-    "est_hours": 10,
-    "tags": [
-      "genai",
-      "evals"
-    ],
-    "links": {
-      "repo": "https://github.com/promptfoo/promptfoo"
-    },
-    "description": "Test and optimize prompts, styles, and metrics."
+    "link": "01-design-patterns/energy-market-trading-optimization.md"
   }
 ]
