@@ -44,7 +44,7 @@ Set strict budgets to prevent cascading delays in multi-step AI workflows.
 ### Vector Index Tuning (IVFFlat)
 For vector databases like pgvector, IVFFlat provides a good balance of speed and recall if tuned properly:
 - **`lists` Parameter**: Determines the number of clusters. A good rule of thumb is `rows / 1000` for up to 1M rows, or `sqrt(rows)` for >1M rows.
-- **`probes` Parameter**: Controls how many clusters are searched during retrieval. Higher `probes` yield better recall but higher latency. Start with `probes = lists / 10` and adjust based on latency budgets.
+- **`probes` Parameter**: Controls how many clusters are searched during retrieval. Higher `probes` yield better recall but higher latency. Start with `probes = max(1, round(lists / 10))` and adjust based on latency budgets.
 - **Build Index After Data Load**: Always create the IVFFlat index *after* inserting a representative dataset to ensure cluster centers are accurate.
 
 ### Cost Controls
