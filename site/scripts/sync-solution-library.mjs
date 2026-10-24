@@ -14,6 +14,9 @@ const kit=path.join(source,'solution-kit');
 const spec=JSON.parse(fs.readFileSync(path.join(kit,'example.json'),'utf8'));
 if(spec.fixture!==true||spec.visibility!=='public') throw new Error('Public synthetic fixture required');
 const out=path.join(SITE,'public/solution-kit');
+// The directory holds only this projection (every file is in its manifest), and the
+// compiler refuses a directory holding the renamed sidecars of a previous run.
+fs.rmSync(out,{recursive:true,force:true});
 // Bind provenance in the specification before rendering so the single HTML export carries it.
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),'academy-solution-'));
 try {

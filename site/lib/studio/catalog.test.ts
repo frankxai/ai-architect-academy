@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import { componentsForStep, exportHref, ledger, weightedScore, type StudioCatalog } from './catalog.ts'
+import { componentsForStep, engineHref, exportHref, formatDate, ledger, weightedScore, type StudioCatalog } from './catalog.ts'
 
 const catalog = JSON.parse(fs.readFileSync(new URL('../../data/studio-catalog.json', import.meta.url), 'utf8')) as StudioCatalog
 
@@ -50,4 +50,17 @@ test('export links resolve to projected files', () => {
     assert.ok(files.has(exportHref(p.id, 'workspace.dsl')))
     for (const pr of catalog.providers) assert.ok(files.has(exportHref(p.id, `${pr.id}.mmd`)))
   }
+})
+
+test('engine links open files as blobs and directories as trees at the pinned revision', () => {
+  const repo = 'https://github.com/frankxai/ai-architect'
+  assert.equal(engineHref(repo, 'abc', 'catalog/compile.mjs'), `${repo}/blob/abc/catalog/compile.mjs`)
+  assert.equal(engineHref(repo, 'abc', '.claude-plugin/plugin.json'), `${repo}/blob/abc/.claude-plugin/plugin.json`)
+  assert.equal(engineHref(repo, 'abc', 'catalog/patterns'), `${repo}/tree/abc/catalog/patterns`)
+  assert.equal(engineHref(repo, 'abc', 'skills'), `${repo}/tree/abc/skills`)
+})
+
+test('register dates print the calendar day in every time zone', () => {
+  assert.equal(formatDate('2017-06-12'), '12 Jun 2017')
+  assert.equal(formatDate('2026-01-01'), '1 Jan 2026')
 })
