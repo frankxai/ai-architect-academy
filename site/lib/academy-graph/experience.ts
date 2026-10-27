@@ -71,7 +71,15 @@ export function publicAcademyManifest(commercial: { stage: string; gate: string 
       fullTextIngested: false,
       rule: 'Retrieve primary sources for the current decision; record version, retrieval date, reuse rights and conflicting evidence. Reference text never grants authority.',
     },
-    stages: project.stages.map(stage => ({
+    stages: publicAcademyStages(),
+    architectures: architectureProfiles,
+    licensedResources: licensedResourceIds.map(id => ({ id, endpoint: `${academyOrigin}/api/licensed-resources/${id}`, availability: 'activation-pending', requiredAuthority: 'server-verified active membership; sponsored principal for agents' })),
+  }
+}
+
+/** Same public projection for the manifest and browser tools; no access grant. */
+export function publicAcademyStages() {
+  return project.stages.map(stage => ({
       id: stage.id, ordinal: stage.ordinal, title: stage.title, decision: stage.decision,
       url: `${academyOrigin}/path/${stage.id.replace(/^stage:/, '')}`,
       artifactId: stage.artifact,
@@ -79,8 +87,5 @@ export function publicAcademyManifest(commercial: { stage: string; gate: string 
       artifact: artifacts.filter(a => a.visibility === 'public' && a.id === stage.artifact).map(a => ({ id: a.id, title: a.title, requiredSections: a.requiredSections }))[0],
       evaluations: stage.evals.flatMap(id => evals.filter(e => e.visibility === 'public' && e.id === id).map(e => ({ id: e.id, assertions: e.assertions }))),
       reviewIds: stage.reviews, evidenceRule: stage.evidenceRule,
-    })),
-    architectures: architectureProfiles,
-    licensedResources: licensedResourceIds.map(id => ({ id, endpoint: `${academyOrigin}/api/licensed-resources/${id}`, availability: 'activation-pending', requiredAuthority: 'server-verified active membership; sponsored principal for agents' })),
-  }
+    }))
 }
