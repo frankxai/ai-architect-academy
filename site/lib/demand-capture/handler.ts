@@ -1,5 +1,5 @@
 import type { DemandSignal, PriceBand, Stage, Urgency, WaitlistState } from './types'
-import { addToAudience, claimPosition, getCount, saveSignal } from './store'
+import { addToAudience, claimPosition, getCount, saveSignal } from './store.ts'
 
 export interface ProductConfig {
   id: string
