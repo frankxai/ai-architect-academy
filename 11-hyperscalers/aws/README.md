@@ -21,3 +21,12 @@ Docs & Links
 - Amazon Bedrock — https://aws.amazon.com/bedrock/
 - OpenSearch Vector Search — https://docs.aws.amazon.com/opensearch-service/latest/developerguide/knn.html
 - Aurora pgvector — https://aws.amazon.com/blogs/database/amazon-aurora-postgresql-adhere-pgvector/
+
+Provider Packs
+- [pack-aws](https://github.com/frankxai/pack-aws)
+- [pack-azure](https://github.com/frankxai/pack-azure)
+- [pack-gcp](https://github.com/frankxai/pack-gcp)
+- [pack-oci](https://github.com/frankxai/pack-oci)
+- Cloudflare (Coming soon)
+- Vercel (Coming soon)
+- Railway (Coming soon)
