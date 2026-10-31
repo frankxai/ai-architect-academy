@@ -57,7 +57,7 @@ Design, ship, and operate AI systems with confidence. This open playbook gives y
 ## Tooling & Integrations
 - **Vercel AI SDK playbook:** Follow [`06-toolchains/vercel-ai-sdk.md`](06-toolchains/vercel-ai-sdk.md) to ship compliant chat, RAG, and agent flows with streaming UX.
 - **Stack reference:** [`06-toolchains/stack-reference.md`](06-toolchains/stack-reference.md) compares vector stores, rerankers, eval suites, and infra add-ons.
-- **Projects to clone:** [`docs/projects.html`](docs/projects.html) filters 100+ builds with links directly into the repo.
+- **Projects to clone:** [`docs/projects.html`](docs/projects.html) filters project ideas with links directly into the repo.
 
 ## Operate with Confidence
 - **Evaluation stack:** [Metrics](07-evaluation/metrics.md), [Eval harness](07-evaluation/eval-harness.md), and [promptfoo integrations](05-projects/evals-langfuse.md).
