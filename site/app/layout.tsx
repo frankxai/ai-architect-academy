@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import Link from 'next/link'
+import { VercelAnalytics } from '@/components/VercelAnalytics'
 import './globals.css'
 import { AcademyWebMCP } from '@/components/AcademyWebMCP'
 import { publicAcademyStages } from '@/lib/academy-graph/experience'
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </p>
           </div>
         </footer>
+        <VercelAnalytics />
       </body>
     </html>
   )
