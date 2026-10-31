@@ -41,6 +41,28 @@ claude
 
 Run tests with `python -m pytest tests/ -v` (or `uv run --with pytest python -m pytest tests/ -v`).
 
+## Keep an attempt for review
+
+After installing `requirements.txt`, export the current attempt before making a correction:
+
+```bash
+python export_evidence.py --output attempt-01.json
+```
+
+The deliberately broken starter exits with code 1 and writes a failure report. After your
+changes, use a new filename, such as `attempt-02.json`. Existing attempts are never overwritten.
+The command does not apply the reference solution or modify the teaching fixtures.
+
+Each report includes the individual test results, failure output, authority matrix and SHA-256
+hashes of the candidate, test and fixture files. It works offline with the installed test
+dependency. Missing dependencies, skipped checks and check failures cannot produce a passing
+report. Run `python -m pytest checks/ -q` to verify the exporter itself.
+
+Hand both attempts and your actual source revision to a separate reviewer. They should compare
+the recorded test and fixture hashes with the reviewed source and rerun the checks in a fresh
+context. Reports are editable local files, not independent approval, proof of a live system,
+or a competency grant. These checks exercise synthetic tickets and simulated side effects.
+
 ## Files
 
 | File | Purpose |
