@@ -14,7 +14,7 @@ const playfair = Playfair_Display({
   display: 'swap',
 })
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aiarchitectacademy.com'
+const SITE = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aiarchitectacademy.com').replace(/\/$/, '')
 
 const academyJsonLd = {
   '@context': 'https://schema.org',
@@ -24,7 +24,9 @@ const academyJsonLd = {
       '@id': `${SITE}/#organization`,
       name: 'AI Architect Academy',
       url: SITE,
-      founder: { '@id': 'https://www.frankx.ai/frank-riemer#person' },
+      description:
+        'Judgement and sequence for engineers building AI systems, taught through architecture decisions and verified runs.',
+      founder: { '@id': 'https://www.frankx.ai/#frank-riemer' },
       sameAs: ['https://github.com/frankxai/ai-architect-academy'],
     },
     {
@@ -39,7 +41,7 @@ const academyJsonLd = {
     },
     {
       '@type': 'Person',
-      '@id': 'https://www.frankx.ai/frank-riemer#person',
+      '@id': 'https://www.frankx.ai/#frank-riemer',
       name: 'Frank Riemer',
       url: 'https://www.frankx.ai/frank-riemer',
       jobTitle: 'AI Architect',
