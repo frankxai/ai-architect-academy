@@ -16,6 +16,38 @@ const playfair = Playfair_Display({
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aiarchitectacademy.com'
 
+const academyJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE}/#organization`,
+      name: 'AI Architect Academy',
+      url: SITE,
+      founder: { '@id': 'https://www.frankx.ai/frank-riemer#person' },
+      sameAs: ['https://github.com/frankxai/ai-architect-academy'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      url: SITE,
+      name: 'AI Architect Academy',
+      description:
+        'Judgement and sequence for engineers building AI systems, taught through architecture decisions and verified runs.',
+      publisher: { '@id': `${SITE}/#organization` },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://www.frankx.ai/frank-riemer#person',
+      name: 'Frank Riemer',
+      url: 'https://www.frankx.ai/frank-riemer',
+      jobTitle: 'AI Architect',
+      sameAs: ['https://www.frankx.ai', 'https://github.com/frankxai'],
+    },
+  ],
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
@@ -40,6 +72,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(academyJsonLd).replace(/</g, '\\u003c'),
+          }}
+        />
         <AcademyWebMCP stages={publicAcademyStages().map(stage => ({ ...stage, summary: stage.decision }))} />
         <a
           href="#main"
