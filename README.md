@@ -147,7 +147,7 @@ ai-architect-academy/
 ├── 01-design-patterns/          # 20+ architecture patterns
 ├── 02-learning-paths/           # Structured learning tracks
 ├── 03-awesome/                  # Curated resources and examples
-└── 05-projects/                 # 100+ project ideas
+└── 05-projects/                 # 79 project ideas
 ```
 
 ### The Three Layers
@@ -188,7 +188,7 @@ Explore [01-design-patterns/](01-design-patterns/) for 20+ architecture blueprin
 
 ## 🚀 Projects
 
-Browse [05-projects/](05-projects/) to find 100+ practical builds for AI Architects, ranging from beginner RAG setups to advanced multi-agent orchestrations.
+Browse [05-projects/](05-projects/) to find 79 practical builds for AI Architects, ranging from beginner RAG setups to advanced multi-agent orchestrations.
 
 ---
 

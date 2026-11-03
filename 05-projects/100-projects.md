@@ -1,4 +1,4 @@
-# 100 Projects for AI Architects (Starter Set)
+# 79 Projects for AI Architects (Starter Set)
 
 Practical builds to master architecture by shipping. Sorted by theme; each project lists difficulty, estimated time, and links to guides or repos.
 
