@@ -22,10 +22,10 @@ Docs & Links
 - Cloud SQL pgvector — https://cloud.google.com/sql/docs/postgres/extensions/pgvector
 
 Provider Packs
-- [pack-aws](https://github.com/frankxai/pack-aws)
-- [pack-azure](https://github.com/frankxai/pack-azure)
-- [pack-gcp](https://github.com/frankxai/pack-gcp)
-- [pack-oci](https://github.com/frankxai/pack-oci)
+- pack-aws (Coming soon)
+- pack-azure (Coming soon)
+- pack-gcp (Coming soon)
+- pack-oci (Coming soon)
 - Cloudflare (Coming soon)
 - Vercel (Coming soon)
 - Railway (Coming soon)
