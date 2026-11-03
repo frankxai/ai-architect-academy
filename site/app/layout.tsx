@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import Link from 'next/link'
 import './globals.css'
+import { AcademyWebMCP } from '@/components/AcademyWebMCP'
+import { publicAcademyStages } from '@/lib/academy-graph/experience'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 const playfair = Playfair_Display({
@@ -12,7 +14,41 @@ const playfair = Playfair_Display({
   display: 'swap',
 })
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aiarchitectacademy.com'
+const SITE = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aiarchitectacademy.com').replace(/\/$/, '')
+
+const academyJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE}/#organization`,
+      name: 'AI Architect Academy',
+      url: SITE,
+      description:
+        'Judgement and sequence for engineers building AI systems, taught through architecture decisions and verified runs.',
+      founder: { '@id': 'https://www.frankx.ai/#frank-riemer' },
+      sameAs: ['https://github.com/frankxai/ai-architect-academy'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      url: SITE,
+      name: 'AI Architect Academy',
+      description:
+        'Judgement and sequence for engineers building AI systems, taught through architecture decisions and verified runs.',
+      publisher: { '@id': `${SITE}/#organization` },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://www.frankx.ai/#frank-riemer',
+      name: 'Frank Riemer',
+      url: 'https://www.frankx.ai/frank-riemer',
+      jobTitle: 'AI Architect',
+      sameAs: ['https://www.frankx.ai', 'https://github.com/frankxai'],
+    },
+  ],
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -38,6 +74,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(academyJsonLd).replace(/</g, '\\u003c'),
+          }}
+        />
+        <AcademyWebMCP stages={publicAcademyStages().map(stage => ({ ...stage, summary: stage.decision }))} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-paper focus:px-3 focus:py-2"
