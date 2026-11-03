@@ -3,8 +3,3 @@
 ^https?://localhost(:\d+)?
 ^https?://127\.0\.0\.1(:\d+)?
 ^https?://0\.0\.0\.0(:\d+)?
-https://aws.amazon.com/blogs/database/amazon-aurora-postgresql-adhere-pgvector/
-https://cloud.google.com/sql/docs/postgres/extensions/pgvector
-https://www.oracle.com/database/ai/
-https://www.oracle.com/database/json/
-https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm

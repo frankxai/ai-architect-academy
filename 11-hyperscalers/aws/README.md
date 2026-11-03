@@ -20,13 +20,4 @@ Quick Start (RAG)
 Docs & Links
 - Amazon Bedrock — https://aws.amazon.com/bedrock/
 - OpenSearch Vector Search — https://docs.aws.amazon.com/opensearch-service/latest/developerguide/knn.html
-- Aurora pgvector — https://aws.amazon.com/blogs/database/amazon-aurora-postgresql-adhere-pgvector/
-
-Provider Packs
-- pack-aws (Coming soon)
-- pack-azure (Coming soon)
-- pack-gcp (Coming soon)
-- pack-oci (Coming soon)
-- Cloudflare (Coming soon)
-- Vercel (Coming soon)
-- Railway (Coming soon)
+- Aurora pgvector — https://aws.amazon.com/blogs/database/leverage-pgvector-and-amazon-aurora-postgresql-for-natural-language-processing-chatbots-and-sentiment-analysis/
