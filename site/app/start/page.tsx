@@ -14,6 +14,7 @@ export default function StartPage() {
       <p className="eyebrow">Two entries. One evidence standard.</p>
       <h1 className="mt-5 max-w-3xl text-[clamp(2.4rem,6vw,4.4rem)] leading-[1.04]">Bring a system.<br /><em>Leave with decisions.</em></h1>
       <p className="measure mt-7 text-xl" style={{ color: 'var(--ink-2)' }}>The human owns the outcome. The agent does bounded work. Both follow the same path: an artifact, a test that can fail, and a review independent of its author.</p>
+      <p className="mt-6"><Link href="/rooms" className="link">Open a practice room and draft your artifact →</Link></p>
       <nav className="mt-9 flex flex-wrap gap-3" aria-label="Entry choice">
         <a className="btn btn-primary" href="#human">I am building my judgment</a>
         <a className="btn btn-quiet" href="#agent">I am equipping an agent</a>

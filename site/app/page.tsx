@@ -94,8 +94,8 @@ export default function Home() {
           It is not scheduled and it has no price. The people on the waitlist decide both.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Link href="/start" className="btn btn-primary">
-            Choose your entry
+          <Link href="/rooms" className="btn btn-primary">
+            Enter the practice studio
           </Link>
           <Link href="/adr" className="btn btn-quiet">
             Read the free ADR first
