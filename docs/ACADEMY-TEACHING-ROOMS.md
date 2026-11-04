@@ -22,9 +22,9 @@ Reuse current `AcademyGraph.v1`, existing plugin/instructor, public lessons, stu
 
 ## Implemented candidate
 
-`/rooms` projects only public artifacts from the current graph. Cohort-only threat/incident artifacts are excluded. Required sections and evaluation links remain graph-derived. It offers local prompts, structure presence checks, per-room tab-memory drafts, bounded JSON imports, no-silent-overwrite protection and portable exports. Imports discard claimed assessment fields. Text renders as React text/textarea values, never HTML. No provider call, account, persistent server store or Slack installation is implied.
+`/rooms` projects only public artifacts from the current graph. Cohort-only threat/incident artifacts are excluded. Required sections and evaluation links remain graph-derived. It offers local prompts, structure presence checks, per-room root-layout memory drafts, bounded JSON imports, no-silent-overwrite protection and portable exports. Imports discard claimed assessment fields. Text renders as React text/textarea values, never HTML. No provider call, account, persistent server store or Slack installation is implied.
 
-Export before refresh or closing the tab. Import into an empty room; if the room already has non-empty work, export it and use a fresh tab. There is no localStorage retention of potentially sensitive architecture text. Server sync, version history and draft conflict resolution are future authenticated features.
+Drafts survive app navigation and browser Back/Forward in the same tab through the root-layout provider. Dirty drafts trigger the browser unload warning. Export before refresh or closing the tab. Import into an empty room; if the room already has non-empty work, export it and use a fresh tab. There is no localStorage retention of potentially sensitive architecture text. Server sync, version history and draft conflict resolution are future authenticated features.
 
 The public homepage and Start page link into the practice studio. Existing lessons, cohort interest and licensed resource boundaries remain available. Hosted AI and Slack availability are explicitly planned.
 

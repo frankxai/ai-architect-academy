@@ -1,12 +1,13 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
-import { rooms, roomById, checkDraft, exportDraft, parseDraft, MAX_ANSWER, MAX_FILE, type Draft } from '@/lib/teaching-rooms/contract'
+import { usePracticeDrafts } from './PracticeDraftProvider'
+import { rooms, roomById, checkDraft, exportDraft, parseDraft, MAX_ANSWER, MAX_FILE } from '@/lib/teaching-rooms/contract'
 
 export function TeachingRoom() {
-  const [drafts, setDrafts] = useState<Record<string, Draft>>({})
-  const [roomId, setRoomId] = useState(rooms[0].id)
+  const { drafts, setDrafts, selectedRoom, setSelectedRoom: setRoomId } = usePracticeDrafts()
+  const roomId = selectedRoom ?? rooms[0].id
   const [checked, setChecked] = useState(false)
   const [notice, setNotice] = useState('')
   const input = useRef<HTMLInputElement>(null)
@@ -14,22 +15,6 @@ export function TeachingRoom() {
   const draft = drafts[roomId] ?? { roomId, answers: {} }
   const checks = checkDraft(draft)
   const missing = checks.find(check => !check.present)
-
-  const dirty = Object.values(drafts).some(item => Object.values(item.answers).some(answer => answer.trim()))
-  useEffect(() => {
-    if (!dirty) return
-    const warnUnload = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = '' }
-    const warnNavigation = (event: MouseEvent) => {
-      const anchor = (event.target as Element).closest?.('a[href]') as HTMLAnchorElement | null
-      if (!anchor || anchor.target === '_blank' || anchor.hasAttribute('download') || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-      const destination = new URL(anchor.href)
-      if (destination.pathname === window.location.pathname && destination.search === window.location.search && destination.hash) return
-      if (!window.confirm('Your drafts are only in this tab. Export them before leaving. Leave without saving?')) { event.preventDefault(); event.stopPropagation() }
-    }
-    window.addEventListener('beforeunload', warnUnload)
-    document.addEventListener('click', warnNavigation, true)
-    return () => { window.removeEventListener('beforeunload', warnUnload); document.removeEventListener('click', warnNavigation, true) }
-  }, [dirty])
 
   function choose(id: string) { setRoomId(id); setChecked(false); setNotice('') }
   function download() {
