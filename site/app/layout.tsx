@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import Link from 'next/link'
 import { VercelAnalytics } from '@/components/VercelAnalytics'
 import './globals.css'
+import { PracticeDraftProvider } from '@/components/PracticeDraftProvider'
 import { AcademyWebMCP } from '@/components/AcademyWebMCP'
 import { publicAcademyStages } from '@/lib/academy-graph/experience'
 
@@ -93,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             AI Architect Academy
           </Link>
           <nav aria-label="Primary" className="flex flex-wrap gap-x-5 gap-y-1 text-sm whitespace-nowrap sm:gap-x-6">
+            <Link href="/rooms" className="hover:text-cobalt">Practice rooms</Link>
             <Link href="/start" className="hover:text-cobalt">
               Start here
             </Link>
@@ -126,7 +128,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </nav>
         </header>
         <main id="main" tabIndex={-1} className="mx-auto w-full max-w-5xl px-6 sm:px-8">
-          {children}
+          <PracticeDraftProvider>{children}</PracticeDraftProvider>
         </main>
         <footer className="mx-auto w-full max-w-5xl px-6 pb-14 pt-10 sm:px-8">
           <div className="rule pt-8 text-sm" style={{ color: 'var(--ink-3)' }}>

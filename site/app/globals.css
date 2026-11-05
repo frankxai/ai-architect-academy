@@ -809,3 +809,55 @@ body:has(.studio-bleed) { overflow-x: clip; }
   .studio-canvas .react-flow__edge.animated path { animation: none; }
   .arch-node, .arch-node::after, .studio-cell { transition: none; }
 }
+
+/* Architecture practice studio: paper, cobalt and a distinct working surface. */
+.rooms-experience { padding: 4rem 0; }
+.room-kicker { font-size: .85rem; color: var(--ink-3); margin-bottom: .7rem; }
+.rooms-heading { display: grid; grid-template-columns: 1fr 15rem; gap: 2rem; align-items: end; margin-bottom: 3rem; }
+.rooms-heading h1 { font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.04; }
+.rooms-heading h1 em { color: var(--cobalt); }
+.room-intro { max-width: 33rem; color: var(--ink-2); margin-top: 1.4rem; font-size: 1.15rem; }
+.room-availability { border-left: 1px solid var(--rule); padding-left: 1.2rem; font-size: .9rem; }
+.room-availability p { color: var(--ink-3); margin: .6rem 0; }
+.room-dot { display: inline-block; width: .5rem; height: .5rem; border-radius: 50%; background: var(--cobalt); margin-right: .5rem; }
+.room-shell { display: grid; grid-template-columns: 15rem minmax(0, 1fr); border: 1px solid var(--rule); background: #fcfaf6; }
+.room-directory { padding: 1.3rem; background: var(--paper-2); border-right: 1px solid var(--rule); }
+.room-directory nav { display: grid; gap: .4rem; }
+.room-directory nav button { display: flex; align-items: start; gap: .6rem; width: 100%; padding: .85rem .65rem; border: 1px solid transparent; border-radius: .3rem; text-align: left; font-size: .9rem; cursor: pointer; }
+.room-directory nav button[aria-current] { background: var(--night); color: var(--night-paper); }
+.room-directory nav button:hover { border-color: var(--cobalt); }
+.room-directory small { display: block; font-size: .78rem; opacity: .75; margin-top: .2rem; }
+.room-number { font-variant-numeric: tabular-nums; opacity: .7; }
+.room-note { color: var(--ink-2); font-size: .85rem; margin: 1.5rem 0; }
+.room-directory .btn { font-size: .85rem; padding: .7rem; }
+.room-workspace { min-width: 0; padding: 2rem; }
+.room-titlebar { display: flex; justify-content: space-between; gap: 1rem; align-items: start; flex-wrap: wrap; }
+.room-titlebar h2 { font-size: 2.25rem; line-height: 1.15; }
+.room-status { border: 1px solid var(--rule); padding: .35rem .6rem; font-size: .8rem; border-radius: 2rem; }
+.room-decision { color: var(--ink-2); margin: 1rem 0 1.8rem; }
+.room-teacher { display: flex; gap: .9rem; padding: 1.2rem; background: #edf0fb; margin-bottom: 2rem; }
+.room-avatar { flex-shrink: 0; display: grid; place-items: center; width: 2.3rem; height: 2.3rem; color: white; background: var(--cobalt); border-radius: 50%; font-family: Georgia, serif; font-size: 1.25rem; }
+.room-teacher small { display: block; color: var(--ink-2); font-size: .8rem; }
+.room-teacher p { margin: .8rem 0; font-size: .95rem; }
+.room-teacher a { font-size: .9rem; }
+.room-field { display: block; margin: 1.2rem 0; }
+.room-field > span { display: block; margin-bottom: .4rem; font-size: .95rem; }
+.room-field textarea { display: block; width: 100%; resize: vertical; padding: .8rem; background: white; border: 1px solid #aaa9b1; border-radius: .3rem; font-size: 1rem; line-height: 1.5; }
+.room-field textarea::placeholder { color: #696b77; }
+.room-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+.room-feedback { margin-top: 1rem; font-size: .9rem; overflow-wrap: anywhere; }
+.room-feedback ul { margin-top: .7rem; }
+.room-next { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 3rem 0; margin-top: 2rem; border-top: 1px solid var(--rule); }
+.room-next h2 { font-size: 2rem; line-height: 1.2; }
+.room-next p { margin-bottom: 1rem; color: var(--ink-2); }
+@media(max-width: 760px) {
+  .rooms-heading, .room-shell, .room-next { grid-template-columns: 1fr; }
+  .room-availability { border-left: 0; border-top: 1px solid var(--rule); padding: 1rem 0 0; }
+  .room-directory { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .room-directory nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .room-directory nav button { overflow-wrap: anywhere; }
+  .room-workspace { padding: 1.2rem; }
+  .room-teacher { padding: 1rem; }
+  .room-next { gap: 1.2rem; }
+}
+@media(prefers-reduced-motion: reduce) { .rooms-experience * { scroll-behavior: auto; transition: none; } }

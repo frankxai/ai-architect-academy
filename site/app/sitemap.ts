@@ -7,6 +7,7 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aiarchitectacademy.com
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${SITE}/`, changeFrequency: 'weekly', priority: 1 },
+    { url: `${SITE}/rooms`, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${SITE}/start`, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${SITE}/library`, changeFrequency: 'weekly', priority: 0.85 },
     { url: `${SITE}/architectures`, changeFrequency: 'monthly', priority: 0.85 },
