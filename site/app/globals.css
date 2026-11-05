@@ -809,3 +809,63 @@ body:has(.studio-bleed) { overflow-x: clip; }
   .studio-canvas .react-flow__edge.animated path { animation: none; }
   .arch-node, .arch-node::after, .studio-cell { transition: none; }
 }
+
+/* Studio registers: partners and inventions */
+.studio-rule-note { max-width: 46rem; border-left: 2px solid var(--ink); padding: 0.2rem 0 0.2rem 1rem; font-size: 0.9375rem; color: var(--ink-2); }
+
+.studio-footprint { width: 100%; min-width: 38rem; border-collapse: collapse; font-size: 0.875rem; }
+.studio-footprint th, .studio-footprint td { text-align: left; vertical-align: middle; padding: 0.75rem 0.75rem 0.75rem 0; border-bottom: 1px solid var(--stage-line); }
+.studio-footprint thead th { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stage-ink-3); font-weight: 500; }
+.studio-footprint tbody th { font-weight: 500; white-space: nowrap; }
+.studio-footprint tbody th a { outline-offset: -2px; touch-action: manipulation; display: inline-flex; align-items: center; gap: 0.5rem; min-height: 32px; color: var(--stage-ink); text-decoration: underline; text-decoration-color: var(--stage-line); text-underline-offset: 0.25em; }
+.studio-footprint tbody th a:hover { text-decoration-color: var(--stage-ink); }
+.studio-footprint tbody th > span { display: block; font-size: 0.72rem; color: var(--stage-ink-3); font-weight: 400; }
+.studio-footprint td b { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-weight: 600; font-variant-numeric: tabular-nums; }
+.studio-footprint td { color: var(--stage-ink-2); }
+@media (max-width: 40rem) { .studio-footprint tbody th { position: sticky; left: 0; z-index: 1; background: var(--night); } .studio-footprint-scroll { scroll-padding-inline-start: 9.5rem; } }
+.studio-meter { display: inline-block; vertical-align: middle; width: 5.5rem; height: 6px; margin-right: 0.6rem; border-radius: 99px; background: var(--stage-line); overflow: hidden; }
+.studio-meter span { display: block; height: 100%; border-radius: 99px; background: #7c93ff; }
+
+.studio-partner { scroll-margin-top: 2rem; min-width: 0; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 0.9rem; background: rgb(255 255 255 / 0.35); }
+.studio-partner:target { border-color: var(--ink); }
+.studio-status { color: var(--ink-2); background: var(--paper-2); white-space: normal; }
+.studio-facts { display: grid; gap: 0.9rem; font-size: 0.9375rem; }
+.studio-facts dt { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+.studio-facts dd { margin-top: 0.25rem; color: var(--ink-2); overflow-wrap: anywhere; }
+.studio-flag { display: inline-block; margin-left: 0.4rem; padding: 0.05rem 0.5rem; border-radius: 999px; font-size: 0.72rem; color: #8a5a00; background: #f6e6c3; }
+.studio-paths { display: flex; flex-wrap: wrap; gap: 0.35rem 0.75rem; margin-top: 0.25rem; }
+.studio-paths a { touch-action: manipulation; }
+.studio-paths code { font-size: 0.8125rem; }
+.studio-sources summary { cursor: pointer; list-style: none; touch-action: manipulation; font-size: 0.8125rem; color: var(--ink-3); min-height: 32px; display: inline-flex; align-items: center; gap: 0.45rem; }
+.studio-sources summary::-webkit-details-marker { display: none; }
+.studio-sources summary::before { content: '+' / ''; display: inline-grid; place-items: center; width: 1.1rem; height: 1.1rem; border: 1px solid var(--rule); border-radius: 0.3rem; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 0.75rem; line-height: 1; }
+.studio-sources[open] summary::before { content: '\2212' / ''; }
+.studio-sources summary:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; border-radius: 0.25rem; }
+.studio-sources summary:hover { color: var(--ink); }
+.studio-sources ul { margin-top: 0.5rem; display: grid; gap: 0.6rem; font-size: 0.8125rem; }
+.studio-sources li span { display: block; color: var(--ink-3); }
+.studio-code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 0.8125rem; color: var(--cobalt-ink); }
+
+.studio-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-size: 0.8125rem; color: var(--stage-ink-2); }
+.studio-legend li { display: inline-flex; align-items: center; gap: 0.45rem; }
+.studio-years { display: grid; }
+.studio-years > li { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 0.5rem 1rem; align-items: baseline; padding-block: 0.7rem; border-top: 1px solid var(--stage-line); }
+.studio-years > li:last-child { border-bottom: 1px solid var(--stage-line); }
+.studio-year { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 0.8125rem; color: #a9b8ff; }
+.studio-years ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.studio-tick { display: inline-flex; align-items: baseline; gap: 0.5rem; padding: 0.3rem 0; min-height: 32px; font-size: 0.875rem; line-height: 1.35; color: var(--stage-ink); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--node-color) 30%, transparent); text-underline-offset: 0.25em; touch-action: manipulation; transition: text-decoration-color 150ms ease; }
+.studio-tick:hover { text-decoration-color: var(--node-color); }
+.studio-tick-dot { flex: none; width: 0.55rem; height: 0.55rem; border-radius: 999px; background: var(--node-color); box-shadow: 0 0 12px -2px var(--node-color); transform: translateY(-1px); }
+
+.studio-invention { display: grid; gap: 0.75rem 2rem; padding-block: 1.75rem; border-top: 1px solid var(--rule); scroll-margin-top: 2rem; }
+.studio-invention:target { border-top: 2px solid var(--ink); }
+@media (min-width: 48rem) { .studio-invention { grid-template-columns: 10rem minmax(0, 1fr); } }
+.studio-invention-date { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-content: start; font-size: 0.8125rem; color: var(--ink-3); }
+.studio-invention-layer { display: inline-flex; align-items: center; gap: 0.4rem; }
+.studio-invention-date time { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; color: var(--ink); font-variant-numeric: tabular-nums; }
+@media (min-width: 48rem) { .studio-invention-date { flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .studio-tick { transition: none; } }
+@media (pointer: coarse) {
+  .studio-sources summary, .studio-tick, .studio-paths a, .studio-footprint tbody th a { min-height: 44px; }
+  .studio-tick, .studio-paths a { display: inline-flex; align-items: center; }
+}

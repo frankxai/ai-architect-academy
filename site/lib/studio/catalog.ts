@@ -89,13 +89,71 @@ export interface Pattern {
   layers_used: LayerId[]
   image_recipes: ImageRecipe[]
 }
+export type RelationshipStatus = 'none' | 'applied' | 'member' | 'partner'
+export interface Partner {
+  id: string
+  name: string
+  kind: string
+  provider: string | null
+  contributes: string
+  program: { name: string; track: string; source: string; verified: boolean } | null
+  used_in: string[]
+  exports: Record<string, number>
+  relationship: { status: RelationshipStatus; reference: string | null; scope?: string; expires?: string }
+  fit: string
+  next_step: string
+  sources: string[]
+  footprint: { realizations: number; services: number; templates: string[]; mean_score: number; to_confirm: number } | null
+}
+export interface FieldInvention {
+  id: string
+  name: string
+  kind: string
+  date: string
+  origin: string
+  arxiv?: { id: string; title: string }
+  sources?: string[]
+  consequence: string
+  roles: string[]
+  record: { label: string; title: string; url: string }
+  patterns: string[]
+}
+export type ContributionStatus = 'implemented' | 'partial' | 'proposed'
+export interface Contribution {
+  id: string
+  name: string
+  mechanism: string
+  status: ContributionStatus
+  implemented_in: string[]
+  evidence: string
+  experiment: string
+  prior_work: string
+}
+export interface PartnerRegister {
+  schema: 'ai-architect-partners/v1'
+  policy: string
+  kinds: { id: string; title: string }[]
+  statuses: RelationshipStatus[]
+  partners: Partner[]
+}
+export interface InventionRegister {
+  schema: 'ai-architect-inventions/v1'
+  policy: string
+  checked_on: string
+  kinds: { id: string; title: string }[]
+  statuses: { id: ContributionStatus; title: string; meaning: string }[]
+  field: FieldInvention[]
+  ours: Contribution[]
+}
 export interface StudioCatalog {
   schema: 'academy-studio/v1'
   source_repository: string
   source_revision: string
   deploy_ref: string
   state: string
-  counts: { patterns: number; providers: number; services: number; sources: number; realizations: number; templates: number }
+  counts: { patterns: number; providers: number; services: number; sources: number; realizations: number; templates: number; partners: number; field_inventions: number; contributions: number }
+  partners: PartnerRegister
+  inventions: InventionRegister
   layers: Layer[]
   roles: Role[]
   criteria: Criterion[]
@@ -186,4 +244,19 @@ export function exportHref(pattern: string, file: string): string {
 export function euro(v: number | null): string {
   if (v === null) return 'n/a'
   return new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: v < 100 ? 2 : 0 }).format(v)
+}
+
+// A file or directory in the engine at the projected revision. Directories use
+// /tree/ and files /blob/ so the link opens the right GitHub view.
+export function engineHref(repository: string, revision: string, file: string): string {
+  const isFile = /\.[a-z0-9]+$/i.test(file.split('/').pop() ?? '')
+  return `${repository}/${isFile ? 'blob' : 'tree'}/${revision}/${file.split('/').map(encodeURIComponent).join('/')}`
+}
+
+const DATE = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+
+// Register dates are calendar dates (YYYY-MM-DD); format them in UTC so the
+// server and the browser print the same day.
+export function formatDate(iso: string): string {
+  return DATE.format(new Date(`${iso}T00:00:00Z`))
 }

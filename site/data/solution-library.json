@@ -2,7 +2,7 @@
   "schema": "academy-solution-library/v1",
   "fixture": true,
   "sourceRepository": "https://github.com/frankxai/ai-architect",
-  "sourceRevision": "c43825efda384d9b29364d5e5fe7ba364b08a3fb",
+  "sourceRevision": "e6b1e697b14abcf5ba2846817539747ae4037326",
   "license": "Apache-2.0; Google icons retain separate trademark rights",
   "bookState": "working edition; author and specialist reviews pending",
   "runtimeState": "portable demonstration; depicted workloads visualized",
@@ -37,160 +37,160 @@
   "book": [
     {
       "title": "00. Reading contract",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/00-reading-contract.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/00-reading-contract.md",
       "words": 703
     },
     {
       "title": "01. The architect's job",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/01-the-architects-job.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/01-the-architects-job.md",
       "words": 771
     },
     {
       "title": "02. Four hard-to-reverse decisions",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/02-four-decisions.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/02-four-decisions.md",
       "words": 1040
     },
     {
       "title": "03. Seven operating planes",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/03-seven-planes.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/03-seven-planes.md",
       "words": 702
     },
     {
       "title": "04. Model plane: buy capability, keep the exit",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/04-model-plane.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/04-model-plane.md",
       "words": 703
     },
     {
       "title": "05. Context plane: control what the model can know",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/05-context-plane.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/05-context-plane.md",
       "words": 700
     },
     {
       "title": "06. Tool plane: turn intent into controlled effect",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/06-tool-plane.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/06-tool-plane.md",
       "words": 738
     },
     {
       "title": "07. Orchestration plane: choose the smallest useful loop",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/07-orchestration-plane.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/07-orchestration-plane.md",
       "words": 841
     },
     {
       "title": "08. Evaluation plane: prove the outcome and the path",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/08-evaluation-plane.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/08-evaluation-plane.md",
       "words": 798
     },
     {
       "title": "09. Observability plane: make the decision path explainable",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/09-observability-plane.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/09-observability-plane.md",
       "words": 630
     },
     {
       "title": "10. Experience plane: make control visible to people",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/10-experience-plane.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/10-experience-plane.md",
       "words": 731
     },
     {
       "title": "11. Economics: price verified work",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/11-economics.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/11-economics.md",
       "words": 691
     },
     {
       "title": "12. Reference architecture: a controlled case-resolution agent",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/12-reference-architecture.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/12-reference-architecture.md",
       "words": 1032
     },
     {
       "title": "13. Ninety-day adoption: turn the method into operating practice",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/13-ninety-day-adoption.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/13-ninety-day-adoption.md",
       "words": 872
     },
     {
       "title": "14. Data, knowledge, and provenance: know what the system knows",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/14-data-knowledge-provenance.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/14-data-knowledge-provenance.md",
       "words": 880
     },
     {
       "title": "15. Identity, security, and secure delivery: bound authority end to end",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/15-identity-security-delivery.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/15-identity-security-delivery.md",
       "words": 795
     },
     {
       "title": "16. Platform, release, reliability, and retirement: run it for its whole life",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/16-platform-release-reliability.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/16-platform-release-reliability.md",
       "words": 816
     },
     {
       "title": "17. Governance, law, and the operating model: decide who decides",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/17-governance-law-operating-model.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/17-governance-law-operating-model.md",
       "words": 810
     },
     {
       "title": "18. Customer solution systems",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/18-customer-solution-systems.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/18-customer-solution-systems.md",
       "words": 1868
     },
     {
       "title": "19. The living architecture practice",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/19-the-living-architecture-practice.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/19-the-living-architecture-practice.md",
       "words": 2067
     },
     {
       "title": "20. One workload, many clouds",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/20-multi-cloud-realization.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/20-multi-cloud-realization.md",
       "words": 1301
     },
     {
       "title": "Appendix A. Model market snapshot, 2026-10-05",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/appendix-a-model-snapshot.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/appendix-a-model-snapshot.md",
       "words": 624
     },
     {
       "title": "Appendix B. The minimum architecture record",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/appendix-b-decision-records.md",
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/appendix-b-decision-records.md",
       "words": 466
     }
   ],
   "references": [
     {
       "title": "Delivery method",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/method.md"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/method.md"
     },
     {
       "title": "Encyclopedia",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/encyclopedia.md"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/encyclopedia.md"
     },
     {
       "title": "Ecosystem and invention register",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/ecosystem.md"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/ecosystem.md"
     },
     {
       "title": "Source register",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/sources.json"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/sources.json"
     },
     {
       "title": "Visual recipes",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/visual-recipes.md"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/visual-recipes.md"
     },
     {
       "title": "Living design",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/living-design.md"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/living-design.md"
     },
     {
       "title": "Quality contract",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/practice.json"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/practice.json"
     },
     {
       "title": "Design tokens",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/design.tokens.json"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/design.tokens.json"
     },
     {
       "title": "Execution sequence",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/execution-plan.md"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/execution-plan.md"
     },
     {
       "title": "Authorship and review",
-      "href": "https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/editorial/ai-contribution.md"
+      "href": "https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/editorial/ai-contribution.md"
     }
   ]
 }

@@ -4,7 +4,7 @@
 
 Accountable author: Frank Riemer. AI-assisted authorship is disclosed in the canonical contribution record. Author, specialist, rights and final-edition gates remain pending.
 
-[Source revision c43825efda384d9b29364d5e5fe7ba364b08a3fb](https://github.com/frankxai/ai-architect/tree/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide). This export contains 23 manuscript files and 20579 counted prose words. Source review is partial and dated. No customer ROI, signed partnership, novelty or production outcome is implied.
+[Source revision e6b1e697b14abcf5ba2846817539747ae4037326](https://github.com/frankxai/ai-architect/tree/e6b1e697b14abcf5ba2846817539747ae4037326/guide). This export contains 23 manuscript files and 20579 counted prose words. Source review is partial and dated. No customer ROI, signed partnership, novelty or production outcome is implied.
 
 # 00. Reading contract
 
@@ -26,15 +26,15 @@ After working through the guide, you should be able to sit in an architecture re
 4. What owns state when the initiating request ends?
 5. Who owns each operating plane, and what evidence does that owner produce?
 
-Those questions force a team to expose decisions that a framework diagram often hides. They also survive product churn. On the verification date for this edition, vendor catalogs ranged from large reasoning models with million-token windows to cheap high-volume models, plus specialized voice, image, search, and tool surfaces. The names and prices will change. The boundary questions will remain useful. [S01](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S02](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S03](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S04](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Those questions force a team to expose decisions that a framework diagram often hides. They also survive product churn. On the verification date for this edition, vendor catalogs ranged from large reasoning models with million-token windows to cheap high-volume models, plus specialized voice, image, search, and tool surfaces. The names and prices will change. The boundary questions will remain useful. [S01](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S02](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S03](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S04](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## What this guide refuses
 
 This guide will not rank vendors as a substitute for your evals. A public benchmark cannot know your task distribution, latency target, data policy, correction cost, or value per completed job.
 
-It will not call every model loop an agent. A fixed workflow is often the right design. An agent earns autonomy when the task path cannot be specified in advance and the value can pay for the extra uncertainty. Anthropic draws a useful line between workflows with predefined paths and agents that direct their own tool use. OpenAI documents both model-led and code-led orchestration. [S05](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S06](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+It will not call every model loop an agent. A fixed workflow is often the right design. An agent earns autonomy when the task path cannot be specified in advance and the value can pay for the extra uncertainty. Anthropic draws a useful line between workflows with predefined paths and agents that direct their own tool use. OpenAI documents both model-led and code-led orchestration. [S05](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S06](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
-It will not treat a fluent answer as proof of an external action. A booking agent can say a seat was booked while the reservation table says otherwise. Agent evaluation has to inspect the transcript and the end state. [S15](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+It will not treat a fluent answer as proof of an external action. A booking agent can say a seat was booked while the reservation table says otherwise. Agent evaluation has to inspect the transcript and the end state. [S15](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 This public working edition is unfinished. Automated checks and an isolated agent's source sample do not establish complete coverage or human expert certification. A named security reviewer, an independent final-edition verifier, and Frank Riemer still have to approve the final annual book. The open gates remain visible in the repository.
 
@@ -104,9 +104,9 @@ A useful control stack has four levels:
 
 The model sits inside this stack. It does not own the stack.
 
-MCP makes this distinction visible. Its specification exposes resources, prompts, and tools through a host-client-server design, yet it also warns that tools can open data and code-execution paths. It calls for explicit user control and says tool descriptions should be treated as untrusted unless the server is trusted. [S08](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+MCP makes this distinction visible. Its specification exposes resources, prompts, and tools through a host-client-server design, yet it also warns that tools can open data and code-execution paths. It calls for explicit user control and says tool descriptions should be treated as untrusted unless the server is trusted. [S08](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
-A2A makes a second distinction visible. It supports work between independent agent systems through discovery, messages, tasks, artifacts, streams, and asynchronous operations. The participating agents need not expose their internal state or tools. That is an interoperability boundary, not a reason to remove local policy checks. [S10](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+A2A makes a second distinction visible. It supports work between independent agent systems through discovery, messages, tasks, artifacts, streams, and asynchronous operations. The participating agents need not expose their internal state or tools. That is an interoperability boundary, not a reason to remove local policy checks. [S10](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## Architecture as an evidence system
 
@@ -144,7 +144,7 @@ The failure mode is provider behavior leaking through many call sites. Migration
 
 The verification test is concrete: run a representative eval slice against a second provider or a local fake adapter without changing product code above the seam. The result does not need parity. It must expose the capability, quality, cost, and behavior gap in one report.
 
-Current catalogs justify the seam. OpenAI, Anthropic, Google, and xAI publish different families, context sizes, model states, tool surfaces, and prices. Those catalogs were already moving during 2026. [S01](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S02](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S03](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S04](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Current catalogs justify the seam. OpenAI, Anthropic, Google, and xAI publish different families, context sizes, model states, tool surfaces, and prices. Those catalogs were already moving during 2026. [S01](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S02](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S03](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S04](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## 2. The loop shape
 
@@ -159,9 +159,9 @@ Use four shapes:
 | parallel workers | coordinator plus independent workers | separable research or classification | cost and conflicting results |
 | sequential specialists | explicit handoffs or staged calls | strong phase boundaries | context loss and error propagation |
 
-Choose the least autonomous shape that can handle the task. OpenAI's Agents SDK documents model-led and code-led control, plus agents-as-tools, handoffs, chains, evaluator loops, and parallel runs. It notes that code-led orchestration is more predictable for speed, cost, and performance. [S06](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Choose the least autonomous shape that can handle the task. OpenAI's Agents SDK documents model-led and code-led control, plus agents-as-tools, handoffs, chains, evaluator loops, and parallel runs. It notes that code-led orchestration is more predictable for speed, cost, and performance. [S06](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
-Parallel agents are a budget decision. Anthropic reports that its research agents used about four times the tokens of chat interactions, while its multi-agent system used about fifteen times the tokens of chats in that workload. It also found that parallel agents fit high-value work with enough independent paths to justify the cost. [S21](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Parallel agents are a budget decision. Anthropic reports that its research agents used about four times the tokens of chat interactions, while its multi-agent system used about fifteen times the tokens of chats in that workload. It also found that parallel agents fit high-value work with enough independent paths to justify the cost. [S21](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 The failure mode is autonomy by fashion. Teams split one coherent task across agents, pay the coordination tax, then add another model to judge the disagreements.
 
@@ -186,9 +186,9 @@ flowchart TD
 
 The policy check sees the authenticated actor, purpose, data class, requested tool, arguments, scope, risk class, and approval state. High-impact tools use narrow credentials and explicit confirmation. A read token cannot become a write token because the model asks nicely.
 
-The MCP authorization profile supplies useful transport controls: OAuth 2.1, protected resource metadata, resource indicators, least-privilege scope selection, issuer checks, and token audience validation. [S09](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) These controls secure a request path. You still need product policy for the meaning of the action.
+The MCP authorization profile supplies useful transport controls: OAuth 2.1, protected resource metadata, resource indicators, least-privilege scope selection, issuer checks, and token audience validation. [S09](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) These controls secure a request path. You still need product policy for the meaning of the action.
 
-OWASP's 2026 agentic risk list names the broader failure family: goal hijack, tool misuse, identity and privilege abuse, poisoned components, unexpected code execution, memory poisoning, insecure agent messages, cascading failures, human trust exploitation, and rogue agents. [S18](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+OWASP's 2026 agentic risk list names the broader failure family: goal hijack, tool misuse, identity and privilege abuse, poisoned components, unexpected code execution, memory poisoning, insecure agent messages, cascading failures, human trust exploitation, and rogue agents. [S18](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 The failure mode is a prompt boundary pretending to be a security boundary.
 
@@ -200,7 +200,7 @@ The long-run home owns state after the request, process, worker, or context wind
 
 Any run that waits for approval, polls a source, calls several tools, crosses a timeout, or may be retried needs an explicit state machine. Store the goal, current step, prior results, policy state, budgets, idempotency keys, approvals, and stop reason outside the model transcript.
 
-Durable workflow systems provide patterns for child work, parallel activity, callbacks, approval waits, long-running activity, retries, and continuing with fresh history. [S11](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) Anthropic's long-running agent work adds a practical lesson: agents make steadier progress when each session leaves a clean state, an explicit progress record, and version history for the next session. [S12](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Durable workflow systems provide patterns for child work, parallel activity, callbacks, approval waits, long-running activity, retries, and continuing with fresh history. [S11](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) Anthropic's long-running agent work adds a practical lesson: agents make steadier progress when each session leaves a clean state, an explicit progress record, and version history for the next session. [S12](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 The failure mode is treating a chat thread as the system of record. Compaction drops a detail, a worker restarts, or a webhook arrives twice. The agent either repeats an action or declares completion from stale context.
 
@@ -246,7 +246,7 @@ Its owner produces a model registry, routing policy, capability evals, regressio
 
 The context plane owns what the model can know during a run. It covers system instructions, examples, retrieved records, conversation history, memory, source provenance, data permissions, and freshness.
 
-Its owner produces a context manifest for each run, retrieval tests, stale-data behavior, redaction checks, and citation evidence. Anthropic recommends tight context, clear tools with little functional overlap, and just-in-time retrieval for information that need not sit in the prompt. [S07](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Its owner produces a context manifest for each run, retrieval tests, stale-data behavior, redaction checks, and citation evidence. Anthropic recommends tight context, clear tools with little functional overlap, and just-in-time retrieval for information that need not sit in the prompt. [S07](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## 3. Tools
 
@@ -264,13 +264,13 @@ Its owner produces a state-machine description, failure table, run budget, repla
 
 The evaluation plane owns the definition of acceptable behavior. It turns production outcomes and failure cases into repeatable trials with deterministic checks, calibrated model rubrics, and human judgment.
 
-Its owner produces task banks, environment fixtures, graders, thresholds, baselines, regression reports, and release verdicts. OpenAI recommends early, task-specific evals built from production-shaped data, with automated scoring and human calibration. [S13](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Its owner produces task banks, environment fixtures, graders, thresholds, baselines, regression reports, and release verdicts. OpenAI recommends early, task-specific evals built from production-shaped data, with automated scoring and human calibration. [S13](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## 6. Observability
 
 The observability plane owns the record of what happened. It joins model, context, tool, policy, state, outcome, latency, cost, and user events under one trace.
 
-Its owner produces a telemetry contract, redaction policy, retention rules, alerts, incident queries, and sampled trace reviews. OpenTelemetry now maintains GenAI conventions in a separate repository covering spans, metrics, events, MCP, and provider-specific signals. The work is still evolving, so pin the convention version you emit. [S16](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Its owner produces a telemetry contract, redaction policy, retention rules, alerts, incident queries, and sampled trace reviews. OpenTelemetry now maintains GenAI conventions in a separate repository covering spans, metrics, events, MCP, and provider-specific signals. The work is still evolving, so pin the convention version you emit. [S16](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## 7. Experience
 
@@ -339,7 +339,7 @@ A good seam answers:
 
 ## Aliases for exploration, snapshots for proof
 
-Vendor aliases can move to a newer release. Dated model IDs hold behavior more steadily. xAI's documentation, for example, distinguishes moving aliases from date-pinned releases and recommends the latter when consistency matters. [S04](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Vendor aliases can move to a newer release. Dated model IDs hold behavior more steadily. xAI's documentation, for example, distinguishes moving aliases from date-pinned releases and recommends the latter when consistency matters. [S04](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 Use moving aliases in discovery when the upside of fresh capability outweighs drift. Use a pinned model or recorded version for a production baseline, a regulated decision, or any result that must be reproduced. If a provider does not expose an immutable version, store the observed model ID and treat repeatability as limited.
 
@@ -357,7 +357,7 @@ Track the distribution, not only the average. A small tail of looping runs can b
 
 ## Treat the 2026 catalog as dated data
 
-The 2026-10-05 source review found changes in the named model families and prices since September. Appendix A holds the corrected rows. Account access, latency, and task performance require separate tests. [S01](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S02](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S03](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S04](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+The 2026-10-05 source review found changes in the named model families and prices since September. Appendix A holds the corrected rows. Account access, latency, and task performance require separate tests. [S01](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S02](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S03](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S04](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 That snapshot belongs in Appendix A, outside the core method. The architectural conclusion is an inference: vendor facts decay too quickly to carry the product boundary.
 
@@ -404,7 +404,7 @@ This manifest is evidence for a run. It should join the trace without putting se
 
 ## Put stable rules up front, fetch changing facts late
 
-Keep stable, high-authority rules close to the system boundary. Load changing facts when the task needs them. Anthropic describes this as tight context plus just-in-time retrieval, sometimes mixed with a small set of files or instructions loaded at the start. [S07](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Keep stable, high-authority rules close to the system boundary. Load changing facts when the task needs them. Anthropic describes this as tight context plus just-in-time retrieval, sometimes mixed with a small set of files or instructions loaded at the start. [S07](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 The split lowers two risks. First, stale facts do not sit in every prompt. Second, large collections do not crowd out the task. Runtime retrieval costs time, so low-latency work may preload a small, verified set and fetch the rest only on demand.
 
@@ -440,7 +440,7 @@ Separate at least four classes:
 
 These classes should not share the same trust level. Task state belongs in the long-run state machine. A model reflection is a hint, not a fact. A user preference cannot grant permission to a tool.
 
-OWASP's 2026 agentic risks include memory and context poisoning, which can persist beyond the first malicious interaction. [S18](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) Test delayed attacks: insert the malicious item in one run, then trigger the target action in a later run.
+OWASP's 2026 agentic risks include memory and context poisoning, which can persist beyond the first malicious interaction. [S18](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) Test delayed attacks: insert the malicious item in one run, then trigger the target action in a later run.
 
 ## Context budgets are quality budgets
 
@@ -473,7 +473,7 @@ A tool contract has two audiences. Code needs a strict schema. The model needs a
 
 ## One tool, one clear job
 
-Tool overlap creates model confusion. Anthropic reports that large, ambiguous tool sets are a common failure source and recommends small tool sets with clear, self-contained purposes. [S07](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Tool overlap creates model confusion. Anthropic reports that large, ambiguous tool sets are a common failure source and recommends small tool sets with clear, self-contained purposes. [S07](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 Prefer `get_invoice`, `propose_refund`, and `commit_refund` over a generic `manage_account` tool. Separate read, proposal, and commit operations. The split gives policy and experience layers a place to inspect the pending action.
 
@@ -494,11 +494,11 @@ Never accept user or model text for a tenant ID, actor ID, or permission when th
 
 ## Protocol connection does not grant product authority
 
-MCP standardizes how a host connects clients to servers that expose resources, prompts, and tools. The 2026-07-28 specification also adds negotiated extensions for long-running tasks, skills, and interactive apps. [S08](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+MCP standardizes how a host connects clients to servers that expose resources, prompts, and tools. The 2026-07-28 specification also adds negotiated extensions for long-running tasks, skills, and interactive apps. [S08](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
-Use MCP to reduce custom connection work, then keep local policy. The MCP specification says tool descriptions should be treated as untrusted unless they come from a trusted server, and it calls for user consent before tool invocation. [S08](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) A registry entry or signed package can raise confidence in origin. It does not prove that the tool is appropriate for this user or task.
+Use MCP to reduce custom connection work, then keep local policy. The MCP specification says tool descriptions should be treated as untrusted unless they come from a trusted server, and it calls for user consent before tool invocation. [S08](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) A registry entry or signed package can raise confidence in origin. It does not prove that the tool is appropriate for this user or task.
 
-For HTTP authorization, MCP defines an OAuth 2.1 profile with protected resource metadata, resource indicators, issuer validation, audience binding, and step-up scopes. [S09](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) Apply the principle beyond MCP: issue narrow, short-lived credentials for one resource and purpose. Do not pass a broad backend token into the model process.
+For HTTP authorization, MCP defines an OAuth 2.1 profile with protected resource metadata, resource indicators, issuer validation, audience binding, and step-up scopes. [S09](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) Apply the principle beyond MCP: issue narrow, short-lived credentials for one resource and purpose. Do not pass a broad backend token into the model process.
 
 ## Gate irreversible action
 
@@ -523,7 +523,7 @@ A timeout does not tell you whether the remote action happened. Design for an `u
 
 Test the ugly point: the remote system commits, the network response is lost, and the worker restarts. The second attempt must return the first outcome or reconcile state without repeating the effect.
 
-A2A 1.0.0 treats cancellation as idempotent and lets message handlers use message IDs to detect duplicates. Its webhook guidance calls for authenticity checks, retry backoff, SSRF defenses, idempotent processing, rate limits, HTTPS, and single-purpose tokens. [S10](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) Those details are useful even when A2A is absent.
+A2A 1.0.0 treats cancellation as idempotent and lets message handlers use message IDs to detect duplicates. Its webhook guidance calls for authenticity checks, retry backoff, SSRF defenses, idempotent processing, rate limits, HTTPS, and single-purpose tokens. [S10](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) Those details are useful even when A2A is absent.
 
 ## Treat tool results as typed states
 
@@ -586,7 +586,7 @@ Use it when the path is open but one context can hold the task. The loop needs s
 
 A coordinator splits independent work, then joins results. Research, broad search, independent scoring, and bulk classification can fit.
 
-Parallel work buys breadth by spending more. Anthropic's research report measured about fifteen times the chat token use for its multi-agent system and notes that tasks with shared context or dense dependencies can be poor fits. [S21](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Parallel work buys breadth by spending more. Anthropic's research report measured about fifteen times the chat token use for its multi-agent system and notes that tasks with shared context or dense dependencies can be poor fits. [S21](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ### Sequential specialists
 
@@ -596,7 +596,7 @@ Use it when phase boundaries are real and each phase benefits from a focused con
 
 ## Let code own invariants
 
-OpenAI documents both model-led and code-led orchestration. Code-led flow gives more predictable speed, cost, and performance, while model-led flow handles open tasks that need planning and tool choice. [S06](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+OpenAI documents both model-led and code-led orchestration. Code-led flow gives more predictable speed, cost, and performance, while model-led flow handles open tasks that need planning and tool choice. [S06](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 Keep hard invariants in code or policy:
 
@@ -613,9 +613,9 @@ Let the model propose plans, choose among allowed actions, recover from descript
 
 ## Use protocols at the right boundary
 
-MCP fits a host-to-capability boundary. A server exposes resources, prompts, and tools to a model application. [S08](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+MCP fits a host-to-capability boundary. A server exposes resources, prompts, and tools to a model application. [S08](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
-A2A fits work between independent agent services. Version 1.0.0 supports capability discovery through Agent Cards, messages, tasks, artifacts, streaming, push updates, and long-running work without sharing internal state or tools. Its own specification describes MCP and A2A as complementary: an A2A server agent may call MCP tools to complete the delegated task. [S10](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+A2A fits work between independent agent services. Version 1.0.0 supports capability discovery through Agent Cards, messages, tasks, artifacts, streaming, push updates, and long-running work without sharing internal state or tools. Its own specification describes MCP and A2A as complementary: an A2A server agent may call MCP tools to complete the delegated task. [S10](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 Do not add A2A for agents inside one process that already share code, identity, state, and deployment. An internal function or queue may be clearer. Use A2A when independent ownership, vendor separation, remote discovery, or cross-organization operation makes a protocol boundary valuable.
 
@@ -641,9 +641,9 @@ checkpoint: s3://.../checkpoint-04.json
 stop_reason: null
 ```
 
-Durable systems supply patterns for retries, long-running activity, callbacks, approval waits, child work, and fresh histories. [S11](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) The architectural prescription is broader than any product: if a run can outlive the request, give it an owned state machine, durable store, idempotency key, retry rule, and recovery path.
+Durable systems supply patterns for retries, long-running activity, callbacks, approval waits, child work, and fresh histories. [S11](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) The architectural prescription is broader than any product: if a run can outlive the request, give it an owned state machine, durable store, idempotency key, retry rule, and recovery path.
 
-Anthropic's long-running agent experiments found that compaction alone did not preserve enough continuity. Better results came from incremental progress, a clean state at each handoff, progress records, version history, and explicit end-to-end tests. [S12](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Anthropic's long-running agent experiments found that compaction alone did not preserve enough continuity. Better results came from incremental progress, a clean state at each handoff, progress records, version history, and explicit end-to-end tests. [S12](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## Budget the path
 
@@ -658,7 +658,7 @@ Set an effort envelope before the run starts:
 
 The coordinator may spend within the envelope. It cannot rewrite the envelope. A budget increase is a policy event and may require a human.
 
-Scale effort to task value and uncertainty. A lookup should not start ten workers. A high-value research task may justify them. Anthropic reports that explicit effort rules helped its coordinator avoid spending too much on simple queries. [S21](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Scale effort to task value and uncertainty. A lookup should not start ten workers. A high-value research task may justify them. Anthropic reports that explicit effort rules helped its coordinator avoid spending too much on simple queries. [S21](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## Design failure as a state
 
@@ -700,7 +700,7 @@ Write the required state before writing the prompt. For a refund task, success m
 - the customer received a confirmation;
 - no secret or internal policy text entered the response.
 
-The agent's final sentence is evidence of what it said. The database, external API, file tree, or user-visible artifact is evidence of what happened. Anthropic distinguishes a transcript from an outcome for this reason. [S15](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+The agent's final sentence is evidence of what it said. The database, external API, file tree, or user-visible artifact is evidence of what happened. Anthropic distinguishes a transcript from an outcome for this reason. [S15](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## Grade four dimensions
 
@@ -712,7 +712,7 @@ Did the intended business and user state exist at the end? Prefer deterministic 
 
 ### Path
 
-Did the run use allowed sources, models, tools, routes, scopes, and approvals? Trace grading can expose a wrong tool choice or misplaced handoff even when the final answer is acceptable. OpenAI recommends traces during behavioral debugging, then datasets and repeated eval runs when a team needs comparison over time. [S14](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Did the run use allowed sources, models, tools, routes, scopes, and approvals? Trace grading can expose a wrong tool choice or misplaced handoff even when the final answer is acceptable. OpenAI recommends traces during behavioral debugging, then datasets and repeated eval runs when a team needs comparison over time. [S14](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ### Safety
 
@@ -724,7 +724,7 @@ Did the run finish inside its time, token, tool, retry, review, and correction b
 
 ## Use mixed graders
 
-Agent behavior has both crisp and subjective parts. Anthropic groups graders into code-based checks, model-based rubrics, and human judgment. Code checks are fast and repeatable; model rubrics handle open outputs but need human calibration; humans catch subtle task and source failures. [S15](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Agent behavior has both crisp and subjective parts. Anthropic groups graders into code-based checks, model-based rubrics, and human judgment. Code checks are fast and repeatable; model rubrics handle open outputs but need human calibration; humans catch subtle task and source failures. [S15](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 A sensible order is:
 
@@ -745,11 +745,11 @@ Separate two banks:
 - **capability cases** are hard cases that reveal the current frontier;
 - **regression cases** protect behavior the system already claims to handle.
 
-Anthropic recommends that capability cases begin hard enough to create room for progress, while regression cases stay near a full pass rate. Cases can graduate from one bank to the other. [S15](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Anthropic recommends that capability cases begin hard enough to create room for progress, while regression cases stay near a full pass rate. Cases can graduate from one bank to the other. [S15](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## Shape the bank like production
 
-OpenAI recommends task-specific evals, production-shaped data, early logging, automated scoring where possible, and continued human calibration. [S13](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+OpenAI recommends task-specific evals, production-shaped data, early logging, automated scoring where possible, and continued human calibration. [S13](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 Sample by risk and frequency. Common tasks protect the core service. Rare costly failures deserve their own cases. Include languages, tenant types, data sizes, tool failures, policy versions, and human interruption patterns found in real traffic.
 
@@ -804,7 +804,7 @@ Record argument and content hashes when raw values contain sensitive data. A tra
 
 ## Adopt a convention, pin its version
 
-OpenTelemetry moved GenAI work into a separate semantic-conventions repository covering spans, metrics, events, MCP, and provider-specific signals. [S16](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) That gives teams a shared vocabulary and export path. The conventions are changing, so record the version your instrumentation follows and keep local fields for gaps.
+OpenTelemetry moved GenAI work into a separate semantic-conventions repository covering spans, metrics, events, MCP, and provider-specific signals. [S16](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) That gives teams a shared vocabulary and export path. The conventions are changing, so record the version your instrumentation follows and keep local fields for gaps.
 
 Do not wait for a standard to define your business outcome. A protocol can describe a tool call. Your product still has to record whether the customer received the correct refund, contract, diagnosis draft, or route plan.
 
@@ -906,7 +906,7 @@ For a consequential action, include:
 
 Approval is invalid if the action changes after display. Bind it to a digest and ask again after any material change.
 
-MCP calls for explicit user consent and understanding before tools run. [S08](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) A2A 1.0.0 supports a task state that requests authorization during long-running work. [S10](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) Product interfaces still have to make that consent specific and usable.
+MCP calls for explicit user consent and understanding before tools run. [S08](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) A2A 1.0.0 supports a task state that requests authorization during long-running work. [S10](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) Product interfaces still have to make that consent specific and usable.
 
 ## Display uncertainty where it changes a decision
 
@@ -991,7 +991,7 @@ Do not hide human work. If an agent saves eight minutes of drafting and adds twe
 
 ## Autonomy has a coordination tax
 
-Multi-agent systems can add breadth and parallel capacity, but they spend more tokens and create coordination work. Anthropic reports roughly four times chat token use for agents and fifteen times for its multi-agent research system in its own workload. It argues that the task value must justify the added cost. [S21](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Multi-agent systems can add breadth and parallel capacity, but they spend more tokens and create coordination work. Anthropic reports roughly four times chat token use for agents and fifteen times for its multi-agent research system in its own workload. It argues that the task value must justify the added cost. [S21](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 Use that figure as a warning, not a universal multiplier. Measure your system. Compare the chosen loop to the next simpler loop on verified outcomes, latency, total cost, and human correction.
 
@@ -1172,9 +1172,9 @@ These records support incident response, model comparisons, compliance review, a
 
 ## Protocol choices
 
-MCP can connect the model host to approved read tools or data servers, subject to local identity and policy. [S08](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S09](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) A2A can connect an independently operated specialist agent when ownership or vendor boundaries justify it. It is unnecessary for local modules in this design. [S10](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+MCP can connect the model host to approved read tools or data servers, subject to local identity and policy. [S08](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S09](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) A2A can connect an independently operated specialist agent when ownership or vendor boundaries justify it. It is unnecessary for local modules in this design. [S10](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
-A durable workflow product can implement retries, approval waits, callbacks, and long-running state, but the architecture depends on the contract, not on one vendor. [S11](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+A durable workflow product can implement retries, approval waits, callbacks, and long-running state, but the architecture depends on the contract, not on one vendor. [S11](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 ## Proof before write authority
 
@@ -1314,7 +1314,7 @@ The context plane decides what a model sees during one run. This chapter covers 
 
 Most AI incidents that look like model failures are data failures with a fluent surface. A retired policy stays in the index. A customer note crosses a tenant boundary. A poisoned page enters a crawl. An embedding store keeps records the business deleted months ago. The model reports all of it with the same confidence.
 
-Joint government guidance now treats data supply-chain security, poisoning, drift, provenance, encryption, signatures, and trusted infrastructure as AI system concerns rather than storage details. [S24](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C030
+Joint government guidance now treats data supply-chain security, poisoning, drift, provenance, encryption, signatures, and trusted infrastructure as AI system concerns rather than storage details. [S24](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C030
 
 ## Inventory before retrieval
 
@@ -1331,7 +1331,7 @@ Start with a knowledge inventory, not a vector store. For every source that can 
 | retention and deletion | When must copies, chunks, and embeddings go? | deleted data that still answers questions |
 | drift signal | What shows that the source changed meaning? | slow decay of answer quality |
 
-A source enters production only with a data contract that names its owner, rights basis, freshness target, and deletion rule. C055 Cloud vendor architecture guidance treats grounding data, data integration, and catalogs as part of the AI workload rather than a separate storage concern. [S32](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S34](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C031
+A source enters production only with a data contract that names its owner, rights basis, freshness target, and deletion rule. C055 Cloud vendor architecture guidance treats grounding data, data integration, and catalogs as part of the AI workload rather than a separate storage concern. [S32](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S34](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C031
 
 ## Derived data is still data
 
@@ -1353,15 +1353,15 @@ Drift is quieter. A pricing table changes format, a product line is renamed, a p
 
 ## Bills of materials for knowledge
 
-SPDX and CycloneDX define machine-readable structures for AI models, datasets, configurations, provenance, licensing, and related risk information. [S26](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S27](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C033
+SPDX and CycloneDX define machine-readable structures for AI models, datasets, configurations, provenance, licensing, and related risk information. [S26](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S27](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C033
 
-Use them. A release that cannot list its datasets, corpora, and their licenses cannot answer a rights question or a deletion request with confidence. The [secure delivery chapter](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/15-identity-security-delivery.md) treats the same inventory as a release artifact.
+Use them. A release that cannot list its datasets, corpora, and their licenses cannot answer a rights question or a deletion request with confidence. The [secure delivery chapter](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/15-identity-security-delivery.md) treats the same inventory as a release artifact.
 
 ## Provenance of what the system produces
 
 Inbound provenance asks where knowledge came from. Outbound provenance asks whether a reader can trust what the system produced.
 
-For text, cite source IDs and keep the context manifest with the trace. For generated or edited media where authenticity matters, such as news imagery, insurance evidence, identity documents, or brand assets, attach signed provenance. C2PA 2.4 defines cryptographically verifiable content provenance through assertions, signed claims, manifests, trust, and validation. [S37](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C039
+For text, cite source IDs and keep the context manifest with the trace. For generated or edited media where authenticity matters, such as news imagery, insurance evidence, identity documents, or brand assets, attach signed provenance. C2PA 2.4 defines cryptographically verifiable content provenance through assertions, signed claims, manifests, trust, and validation. [S37](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C039
 
 Validate the manifest before publication, not only at creation. A signature that nobody checks is decoration. C056
 
@@ -1384,9 +1384,9 @@ If the inventory is missing, retrieval quality numbers describe a system nobody 
 
 # 15. Identity, security, and secure delivery: bound authority end to end
 
-The [trust boundary](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/02-four-decisions.md) decides where text meets authority. The [tool plane](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/06-tool-plane.md) gates each effect. This chapter widens the view to the whole system: who is acting, under whose authority, inside what isolation, and through which supply chain the behavior arrived.
+The [trust boundary](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/02-four-decisions.md) decides where text meets authority. The [tool plane](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/06-tool-plane.md) gates each effect. This chapter widens the view to the whole system: who is acting, under whose authority, inside what isolation, and through which supply chain the behavior arrived.
 
-Agent identity is no longer a secondary implementation detail. NIST's 2026 AI Agent Standards Initiative treats open protocols, agent authentication, identity infrastructure, secure human-agent and multi-agent interaction, and security evaluation as active standards work. [S22](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C026 Expect the protocols to change. Design so that the identity model survives the change.
+Agent identity is no longer a secondary implementation detail. NIST's 2026 AI Agent Standards Initiative treats open protocols, agent authentication, identity infrastructure, secure human-agent and multi-agent interaction, and security evaluation as active standards work. [S22](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C026 Expect the protocols to change. Design so that the identity model survives the change.
 
 ## Five identities, one chain
 
@@ -1400,13 +1400,13 @@ A production agent system has at least five distinct identities. Collapsing them
 | session or run | one bounded execution | Which budget, approvals, and state apply? |
 | tool credential | the token presented to a downstream API | What exactly may this call do? |
 
-Delegated authority flows down that chain and may only narrow. Record the scope, audience, expiry, and revocation path of every delegation. [S09](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S10](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C027 A tool credential minted for one run, one audience, and one purpose is evidence. A shared service key is an open question.
+Delegated authority flows down that chain and may only narrow. Record the scope, audience, expiry, and revocation path of every delegation. [S09](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S10](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C027 A tool credential minted for one run, one audience, and one purpose is evidence. A shared service key is an open question.
 
-The [delegated-authority lab](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/labs/delegated-authority/README.md) shows the minimum behaviors as tests: a proposal never carries authority, an actor cannot approve its own action, a replay key is bound to one action, and revocation applies even after execution.
+The [delegated-authority lab](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/labs/delegated-authority/README.md) shows the minimum behaviors as tests: a proposal never carries authority, an actor cannot approve its own action, a replay key is bound to one action, and revocation applies even after execution.
 
 ## Threat model the whole system
 
-OWASP's agentic list covers goal hijack, tool misuse, identity and privilege abuse, supply-chain risk, code execution, memory poisoning, insecure agent communication, cascading failure, human trust exploitation, and rogue agents. [S18](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C019 Use it as a checklist against a data-flow diagram that includes every model call, retrieval path, tool, memory store, agent-to-agent link, and human approval.
+OWASP's agentic list covers goal hijack, tool misuse, identity and privilege abuse, supply-chain risk, code execution, memory poisoning, insecure agent communication, cascading failure, human trust exploitation, and rogue agents. [S18](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C019 Use it as a checklist against a data-flow diagram that includes every model call, retrieval path, tool, memory store, agent-to-agent link, and human approval.
 
 For each flow, write the attacker's goal, the entry point, the control that stops it, and the test that proves the control. A control without a test is a hope.
 
@@ -1414,7 +1414,7 @@ For each flow, write the attacker's goal, the entry point, the control that stop
 
 Code execution, browser automation, and file manipulation are the highest-risk tools because the model chooses the arguments and the effects are broad.
 
-Run them in an isolated sandbox with no ambient credentials, an egress allow-list, resource limits, and a disposable file system. C057 Kubernetes Agent Sandbox presents an experimental pattern for isolated, stateful agent workloads with persistent identity, suspension, resumption, and stronger runtime isolation. [S28](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C035 Whether you use that project or another runtime, the contract is the same: the sandbox can be destroyed without losing the run's durable state, and nothing inside it can reach a system the policy did not name.
+Run them in an isolated sandbox with no ambient credentials, an egress allow-list, resource limits, and a disposable file system. C057 Kubernetes Agent Sandbox presents an experimental pattern for isolated, stateful agent workloads with persistent identity, suspension, resumption, and stronger runtime isolation. [S28](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C035 Whether you use that project or another runtime, the contract is the same: the sandbox can be destroyed without losing the run's durable state, and nothing inside it can reach a system the policy did not name.
 
 Secrets never enter model context. Tools fetch them at call time from a store the model cannot query.
 
@@ -1422,9 +1422,9 @@ Secrets never enter model context. Tools fetch them at call time from a store th
 
 In an AI system, behavior lives in more places than code. Prompts, policies, tool definitions, retrieval configuration, model versions, routing rules, and eval sets all change what the system does.
 
-NIST SP 800-218A adds AI-specific secure software practices for model producers, system producers, and acquirers across the lifecycle. [S25](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C032 Apply the same discipline to every behavior-bearing asset: version control, review, signed builds, provenance, and a release record. C058
+NIST SP 800-218A adds AI-specific secure software practices for model producers, system producers, and acquirers across the lifecycle. [S25](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C032 Apply the same discipline to every behavior-bearing asset: version control, review, signed builds, provenance, and a release record. C058
 
-Each production release should emit a machine-readable inventory of its models, datasets, prompts, policies, tools, and dependencies. [S26](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S27](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C034 This is the AI bill of materials. It answers three incident questions quickly: what was running, where it came from, and what else uses the same component.
+Each production release should emit a machine-readable inventory of its models, datasets, prompts, policies, tools, and dependencies. [S26](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S27](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C034 This is the AI bill of materials. It answers three incident questions quickly: what was running, where it came from, and what else uses the same component.
 
 Third-party MCP servers, agent cards, plugins, and model weights are acquisitions. Review them as you would any dependency with network access: pin versions, verify publishers, read declared scopes, and test denied behavior before granting production credentials.
 
@@ -1448,7 +1448,7 @@ A named security reviewer, not the authoring team, signs off this evidence befor
 
 The seven planes describe one system at runtime. Production adds three questions the planes do not answer alone. Where does the system run? How does it change safely? How does it fail, recover, and eventually stop?
 
-Current cloud architecture guidance makes data, platform, lifecycle operations, security, reliability, performance, cost, and sustainability part of the AI architect's remit. [S31](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S32](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S33](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S34](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C037
+Current cloud architecture guidance makes data, platform, lifecycle operations, security, reliability, performance, cost, and sustainability part of the AI architect's remit. [S31](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S32](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S33](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S34](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C037
 
 ## Choose the deployment mode on purpose
 
@@ -1462,15 +1462,15 @@ State the deployment mode in the architecture record. Each mode moves different 
 | edge or on-device | latency, offline use, local data | model size limits, fleet update, device trust |
 | realtime or multimodal | voice, video, and live interaction | tight latency budgets, streaming failure, media provenance |
 
-A reference architecture should state its deployment mode, platform boundary, data boundary, identity model, recovery model, and retirement path. [S22](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S24](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C044
+A reference architecture should state its deployment mode, platform boundary, data boundary, identity model, recovery model, and retirement path. [S22](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S24](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C044
 
 ## Treat the platform as its own concern
 
-AI gateways, model-aware routing, capacity allocation, and agent sandboxing form a platform concern separate from application orchestration. [S28](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S29](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S30](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C036
+AI gateways, model-aware routing, capacity allocation, and agent sandboxing form a platform concern separate from application orchestration. [S28](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S29](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S30](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C036
 
 A platform team owns the shared seams: the gateway that enforces quotas and tenant limits, the router that maps task classes to approved models, caches with explicit invalidation, batch and realtime paths, and the sandbox runtime. Product teams own their outcomes, tools, and evals. When one team owns both, write the boundary down anyway, because it will split later.
 
-Plan capacity in verified units of work, not tokens. Queueing delay and retries change the real cost and latency of a run. Measure cost per verified unit, forecast the effect of efficiency changes, and connect the unit to business value. [S36](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C038
+Plan capacity in verified units of work, not tokens. Queueing delay and retries change the real cost and latency of a run. Measure cost per verified unit, forecast the effect of efficiency changes, and connect the unit to business value. [S36](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C038
 
 ## Release every behavior change
 
@@ -1518,7 +1518,7 @@ This chapter is architectural guidance, not legal advice. Regulatory classificat
 
 ## Governance as decision rights
 
-A field method for AI architecture needs an explicit lifecycle and organizational operating model in addition to runtime planes. [S17](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S23](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S31](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S32](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S33](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S35](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C029
+A field method for AI architecture needs an explicit lifecycle and organizational operating model in addition to runtime planes. [S17](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S23](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S31](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S32](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S33](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S35](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C029
 
 Express governance as a short table of decisions, each with one accountable role, the evidence required, and the exception path. C062
 
@@ -1535,27 +1535,27 @@ Every exception is logged with an owner, an expiry, and the control that compens
 
 ## Management systems and risk frameworks
 
-ISO IEC 42001 defines an organizational AI management system built around policy, objectives, risk and opportunity management, and continual management review. [S23](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C028 The NIST GenAI Profile is a cross-sector companion to AI RMF 1.0 for risks across design, development, use, and evaluation. [S17](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C018
+ISO IEC 42001 defines an organizational AI management system built around policy, objectives, risk and opportunity management, and continual management review. [S23](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C028 The NIST GenAI Profile is a cross-sector companion to AI RMF 1.0 for risks across design, development, use, and evaluation. [S17](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C018
 
 Neither standard tells you how to build a trust boundary. Both expect evidence that you did. The architecture artifacts in this guide, including decision records, eval reports, traces, release packets, and retirement receipts, are the operating evidence a management system reviews. Map them once, so audits read existing artifacts instead of commissioning new ones.
 
 ## Regulation as an architecture input
 
-The EU AI Act became generally applicable on 2026-08-02, with separate dates for prohibited practices, GPAI duties, and high-risk systems. [S20](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C020 The General-Purpose AI Code of Practice has transparency, copyright, and safety and security chapters, with the last chapter applying to providers of models with systemic risk. [S38](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C040 The Commission's high-risk classification guidance remains a draft and should be treated as volatile until finalized. [S39](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C041
+The EU AI Act became generally applicable on 2026-08-02, with separate dates for prohibited practices, GPAI duties, and high-risk systems. [S20](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C020 The General-Purpose AI Code of Practice has transparency, copyright, and safety and security chapters, with the last chapter applying to providers of models with systemic risk. [S38](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C040 The Commission's high-risk classification guidance remains a draft and should be treated as volatile until finalized. [S39](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C041
 
 Architecturally, three practices hold regardless of jurisdiction:
 
 1. **Classify early.** Record the intended purpose, affected people, and decision impact in the frame stage. Classification drives logging, human oversight, and documentation duties, so it must exist before the design is fixed.
-2. **Emit evidence from the runtime.** Compliance evidence should be produced by the runtime and release process instead of assembled after deployment. [S17](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [S20](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) C021
+2. **Emit evidence from the runtime.** Compliance evidence should be produced by the runtime and release process instead of assembled after deployment. [S17](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [S20](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) C021
 3. **Keep a jurisdiction and rights record.** Note where data is stored and processed, which regional controls apply, the copyright policy for training and retrieval content, and the evidence retention period.
 
 ## The operating model
 
 Central teams that own every decision become queues. Product teams that own every decision repeat the same mistakes. A federated model works better for most organizations: a small central group owns standards, the shared platform, architecture review, and the exception process, while product teams own outcomes, evals, and operation of their systems. C063
 
-One vendor's published model describes an AI center of excellence as a cross-functional group of architects, technologists, subject-matter experts, and business roles responsible for strategy, standards, governance, and responsible adoption. [S35](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) Whatever the name, judge it by service levels: how long an architecture review takes, how many exceptions are open, and how often a product team reuses a platform seam instead of building its own.
+One vendor's published model describes an AI center of excellence as a cross-functional group of architects, technologists, subject-matter experts, and business roles responsible for strategy, standards, governance, and responsible adoption. [S35](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) Whatever the name, judge it by service levels: how long an architecture review takes, how many exceptions are open, and how often a product team reuses a platform seam instead of building its own.
 
-Procurement belongs in this model. Vendor reviews ask for data terms, model change notice, regional processing, incident notification, and exit support. The provider seam from [chapter 2](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/manuscript/02-four-decisions.md) makes the exit credible.
+Procurement belongs in this model. Vendor reviews ask for data terms, model change notice, regional processing, incident notification, and exit support. The provider seam from [chapter 2](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/manuscript/02-four-decisions.md) makes the exit credible.
 
 ## Release evidence
 
@@ -1595,7 +1595,7 @@ Do not force everything into one diagram. The system view describes structure. A
 
 Reference existing architecture decisions and lifecycle gates. The solution specification must not become a competing approval database. The portable AI Architect engine continues to write architecture artifacts in the customer's repository. Application implementation requires a distinct scoped mandate. A generated portal does not widen that mandate, receive cloud credentials or become an execution gateway.
 
-The [customer solution kit](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/README.md) compiles a synthetic specification into local HTML and topology exports. It supplies a reference boundary, not private tenancy, live inference or a hosted customer workbench. Its validator rejects imported runtime receipts and production maturity. Useful output remains inspectable without implying that the depicted system operates.
+The [customer solution kit](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/README.md) compiles a synthetic specification into local HTML and topology exports. It supplies a reference boundary, not private tenancy, live inference or a hosted customer workbench. Its validator rejects imported runtime receipts and production maturity. Useful output remains inspectable without implying that the depicted system operates.
 
 ## Select the medium by its truth obligation
 
@@ -1684,7 +1684,7 @@ The architecture workbench compares viable designs on the customer's constraints
 
 The evidence review shows the observed failure, correction and remaining obligation. If a source has expired, name the affected claim. If an artifact changes after review, invalidate the affected review. If a tool lacks authority, show the denied action and recovery path. A screen that hides these states creates an attractive source of operational error.
 
-The [practice desk](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/README.md) executes a deterministic synthetic research exercise. The draft cites an expired synthetic reference. The user runs checks, sees the failure, applies a correction, and exports a bounded capsule. Restore reproduces the known artifact and checks and rejects altered results or approval fields. This is evidence about fixture behavior. It does not establish actual research quality, provider execution, private access, specialist review or a human learning outcome.
+The [practice desk](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/README.md) executes a deterministic synthetic research exercise. The draft cites an expired synthetic reference. The user runs checks, sees the failure, applies a correction, and exports a bounded capsule. Restore reproduces the known artifact and checks and rejects altered results or approval fields. This is evidence about fixture behavior. It does not establish actual research quality, provider execution, private access, specialist review or a human learning outcome.
 
 ## Choose the design tool by its obligation
 
@@ -1708,7 +1708,7 @@ Railway continuous containers may fit standing workers when their persistence, o
 
 ## Define quality before the build
 
-Use separate lenses for correctness, authority, reliability, experience, economics, provider consumption, ownership, source freshness and independent review. The [living design contract](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/solution-kit/living-design.md) and proposed metric register turn those lenses into named artifacts, failure cases and owners. An observation stays unknown until a measurement exists. A proposed target is a negotiation input, not a claim that a benchmark has been achieved.
+Use separate lenses for correctness, authority, reliability, experience, economics, provider consumption, ownership, source freshness and independent review. The [living design contract](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/solution-kit/living-design.md) and proposed metric register turn those lenses into named artifacts, failure cases and owners. An observation stays unknown until a measurement exists. A proposed target is a negotiation input, not a claim that a benchmark has been achieved.
 
 | Lens | Evidence that matters | Failure that cannot be averaged away |
 |---|---|---|
@@ -1816,11 +1816,11 @@ For a customer conversation the architect brings one pattern, three or four real
 
 This appendix is procurement evidence with a short half-life. It is not a model recommendation.
 
-Prices are public list prices observed in vendor documentation on 2026-10-05. They exclude caching, batches, priority service, regional terms, tool charges, negotiated discounts, taxes, infrastructure, evaluation, and human work. Confirm every number before a buying or release decision. The [source-review receipt](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/releases/2026-10-05-source-review.md) records what changed. September values remain in Git history rather than being presented as current.
+Prices are public list prices observed in vendor documentation on 2026-10-05. They exclude caching, batches, priority service, regional terms, tool charges, negotiated discounts, taxes, infrastructure, evaluation, and human work. Confirm every number before a buying or release decision. The [source-review receipt](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/releases/2026-10-05-source-review.md) records what changed. September values remain in Git history rather than being presented as current.
 
 ## OpenAI
 
-The featured catalog lists three text models. C047 records that scope: [S01](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+The featured catalog lists three text models. C047 records that scope: [S01](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 | Model | Model ID | Input per million tokens | Output per million tokens | Context | Max output | Claim |
 |---|---|---:|---:|---:|---:|---|
@@ -1832,7 +1832,7 @@ Check availability for the actual account and region before choosing a route. A 
 
 ## Anthropic
 
-The current family spans four models: [S02](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+The current family spans four models: [S02](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 | Model | Model ID | Input per million tokens | Output per million tokens | Context | Max output | Claim |
 |---|---|---:|---:|---:|---:|---|
@@ -1845,7 +1845,7 @@ Capability labels remain vendor claims until the task bank measures them. A mode
 
 ## Google
 
-Google's catalog separates stable and preview releases. Gemini 3.8 Flash and its Live and speech variants appear as stable; Gemini 3.1 Pro remains under preview on the checked page. [S03](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml)
+Google's catalog separates stable and preview releases. Gemini 3.8 Flash and its Live and speech variants appear as stable; Gemini 3.1 Pro remains under preview on the checked page. [S03](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml)
 
 The procurement lesson is that “model” may mean a general reasoning endpoint, live speech system, transcription endpoint, image generator, or video generator. A route registry should state the task and modality contract rather than group all of them under one generic provider setting.
 
@@ -1853,7 +1853,7 @@ The catalog page used here did not supply one comparable price and context table
 
 ## xAI
 
-xAI lists `grok-4.7`: 500K context, $2.00 input and $6.00 output per million tokens, with a May 2026 knowledge cutoff. [S04](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/sources.yaml) [C053](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/research/claims.yaml)
+xAI lists `grok-4.7`: 500K context, $2.00 input and $6.00 output per million tokens, with a May 2026 knowledge cutoff. [S04](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/sources.yaml) [C053](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/research/claims.yaml)
 
 Claims C045 through C053 map the rows and catalog scope to their sources. This refresh checked documentation; it made no paid API calls and measured no model performance. A separate independent review of this correction is still open. No author, legal, or final-book gate was closed by these retrievals.
 
@@ -1904,7 +1904,7 @@ The record should let a new architect answer what the system is for, where autho
 | runbook | deploy, stop, reconcile, compensate, rollback, escalate |
 | release receipt | versions, test results, known limits, verifier, approval |
 
-Templates for the [four-decision review](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/labs/four-decision-review.md), [plane ownership matrix](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/labs/plane-ownership-matrix.md), [agent scorecard](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/labs/eval-scorecard.md), and [ADR](https://github.com/frankxai/ai-architect/blob/c43825efda384d9b29364d5e5fe7ba364b08a3fb/guide/labs/architecture-decision-record.md) live with this guide.
+Templates for the [four-decision review](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/labs/four-decision-review.md), [plane ownership matrix](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/labs/plane-ownership-matrix.md), [agent scorecard](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/labs/eval-scorecard.md), and [ADR](https://github.com/frankxai/ai-architect/blob/e6b1e697b14abcf5ba2846817539747ae4037326/guide/labs/architecture-decision-record.md) live with this guide.
 
 ## Evidence pointer rule
 

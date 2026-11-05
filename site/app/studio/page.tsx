@@ -141,6 +141,27 @@ export default function StudioIndex() {
         <p className="mt-4 text-sm" style={{ color: 'var(--ink-3)' }}>{templateFor.size} of {counts.providers} providers have a template today. Buttons build from the engine’s main branch.</p>
       </section>
 
+      <section className="rule mt-16 pt-8" aria-labelledby="registers-heading">
+        <p className="eyebrow">Ecosystem</p>
+        <h2 id="registers-heading" className="mt-3 text-3xl">What the catalog builds on.</h2>
+        <ul className="mt-8 grid gap-5 md:grid-cols-2">
+          <li>
+            <Link href="/studio/partners" className="studio-card">
+              <span className="eyebrow block">Partners and programs</span>
+              <span className="display mt-3 block text-2xl">{counts.partners} organizations, no partnership claimed.</span>
+              <span className="mt-3 block" style={{ color: 'var(--ink-2)' }}>Clouds, model labs, standards and open-source tools: each program, what it does in these designs, and the evidence a relationship would need.</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/studio/inventions" className="studio-card">
+              <span className="eyebrow block">Inventions</span>
+              <span className="display mt-3 block text-2xl">{counts.field_inventions} inventions, {counts.contributions} proposed contributions.</span>
+              <span className="mt-3 block" style={{ color: 'var(--ink-2)' }}>Each invention tied to its primary record and the roles it shaped. Each proposal with its files, its evidence and the experiment that could prove it wrong.</span>
+            </Link>
+          </li>
+        </ul>
+      </section>
+
       <section className="rule mt-16 pt-8" aria-labelledby="rules-heading">
         <p className="eyebrow">How the Studio keeps itself honest</p>
         <h2 id="rules-heading" className="mt-3 text-3xl">Designs, not deployments.</h2>

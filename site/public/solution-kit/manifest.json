@@ -1,13 +1,13 @@
 {
   "schema": "ai-architect-export/v1",
   "solution_id": "customer-rd-portal",
-  "spec_sha256": "a071364ab72ebd410be618940a52e10db93ca51312dfa1917daa99a4cc7576c3",
+  "spec_sha256": "50356a3a77c613e393e341342f399ab0bc26c6fec3a9d5d4a20e0b46558085e1",
   "compiler_sha256": "007bfef148c70116d661bb706d263b7d60d30098d36c23bcfe8457be5a1df258",
   "portal_template_sha256": "f749027260de35134de724e7b50a2eee918b1e3ec3c75f5eaa4aa75abe891a16",
   "practice_template_sha256": "20cb0b07b946d7acf9aacc05957cee1cc8f7d7d9b61f416dac4af5e4790f9db3",
   "practice_domain_sha256": "2bab6745ec8a8f9953807cf16aec5a6f726cab1bbfe433546848103751c87b07",
   "practice_contract_sha256": "b62585b49c794963ee3a49c2827d71275e1e5d2f77a513cf6fa1158b2ef49189",
-  "source_revision": "c43825efda384d9b29364d5e5fe7ba364b08a3fb",
+  "source_revision": "e6b1e697b14abcf5ba2846817539747ae4037326",
   "fixture": true,
   "portal_state": "compiled",
   "workload_state": "visualized",
@@ -38,7 +38,7 @@
     },
     {
       "path": "ecosystem.md",
-      "sha256": "a362391fc515de8a5da953b14edae07b30eaf56bcbd9e134a69471acec4dc199"
+      "sha256": "0d1b7f18032ecdbcae216fb9b81a61e68db1e84c000efb95497654a62f54a08b"
     },
     {
       "path": "encyclopedia.json",
@@ -70,11 +70,11 @@
     },
     {
       "path": "guide.html",
-      "sha256": "0d67c0fe4a1ae7dd2e14fc6a520b88aaaf409be66c2e3b12a0139afd388ac35b"
+      "sha256": "510b3807f519a9232db025421ac17e458f26d784823f1d94742f01241bebf844"
     },
     {
       "path": "guide.md",
-      "sha256": "1163c7071c3f8313973326bb059d4352f7ca5426a1d7f79e162c4bc783fd7071"
+      "sha256": "fe116c83021628d2ff19b6ed8688f3cfccdebe18f7f96b24dcf5b2794d4b34c7"
     },
     {
       "path": "icon-registry.json",
@@ -82,7 +82,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "f5c4d75f24f16a64c8a21ee2fee09441ae147e4ecfcdfe33858c0c02f501bd42"
+      "sha256": "b1caef4c310e8cbd1e55860cfcb589974d9b5b138ff7bbafa4031fd7a2492077"
     },
     {
       "path": "living-design.md",
@@ -114,7 +114,7 @@
     },
     {
       "path": "practice.html",
-      "sha256": "4dd809e1327740927d9b9085b0ab9bfb6a0a2a902ff05b78130cacb685e7b48a"
+      "sha256": "291c1ccf3116a845d359fc67447cb521eea5a10291362c7c8baf7538ac7f3c5e"
     },
     {
       "path": "practice.json",
@@ -146,7 +146,7 @@
     },
     {
       "path": "solution.json",
-      "sha256": "a071364ab72ebd410be618940a52e10db93ca51312dfa1917daa99a4cc7576c3"
+      "sha256": "50356a3a77c613e393e341342f399ab0bc26c6fec3a9d5d4a20e0b46558085e1"
     },
     {
       "path": "sources.json",

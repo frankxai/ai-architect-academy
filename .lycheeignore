@@ -3,3 +3,10 @@
 ^https?://localhost(:\d+)?
 ^https?://127\.0\.0\.1(:\d+)?
 ^https?://0\.0\.0\.0(:\d+)?
+
+# These pages answer automated clients with 403 but serve readers normally. Each was
+# fetched in a browser on 2026-10-14 (HTTP 200, title and date as cited in the engine's
+# ecosystem register). Excluded by exact URL so other links on these hosts stay checked.
+^https://openai\.com/index/function-calling-and-other-api-updates/?$
+^https://openai\.com/index/introducing-structured-outputs-in-the-api/?$
+^https://dataconomy\.com/2026/06/15/openai-launches-150-million-partner-network/?$
