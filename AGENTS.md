@@ -84,4 +84,7 @@ For production-intent work, bind checks and independent review to the exact cand
 At handoff distinguish policy proposed, merged, loaded in this agent session and verified in execution. Include the owning issue, policy/source SHA, artifact, verifier, highest evidenced environment and next action. Dates and goals remain targets until measured.
 <!-- PRODUCT-OUTCOME-CONTRACT:END -->
 
+For product intelligence work, use the [existing delivery contract's cycle](docs/ACADEMY-SYSTEM.md#product-intelligence-cycle). Continue from its owning issue and an exact source revision; preserve failed attempts and record the next acceptance action.
+
 Current quality implementation: https://github.com/frankxai/ai-architect-academy/issues/35. Reconcile historical instructions against accepted current decisions before changing product scope.
+

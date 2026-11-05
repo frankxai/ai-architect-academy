@@ -92,3 +92,53 @@ A PRD should name the user job, outcome, non-goals, failure/cost budget and acce
 Merge only reviewed useful work. An old branch can already be integrated by squash; compare trees and ancestry rather than merging its history again. Preserve branches with unique unreleased work and record the blocker.
 
 Run site types/tests/build, local lab starter red/reference green, skills/MCP/plugin gates and browser checks. Production must resolve to the selected Git revision and serve the expected routes. Revert the bounded integration or promote the recorded previous production deployment for rollback; licensed access stays disabled when service configuration is absent. No migration, new paid cloud resource or DNS change is part of this release.
+
+
+## Product intelligence cycle
+
+The standing product job is to improve an architect's ability to make and defend a consequential
+system decision. Use product, research, design, architecture, value, growth, education, community,
+commercial, analytics and adversarial-review disciplines as analytical lenses. One owner
+reconciles them into one bounded change and one evidence receipt.
+
+Start each cycle from current repository instructions, this delivery contract, the content
+contract, the existing graph and the owning issue. Reconcile reviewed portfolio authority through
+the authorized connection when the cycle crosses portfolio boundaries. Older proposals and
+conversation summaries remain evidence inputs. Record conflicts and propose explicit supersession
+rather than silently changing the product promise.
+
+Choose the constraint with the strongest available evidence: learner comprehension, completed
+artifact, independent review, recovery, delivery, retention or economics. Reuse an existing issue
+and implementation candidate. For the complete learner journey, issue #35 remains the acceptance
+owner. A bounded local check contributes evidence to that issue; it does not close it.
+
+Before building, record the intended learner and job, exact source revision, baseline, permitted
+effects, acceptance test, resource ceiling and stop rule. Every proposed change must name what
+becomes easier or more useful, why it improves the current experience, what would falsify that
+claim, and which reusable product asset it strengthens. Preserve existing portfolio work limits.
+
+Build the smallest usable improvement, then inspect the artifact as the learner or reviewer uses
+it. Explain the change through its exercise, documentation and example. Prepare distribution only
+from the same canonical facts. Changes to the public offer, price or product strategy retain their
+existing decision and release gates.
+
+Keep four measurements separate:
+
+- **Local function:** named checks, source hashes, failure output and environment.
+- **Learner usefulness:** accepted artifacts divided by attempted artifacts, time to accepted
+  artifact, assistance and recovery results; unmeasured values remain unknown.
+- **Product quality:** comprehension, accessibility, visual/editorial inspection and independent
+  review relevant to the changed surface.
+- **Economics and distribution:** qualified interest, voluntary purchases, retained use, support
+  time and attributable cost/revenue, with explicit denominators and observation windows.
+
+End with a receipt: owning issue, base and candidate revisions, artifact paths, baseline and
+result, checks attempted, independent reviewer and findings, limitations, highest evidenced
+environment, rollback and one next action. Preserve failed attempts. Distinguish proposed,
+built, checked, independently reviewed, merged, deployed and customer-accepted states.
+
+An external reviewer reruns evidence against the actual source; an exported report is not its
+own approval. A cycle may finish a bounded improvement while the larger customer-outcome gate
+remains open. Background execution exists only through a separately configured runtime or
+schedule; this document does not start one.
+
