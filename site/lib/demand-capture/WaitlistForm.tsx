@@ -141,7 +141,7 @@ export function WaitlistForm({
           if (await post({ source: currentSource() })) setStep('refine')
         }}
       >
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="wl-controls flex flex-col gap-3 sm:flex-row">
           <input
             type="email"
             required
@@ -149,7 +149,7 @@ export function WaitlistForm({
             onChange={(event) => setEmail(event.target.value)}
             placeholder={placeholder}
             aria-label={'Email address to join the waitlist for ' + productName}
-            className="wl-input flex-1"
+            className="wl-input min-w-0 flex-1"
           />
           <button type="submit" disabled={busy} className="wl-btn">
             {busy ? copy.joining : copy.join}

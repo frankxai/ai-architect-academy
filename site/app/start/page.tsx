@@ -35,12 +35,13 @@ export default function StartPage() {
 
           <div id="human-capture" className="night mt-8 scroll-mt-24 rounded-2xl p-6 sm:p-8" aria-labelledby="human-capture-title">
             <p className="eyebrow" style={{ color: 'rgba(236,233,225,0.5)' }}>Cohort access</p>
-            <h3 id="human-capture-title" className="mt-3 text-2xl leading-snug">Reserve one of the founding fifty.</h3>
-            <p className="mt-4" style={{ color: 'rgba(236,233,225,0.7)' }}>The course is not scheduled and it has no price yet. The people on this list decide both, and the first fifty keep the launch price for as long as the course runs. One email when Cohort 1 is scheduled, and nothing else from this list.</p>
+            <h3 id="human-capture-title" className="mt-3 text-2xl leading-snug">Register interest in Cohort 1.</h3>
+            <p className="mt-4" style={{ color: 'rgba(236,233,225,0.7)' }}>The course is not scheduled and it has no price yet. The people on this list decide both. One email when Cohort 1 is scheduled, and nothing else from this list.</p>
             <div className="mt-6"><Waitlist
               source="/start#human"
+              foundingBenefit=""
               copy={{
-                join: 'Reserve a seat',
+                join: 'Join the list',
                 quiet: 'One email when Cohort 1 is scheduled. Nothing else.',
                 doneText: 'You will hear from the academy when Cohort 1 is scheduled, and not before.',
               }}
