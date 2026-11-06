@@ -10,16 +10,19 @@
 // No secrets are printed: emails are counted, never listed.
 
 const productId = 'ai-architect-academy'
-const env = (name) => {
-  const value = process.env[name]
-  if (!value) {
-    console.error(`Missing ${name}. Set the Upstash REST env vars and retry.`)
-    process.exit(1)
+// Same resolution order as lib/demand-capture/store.ts: the Vercel KV
+// marketplace product injects KV_REST_API_*; the legacy Upstash integration
+// injects UPSTASH_REDIS_REST_*. Same REST protocol either way.
+const env = (...names) => {
+  for (const name of names) {
+    const value = process.env[name]
+    if (value) return value
   }
-  return value
+  console.error(`Missing ${names.join(' or ')}. Set the Upstash REST env vars and retry.`)
+  process.exit(1)
 }
-const KV_URL = env('KV_REST_API_URL')
-const KV_TOKEN = env('KV_REST_API_TOKEN')
+const KV_URL = env('KV_REST_API_URL', 'UPSTASH_REDIS_REST_URL')
+const KV_TOKEN = env('KV_REST_API_TOKEN', 'UPSTASH_REDIS_REST_TOKEN')
 
 async function kv(command) {
   const response = await fetch(KV_URL, {

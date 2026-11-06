@@ -315,8 +315,9 @@ export default function Home() {
               The syllabus is already public
             </p>
             <p className="mt-3" style={{ color: 'rgba(236,233,225,0.7)' }}>
-              Nine modules, each ending in an artifact a stranger can open and an eval that can be re-run.
-              Read any of them before you hand over an email:
+              One project, {modulesData.modules.length} modules, each ending in an artifact and an eval that can be
+              re-run. The module briefs are public; the artifacts you build stay cohort-only until they are public-safe.
+              Read any brief before you hand over an email:
             </p>
             <ol className="syllabus-proof mt-3">
               {modulesData.modules.map((m) => (
