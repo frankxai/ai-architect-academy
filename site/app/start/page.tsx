@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Waitlist } from '@/components/Waitlist'
 import { projectProductionAgentSystems as project } from '@/lib/academy-graph'
 
 export const metadata: Metadata = {
@@ -30,7 +31,21 @@ export default function StartPage() {
             <li><strong>Produce the evidence.</strong> Use the stage exercise and runnable labs; a passing reading quiz does not stand in for a working system.</li>
             <li><strong>Defend the result.</strong> An independent review checks the actual artifacts and evidence. The cohort review service is still on the waitlist.</li>
           </ol>
-          <div className="mt-8 flex flex-wrap gap-3"><Link href={first} className="btn btn-primary">Start the system brief</Link><Link href="/#waitlist" className="btn btn-quiet">Request cohort access</Link></div>
+          <div className="mt-8 flex flex-wrap gap-3"><Link href={first} className="btn btn-primary">Start the system brief</Link><a href="#human-capture" className="btn btn-quiet">Request cohort access</a></div>
+
+          <div id="human-capture" className="night mt-8 scroll-mt-24 rounded-2xl p-6 sm:p-8" aria-labelledby="human-capture-title">
+            <p className="eyebrow" style={{ color: 'rgba(236,233,225,0.5)' }}>Cohort access</p>
+            <h3 id="human-capture-title" className="mt-3 text-2xl leading-snug">Reserve one of the founding fifty.</h3>
+            <p className="mt-4" style={{ color: 'rgba(236,233,225,0.7)' }}>The course is not scheduled and it has no price yet. The people on this list decide both, and the first fifty keep the launch price for as long as the course runs. One email when Cohort 1 is scheduled, and nothing else from this list.</p>
+            <div className="mt-6"><Waitlist
+              source="/start#human"
+              copy={{
+                join: 'Reserve a seat',
+                quiet: 'One email when Cohort 1 is scheduled. Nothing else.',
+                doneText: 'You will hear from the academy when Cohort 1 is scheduled, and not before.',
+              }}
+            /></div>
+          </div>
         </section>
 
         <section id="agent" className="entry-route" aria-labelledby="agent-title">
@@ -43,7 +58,23 @@ export default function StartPage() {
             <li><strong>Keep authority in code.</strong> Bound tools, cost, retries and runtime. Retrieved text is source material, never permission.</li>
             <li><strong>Check in a fresh context.</strong> Re-run the artifact checks and obtain an independent review. Neither the agent’s claim nor a subscription grants a competency.</li>
           </ol>
-          <div className="mt-8 flex flex-wrap gap-3"><a href="https://github.com/frankxai/ai-architect#install" className="btn btn-primary">Install the team</a><a href="/.well-known/academy.json" className="btn btn-quiet">Read the agent manifest</a></div>
+          <div className="mt-8 flex flex-wrap gap-3"><a href="https://github.com/frankxai/ai-architect#install" className="btn btn-primary">Install the team</a><a href="#agent-capture" className="btn btn-quiet">Get the reviewed service</a><a href="/.well-known/academy.json" className="btn btn-quiet">Read the agent manifest</a></div>
+
+          <div id="agent-capture" className="night mt-8 scroll-mt-24 rounded-2xl p-6 sm:p-8" aria-labelledby="agent-capture-title">
+            <p className="eyebrow" style={{ color: 'rgba(236,233,225,0.5)' }}>The reviewed service</p>
+            <h3 id="agent-capture-title" className="mt-3 text-2xl leading-snug">The free team needs no seat.</h3>
+            <p className="mt-4" style={{ color: 'rgba(236,233,225,0.7)' }}>The local team and public skills stay free under their existing licenses. Register interest in the reviewed service and licensed resources, and get one email when they open. A delegated agent needs an active human sponsor, so register the person, not the agent.</p>
+            <div className="mt-6"><Waitlist
+              source="/start#agent"
+              foundingBenefit=""
+              copy={{
+                join: 'Keep me posted',
+                quiet: 'One email when the reviewed service opens. Nothing else.',
+                intro: 'Three optional questions. They decide what gets built first, and what it costs.',
+                doneText: 'You will hear from the academy when the reviewed service opens, and not before.',
+              }}
+            /></div>
+          </div>
         </section>
       </div>
 

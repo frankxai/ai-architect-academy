@@ -73,6 +73,12 @@ type Props = {
   /** Consumer surfaces should not say "company". */
   placeholder?: string
   copy?: Partial<WaitlistCopy>
+  /**
+   * Where this signup happened, when the pathname alone is not specific enough.
+   * The /start page places one capture per entry route, so the signal records
+   * which route the visitor had chosen. Falls back to the pathname.
+   */
+  source?: string
 }
 
 export function WaitlistForm({
@@ -83,6 +89,7 @@ export function WaitlistForm({
   endpoint = '/api/waitlist',
   placeholder = 'you@company.com',
   copy: copyOverrides,
+  source,
 }: Props) {
   const copy = { ...DEFAULT_COPY, ...copyOverrides }
   const [step, setStep] = useState<'join' | 'refine' | 'done'>('join')
@@ -117,14 +124,21 @@ export function WaitlistForm({
   const seats = state?.foundingSeatsLeft ?? initialState?.foundingSeatsLeft ?? null
   const shownCount = state?.publicCount ?? initialState?.publicCount ?? null
 
+  /**
+   * Both steps must carry the same origin. Step 2 used to fall back to the API
+   * route's own path, which overwrote the page a visitor actually signed up
+   * from with `/api/waitlist` in the stored signal.
+   */
+  const currentSource = () =>
+    source ?? (typeof window === 'undefined' ? '' : window.location.pathname)
+
   if (step === 'join') {
     return (
       <form
         className="space-y-4"
         onSubmit={async (event) => {
           event.preventDefault()
-          const source = typeof window === 'undefined' ? '' : window.location.pathname
-          if (await post({ source })) setStep('refine')
+          if (await post({ source: currentSource() })) setStep('refine')
         }}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
@@ -217,7 +231,7 @@ export function WaitlistForm({
         <div className="flex items-center gap-5">
           <button
             onClick={async () => {
-              if (await post(answers)) setStep('done')
+              if (await post({ ...answers, source: currentSource() })) setStep('done')
             }}
             disabled={busy}
             className="wl-btn wl-btn-quiet"
