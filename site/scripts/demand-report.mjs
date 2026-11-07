@@ -31,7 +31,8 @@ const redact = (text) => {
 // few separators — no @, : or dots). source: an internal path with optional
 // #fragment or ?query, as the form sends it.
 const SAFE_ROLE = /^[A-Za-z0-9 /&+_'-]{1,40}$/
-const SAFE_SOURCE = /^\/[A-Za-z0-9#?=&._/-]{1,80}$/
+// Root path ('/' — what the homepage form sends) is allowed with nothing after the slash.
+const SAFE_SOURCE = /^\/[A-Za-z0-9#?=&._/-]{0,80}$/
 const safe = (value, pattern, fallback) => (pattern.test(String(value ?? '')) ? value : fallback)
 
 const productId = 'ai-architect-academy'
