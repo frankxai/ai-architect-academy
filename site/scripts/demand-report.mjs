@@ -7,7 +7,22 @@
 // Usage:  KV_REST_API_URL=... KV_REST_API_TOKEN=... node scripts/demand-report.mjs
 // Add --json for machine output (CI, dashboards).
 //
-// No secrets are printed: emails are counted, never listed.
+// No secrets are printed: emails are counted, never listed. Free-text pains
+// are redacted before printing (privacy hold 2026-11-07): emails, URLs, phone
+// numbers and long digit runs are stripped, and the remainder is truncated —
+// volunteered PII must not reach a terminal or a CI log.
+
+const REDACTIONS = [
+  { re: /[^\s<>()[\]{}",;]+@[^\s<>()[\]{}",;]+/g, with: '[email]' },
+  { re: /https?:\/\/\S+/g, with: '[url]' },
+  { re: /\+?\d[\d\s()./-]{6,}\d/g, with: '[number]' },
+]
+
+const redact = (text) => {
+  let out = String(text ?? '')
+  for (const { re, with: replacement } of REDACTIONS) out = out.replace(re, replacement)
+  return out.length > 100 ? out.slice(0, 100).replace(/\s+\S*$/, '') + '…' : out
+}
 
 const productId = 'ai-architect-academy'
 // Same resolution order as lib/demand-capture/store.ts: the Vercel KV
@@ -59,7 +74,8 @@ const report = {
   priceBands: tally(signals, 'priceBand'),
   urgency: tally(signals, 'urgency'),
   sources: tally(signals, 'source'),
-  pains: signals.filter((s) => s.pain).map((s) => s.pain),
+  // Pains are the only free-text field; redacted in every output mode.
+  pains: signals.filter((s) => s.pain).map((s) => redact(s.pain)),
 }
 
 if (asJson) {
@@ -71,6 +87,6 @@ if (asJson) {
     const entries = Object.entries(report[key])
     console.log(`  ${label}: ${entries.length ? entries.map(([k, v]) => `${k} ×${v}`).join(', ') : 'no answers yet'}`)
   }
-  console.log(`  pains (${report.pains.length}):`)
+  console.log(`  pains (${report.pains.length}, redacted):`)
   for (const pain of report.pains) console.log(`    - ${pain}`)
 }
