@@ -300,6 +300,19 @@ textarea:focus-visible {
   color: var(--night-paper);
 }
 
+/* The public-syllabus proof list in the homepage waitlist panel: tight,
+   numbered, every row a real link into the public curriculum. */
+.syllabus-proof { display:grid; gap:0; }
+.syllabus-proof li {
+  display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+  padding:0.45rem 0; list-style:decimal; color:rgba(236,233,225,0.85); font-size:0.92rem;
+  border-bottom:1px solid rgba(236,233,225,0.10);
+}
+.syllabus-proof li:last-child { border-bottom:none; }
+.syllabus-proof a { color:var(--night-paper); text-decoration:underline; text-decoration-color:rgba(236,233,225,0.3); text-underline-offset:3px; }
+.syllabus-proof a:hover { text-decoration-color:var(--night-paper); }
+.syllabus-proof span { color:rgba(236,233,225,0.5); font-size:0.78rem; white-space:nowrap; }
+
 /* The shared waitlist form, styled for the dark `.night` panel it sits in. */
 .wl-input {
   border: 1px solid rgba(236, 233, 225, 0.18);
