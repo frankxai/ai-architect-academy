@@ -24,6 +24,16 @@ const redact = (text) => {
   return out.length > 100 ? out.slice(0, 100).replace(/\s+\S*$/, '') + '…' : out
 }
 
+// role and source arrive as arbitrary clipped strings from the join API, so a
+// direct API POST could put contact information in either. Only tally values
+// that fit the shape the site itself can produce; anything else is bucketed,
+// never printed. role: the form's vocabulary (letters, digits, spaces and a
+// few separators — no @, : or dots). source: an internal path with optional
+// #fragment or ?query, as the form sends it.
+const SAFE_ROLE = /^[A-Za-z0-9 /&+_'-]{1,40}$/
+const SAFE_SOURCE = /^\/[A-Za-z0-9#?=&._/-]{1,80}$/
+const safe = (value, pattern, fallback) => (pattern.test(String(value ?? '')) ? value : fallback)
+
 const productId = 'ai-architect-academy'
 // Same resolution order as lib/demand-capture/store.ts: the Vercel KV
 // marketplace product injects KV_REST_API_*; the legacy Upstash integration
@@ -49,10 +59,11 @@ async function kv(command) {
   return (await response.json()).result
 }
 
-const tally = (rows, key) => {
+const tally = (rows, key, pattern) => {
   const counts = {}
   for (const row of rows) {
-    const value = row[key] || '(not answered)'
+    const raw = row[key]
+    const value = raw ? safe(raw, pattern, '(other)') : '(not answered)'
     counts[value] = (counts[value] ?? 0) + 1
   }
   return Object.fromEntries(Object.entries(counts).sort((a, b) => b[1] - a[1]))
@@ -70,10 +81,10 @@ const report = {
   productId,
   total: Number(count ?? signals.length),
   answeredRefine: signals.filter((s) => s.role || s.priceBand || s.urgency || s.pain).length,
-  roles: tally(signals, 'role'),
-  priceBands: tally(signals, 'priceBand'),
-  urgency: tally(signals, 'urgency'),
-  sources: tally(signals, 'source'),
+  roles: tally(signals, 'role', SAFE_ROLE),
+  priceBands: tally(signals, 'priceBand', SAFE_ROLE),
+  urgency: tally(signals, 'urgency', SAFE_ROLE),
+  sources: tally(signals, 'source', SAFE_SOURCE),
   // Pains are the only free-text field; redacted in every output mode.
   pains: signals.filter((s) => s.pain).map((s) => redact(s.pain)),
 }
