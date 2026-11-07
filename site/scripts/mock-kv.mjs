@@ -49,4 +49,6 @@ const server = http.createServer((req, res) => {
   })
 })
 
-server.listen(port, () => console.log(`mock-kv listening on :${port}`))
+// Local-only by design: binds the loopback interface so test waitlist data
+// is never reachable from the network.
+server.listen(port, '127.0.0.1', () => console.log(`mock-kv listening on 127.0.0.1:${port}`))
