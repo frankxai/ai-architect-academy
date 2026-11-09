@@ -52,6 +52,9 @@ by copying files between these repos.
   `EXCLUDE` filter covers titles and paths only, not file bodies.
 - Human gates, always Frank's: DNS, Vercel settings, env vars, publishing, spend, credentials,
   anything destructive.
+- Waitlist welcome email: sent exactly once per new join through Resend when `RESEND_FROM`
+  and `RESEND_API_KEY` are set (Frank's gate — unset means no email, silently).
+  `RESEND_REPLY_TO` optional; defaults to the From address.
 
 ## Handoff
 
