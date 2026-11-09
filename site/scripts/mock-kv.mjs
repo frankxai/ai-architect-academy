@@ -30,16 +30,29 @@ const commands = {
   },
 }
 
+const MAX_BODY_BYTES = 64 * 1024
+
 const server = http.createServer((req, res) => {
   let body = ''
-  req.on('data', (c) => (body += c))
+  let tooLarge = false
+  req.on('data', (c) => {
+    if (tooLarge) return
+    body += c
+    if (body.length > MAX_BODY_BYTES) {
+      tooLarge = true
+      res.writeHead(413)
+      res.end(JSON.stringify({ error: 'body too large' }))
+    }
+  })
   req.on('end', () => {
+    if (tooLarge) return
     try {
       const command = JSON.parse(body)
       const name = String(command[0]).toLowerCase()
       const fn = commands[name]
       const result = fn ? fn(...command.slice(1)) : null
-      console.log(JSON.stringify({ cmd: command, result }))
+      // Log the command name only: values can hold test emails or free text.
+      console.log(JSON.stringify({ cmd: name, ok: fn !== undefined }))
       res.writeHead(200, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify({ result }))
     } catch (e) {
