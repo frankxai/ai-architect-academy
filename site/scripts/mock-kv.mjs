@@ -51,12 +51,13 @@ const server = http.createServer((req, res) => {
     try {
       const command = JSON.parse(Buffer.concat(chunks).toString('utf8'))
       const name = String(command[0]).toLowerCase()
-      const fn = commands[name]
+      const fn = Object.hasOwn(commands, name) ? commands[name] : undefined
       const result = fn ? fn(...command.slice(1)) : null
       // Log the command name only: values can hold test emails or free text.
       console.log(JSON.stringify({ cmd: fn ? name : 'unknown' }))
+      const payload = JSON.stringify({ result })
       res.writeHead(200, { 'Content-Type': 'application/json' })
-      res.end(JSON.stringify({ result }))
+      res.end(payload)
     } catch (e) {
       res.writeHead(400)
       res.end(JSON.stringify({ error: String(e) }))
