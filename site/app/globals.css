@@ -559,6 +559,11 @@ textarea:focus-visible {
 
 .entry-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2.5rem; }
 .entry-route { border-top:2px solid var(--ink); padding-top:1.6rem; scroll-margin-top:2rem; min-width:0; }
+/* Capture cards sit in the narrow entry columns: keep email + button stacked
+   until each card is wide enough for the row, or the controls overflow. */
+@media (min-width:48rem) and (max-width:63.99rem) {
+  .entry-route .wl-controls { flex-direction:column; }
+}
 .route-steps { list-style:decimal; padding-left:1.2rem; color:var(--ink-2); display:grid; gap:1rem; }
 .route-steps strong { color:var(--ink); font-weight:600; }
 @media(max-width:48rem) { .entry-grid { grid-template-columns:1fr; } }
