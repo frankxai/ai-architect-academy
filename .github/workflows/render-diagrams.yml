@@ -19,13 +19,13 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install D2
         run: curl -fsSL https://d2lang.com/install.sh | sh -s --
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
@@ -60,7 +60,7 @@ jobs:
           mv *.png ../../assets/diagrams/ 2>/dev/null || true
 
       - name: Commit rendered diagrams
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: render diagrams [skip ci]"
           file_pattern: "assets/diagrams/*.svg assets/diagrams/*.png"
