@@ -1,5 +1,6 @@
 import type { DemandSignal, PriceBand, Stage, Urgency, WaitlistState } from './types'
 import { addToAudience, claimPosition, getCount, saveSignal } from './store.ts'
+import { sendWelcomeEmail } from './welcome-email.ts'
 
 export interface ProductConfig {
   id: string
@@ -42,7 +43,7 @@ export async function handleJoin(product: ProductConfig, body: Record<string, un
   if (!email || !EMAIL_RE.test(email)) return { status: 400 as const, body: { error: 'Valid email required' } }
   if (body.consent !== true) return { status: 400 as const, body: { error: 'Consent required' } }
 
-  const position = await claimPosition(product.id, email)
+  const { position, isNew } = await claimPosition(product.id, email)
   const url = new URL(req.url)
   const utm = Object.fromEntries(
     [...url.searchParams.entries()].filter(([k]) => k.startsWith('utm_')).slice(0, 8),
@@ -67,6 +68,8 @@ export async function handleJoin(product: ProductConfig, body: Record<string, un
 
   await saveSignal(signal)
   await addToAudience(email, signal.name, product.id)
+  // Exactly one welcome email per new join — re-submits never re-send.
+  if (isNew) await sendWelcomeEmail(signal)
 
   const count = await getCount(product.id)
   return { status: 200 as const, body: publicState(product, count, position) }

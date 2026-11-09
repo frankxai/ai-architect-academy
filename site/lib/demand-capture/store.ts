@@ -27,12 +27,15 @@ async function kv(command: unknown[]): Promise<unknown> {
 }
 
 /** Email is the identity, so a re-submit updates in place instead of double-counting. */
-export async function claimPosition(productId: string, email: string): Promise<number> {
+export async function claimPosition(
+  productId: string,
+  email: string,
+): Promise<{ position: number; isNew: boolean }> {
   const existing = await kv(['hget', key(productId, 'positions'), email])
-  if (existing) return Number(existing)
+  if (existing) return { position: Number(existing), isNew: false }
   const position = Number(await kv(['incr', key(productId, 'count')]))
   await kv(['hset', key(productId, 'positions'), email, String(position)])
-  return position
+  return { position, isNew: true }
 }
 
 export async function getCount(productId: string): Promise<number> {
