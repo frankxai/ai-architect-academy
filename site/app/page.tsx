@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import curriculum from '@/data/curriculum.json'
+import modulesData from '@/data/modules.json'
 import { Waitlist } from '@/components/Waitlist'
 import { competencyShipProduction as competency, projectProductionAgentSystems as project } from '@/lib/academy-graph'
 
@@ -310,6 +311,28 @@ export default function Home() {
                 <li key={f}>{f}</li>
               ))}
             </ul>
+            <p className="eyebrow mt-8" style={{ color: 'rgba(236,233,225,0.5)' }}>
+              The syllabus is already public
+            </p>
+            <p className="mt-3" style={{ color: 'rgba(236,233,225,0.7)' }}>
+              One project, {modulesData.modules.length} modules, each ending in an artifact and an eval that can be
+              re-run. The module briefs are public; the artifacts you build stay cohort-only until they are public-safe.
+              Read any brief before you hand over an email:
+            </p>
+            <ol className="syllabus-proof mt-3">
+              {modulesData.modules.map((m) => (
+                <li key={m.slug}>
+                  <a
+                    href={`${m.files.README}${m.files.README.includes('?') ? '&' : '?'}plain=1`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {m.title}
+                  </a>
+                  {m.labs.length > 0 && <span>{m.labs.length} {m.labs.length === 1 ? 'lab' : 'labs'}</span>}
+                </li>
+              ))}
+            </ol>
           </div>
           <div className="self-center">
             <Waitlist />
