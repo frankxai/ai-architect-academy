@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-label="LangGraph state machine patterns">
+  <title>LangGraph state machine patterns</title>
+  <desc>LangGraph state machine patterns: Explicit state schemas, conditional edge transitions, durable checkpoints, and human review gates</desc>
+  <defs>
+    <linearGradient id="stage-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1017" />
+      <stop offset="60%" stop-color="#121522" />
+      <stop offset="100%" stop-color="#141826" />
+    </linearGradient>
+    <linearGradient id="cobalt-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c93ff" stop-opacity="0.78" />
+      <stop offset="100%" stop-color="#5ee6cf" stop-opacity="0.52" />
+    </linearGradient>
+    <radialGradient id="cobalt-glow" cx="18%" cy="12%" r="55%">
+      <stop offset="0%" stop-color="#1f3bd6" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#1f3bd6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="mint-glow" cx="88%" cy="86%" r="50%">
+      <stop offset="0%" stop-color="#5ee6cf" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#5ee6cf" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="academy-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#2d344d" fill-opacity="0.55" />
+    </pattern>
+    <marker id="arrow-cobalt" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#a9b8ff" />
+    </marker>
+    <marker id="arrow-mint" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#5ee6cf" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#ffc07a" />
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .serif { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
+    .mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+  </style>
+  <rect width="1200" height="680" rx="18" fill="url(#stage-grad)" />
+  <rect width="1200" height="680" rx="18" fill="url(#academy-grid)" />
+  <rect width="1200" height="680" rx="18" fill="url(#cobalt-glow)" />
+  <rect width="1200" height="680" rx="18" fill="url(#mint-glow)" />
+  <rect x="1" y="1" width="1198" height="678" rx="17" fill="none" stroke="#2d344d" stroke-width="1.5" />
+  
+  <g>
+    <rect x="40" y="34" width="8" height="8" rx="4" fill="#5ee6cf" />
+    <text x="58" y="42" class="mono" font-size="11.5" fill="#a9b8ff" letter-spacing="0.9">State graph pattern · 02-learning-paths/micro-modules/agents-langgraph-planner.md</text>
+    <rect x="920" y="24" width="240" height="28" rx="14" fill="#151824" stroke="#2d344d" />
+    <text x="1040" y="42" text-anchor="middle" class="mono" font-size="11.5" fill="#5ee6cf">Stateful graph</text>
+    <text x="40" y="78" class="serif" font-size="28" font-weight="600" fill="#f2f1ec">LangGraph state machine patterns</text>
+    <text x="40" y="103" font-size="13.8" fill="#cbd5e1">Explicit state schemas, conditional edge transitions, durable checkpoints, and human review gates</text>
+    <line x1="40" y1="120" x2="1160" y2="120" stroke="#2d344d" stroke-width="1" />
+  </g>
+<g>
+      <rect x="40" y="150" width="266" height="376" rx="15" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.4" />
+      <rect x="56" y="168" width="148" height="24" rx="12" fill="#151824" />
+      <text x="68" y="184" class="mono" font-size="11" fill="#a9b8ff">01 · Schema</text>
+      <text x="56" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Typed graph state</text>
+      <line x1="56" y1="234" x2="290" y2="234" stroke="#2d344d" />
+      <rect x="56" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="68" y="272" font-size="13" font-weight="600" fill="#f2f1ec">Message history</text>
+        <text x="68" y="291" font-size="11.5" fill="#cbd5e1">Append-only reducer channel</text>
+      <rect x="56" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="68" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Task context dict</text>
+        <text x="68" y="357" font-size="11.5" fill="#cbd5e1">Retrieved citations &amp; inputs</text>
+      <rect x="56" y="382" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="68" y="404" font-size="13" font-weight="600" fill="#f2f1ec">Next-step pointer</text>
+        <text x="68" y="423" font-size="11.5" fill="#cbd5e1">Deterministic route state</text>
+      <rect x="56" y="448" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="68" y="470" font-size="13" font-weight="600" fill="#f2f1ec">Attempt counter</text>
+        <text x="68" y="489" font-size="11.5" fill="#cbd5e1">Loop ceiling &amp; retry guard</text>
+      <line x1="306" y1="334" x2="322" y2="334" stroke="#a9b8ff" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />
+    </g>
+  <g>
+      <rect x="324" y="150" width="266" height="376" rx="15" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.4" />
+      <rect x="340" y="168" width="148" height="24" rx="12" fill="#151824" />
+      <text x="352" y="184" class="mono" font-size="11" fill="#5ee6cf">02 · Nodes</text>
+      <text x="340" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Worker nodes</text>
+      <line x1="340" y1="234" x2="574" y2="234" stroke="#2d344d" />
+      <rect x="340" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="352" y="272" font-size="13" font-weight="600" fill="#f2f1ec">Router node</text>
+        <text x="352" y="291" font-size="11.5" fill="#cbd5e1">Classifies intent &amp; next worker</text>
+      <rect x="340" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="352" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Research &amp; analysis</text>
+        <text x="352" y="357" font-size="11.5" fill="#cbd5e1">Queries search &amp; data tools</text>
+      <rect x="340" y="382" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="352" y="404" font-size="13" font-weight="600" fill="#f2f1ec">Writer node</text>
+        <text x="352" y="423" font-size="11.5" fill="#cbd5e1">Synthesizes structured draft</text>
+      <rect x="340" y="448" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="352" y="470" font-size="13" font-weight="600" fill="#f2f1ec">Reviewer node</text>
+        <text x="352" y="489" font-size="11.5" fill="#cbd5e1">Checks rubric &amp; schema rules</text>
+      <line x1="590" y1="334" x2="606" y2="334" stroke="#a9b8ff" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />
+    </g>
+  <g>
+      <rect x="608" y="150" width="266" height="376" rx="15" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.4" />
+      <rect x="624" y="168" width="148" height="24" rx="12" fill="#151824" />
+      <text x="636" y="184" class="mono" font-size="11" fill="#ffc07a">03 · Edges</text>
+      <text x="624" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Conditional control</text>
+      <line x1="624" y1="234" x2="858" y2="234" stroke="#2d344d" />
+      <rect x="624" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="636" y="272" font-size="13" font-weight="600" fill="#f2f1ec">should_continue()</text>
+        <text x="636" y="291" font-size="11.5" fill="#cbd5e1">Routes research, write, or end</text>
+      <rect x="624" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="636" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Human interrupt</text>
+        <text x="636" y="357" font-size="11.5" fill="#cbd5e1">Pauses before external action</text>
+      <rect x="624" y="382" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="636" y="404" font-size="13" font-weight="600" fill="#f2f1ec">Approve transition</text>
+        <text x="636" y="423" font-size="11.5" fill="#cbd5e1">Advances to final delivery</text>
+      <rect x="624" y="448" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="636" y="470" font-size="13" font-weight="600" fill="#f2f1ec">Revise cycle</text>
+        <text x="636" y="489" font-size="11.5" fill="#cbd5e1">Feeds critique back to writer</text>
+      <line x1="874" y1="334" x2="890" y2="334" stroke="#a9b8ff" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />
+    </g>
+  <g>
+      <rect x="892" y="150" width="266" height="376" rx="15" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.4" />
+      <rect x="908" y="168" width="148" height="24" rx="12" fill="#151824" />
+      <text x="920" y="184" class="mono" font-size="11" fill="#a9b8ff">04 · Durability</text>
+      <text x="908" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Checkpointer</text>
+      <line x1="908" y1="234" x2="1142" y2="234" stroke="#2d344d" />
+      <rect x="908" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="920" y="272" font-size="13" font-weight="600" fill="#f2f1ec">SQLite / Postgres</text>
+        <text x="920" y="291" font-size="11.5" fill="#cbd5e1">Thread-scoped state snapshots</text>
+      <rect x="908" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="920" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Time-travel replay</text>
+        <text x="920" y="357" font-size="11.5" fill="#cbd5e1">Resume from any prior node</text>
+      <rect x="908" y="382" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="920" y="404" font-size="13" font-weight="600" fill="#f2f1ec">Idempotent tool calls</text>
+        <text x="920" y="423" font-size="11.5" fill="#cbd5e1">Safe recovery on crash</text>
+      <rect x="908" y="448" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="920" y="470" font-size="13" font-weight="600" fill="#f2f1ec">Terminal END state</text>
+        <text x="920" y="489" font-size="11.5" fill="#cbd5e1">Auditable state transition log</text>
+      
+    </g>
+
+  <g>
+    <rect x="40" y="548" width="1120" height="92" rx="14" fill="#231f2e" stroke="#ffc07a" stroke-opacity="0.52" />
+    <text x="62" y="578" class="mono" font-size="11.5" fill="#ffc07a">Why state graphs beat unconstrained loops</text>
+    <text x="62" y="602" font-size="13.2" fill="#f2f1ec">Persisting typed state at every node boundary lets operators pause for human approval, inspect intermediate state, and</text>
+    <text x="62" y="621" font-size="13.2" fill="#f2f1ec">resume cleanly after failures.</text>
+  </g>
+</svg>

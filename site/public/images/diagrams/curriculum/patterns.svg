@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="738" viewBox="0 0 1200 738" role="img" aria-label="Design patterns curriculum roadmap">
+  <title>Design patterns curriculum roadmap</title>
+  <desc>Curriculum roadmap for Design patterns (01-design-patterns) listing 16 public repository items measured on 2026-09-15.</desc>
+  <defs>
+    <linearGradient id="stage-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1017" />
+      <stop offset="60%" stop-color="#121522" />
+      <stop offset="100%" stop-color="#141826" />
+    </linearGradient>
+    <linearGradient id="cobalt-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c93ff" stop-opacity="0.78" />
+      <stop offset="100%" stop-color="#5ee6cf" stop-opacity="0.52" />
+    </linearGradient>
+    <radialGradient id="cobalt-glow" cx="18%" cy="12%" r="55%">
+      <stop offset="0%" stop-color="#1f3bd6" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#1f3bd6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="mint-glow" cx="88%" cy="86%" r="50%">
+      <stop offset="0%" stop-color="#5ee6cf" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#5ee6cf" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="academy-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#2d344d" fill-opacity="0.55" />
+    </pattern>
+    <marker id="arrow-cobalt" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#a9b8ff" />
+    </marker>
+    <marker id="arrow-mint" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#5ee6cf" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#ffc07a" />
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .serif { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
+    .mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+  </style>
+  <rect width="1200" height="738" rx="18" fill="url(#stage-grad)" />
+  <rect width="1200" height="738" rx="18" fill="url(#academy-grid)" />
+  <rect width="1200" height="738" rx="18" fill="url(#cobalt-glow)" />
+  <rect width="1200" height="738" rx="18" fill="url(#mint-glow)" />
+  <rect x="1" y="1" width="1198" height="736" rx="17" fill="none" stroke="#2d344d" stroke-width="1.5" />
+  
+  <g>
+    <rect x="40" y="34" width="8" height="8" rx="4" fill="#5ee6cf" />
+    <text x="58" y="42" class="mono" font-size="11.5" fill="#a9b8ff" letter-spacing="0.9">AI Architect Academy · 01-design-patterns</text>
+    <rect x="920" y="24" width="240" height="28" rx="14" fill="#151824" stroke="#2d344d" />
+    <text x="1040" y="42" text-anchor="middle" class="mono" font-size="11.5" fill="#5ee6cf">16 repository items</text>
+    <text x="40" y="78" class="serif" font-size="28" font-weight="600" fill="#f2f1ec">Design patterns roadmap</text>
+    <text x="40" y="103" font-size="13.8" fill="#cbd5e1">Every node maps directly to a public file or lab directory in the repository</text>
+    <line x1="40" y1="120" x2="1160" y2="120" stroke="#2d344d" stroke-width="1" />
+  </g>
+<g>
+      <rect x="40" y="142" width="360" height="64" rx="12" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.3" />
+      <text x="58" y="166" class="mono" font-size="11" fill="#5ee6cf">Phase 01</text>
+      <text x="58" y="188" font-size="14.5" font-weight="600" fill="#f2f1ec">Problem framing &amp; KPIs</text>
+      <line x1="400" y1="174" x2="418" y2="174" stroke="#a9b8ff" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />
+    </g>
+  <g>
+      <rect x="420" y="142" width="360" height="64" rx="12" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.3" />
+      <text x="438" y="166" class="mono" font-size="11" fill="#5ee6cf">Phase 02</text>
+      <text x="438" y="188" font-size="14.5" font-weight="600" fill="#f2f1ec">Reference architecture &amp; BOM</text>
+      <line x1="780" y1="174" x2="798" y2="174" stroke="#a9b8ff" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />
+    </g>
+  <g>
+      <rect x="800" y="142" width="360" height="64" rx="12" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.3" />
+      <text x="818" y="166" class="mono" font-size="11" fill="#5ee6cf">Phase 03</text>
+      <text x="818" y="188" font-size="14.5" font-weight="600" fill="#f2f1ec">Evaluation &amp; governance checks</text>
+      
+    </g>
+<g>
+      <rect x="40" y="238" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="52" y="253" width="34" height="28" rx="7" fill="#151824" />
+      <text x="69" y="272" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">01</text>
+      <text x="98" y="272" font-size="12.6" font-weight="550" fill="#f2f1ec">AI Gateway Pattern</text>
+    </g>
+  <g>
+      <rect x="418" y="238" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="430" y="253" width="34" height="28" rx="7" fill="#151824" />
+      <text x="447" y="272" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">02</text>
+      <text x="476" y="272" font-size="12.6" font-weight="550" fill="#f2f1ec">Content Generation Platform</text>
+    </g>
+  <g>
+      <rect x="796" y="238" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="808" y="253" width="34" height="28" rx="7" fill="#151824" />
+      <text x="825" y="272" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">03</text>
+      <text x="854" y="272" font-size="12.6" font-weight="550" fill="#f2f1ec">Creator Studio Automation</text>
+    </g>
+  <g>
+      <rect x="40" y="308" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="52" y="323" width="34" height="28" rx="7" fill="#151824" />
+      <text x="69" y="342" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">04</text>
+      <text x="98" y="342" font-size="12.6" font-weight="550" fill="#f2f1ec">Decision Support Intelligence</text>
+    </g>
+  <g>
+      <rect x="418" y="308" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="430" y="323" width="34" height="28" rx="7" fill="#151824" />
+      <text x="447" y="342" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">05</text>
+      <text x="476" y="334" font-size="12.6" font-weight="550" fill="#f2f1ec">Energy Market Trading &amp;</text>
+    <text x="476" y="350" font-size="12.6" font-weight="550" fill="#f2f1ec">Optimisation</text>
+    </g>
+  <g>
+      <rect x="796" y="308" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="808" y="323" width="34" height="28" rx="7" fill="#151824" />
+      <text x="825" y="342" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">06</text>
+      <text x="854" y="342" font-size="12.6" font-weight="550" fill="#f2f1ec">Genomic Sequence Intelligence</text>
+    </g>
+  <g>
+      <rect x="40" y="378" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="52" y="393" width="34" height="28" rx="7" fill="#151824" />
+      <text x="69" y="412" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">07</text>
+      <text x="98" y="412" font-size="12.6" font-weight="550" fill="#f2f1ec">Geographic Intelligence Platform</text>
+    </g>
+  <g>
+      <rect x="418" y="378" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="430" y="393" width="34" height="28" rx="7" fill="#151824" />
+      <text x="447" y="412" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">08</text>
+      <text x="476" y="412" font-size="12.6" font-weight="550" fill="#f2f1ec">Governance &amp; Compliance Automation</text>
+    </g>
+  <g>
+      <rect x="796" y="378" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="808" y="393" width="34" height="28" rx="7" fill="#151824" />
+      <text x="825" y="412" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">09</text>
+      <text x="854" y="412" font-size="12.6" font-weight="550" fill="#f2f1ec">Insurance Rate Intelligence</text>
+    </g>
+  <g>
+      <rect x="40" y="448" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="52" y="463" width="34" height="28" rx="7" fill="#151824" />
+      <text x="69" y="482" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">10</text>
+      <text x="98" y="482" font-size="12.6" font-weight="550" fill="#f2f1ec">LLMOps Pattern</text>
+    </g>
+  <g>
+      <rect x="418" y="448" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="430" y="463" width="34" height="28" rx="7" fill="#151824" />
+      <text x="447" y="482" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">11</text>
+      <text x="476" y="474" font-size="12.6" font-weight="550" fill="#f2f1ec">Model &amp; Prompt Lifecycle</text>
+    <text x="476" y="490" font-size="12.6" font-weight="550" fill="#f2f1ec">Management</text>
+    </g>
+  <g>
+      <rect x="796" y="448" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="808" y="463" width="34" height="28" rx="7" fill="#151824" />
+      <text x="825" y="482" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">12</text>
+      <text x="854" y="482" font-size="12.6" font-weight="550" fill="#f2f1ec">Multi-Agent Orchestration Pattern</text>
+    </g>
+  <g>
+      <rect x="40" y="518" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="52" y="533" width="34" height="28" rx="7" fill="#151824" />
+      <text x="69" y="552" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">13</text>
+      <text x="98" y="552" font-size="12.6" font-weight="550" fill="#f2f1ec">Intelligent Orchestration Workflow</text>
+    </g>
+  <g>
+      <rect x="418" y="518" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="430" y="533" width="34" height="28" rx="7" fill="#151824" />
+      <text x="447" y="552" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">14</text>
+      <text x="476" y="552" font-size="12.6" font-weight="550" fill="#f2f1ec">AI Performance Optimisation</text>
+    </g>
+  <g>
+      <rect x="796" y="518" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="808" y="533" width="34" height="28" rx="7" fill="#151824" />
+      <text x="825" y="552" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">15</text>
+      <text x="854" y="552" font-size="12.6" font-weight="550" fill="#f2f1ec">RAG Production Pattern</text>
+    </g>
+  <g>
+      <rect x="40" y="588" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="52" y="603" width="34" height="28" rx="7" fill="#151824" />
+      <text x="69" y="622" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">16</text>
+      <text x="98" y="614" font-size="12.6" font-weight="550" fill="#f2f1ec">AI-Powered Vulnerability</text>
+    <text x="98" y="630" font-size="12.6" font-weight="550" fill="#f2f1ec">Management</text>
+    </g>
+
+  <g>
+    <rect x="40" y="676" width="1120" height="40" rx="10" fill="#151824" stroke="#2d344d" />
+    <text x="58" y="701" class="mono" font-size="11.5" fill="#9aa1b5">Source directory: 01-design-patterns · Measured from repository on 2026-09-15</text>
+  </g>
+</svg>

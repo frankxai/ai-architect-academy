@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-label="Multi-cloud AI gateway architecture">
+  <title>Multi-cloud AI gateway architecture</title>
+  <desc>Multi-cloud AI gateway architecture: Single policy and observability plane across frontier and open-weight model providers</desc>
+  <defs>
+    <linearGradient id="stage-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1017" />
+      <stop offset="60%" stop-color="#121522" />
+      <stop offset="100%" stop-color="#141826" />
+    </linearGradient>
+    <linearGradient id="cobalt-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c93ff" stop-opacity="0.78" />
+      <stop offset="100%" stop-color="#5ee6cf" stop-opacity="0.52" />
+    </linearGradient>
+    <radialGradient id="cobalt-glow" cx="18%" cy="12%" r="55%">
+      <stop offset="0%" stop-color="#1f3bd6" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#1f3bd6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="mint-glow" cx="88%" cy="86%" r="50%">
+      <stop offset="0%" stop-color="#5ee6cf" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#5ee6cf" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="academy-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#2d344d" fill-opacity="0.55" />
+    </pattern>
+    <marker id="arrow-cobalt" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#a9b8ff" />
+    </marker>
+    <marker id="arrow-mint" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#5ee6cf" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#ffc07a" />
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .serif { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
+    .mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+  </style>
+  <rect width="1200" height="680" rx="18" fill="url(#stage-grad)" />
+  <rect width="1200" height="680" rx="18" fill="url(#academy-grid)" />
+  <rect width="1200" height="680" rx="18" fill="url(#cobalt-glow)" />
+  <rect width="1200" height="680" rx="18" fill="url(#mint-glow)" />
+  <rect x="1" y="1" width="1198" height="678" rx="17" fill="none" stroke="#2d344d" stroke-width="1.5" />
+  
+  <g>
+    <rect x="40" y="34" width="8" height="8" rx="4" fill="#5ee6cf" />
+    <text x="58" y="42" class="mono" font-size="11.5" fill="#a9b8ff" letter-spacing="0.9">Design pattern · 01-design-patterns/ai-gateway-pattern.md</text>
+    <rect x="920" y="24" width="240" height="28" rx="14" fill="#151824" stroke="#2d344d" />
+    <text x="1040" y="42" text-anchor="middle" class="mono" font-size="11.5" fill="#5ee6cf">Ingress + routing</text>
+    <text x="40" y="78" class="serif" font-size="28" font-weight="600" fill="#f2f1ec">Multi-cloud AI gateway architecture</text>
+    <text x="40" y="103" font-size="13.8" fill="#cbd5e1">Single policy and observability plane across frontier and open-weight model providers</text>
+    <line x1="40" y1="120" x2="1160" y2="120" stroke="#2d344d" stroke-width="1" />
+  </g>
+<g>
+      <rect x="40" y="150" width="266" height="376" rx="15" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.4" />
+      <rect x="56" y="168" width="148" height="24" rx="12" fill="#151824" />
+      <text x="68" y="184" class="mono" font-size="11" fill="#a9b8ff">01 · Ingress</text>
+      <text x="56" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Client surfaces</text>
+      <line x1="56" y1="234" x2="290" y2="234" stroke="#2d344d" />
+      <rect x="56" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="68" y="272" font-size="13" font-weight="600" fill="#f2f1ec">Web applications</text>
+        <text x="68" y="291" font-size="11.5" fill="#cbd5e1">Streaming UI &amp; server actions</text>
+      <rect x="56" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="68" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Mobile &amp; desktop</text>
+        <text x="68" y="357" font-size="11.5" fill="#cbd5e1">Typed SDK &amp; session tokens</text>
+      <rect x="56" y="382" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="68" y="404" font-size="13" font-weight="600" fill="#f2f1ec">CLI &amp; batch jobs</text>
+        <text x="68" y="423" font-size="11.5" fill="#cbd5e1">Service-to-service API keys</text>
+      <rect x="56" y="448" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="68" y="470" font-size="13" font-weight="600" fill="#f2f1ec">Agent harnesses</text>
+        <text x="68" y="489" font-size="11.5" fill="#cbd5e1">Tool-calling loops</text>
+      <line x1="306" y1="334" x2="322" y2="334" stroke="#a9b8ff" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />
+    </g>
+  <g>
+      <rect x="324" y="150" width="266" height="376" rx="15" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.4" />
+      <rect x="340" y="168" width="148" height="24" rx="12" fill="#151824" />
+      <text x="352" y="184" class="mono" font-size="11" fill="#5ee6cf">02 · Policy</text>
+      <text x="340" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Gateway controls</text>
+      <line x1="340" y1="234" x2="574" y2="234" stroke="#2d344d" />
+      <rect x="340" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="352" y="272" font-size="13" font-weight="600" fill="#f2f1ec">Auth &amp; tenant quotas</text>
+        <text x="352" y="291" font-size="11.5" fill="#cbd5e1">JWT verification &amp; rate limits</text>
+      <rect x="340" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="352" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Semantic &amp; exact cache</text>
+        <text x="352" y="357" font-size="11.5" fill="#cbd5e1">Latency &amp; token reduction</text>
+      <rect x="340" y="382" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="352" y="404" font-size="13" font-weight="600" fill="#f2f1ec">Policy router</text>
+        <text x="352" y="423" font-size="11.5" fill="#cbd5e1">Task, cost, and region rules</text>
+      <rect x="340" y="448" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="352" y="470" font-size="13" font-weight="600" fill="#f2f1ec">Circuit-breaker fallback</text>
+        <text x="352" y="489" font-size="11.5" fill="#cbd5e1">Health checks &amp; retries</text>
+      <line x1="590" y1="334" x2="606" y2="334" stroke="#a9b8ff" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />
+    </g>
+  <g>
+      <rect x="608" y="150" width="266" height="376" rx="15" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.4" />
+      <rect x="624" y="168" width="148" height="24" rx="12" fill="#151824" />
+      <text x="636" y="184" class="mono" font-size="11" fill="#a9b8ff">03 · Providers</text>
+      <text x="624" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Model endpoints</text>
+      <line x1="624" y1="234" x2="858" y2="234" stroke="#2d344d" />
+      <rect x="624" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="636" y="272" font-size="13" font-weight="600" fill="#f2f1ec">AWS Bedrock</text>
+        <text x="636" y="291" font-size="11.5" fill="#cbd5e1">Claude &amp; Llama model families</text>
+      <rect x="624" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="636" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Azure OpenAI</text>
+        <text x="636" y="357" font-size="11.5" fill="#cbd5e1">GPT-4o &amp; reasoning endpoints</text>
+      <rect x="624" y="382" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="636" y="404" font-size="13" font-weight="600" fill="#f2f1ec">Google Vertex AI</text>
+        <text x="636" y="423" font-size="11.5" fill="#cbd5e1">Gemini multimodal endpoints</text>
+      <rect x="624" y="448" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="636" y="470" font-size="13" font-weight="600" fill="#f2f1ec">Cloudflare Workers AI</text>
+        <text x="636" y="489" font-size="11.5" fill="#cbd5e1">Edge open-weight inference</text>
+      <line x1="874" y1="334" x2="890" y2="334" stroke="#a9b8ff" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />
+    </g>
+  <g>
+      <rect x="892" y="150" width="266" height="376" rx="15" fill="#1f2640" stroke="url(#cobalt-stroke)" stroke-width="1.4" />
+      <rect x="908" y="168" width="148" height="24" rx="12" fill="#151824" />
+      <text x="920" y="184" class="mono" font-size="11" fill="#ffc07a">04 · Telemetry</text>
+      <text x="908" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Observability</text>
+      <line x1="908" y1="234" x2="1142" y2="234" stroke="#2d344d" />
+      <rect x="908" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="920" y="272" font-size="13" font-weight="600" fill="#f2f1ec">Distributed traces</text>
+        <text x="920" y="291" font-size="11.5" fill="#cbd5e1">OpenTelemetry span correlation</text>
+      <rect x="908" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="920" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Cost attribution</text>
+        <text x="920" y="357" font-size="11.5" fill="#cbd5e1">Per-tenant token ledger</text>
+      <rect x="908" y="382" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="920" y="404" font-size="13" font-weight="600" fill="#f2f1ec">PII &amp; prompt guard</text>
+        <text x="920" y="423" font-size="11.5" fill="#cbd5e1">Redaction before upstream call</text>
+      <rect x="908" y="448" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
+        <text x="920" y="470" font-size="13" font-weight="600" fill="#f2f1ec">SLO alerting</text>
+        <text x="920" y="489" font-size="11.5" fill="#cbd5e1">Error-rate &amp; latency budgets</text>
+      
+    </g>
+
+  <g>
+    <rect x="40" y="548" width="1120" height="92" rx="14" fill="#231f2e" stroke="#ffc07a" stroke-opacity="0.52" />
+    <text x="62" y="578" class="mono" font-size="11.5" fill="#ffc07a">Architectural boundary</text>
+    <text x="62" y="602" font-size="13.2" fill="#f2f1ec">Applications never embed provider-specific credentials; routing, budget enforcement, fallback, and audit logging</text>
+    <text x="62" y="621" font-size="13.2" fill="#f2f1ec">happen once at the gateway.</text>
+  </g>
+</svg>
