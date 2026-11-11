@@ -72,7 +72,7 @@ export function CurriculumVisualExplorer() {
   const { curriculumRoadmaps, patterns, livingWorld, measuredAt } = registry
   const [mode, setMode] = useState<ExplorerMode>('roadmaps')
   const [roadmapId, setRoadmapId] = useState<string>(curriculumRoadmaps[0]?.id ?? 'patterns')
-  const [patternId, setPatternId] = useState<string>(patterns[0]?.id ?? 'opencode-cloudflare-stack')
+  const [patternId, setPatternId] = useState<string>(patterns[0]?.id ?? 'ai-gateway')
   const [zoom, setZoom] = useState<ZoomId>('fit')
 
   const activeRoadmap = curriculumRoadmaps.find((entry) => entry.id === roadmapId) ?? curriculumRoadmaps[0]

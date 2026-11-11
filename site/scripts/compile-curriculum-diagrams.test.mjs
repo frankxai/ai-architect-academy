@@ -9,6 +9,7 @@ import { compileDiagrams } from './compile-curriculum-diagrams.mjs'
 const SITE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const REPO = path.resolve(SITE, '..')
 const sha256 = (buf) => crypto.createHash('sha256').update(buf).digest('hex')
+const FORBIDDEN_PUBLIC_TERMS = /\b(?:adk|amazon|anthropic|aws|azure|bedrock|claude|cloudflare|gemini|github|google|gpt(?:-?4o)?|langfuse|langgraph|linear|llama|openai|opencode|oracle|oci|pinecone|slack|vercel|vertex(?: ai)?|workers ai)\b/i
 
 test('curriculum diagram compiler check mode passes with WCAG AA contrast and exact section parity', async () => {
   const registry = await compileDiagrams({ checkOnly: true })
@@ -29,10 +30,7 @@ test('curriculum diagram compiler check mode passes with WCAG AA contrast and ex
   }
 
   const expectedPatterns = [
-    'opencode-cloudflare-stack',
     'ai-gateway',
-    'claude-sdk-patterns',
-    'langgraph-patterns',
     'mcp-architecture',
     'multi-agent-orchestration',
     'rag-production',
@@ -42,10 +40,6 @@ test('curriculum diagram compiler check mode passes with WCAG AA contrast and ex
     expectedPatterns,
   )
 
-  const stackSvg = fs.readFileSync(path.join(REPO, 'site/public/images/diagrams/patterns/opencode-cloudflare-stack.svg'), 'utf8')
-  assert.match(stackSvg, /OpenCode/)
-  assert.match(stackSvg, /Cloudflare AI Gateway/)
-  assert.match(stackSvg, /Workers AI/)
 })
 
 test('every compiled SVG and living-world observatory plate matches recorded SHA-256 and provenance', () => {
@@ -56,7 +50,7 @@ test('every compiled SVG and living-world observatory plate matches recorded SHA
     assert.equal(sha256(bytes), entry.sha256, entry.file)
     assert.ok(bytes.length < 512 * 1024, `${entry.file} exceeds 512 KiB SVG limit`)
     const text = bytes.toString('utf8')
-    assert.doesNotMatch(text, /\b(?:oracle|oci|adk)\b/i, `${entry.file} leaked vendor term`)
+    assert.doesNotMatch(text, FORBIDDEN_PUBLIC_TERMS, `${entry.file} leaked vendor term`)
   }
 
   const plateBytes = fs.readFileSync(path.join(REPO, registry.livingWorld.file))
@@ -83,7 +77,7 @@ test('explorer component and curriculum page obey CONTENT-CONTRACT.md count and 
 
   for (const rel of ['components/CurriculumVisualExplorer.tsx', 'app/curriculum/page.tsx']) {
     const src = fs.readFileSync(path.join(SITE, rel), 'utf8')
-    assert.doesNotMatch(src, /\b(?:oracle|oci|adk)\b/i, `${rel} contains forbidden vendor string`)
+    assert.doesNotMatch(src, FORBIDDEN_PUBLIC_TERMS, `${rel} contains forbidden vendor string`)
     assert.doesNotMatch(src, /you will (?:learn|be able to)/i, `${rel} contains unbacked capability claim`)
     for (const count of dynamicCounts) {
       assert.ok(!new RegExp(`>[^<{]*\\b${count}\\b[^<{]*<`).test(src), `literal count ${count} typed in ${rel}`)
@@ -102,7 +96,7 @@ test('markdown guides embed valid relative links to compiled SVGs and public fil
     const guidePath = path.join(REPO, guideRel)
     const guideDir = path.dirname(guidePath)
     const content = fs.readFileSync(guidePath, 'utf8')
-    assert.doesNotMatch(content, /\b(?:oracle|oci|adk)\b/i, `${guideRel} contains forbidden vendor string`)
+    assert.doesNotMatch(content, FORBIDDEN_PUBLIC_TERMS, `${guideRel} contains forbidden vendor string`)
 
     const links = [...content.matchAll(/!?\[[^\]]*\]\(([^)]+)\)/g)].map((m) => m[1])
     assert.ok(links.some((href) => href.endsWith('.svg')), `${guideRel} must embed compiled SVG diagrams`)

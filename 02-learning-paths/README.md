@@ -26,11 +26,5 @@ Generated deterministically from `site/data/curriculum.json` via `site/scripts/c
 
 ## Agent Harness & Protocol Blueprints
 
-### Claude Agent SDK patterns
-![Claude Agent SDK patterns](../site/public/images/diagrams/patterns/claude-sdk-patterns.svg)
-
-### LangGraph stateful workflows
-![LangGraph stateful workflows](../site/public/images/diagrams/patterns/langgraph-patterns.svg)
-
 ### Model Context Protocol (MCP) architecture
 ![Model Context Protocol architecture](../site/public/images/diagrams/patterns/mcp-architecture.svg)

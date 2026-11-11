@@ -10,7 +10,19 @@ const registryPath = path.join(siteRoot, 'data/diagrams-registry.json');
 const curriculumSvgDir = path.join(siteRoot, 'public/images/diagrams/curriculum');
 const patternsSvgDir = path.join(siteRoot, 'public/images/diagrams/patterns');
 
-const FORBIDDEN_TERMS = /\b(?:oracle|oci|adk)\b/i;
+const FORBIDDEN_PUBLIC_TERMS = /\b(?:adk|amazon|anthropic|aws|azure|bedrock|claude|cloudflare|gemini|github|google|gpt(?:-?4o)?|langfuse|langgraph|linear|llama|openai|opencode|oracle|oci|pinecone|slack|vercel|vertex(?: ai)?|workers ai)\b/i;
+const PUBLIC_TITLE_OVERRIDES = new Map([
+  ['LangGraph Planner Loop', 'State Machine Planner Loop'],
+  ['Slack Agent Collaboration Playbook', 'Agent Collaboration Playbook'],
+  ['Gemini Reasoning & Debate Sprint', 'Reasoning & Debate Sprint'],
+  ['Langfuse Telemetry Sprints', 'Telemetry Sprints'],
+  ['Issue Triage with Linear/GitHub', 'Issue Triage Workflow'],
+]);
+const PUBLIC_TITLE_REPLACEMENTS = [
+  [/\b(?:claude|gemini|gpt(?:-?4o)?|llama)\b/gi, 'Model'],
+  [/\b(?:amazon|anthropic|aws|azure|cloudflare|github|google|linear|openai|opencode|oracle|oci|slack|vercel)\b/gi, 'Platform'],
+  [/\b(?:adk|bedrock|langfuse|langgraph|pinecone|vertex(?: ai)?|workers ai)\b/gi, 'Service'],
+];
 const EMOJI_PATTERN = /\p{Extended_Pictographic}/u;
 
 const PALETTE = {
@@ -89,6 +101,17 @@ function cleanTitle(raw) {
     .replace(/^Learning Path:\s*/i, '')
     .replace(/^Workflows:\s*/i, '')
     .trim();
+}
+
+function publicInventoryTitle(raw) {
+  const cleaned = cleanTitle(raw);
+  const explicitTitle = PUBLIC_TITLE_OVERRIDES.get(cleaned);
+  if (explicitTitle) return explicitTitle;
+
+  return PUBLIC_TITLE_REPLACEMENTS.reduce(
+    (title, [pattern, replacement]) => title.replace(pattern, replacement),
+    cleaned,
+  ).replace(/\s+/g, ' ').trim();
 }
 
 function wrapLines(text, maxChars, maxLines = 2) {
@@ -207,7 +230,7 @@ function buildCurriculumSectionSvg(curriculum, section) {
     const x = 40 + col * (colWidth + colGap);
     const y = gridStartY + row * (cardHeight + rowGap);
     const num = String(idx + 1).padStart(2, '0');
-    const lines = wrapLines(cleanTitle(item.title), maxChars, 2);
+    const lines = wrapLines(publicInventoryTitle(item.title), maxChars, 2);
     const textY = lines.length === 1 ? y + 34 : y + 26;
     return `<g>
       <rect x="${x}" y="${y}" width="${colWidth}" height="${cardHeight}" rx="10" fill="${PALETTE.card}" stroke="${PALETTE.line}" />
@@ -245,98 +268,6 @@ function buildCurriculumSectionSvg(curriculum, section) {
       ].join('\n'),
     }),
   };
-}
-
-function buildOpencodeCloudflareStackSvg() {
-  const width = 1200;
-  const height = 680;
-  const tiers = [
-    {
-      tier: 'Tier 01 · Coding harness',
-      title: 'OpenCode CLI & IDE workspace',
-      accent: PALETTE.cobaltBright,
-      summary: 'Developer-controlled terminal and editor agent harness',
-      items: [
-        'Repository context, AST search, and diff edits',
-        'Scoped local tool execution with git worktree isolation',
-        'OpenAI-compatible provider SDK pointed at gateway URL',
-        'Session state and reproducible command logs',
-      ],
-    },
-    {
-      tier: 'Tier 02 · Edge control plane',
-      title: 'Cloudflare AI Gateway',
-      accent: PALETTE.mint,
-      summary: 'Central policy, caching, routing, and telemetry proxy',
-      items: [
-        'Unified authentication, per-project rate limits, and budget caps',
-        'Exact and semantic response caching for repeated context',
-        'Automatic provider fallback and request retry policies',
-        'Token, latency, cost, and error observability logs',
-      ],
-    },
-    {
-      tier: 'Tier 03 · Serverless inference',
-      title: 'Cloudflare Workers AI',
-      accent: PALETTE.amber,
-      summary: 'Low-latency edge GPU inference and vector retrieval',
-      items: [
-        'Open-weight coding and reasoning models on global edge GPUs',
-        'Streaming SSE completions back through AI Gateway',
-        'BGE text embeddings paired with Cloudflare Vectorize',
-        'Zero idle GPU provisioning with bounded per-request billing',
-      ],
-    },
-  ];
-
-  const cards = tiers.map((t, idx) => {
-    const x = 40 + idx * 380;
-    const arrow = idx < 2
-      ? `<g>
-          <line x1="${x + 360}" y1="305" x2="${x + 378}" y2="305" stroke="${PALETTE.cobaltBright}" stroke-width="2.2" marker-end="url(#arrow-cobalt)" />
-          <line x1="${x + 378}" y1="345" x2="${x + 360}" y2="345" stroke="${PALETTE.mint}" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arrow-mint)" />
-        </g>`
-      : '';
-    return `<g>
-      <rect x="${x}" y="152" width="360" height="364" rx="16" fill="${PALETTE.cardHighlight}" stroke="url(#cobalt-stroke)" stroke-width="1.6" />
-      <rect x="${x + 20}" y="174" width="196" height="26" rx="13" fill="${PALETTE.panel}" stroke="${PALETTE.line}" />
-      <text x="${x + 118}" y="191" text-anchor="middle" class="mono" font-size="11" fill="${t.accent}">${esc(t.tier)}</text>
-      <text x="${x + 20}" y="232" class="serif" font-size="22" font-weight="600" fill="${PALETTE.ink}">${esc(t.title)}</text>
-      ${renderMultiline(wrapLines(t.summary, 44, 2), x + 20, 258, 17, `font-size="12.8" fill="${PALETTE.inkSecondary}"`)}
-      <line x1="${x + 20}" y1="286" x2="${x + 340}" y2="286" stroke="${PALETTE.line}" />
-      ${t.items.map((bullet, bIdx) => {
-        const y = 316 + bIdx * 48;
-        return `<circle cx="${x + 26}" cy="${y - 4}" r="3.2" fill="${t.accent}" />
-        ${renderMultiline(wrapLines(bullet, 42, 2), x + 38, y, 16, `font-size="12.4" fill="${PALETTE.ink}"`)}`;
-      }).join('\n      ')}
-      ${arrow}
-    </g>`;
-  }).join('\n  ');
-
-  const bottomBar = `
-  <g>
-    <rect x="40" y="544" width="1120" height="96" rx="14" fill="${PALETTE.gateBg}" stroke="${PALETTE.amber}" stroke-opacity="0.55" />
-    <text x="64" y="574" class="mono" font-size="11.5" fill="${PALETTE.amber}">End-to-end request and governance flow</text>
-    <text x="64" y="598" font-size="13.5" fill="${PALETTE.ink}">1. OpenCode sends OpenAI-compatible chat/tool requests -> 2. Cloudflare AI Gateway enforces auth, cache, and budget policy -> 3. Workers AI streams tokens.</text>
-    <text x="64" y="620" font-size="12.5" fill="${PALETTE.inkSecondary}">Swap or add upstream frontier providers behind AI Gateway without changing local agent harness configuration.</text>
-  </g>`;
-
-  return svgShell({
-    width,
-    height,
-    title: 'OpenCode, Cloudflare AI Gateway, and Workers AI 3-tier reference stack',
-    desc: 'Three-tier reference architecture connecting the OpenCode coding harness through Cloudflare AI Gateway to Cloudflare Workers AI serverless inference.',
-    body: [
-      headerBar({
-        eyebrow: 'Reference stack blueprint',
-        title: 'OpenCode -> Cloudflare AI Gateway -> Workers AI',
-        subtitle: 'Three-tier coding agent architecture with centralized routing, caching, cost telemetry, and edge inference',
-        badge: '3-tier edge stack',
-      }),
-      cards,
-      bottomBar,
-    ].join('\n'),
-  });
 }
 
 function buildPatternMatrixSvg({ eyebrow, title, subtitle, badge, columns, footerTitle, footerBody }) {
@@ -390,13 +321,6 @@ function buildPatternMatrixSvg({ eyebrow, title, subtitle, badge, columns, foote
 
 const PATTERN_BLUEPRINTS = [
   {
-    id: 'opencode-cloudflare-stack',
-    title: 'OpenCode + Cloudflare AI Gateway + Workers AI',
-    sourceDoc: '01-design-patterns/ai-gateway-pattern.md',
-    summary: 'Three-tier reference stack connecting local OpenCode harnesses through Cloudflare AI Gateway to Workers AI.',
-    build: buildOpencodeCloudflareStackSvg,
-  },
-  {
     id: 'ai-gateway',
     title: 'Multi-cloud AI gateway pattern',
     sourceDoc: '01-design-patterns/ai-gateway-pattern.md',
@@ -435,10 +359,10 @@ const PATTERN_BLUEPRINTS = [
           heading: 'Model endpoints',
           accent: PALETTE.cobaltBright,
           nodes: [
-            { name: 'AWS Bedrock', detail: 'Claude & Llama model families' },
-            { name: 'Azure OpenAI', detail: 'GPT-4o & reasoning endpoints' },
-            { name: 'Google Vertex AI', detail: 'Gemini multimodal endpoints' },
-            { name: 'Cloudflare Workers AI', detail: 'Edge open-weight inference' },
+            { name: 'Frontier text endpoint', detail: 'General-purpose model families' },
+            { name: 'Reasoning endpoint', detail: 'Long-context reasoning models' },
+            { name: 'Multimodal endpoint', detail: 'Text, image, and audio inputs' },
+            { name: 'Open-weight endpoint', detail: 'Managed low-latency inference' },
           ],
         },
         {
@@ -455,128 +379,6 @@ const PATTERN_BLUEPRINTS = [
       ],
       footerTitle: 'Architectural boundary',
       footerBody: 'Applications never embed provider-specific credentials; routing, budget enforcement, fallback, and audit logging happen once at the gateway.',
-    }),
-  },
-  {
-    id: 'claude-sdk-patterns',
-    title: 'Claude Agent SDK execution & safety loop',
-    sourceDoc: '02-learning-paths/agentic-code-swarms.md',
-    d2Source: 'diagrams/d2/claude-sdk-patterns.d2',
-    summary: 'Autonomous think-plan-act-observe loop bounded by permission modes, resource caps, and lifecycle hooks.',
-    build: () => buildPatternMatrixSvg({
-      eyebrow: 'Agent SDK pattern · diagrams/d2/claude-sdk-patterns.d2',
-      title: 'Claude Agent SDK loop & safety controls',
-      subtitle: 'Structured tool registration, iterative reasoning loop, and pre/post execution guardrails',
-      badge: 'Bounded agent loop',
-      columns: [
-        {
-          kicker: '01 · Context',
-          heading: 'Agent initialization',
-          accent: PALETTE.cobaltBright,
-          nodes: [
-            { name: 'Task specification', detail: 'Explicit goal & acceptance check' },
-            { name: 'System instructions', detail: 'Role boundaries & repo rules' },
-            { name: 'Context files', detail: 'Scoped project manifests' },
-            { name: 'Model configuration', detail: 'Reasoning budget & temperature' },
-          ],
-        },
-        {
-          kicker: '02 · Loop',
-          heading: 'Reasoning cycle',
-          accent: PALETTE.mint,
-          nodes: [
-            { name: 'Think & plan', detail: 'Decompose next verifiable step' },
-            { name: 'Act via tool call', detail: 'Invoke typed schema input' },
-            { name: 'Observe output', detail: 'Inspect stdout, diff, or error' },
-            { name: 'Stop decision', detail: 'Complete or iterate within cap' },
-          ],
-        },
-        {
-          kicker: '03 · Tools',
-          heading: 'Execution surfaces',
-          accent: PALETTE.cobaltBright,
-          nodes: [
-            { name: 'Shell & test runner', detail: 'Sandboxed command execution' },
-            { name: 'File editor', detail: 'Deterministic AST/diff patches' },
-            { name: 'MCP tool servers', detail: 'External APIs & knowledge bases' },
-            { name: 'Custom functions', detail: 'Domain-specific validators' },
-          ],
-        },
-        {
-          kicker: '04 · Safety',
-          heading: 'Authority & output',
-          accent: PALETTE.amber,
-          nodes: [
-            { name: 'Permission tiers', detail: 'Read-only vs write approval' },
-            { name: 'Resource ceilings', detail: 'Max turns, tokens, and timeout' },
-            { name: 'Lifecycle hooks', detail: 'Pre-tool secret & path checks' },
-            { name: 'Verified artifacts', detail: 'Code diff, docs, & session log' },
-          ],
-        },
-      ],
-      footerTitle: 'Control invariant',
-      footerBody: 'Every tool invocation passes through permission tiers and pre-execution hooks before mutating files or calling external systems.',
-    }),
-  },
-  {
-    id: 'langgraph-patterns',
-    title: 'LangGraph state machine workflows',
-    sourceDoc: '02-learning-paths/micro-modules/agents-langgraph-planner.md',
-    d2Source: 'diagrams/d2/langgraph-patterns.d2',
-    summary: 'Typed graph state, conditional routing edges, persistent checkpointers, and human-in-the-loop interrupts.',
-    build: () => buildPatternMatrixSvg({
-      eyebrow: 'State graph pattern · 02-learning-paths/micro-modules/agents-langgraph-planner.md',
-      title: 'LangGraph state machine patterns',
-      subtitle: 'Explicit state schemas, conditional edge transitions, durable checkpoints, and human review gates',
-      badge: 'Stateful graph',
-      columns: [
-        {
-          kicker: '01 · Schema',
-          heading: 'Typed graph state',
-          accent: PALETTE.cobaltBright,
-          nodes: [
-            { name: 'Message history', detail: 'Append-only reducer channel' },
-            { name: 'Task context dict', detail: 'Retrieved citations & inputs' },
-            { name: 'Next-step pointer', detail: 'Deterministic route state' },
-            { name: 'Attempt counter', detail: 'Loop ceiling & retry guard' },
-          ],
-        },
-        {
-          kicker: '02 · Nodes',
-          heading: 'Worker nodes',
-          accent: PALETTE.mint,
-          nodes: [
-            { name: 'Router node', detail: 'Classifies intent & next worker' },
-            { name: 'Research & analysis', detail: 'Queries search & data tools' },
-            { name: 'Writer node', detail: 'Synthesizes structured draft' },
-            { name: 'Reviewer node', detail: 'Checks rubric & schema rules' },
-          ],
-        },
-        {
-          kicker: '03 · Edges',
-          heading: 'Conditional control',
-          accent: PALETTE.amber,
-          nodes: [
-            { name: 'should_continue()', detail: 'Routes research, write, or end' },
-            { name: 'Human interrupt', detail: 'Pauses before external action' },
-            { name: 'Approve transition', detail: 'Advances to final delivery' },
-            { name: 'Revise cycle', detail: 'Feeds critique back to writer' },
-          ],
-        },
-        {
-          kicker: '04 · Durability',
-          heading: 'Checkpointer',
-          accent: PALETTE.cobaltBright,
-          nodes: [
-            { name: 'SQLite / Postgres', detail: 'Thread-scoped state snapshots' },
-            { name: 'Time-travel replay', detail: 'Resume from any prior node' },
-            { name: 'Idempotent tool calls', detail: 'Safe recovery on crash' },
-            { name: 'Terminal END state', detail: 'Auditable state transition log' },
-          ],
-        },
-      ],
-      footerTitle: 'Why state graphs beat unconstrained loops',
-      footerBody: 'Persisting typed state at every node boundary lets operators pause for human approval, inspect intermediate state, and resume cleanly after failures.',
     }),
   },
   {
@@ -679,7 +481,7 @@ const PATTERN_BLUEPRINTS = [
           heading: 'Tools & models',
           accent: PALETTE.cobaltBright,
           nodes: [
-            { name: 'MCP server mesh', detail: 'GitHub, DB, files, & search' },
+            { name: 'MCP server mesh', detail: 'Source control, DB, files, & search' },
             { name: 'Tiered model pool', detail: 'Fast scouts + deep reasoners' },
             { name: 'Sandbox runner', detail: 'Isolated code & test execution' },
             { name: 'Token budget meter', detail: 'Per-worker ceiling enforcement' },
@@ -729,7 +531,7 @@ const PATTERN_BLUEPRINTS = [
           heading: 'Hybrid index & rank',
           accent: PALETTE.mint,
           nodes: [
-            { name: 'HNSW vector store', detail: 'pgvector / Pinecone ANN index' },
+            { name: 'HNSW vector store', detail: 'Managed or self-hosted ANN index' },
             { name: 'BM25 lexical search', detail: 'Exact identifiers & error codes' },
             { name: 'ACL pre-filtering', detail: 'Enforces tenant visibility' },
             { name: 'Cross-encoder rerank', detail: 'Precision top-k selection' },
@@ -751,7 +553,7 @@ const PATTERN_BLUEPRINTS = [
           heading: 'Observability & evals',
           accent: PALETTE.amber,
           nodes: [
-            { name: 'Langfuse traces', detail: 'Chunk scores & latency breakdown' },
+            { name: 'Retrieval traces', detail: 'Chunk scores & latency breakdown' },
             { name: 'Faithfulness eval', detail: 'Detects unsupported statements' },
             { name: 'Recall@k benchmark', detail: 'Golden query regression suite' },
             { name: 'Freshness monitor', detail: 'Re-indexes updated documents' },
@@ -765,8 +567,9 @@ const PATTERN_BLUEPRINTS = [
 ];
 
 function assertSafeContent(label, text) {
-  if (FORBIDDEN_TERMS.test(text)) {
-    throw new Error(`Forbidden vendor term found in ${label}`);
+  const forbiddenMatch = String(text).match(FORBIDDEN_PUBLIC_TERMS);
+  if (forbiddenMatch) {
+    throw new Error(`Forbidden vendor term "${forbiddenMatch[0]}" found in ${label}`);
   }
   if (EMOJI_PATTERN.test(text)) {
     throw new Error(`Emoji character found in ${label}; keep SVG text deterministic across OS fonts.`);
@@ -818,6 +621,10 @@ export async function compileDiagrams({ checkOnly = false } = {}) {
 
   const patternEntries = [];
   for (const bp of PATTERN_BLUEPRINTS) {
+    assertSafeContent(
+      `patterns/${bp.id} metadata`,
+      [bp.id, bp.title, bp.summary, bp.sourceDoc, bp.d2Source ?? ''].join('\n'),
+    );
     const svg = bp.build();
     assertSafeContent(`patterns/${bp.id}.svg`, svg);
     const relPath = `public/images/diagrams/patterns/${bp.id}.svg`;
@@ -878,7 +685,7 @@ export async function compileDiagrams({ checkOnly = false } = {}) {
   };
 
   const serialized = `${JSON.stringify(registry, null, 2)}\n`;
-  assertSafeContent('diagrams-registry.json', serialized);
+  assertSafeContent('diagrams-registry.json', serialized.replaceAll(curriculum.repo, 'repository'));
 
   if (checkOnly) {
     const existing = await readFile(registryPath, 'utf8');

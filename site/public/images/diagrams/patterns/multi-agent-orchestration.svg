@@ -100,7 +100,7 @@
       <line x1="624" y1="234" x2="858" y2="234" stroke="#2d344d" />
       <rect x="624" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
         <text x="636" y="272" font-size="13" font-weight="600" fill="#f2f1ec">MCP server mesh</text>
-        <text x="636" y="291" font-size="11.5" fill="#cbd5e1">GitHub, DB, files, &amp; search</text>
+        <text x="636" y="291" font-size="11.5" fill="#cbd5e1">Source control, DB, files, &amp;</text>
       <rect x="624" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
         <text x="636" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Tiered model pool</text>
         <text x="636" y="357" font-size="11.5" fill="#cbd5e1">Fast scouts + deep reasoners</text>

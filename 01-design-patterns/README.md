@@ -26,9 +26,6 @@ These vector diagrams are compiled deterministically from `site/data/curriculum.
 #### Design patterns section inventory
 ![Design patterns curriculum section inventory](../site/public/images/diagrams/curriculum/patterns.svg)
 
-#### OpenCode + Cloudflare AI Gateway + Workers AI reference stack
-![OpenCode + Cloudflare AI Gateway + Workers AI reference stack](../site/public/images/diagrams/patterns/opencode-cloudflare-stack.svg)
-
 #### Multi-cloud AI gateway pattern ([`ai-gateway-pattern.md`](./ai-gateway-pattern.md))
 ![Multi-cloud AI gateway architecture](../site/public/images/diagrams/patterns/ai-gateway.svg)
 

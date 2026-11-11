@@ -80,7 +80,7 @@
       <line x1="340" y1="234" x2="574" y2="234" stroke="#2d344d" />
       <rect x="340" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
         <text x="352" y="272" font-size="13" font-weight="600" fill="#f2f1ec">HNSW vector store</text>
-        <text x="352" y="291" font-size="11.5" fill="#cbd5e1">pgvector / Pinecone ANN index</text>
+        <text x="352" y="291" font-size="11.5" fill="#cbd5e1">Managed or self-hosted ANN index</text>
       <rect x="340" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
         <text x="352" y="338" font-size="13" font-weight="600" fill="#f2f1ec">BM25 lexical search</text>
         <text x="352" y="357" font-size="11.5" fill="#cbd5e1">Exact identifiers &amp; error codes</text>
@@ -119,7 +119,7 @@
       <text x="908" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Observability &amp; evals</text>
       <line x1="908" y1="234" x2="1142" y2="234" stroke="#2d344d" />
       <rect x="908" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
-        <text x="920" y="272" font-size="13" font-weight="600" fill="#f2f1ec">Langfuse traces</text>
+        <text x="920" y="272" font-size="13" font-weight="600" fill="#f2f1ec">Retrieval traces</text>
         <text x="920" y="291" font-size="11.5" fill="#cbd5e1">Chunk scores &amp; latency breakdown</text>
       <rect x="908" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
         <text x="920" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Faithfulness eval</text>

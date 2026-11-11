@@ -61,8 +61,8 @@
       "file": "site/public/images/diagrams/curriculum/micro.svg",
       "width": 1200,
       "height": 736,
-      "bytes": 12608,
-      "sha256": "371f81672a488936fd5ce0fefa34442c9a637232c0ffa8bb90eba503a8570d3f",
+      "bytes": 12590,
+      "sha256": "5bc3bcaa917b2244f3a4877583298b390b056780fb4c8d7b17bff48c85fb5159",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules"
     },
     {
@@ -113,25 +113,12 @@
       "file": "site/public/images/diagrams/curriculum/workflows.svg",
       "width": 1200,
       "height": 500,
-      "bytes": 7593,
-      "sha256": "1c3422d3a13f2e989dd59481b3e564189725662dd4e444f9da9e8befcd7d9fc5",
+      "bytes": 7583,
+      "sha256": "f8da607b51a417e04821df84e98ebf4809f616ea2799e1f8af8324db83bb2a2d",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows"
     }
   ],
   "patterns": [
-    {
-      "id": "opencode-cloudflare-stack",
-      "title": "OpenCode + Cloudflare AI Gateway + Workers AI",
-      "summary": "Three-tier reference stack connecting local OpenCode harnesses through Cloudflare AI Gateway to Workers AI.",
-      "sourceDoc": "01-design-patterns/ai-gateway-pattern.md",
-      "src": "/images/diagrams/patterns/opencode-cloudflare-stack.svg",
-      "file": "site/public/images/diagrams/patterns/opencode-cloudflare-stack.svg",
-      "width": 1200,
-      "height": 680,
-      "bytes": 10046,
-      "sha256": "c527fe672bc14149e0b6633e34000cf86905e6b466763ac6c11983cd9aa6de99",
-      "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/ai-gateway-pattern.md"
-    },
     {
       "id": "ai-gateway",
       "title": "Multi-cloud AI gateway pattern",
@@ -142,37 +129,9 @@
       "file": "site/public/images/diagrams/patterns/ai-gateway.svg",
       "width": 1200,
       "height": 680,
-      "bytes": 11070,
-      "sha256": "02be2bbaf22f30195a961b104b7407390cf84101869f5c0875ec73882e0d8d1a",
+      "bytes": 11088,
+      "sha256": "9a98e02c43830be5cc5ae46271b5abad6cef8cad3ad50d433cef6781634a7379",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/ai-gateway-pattern.md"
-    },
-    {
-      "id": "claude-sdk-patterns",
-      "title": "Claude Agent SDK execution & safety loop",
-      "summary": "Autonomous think-plan-act-observe loop bounded by permission modes, resource caps, and lifecycle hooks.",
-      "sourceDoc": "02-learning-paths/agentic-code-swarms.md",
-      "d2Source": "diagrams/d2/claude-sdk-patterns.d2",
-      "src": "/images/diagrams/patterns/claude-sdk-patterns.svg",
-      "file": "site/public/images/diagrams/patterns/claude-sdk-patterns.svg",
-      "width": 1200,
-      "height": 680,
-      "bytes": 11097,
-      "sha256": "44dbcf41eaa1c3f7a3e5ebf535ee98e274738646d4163003fa5a2f3383befdbe",
-      "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/agentic-code-swarms.md"
-    },
-    {
-      "id": "langgraph-patterns",
-      "title": "LangGraph state machine workflows",
-      "summary": "Typed graph state, conditional routing edges, persistent checkpointers, and human-in-the-loop interrupts.",
-      "sourceDoc": "02-learning-paths/micro-modules/agents-langgraph-planner.md",
-      "d2Source": "diagrams/d2/langgraph-patterns.d2",
-      "src": "/images/diagrams/patterns/langgraph-patterns.svg",
-      "file": "site/public/images/diagrams/patterns/langgraph-patterns.svg",
-      "width": 1200,
-      "height": 680,
-      "bytes": 11101,
-      "sha256": "4ae7911073d2ee67af9d28d2f95227863d42e0d1551bc88edd7e4151e6af57c8",
-      "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules/agents-langgraph-planner.md"
     },
     {
       "id": "mcp-architecture",
@@ -198,8 +157,8 @@
       "file": "site/public/images/diagrams/patterns/multi-agent-orchestration.svg",
       "width": 1200,
       "height": 680,
-      "bytes": 11084,
-      "sha256": "a701e332f9b32823ba7e10dd70c7e3b0c25e76cc0a2712fc4f79a1fd7a1d06e8",
+      "bytes": 11085,
+      "sha256": "dd5a90fffb3d5c73def0158a6595af3c78962cffa491b349d21f71e8891a04fc",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/multi-agent-orchestration-pattern.md"
     },
     {
@@ -212,8 +171,8 @@
       "file": "site/public/images/diagrams/patterns/rag-production.svg",
       "width": 1200,
       "height": 680,
-      "bytes": 11185,
-      "sha256": "8601eb2b313e211efe2e1da735b566de3f0afd8d13a04dd1ba17cf0c2c78414b",
+      "bytes": 11189,
+      "sha256": "28643eaa39c88e55245a6cea6645a0c0aa2397efaf2a6b93ae420144cc2816fd",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns/rag-production-pattern.md"
     }
   ]

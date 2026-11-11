@@ -99,17 +99,17 @@
       <text x="624" y="218" font-size="16.5" font-weight="620" fill="#f2f1ec">Model endpoints</text>
       <line x1="624" y1="234" x2="858" y2="234" stroke="#2d344d" />
       <rect x="624" y="250" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
-        <text x="636" y="272" font-size="13" font-weight="600" fill="#f2f1ec">AWS Bedrock</text>
-        <text x="636" y="291" font-size="11.5" fill="#cbd5e1">Claude &amp; Llama model families</text>
+        <text x="636" y="272" font-size="13" font-weight="600" fill="#f2f1ec">Frontier text endpoint</text>
+        <text x="636" y="291" font-size="11.5" fill="#cbd5e1">General-purpose model families</text>
       <rect x="624" y="316" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
-        <text x="636" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Azure OpenAI</text>
-        <text x="636" y="357" font-size="11.5" fill="#cbd5e1">GPT-4o &amp; reasoning endpoints</text>
+        <text x="636" y="338" font-size="13" font-weight="600" fill="#f2f1ec">Reasoning endpoint</text>
+        <text x="636" y="357" font-size="11.5" fill="#cbd5e1">Long-context reasoning models</text>
       <rect x="624" y="382" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
-        <text x="636" y="404" font-size="13" font-weight="600" fill="#f2f1ec">Google Vertex AI</text>
-        <text x="636" y="423" font-size="11.5" fill="#cbd5e1">Gemini multimodal endpoints</text>
+        <text x="636" y="404" font-size="13" font-weight="600" fill="#f2f1ec">Multimodal endpoint</text>
+        <text x="636" y="423" font-size="11.5" fill="#cbd5e1">Text, image, and audio inputs</text>
       <rect x="624" y="448" width="234" height="54" rx="9" fill="#1b2032" stroke="#2d344d" />
-        <text x="636" y="470" font-size="13" font-weight="600" fill="#f2f1ec">Cloudflare Workers AI</text>
-        <text x="636" y="489" font-size="11.5" fill="#cbd5e1">Edge open-weight inference</text>
+        <text x="636" y="470" font-size="13" font-weight="600" fill="#f2f1ec">Open-weight endpoint</text>
+        <text x="636" y="489" font-size="11.5" fill="#cbd5e1">Managed low-latency inference</text>
       <line x1="874" y1="334" x2="890" y2="334" stroke="#a9b8ff" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />
     </g>
   <g>
