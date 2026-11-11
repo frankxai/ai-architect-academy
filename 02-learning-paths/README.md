@@ -1,6 +1,6 @@
 # Learning Paths & Agentic Architecture Blueprints
 
-Structured study tracks and micro-module progressions across the AI Architect Academy repository, paired with compiled vector roadmaps and agent harness blueprints.
+Structured study tracks and micro-module progressions across the AI Architect Academy repository, paired with compiled vector inventories and agent harness blueprints.
 
 ## Study Tracks in This Directory
 
@@ -14,15 +14,15 @@ Structured study tracks and micro-module progressions across the AI Architect Ac
 - [Micro-Learning Index](./micro-learning.md) — focused concept-and-exercise sprints in [`micro-modules/`](./micro-modules)
 - [Study Logbook](./logbook.md) — artifact and architecture decision log template
 
-## Compiled Learning Path Roadmaps
+## Compiled Learning Path Inventories
 
-Generated deterministically from `site/data/curriculum.json` via `site/scripts/compile-curriculum-diagrams.mjs`:
+Generated deterministically from `site/data/curriculum.json` via `site/scripts/compile-curriculum-diagrams.mjs`. These diagrams inventory public repository items; their card numbers do not define learning order:
 
-### Learning paths section roadmap
-![Learning paths curriculum roadmap](../site/public/images/diagrams/curriculum/paths.svg)
+### Learning paths section inventory
+![Learning paths curriculum section inventory](../site/public/images/diagrams/curriculum/paths.svg)
 
-### Micro-modules section roadmap
-![Micro-modules curriculum roadmap](../site/public/images/diagrams/curriculum/micro.svg)
+### Micro-modules section inventory
+![Micro-modules curriculum section inventory](../site/public/images/diagrams/curriculum/micro.svg)
 
 ## Agent Harness & Protocol Blueprints
 

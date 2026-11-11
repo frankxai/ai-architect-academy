@@ -34,9 +34,9 @@
       "src": "/images/diagrams/curriculum/patterns.svg",
       "file": "site/public/images/diagrams/curriculum/patterns.svg",
       "width": 1200,
-      "height": 738,
-      "bytes": 11758,
-      "sha256": "99670368ac27efefb93b7901ff2aaa5c41f5a6c0996b5466f4bea275e01ae8ea",
+      "height": 666,
+      "bytes": 10654,
+      "sha256": "988228c273655a3785407da41fd1406e4dc89a7297e2cb1df58b4e4997007de3",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/01-design-patterns"
     },
     {
@@ -47,9 +47,9 @@
       "src": "/images/diagrams/curriculum/labs.svg",
       "file": "site/public/images/diagrams/curriculum/labs.svg",
       "width": 1200,
-      "height": 528,
-      "bytes": 6946,
-      "sha256": "8390741f711735b39ea1aba3776d1acf160586a8890d0c07ed5cbac3d903c2d5",
+      "height": 500,
+      "bytes": 5847,
+      "sha256": "69caed75dcc8ca0024332300a1c86ae25e41c0842edcef0bf570b7184668d491",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/labs"
     },
     {
@@ -60,9 +60,9 @@
       "src": "/images/diagrams/curriculum/micro.svg",
       "file": "site/public/images/diagrams/curriculum/micro.svg",
       "width": 1200,
-      "height": 808,
-      "bytes": 13700,
-      "sha256": "86d29097924b51d030c3970552648728844ccb701216357bd83e142406fc91ed",
+      "height": 736,
+      "bytes": 12608,
+      "sha256": "371f81672a488936fd5ce0fefa34442c9a637232c0ffa8bb90eba503a8570d3f",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/micro-modules"
     },
     {
@@ -73,9 +73,9 @@
       "src": "/images/diagrams/curriculum/paths.svg",
       "file": "site/public/images/diagrams/curriculum/paths.svg",
       "width": 1200,
-      "height": 528,
-      "bytes": 8719,
-      "sha256": "f3622433a058708bfd9baf486b87043b5bb2016b1635f3fd9b22a4e03cd25106",
+      "height": 500,
+      "bytes": 7628,
+      "sha256": "69d0ff591b9a90e7377b54ade3d6aa4e4f2cb43991a498fe9d280a93c217a9a0",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths"
     },
     {
@@ -86,9 +86,9 @@
       "src": "/images/diagrams/curriculum/governance.svg",
       "file": "site/public/images/diagrams/curriculum/governance.svg",
       "width": 1200,
-      "height": 528,
-      "bytes": 7033,
-      "sha256": "d225513f46b3dac194d6c78b2b44ef55f20b1999506a036627c6ad7ab25b59b3",
+      "height": 500,
+      "bytes": 5918,
+      "sha256": "d5f2be44af9e643397aa280d199eb2e15b946652a45bd01d927beb073f26666c",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/08-governance"
     },
     {
@@ -100,8 +100,8 @@
       "file": "site/public/images/diagrams/curriculum/evaluation.svg",
       "width": 1200,
       "height": 500,
-      "bytes": 5791,
-      "sha256": "6f1d51b79d0e2b199e0aa194a2be1024f6ea4032e60791074d0876309a610048",
+      "bytes": 4686,
+      "sha256": "80f327457244994b9a7d5a79014c25cb85d10dd32d8106b06b1ccc18e3cb9361",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/07-evaluation"
     },
     {
@@ -112,9 +112,9 @@
       "src": "/images/diagrams/curriculum/workflows.svg",
       "file": "site/public/images/diagrams/curriculum/workflows.svg",
       "width": 1200,
-      "height": 528,
-      "bytes": 8696,
-      "sha256": "7986fa4cb9eeb467a0b12528c64abde2f731fe0f39539a3dcba778d393fad07f",
+      "height": 500,
+      "bytes": 7593,
+      "sha256": "1c3422d3a13f2e989dd59481b3e564189725662dd4e444f9da9e8befcd7d9fc5",
       "repoHref": "https://github.com/frankxai/ai-architect-academy/tree/main/15-workflows"
     }
   ],

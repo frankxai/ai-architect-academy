@@ -19,12 +19,12 @@ Each pattern now includes:
 - Use governance checklists under `08-governance/` to ensure compliance.
 - Feed outputs back into persona dashboards and Projects saved views for visibility.
 
-### Compiled Architecture Blueprints & Section Roadmap
+### Compiled Architecture Blueprints & Section Inventory
 
-These vector diagrams are compiled deterministically from `site/data/curriculum.json` and `diagrams/d2/*.d2` via `site/scripts/compile-curriculum-diagrams.mjs`:
+These vector diagrams are compiled deterministically from `site/data/curriculum.json` and `diagrams/d2/*.d2` via `site/scripts/compile-curriculum-diagrams.mjs`. The numbered curriculum cards are inventory identifiers, not a learning sequence:
 
-#### Design patterns section roadmap
-![Design patterns curriculum roadmap](../site/public/images/diagrams/curriculum/patterns.svg)
+#### Design patterns section inventory
+![Design patterns curriculum section inventory](../site/public/images/diagrams/curriculum/patterns.svg)
 
 #### OpenCode + Cloudflare AI Gateway + Workers AI reference stack
 ![OpenCode + Cloudflare AI Gateway + Workers AI reference stack](../site/public/images/diagrams/patterns/opencode-cloudflare-stack.svg)

@@ -186,39 +186,16 @@ function headerBar({ eyebrow, title, subtitle, badge }) {
   </g>`;
 }
 
-const SECTION_FLOWS = {
-  patterns: ['Problem framing & KPIs', 'Reference architecture & BOM', 'Evaluation & governance checks'],
-  labs: ['Local environment setup', 'Runnable implementation', 'Verification harness & authority gate'],
-  micro: ['Focused architectural concept', 'Bounded sprint exercise', 'Telemetry or scorecard check'],
-  paths: ['Self-assessment baseline', 'Sequenced study milestones', 'Logbook & artifact review'],
-  governance: ['Scope & risk classification', 'Human oversight & privacy gates', 'Incident & procurement checklists'],
-  evaluation: ['Golden dataset & rubric design', 'Automated eval harness run', 'Regression & threshold review'],
-  workflows: ['Briefing & issue triage', 'Agent-assisted implementation', 'Peer review & postmortem ritual'],
-};
-
 function buildCurriculumSectionSvg(curriculum, section) {
   const width = 1200;
   const cols = section.items.length <= 6 ? 2 : 3;
   const rows = Math.ceil(section.items.length / cols);
   const cardHeight = 58;
   const rowGap = 12;
-  const gridStartY = 238;
+  const gridStartY = 166;
   const gridHeight = rows * cardHeight + Math.max(0, rows - 1) * rowGap;
   const height = Math.max(500, gridStartY + gridHeight + 92);
-
-  const flowSteps = SECTION_FLOWS[section.id] ?? ['Source inspection', 'Architecture study', 'Artifact check'];
-  const flowStrip = flowSteps.map((label, idx) => {
-    const x = 40 + idx * 380;
-    const arrow = idx < 2
-      ? `<line x1="${x + 360}" y1="174" x2="${x + 378}" y2="174" stroke="${PALETTE.cobaltBright}" stroke-width="1.8" marker-end="url(#arrow-cobalt)" />`
-      : '';
-    return `<g>
-      <rect x="${x}" y="142" width="360" height="64" rx="12" fill="${PALETTE.cardHighlight}" stroke="url(#cobalt-stroke)" stroke-width="1.3" />
-      <text x="${x + 18}" y="166" class="mono" font-size="11" fill="${PALETTE.mint}">Phase 0${idx + 1}</text>
-      <text x="${x + 18}" y="188" font-size="14.5" font-weight="600" fill="${PALETTE.ink}">${esc(label)}</text>
-      ${arrow}
-    </g>`;
-  }).join('\n  ');
+  const inventoryNote = `<text x="40" y="146" class="mono" font-size="11.5" fill="${PALETTE.inkMuted}">Card numbers are inventory identifiers, not a learning sequence.</text>`;
 
   const colGap = 16;
   const colWidth = Math.floor((1120 - (cols - 1) * colGap) / cols);
@@ -253,16 +230,16 @@ function buildCurriculumSectionSvg(curriculum, section) {
     svg: svgShell({
       width,
       height,
-      title: `${section.label} curriculum roadmap`,
-      desc: `Curriculum roadmap for ${section.label} (${section.dir}) listing ${section.count} public repository items measured on ${curriculum.measuredAt}.`,
+      title: `${section.label} curriculum section inventory`,
+      desc: `Curriculum section inventory for ${section.label} (${section.dir}) listing ${section.count} public repository items measured on ${curriculum.measuredAt}.`,
       body: [
         headerBar({
           eyebrow: `AI Architect Academy · ${section.dir}`,
-          title: `${section.label} roadmap`,
-          subtitle: 'Every node maps directly to a public file or lab directory in the repository',
+          title: `${section.label} inventory`,
+          subtitle: 'Every card maps directly to a public file or lab directory in the repository',
           badge: `${section.count} repository ${section.count === 1 ? 'item' : 'items'}`,
         }),
-        flowStrip,
+        inventoryNote,
         itemCards,
         footer,
       ].join('\n'),
@@ -919,6 +896,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const checkOnly = process.argv.includes('--check');
   const registry = await compileDiagrams({ checkOnly });
   console.log(
-    `${checkOnly ? 'Verified' : 'Compiled'} ${registry.curriculumRoadmaps.length} curriculum roadmaps and ${registry.patterns.length} architecture blueprints (min WCAG contrast ${registry.wcagAaMinContrast}:1).`,
+    `${checkOnly ? 'Verified' : 'Compiled'} ${registry.curriculumRoadmaps.length} curriculum section inventories and ${registry.patterns.length} architecture blueprints (min WCAG contrast ${registry.wcagAaMinContrast}:1).`,
   );
 }

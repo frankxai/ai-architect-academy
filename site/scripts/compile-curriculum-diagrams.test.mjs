@@ -22,6 +22,12 @@ test('curriculum diagram compiler check mode passes with WCAG AA contrast and ex
     curriculum.sections.map((section) => section.id),
   )
 
+  for (const entry of registry.curriculumRoadmaps) {
+    const svg = fs.readFileSync(path.join(REPO, entry.file), 'utf8')
+    assert.match(svg, /inventory identifiers, not a learning sequence/i, entry.file)
+    assert.doesNotMatch(svg, /Phase 0\d|curriculum roadmap/i, entry.file)
+  }
+
   const expectedPatterns = [
     'opencode-cloudflare-stack',
     'ai-gateway',
@@ -83,6 +89,12 @@ test('explorer component and curriculum page obey CONTENT-CONTRACT.md count and 
       assert.ok(!new RegExp(`>[^<{]*\\b${count}\\b[^<{]*<`).test(src), `literal count ${count} typed in ${rel}`)
     }
   }
+
+  const explorer = fs.readFileSync(path.join(SITE, 'components/CurriculumVisualExplorer.tsx'), 'utf8')
+  const zoomMinimums = [...explorer.matchAll(/minWidth: '([\d.]+)rem'/g)].map((match) => Number(match[1]))
+  assert.deepEqual(zoomMinimums, [44, 61.6, 79.2])
+  assert.ok(zoomMinimums.every((width, index) => index === 0 || width > zoomMinimums[index - 1]))
+  assert.match(explorer, /minWidth: activeZoom\.minWidth/)
 })
 
 test('markdown guides embed valid relative links to compiled SVGs and public files', () => {

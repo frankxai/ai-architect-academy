@@ -57,9 +57,9 @@ type DiagramsRegistry = {
 const registry = rawRegistry as DiagramsRegistry
 
 const ZOOM_STEPS = [
-  { id: 'fit', label: 'Fit stage', cssWidth: '100%' },
-  { id: 'detail', label: 'Detail zoom', cssWidth: '140%' },
-  { id: 'closeup', label: 'Close-up zoom', cssWidth: '180%' },
+  { id: 'fit', label: 'Fit stage', cssWidth: '100%', minWidth: '44rem' },
+  { id: 'detail', label: 'Detail zoom', cssWidth: '140%', minWidth: '61.6rem' },
+  { id: 'closeup', label: 'Close-up zoom', cssWidth: '180%', minWidth: '79.2rem' },
 ] as const
 
 type ZoomId = (typeof ZOOM_STEPS)[number]['id']
@@ -84,7 +84,7 @@ export function CurriculumVisualExplorer() {
   const diagramHeight = mode === 'roadmaps' ? activeRoadmap.height : activePattern.height
   const diagramAlt =
     mode === 'roadmaps'
-      ? `${activeRoadmap.label} curriculum roadmap generated from ${activeRoadmap.dir}`
+      ? `${activeRoadmap.label} curriculum section inventory generated from ${activeRoadmap.dir}`
       : `${activePattern.title} reference architecture diagram: ${activePattern.summary}`
 
   return (
@@ -93,10 +93,10 @@ export function CurriculumVisualExplorer() {
         <div className="studio-toolbar">
           <div>
             <p className="eyebrow" style={{ color: '#8b90a0' }}>
-              Visual architecture &amp; learning path explorer
+              Visual architecture &amp; curriculum inventory explorer
             </p>
             <h2 id="visual-explorer-heading" className="mt-1 text-2xl text-[#f2f1ec]">
-              Switch between {spell(curriculumRoadmaps.length)} section roadmaps and {spell(patterns.length)} reference blueprints
+              Switch between {spell(curriculumRoadmaps.length)} section inventories and {spell(patterns.length)} reference blueprints
             </h2>
           </div>
 
@@ -107,7 +107,7 @@ export function CurriculumVisualExplorer() {
                 aria-pressed={mode === 'roadmaps'}
                 onClick={() => setMode('roadmaps')}
               >
-                Section roadmaps ({curriculumRoadmaps.length})
+                Section inventories ({curriculumRoadmaps.length})
               </button>
               <button
                 type="button"
@@ -134,7 +134,7 @@ export function CurriculumVisualExplorer() {
         </div>
 
         {mode === 'roadmaps' ? (
-          <div className="studio-providers" role="group" aria-label="Curriculum section roadmaps">
+          <div className="studio-providers" role="group" aria-label="Curriculum section inventories">
             {curriculumRoadmaps.map((roadmap) => (
               <button
                 key={roadmap.id}
@@ -171,7 +171,7 @@ export function CurriculumVisualExplorer() {
             className="overflow-auto rounded-2xl border border-[#262a3a] bg-[#0a0b10]/70 p-3 sm:p-5"
             style={{ maxHeight: '46rem' }}
           >
-            <div style={{ width: activeZoom.cssWidth, minWidth: zoom === 'fit' ? '44rem' : undefined }}>
+            <div style={{ width: activeZoom.cssWidth, minWidth: activeZoom.minWidth }}>
               <img
                 key={diagramSrc}
                 src={diagramSrc}
@@ -186,7 +186,7 @@ export function CurriculumVisualExplorer() {
 
           <aside className="studio-inspector" aria-label="Selected diagram provenance and companion plate">
             <p className="eyebrow" style={{ color: '#8b90a0' }}>
-              {mode === 'roadmaps' ? 'Curriculum section map' : 'Reference blueprint'}
+              {mode === 'roadmaps' ? 'Curriculum section inventory' : 'Reference blueprint'}
             </p>
             <h3 className="mt-1 text-xl text-[#f2f1ec]">
               {mode === 'roadmaps' ? activeRoadmap.label : activePattern.title}
