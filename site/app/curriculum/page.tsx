@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { CurriculumVisualExplorer } from '@/components/CurriculumVisualExplorer'
 import curriculum from '@/data/curriculum.json'
 
 export const metadata: Metadata = {
@@ -21,6 +22,8 @@ export default function CurriculumPage() {
         on {curriculum.measuredAt}. The counts are of the items listed here. If a link is dead, the repository has
         moved on and this page is stale.
       </p>
+
+      <CurriculumVisualExplorer />
 
       <div className="mt-14 space-y-14">
         {curriculum.sections.map((s) => (

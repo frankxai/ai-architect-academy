@@ -1,0 +1,27 @@
+{
+  "$schema": "https://frankx.ai/schemas/vis-provenance-sidecar.schema.json",
+  "schema_version": "1.0.0",
+  "edition": "editorial",
+  "source": "founder-approved living-world visual series 2026-11-11",
+  "alt": "Concept artwork of a cloud-hooded terminal companion looking through a brass telescope on a night observatory terrace with two small companions",
+  "claim_boundary": "Concept artwork from the founder-approved living-world visual series. Not a product capture or evidence of deployed agents.",
+  "dimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "asset": {
+    "asset_id": "asset_7753a9fbf10494518a37ff06",
+    "media_type": "image",
+    "format": "jpeg",
+    "bytes": 214130,
+    "width": 1672,
+    "height": 941,
+    "sha256": "7753a9fbf10494518a37ff06818cf11d6f58e73cb2a9bd4f34828439a2c982ec",
+    "relative_path": "site/public/images/living-world/observatory-discovery.jpg"
+  },
+  "agent": {
+    "coding_agent": "antigravity",
+    "repo": "frankxai/ai-architect-academy",
+    "summary": "Night observatory discovery scene from the founder-approved living-world visual series"
+  }
+}

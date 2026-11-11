@@ -18,3 +18,19 @@ Each pattern now includes:
 - Pull supporting assets from `AI CoE Templates/` for architecture diagrams, BOMs, and guides.
 - Use governance checklists under `08-governance/` to ensure compliance.
 - Feed outputs back into persona dashboards and Projects saved views for visibility.
+
+### Compiled Architecture Blueprints & Section Inventory
+
+These vector diagrams are compiled deterministically from `site/data/curriculum.json` and `diagrams/d2/*.d2` via `site/scripts/compile-curriculum-diagrams.mjs`. The numbered curriculum cards are inventory identifiers, not a learning sequence:
+
+#### Design patterns section inventory
+![Design patterns curriculum section inventory](../site/public/images/diagrams/curriculum/patterns.svg)
+
+#### Multi-cloud AI gateway pattern ([`ai-gateway-pattern.md`](./ai-gateway-pattern.md))
+![Multi-cloud AI gateway architecture](../site/public/images/diagrams/patterns/ai-gateway.svg)
+
+#### Supervisor multi-agent orchestration ([`multi-agent-orchestration-pattern.md`](./multi-agent-orchestration-pattern.md))
+![Supervisor multi-agent orchestration](../site/public/images/diagrams/patterns/multi-agent-orchestration.svg)
+
+#### Production RAG architecture ([`rag-production-pattern.md`](./rag-production-pattern.md))
+![Production RAG architecture](../site/public/images/diagrams/patterns/rag-production.svg)
