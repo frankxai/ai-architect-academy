@@ -436,6 +436,55 @@ class EvalAdmissionGateTests(unittest.TestCase):
             body = {k: v for k, v in faulty_doc.items() if k != "receipt_sha256"}
             self.assertEqual(faulty_doc["receipt_sha256"], sha256_hex(canonical_json(body)))
 
+    def test_15_unrounded_pass_rate_blocks_subthreshold_fraction_that_rounds_up(self) -> None:
+        base_case = copy.deepcopy(self.suite["cases"][0])
+        base_trace = copy.deepcopy(self.traces[0])
+        cases = []
+        traces = []
+        for idx in range(6):
+            cid = f"case_{idx}"
+            c = copy.deepcopy(base_case)
+            c["case_id"] = cid
+            c["non_compensable"] = False
+            c["required_substrings"] = ["ok"]
+            c["forbidden_substrings"] = []
+            c["expected_tools"] = []
+            c["forbidden_tools"] = []
+            cases.append(c)
+
+            t = copy.deepcopy(base_trace)
+            t["case_id"] = cid
+            t["assistant_output"] = "ok" if idx < 4 else ""
+            t["tool_log"] = []
+            traces.append(t)
+
+        six_suite = {
+            **copy.deepcopy(self.suite),
+            "suite_id": "suite-rounding-boundary",
+            "pass_threshold": 0.6667,
+            "cases": cases,
+        }
+        six_lock = {
+            **copy.deepcopy(self.lock),
+            "suite_id": "suite-rounding-boundary",
+            "suite_sha256": compute_suite_sha256(six_suite),
+            "relocked_by": "human:qa-lead",
+        }
+
+        receipt = self.gate.evaluate_admission(
+            suite_doc=six_suite,
+            lock_doc=six_lock,
+            calibration_doc=self.calibration,
+            traces_doc=traces,
+            candidate_author="agent:builder",
+            run_id="run:rounding-check",
+        )
+        # 4 / 6 == 0.666666... < 0.6667 even though round(4/6, 4) == 0.6667
+        self.assertFalse(receipt["admitted"])
+        self.assertEqual(receipt["verdict"], "BLOCK")
+        self.assertIn("eval-below-threshold", receipt["refusal_codes"])
+        self.assertEqual(receipt["aggregate_pass_rate"], 0.6667)
+
 
 if __name__ == "__main__":
     unittest.main()

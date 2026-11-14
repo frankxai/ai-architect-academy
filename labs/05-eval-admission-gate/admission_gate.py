@@ -395,11 +395,16 @@ def evaluate_calibration_drift(
     for a, aid, tier, expected in validated_anchors:
 
         try:
-            observed = float(grader_fn(a["sample"]))
+            raw_obs = grader_fn(a["sample"])
         except Exception as exc:
             failures.append(f"GRADER_EXCEPTION:{aid}:{type(exc).__name__}")
             continue
 
+        if isinstance(raw_obs, bool) or not isinstance(raw_obs, (int, float)):
+            failures.append(f"GRADER_SCORE_OUT_OF_RANGE:{aid}:{raw_obs}")
+            continue
+
+        observed = float(raw_obs)
         if not math.isfinite(observed) or observed < 0.0 or observed > 1.0:
             failures.append(f"GRADER_SCORE_OUT_OF_RANGE:{aid}:{observed}")
             continue
@@ -574,10 +579,11 @@ class EvalAdmissionGate:
 
         passed_count = sum(1 for r in case_results if r.passed)
         total_count = len(case_results)
-        pass_rate = round(passed_count / total_count, 4) if total_count else 0.0
+        raw_pass_rate = (passed_count / total_count) if total_count else 0.0
+        pass_rate = round(raw_pass_rate, 4) if total_count else 0.0
         threshold = float(suite["pass_threshold"])
 
-        if pass_rate < threshold:
+        if raw_pass_rate < threshold:
             refusal_codes.append("eval-below-threshold")
         if any(not r.passed and r.non_compensable for r in case_results):
             if "eval-below-threshold" not in refusal_codes:
@@ -588,7 +594,7 @@ class EvalAdmissionGate:
             and len(meta_audit_failures) == 0
             and len(red_gate_failures) == 0
             and len(refusal_codes) == 0
-            and pass_rate >= threshold
+            and raw_pass_rate >= threshold
         )
 
         return self._seal_receipt(

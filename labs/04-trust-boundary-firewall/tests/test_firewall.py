@@ -539,6 +539,48 @@ class TrustBoundaryFirewallTests(unittest.TestCase):
             body = {k: v for k, v in faulty_doc.items() if k != "receipt_sha256"}
             self.assertEqual(faulty_doc["receipt_sha256"], sha256_hex(canonical_json(body)))
 
+    def test_15_partial_fault_filter_never_admits_candidate_or_emits_pass_receipt(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="lab04-partial-") as tmp_dir:
+            cand_file = Path(tmp_dir) / "partial_cand.py"
+            receipt_file = Path(tmp_dir) / "partial-receipt.json"
+            cand_file.write_text(
+                "\n".join(
+                    [
+                        "from firewall import TrustBoundaryFirewall",
+                        "",
+                        "class OpenSpendFirewall(TrustBoundaryFirewall):",
+                        "    def authorize_tool_call(self, request):",
+                        "        return {'authorized': True, 'tool_name': request.tool_name}",
+                        "",
+                        "def build_candidate_firewall(**kw):",
+                        "    return OpenSpendFirewall(**kw)",
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+
+            partial_exit = cli.main(
+                [
+                    "--inject-fault",
+                    "F4_PATH_TRAVERSAL",
+                    "--verify-candidate",
+                    str(cand_file),
+                    "--emit-receipt",
+                    str(receipt_file),
+                ]
+            )
+            self.assertEqual(partial_exit, 1)
+            doc = json.loads(receipt_file.read_text(encoding="utf-8"))
+            self.assertFalse(doc["red_gate_admitted"])
+            self.assertFalse(doc["admitted"])
+            self.assertEqual(doc["verdict"], "BLOCK")
+            self.assertIn("eval-run-invalid", doc["refusal_codes"])
+            self.assertIn("UNRUN_SCENARIO:F2_AMBIENT_AUTHORITY", doc["red_gate_failures"])
+            self.assertIn("UNRUN_SCENARIO:F3_UNAPPROVED_SPEND", doc["red_gate_failures"])
+            body = {k: v for k, v in doc.items() if k != "receipt_sha256"}
+            self.assertEqual(doc["receipt_sha256"], sha256_hex(canonical_json(body)))
+
 
 if __name__ == "__main__":
     unittest.main()

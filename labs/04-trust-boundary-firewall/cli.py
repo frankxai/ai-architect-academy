@@ -22,7 +22,7 @@ LAB_DIR = Path(__file__).resolve().parent
 if str(LAB_DIR) not in sys.path:
     sys.path.insert(0, str(LAB_DIR))
 
-from faults import FaultScenarioResult, run_fault_scenarios  # noqa: E402
+from faults import CANONICAL_SCENARIO_IDS, FaultScenarioResult, run_fault_scenarios  # noqa: E402
 from firewall import (  # noqa: E402
     TrustBoundaryFirewall,
     canonical_json,
@@ -48,9 +48,16 @@ def _load_candidate_factory(candidate_path: Path) -> Any:
     return factory
 
 
-def _print_report(label: str, results: list[FaultScenarioResult]) -> bool:
+def _print_report(
+    label: str, results: list[FaultScenarioResult], *, is_complete_suite: bool = True
+) -> bool:
     all_passed = all(r.passed for r in results)
-    verdict = "ADMITTED (ALL RED GATES GREEN)" if all_passed else "BLOCKED (RED GATE FAILURE)"
+    if all_passed and is_complete_suite:
+        verdict = "ADMITTED (ALL RED GATES GREEN)"
+    elif all_passed:
+        verdict = "PARTIAL DIAGNOSTIC (INELIGIBLE FOR ADMISSION)"
+    else:
+        verdict = "BLOCKED (RED GATE FAILURE)"
     print(f"=== Lab 04 Trust-Boundary Firewall :: {label} ===")
     for item in results:
         status = "PASS" if item.passed else "FAIL"
@@ -102,7 +109,14 @@ def main(argv: list[str] | None = None) -> int:
         if factory is not None
         else run_fault_scenarios(only_scenario=scenario_filter)
     )
-    admitted = _print_report(label, results)
+    executed_ids = tuple(r.scenario_id for r in results)
+    is_complete_suite = (
+        scenario_filter == "all"
+        and len(results) == len(CANONICAL_SCENARIO_IDS)
+        and set(executed_ids) == set(CANONICAL_SCENARIO_IDS)
+    )
+    all_passed = _print_report(label, results, is_complete_suite=is_complete_suite)
+    admitted = all_passed and is_complete_suite
 
     if args.emit_receipt:
         with tempfile.TemporaryDirectory(prefix="lab04-receipt-") as tmp_dir:
@@ -136,14 +150,21 @@ def main(argv: list[str] | None = None) -> int:
             except TypeError:
                 raw_receipt = fw.emit_receipt(run_id="run:04-cli-verification")
 
-            failed_scenarios = [r.scenario_id for r in results if not r.passed]
+            unrun_scenarios = [
+                f"UNRUN_SCENARIO:{sid}"
+                for sid in CANONICAL_SCENARIO_IDS
+                if sid not in executed_ids
+            ]
+            failed_scenarios = [r.scenario_id for r in results if not r.passed] + unrun_scenarios
             body = {k: v for k, v in raw_receipt.items() if k != "receipt_sha256"}
             body["red_gate_admitted"] = admitted
             body["admitted"] = admitted
             body["verdict"] = "PASS" if admitted else "BLOCK"
             if not admitted:
                 existing_refusals = list(body.get("refusal_codes") or [])
-                if "eval-below-threshold" not in existing_refusals:
+                if not is_complete_suite and "eval-run-invalid" not in existing_refusals:
+                    existing_refusals.append("eval-run-invalid")
+                if not all_passed and "eval-below-threshold" not in existing_refusals:
                     existing_refusals.append("eval-below-threshold")
                 body["refusal_codes"] = sorted(set(existing_refusals))
                 body["red_gate_failures"] = failed_scenarios
@@ -153,7 +174,9 @@ def main(argv: list[str] | None = None) -> int:
             out_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
             print(f"Receipt written: {out_path} (sha256={receipt['receipt_sha256']})")
 
-    return 0 if admitted else 1
+    if args.emit_receipt or args.verify_candidate:
+        return 0 if admitted else 1
+    return 0 if all_passed else 1
 
 
 if __name__ == "__main__":

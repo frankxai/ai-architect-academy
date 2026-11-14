@@ -37,6 +37,14 @@ class FaultScenarioResult:
 
 FirewallFactory = Callable[..., Any]
 
+CANONICAL_SCENARIO_IDS: tuple[str, ...] = (
+    "F1_PROMPT_CONCAT",
+    "F2_AMBIENT_AUTHORITY",
+    "F3_UNAPPROVED_SPEND",
+    "F4_PATH_TRAVERSAL",
+    "F5_METADATA_SSRF",
+)
+
 
 def _default_factory(
     *,
