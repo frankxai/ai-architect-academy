@@ -1,0 +1,44 @@
+{
+  "id": "04-trust-boundary-firewall",
+  "title": "Enforce the Agent Trust-Boundary Firewall",
+  "difficulty": "advanced",
+  "estimatedMinutes": 75,
+  "language": "python",
+  "skills": [
+    "ai-security-expert",
+    "agentic-orchestration",
+    "mcp-architecture"
+  ],
+  "checkpoints": [
+    {
+      "id": "quarantine-untrusted-payload",
+      "title": "Quarantine T3 text outside the instruction channel",
+      "hint": "System prompts accept only typed operator instructions (T0/T1). Escape closing XML tags in T3 payloads before wrapping them in a user-role data envelope."
+    },
+    {
+      "id": "capability-least-privilege",
+      "title": "Enforce capability allowlisting and principal isolation",
+      "hint": "Never read authority from model-authored arguments. Require one distinct principal per side-effecting tool and reject secret-bearing argument keys."
+    },
+    {
+      "id": "fail-closed-write-spend",
+      "title": "Gate writes and spend behind digest-bound human approval",
+      "hint": "Bind HumanApprovalToken to tool_name, canonical args_sha256, destination, and max_spend_cents, and mark tokens consumed on first use."
+    },
+    {
+      "id": "path-and-ssrf-guardrails",
+      "title": "Block workspace path escapes and private/metadata SSRF",
+      "hint": "Resolve paths before checking containment against sandbox_root, and inspect parsed host IPs offline to block loopback, RFC1918, and 169.254.169.254."
+    },
+    {
+      "id": "deterministic-receipt",
+      "title": "Emit a verifiable TrustFirewallReceipt.v1 record",
+      "hint": "Compute receipt_sha256 over canonical sorted JSON keys so an independent verifier can re-derive the exact hash."
+    }
+  ],
+  "testCommand": "python -m unittest discover -s tests -v",
+  "targetFiles": [
+    "firewall.py",
+    "exercises/faulty_starter.py"
+  ]
+}

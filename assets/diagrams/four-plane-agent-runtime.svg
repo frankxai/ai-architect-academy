@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="1200" height="540" role="img" aria-labelledby="plane-title plane-desc">
+  <title id="plane-title">Four-Plane Production Agent Runtime Architecture</title>
+  <desc id="plane-desc">Shows the four accountable planes of a production agent system: Model Call Seam, Orchestration Loop, Trust and Tool Authority Firewall, and Durable Execution plus Verification Receipts.</desc>
+  <defs>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1017" />
+      <stop offset="100%" stop-color="#151824" />
+    </linearGradient>
+    <marker id="arrow-cobalt" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#8ea2ff" />
+    </marker>
+    <marker id="arrow-mint" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#5ee6cf" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="540" rx="16" fill="url(#bg-grad)" stroke="#262a3a" stroke-width="2" />
+
+  <!-- Header -->
+  <text x="44" y="48" fill="#8b90a0" font-family="ui-monospace, 'Cascadia Mono', Consolas, monospace" font-size="12" letter-spacing="2">AI ARCHITECT ACADEMY · PRODUCTION SUBSTRATE</text>
+  <text x="44" y="84" fill="#f2f1ec" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="600">Four-Plane Agent Runtime &amp; Explicit Ownership</text>
+  <text x="44" y="110" fill="#b9bccb" font-family="Inter, system-ui, sans-serif" font-size="14">Every plane names one owner, one code-enforced ceiling, and one re-derivable verification artifact.</text>
+  <line x1="44" y1="128" x2="1156" y2="128" stroke="#262a3a" stroke-width="1" />
+
+  <!-- Plane 1: Model Call Seam -->
+  <g transform="translate(44, 152)">
+    <rect width="256" height="290" rx="12" fill="#171b29" stroke="#4f67e8" stroke-width="1.5" />
+    <rect x="16" y="16" width="84" height="24" rx="12" fill="#20294a" />
+    <text x="58" y="32" text-anchor="middle" fill="#a9b8ff" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">PLANE 01</text>
+    <text x="16" y="66" fill="#f2f1ec" font-family="Georgia, serif" font-size="20" font-weight="600">Model Call Seam</text>
+    <text x="16" y="90" fill="#b9bccb" font-family="Inter, system-ui, sans-serif" font-size="13">Single routing boundary</text>
+    <line x1="16" y1="106" x2="240" y2="106" stroke="#262a3a" />
+    <text x="16" y="132" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• One SDK call module in code</text>
+    <text x="16" y="158" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Task-routed tier &amp; timeout</text>
+    <text x="16" y="184" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Per-unit token &amp; spend cap</text>
+    <text x="16" y="210" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Named plane owner in ADR</text>
+    <rect x="16" y="236" width="224" height="36" rx="6" fill="#111420" stroke="#2b3147" />
+    <text x="26" y="259" fill="#f3b5a8" font-family="ui-monospace, Consolas, monospace" font-size="11">Red gate: unowned SDK imports</text>
+  </g>
+
+  <!-- Plane 2: Orchestration Loop -->
+  <g transform="translate(330, 152)">
+    <rect width="256" height="290" rx="12" fill="#171b29" stroke="#4f67e8" stroke-width="1.5" />
+    <rect x="16" y="16" width="84" height="24" rx="12" fill="#20294a" />
+    <text x="58" y="32" text-anchor="middle" fill="#a9b8ff" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">PLANE 02</text>
+    <text x="16" y="66" fill="#f2f1ec" font-family="Georgia, serif" font-size="20" font-weight="600">Orchestration Loop</text>
+    <text x="16" y="90" fill="#b9bccb" font-family="Inter, system-ui, sans-serif" font-size="13">Code-owned exit conditions</text>
+    <line x1="16" y1="106" x2="240" y2="106" stroke="#262a3a" />
+    <text x="16" y="132" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Explicit state transitions</text>
+    <text x="16" y="158" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Bounded retry &amp; step count</text>
+    <text x="16" y="184" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Refusal &amp; escalation branch</text>
+    <text x="16" y="210" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Never prompt-only stop rules</text>
+    <rect x="16" y="236" width="224" height="36" rx="6" fill="#111420" stroke="#2b3147" />
+    <text x="26" y="259" fill="#f3b5a8" font-family="ui-monospace, Consolas, monospace" font-size="11">Red gate: unbounded agent loop</text>
+  </g>
+
+  <!-- Plane 3: Trust & Tool Authority -->
+  <g transform="translate(616, 152)">
+    <rect width="256" height="290" rx="12" fill="#171b29" stroke="#5ee6cf" stroke-width="1.5" />
+    <rect x="16" y="16" width="84" height="24" rx="12" fill="#163331" />
+    <text x="58" y="32" text-anchor="middle" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">PLANE 03</text>
+    <text x="16" y="66" fill="#f2f1ec" font-family="Georgia, serif" font-size="20" font-weight="600">Trust &amp; Authority</text>
+    <text x="16" y="90" fill="#b9bccb" font-family="Inter, system-ui, sans-serif" font-size="13">Data vs instruction firewall</text>
+    <line x1="16" y1="106" x2="240" y2="106" stroke="#262a3a" />
+    <text x="16" y="132" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• T3 wrapped in data channel</text>
+    <text x="16" y="158" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• 1 principal per write tool</text>
+    <text x="16" y="184" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Digest-bound human approval</text>
+    <text x="16" y="210" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Sandbox path &amp; SSRF guards</text>
+    <rect x="16" y="236" width="224" height="36" rx="6" fill="#111420" stroke="#2b3147" />
+    <text x="26" y="259" fill="#f3b5a8" font-family="ui-monospace, Consolas, monospace" font-size="11">Red gate: T3 in system prompt</text>
+  </g>
+
+  <!-- Plane 4: Durable Run & Evidence -->
+  <g transform="translate(900, 152)">
+    <rect width="256" height="290" rx="12" fill="#171b29" stroke="#5ee6cf" stroke-width="1.5" />
+    <rect x="16" y="16" width="84" height="24" rx="12" fill="#163331" />
+    <text x="58" y="32" text-anchor="middle" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">PLANE 04</text>
+    <text x="16" y="66" fill="#f2f1ec" font-family="Georgia, serif" font-size="20" font-weight="600">Long-Run &amp; Proof</text>
+    <text x="16" y="90" fill="#b9bccb" font-family="Inter, system-ui, sans-serif" font-size="13">Operations &amp; receipts</text>
+    <line x1="16" y1="106" x2="240" y2="106" stroke="#262a3a" />
+    <text x="16" y="132" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Request vs worker runtime</text>
+    <text x="16" y="158" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Dry-run rollback &amp; restore</text>
+    <text x="16" y="184" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Locked eval admission gate</text>
+    <text x="16" y="210" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• Fresh-context SHA-256 receipt</text>
+    <rect x="16" y="236" width="224" height="36" rx="6" fill="#111420" stroke="#2b3147" />
+    <text x="26" y="259" fill="#f3b5a8" font-family="ui-monospace, Consolas, monospace" font-size="11">Red gate: untested restore path</text>
+  </g>
+
+  <!-- Connectors -->
+  <line x1="300" y1="297" x2="326" y2="297" stroke="#8ea2ff" stroke-width="2" marker-end="url(#arrow-cobalt)" />
+  <line x1="586" y1="297" x2="612" y2="297" stroke="#8ea2ff" stroke-width="2" marker-end="url(#arrow-cobalt)" />
+  <line x1="872" y1="297" x2="896" y2="297" stroke="#5ee6cf" stroke-width="2" marker-end="url(#arrow-mint)" />
+
+  <!-- Footer Spine -->
+  <rect x="44" y="464" width="1112" height="48" rx="10" fill="#111420" stroke="#262a3a" />
+  <text x="64" y="493" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="12" font-weight="600">ACADEMYGRAPH.V1 EVIDENCE BAR</text>
+  <text x="310" y="493" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">Artifacts + third-party locators + deterministic eval runs + independent human review → public-safe portfolio projection.</text>
+</svg>

@@ -1,0 +1,44 @@
+{
+  "id": "05-eval-admission-gate",
+  "title": "Build a Non-Compensable Eval Admission Gate",
+  "difficulty": "advanced",
+  "estimatedMinutes": 75,
+  "language": "python",
+  "skills": [
+    "architecture-diagramming",
+    "ai-security-expert",
+    "agentic-orchestration"
+  ],
+  "checkpoints": [
+    {
+      "id": "strict-schema-and-fixture-lock",
+      "title": "Validate trajectory schemas and golden fixture SHA-256 locks",
+      "hint": "Reject unknown or missing fields, and fail closed if golden_trajectories.json diverges from golden_trajectories.lock or if relocked_by equals candidate_author."
+    },
+    {
+      "id": "durable-outcome-over-transcript",
+      "title": "Grade durable tool_log outcomes rather than assistant prose",
+      "hint": "Compare executed tool names and statuses in tool_log against expected_tools and forbidden_tools; never trust an assistant claim alone."
+    },
+    {
+      "id": "non-compensable-red-gates",
+      "title": "Enforce non-compensable red-gate refusal",
+      "hint": "A 95% aggregate pass rate still blocks admission when any non_compensable case (injection, refusal, unauthorized write) or scorer exception fails."
+    },
+    {
+      "id": "calibration-drift-detection",
+      "title": "Detect grader leniency, rank inversion, and anchor drift",
+      "hint": "Score locked weak, borderline, and strong anchors before trusting a grader; fail closed on weak false-passes, ordering inversions, or drift above tolerance."
+    },
+    {
+      "id": "admission-receipt-emission",
+      "title": "Emit a deterministic EvalAdmissionReceipt.v1 pass/block artifact",
+      "hint": "Include AcademyGraph-compatible refusal codes and canonical SHA-256 digest over sorted JSON keys."
+    }
+  ],
+  "testCommand": "python -m unittest discover -s tests -v",
+  "targetFiles": [
+    "admission_gate.py",
+    "exercises/faulty_starter.py"
+  ]
+}

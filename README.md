@@ -15,10 +15,14 @@
 
 <p align="center">
   <a href="#quick-start"><img src="https://img.shields.io/badge/Quick%20Start-2%20min-success?style=flat-square" alt="Quick Start"/></a>
-  <a href="#interactive-labs"><img src="https://img.shields.io/badge/Labs-3%20Interactive-ff6b6b?style=flat-square" alt="Labs"/></a>
+  <a href="#interactive-labs"><img src="https://img.shields.io/badge/Labs-7%20Runnable-ff6b6b?style=flat-square" alt="Labs"/></a>
   <a href="#skills-library"><img src="https://img.shields.io/badge/Skills-23-blue?style=flat-square" alt="Skills"/></a>
-  <a href="#learning-paths"><img src="https://img.shields.io/badge/Paths-5%20Tracks-purple?style=flat-square" alt="Learning Paths"/></a>
+  <a href="#learning-paths"><img src="https://img.shields.io/badge/Paths-12--Week%20Flagship-purple?style=flat-square" alt="Learning Paths"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-FSL--1.1--ALv2-blue?style=flat-square" alt="License"/></a>
+</p>
+
+<p align="center">
+  <img src="assets/diagrams/four-plane-agent-runtime.svg" alt="Four-Plane Production Agent Runtime Architecture" width="100%" />
 </p>
 
 ---
@@ -88,9 +92,17 @@ The instructor uses **Socratic method** — it asks questions, not gives answers
 
 | Lab | What You Build | Difficulty | Time |
 |-----|---------------|-----------|------|
-| **01: Fix the Broken RAG Pipeline** | Debug chunking, search, and context assembly in a production RAG system | Intermediate | 45m |
-| **02: Build a Multi-Agent System** | Implement a coordinator that orchestrates Researcher, Analyst, and Writer agents | Advanced | 60m |
-| **03: Build Your Own MCP Server** | Create a TypeScript MCP server with 3 tools for Claude Code | Advanced | 60m |
+| **[01: Fix the Broken RAG Pipeline](labs/01-rag-pipeline/README.md)** | Debug chunking, search, and context assembly in a production RAG system | Intermediate | 45m |
+| **[02: Build a Multi-Agent System](labs/02-multi-agent-system/README.md)** | Implement a coordinator that orchestrates Researcher, Analyst, and Writer agents | Advanced | 60m |
+| **[03: Build Your Own MCP Server](labs/03-mcp-server/README.md)** | Create a TypeScript MCP server with 3 tools for Claude Code | Advanced | 60m |
+| **[04A: Make the Eval Harness Able to Fail](labs/04-eval-harness/README.md)** | Harden an evaluation runner so seeded regressions exit non-zero | Intermediate | 60m |
+| **[04B: Enforce the Trust-Boundary Firewall](labs/04-trust-boundary-firewall/README.md)** | Quarantine T3 payloads, enforce capability least privilege, gate spend, and block path/SSRF escapes offline | Advanced | 75m |
+| **[05A: Bound the Agent's Tool Authority](labs/05-tool-authority-gate/README.md)** | Isolate one principal per write tool and verify revocation paths | Advanced | 75m |
+| **[05B: Build an Eval Admission Gate](labs/05-eval-admission-gate/README.md)** | Enforce non-compensable red gates, fixture SHA-256 locks, and calibration drift checks | Advanced | 75m |
+
+<p align="center">
+  <img src="assets/diagrams/trust-boundary-firewall-flow.svg" alt="Agent Trust-Boundary Firewall Flow" width="100%" />
+</p>
 
 Each lab includes:
 - Real source code (broken or scaffolded)
@@ -135,10 +147,14 @@ ai-architect-academy/
 │   ├── commands/                # /hint, /review, /next, /academy, etc.
 │   ├── hooks/                   # Session-start welcome, progress tracking
 │   └── skill-rules.json         # Auto-activation rules for 23 skills
-├── labs/                        # Interactive coding labs
+├── labs/                        # Interactive coding labs (offline test gates)
 │   ├── 01-rag-pipeline/         # Python — fix broken RAG (3 bugs)
 │   ├── 02-multi-agent-system/   # Python — build coordinator pattern
-│   └── 03-mcp-server/           # TypeScript — build MCP server
+│   ├── 03-mcp-server/           # TypeScript — build MCP server
+│   ├── 04-eval-harness/         # Python — make the eval harness able to fail
+│   ├── 04-trust-boundary-firewall/ # Python — T3 quarantine, spend gate & SSRF firewall
+│   ├── 05-tool-authority-gate/  # Python — bound tool principals & revocations
+│   └── 05-eval-admission-gate/  # Python — non-compensable eval gate & drift lock
 ├── claude-ai-architect/         # Knowledge base + 23 expert skills
 │   ├── skills/                  # RAG, MCP, multi-cloud, security, etc.
 │   ├── knowledge-base/          # OCI GenAI, infrastructure docs
@@ -170,8 +186,15 @@ ai-architect-academy/
 
 ## 🎓 Learning Paths
 
+Start with the flagship **[12-Week Production AI Architect Path](02-learning-paths/12-week-production-architect.md)** (mapping Weeks 1–12 across Labs 01–05, worked-run failure traces, non-compensable red gates, and `AcademyGraph.v1` portfolio advancement), or choose a focused track in [02-learning-paths/](02-learning-paths/README.md):
+
+<p align="center">
+  <img src="assets/diagrams/twelve-week-progression-eval-gate.svg" alt="12-Week Production Architect Progression and Non-Compensable Eval Admission Gate" width="100%" />
+</p>
+
 | Path | Hours | Focus |
 |------|-------|-------|
+| **[12-Week Production Architect](02-learning-paths/12-week-production-architect.md)** | 108h | End-to-end production systems, Labs 01–05, worked runs & red-gate receipts |
 | **Foundation** | 20h | Claude SDK, MCP basics, first agent |
 | **Agent Developer** | 40h | Multi-agent, RAG, orchestration |
 | **Multi-Cloud** | 40h | OCI, AWS, Azure, GCP patterns |
