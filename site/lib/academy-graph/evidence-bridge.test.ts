@@ -1,14 +1,23 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import { advanceCapability, projectPortfolio, type Refusal } from './advance.ts'
 import {
+  FORBIDDEN_PUBLIC_TERMS,
+  LAB_STAGE_BINDINGS,
+  ROLE_ENTRY_TRACKS,
+  SPINE_BLUEPRINT_PLATES,
   WORKED_RUN_GATE_BINDINGS,
+  assertVendorNeutralPublicText,
   bridgeWorkedRunToLearner,
   mapLabReceiptToEvidence,
   mergeLabReceiptsIntoLearner,
+  resolveRoleEntryTrack,
   type LabCompletionReceipt,
+  type RoleEntryTrackId,
   type WorkedRunInput,
 } from './evidence-bridge.ts'
 import {
@@ -330,4 +339,169 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
     '2026-09-02',
   )
   assert.equal(cleanAdvance.granted, true, JSON.stringify(!cleanAdvance.granted && cleanAdvance.refusals, null, 2))
+})
+
+const siteDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
+const repoRoot = path.resolve(siteDir, '..')
+
+function relativeLuminance(hex: string): number {
+  const clean = hex.replace('#', '')
+  const full = clean.length === 3 ? clean.split('').map((c) => c + c).join('') : clean
+  const num = Number.parseInt(full, 16)
+  const channels = [(num >> 16) & 255, (num >> 8) & 255, num & 255].map((c) => {
+    const s = c / 255
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4
+  })
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
+}
+
+function contrastRatio(fg: string, bg: string): number {
+  const l1 = relativeLuminance(fg)
+  const l2 = relativeLuminance(bg)
+  return Number(((Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05)).toFixed(2))
+}
+
+function assertBalancedSvgXml(label: string, xml: string): void {
+  assert.match(xml, /^\s*<svg\b[^>]*xmlns="http:\/\/www\.w3\.org\/2000\/svg"/, `${label} missing <svg> root`)
+  assert.match(xml, /<title\b[^>]*>[^<]+<\/title>/, `${label} missing <title>`)
+  assert.match(xml, /<desc\b[^>]*>[^<]+<\/desc>/, `${label} missing <desc>`)
+  const stripped = xml.replace(/<!--[\s\S]*?-->/g, '')
+  const stack: string[] = []
+  const tagRe = /<\/?([a-zA-Z][a-zA-Z0-9:-]*)\b([^>]*?)(\/?)>/g
+  let match: RegExpExecArray | null
+  while ((match = tagRe.exec(stripped)) !== null) {
+    const [raw, tagName, , trailingSlash] = match
+    if (raw.startsWith('</')) {
+      const open = stack.pop()
+      assert.equal(open, tagName, `${label} mismatched closing tag </${tagName}> (expected </${open}>)`)
+    } else if (!trailingSlash) {
+      stack.push(tagName)
+    }
+  }
+  assert.deepEqual(stack, [], `${label} has unclosed XML tags: ${stack.join(', ')}`)
+}
+
+test('evidence-bridge: vendor-neutral guard blocks vendor tokens and admits neutral architecture prose', () => {
+  assert.doesNotThrow(() =>
+    assertVendorNeutralPublicText(
+      'clean-architecture-copy',
+      'Route model calls through one owned seam and enforce deterministic tool-authority gates.',
+    ),
+  )
+  const sampleVendor = ['clau', 'de'].join('')
+  assert.throws(
+    () => assertVendorNeutralPublicText('leaked-copy', `Configured ${sampleVendor} client directly`),
+    /Forbidden vendor term/i,
+  )
+})
+
+test('evidence-bridge: five Role Entry tracks resolve to valid flagship stages, runnable offline labs, and proof surfaces', () => {
+  assert.deepEqual(
+    ROLE_ENTRY_TRACKS.map((t) => t.label),
+    [
+      'Systems Architect',
+      'Agent Runtime Engineer',
+      'Technical Founder',
+      'Governance & Eval Lead',
+      'Delegated Coding Agent',
+    ],
+  )
+
+  const stageIds = new Set(projectProductionAgentSystems.stages.map((s) => s.id))
+  for (const track of ROLE_ENTRY_TRACKS) {
+    const resolved = resolveRoleEntryTrack(track.id)
+    assert.ok(stageIds.has(resolved.stageId), `missing stage ${resolved.stageId}`)
+    assert.equal(resolved.stagePath, `/path/${resolved.stageId.replace(/^stage:/, '')}`)
+    assert.ok(resolved.dayOneDecision.length >= 40, `${track.id} day-one decision too short`)
+    assert.ok(['/adr', '/worked-run'].includes(resolved.proofHref), `${track.id} invalid proofHref`)
+    assert.match(resolved.labCommand, /^python labs\/[a-z0-9-]+\/cli\.py\b/)
+
+    const cliRelPath = resolved.labCommand.split(/\s+/)[1]
+    assert.ok(
+      existsSync(path.join(repoRoot, cliRelPath)),
+      `missing offline lab CLI on disk: ${cliRelPath}`,
+    )
+  }
+
+  assert.throws(
+    () => resolveRoleEntryTrack('unknown-role' as RoleEntryTrackId),
+    /Unknown role entry track/,
+  )
+})
+
+test('evidence-bridge: spine blueprint plates resolve on disk with well-formed SVG XML, WCAG AA contrast, and zero vendor terms', () => {
+  assert.deepEqual(
+    SPINE_BLUEPRINT_PLATES.map((p) => p.id),
+    [
+      'four-plane-agent-runtime',
+      'trust-boundary-firewall-flow',
+      'twelve-week-progression-eval-gate',
+    ],
+  )
+
+  const stageIds = new Set(projectProductionAgentSystems.stages.map((s) => s.id))
+  const spineContrastPairs: readonly [string, string, string][] = [
+    ['muted header on stage', '#9aa1b5', '#151824'],
+    ['muted note on card', '#9aa1b5', '#171b29'],
+    ['primary ink on card', '#f2f1ec', '#171b29'],
+    ['secondary ink on card', '#cbd5e1', '#171b29'],
+    ['cobalt badge on pill', '#a9b8ff', '#20294a'],
+    ['mint badge on pill', '#5ee6cf', '#163331'],
+    ['coral red-gate ink on dark box', '#f3b5a8', '#29181c'],
+  ]
+
+  for (const [pairLabel, fg, bg] of spineContrastPairs) {
+    const ratio = contrastRatio(fg, bg)
+    assert.ok(ratio >= 4.5, `WCAG AA contrast failed for ${pairLabel}: ${ratio}:1`)
+  }
+
+  for (const plate of SPINE_BLUEPRINT_PLATES) {
+    assertVendorNeutralPublicText(
+      `SPINE_BLUEPRINT_PLATES[${plate.id}]`,
+      [
+        plate.shortLabel,
+        plate.eyebrow,
+        plate.title,
+        plate.alt,
+        plate.summary,
+        ...plate.invariants,
+        ...plate.proofLinks.map((l) => l.label),
+      ].join('\n'),
+    )
+    assert.ok(plate.invariants.length >= 3, `${plate.id} requires architectural invariants`)
+    for (const stageId of plate.stageIds) {
+      assert.ok(stageIds.has(stageId), `${plate.id} references unknown stage ${stageId}`)
+    }
+    for (const labId of plate.labIds) {
+      assert.ok(LAB_STAGE_BINDINGS[labId], `${plate.id} references unsupported lab ${labId}`)
+    }
+    const proofHrefs = new Set(plate.proofLinks.map((l) => l.href))
+    assert.ok(proofHrefs.has('/adr') && proofHrefs.has('/worked-run'), `${plate.id} must link /adr and /worked-run`)
+
+    const svgAbsPath = path.join(repoRoot, plate.publicFile)
+    assert.ok(existsSync(svgAbsPath), `missing public spine SVG: ${plate.publicFile}`)
+    const svgBytes = readFileSync(svgAbsPath)
+    assert.ok(svgBytes.length > 500 && svgBytes.length < 512 * 1024, `${plate.publicFile} invalid byte size`)
+    const svgText = svgBytes.toString('utf8')
+    assertBalancedSvgXml(plate.publicFile, svgText)
+    assert.doesNotMatch(svgText, FORBIDDEN_PUBLIC_TERMS, `${plate.publicFile} contains forbidden vendor term`)
+    assert.doesNotMatch(svgText, /\p{Extended_Pictographic}/u, `${plate.publicFile} contains emoji`)
+    assert.match(svgText, new RegExp(`width="${plate.width}"`))
+    assert.match(svgText, new RegExp(`height="${plate.height}"`))
+  }
+})
+
+test('evidence-bridge: RoleEntrySelector and SpineBlueprintGallery enforce accessible tablists and vendor neutrality', () => {
+  for (const rel of ['components/RoleEntrySelector.tsx', 'components/SpineBlueprintGallery.tsx']) {
+    const abs = path.join(siteDir, rel)
+    assert.ok(existsSync(abs), `missing component ${rel}`)
+    const source = readFileSync(abs, 'utf8')
+    assertVendorNeutralPublicText(rel, source)
+    assert.doesNotMatch(source, /you will (?:learn|be able to)/i, `${rel} violates capability claim rule`)
+    assert.match(source, /role="tablist"/, `${rel} missing role="tablist"`)
+    assert.match(source, /ArrowLeft/, `${rel} missing ArrowLeft keyboard handler`)
+    assert.match(source, /ArrowRight/, `${rel} missing ArrowRight keyboard handler`)
+    assert.match(source, /Home/, `${rel} missing Home keyboard handler`)
+    assert.match(source, /End/, `${rel} missing End keyboard handler`)
+  }
 })

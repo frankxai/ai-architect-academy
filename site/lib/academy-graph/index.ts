@@ -14,6 +14,11 @@ export {
 export {
   WORKED_RUN_GATE_BINDINGS,
   LAB_STAGE_BINDINGS,
+  FORBIDDEN_PUBLIC_TERMS,
+  ROLE_ENTRY_TRACKS,
+  SPINE_BLUEPRINT_PLATES,
+  assertVendorNeutralPublicText,
+  resolveRoleEntryTrack,
   mapLabReceiptToEvidence,
   mergeLabReceiptsIntoLearner,
   bridgeWorkedRunToLearner,
@@ -25,4 +30,11 @@ export {
   type WorkedRunBridgeOptions,
   type WorkedRunBridgeProjection,
   type StageBridgeSummary,
+  type RoleEntryTrackId,
+  type ProofSurfaceHref,
+  type RoleEntryTrackSpec,
+  type ResolvedRoleEntryTrack,
+  type SpineBlueprintId,
+  type SpineBlueprintProofLink,
+  type SpineBlueprintPlate,
 } from './evidence-bridge.ts'
