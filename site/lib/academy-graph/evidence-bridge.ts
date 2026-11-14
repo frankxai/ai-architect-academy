@@ -91,6 +91,7 @@ export interface GateStageBinding {
   readonly artifactId: ArtifactId
   readonly evalId: EvalId
   readonly relatedDecisions: readonly WorkedRunDecisionId[]
+  readonly synthesizesEvalRun?: boolean
 }
 
 /**
@@ -161,6 +162,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:incident-report',
     evalId: 'eval:incident-detected-by-telemetry',
     relatedDecisions: ['loop', 'trust'],
+    // A pre-build `01-discovery.md` PASS never establishes post-deploy incident telemetry or guard commits.
+    synthesizesEvalRun: false,
   },
   {
     gateId: 'verify',
@@ -268,6 +271,7 @@ export interface WorkedRunBridgeOptions {
   readonly asOf?: string
   readonly competencyId?: CompetencyId
   readonly additionalEvidence?: readonly Evidence[]
+  readonly additionalEvalRuns?: readonly EvalRun[]
   readonly reviews?: readonly ReviewVerdict[]
   readonly labReceipts?: readonly LabCompletionReceipt[]
 }
@@ -487,24 +491,26 @@ export function bridgeWorkedRunToLearner(
       })
     }
 
-    const assertions = evalNode.assertions.map((a) => a.id)
-    const pointerHealthy = run.receipt.failed === 0 && run.receipt.confirmed > 0
-    const evalPassed = gateStatus === 'PASS' && pointerHealthy
+    if (binding.synthesizesEvalRun !== false) {
+      const assertions = evalNode.assertions.map((a) => a.id)
+      const pointerHealthy = run.receipt.failed === 0 && run.receipt.confirmed > 0
+      const evalPassed = gateStatus === 'PASS' && pointerHealthy
 
-    evalRuns.push({
-      evalId: evalNode.id,
-      artifact: artifactNode.id,
-      ranAt: run.generatedAt,
-      passedAssertions: evalPassed ? assertions : [],
-      failedAssertions: evalPassed ? [] : assertions,
-    })
+      evalRuns.push({
+        evalId: evalNode.id,
+        artifact: artifactNode.id,
+        ranAt: run.generatedAt,
+        passedAssertions: evalPassed ? assertions : [],
+        failedAssertions: evalPassed ? [] : assertions,
+      })
+    }
   }
 
   let learner: LearnerState = {
     learnerId,
     submittedArtifacts,
     evidence: [...evidence, ...(options.additionalEvidence ?? [])],
-    evalRuns,
+    evalRuns: [...evalRuns, ...(options.additionalEvalRuns ?? [])],
     reviews: [...(options.reviews ?? [])],
     grantedCompetencies: [],
   }

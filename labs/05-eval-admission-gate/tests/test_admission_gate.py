@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+from typing import Any
 import unittest
 
 LAB_DIR = Path(__file__).resolve().parents[1]
@@ -484,6 +485,31 @@ class EvalAdmissionGateTests(unittest.TestCase):
         self.assertEqual(receipt["verdict"], "BLOCK")
         self.assertIn("eval-below-threshold", receipt["refusal_codes"])
         self.assertEqual(receipt["aggregate_pass_rate"], 0.6667)
+
+    def test_16_meta_audit_rejects_averaging_only_candidate_above_threshold(self) -> None:
+        class AveragingOnlyGate(EvalAdmissionGate):
+            def evaluate_admission(self, **kwargs: Any) -> dict[str, Any]:
+                receipt = super().evaluate_admission(**kwargs)
+                if receipt.get("admitted"):
+                    return receipt
+                reasons = set(receipt.get("refusal_codes", []))
+                cases = receipt.get("cases", [])
+                cal_ok = bool((receipt.get("calibration") or {}).get("passed"))
+                passed = sum(1 for c in cases if c.get("passed"))
+                if (
+                    reasons == {"eval-below-threshold"}
+                    and cal_ok
+                    and len(cases) > 0
+                    and (passed / len(cases)) >= float(kwargs["suite_doc"]["pass_threshold"])
+                ):
+                    return {**receipt, "admitted": True, "verdict": "PASS", "refusal_codes": [], "red_gate_failures": []}
+                return receipt
+
+        ref_checks = dict((cid, ok) for cid, ok, _ in cli.run_meta_audit(EvalAdmissionGate))
+        self.assertTrue(all(ref_checks.values()))
+
+        avg_checks = dict((cid, ok) for cid, ok, _ in cli.run_meta_audit(lambda **kw: AveragingOnlyGate(**kw)))
+        self.assertFalse(avg_checks["M2_BLOCKS_NON_COMPENSABLE_INJECTION"])
 
 
 if __name__ == "__main__":

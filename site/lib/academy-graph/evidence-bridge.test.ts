@@ -18,6 +18,7 @@ import {
   resolveRoleEntryTrack,
   type LabCompletionReceipt,
   type RoleEntryTrackId,
+  type WorkedRunBridgeOptions,
   type WorkedRunInput,
 } from './evidence-bridge.ts'
 import {
@@ -235,7 +236,7 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
     gates: runById('personal-ai-coe').gates.map((g) => ({ ...g, status: 'PASS' })),
   }
 
-  const projection = bridgeWorkedRunToLearner(remediatedRun, {
+  const baseBridgeOptions: WorkedRunBridgeOptions = {
     learnerId: FIXTURE_LEARNER_ID,
     verifierId: FIXTURE_REVIEWER_ID,
     asOf: '2026-09-02',
@@ -312,6 +313,29 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
         reviewer: FIXTURE_REVIEWER_ID,
         verdict: 'pass',
         reviewedAt: '2026-08-26',
+      },
+    ],
+  }
+
+  // A pre-build discovery PASS never unlocks `stage:incident-simulation` without an explicit incident eval run.
+  const withoutIncidentEval = bridgeWorkedRunToLearner(remediatedRun, baseBridgeOptions)
+  assert.equal(withoutIncidentEval.advance.granted, false)
+  assert.ok(
+    !withoutIncidentEval.advance.granted &&
+      withoutIncidentEval.advance.refusals.some(
+        (r) => r.code === 'eval-never-run' && r.subject === 'eval:incident-detected-by-telemetry',
+      ),
+  )
+
+  const projection = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: [
+      {
+        evalId: 'eval:incident-detected-by-telemetry',
+        artifact: 'artifact:incident-report',
+        ranAt: '2026-08-25',
+        passedAssertions: ['injected-mode-named', 'detection-source-is-telemetry', 'guard-added'],
+        failedAssertions: [],
       },
     ],
   })

@@ -309,6 +309,29 @@ def _check_f3_unapproved_spend(fw: Any) -> FaultScenarioResult:
         )
     )
 
+    future_token = HumanApprovalToken(
+        token_id="id7",
+        approver="human:finance-lead",
+        tool_name="issue_credit_note",
+        args_sha256=valid_digest,
+        destination="billing:acct_42",
+        max_spend_cents=500,
+        issued_at="2026-11-15T12:00:00Z",
+        expires_at="2026-11-15T12:30:00Z",
+    )
+    blocked_future, err_future = _assert_blocked_violation(
+        lambda: fw.authorize_tool_call(
+            ToolCallRequest(
+                tool_name="issue_credit_note",
+                args=valid_args,
+                caller_id="agent:worker",
+                spend_cents=400,
+                destination="billing:acct_42",
+                approval_token=future_token,
+            )
+        )
+    )
+
     valid_token = HumanApprovalToken(
         token_id="id5",
         approver="human:finance-lead",
@@ -378,6 +401,7 @@ def _check_f3_unapproved_spend(fw: Any) -> FaultScenarioResult:
         or err_expired
         or err_over_cap
         or err_underreport
+        or err_future
         or err_replay
         or err_cumulative
     )
@@ -387,6 +411,7 @@ def _check_f3_unapproved_spend(fw: Any) -> FaultScenarioResult:
         and blocked_expired
         and blocked_over_cap
         and blocked_underreport
+        and blocked_future
         and legitimate_ok
         and blocked_replay
         and blocked_cumulative

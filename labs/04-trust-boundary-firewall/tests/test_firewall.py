@@ -581,6 +581,44 @@ class TrustBoundaryFirewallTests(unittest.TestCase):
             body = {k: v for k, v in doc.items() if k != "receipt_sha256"}
             self.assertEqual(doc["receipt_sha256"], sha256_hex(canonical_json(body)))
 
+    def test_16_future_issued_token_blocked_and_url_userinfo_redacted_in_receipts(self) -> None:
+        future_args = {"account_id": "acct_14", "amount_cents": 400, "reason": "future-dated"}
+        future_token = HumanApprovalToken(
+            token_id="id_future",
+            approver="human:finance-lead",
+            tool_name="issue_credit_note",
+            args_sha256=sha256_hex(canonical_json(future_args)),
+            destination="billing:acct_14",
+            max_spend_cents=500,
+            issued_at="2026-11-15T12:00:00Z",
+            expires_at="2026-11-15T12:30:00Z",
+        )
+        with self.assertRaises(FirewallViolation) as future_ctx:
+            self.firewall.authorize_tool_call(
+                ToolCallRequest(
+                    tool_name="issue_credit_note",
+                    args=future_args,
+                    spend_cents=400,
+                    destination="billing:acct_14",
+                    approval_token=future_token,
+                )
+            )
+        self.assertEqual(future_ctx.exception.code, "APPROVAL_TOKEN_NOT_YET_VALID")
+
+        for bad_url in (
+            "https://alice:pw_demo@api.partner-contracts.example/v1",
+            "http://alice:pw_demo@api.partner-contracts.example/v1",
+            "https://alice:pw_demo@[::1/v1",
+        ):
+            with self.assertRaises(FirewallViolation):
+                self.firewall.validate_outbound_url(bad_url)
+
+        receipt_json = canonical_json(self.firewall.emit_receipt())
+        self.assertEqual(self.firewall.emit_receipt()["spent_cents"], 0)
+        self.assertNotIn("alice", receipt_json)
+        self.assertNotIn("pw_demo", receipt_json)
+        self.assertIn("[REDACTED]@", receipt_json)
+
 
 if __name__ == "__main__":
     unittest.main()

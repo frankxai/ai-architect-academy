@@ -18,7 +18,7 @@ import json
 from pathlib import PurePath, Path
 import re
 from typing import Any, Mapping, Sequence
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlsplit, urlunsplit
 
 
 RECEIPT_SCHEMA = "TrustFirewallReceipt.v1"
@@ -92,6 +92,26 @@ def canonical_json(data: Any) -> str:
 
 def sha256_hex(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _sanitize_url_for_audit(raw_url: Any) -> str:
+    """Strip embedded URL credentials before recording any SSRF decision or receipt."""
+    if not isinstance(raw_url, str):
+        return ""
+    s = raw_url.strip()
+    if not s:
+        return ""
+    s = re.sub(r"^([a-zA-Z][a-zA-Z0-9+.-]*:(?://)?|//)([^/?#]*)@", r"\1[REDACTED]@", s)
+    if "://" not in s and not s.startswith("//") and "@" in s.split("/", 1)[0]:
+        s = re.sub(r"^([^/?#]*)@", "[REDACTED]@", s)
+    try:
+        parts = urlsplit(s)
+        if parts.username or parts.password or "@" in parts.netloc:
+            host_part = parts.netloc.rsplit("@", 1)[-1]
+            s = urlunsplit((parts.scheme, f"[REDACTED]@{host_part}", parts.path, parts.query, parts.fragment))
+    except ValueError:
+        pass
+    return s
 
 
 class FirewallViolation(Exception):
@@ -642,6 +662,13 @@ class TrustBoundaryFirewall:
                     detail=f"Token issued_at ({token.issued_at}) cannot be later than expires_at ({token.expires_at}).",
                     subject=request.tool_name,
                 )
+            if issued_dt > self._as_of_dt:
+                raise self._fail(
+                    code="APPROVAL_TOKEN_NOT_YET_VALID",
+                    gate="write_spend_gate",
+                    detail=f"Token issued_at ({token.issued_at}) is after assessment instant as_of ({self._as_of}).",
+                    subject=request.tool_name,
+                )
             if expires_dt < self._as_of_dt:
                 raise self._fail(
                     code="APPROVAL_TOKEN_EXPIRED",
@@ -756,21 +783,31 @@ class TrustBoundaryFirewall:
     # --- 4. Outbound URL / SSRF Guardrail (100% Offline Parsing) -------------
 
     def validate_outbound_url(self, url: str) -> str:
+        safe_subject = _sanitize_url_for_audit(url)
         if not isinstance(url, str) or not url.strip():
             raise self._fail(
                 code="EMPTY_OUTBOUND_URL",
                 gate="ssrf_guardrail",
                 detail="Outbound URL cannot be empty.",
-                subject=str(url),
+                subject=safe_subject,
             )
 
-        parsed = urlparse(url.strip())
+        try:
+            parsed = urlparse(url.strip())
+        except ValueError as exc:
+            raise self._fail(
+                code="MALFORMED_OUTBOUND_URL",
+                gate="ssrf_guardrail",
+                detail="Outbound URL could not be parsed.",
+                subject=safe_subject,
+            ) from exc
+
         if parsed.scheme.lower() != "https":
             raise self._fail(
                 code="NON_HTTPS_SCHEME_BLOCKED",
                 gate="ssrf_guardrail",
                 detail=f"Outbound URL must use https; got scheme '{parsed.scheme or 'none'}'.",
-                subject=url,
+                subject=safe_subject,
             )
 
         if parsed.username or parsed.password:
@@ -778,7 +815,7 @@ class TrustBoundaryFirewall:
                 code="URL_USERINFO_FORBIDDEN",
                 gate="ssrf_guardrail",
                 detail="Embedded credentials (userinfo) in URL are forbidden.",
-                subject=url,
+                subject=safe_subject,
             )
 
         host = (parsed.hostname or "").lower().strip().rstrip(".")
@@ -787,7 +824,7 @@ class TrustBoundaryFirewall:
                 code="MISSING_URL_HOST",
                 gate="ssrf_guardrail",
                 detail="Outbound URL has no hostname.",
-                subject=url,
+                subject=safe_subject,
             )
 
         try:
@@ -797,7 +834,7 @@ class TrustBoundaryFirewall:
                 code="INVALID_URL_PORT",
                 gate="ssrf_guardrail",
                 detail="Outbound URL contains an invalid port.",
-                subject=url,
+                subject=safe_subject,
             ) from exc
 
         if port is not None and port != 443:
@@ -805,7 +842,7 @@ class TrustBoundaryFirewall:
                 code="NON_STANDARD_HTTPS_PORT_BLOCKED",
                 gate="ssrf_guardrail",
                 detail=f"Non-443 outbound port '{port}' is blocked by default.",
-                subject=url,
+                subject=safe_subject,
             )
 
         if host in METADATA_HOSTNAMES or host.endswith((".local", ".internal", ".localhost")):
@@ -813,7 +850,7 @@ class TrustBoundaryFirewall:
                 code="INTERNAL_OR_METADATA_HOST_BLOCKED",
                 gate="ssrf_guardrail",
                 detail=f"Internal or cloud metadata host '{host}' is forbidden.",
-                subject=url,
+                subject=safe_subject,
             )
 
         # Pure offline IP literal inspection (handles IPv4, IPv6, and IPv4-mapped IPv6).
@@ -838,7 +875,7 @@ class TrustBoundaryFirewall:
                     code="PRIVATE_OR_METADATA_IP_BLOCKED",
                     gate="ssrf_guardrail",
                     detail=f"IP literal '{host}' resolves to a non-public address range.",
-                    subject=url,
+                    subject=safe_subject,
                 )
             # Even public raw IP literals are rejected unless explicitly allowlisted.
             if host not in self._allowed_hosts:
@@ -846,7 +883,7 @@ class TrustBoundaryFirewall:
                     code="RAW_IP_LITERAL_NOT_ALLOWLISTED",
                     gate="ssrf_guardrail",
                     detail=f"Raw IP literal '{host}' is not in allowed_egress_hosts.",
-                    subject=url,
+                    subject=safe_subject,
                 )
 
         if host not in self._allowed_hosts:
@@ -854,12 +891,12 @@ class TrustBoundaryFirewall:
                 code="HOST_NOT_IN_EGRESS_ALLOWLIST",
                 gate="ssrf_guardrail",
                 detail=f"Host '{host}' is not in allowed_egress_hosts={sorted(self._allowed_hosts)}.",
-                subject=url,
+                subject=safe_subject,
             )
 
         self._record(
             gate="ssrf_guardrail",
-            subject=url,
+            subject=safe_subject,
             verdict="ALLOW",
             code="EGRESS_URL_ALLOWED",
             detail=f"Verified HTTPS egress to allowlisted host '{host}'.",
