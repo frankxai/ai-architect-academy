@@ -204,12 +204,108 @@ def _check_f3_unapproved_spend(fw: Any) -> FaultScenarioResult:
         )
     )
 
+    signed_other_args = {"account_id": "acct_42", "amount_cents": 200, "reason": "sla-credit"}
     valid_args = {"account_id": "acct_42", "amount_cents": 400, "reason": "sla-credit"}
-    valid_token = HumanApprovalToken(
-        token_id="tok-f3-positive-control",
+    valid_digest = sha256_hex(canonical_json(valid_args))
+
+    tampered_token = HumanApprovalToken(
+        token_id="id1",
         approver="human:finance-lead",
         tool_name="issue_credit_note",
-        args_sha256=sha256_hex(canonical_json(valid_args)),
+        args_sha256=sha256_hex(canonical_json(signed_other_args)),
+        destination="billing:acct_42",
+        max_spend_cents=500,
+        issued_at="2026-11-14T11:55:00Z",
+        expires_at="2026-11-14T12:30:00Z",
+    )
+    blocked_tampered, err_tampered = _assert_blocked_violation(
+        lambda: fw.authorize_tool_call(
+            ToolCallRequest(
+                tool_name="issue_credit_note",
+                args=valid_args,
+                caller_id="agent:worker",
+                spend_cents=400,
+                destination="billing:acct_42",
+                approval_token=tampered_token,
+            )
+        )
+    )
+
+    expired_token = HumanApprovalToken(
+        token_id="id2",
+        approver="human:finance-lead",
+        tool_name="issue_credit_note",
+        args_sha256=valid_digest,
+        destination="billing:acct_42",
+        max_spend_cents=500,
+        issued_at="2026-11-14T10:00:00Z",
+        expires_at="2026-11-14T11:30:00Z",
+    )
+    blocked_expired, err_expired = _assert_blocked_violation(
+        lambda: fw.authorize_tool_call(
+            ToolCallRequest(
+                tool_name="issue_credit_note",
+                args=valid_args,
+                caller_id="agent:worker",
+                spend_cents=400,
+                destination="billing:acct_42",
+                approval_token=expired_token,
+            )
+        )
+    )
+
+    over_cap_token = HumanApprovalToken(
+        token_id="id3",
+        approver="human:finance-lead",
+        tool_name="issue_credit_note",
+        args_sha256=valid_digest,
+        destination="billing:acct_42",
+        max_spend_cents=300,
+        issued_at="2026-11-14T11:55:00Z",
+        expires_at="2026-11-14T12:30:00Z",
+    )
+    blocked_over_cap, err_over_cap = _assert_blocked_violation(
+        lambda: fw.authorize_tool_call(
+            ToolCallRequest(
+                tool_name="issue_credit_note",
+                args=valid_args,
+                caller_id="agent:worker",
+                spend_cents=400,
+                destination="billing:acct_42",
+                approval_token=over_cap_token,
+            )
+        )
+    )
+
+    underreport_args = {"account_id": "acct_42", "amount_cents": 1500, "reason": "underreport"}
+    underreport_token = HumanApprovalToken(
+        token_id="id4",
+        approver="human:finance-lead",
+        tool_name="issue_credit_note",
+        args_sha256=sha256_hex(canonical_json(underreport_args)),
+        destination="billing:acct_42",
+        max_spend_cents=500,
+        issued_at="2026-11-14T11:55:00Z",
+        expires_at="2026-11-14T12:30:00Z",
+    )
+    blocked_underreport, err_underreport = _assert_blocked_violation(
+        lambda: fw.authorize_tool_call(
+            ToolCallRequest(
+                tool_name="issue_credit_note",
+                args=underreport_args,
+                caller_id="agent:worker",
+                spend_cents=0,
+                destination="billing:acct_42",
+                approval_token=underreport_token,
+            )
+        )
+    )
+
+    valid_token = HumanApprovalToken(
+        token_id="id5",
+        approver="human:finance-lead",
+        tool_name="issue_credit_note",
+        args_sha256=valid_digest,
         destination="billing:acct_42",
         max_spend_cents=500,
         issued_at="2026-11-14T11:55:00Z",
@@ -231,17 +327,73 @@ def _check_f3_unapproved_spend(fw: Any) -> FaultScenarioResult:
     except Exception:
         legitimate_ok = False
 
-    passed = blocked and legitimate_ok
+    blocked_replay, err_replay = _assert_blocked_violation(
+        lambda: fw.authorize_tool_call(
+            ToolCallRequest(
+                tool_name="issue_credit_note",
+                args=valid_args,
+                caller_id="agent:worker",
+                spend_cents=400,
+                destination="billing:acct_42",
+                approval_token=valid_token,
+            )
+        )
+    )
+
+    cumulative_args = {"account_id": "acct_42", "amount_cents": 200, "reason": "cumulative"}
+    cumulative_token = HumanApprovalToken(
+        token_id="id6",
+        approver="human:finance-lead",
+        tool_name="issue_credit_note",
+        args_sha256=sha256_hex(canonical_json(cumulative_args)),
+        destination="billing:acct_42",
+        max_spend_cents=500,
+        issued_at="2026-11-14T11:55:00Z",
+        expires_at="2026-11-14T12:30:00Z",
+    )
+    blocked_cumulative, err_cumulative = _assert_blocked_violation(
+        lambda: fw.authorize_tool_call(
+            ToolCallRequest(
+                tool_name="issue_credit_note",
+                args=cumulative_args,
+                caller_id="agent:worker",
+                spend_cents=200,
+                destination="billing:acct_42",
+                approval_token=cumulative_token,
+            )
+        )
+    )
+
+    first_err = (
+        err_msg
+        or err_tampered
+        or err_expired
+        or err_over_cap
+        or err_underreport
+        or err_replay
+        or err_cumulative
+    )
+    passed = (
+        blocked
+        and blocked_tampered
+        and blocked_expired
+        and blocked_over_cap
+        and blocked_underreport
+        and legitimate_ok
+        and blocked_replay
+        and blocked_cumulative
+    )
     if passed:
         detail = (
-            "Unapproved 1500c credit note failed closed while digest-bound 400c HumanApprovalToken succeeded."
+            "Enforced fail-closed missing/tampered/expired/replayed/under-reported/over-budget tokens "
+            "while authorizing single-use digest-bound 400c HumanApprovalToken."
         )
-    elif err_msg:
-        detail = f"FAIL: Unapproved spend check did not raise FirewallViolation ({err_msg})."
+    elif first_err:
+        detail = f"FAIL: Spend/token guardrail did not raise FirewallViolation ({first_err})."
     elif not legitimate_ok:
         detail = "FAIL: Legitimate digest-bound HumanApprovalToken spend call failed."
     else:
-        detail = "FAIL OPEN: Spend/write tool executed without a digest-bound HumanApprovalToken."
+        detail = "FAIL OPEN: Spend/write tool accepted unapproved, tampered, expired, replayed, or over-budget token."
     return FaultScenarioResult("F3_UNAPPROVED_SPEND", "write_spend_gate", passed, detail)
 
 

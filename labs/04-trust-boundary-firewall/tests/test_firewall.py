@@ -456,6 +456,89 @@ class TrustBoundaryFirewallTests(unittest.TestCase):
         self.assertEqual(len(crashing_results), 5)
         self.assertTrue(all(not r.passed for r in crashing_results))
 
+    def test_14_spend_bound_to_tool_args_f3_token_abuse_and_blocked_cli_receipt(self) -> None:
+        # 1. Attempting to under-report spend_cents=0 while args.amount_cents=1500 fails closed
+        high_args = {"account_id": "acct_14", "amount_cents": 1500, "reason": "underreport"}
+        low_cap_tok = HumanApprovalToken(
+            token_id="id_under",
+            approver="human:finance-lead",
+            tool_name="issue_credit_note",
+            args_sha256=sha256_hex(canonical_json(high_args)),
+            destination="billing:acct_14",
+            max_spend_cents=500,
+            issued_at="2026-11-14T11:55:00Z",
+            expires_at="2026-11-14T12:30:00Z",
+        )
+        with self.assertRaises(FirewallViolation) as cap_ctx:
+            self.firewall.authorize_tool_call(
+                ToolCallRequest(
+                    tool_name="issue_credit_note",
+                    args=high_args,
+                    spend_cents=0,
+                    destination="billing:acct_14",
+                    approval_token=low_cap_tok,
+                )
+            )
+        self.assertEqual(cap_ctx.exception.code, "SPEND_EXCEEDS_TOKEN_OR_CAPABILITY_CAP")
+
+        # 2. Explicitly conflicting non-zero spend_cents raises SPEND_ARG_MISMATCH
+        matched_args = {"account_id": "acct_14", "amount_cents": 400, "reason": "mismatch"}
+        mismatch_tok = HumanApprovalToken(
+            token_id="id_mismatch",
+            approver="human:finance-lead",
+            tool_name="issue_credit_note",
+            args_sha256=sha256_hex(canonical_json(matched_args)),
+            destination="billing:acct_14",
+            max_spend_cents=500,
+            issued_at="2026-11-14T11:55:00Z",
+            expires_at="2026-11-14T12:30:00Z",
+        )
+        with self.assertRaises(FirewallViolation) as mismatch_ctx:
+            self.firewall.authorize_tool_call(
+                ToolCallRequest(
+                    tool_name="issue_credit_note",
+                    args=matched_args,
+                    spend_cents=100,
+                    destination="billing:acct_14",
+                    approval_token=mismatch_tok,
+                )
+            )
+        self.assertEqual(mismatch_ctx.exception.code, "SPEND_ARG_MISMATCH")
+
+        # 3. A candidate approving every non-None HumanApprovalToken without checking digest/expiry/replay/budget FAILS F3
+        class RubberStampTokenFirewall(TrustBoundaryFirewall):
+            def authorize_tool_call(self, request: ToolCallRequest) -> dict[str, Any]:
+                if request.approval_token is not None:
+                    return {"authorized": True, "tool_name": request.tool_name}
+                return super().authorize_tool_call(request)
+
+        f3_results = run_fault_scenarios(
+            factory=lambda **kw: RubberStampTokenFirewall(**kw),
+            only_scenario="F3_UNAPPROVED_SPEND",
+        )
+        self.assertEqual(len(f3_results), 1)
+        self.assertFalse(f3_results[0].passed)
+
+        # 4. CLI --emit-receipt on faulty starter emits BLOCK/admitted=False with valid SHA-256
+        with tempfile.TemporaryDirectory(prefix="lab04-faulty-cli-") as out_dir:
+            faulty_receipt_path = Path(out_dir) / "faulty-receipt.json"
+            exit_code = cli.main(
+                [
+                    "--verify-candidate",
+                    str(LAB_DIR / "exercises" / "faulty_starter.py"),
+                    "--emit-receipt",
+                    str(faulty_receipt_path),
+                ]
+            )
+            self.assertEqual(exit_code, 1)
+            faulty_doc = json.loads(faulty_receipt_path.read_text(encoding="utf-8"))
+            self.assertFalse(faulty_doc["red_gate_admitted"])
+            self.assertFalse(faulty_doc["admitted"])
+            self.assertEqual(faulty_doc["verdict"], "BLOCK")
+            self.assertIn("F3_UNAPPROVED_SPEND", faulty_doc["red_gate_failures"])
+            body = {k: v for k, v in faulty_doc.items() if k != "receipt_sha256"}
+            self.assertEqual(faulty_doc["receipt_sha256"], sha256_hex(canonical_json(body)))
+
 
 if __name__ == "__main__":
     unittest.main()

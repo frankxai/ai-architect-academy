@@ -165,6 +165,7 @@ class CapabilitySpec:
     max_spend_cents: int = 0
     allowed_arg_keys: frozenset[str] = field(default_factory=frozenset)
     revocation_path: str = ""
+    spend_arg_key: str | None = None
 
 
 @dataclass(frozen=True)
@@ -521,16 +522,50 @@ class TrustBoundaryFirewall:
                     subject=request.tool_name,
                 )
 
-        if request.spend_cents < 0:
+        if isinstance(request.spend_cents, bool) or not isinstance(request.spend_cents, int) or request.spend_cents < 0:
             raise self._fail(
                 code="NEGATIVE_SPEND_INVALID",
                 gate="write_spend_gate",
-                detail="spend_cents cannot be negative.",
+                detail="spend_cents must be a non-negative integer.",
                 subject=request.tool_name,
             )
 
+        spend_key = spec.spend_arg_key or (
+            "amount_cents"
+            if ("amount_cents" in spec.allowed_arg_keys or "amount_cents" in request.args)
+            else None
+        )
+        effective_spend_cents = request.spend_cents
+        if spend_key is not None:
+            if spend_key not in request.args:
+                raise self._fail(
+                    code="INVALID_SPEND_ARG",
+                    gate="write_spend_gate",
+                    detail=f"Tool '{spec.name}' requires argument '{spend_key}' for spend accounting.",
+                    subject=request.tool_name,
+                )
+            arg_spend = request.args[spend_key]
+            if isinstance(arg_spend, bool) or not isinstance(arg_spend, int) or arg_spend < 0:
+                raise self._fail(
+                    code="INVALID_SPEND_ARG",
+                    gate="write_spend_gate",
+                    detail=f"Argument '{spend_key}' on '{spec.name}' must be a non-negative integer.",
+                    subject=request.tool_name,
+                )
+            if request.spend_cents != 0 and request.spend_cents != arg_spend:
+                raise self._fail(
+                    code="SPEND_ARG_MISMATCH",
+                    gate="write_spend_gate",
+                    detail=(
+                        f"Reported spend_cents={request.spend_cents} does not match "
+                        f"authorized args['{spend_key}']={arg_spend}."
+                    ),
+                    subject=request.tool_name,
+                )
+            effective_spend_cents = arg_spend
+
         needs_approval = (
-            spec.side_effecting or spec.requires_human_approval or request.spend_cents > 0
+            spec.side_effecting or spec.requires_human_approval or effective_spend_cents > 0
         )
         args_digest = sha256_hex(canonical_json(dict(request.args)))
 
@@ -542,7 +577,7 @@ class TrustBoundaryFirewall:
                     gate="write_spend_gate",
                     detail=(
                         f"Tool '{spec.name}' is side-effecting or spend-bearing "
-                        f"(spend_cents={request.spend_cents}) and failed closed without HumanApprovalToken."
+                        f"(spend_cents={effective_spend_cents}) and failed closed without HumanApprovalToken."
                     ),
                     subject=request.tool_name,
                 )
@@ -614,29 +649,29 @@ class TrustBoundaryFirewall:
                     detail=f"Token expired at {token.expires_at} (as_of={self._as_of}).",
                     subject=request.tool_name,
                 )
-            if request.spend_cents > token.max_spend_cents or request.spend_cents > spec.max_spend_cents:
+            if effective_spend_cents > token.max_spend_cents or effective_spend_cents > spec.max_spend_cents:
                 raise self._fail(
                     code="SPEND_EXCEEDS_TOKEN_OR_CAPABILITY_CAP",
                     gate="write_spend_gate",
                     detail=(
-                        f"Requested spend {request.spend_cents}c exceeds token cap "
+                        f"Authorized spend {effective_spend_cents}c exceeds token cap "
                         f"{token.max_spend_cents}c or tool cap {spec.max_spend_cents}c."
                     ),
                     subject=request.tool_name,
                 )
-            if self._spent_cents + request.spend_cents > self._run_budget_cents:
+            if self._spent_cents + effective_spend_cents > self._run_budget_cents:
                 raise self._fail(
                     code="RUN_BUDGET_CEILING_EXCEEDED",
                     gate="write_spend_gate",
                     detail=(
-                        f"Cumulative spend {self._spent_cents + request.spend_cents}c would exceed "
+                        f"Cumulative spend {self._spent_cents + effective_spend_cents}c would exceed "
                         f"run ceiling {self._run_budget_cents}c."
                     ),
                     subject=request.tool_name,
                 )
 
             self._consumed_tokens.add(token.token_id)
-            self._spent_cents += request.spend_cents
+            self._spent_cents += effective_spend_cents
 
         self._record(
             gate="write_spend_gate" if needs_approval else "capability_allowlist",
@@ -645,7 +680,7 @@ class TrustBoundaryFirewall:
             code="TOOL_CALL_AUTHORIZED",
             detail=(
                 f"Authorized '{spec.name}' as principal '{spec.principal}' "
-                f"(spend={request.spend_cents}c, args_sha256={args_digest[:12]})."
+                f"(spend={effective_spend_cents}c, args_sha256={args_digest[:12]})."
             ),
         )
         return {
@@ -653,7 +688,7 @@ class TrustBoundaryFirewall:
             "tool_name": spec.name,
             "principal": spec.principal,
             "args_sha256": args_digest,
-            "spend_cents": request.spend_cents,
+            "spend_cents": effective_spend_cents,
             "cumulative_spend_cents": self._spent_cents,
         }
 
@@ -868,7 +903,10 @@ class TrustBoundaryFirewall:
             ],
         }
         if red_gate_admitted is not None:
-            body["red_gate_admitted"] = bool(red_gate_admitted)
+            admitted_flag = bool(red_gate_admitted)
+            body["red_gate_admitted"] = admitted_flag
+            body["admitted"] = admitted_flag
+            body["verdict"] = "PASS" if admitted_flag else "BLOCK"
         digest = sha256_hex(canonical_json(body))
         return {**body, "receipt_sha256": digest}
 
@@ -903,6 +941,7 @@ def default_lab_registry() -> CapabilityRegistry:
                 max_spend_cents=2500,
                 allowed_arg_keys=frozenset({"account_id", "amount_cents", "reason"}),
                 revocation_path="Revoke scoped billing token principal:billing-credit-issuer.",
+                spend_arg_key="amount_cents",
             ),
         ]
     )

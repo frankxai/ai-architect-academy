@@ -452,32 +452,40 @@ export function bridgeWorkedRunToLearner(
 
     submittedArtifacts.push(artifactNode.id)
 
-    // Worked-run fixtures live in a repository (`repo-url`), never a live customer
-    // deployment (`deploy-url`). Passing `repo-url` here lets `advance.ts` honestly
-    // refuse `stage:deployment` and `stage:incident-simulation` with
-    // `evidence-kind-not-accepted` unless real `deploy-url` + witness records are added.
-    evidence.push({
-      id: `evidence:${run.id}-${binding.gateId}`,
-      kind: 'Evidence',
-      title: `Worked-run ${run.id} (${binding.gateId})`,
-      owner: learnerId,
-      version: '1.0.0',
-      visibility: artifactNode.publicSafe ? 'public' : 'cohort',
-      provenance: {
-        source: `${run.source}#${binding.gateId}`,
-        method: 'repo-scan',
-        measuredAt: run.generatedAt,
-      },
-      evaluationRule: {
-        kind: 'reference-only',
-        rationale: 'Evidence is verified by reachability and receipt pointers.',
-      },
-      evidenceKind: 'repo-url',
-      artifact: artifactNode.id,
-      locator: `${run.source}/${binding.gateId}`,
-      verifiedAt: run.generatedAt,
-      verifiedBy: verifierId,
-    })
+    // Only synthesize a `repo-url` evidence record when the target project stage
+    // accepts `repo-url`. Live-only stages (`stage:deployment` requiring `deploy-url`,
+    // `stage:incident-simulation` requiring `deploy-url` + `reviewer-attestation`)
+    // omit `repo-url` so absent live evidence fails closed (`no-evidence`), while
+    // valid live `additionalEvidence` is never poisoned with `evidence-kind-not-accepted`.
+    const stageRule = graph.nodes
+      .flatMap((n) => (n.kind === 'Project' ? n.stages : []))
+      .find((s) => s.artifact === artifactNode.id)?.evidenceRule
+    const acceptsRepoUrl = stageRule ? stageRule.accepts.includes('repo-url') : true
+
+    if (acceptsRepoUrl) {
+      evidence.push({
+        id: `evidence:${run.id}-${binding.gateId}`,
+        kind: 'Evidence',
+        title: `Worked-run ${run.id} (${binding.gateId})`,
+        owner: learnerId,
+        version: '1.0.0',
+        visibility: artifactNode.publicSafe ? 'public' : 'cohort',
+        provenance: {
+          source: `${run.source}#${binding.gateId}`,
+          method: 'repo-scan',
+          measuredAt: run.generatedAt,
+        },
+        evaluationRule: {
+          kind: 'reference-only',
+          rationale: 'Evidence is verified by reachability and receipt pointers.',
+        },
+        evidenceKind: 'repo-url',
+        artifact: artifactNode.id,
+        locator: `${run.source}/${binding.gateId}`,
+        verifiedAt: run.generatedAt,
+        verifiedBy: verifierId,
+      })
+    }
 
     const assertions = evalNode.assertions.map((a) => a.id)
     const pointerHealthy = run.receipt.failed === 0 && run.receipt.confirmed > 0

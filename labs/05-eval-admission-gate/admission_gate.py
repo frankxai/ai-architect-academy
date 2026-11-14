@@ -214,6 +214,25 @@ def validate_traces_schema(
     return by_case
 
 
+def _require_finite_unit_number(
+    value: Any, code: str, field_name: str, subject: str
+) -> float:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise SchemaValidationError(
+            code,
+            f"Field '{field_name}' must be a finite number in [0.0, 1.0]; got {type(value).__name__}.",
+            subject,
+        )
+    fval = float(value)
+    if not math.isfinite(fval) or fval < 0.0 or fval > 1.0:
+        raise SchemaValidationError(
+            code,
+            f"Field '{field_name}' must be a finite number in [0.0, 1.0]; got {value!r}.",
+            subject,
+        )
+    return fval
+
+
 def validate_fixture_lock(
     *,
     suite_doc: Mapping[str, Any],
@@ -230,13 +249,30 @@ def validate_fixture_lock(
         frozenset({"suite_id", "suite_sha256", "relocked_by", "locked_at"}),
         "fixture_lock",
     )
+    if (
+        not isinstance(lock["suite_id"], str)
+        or not isinstance(lock["suite_sha256"], str)
+        or not isinstance(lock["locked_at"], str)
+        or not lock["locked_at"].strip()
+    ):
+        raise SchemaValidationError(
+            "LOCK_INVALID_FIELD",
+            "Lock suite_id, suite_sha256, and locked_at must be non-empty strings.",
+            "fixture_lock",
+        )
     if lock["suite_id"] != suite_doc["suite_id"]:
         raise SchemaValidationError(
             "LOCK_SUITE_ID_MISMATCH",
             f"Lock suite_id '{lock['suite_id']}' != '{suite_doc['suite_id']}'.",
             "fixture_lock",
         )
-    relocked_by = str(lock["relocked_by"]).strip()
+    if not isinstance(lock["relocked_by"], str) or not isinstance(candidate_author, str):
+        raise SchemaValidationError(
+            "LOCK_MISSING_PRINCIPAL",
+            "Both relocked_by and candidate_author must be non-empty strings.",
+            "fixture_lock",
+        )
+    relocked_by = lock["relocked_by"].strip()
     author = candidate_author.strip()
     if not relocked_by or not author:
         raise SchemaValidationError(
@@ -254,7 +290,7 @@ def validate_fixture_lock(
     if lock["suite_sha256"] != actual_sha:
         raise SchemaValidationError(
             "LOCK_DIGEST_MISMATCH",
-            f"Golden suite SHA-256 {actual_sha[:12]}... diverges from lock {str(lock['suite_sha256'])[:12]}...",
+            f"Golden suite SHA-256 {actual_sha[:12]}... diverges from lock {lock['suite_sha256'][:12]}...",
             "fixture_lock",
         )
 
@@ -282,9 +318,30 @@ def evaluate_calibration_drift(
         frozenset({"calibration_id", "max_drift_tolerance", "weak_ceiling", "strong_floor", "anchors"}),
         "calibration",
     )
-    max_tol = float(cal["max_drift_tolerance"])
-    weak_ceiling = float(cal["weak_ceiling"])
-    strong_floor = float(cal["strong_floor"])
+    max_tol = _require_finite_unit_number(
+        cal["max_drift_tolerance"],
+        "CALIBRATION_INVALID_NUMBER",
+        "max_drift_tolerance",
+        "calibration",
+    )
+    weak_ceiling = _require_finite_unit_number(
+        cal["weak_ceiling"],
+        "CALIBRATION_INVALID_NUMBER",
+        "weak_ceiling",
+        "calibration",
+    )
+    strong_floor = _require_finite_unit_number(
+        cal["strong_floor"],
+        "CALIBRATION_INVALID_NUMBER",
+        "strong_floor",
+        "calibration",
+    )
+    if weak_ceiling >= strong_floor:
+        raise SchemaValidationError(
+            "CALIBRATION_INVALID_BOUNDS",
+            "weak_ceiling must be strictly less than strong_floor.",
+            "calibration",
+        )
     anchors = cal["anchors"]
     if not isinstance(anchors, list) or len(anchors) < 3:
         raise SchemaValidationError(
@@ -306,12 +363,26 @@ def evaluate_calibration_drift(
             frozenset({"anchor_id", "tier", "expected_score", "sample"}),
             f"anchors[{idx}]",
         )
-        aid = str(a["anchor_id"])
-        tier = str(a["tier"])
-        if tier not in VALID_ANCHOR_TIERS:
-            raise SchemaValidationError("CALIBRATION_INVALID_TIER", f"Unknown tier '{tier}'.", aid)
+        if not isinstance(a["anchor_id"], str) or not a["anchor_id"].strip():
+            raise SchemaValidationError(
+                "CALIBRATION_INVALID_ANCHOR_ID",
+                "anchor_id must be a non-empty string.",
+                f"anchors[{idx}]",
+            )
+        aid = a["anchor_id"].strip()
+        if not isinstance(a["tier"], str) or a["tier"] not in VALID_ANCHOR_TIERS:
+            raise SchemaValidationError(
+                "CALIBRATION_INVALID_TIER", f"Unknown tier '{a['tier']}'.", aid
+            )
+        tier = a["tier"]
+        expected = _require_finite_unit_number(
+            a["expected_score"],
+            "CALIBRATION_INVALID_NUMBER",
+            "expected_score",
+            aid,
+        )
         declared_tiers.add(tier)
-        validated_anchors.append((a, aid, tier, float(a["expected_score"])))
+        validated_anchors.append((a, aid, tier, expected))
 
     missing_tiers = sorted(VALID_ANCHOR_TIERS - declared_tiers)
     if missing_tiers:
@@ -432,9 +503,18 @@ class EvalAdmissionGate:
         candidate_author: str = "agent:builder",
         run_id: str = "run:05-eval-admission-gate",
         meta_audit_passed: bool | None = None,
+        meta_audit_failures: Sequence[str] = (),
     ) -> dict[str, Any]:
         refusal_codes: list[str] = []
         red_gate_failures: list[str] = []
+
+        if meta_audit_passed is False or len(meta_audit_failures) > 0:
+            refusal_codes.append("eval-run-invalid")
+            if meta_audit_failures:
+                for fid in meta_audit_failures:
+                    red_gate_failures.append(f"META_AUDIT:{fid}")
+            else:
+                red_gate_failures.append("META_AUDIT:FAILED")
 
         # 1. Schema + fixture lock verification (fail closed on any tamper or self-relock)
         try:
@@ -455,16 +535,25 @@ class EvalAdmissionGate:
             )
             refusal_codes.append(code)
             red_gate_failures.append(f"{exc.code}:{exc.subject}:{exc.detail}")
+            raw_pt = suite_doc.get("pass_threshold", 1.0) if isinstance(suite_doc, Mapping) else 1.0
+            safe_pt = (
+                float(raw_pt)
+                if not isinstance(raw_pt, bool)
+                and isinstance(raw_pt, (int, float))
+                and math.isfinite(float(raw_pt))
+                and 0.0 <= float(raw_pt) <= 1.0
+                else 1.0
+            )
             return self._seal_receipt(
                 run_id=run_id,
                 suite_id=str(suite_doc.get("suite_id", "unknown")) if isinstance(suite_doc, Mapping) else "unknown",
                 admitted=False,
-                pass_threshold=float(suite_doc.get("pass_threshold", 1.0)) if isinstance(suite_doc, Mapping) and isinstance(suite_doc.get("pass_threshold"), (int, float)) else 1.0,
+                pass_threshold=safe_pt,
                 aggregate_pass_rate=0.0,
                 case_results=[],
                 calibration=None,
                 red_gate_failures=red_gate_failures,
-                refusal_codes=refusal_codes,
+                refusal_codes=sorted(set(refusal_codes)),
                 meta_audit_passed=meta_audit_passed,
             )
 
@@ -495,7 +584,9 @@ class EvalAdmissionGate:
                 refusal_codes.append("eval-below-threshold")
 
         admitted = (
-            len(red_gate_failures) == 0
+            meta_audit_passed is not False
+            and len(meta_audit_failures) == 0
+            and len(red_gate_failures) == 0
             and len(refusal_codes) == 0
             and pass_rate >= threshold
         )

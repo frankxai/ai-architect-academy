@@ -129,15 +129,25 @@ def main(argv: list[str] | None = None) -> int:
             except Exception:
                 pass
             try:
-                receipt = fw.emit_receipt(
+                raw_receipt = fw.emit_receipt(
                     run_id="run:04-cli-verification",
                     red_gate_admitted=admitted,
                 )
             except TypeError:
                 raw_receipt = fw.emit_receipt(run_id="run:04-cli-verification")
-                body = {k: v for k, v in raw_receipt.items() if k != "receipt_sha256"}
-                body["red_gate_admitted"] = admitted
-                receipt = {**body, "receipt_sha256": sha256_hex(canonical_json(body))}
+
+            failed_scenarios = [r.scenario_id for r in results if not r.passed]
+            body = {k: v for k, v in raw_receipt.items() if k != "receipt_sha256"}
+            body["red_gate_admitted"] = admitted
+            body["admitted"] = admitted
+            body["verdict"] = "PASS" if admitted else "BLOCK"
+            if not admitted:
+                existing_refusals = list(body.get("refusal_codes") or [])
+                if "eval-below-threshold" not in existing_refusals:
+                    existing_refusals.append("eval-below-threshold")
+                body["refusal_codes"] = sorted(set(existing_refusals))
+                body["red_gate_failures"] = failed_scenarios
+            receipt = {**body, "receipt_sha256": sha256_hex(canonical_json(body))}
             out_path = Path(args.emit_receipt)
             out_path.parent.mkdir(parents=True, exist_ok=True)
             out_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")

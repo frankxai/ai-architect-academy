@@ -374,6 +374,68 @@ class EvalAdmissionGateTests(unittest.TestCase):
         self.assertIn("eval-run-invalid", receipt["refusal_codes"])
         self.assertTrue(any("CALIBRATION_MISSING_TIER" in f for f in receipt["red_gate_failures"]))
 
+    def test_14_rejects_nan_calibration_null_relocked_by_and_blocks_faulty_cli_receipt(self) -> None:
+        # 1. String "NaN" or float NaN in calibration expectation fails closed via SchemaValidationError
+        nan_cal = copy.deepcopy(self.calibration)
+        nan_cal["anchors"][1]["expected_score"] = "NaN"
+        with self.assertRaises(SchemaValidationError) as nan_ctx:
+            evaluate_calibration_drift(nan_cal, calibrated_reference_grader)
+        self.assertEqual(nan_ctx.exception.code, "CALIBRATION_INVALID_NUMBER")
+
+        nan_receipt = self.gate.evaluate_admission(
+            suite_doc=self.suite,
+            lock_doc=self.lock,
+            calibration_doc=nan_cal,
+            traces_doc=self.traces,
+        )
+        self.assertFalse(nan_receipt["admitted"])
+        self.assertEqual(nan_receipt["verdict"], "BLOCK")
+        self.assertIn("eval-run-invalid", nan_receipt["refusal_codes"])
+
+        # 2. null relocked_by must be rejected before str() coercion turns None -> "None"
+        null_lock = {
+            **copy.deepcopy(self.lock),
+            "relocked_by": None,
+        }
+        with self.assertRaises(SchemaValidationError) as lock_ctx:
+            validate_fixture_lock(
+                suite_doc=self.suite,
+                lock_doc=null_lock,
+                candidate_author="agent:builder",
+            )
+        self.assertEqual(lock_ctx.exception.code, "LOCK_MISSING_PRINCIPAL")
+
+        null_lock_receipt = self.gate.evaluate_admission(
+            suite_doc=self.suite,
+            lock_doc=null_lock,
+            calibration_doc=self.calibration,
+            traces_doc=self.traces,
+        )
+        self.assertFalse(null_lock_receipt["admitted"])
+        self.assertEqual(null_lock_receipt["verdict"], "BLOCK")
+        self.assertIn("eval-run-invalid", null_lock_receipt["refusal_codes"])
+
+        # 3. CLI --emit-receipt on faulty starter emits BLOCK/admitted=False with META_AUDIT failures
+        with tempfile.TemporaryDirectory(prefix="lab05-faulty-cli-") as out_dir:
+            faulty_path = Path(out_dir) / "faulty-admission.json"
+            exit_code = cli.main(
+                [
+                    "--verify-candidate",
+                    str(LAB_DIR / "exercises" / "faulty_starter.py"),
+                    "--emit-receipt",
+                    str(faulty_path),
+                ]
+            )
+            self.assertEqual(exit_code, 1)
+            faulty_doc = json.loads(faulty_path.read_text(encoding="utf-8"))
+            self.assertFalse(faulty_doc["meta_audit_passed"])
+            self.assertFalse(faulty_doc["admitted"])
+            self.assertEqual(faulty_doc["verdict"], "BLOCK")
+            self.assertIn("eval-run-invalid", faulty_doc["refusal_codes"])
+            self.assertTrue(any(f.startswith("META_AUDIT:") for f in faulty_doc["red_gate_failures"]))
+            body = {k: v for k, v in faulty_doc.items() if k != "receipt_sha256"}
+            self.assertEqual(faulty_doc["receipt_sha256"], sha256_hex(canonical_json(body)))
+
 
 if __name__ == "__main__":
     unittest.main()

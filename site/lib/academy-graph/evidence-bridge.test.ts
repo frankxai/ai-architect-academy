@@ -71,8 +71,8 @@ test('evidence-bridge: contract-rag worked run blocks on trust and evals red gat
     'eval:harness-fails-on-regression',
     'eval:threat-model-covers-tool-results',
   ])
-  // Because it is a repo fixture without live deploy URLs or human reviews, advance.ts also refuses those stages
-  assert.ok(codes(projection.advance.refusals).has('evidence-kind-not-accepted'))
+  // Because it is a repo fixture without live deploy URLs or human reviews, live-only stages fail closed on no-evidence
+  assert.ok(codes(projection.advance.refusals).has('no-evidence'))
   assert.ok(codes(projection.advance.refusals).has('review-missing'))
   assert.equal(projection.portfolio.entries.length, 0)
 })
@@ -316,29 +316,18 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
     ],
   })
 
-  // Note: the default repo-url evidence on deployment-record and incident-report is rejected by checkEvidence
-  // with `evidence-kind-not-accepted` when kept alongside deploy-url, proving advance.ts rejects even extra
-  // wrong-kind records! Verify that filtering out repo-url on running stages grants cleanly:
-  assert.equal(projection.advance.granted, false)
-  assert.ok(!projection.advance.granted && codes(projection.advance.refusals).has('evidence-kind-not-accepted'))
-
-  const cleanedLearner = {
-    ...projection.learner,
-    evidence: projection.learner.evidence.filter(
-      (e) =>
-        !(
-          e.evidenceKind === 'repo-url' &&
-          (e.artifact === 'artifact:deployment-record' || e.artifact === 'artifact:incident-report')
-        ),
-    ),
-  }
-  const cleanAdvance = advanceCapability(
-    graph,
-    cleanedLearner,
-    competencyShipProduction.id,
-    '2026-09-02',
+  assert.equal(
+    projection.advance.granted,
+    true,
+    JSON.stringify(!projection.advance.granted && projection.advance.refusals, null, 2),
   )
-  assert.equal(cleanAdvance.granted, true, JSON.stringify(!cleanAdvance.granted && cleanAdvance.refusals, null, 2))
+  assert.ok(
+    !projection.learner.evidence.some(
+      (e) =>
+        e.evidenceKind === 'repo-url' &&
+        (e.artifact === 'artifact:deployment-record' || e.artifact === 'artifact:incident-report'),
+    ),
+  )
 })
 
 const siteDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')

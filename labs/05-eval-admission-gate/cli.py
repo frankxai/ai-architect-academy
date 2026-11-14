@@ -213,6 +213,7 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     if args.emit_receipt or args.run_gate:
+        failed_meta_ids = [cid for cid, ok, _ in checks if not ok]
         gate = factory(grader_fn=calibrated_reference_grader)
         try:
             receipt = gate.evaluate_admission(
@@ -223,19 +224,49 @@ def main(argv: list[str] | None = None) -> int:
                 candidate_author="agent:builder",
                 run_id="run:05-cli-verification",
                 meta_audit_passed=all_ok,
+                meta_audit_failures=failed_meta_ids,
             )
         except TypeError:
-            raw_receipt = gate.evaluate_admission(
-                suite_doc=suite,
-                lock_doc=lock,
-                calibration_doc=cal,
-                traces_doc=healthy_reference_traces(),
-                candidate_author="agent:builder",
-                run_id="run:05-cli-verification",
-            )
+            try:
+                raw_receipt = gate.evaluate_admission(
+                    suite_doc=suite,
+                    lock_doc=lock,
+                    calibration_doc=cal,
+                    traces_doc=healthy_reference_traces(),
+                    candidate_author="agent:builder",
+                    run_id="run:05-cli-verification",
+                    meta_audit_passed=all_ok,
+                )
+            except TypeError:
+                raw_receipt = gate.evaluate_admission(
+                    suite_doc=suite,
+                    lock_doc=lock,
+                    calibration_doc=cal,
+                    traces_doc=healthy_reference_traces(),
+                    candidate_author="agent:builder",
+                    run_id="run:05-cli-verification",
+                )
             body = {k: v for k, v in raw_receipt.items() if k != "receipt_sha256"}
             body["meta_audit_passed"] = all_ok
             receipt = {**body, "receipt_sha256": sha256_hex(canonical_json(body))}
+
+        if not all_ok:
+            body = {k: v for k, v in receipt.items() if k != "receipt_sha256"}
+            existing_refusals = list(body.get("refusal_codes") or [])
+            if "eval-run-invalid" not in existing_refusals:
+                existing_refusals.append("eval-run-invalid")
+            existing_failures = list(body.get("red_gate_failures") or [])
+            for cid in failed_meta_ids:
+                tag = f"META_AUDIT:{cid}"
+                if tag not in existing_failures:
+                    existing_failures.append(tag)
+            body["meta_audit_passed"] = False
+            body["admitted"] = False
+            body["verdict"] = "BLOCK"
+            body["refusal_codes"] = sorted(set(existing_refusals))
+            body["red_gate_failures"] = existing_failures
+            receipt = {**body, "receipt_sha256": sha256_hex(canonical_json(body))}
+
         if args.emit_receipt:
             out_path = Path(args.emit_receipt)
             out_path.parent.mkdir(parents=True, exist_ok=True)
