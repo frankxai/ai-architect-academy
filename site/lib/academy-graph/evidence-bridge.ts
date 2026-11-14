@@ -91,7 +91,9 @@ export interface GateStageBinding {
   readonly artifactId: ArtifactId
   readonly evalId: EvalId
   readonly relatedDecisions: readonly WorkedRunDecisionId[]
-  readonly synthesizesEvalRun?: boolean
+  readonly synthesizesEvalRun?: boolean | 'on-fail-only'
+  /** Subset of target eval assertion IDs established when a worked-run gate passes. */
+  readonly verifiedAssertions?: readonly string[]
 }
 
 /**
@@ -154,6 +156,9 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:deployment-record',
     evalId: 'eval:deployment-reachable',
     relatedDecisions: ['run'],
+    // A `07-runbook.md` PASS verifies a rollback command (`rollback-exists`),
+    // never an unauthenticated live HTTP GET 2xx response (`responds-200`).
+    verifiedAssertions: ['rollback-exists'],
   },
   {
     gateId: 'discovery',
@@ -172,6 +177,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:portfolio-proof',
     evalId: 'eval:portfolio-links-resolve',
     relatedDecisions: [],
+    // `receipts/*-verify.md` checks internal pointers rather than logged-out HTTP 2xx probes or rendered redaction scans.
+    synthesizesEvalRun: 'on-fail-only',
   },
 ] as const
 
@@ -619,16 +626,52 @@ export function bridgeWorkedRunToLearner(
 
     if (binding.synthesizesEvalRun !== false) {
       const assertions = evalNode.assertions.map((a) => a.id)
+      const assertionSet = new Set(assertions)
+      if (binding.verifiedAssertions) {
+        for (const verifiedId of binding.verifiedAssertions) {
+          if (!assertionSet.has(verifiedId)) {
+            throw new Error(
+              `Invalid gate binding for '${binding.gateId}': unknown assertion '${verifiedId}' on ${evalNode.id}.`,
+            )
+          }
+        }
+      }
+      const verifiedSet = binding.verifiedAssertions
+        ? new Set(binding.verifiedAssertions)
+        : assertionSet
       const pointerHealthy = run.receipt.failed === 0 && run.receipt.confirmed > 0
       const evalPassed = gateStatus === 'PASS' && pointerHealthy
 
-      evalRuns.push({
-        evalId: evalNode.id,
-        artifact: artifactNode.id,
-        ranAt: run.generatedAt,
-        passedAssertions: evalPassed ? assertions : [],
-        failedAssertions: evalPassed ? [] : assertions,
-      })
+      if (binding.synthesizesEvalRun === 'on-fail-only') {
+        if (!evalPassed) {
+          evalRuns.push({
+            evalId: evalNode.id,
+            artifact: artifactNode.id,
+            ranAt: run.generatedAt,
+            passedAssertions: [],
+            failedAssertions: assertions,
+          })
+        }
+      } else {
+        const runInstant = Date.parse(run.generatedAt)
+        const hasExplicitRunAtOrAfter = (options.additionalEvalRuns ?? []).some(
+          (r) =>
+            r.evalId === evalNode.id &&
+            r.artifact === artifactNode.id &&
+            Number.isFinite(Date.parse(r.ranAt)) &&
+            Number.isFinite(runInstant) &&
+            Date.parse(r.ranAt) >= runInstant,
+        )
+        if (!(evalPassed && verifiedSet.size < assertions.length && hasExplicitRunAtOrAfter)) {
+          evalRuns.push({
+            evalId: evalNode.id,
+            artifact: artifactNode.id,
+            ranAt: run.generatedAt,
+            passedAssertions: evalPassed ? assertions.filter((id) => verifiedSet.has(id)) : [],
+            failedAssertions: evalPassed ? assertions.filter((id) => !verifiedSet.has(id)) : assertions,
+          })
+        }
+      }
     }
   }
 

@@ -71,6 +71,7 @@ test('evidence-bridge: contract-rag worked run blocks on trust and evals red gat
   assert.deepEqual(failedEvalSubjects, [
     'eval:harness-fails-on-regression',
     'eval:threat-model-covers-tool-results',
+    'eval:deployment-reachable',
   ])
   // Because it is a repo fixture without live deploy URLs or human reviews, live-only stages fail closed on no-evidence
   assert.ok(codes(projection.advance.refusals).has('no-evidence'))
@@ -86,8 +87,11 @@ test('evidence-bridge: support-triage and personal-ai-coe isolate their distinct
   assert.ok(!triage.advance.granted)
   assert.deepEqual(
     triage.advance.refusals.filter((r) => r.code === 'eval-below-threshold').map((r) => r.subject),
-    ['eval:adr-has-rejected-options'],
+    ['eval:adr-has-rejected-options', 'eval:deployment-reachable'],
   )
+  const triageDeployRun = triage.learner.evalRuns.find((r) => r.evalId === 'eval:deployment-reachable')
+  assert.deepEqual(triageDeployRun?.passedAssertions, ['rollback-exists'])
+  assert.deepEqual(triageDeployRun?.failedAssertions, ['responds-200'])
 
   const coe = bridgeWorkedRunToLearner(runById('personal-ai-coe'), { asOf: '2026-09-02' })
   assert.equal(coe.advance.granted, false)
@@ -98,6 +102,9 @@ test('evidence-bridge: support-triage and personal-ai-coe isolate their distinct
     coe.advance.refusals.filter((r) => r.code === 'eval-below-threshold').map((r) => r.subject),
     ['eval:deployment-reachable'],
   )
+  const coeDeployRun = coe.learner.evalRuns.find((r) => r.evalId === 'eval:deployment-reachable')
+  assert.deepEqual(coeDeployRun?.passedAssertions, [])
+  assert.deepEqual(coeDeployRun?.failedAssertions, ['responds-200', 'rollback-exists'])
 })
 
 test('evidence-bridge: Lab 04 firewall receipt only attests tool-results-untrusted and requires written threat-model evidence for accepted-risks-named', () => {
@@ -388,8 +395,49 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
     ],
   }
 
-  // A pre-build discovery PASS never unlocks `stage:incident-simulation` without an explicit incident eval run.
-  const withoutIncidentEval = bridgeWorkedRunToLearner(remediatedRun, baseBridgeOptions)
+  const deployEvalRun = {
+    evalId: 'eval:deployment-reachable' as const,
+    artifact: 'artifact:deployment-record' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['responds-200', 'rollback-exists'],
+    failedAssertions: [],
+  }
+  const incidentEvalRun = {
+    evalId: 'eval:incident-detected-by-telemetry' as const,
+    artifact: 'artifact:incident-report' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['injected-mode-named', 'detection-source-is-telemetry', 'guard-added'],
+    failedAssertions: [],
+  }
+  const portfolioEvalRun = {
+    evalId: 'eval:portfolio-links-resolve' as const,
+    artifact: 'artifact:portfolio-proof' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['links-resolve', 'no-redacted-leakage'],
+    failedAssertions: [],
+  }
+
+  // Negative 1: Omitting deployment HTTP 2xx probe fails closed on `responds-200`.
+  const withoutDeployProbe = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: [incidentEvalRun, portfolioEvalRun],
+  })
+  assert.equal(withoutDeployProbe.advance.granted, false)
+  assert.ok(
+    !withoutDeployProbe.advance.granted &&
+      withoutDeployProbe.advance.refusals.some(
+        (r) =>
+          r.code === 'eval-below-threshold' &&
+          r.subject === 'eval:deployment-reachable' &&
+          r.detail.includes('responds-200'),
+      ),
+  )
+
+  // Negative 2: Pre-build discovery PASS never unlocks `stage:incident-simulation` without an explicit incident eval run.
+  const withoutIncidentEval = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: [deployEvalRun, portfolioEvalRun],
+  })
   assert.equal(withoutIncidentEval.advance.granted, false)
   assert.ok(
     !withoutIncidentEval.advance.granted &&
@@ -398,17 +446,22 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
       ),
   )
 
+  // Negative 3: Internal receipt verification never satisfies public portfolio HTTP link probes.
+  const withoutPortfolioEval = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: [deployEvalRun, incidentEvalRun],
+  })
+  assert.equal(withoutPortfolioEval.advance.granted, false)
+  assert.ok(
+    !withoutPortfolioEval.advance.granted &&
+      withoutPortfolioEval.advance.refusals.some(
+        (r) => r.code === 'eval-never-run' && r.subject === 'eval:portfolio-links-resolve',
+      ),
+  )
+
   const projection = bridgeWorkedRunToLearner(remediatedRun, {
     ...baseBridgeOptions,
-    additionalEvalRuns: [
-      {
-        evalId: 'eval:incident-detected-by-telemetry',
-        artifact: 'artifact:incident-report',
-        ranAt: '2026-08-25',
-        passedAssertions: ['injected-mode-named', 'detection-source-is-telemetry', 'guard-added'],
-        failedAssertions: [],
-      },
-    ],
+    additionalEvalRuns: [deployEvalRun, incidentEvalRun, portfolioEvalRun],
   })
 
   assert.equal(
