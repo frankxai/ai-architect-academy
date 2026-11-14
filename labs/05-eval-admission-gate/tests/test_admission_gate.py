@@ -511,6 +511,78 @@ class EvalAdmissionGateTests(unittest.TestCase):
         avg_checks = dict((cid, ok) for cid, ok, _ in cli.run_meta_audit(lambda **kw: AveragingOnlyGate(**kw)))
         self.assertFalse(avg_checks["M2_BLOCKS_NON_COMPENSABLE_INJECTION"])
 
+    def test_17_unhashable_category_and_non_string_schema_fields_seal_block_receipt(self) -> None:
+        list_cat_suite = copy.deepcopy(self.suite)
+        list_cat_suite["cases"][0]["category"] = ["golden"]
+        with self.assertRaises(SchemaValidationError) as list_ctx:
+            validate_suite_schema(list_cat_suite)
+        self.assertEqual(list_ctx.exception.code, "SCHEMA_INVALID_CATEGORY")
+
+        for bad_category in (["golden"], {"name": "golden"}):
+            bad_suite = copy.deepcopy(self.suite)
+            bad_suite["cases"][0]["category"] = bad_category
+            receipt = self.gate.evaluate_admission(
+                suite_doc=bad_suite,
+                lock_doc=self.lock,
+                calibration_doc=self.calibration,
+                traces_doc=self.traces,
+                run_id="run:unhashable-category",
+            )
+            self.assertFalse(receipt["admitted"])
+            self.assertEqual(receipt["verdict"], "BLOCK")
+            self.assertIn("eval-run-invalid", receipt["refusal_codes"])
+            self.assertTrue(any("SCHEMA_INVALID_CATEGORY" in f for f in receipt["red_gate_failures"]))
+            body = {k: v for k, v in receipt.items() if k != "receipt_sha256"}
+            self.assertEqual(receipt["receipt_sha256"], sha256_hex(canonical_json(body)))
+
+        bad_traces = copy.deepcopy(self.traces)
+        bad_traces[0]["tool_log"] = [{"tool": "search_contracts", "status": ["ok"]}]
+        trace_receipt = self.gate.evaluate_admission(
+            suite_doc=self.suite,
+            lock_doc=self.lock,
+            calibration_doc=self.calibration,
+            traces_doc=bad_traces,
+            run_id="run:unhashable-tool-status",
+        )
+        self.assertFalse(trace_receipt["admitted"])
+        self.assertEqual(trace_receipt["verdict"], "BLOCK")
+        self.assertIn("eval-run-invalid", trace_receipt["refusal_codes"])
+        self.assertTrue(any("TRACE_INVALID_TOOL_STATUS" in f for f in trace_receipt["red_gate_failures"]))
+        trace_body = {k: v for k, v in trace_receipt.items() if k != "receipt_sha256"}
+        self.assertEqual(trace_receipt["receipt_sha256"], sha256_hex(canonical_json(trace_body)))
+
+        bad_cal = copy.deepcopy(self.calibration)
+        bad_cal["anchors"][0]["sample"] = ["not-a-dict"]
+        cal_receipt = self.gate.evaluate_admission(
+            suite_doc=self.suite,
+            lock_doc=self.lock,
+            calibration_doc=bad_cal,
+            traces_doc=self.traces,
+            run_id="run:non-mapping-sample",
+        )
+        self.assertFalse(cal_receipt["admitted"])
+        self.assertEqual(cal_receipt["verdict"], "BLOCK")
+        self.assertIn("eval-run-invalid", cal_receipt["refusal_codes"])
+        self.assertTrue(any("CALIBRATION_INVALID_SAMPLE" in f for f in cal_receipt["red_gate_failures"]))
+        cal_body = {k: v for k, v in cal_receipt.items() if k != "receipt_sha256"}
+        self.assertEqual(cal_receipt["receipt_sha256"], sha256_hex(canonical_json(cal_body)))
+
+        null_sid_suite = {**copy.deepcopy(self.suite), "suite_id": None}
+        sid_receipt = self.gate.evaluate_admission(
+            suite_doc=null_sid_suite,
+            lock_doc=self.lock,
+            calibration_doc=self.calibration,
+            traces_doc=self.traces,
+            run_id="run:null-suite-id",
+        )
+        self.assertFalse(sid_receipt["admitted"])
+        self.assertEqual(sid_receipt["verdict"], "BLOCK")
+        self.assertEqual(sid_receipt["suite_id"], "unknown")
+        self.assertIn("eval-run-invalid", sid_receipt["refusal_codes"])
+        self.assertTrue(any("SCHEMA_INVALID_SUITE_ID" in f for f in sid_receipt["red_gate_failures"]))
+        sid_body = {k: v for k, v in sid_receipt.items() if k != "receipt_sha256"}
+        self.assertEqual(sid_receipt["receipt_sha256"], sha256_hex(canonical_json(sid_body)))
+
 
 if __name__ == "__main__":
     unittest.main()

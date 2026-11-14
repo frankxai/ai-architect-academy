@@ -88,6 +88,8 @@ def _require_exact_keys(
 ) -> Mapping[str, Any]:
     if not isinstance(obj, Mapping):
         raise SchemaValidationError("SCHEMA_NOT_OBJECT", "Expected JSON object.", subject)
+    if any(not isinstance(k, str) for k in obj.keys()):
+        raise SchemaValidationError("SCHEMA_INVALID_KEY", "Object keys must be strings.", subject)
     actual = set(obj.keys())
     missing = sorted(expected - actual)
     extra = sorted(actual - expected)
@@ -146,7 +148,7 @@ def validate_suite_schema(suite_doc: Any) -> Mapping[str, Any]:
             raise SchemaValidationError("SCHEMA_DUPLICATE_CASE_ID", f"Duplicate case_id '{cid}'.", cid)
         seen_ids.add(cid)
 
-        if c["category"] not in VALID_CATEGORIES:
+        if not isinstance(c["category"], str) or c["category"] not in VALID_CATEGORIES:
             raise SchemaValidationError(
                 "SCHEMA_INVALID_CATEGORY",
                 f"category '{c['category']}' must be one of {sorted(VALID_CATEGORIES)}.",
@@ -195,7 +197,7 @@ def validate_traces_schema(
             e = _require_exact_keys(entry, TOOL_LOG_KEYS, f"{cid}.tool_log[{tidx}]")
             if not isinstance(e["tool"], str) or not e["tool"].strip():
                 raise SchemaValidationError("TRACE_INVALID_TOOL_NAME", "tool name must be non-empty.", cid)
-            if e["status"] not in ("ok", "error", "blocked"):
+            if not isinstance(e["status"], str) or e["status"] not in ("ok", "error", "blocked"):
                 raise SchemaValidationError(
                     "TRACE_INVALID_TOOL_STATUS",
                     "tool status must be 'ok', 'error', or 'blocked'.",
@@ -251,7 +253,9 @@ def validate_fixture_lock(
     )
     if (
         not isinstance(lock["suite_id"], str)
+        or not lock["suite_id"].strip()
         or not isinstance(lock["suite_sha256"], str)
+        or not lock["suite_sha256"].strip()
         or not isinstance(lock["locked_at"], str)
         or not lock["locked_at"].strip()
     ):
@@ -318,6 +322,12 @@ def evaluate_calibration_drift(
         frozenset({"calibration_id", "max_drift_tolerance", "weak_ceiling", "strong_floor", "anchors"}),
         "calibration",
     )
+    if not isinstance(cal["calibration_id"], str) or not cal["calibration_id"].strip():
+        raise SchemaValidationError(
+            "CALIBRATION_INVALID_ID",
+            "calibration_id must be a non-empty string.",
+            "calibration",
+        )
     max_tol = _require_finite_unit_number(
         cal["max_drift_tolerance"],
         "CALIBRATION_INVALID_NUMBER",
@@ -381,6 +391,12 @@ def evaluate_calibration_drift(
             "expected_score",
             aid,
         )
+        if not isinstance(a["sample"], Mapping):
+            raise SchemaValidationError(
+                "CALIBRATION_INVALID_SAMPLE",
+                "anchor sample must be a JSON object.",
+                aid,
+            )
         declared_tiers.add(tier)
         validated_anchors.append((a, aid, tier, expected))
 
@@ -549,9 +565,11 @@ class EvalAdmissionGate:
                 and 0.0 <= float(raw_pt) <= 1.0
                 else 1.0
             )
+            raw_sid = suite_doc.get("suite_id") if isinstance(suite_doc, Mapping) else None
+            safe_sid = raw_sid.strip() if isinstance(raw_sid, str) and raw_sid.strip() else "unknown"
             return self._seal_receipt(
                 run_id=run_id,
-                suite_id=str(suite_doc.get("suite_id", "unknown")) if isinstance(suite_doc, Mapping) else "unknown",
+                suite_id=safe_sid,
                 admitted=False,
                 pass_threshold=safe_pt,
                 aggregate_pass_rate=0.0,

@@ -73,10 +73,23 @@ test('evidence-bridge: contract-rag worked run blocks on trust and evals red gat
     'eval:threat-model-covers-tool-results',
     'eval:deployment-reachable',
   ])
-  // Because it is a repo fixture without live deploy URLs or human reviews, live-only stages fail closed on no-evidence
-  assert.ok(codes(projection.advance.refusals).has('no-evidence'))
+  // Worked-run fixtures withhold non-stage artifacts (flows, runbooks, discovery, receipts),
+  // live deploy locators, full stage evals, and independent human reviews.
+  assert.ok(codes(projection.advance.refusals).has('artifact-not-submitted'))
+  assert.ok(codes(projection.advance.refusals).has('eval-never-run'))
   assert.ok(codes(projection.advance.refusals).has('review-missing'))
   assert.equal(projection.portfolio.entries.length, 0)
+
+  const withSubmittedDeploy = bridgeWorkedRunToLearner(runById('contract-rag'), {
+    asOf: '2026-09-02',
+    additionalSubmittedArtifacts: ['artifact:deployment-record'],
+  })
+  assert.ok(
+    !withSubmittedDeploy.advance.granted &&
+      withSubmittedDeploy.advance.refusals.some(
+        (r) => r.code === 'no-evidence' && r.subject === 'artifact:deployment-record',
+      ),
+  )
 })
 
 test('evidence-bridge: support-triage and personal-ai-coe isolate their distinct red gates', () => {
@@ -87,7 +100,38 @@ test('evidence-bridge: support-triage and personal-ai-coe isolate their distinct
   assert.ok(!triage.advance.granted)
   assert.deepEqual(
     triage.advance.refusals.filter((r) => r.code === 'eval-below-threshold').map((r) => r.subject),
-    ['eval:adr-has-rejected-options', 'eval:deployment-reachable'],
+    ['eval:adr-has-rejected-options', 'eval:threat-model-covers-tool-results', 'eval:deployment-reachable'],
+  )
+  // `flow` PASS checks failure branches in `02-user-flows.md`, never submitting or proving `artifact:tool-authority-matrix`.
+  assert.ok(!triage.learner.submittedArtifacts.includes('artifact:tool-authority-matrix'))
+  assert.equal(
+    triage.learner.evalRuns.some((r) => r.evalId === 'eval:authority-least-privilege'),
+    false,
+  )
+  assert.ok(
+    triage.advance.refusals.some(
+      (r) => r.code === 'eval-never-run' && r.subject === 'eval:authority-least-privilege',
+    ),
+  )
+  const baseComplete = completeLearner()
+  const splicedWithTriageAuthority = advanceCapability(
+    graph,
+    {
+      ...baseComplete,
+      evalRuns: [
+        ...baseComplete.evalRuns.filter((r) => r.evalId !== 'eval:authority-least-privilege'),
+        ...triage.learner.evalRuns.filter((r) => r.evalId === 'eval:authority-least-privilege'),
+      ],
+    },
+    competencyShipProduction.id,
+    '2026-09-02',
+  )
+  assert.equal(splicedWithTriageAuthority.granted, false)
+  assert.ok(
+    !splicedWithTriageAuthority.granted &&
+      splicedWithTriageAuthority.refusals.some(
+        (r) => r.code === 'eval-never-run' && r.subject === 'eval:authority-least-privilege',
+      ),
   )
   const triageDeployRun = triage.learner.evalRuns.find((r) => r.evalId === 'eval:deployment-reachable')
   assert.deepEqual(triageDeployRun?.passedAssertions, ['rollback-exists'])
@@ -100,7 +144,7 @@ test('evidence-bridge: support-triage and personal-ai-coe isolate their distinct
   assert.ok(!coe.advance.granted)
   assert.deepEqual(
     coe.advance.refusals.filter((r) => r.code === 'eval-below-threshold').map((r) => r.subject),
-    ['eval:deployment-reachable'],
+    ['eval:threat-model-covers-tool-results', 'eval:deployment-reachable'],
   )
   const coeDeployRun = coe.learner.evalRuns.find((r) => r.evalId === 'eval:deployment-reachable')
   assert.deepEqual(coeDeployRun?.passedAssertions, [])
@@ -332,6 +376,36 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
     ],
     additionalEvidence: [
       {
+        id: 'evidence:coe-tool-authority',
+        kind: 'Evidence',
+        title: 'Tool and authority matrix document',
+        owner: FIXTURE_LEARNER_ID,
+        version: '1.0.0',
+        visibility: 'public',
+        provenance: { source: 'repo', method: 'learner-submitted', measuredAt: '2026-08-25' },
+        evaluationRule: { kind: 'reference-only', rationale: 'Verified by authority matrix assertions.' },
+        evidenceKind: 'repo-url',
+        artifact: 'artifact:tool-authority-matrix',
+        locator: 'https://fixture.invalid/repo/tool-authority-matrix.md',
+        verifiedAt: '2026-08-25',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+      },
+      {
+        id: 'evidence:coe-portfolio-proof',
+        kind: 'Evidence',
+        title: 'Public portfolio proof page',
+        owner: FIXTURE_LEARNER_ID,
+        version: '1.0.0',
+        visibility: 'public',
+        provenance: { source: 'repo', method: 'learner-submitted', measuredAt: '2026-08-25' },
+        evaluationRule: { kind: 'reference-only', rationale: 'Verified by logged-out link resolution and redaction checks.' },
+        evidenceKind: 'repo-url',
+        artifact: 'artifact:portfolio-proof',
+        locator: 'https://fixture.invalid/repo/portfolio-proof.md',
+        verifiedAt: '2026-08-25',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+      },
+      {
         id: 'evidence:coe-live-deploy',
         kind: 'Evidence',
         title: 'Live deployment endpoint',
@@ -395,6 +469,41 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
     ],
   }
 
+  const systemBriefEvalRun = {
+    evalId: 'eval:system-brief-complete' as const,
+    artifact: 'artifact:system-brief' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['has-out-of-scope', 'has-kill-criterion'],
+    failedAssertions: [],
+  }
+  const adrEvalRun = {
+    evalId: 'eval:adr-has-rejected-options' as const,
+    artifact: 'artifact:architecture-decision' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['two-options-minimum', 'reversal-condition'],
+    failedAssertions: [],
+  }
+  const authorityEvalRun = {
+    evalId: 'eval:authority-least-privilege' as const,
+    artifact: 'artifact:tool-authority-matrix' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['side-effecting-flagged', 'no-shared-principal-for-writes', 'revocation-documented'],
+    failedAssertions: [],
+  }
+  const threatModelEvalRun = {
+    evalId: 'eval:threat-model-covers-tool-results' as const,
+    artifact: 'artifact:threat-model' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['tool-results-untrusted', 'accepted-risks-named'],
+    failedAssertions: [],
+  }
+  const costModelEvalRun = {
+    evalId: 'eval:cost-model-has-ceiling' as const,
+    artifact: 'artifact:cost-model' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['unit-economics', 'runaway-guard'],
+    failedAssertions: [],
+  }
   const deployEvalRun = {
     evalId: 'eval:deployment-reachable' as const,
     artifact: 'artifact:deployment-record' as const,
@@ -417,10 +526,50 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
     failedAssertions: [],
   }
 
+  const allStageEvalRuns = [
+    systemBriefEvalRun,
+    adrEvalRun,
+    authorityEvalRun,
+    threatModelEvalRun,
+    costModelEvalRun,
+    deployEvalRun,
+    incidentEvalRun,
+    portfolioEvalRun,
+  ]
+
+  // Negative 0a: Omitting `eval:authority-least-privilege` fails closed even when `flow` PASSes.
+  const withoutAuthorityEval = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: allStageEvalRuns.filter((r) => r.evalId !== 'eval:authority-least-privilege'),
+  })
+  assert.equal(withoutAuthorityEval.advance.granted, false)
+  assert.ok(
+    !withoutAuthorityEval.advance.granted &&
+      withoutAuthorityEval.advance.refusals.some(
+        (r) => r.code === 'eval-never-run' && r.subject === 'eval:authority-least-privilege',
+      ),
+  )
+
+  // Negative 0b: Omitting `evidence:coe-tool-authority` leaves `artifact:tool-authority-matrix` unsubmitted.
+  const withoutAuthorityArtifact = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvidence: (baseBridgeOptions.additionalEvidence ?? []).filter(
+      (e) => e.id !== 'evidence:coe-tool-authority',
+    ),
+    additionalEvalRuns: allStageEvalRuns,
+  })
+  assert.equal(withoutAuthorityArtifact.advance.granted, false)
+  assert.ok(
+    !withoutAuthorityArtifact.advance.granted &&
+      withoutAuthorityArtifact.advance.refusals.some(
+        (r) => r.code === 'artifact-not-submitted' && r.subject === 'artifact:tool-authority-matrix',
+      ),
+  )
+
   // Negative 1: Omitting deployment HTTP 2xx probe fails closed on `responds-200`.
   const withoutDeployProbe = bridgeWorkedRunToLearner(remediatedRun, {
     ...baseBridgeOptions,
-    additionalEvalRuns: [incidentEvalRun, portfolioEvalRun],
+    additionalEvalRuns: allStageEvalRuns.filter((r) => r.evalId !== 'eval:deployment-reachable'),
   })
   assert.equal(withoutDeployProbe.advance.granted, false)
   assert.ok(
@@ -436,7 +585,7 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
   // Negative 2: Pre-build discovery PASS never unlocks `stage:incident-simulation` without an explicit incident eval run.
   const withoutIncidentEval = bridgeWorkedRunToLearner(remediatedRun, {
     ...baseBridgeOptions,
-    additionalEvalRuns: [deployEvalRun, portfolioEvalRun],
+    additionalEvalRuns: allStageEvalRuns.filter((r) => r.evalId !== 'eval:incident-detected-by-telemetry'),
   })
   assert.equal(withoutIncidentEval.advance.granted, false)
   assert.ok(
@@ -449,7 +598,7 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
   // Negative 3: Internal receipt verification never satisfies public portfolio HTTP link probes.
   const withoutPortfolioEval = bridgeWorkedRunToLearner(remediatedRun, {
     ...baseBridgeOptions,
-    additionalEvalRuns: [deployEvalRun, incidentEvalRun],
+    additionalEvalRuns: allStageEvalRuns.filter((r) => r.evalId !== 'eval:portfolio-links-resolve'),
   })
   assert.equal(withoutPortfolioEval.advance.granted, false)
   assert.ok(
@@ -461,7 +610,7 @@ test('evidence-bridge: a remediated worked run with live deploy evidence, lab re
 
   const projection = bridgeWorkedRunToLearner(remediatedRun, {
     ...baseBridgeOptions,
-    additionalEvalRuns: [deployEvalRun, incidentEvalRun, portfolioEvalRun],
+    additionalEvalRuns: allStageEvalRuns,
   })
 
   assert.equal(

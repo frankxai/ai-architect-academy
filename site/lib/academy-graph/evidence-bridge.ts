@@ -91,6 +91,8 @@ export interface GateStageBinding {
   readonly artifactId: ArtifactId
   readonly evalId: EvalId
   readonly relatedDecisions: readonly WorkedRunDecisionId[]
+  /** False when the worked-run gate checks another file (e.g. flows, runbook, receipts) rather than submitting the stage artifact. */
+  readonly submitsArtifact?: boolean
   readonly synthesizesEvalRun?: boolean | 'on-fail-only'
   /** Subset of target eval assertion IDs established when a worked-run gate passes. */
   readonly verifiedAssertions?: readonly string[]
@@ -108,6 +110,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:system-brief',
     evalId: 'eval:system-brief-complete',
     relatedDecisions: [],
+    // `00-frame.md § outcome` verifies a single-sentence outcome, never `has-out-of-scope`.
+    synthesizesEvalRun: 'on-fail-only',
   },
   {
     gateId: 'decisions',
@@ -116,6 +120,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:architecture-decision',
     evalId: 'eval:adr-has-rejected-options',
     relatedDecisions: ['model', 'loop', 'run'],
+    // Gate checks plane ownership / ADR presence, never `two-options-minimum` or `reversal-condition`.
+    synthesizesEvalRun: 'on-fail-only',
   },
   {
     gateId: 'flow',
@@ -124,6 +130,9 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:tool-authority-matrix',
     evalId: 'eval:authority-least-privilege',
     relatedDecisions: ['loop', 'trust'],
+    // `02-user-flows.md` verifies three failure branches, never `artifact:tool-authority-matrix` principals or revocation paths.
+    submitsArtifact: false,
+    synthesizesEvalRun: 'on-fail-only',
   },
   {
     gateId: 'evals',
@@ -132,6 +141,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:eval-harness',
     evalId: 'eval:harness-fails-on-regression',
     relatedDecisions: ['trust'],
+    // `06-evals/cases.jsonl` case counts never prove `nonzero-exit` or `fixtures-versioned-apart`; Lab 05 proves both.
+    synthesizesEvalRun: 'on-fail-only',
   },
   {
     gateId: 'trust',
@@ -140,6 +151,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:threat-model',
     evalId: 'eval:threat-model-covers-tool-results',
     relatedDecisions: ['trust'],
+    // `05-trust-boundary.md § trace` verifies untrusted T3 quarantine, leaving `accepted-risks-named` unfulfilled until threat-model review.
+    verifiedAssertions: ['tool-results-untrusted'],
   },
   {
     gateId: 'economics',
@@ -148,6 +161,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:cost-model',
     evalId: 'eval:cost-model-has-ceiling',
     relatedDecisions: ['model', 'run'],
+    // `prices.json` row provenance never proves per-unit economics or an enforcing runaway guard.
+    synthesizesEvalRun: 'on-fail-only',
   },
   {
     gateId: 'operate',
@@ -156,8 +171,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:deployment-record',
     evalId: 'eval:deployment-reachable',
     relatedDecisions: ['run'],
-    // A `07-runbook.md` PASS verifies a rollback command (`rollback-exists`),
-    // never an unauthenticated live HTTP GET 2xx response (`responds-200`).
+    // `07-runbook.md` checks rollback commands (`rollback-exists`), never submitting a live deployment record or `responds-200`.
+    submitsArtifact: false,
     verifiedAssertions: ['rollback-exists'],
   },
   {
@@ -167,7 +182,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:incident-report',
     evalId: 'eval:incident-detected-by-telemetry',
     relatedDecisions: ['loop', 'trust'],
-    // A pre-build `01-discovery.md` PASS never establishes post-deploy incident telemetry or guard commits.
+    // A pre-build `01-discovery.md` PASS never submits an incident report or proves post-deploy incident telemetry.
+    submitsArtifact: false,
     synthesizesEvalRun: false,
   },
   {
@@ -177,7 +193,8 @@ export const WORKED_RUN_GATE_BINDINGS: readonly GateStageBinding[] = [
     artifactId: 'artifact:portfolio-proof',
     evalId: 'eval:portfolio-links-resolve',
     relatedDecisions: [],
-    // `receipts/*-verify.md` checks internal pointers rather than logged-out HTTP 2xx probes or rendered redaction scans.
+    // `receipts/*-verify.md` checks internal pointers rather than public portfolio proof submission or logged-out HTTP 2xx probes.
+    submitsArtifact: false,
     synthesizesEvalRun: 'on-fail-only',
   },
 ] as const
@@ -298,6 +315,7 @@ export interface WorkedRunBridgeOptions {
   readonly verifierId?: string
   readonly asOf?: string
   readonly competencyId?: CompetencyId
+  readonly additionalSubmittedArtifacts?: readonly ArtifactId[]
   readonly additionalEvidence?: readonly Evidence[]
   readonly additionalEvalRuns?: readonly EvalRun[]
   readonly reviews?: readonly ReviewVerdict[]
@@ -561,7 +579,7 @@ export function bridgeWorkedRunToLearner(
     .filter((d) => d.verdict !== 'MADE')
     .map((d) => d.id)
 
-  const submittedArtifacts: ArtifactId[] = []
+  const submittedArtifacts = new Set<ArtifactId>(options.additionalSubmittedArtifacts ?? [])
   const evidence: Evidence[] = []
   const evalRuns: EvalRun[] = []
   const blockedGates: WorkedRunGateId[] = run.gates
@@ -587,41 +605,42 @@ export function bridgeWorkedRunToLearner(
     const evalNode = findEval(graph, binding.evalId)
     if (!artifactNode || !evalNode) continue
 
-    submittedArtifacts.push(artifactNode.id)
-
-    // Only synthesize a `repo-url` evidence record when the target project stage
-    // accepts `repo-url`. Live-only stages (`stage:deployment` requiring `deploy-url`,
-    // `stage:incident-simulation` requiring `deploy-url` + `reviewer-attestation`)
-    // omit `repo-url` so absent live evidence fails closed (`no-evidence`), while
-    // valid live `additionalEvidence` is never poisoned with `evidence-kind-not-accepted`.
+    // Only synthesize a `repo-url` evidence record and submission when the gate
+    // directly checks that stage's artifact AND the stage accepts `repo-url`.
+    // Gates whose target artifacts live elsewhere (`flow`, `operate`, `discovery`,
+    // `verify`) omit synthetic submission + `repo-url` so unproduced artifacts
+    // fail closed on `artifact-not-submitted` until real artifact evidence arrives.
     const stageRule = graph.nodes
       .flatMap((n) => (n.kind === 'Project' ? n.stages : []))
       .find((s) => s.artifact === artifactNode.id)?.evidenceRule
     const acceptsRepoUrl = stageRule ? stageRule.accepts.includes('repo-url') : true
 
-    if (acceptsRepoUrl) {
-      evidence.push({
-        id: `evidence:${run.id}-${binding.gateId}`,
-        kind: 'Evidence',
-        title: `Worked-run ${run.id} (${binding.gateId})`,
-        owner: learnerId,
-        version: '1.0.0',
-        visibility: artifactNode.publicSafe ? 'public' : 'cohort',
-        provenance: {
-          source: `${run.source}#${binding.gateId}`,
-          method: 'repo-scan',
-          measuredAt: run.generatedAt,
-        },
-        evaluationRule: {
-          kind: 'reference-only',
-          rationale: 'Evidence is verified by reachability and receipt pointers.',
-        },
-        evidenceKind: 'repo-url',
-        artifact: artifactNode.id,
-        locator: `${run.source}/${binding.gateId}`,
-        verifiedAt: run.generatedAt,
-        verifiedBy: verifierId,
-      })
+    if (binding.submitsArtifact !== false) {
+      submittedArtifacts.add(artifactNode.id)
+      if (acceptsRepoUrl) {
+        evidence.push({
+          id: `evidence:${run.id}-${binding.gateId}`,
+          kind: 'Evidence',
+          title: `Worked-run ${run.id} (${binding.gateId})`,
+          owner: learnerId,
+          version: '1.0.0',
+          visibility: artifactNode.publicSafe ? 'public' : 'cohort',
+          provenance: {
+            source: `${run.source}#${binding.gateId}`,
+            method: 'repo-scan',
+            measuredAt: run.generatedAt,
+          },
+          evaluationRule: {
+            kind: 'reference-only',
+            rationale: 'Evidence is verified by reachability and receipt pointers.',
+          },
+          evidenceKind: 'repo-url',
+          artifact: artifactNode.id,
+          locator: `${run.source}/${binding.gateId}`,
+          verifiedAt: run.generatedAt,
+          verifiedBy: verifierId,
+        })
+      }
     }
 
     if (binding.synthesizesEvalRun !== false) {
@@ -675,9 +694,15 @@ export function bridgeWorkedRunToLearner(
     }
   }
 
+  for (const extra of options.additionalEvidence ?? []) {
+    if (extra.evidenceKind !== 'eval-run') {
+      submittedArtifacts.add(extra.artifact)
+    }
+  }
+
   let learner: LearnerState = {
     learnerId,
-    submittedArtifacts,
+    submittedArtifacts: [...submittedArtifacts],
     evidence: [...evidence, ...(options.additionalEvidence ?? [])],
     evalRuns: [...evalRuns, ...(options.additionalEvalRuns ?? [])],
     reviews: [...(options.reviews ?? [])],
