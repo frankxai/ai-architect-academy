@@ -100,26 +100,7 @@ test('evidence-bridge: support-triage and personal-ai-coe isolate their distinct
   )
 })
 
-test('evidence-bridge: Lab 04 firewall receipt and Lab 05 eval admission receipt satisfy AcademyGraph advancement', () => {
-  // Start from completeLearner() but strip threat-model and eval-harness eval runs + second eval-harness evidence
-  // so Lab 04 (TrustFirewallReceipt.v1) and Lab 05 (EvalAdmissionReceipt.v1) must supply them!
-  const base = completeLearner()
-  const stripped = {
-    ...base,
-    evidence: base.evidence.filter(
-      (e) => e.id !== 'evidence:eval-harness-run' && e.artifact !== 'artifact:threat-model',
-    ),
-    evalRuns: base.evalRuns.filter(
-      (r) =>
-        r.evalId !== 'eval:threat-model-covers-tool-results' &&
-        r.evalId !== 'eval:harness-fails-on-regression',
-    ),
-  }
-
-  // Without Lab 04 & Lab 05 receipts, advancement is refused
-  const before = advanceCapability(graph, stripped, competencyShipProduction.id, FIXTURE_AS_OF)
-  assert.equal(before.granted, false)
-
+test('evidence-bridge: Lab 04 firewall receipt only attests tool-results-untrusted and requires written threat-model evidence for accepted-risks-named', () => {
   const lab04Receipt: LabCompletionReceipt = {
     labId: 'lab:04-trust-boundary-firewall',
     schema: 'TrustFirewallReceipt.v1',
@@ -141,7 +122,97 @@ test('evidence-bridge: Lab 04 firewall receipt and Lab 05 eval admission receipt
     receiptSha256: 'b'.repeat(64),
   }
 
-  const merged = mergeLabReceiptsIntoLearner(graph, stripped, [lab04Receipt, lab05Receipt])
+  // Standalone Lab 04 receipt only passes `tool-results-untrusted`; `accepted-risks-named` remains failed.
+  const mapped04 = mapLabReceiptToEvidence(graph, FIXTURE_LEARNER_ID, lab04Receipt)
+  assert.deepEqual(mapped04.evalRun.passedAssertions, ['tool-results-untrusted'])
+  assert.deepEqual(mapped04.evalRun.failedAssertions, ['accepted-risks-named'])
+
+  const base = completeLearner()
+
+  // Negative 1: Stripping `artifact:threat-model` from submittedArtifacts cannot be spoofed by a Lab 04 receipt.
+  const unsubmittedDoc = {
+    ...base,
+    submittedArtifacts: base.submittedArtifacts.filter((id) => id !== 'artifact:threat-model'),
+  }
+  const mergedUnsubmitted = mergeLabReceiptsIntoLearner(graph, unsubmittedDoc, [lab04Receipt, lab05Receipt])
+  const unsubmittedVerdict = advanceCapability(graph, mergedUnsubmitted, competencyShipProduction.id, FIXTURE_AS_OF)
+  assert.equal(unsubmittedVerdict.granted, false)
+  assert.ok(
+    !unsubmittedVerdict.granted &&
+      unsubmittedVerdict.refusals.some(
+        (r) => r.code === 'artifact-not-submitted' && r.subject === 'artifact:threat-model',
+      ),
+  )
+
+  // Negative 2: Stripping written threat-model document evidence leaves `accepted-risks-named` unfulfilled.
+  const noDocEvidence = {
+    ...base,
+    evidence: base.evidence.filter((e) => e.artifact !== 'artifact:threat-model'),
+  }
+  const mergedNoDocEvidence = mergeLabReceiptsIntoLearner(graph, noDocEvidence, [lab04Receipt, lab05Receipt])
+  const noDocVerdict = advanceCapability(graph, mergedNoDocEvidence, competencyShipProduction.id, FIXTURE_AS_OF)
+  assert.equal(noDocVerdict.granted, false)
+  assert.ok(
+    !noDocVerdict.granted &&
+      noDocVerdict.refusals.some(
+        (r) => r.code === 'eval-below-threshold' && r.subject === 'eval:threat-model-covers-tool-results',
+      ),
+  )
+
+  // Negative 3: Missing document check for `accepted-risks-named` cannot be bypassed by Lab 04 firewall receipt alone.
+  const missingDocAssertion = {
+    ...base,
+    evidence: base.evidence.filter((e) => e.id !== 'evidence:eval-harness-run'),
+    evalRuns: base.evalRuns.map((r) =>
+      r.evalId === 'eval:threat-model-covers-tool-results'
+        ? { ...r, passedAssertions: ['tool-results-untrusted'], failedAssertions: ['accepted-risks-named'] }
+        : r,
+    ),
+  }
+  const mergedMissingAcceptedRisks = mergeLabReceiptsIntoLearner(
+    graph,
+    missingDocAssertion,
+    [lab04Receipt, lab05Receipt],
+  )
+  const missingRisksVerdict = advanceCapability(
+    graph,
+    mergedMissingAcceptedRisks,
+    competencyShipProduction.id,
+    FIXTURE_AS_OF,
+  )
+  assert.equal(missingRisksVerdict.granted, false)
+  assert.ok(
+    !missingRisksVerdict.granted &&
+      missingRisksVerdict.refusals.some(
+        (r) =>
+          r.code === 'eval-below-threshold' &&
+          r.subject === 'eval:threat-model-covers-tool-results' &&
+          r.detail.includes('accepted-risks-named'),
+      ),
+  )
+
+  // Positive complementary case: submitted threat-model document + prior check for `accepted-risks-named`
+  // combines with Lab 04 (`tool-results-untrusted`) + Lab 05 (`eval:harness-fails-on-regression`) to grant competency.
+  const partialWithDocCheck = {
+    ...base,
+    evidence: base.evidence.filter((e) => e.id !== 'evidence:eval-harness-run'),
+    evalRuns: base.evalRuns
+      .filter((r) => r.evalId !== 'eval:harness-fails-on-regression')
+      .map((r) =>
+        r.evalId === 'eval:threat-model-covers-tool-results'
+          ? {
+              ...r,
+              passedAssertions: ['accepted-risks-named'],
+              failedAssertions: ['tool-results-untrusted'],
+            }
+          : r,
+      ),
+  }
+
+  const before = advanceCapability(graph, partialWithDocCheck, competencyShipProduction.id, FIXTURE_AS_OF)
+  assert.equal(before.granted, false)
+
+  const merged = mergeLabReceiptsIntoLearner(graph, partialWithDocCheck, [lab04Receipt, lab05Receipt])
   const after = advanceCapability(graph, merged, competencyShipProduction.id, FIXTURE_AS_OF)
   assert.equal(after.granted, true, JSON.stringify(!after.granted && after.refusals, null, 2))
 

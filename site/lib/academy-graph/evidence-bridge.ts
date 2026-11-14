@@ -181,6 +181,10 @@ export interface LabStageBinding {
   readonly artifactId: ArtifactId
   readonly evalId: EvalId
   readonly defaultEvidenceKind: EvidenceKind
+  /** Exact assertion IDs that this offline lab receipt independently proves. */
+  readonly verifiedAssertions: readonly string[]
+  /** True only when running this lab directly produces/submits the target code artifact. */
+  readonly submitsArtifact: boolean
 }
 
 export const LAB_STAGE_BINDINGS: Readonly<Record<string, LabStageBinding>> = {
@@ -190,6 +194,8 @@ export const LAB_STAGE_BINDINGS: Readonly<Record<string, LabStageBinding>> = {
     artifactId: 'artifact:eval-harness',
     evalId: 'eval:harness-fails-on-regression',
     defaultEvidenceKind: 'eval-run',
+    verifiedAssertions: ['nonzero-exit'],
+    submitsArtifact: false,
   },
   'lab:02-multi-agent-system': {
     labId: 'lab:02-multi-agent-system',
@@ -197,6 +203,9 @@ export const LAB_STAGE_BINDINGS: Readonly<Record<string, LabStageBinding>> = {
     artifactId: 'artifact:architecture-decision',
     evalId: 'eval:adr-has-rejected-options',
     defaultEvidenceKind: 'eval-run',
+    // Code execution never proves written ADR options or reversal criteria.
+    verifiedAssertions: [],
+    submitsArtifact: false,
   },
   'lab:03-mcp-server': {
     labId: 'lab:03-mcp-server',
@@ -204,6 +213,8 @@ export const LAB_STAGE_BINDINGS: Readonly<Record<string, LabStageBinding>> = {
     artifactId: 'artifact:tool-authority-matrix',
     evalId: 'eval:authority-least-privilege',
     defaultEvidenceKind: 'eval-run',
+    verifiedAssertions: ['side-effecting-flagged'],
+    submitsArtifact: false,
   },
   'lab:04-eval-harness': {
     labId: 'lab:04-eval-harness',
@@ -211,6 +222,8 @@ export const LAB_STAGE_BINDINGS: Readonly<Record<string, LabStageBinding>> = {
     artifactId: 'artifact:eval-harness',
     evalId: 'eval:harness-fails-on-regression',
     defaultEvidenceKind: 'repo-url',
+    verifiedAssertions: ['nonzero-exit'],
+    submitsArtifact: false,
   },
   'lab:04-trust-boundary-firewall': {
     labId: 'lab:04-trust-boundary-firewall',
@@ -218,6 +231,10 @@ export const LAB_STAGE_BINDINGS: Readonly<Record<string, LabStageBinding>> = {
     artifactId: 'artifact:threat-model',
     evalId: 'eval:threat-model-covers-tool-results',
     defaultEvidenceKind: 'eval-run',
+    // Executable firewall red-gates verify untrusted tool/retrieval isolation only;
+    // `accepted-risks-named` and written threat-model submission require document verification.
+    verifiedAssertions: ['tool-results-untrusted'],
+    submitsArtifact: false,
   },
   'lab:05-tool-authority-gate': {
     labId: 'lab:05-tool-authority-gate',
@@ -225,6 +242,8 @@ export const LAB_STAGE_BINDINGS: Readonly<Record<string, LabStageBinding>> = {
     artifactId: 'artifact:tool-authority-matrix',
     evalId: 'eval:authority-least-privilege',
     defaultEvidenceKind: 'eval-run',
+    verifiedAssertions: ['side-effecting-flagged', 'no-shared-principal-for-writes'],
+    submitsArtifact: false,
   },
   'lab:05-eval-admission-gate': {
     labId: 'lab:05-eval-admission-gate',
@@ -232,6 +251,8 @@ export const LAB_STAGE_BINDINGS: Readonly<Record<string, LabStageBinding>> = {
     artifactId: 'artifact:eval-harness',
     evalId: 'eval:harness-fails-on-regression',
     defaultEvidenceKind: 'eval-run',
+    verifiedAssertions: ['nonzero-exit', 'fixtures-versioned-apart'],
+    submitsArtifact: true,
   },
 }
 
@@ -333,6 +354,15 @@ export function mapLabReceiptToEvidence(
   }
 
   const allAssertionIds = evalNode.assertions.map((a) => a.id)
+  const allAssertionSet = new Set(allAssertionIds)
+  for (const verifiedId of binding.verifiedAssertions) {
+    if (!allAssertionSet.has(verifiedId)) {
+      throw new Error(
+        `Invalid binding for ${receipt.labId}: unknown assertion '${verifiedId}' on ${evalNode.id}.`,
+      )
+    }
+  }
+  const verifiedSet = new Set(binding.verifiedAssertions)
   const cleanPass =
     receipt.admitted === true && (receipt.redGateFailures?.length ?? 0) === 0
 
@@ -340,8 +370,8 @@ export function mapLabReceiptToEvidence(
     evalId: evalNode.id,
     artifact: artifactNode.id,
     ranAt: receipt.ranAt,
-    passedAssertions: cleanPass ? allAssertionIds : [],
-    failedAssertions: cleanPass ? [] : allAssertionIds,
+    passedAssertions: cleanPass ? allAssertionIds.filter((id) => verifiedSet.has(id)) : [],
+    failedAssertions: cleanPass ? allAssertionIds.filter((id) => !verifiedSet.has(id)) : allAssertionIds,
   }
 
   const evidenceKind = receipt.evidenceKind ?? binding.defaultEvidenceKind
@@ -378,9 +408,26 @@ export function mapLabReceiptToEvidence(
   }
 }
 
+function isValidEvalRunFor(run: EvalRun, artifactId: ArtifactId, allAssertionIds: readonly string[]): boolean {
+  if (run.artifact !== artifactId) return false
+  const recorded = [...run.passedAssertions, ...run.failedAssertions]
+  return (
+    recorded.length === allAssertionIds.length &&
+    new Set(recorded).size === recorded.length &&
+    recorded.every((id) => allAssertionIds.includes(id))
+  )
+}
+
 /**
  * Immutably merges one or more deterministic lab completion receipts into an
  * existing `LearnerState`.
+ *
+ * Non-compensable honesty rule: a lab receipt only submits its target artifact
+ * when `binding.submitsArtifact` is true (e.g. executable code artifacts) and
+ * only attests to assertions in `binding.verifiedAssertions`. Document-only
+ * assertions (such as `accepted-risks-named` on `artifact:threat-model`)
+ * stay in `failedAssertions` unless independently verified on a submitted
+ * artifact document.
  */
 export function mergeLabReceiptsIntoLearner(
   graph: AcademyGraph,
@@ -392,12 +439,91 @@ export function mergeLabReceiptsIntoLearner(
   const submitted = new Set<ArtifactId>(baseLearner.submittedArtifacts)
   const nextEvidence = [...baseLearner.evidence]
   const nextEvalRuns = [...baseLearner.evalRuns]
+  const failedReceiptRuns = new WeakSet<EvalRun>()
 
   for (const receipt of receipts) {
+    const binding = LAB_STAGE_BINDINGS[receipt.labId]
     const mapped = mapLabReceiptToEvidence(graph, baseLearner.learnerId, receipt)
-    submitted.add(mapped.artifact)
+    if (binding.submitsArtifact) {
+      submitted.add(mapped.artifact)
+    }
     nextEvidence.push(mapped.evidence)
-    nextEvalRuns.push(mapped.evalRun)
+
+    const evalNode = findEval(graph, binding.evalId)!
+    const allAssertionIds = evalNode.assertions.map((a) => a.id)
+    const verifiedSet = new Set(binding.verifiedAssertions)
+    const cleanPass =
+      receipt.admitted === true && (receipt.redGateFailures?.length ?? 0) === 0
+    const receiptInstant = Date.parse(receipt.ranAt)
+
+    if (!cleanPass) {
+      failedReceiptRuns.add(mapped.evalRun)
+      nextEvalRuns.push(mapped.evalRun)
+      continue
+    }
+
+    if (verifiedSet.size === allAssertionIds.length || !Number.isFinite(receiptInstant)) {
+      nextEvalRuns.push(mapped.evalRun)
+      continue
+    }
+
+    // Partial-assertion binding (e.g. Lab 04 firewall): combine lab-verified assertions with
+    // prior document verification on a submitted artifact with non-lab document evidence.
+    const hasSubmittedArtifact = submitted.has(mapped.artifact)
+    const hasDocEvidence = nextEvidence.some(
+      (e) => e.artifact === mapped.artifact && e.evidenceKind !== 'eval-run',
+    )
+    const priorRuns = nextEvalRuns.filter(
+      (r) =>
+        r.evalId === evalNode.id &&
+        r.artifact === mapped.artifact &&
+        Number.isFinite(Date.parse(r.ranAt)) &&
+        Date.parse(r.ranAt) <= receiptInstant,
+    )
+
+    if (!hasSubmittedArtifact || !hasDocEvidence || priorRuns.length === 0) {
+      nextEvalRuns.push(mapped.evalRun)
+      continue
+    }
+
+    const priorLatestAt = Math.max(...priorRuns.map((r) => Date.parse(r.ranAt)))
+    const priorLatestRuns = priorRuns.filter((r) => Date.parse(r.ranAt) === priorLatestAt)
+    const allValid = priorLatestRuns.every((r) => isValidEvalRunFor(r, mapped.artifact, allAssertionIds))
+
+    const combinedPassed = allAssertionIds.filter((id) =>
+      verifiedSet.has(id)
+        ? true
+        : allValid && priorLatestRuns.every((r) => r.passedAssertions.includes(id)),
+    )
+    const combinedFailed = allAssertionIds.filter((id) => !combinedPassed.includes(id))
+    const combinedRun: EvalRun = {
+      evalId: evalNode.id,
+      artifact: mapped.artifact,
+      ranAt: receipt.ranAt,
+      passedAssertions: combinedPassed,
+      failedAssertions: combinedFailed,
+    }
+
+    if (priorLatestAt === receiptInstant && !priorLatestRuns.some((r) => failedReceiptRuns.has(r))) {
+      let replaced = false
+      for (let i = 0; i < nextEvalRuns.length; i += 1) {
+        const candidate = nextEvalRuns[i]
+        if (
+          candidate.evalId === evalNode.id &&
+          candidate.artifact === mapped.artifact &&
+          Date.parse(candidate.ranAt) === priorLatestAt &&
+          candidate.failedAssertions.every((id) => verifiedSet.has(id))
+        ) {
+          nextEvalRuns[i] = combinedRun
+          replaced = true
+        }
+      }
+      if (!replaced) {
+        nextEvalRuns.push(combinedRun)
+      }
+    } else {
+      nextEvalRuns.push(combinedRun)
+    }
   }
 
   return {

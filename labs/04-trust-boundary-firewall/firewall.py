@@ -84,6 +84,10 @@ METADATA_HOSTNAMES: frozenset[str] = frozenset(
     }
 )
 
+# Restrict operator-supplied SystemInstruction slots to bounded ASCII scalar identifiers
+# (e.g. "DE-BY", "acme-eu-01") so single-line prose or markup cannot smuggle instructions.
+SAFE_SYSTEM_SLOT_RE: re.Pattern[str] = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$")
+
 
 def canonical_json(data: Any) -> str:
     """Deterministic UTF-8 JSON representation for cryptographic binding."""
@@ -132,6 +136,7 @@ class SystemInstruction:
     instruction_id: str
     template: str
     allowed_slots: tuple[str, ...] = ()
+    allowed_slot_values: Mapping[str, tuple[str, ...] | frozenset[str]] = field(default_factory=dict)
 
     def render(self, slot_values: Mapping[str, str] | None = None) -> str:
         values = dict(slot_values or {})
@@ -145,12 +150,23 @@ class SystemInstruction:
             )
         rendered = self.template
         for key in self.allowed_slots:
-            val = values.get(key, "")
-            if not isinstance(val, str) or "\n" in val or "<" in val or ">" in val:
+            val = values.get(key)
+            if not isinstance(val, str) or SAFE_SYSTEM_SLOT_RE.fullmatch(val) is None:
                 raise FirewallViolation(
                     code="UNSAFE_SYSTEM_SLOT_VALUE",
                     gate="prompt_quarantine",
-                    detail=f"System slot '{key}' must be a single-line scalar identifier, never raw prose or markup.",
+                    detail=(
+                        f"System slot '{key}' must match {SAFE_SYSTEM_SLOT_RE.pattern} "
+                        "(bounded scalar identifier, never whitespace, prose, or markup)."
+                    ),
+                    subject=self.instruction_id,
+                )
+            allowlist = self.allowed_slot_values.get(key)
+            if allowlist is not None and val not in allowlist:
+                raise FirewallViolation(
+                    code="UNSAFE_SYSTEM_SLOT_VALUE",
+                    gate="prompt_quarantine",
+                    detail=f"System slot '{key}' value '{val}' is outside the declared slot allowlist.",
                     subject=self.instruction_id,
                 )
             rendered = rendered.replace(f"{{{key}}}", val)
