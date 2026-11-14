@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-labelledby="fw-title fw-desc">
+  <title id="fw-title">Agent Trust-Boundary Firewall Flow (Lab 04)</title>
+  <desc id="fw-desc">Depicts how operator instructions (T0/T1) stay isolated from untrusted counterparty payloads (T3), and how tool calls traverse capability allowlisting, digest-bound human approval, path containment, and offline SSRF validation before emitting a SHA-256 receipt.</desc>
+  <defs>
+    <linearGradient id="fw-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1017" />
+      <stop offset="100%" stop-color="#161926" />
+    </linearGradient>
+    <marker id="fw-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#a9b8ff" />
+    </marker>
+    <marker id="fw-pass" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#5ee6cf" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="520" rx="16" fill="url(#fw-bg)" stroke="#262a3a" stroke-width="2" />
+
+  <text x="44" y="46" fill="#8b90a0" font-family="ui-monospace, Consolas, monospace" font-size="12" letter-spacing="2">LAB 04 · NON-COMPENSABLE SECURITY BOUNDARY</text>
+  <text x="44" y="82" fill="#f2f1ec" font-family="Georgia, serif" font-size="27" font-weight="600">Trust-Boundary Firewall: Quarantine, Least Privilege &amp; Fail-Closed Gates</text>
+  <line x1="44" y1="104" x2="1156" y2="104" stroke="#262a3a" stroke-width="1" />
+
+  <!-- Left Inputs: T0/T1 vs T3 -->
+  <g transform="translate(44, 132)">
+    <rect width="250" height="118" rx="10" fill="#182238" stroke="#6c84ff" stroke-width="1.5" />
+    <text x="18" y="30" fill="#a9b8ff" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">TRUST TIER T0 / T1</text>
+    <text x="18" y="56" fill="#f2f1ec" font-family="Georgia, serif" font-size="18" font-weight="600">SystemInstruction</text>
+    <text x="18" y="80" fill="#b9bccb" font-family="Inter, system-ui, sans-serif" font-size="12">Operator-authored template</text>
+    <text x="18" y="100" fill="#b9bccb" font-family="Inter, system-ui, sans-serif" font-size="12">Scalar-only declared slots</text>
+  </g>
+
+  <g transform="translate(44, 276)">
+    <rect width="250" height="134" rx="10" fill="#29181c" stroke="#f3b5a8" stroke-width="1.5" />
+    <text x="18" y="30" fill="#f3b5a8" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">UNTRUSTED TIER T3</text>
+    <text x="18" y="56" fill="#f2f1ec" font-family="Georgia, serif" font-size="18" font-weight="600">UntrustedPayload</text>
+    <text x="18" y="80" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="12">Retrieved docs, tickets, webhooks</text>
+    <text x="18" y="102" fill="#f3b5a8" font-family="ui-monospace, Consolas, monospace" font-size="11">RG-01: Escape &lt;/untrusted_payload&gt;</text>
+    <text x="18" y="120" fill="#f3b5a8" font-family="ui-monospace, Consolas, monospace" font-size="11">Never enters system channel</text>
+  </g>
+
+  <!-- Stage 1: Two-Channel Message Assembler -->
+  <g transform="translate(340, 174)">
+    <rect width="218" height="196" rx="12" fill="#171b29" stroke="#4f67e8" stroke-width="1.5" />
+    <text x="18" y="32" fill="#a9b8ff" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">PROMPT QUARANTINE</text>
+    <text x="18" y="60" fill="#f2f1ec" font-family="Georgia, serif" font-size="18" font-weight="600">Two-Channel Envelope</text>
+    <text x="18" y="90" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="12">• System: T0/T1 + boundary rule</text>
+    <text x="18" y="114" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="12">• User: XML-escaped T3 block</text>
+    <text x="18" y="138" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="12">• Provenance: id + sha256</text>
+    <text x="18" y="162" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="11">Signals logged to telemetry</text>
+  </g>
+
+  <line x1="294" y1="192" x2="336" y2="228" stroke="#a9b8ff" stroke-width="2" marker-end="url(#fw-arrow)" />
+  <line x1="294" y1="340" x2="336" y2="306" stroke="#a9b8ff" stroke-width="2" marker-end="url(#fw-arrow)" />
+
+  <!-- Stage 2: Four Non-Compensable Tool & I/O Gates -->
+  <g transform="translate(604, 126)">
+    <rect width="300" height="292" rx="12" fill="#171b29" stroke="#5ee6cf" stroke-width="1.5" />
+    <text x="20" y="32" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">DETERMINISTIC FIREWALL GATES</text>
+
+    <rect x="18" y="48" width="264" height="50" rx="8" fill="#111420" stroke="#2b3147" />
+    <text x="30" y="69" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">RG-02 · Capability Allowlist</text>
+    <text x="30" y="88" fill="#b9bccb" font-family="ui-monospace, Consolas, monospace" font-size="11">1 principal/write · zero secret args</text>
+
+    <rect x="18" y="108" width="264" height="50" rx="8" fill="#111420" stroke="#2b3147" />
+    <text x="30" y="129" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">RG-03 · Write &amp; Spend Gate</text>
+    <text x="30" y="148" fill="#b9bccb" font-family="ui-monospace, Consolas, monospace" font-size="11">Single-use HumanApprovalToken + cap</text>
+
+    <rect x="18" y="168" width="264" height="50" rx="8" fill="#111420" stroke="#2b3147" />
+    <text x="30" y="189" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">RG-04 · Sandbox Path Guard</text>
+    <text x="30" y="208" fill="#b9bccb" font-family="ui-monospace, Consolas, monospace" font-size="11">Resolved relative_to · block .env/.ssh</text>
+
+    <rect x="18" y="228" width="264" height="50" rx="8" fill="#111420" stroke="#2b3147" />
+    <text x="30" y="249" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">RG-05 · Offline SSRF Guard</text>
+    <text x="30" y="268" fill="#b9bccb" font-family="ui-monospace, Consolas, monospace" font-size="11">HTTPS:443 · block RFC1918 &amp; 169.254/16</text>
+  </g>
+
+  <line x1="558" y1="272" x2="600" y2="272" stroke="#a9b8ff" stroke-width="2" marker-end="url(#fw-arrow)" />
+
+  <!-- Stage 3: Deterministic Receipt -->
+  <g transform="translate(948, 174)">
+    <rect width="208" height="196" rx="12" fill="#142624" stroke="#5ee6cf" stroke-width="1.5" />
+    <text x="18" y="32" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">VERIFIABLE OUTPUT</text>
+    <text x="18" y="60" fill="#f2f1ec" font-family="Georgia, serif" font-size="18" font-weight="600">Firewall Receipt</text>
+    <text x="18" y="88" fill="#f2f1ec" font-family="ui-monospace, Consolas, monospace" font-size="11">TrustFirewallReceipt.v1</text>
+    <text x="18" y="116" fill="#b9bccb" font-family="Inter, system-ui, sans-serif" font-size="12">• Ordered ALLOW/BLOCK log</text>
+    <text x="18" y="140" fill="#b9bccb" font-family="Inter, system-ui, sans-serif" font-size="12">• Cumulative spend ledger</text>
+    <text x="18" y="164" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="11">receipt_sha256 verified</text>
+  </g>
+
+  <line x1="904" y1="272" x2="944" y2="272" stroke="#5ee6cf" stroke-width="2" marker-end="url(#fw-pass)" />
+
+  <!-- Bottom Failure Rule -->
+  <rect x="44" y="444" width="1112" height="46" rx="10" fill="#1e1519" stroke="#5c2b33" />
+  <text x="64" y="472" fill="#f3b5a8" font-family="ui-monospace, Consolas, monospace" font-size="12" font-weight="600">FAIL-CLOSED DOCTRINE</text>
+  <text x="252" y="472" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">Model-claimed authority is ignored. Any missing approval, digest mismatch, or private IP target blocks execution before I/O.</text>
+</svg>

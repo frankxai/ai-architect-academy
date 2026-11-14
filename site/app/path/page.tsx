@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { DecisionPipelineDiagram } from '@/components/DecisionPipelineDiagram'
 import {
   artifacts,
   competencyShipProduction as competency,
@@ -31,6 +32,10 @@ export default function PathPage() {
         {project.stages.length} stages. Each ends in an artifact a stranger can open and an eval that can be re-run.
         The order is the order production forces the decisions on you.
       </p>
+
+      <div className="mt-10">
+        <DecisionPipelineDiagram />
+      </div>
 
       <ol className="path mt-14" aria-label="Stages in order">
         {project.stages.map((stage) => {

@@ -1,5 +1,5 @@
 {
-  "measuredAt": "2026-09-15",
+  "measuredAt": "2026-11-14",
   "repo": "https://github.com/frankxai/ai-architect-academy",
   "sections": [
     {
@@ -96,11 +96,19 @@
           "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/04-eval-harness"
         },
         {
+          "title": "04-trust-boundary-firewall",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/04-trust-boundary-firewall"
+        },
+        {
+          "title": "05-eval-admission-gate",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/05-eval-admission-gate"
+        },
+        {
           "title": "05-tool-authority-gate",
           "href": "https://github.com/frankxai/ai-architect-academy/tree/main/labs/05-tool-authority-gate"
         }
       ],
-      "count": 5
+      "count": 7
     },
     {
       "id": "micro",
@@ -204,6 +212,10 @@
           "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/100-hour-ai-architect.md"
         },
         {
+          "title": "12-Week Production AI Architect Path",
+          "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/12-week-production-architect.md"
+        },
+        {
           "title": "Learning Path: Agentic Code Swarms",
           "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/agentic-code-swarms.md"
         },
@@ -236,7 +248,7 @@
           "href": "https://github.com/frankxai/ai-architect-academy/tree/main/02-learning-paths/self-assessment.md"
         }
       ],
-      "count": 9
+      "count": 10
     },
     {
       "id": "governance",

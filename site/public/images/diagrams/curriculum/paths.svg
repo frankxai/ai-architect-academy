@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-label="Learning paths curriculum section inventory">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="526" viewBox="0 0 1200 526" role="img" aria-label="Learning paths curriculum section inventory">
   <title>Learning paths curriculum section inventory</title>
-  <desc>Curriculum section inventory for Learning paths (02-learning-paths) listing 9 public repository items measured on 2026-09-15.</desc>
+  <desc>Curriculum section inventory for Learning paths (02-learning-paths) listing 10 public repository items measured on 2026-11-14.</desc>
   <defs>
     <linearGradient id="stage-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0f1017" />
@@ -37,17 +37,17 @@
     .serif { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
     .mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
   </style>
-  <rect width="1200" height="500" rx="18" fill="url(#stage-grad)" />
-  <rect width="1200" height="500" rx="18" fill="url(#academy-grid)" />
-  <rect width="1200" height="500" rx="18" fill="url(#cobalt-glow)" />
-  <rect width="1200" height="500" rx="18" fill="url(#mint-glow)" />
-  <rect x="1" y="1" width="1198" height="498" rx="17" fill="none" stroke="#2d344d" stroke-width="1.5" />
+  <rect width="1200" height="526" rx="18" fill="url(#stage-grad)" />
+  <rect width="1200" height="526" rx="18" fill="url(#academy-grid)" />
+  <rect width="1200" height="526" rx="18" fill="url(#cobalt-glow)" />
+  <rect width="1200" height="526" rx="18" fill="url(#mint-glow)" />
+  <rect x="1" y="1" width="1198" height="524" rx="17" fill="none" stroke="#2d344d" stroke-width="1.5" />
   
   <g>
     <rect x="40" y="34" width="8" height="8" rx="4" fill="#5ee6cf" />
     <text x="58" y="42" class="mono" font-size="11.5" fill="#a9b8ff" letter-spacing="0.9">AI Architect Academy · 02-learning-paths</text>
     <rect x="920" y="24" width="240" height="28" rx="14" fill="#151824" stroke="#2d344d" />
-    <text x="1040" y="42" text-anchor="middle" class="mono" font-size="11.5" fill="#5ee6cf">9 repository items</text>
+    <text x="1040" y="42" text-anchor="middle" class="mono" font-size="11.5" fill="#5ee6cf">10 repository items</text>
     <text x="40" y="78" class="serif" font-size="28" font-weight="600" fill="#f2f1ec">Learning paths inventory</text>
     <text x="40" y="103" font-size="13.8" fill="#cbd5e1">Every card maps directly to a public file or lab directory in the repository</text>
     <line x1="40" y1="120" x2="1160" y2="120" stroke="#2d344d" stroke-width="1" />
@@ -63,54 +63,61 @@
       <rect x="418" y="166" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
       <rect x="430" y="181" width="34" height="28" rx="7" fill="#151824" />
       <text x="447" y="200" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">02</text>
-      <text x="476" y="200" font-size="12.6" font-weight="550" fill="#f2f1ec">Agentic Code Swarms</text>
+      <text x="476" y="192" font-size="12.6" font-weight="550" fill="#f2f1ec">12-Week Production AI Architect</text>
+    <text x="476" y="208" font-size="12.6" font-weight="550" fill="#f2f1ec">Path</text>
     </g>
   <g>
       <rect x="796" y="166" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
       <rect x="808" y="181" width="34" height="28" rx="7" fill="#151824" />
       <text x="825" y="200" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">03</text>
-      <text x="854" y="192" font-size="12.6" font-weight="550" fill="#f2f1ec">AI Architect Command Center -</text>
-    <text x="854" y="208" font-size="12.6" font-weight="550" fill="#f2f1ec">Learning Path</text>
+      <text x="854" y="200" font-size="12.6" font-weight="550" fill="#f2f1ec">Agentic Code Swarms</text>
     </g>
   <g>
       <rect x="40" y="236" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
       <rect x="52" y="251" width="34" height="28" rx="7" fill="#151824" />
       <text x="69" y="270" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">04</text>
-      <text x="98" y="270" font-size="12.6" font-weight="550" fill="#f2f1ec">Beginner Path (4 Weeks)</text>
+      <text x="98" y="262" font-size="12.6" font-weight="550" fill="#f2f1ec">AI Architect Command Center -</text>
+    <text x="98" y="278" font-size="12.6" font-weight="550" fill="#f2f1ec">Learning Path</text>
     </g>
   <g>
       <rect x="418" y="236" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
       <rect x="430" y="251" width="34" height="28" rx="7" fill="#151824" />
       <text x="447" y="270" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">05</text>
-      <text x="476" y="270" font-size="12.6" font-weight="550" fill="#f2f1ec">Bootcamp Path (AI CoE Inspired)</text>
+      <text x="476" y="270" font-size="12.6" font-weight="550" fill="#f2f1ec">Beginner Path (4 Weeks)</text>
     </g>
   <g>
       <rect x="796" y="236" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
       <rect x="808" y="251" width="34" height="28" rx="7" fill="#151824" />
       <text x="825" y="270" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">06</text>
-      <text x="854" y="270" font-size="12.6" font-weight="550" fill="#f2f1ec">Learning Logbook</text>
+      <text x="854" y="270" font-size="12.6" font-weight="550" fill="#f2f1ec">Bootcamp Path (AI CoE Inspired)</text>
     </g>
   <g>
       <rect x="40" y="306" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
       <rect x="52" y="321" width="34" height="28" rx="7" fill="#151824" />
       <text x="69" y="340" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">07</text>
-      <text x="98" y="340" font-size="12.6" font-weight="550" fill="#f2f1ec">Micro-Learning Playlists</text>
+      <text x="98" y="340" font-size="12.6" font-weight="550" fill="#f2f1ec">Learning Logbook</text>
     </g>
   <g>
       <rect x="418" y="306" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
       <rect x="430" y="321" width="34" height="28" rx="7" fill="#151824" />
       <text x="447" y="340" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">08</text>
-      <text x="476" y="340" font-size="12.6" font-weight="550" fill="#f2f1ec">Professional Path (6 Weeks)</text>
+      <text x="476" y="340" font-size="12.6" font-weight="550" fill="#f2f1ec">Micro-Learning Playlists</text>
     </g>
   <g>
       <rect x="796" y="306" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
       <rect x="808" y="321" width="34" height="28" rx="7" fill="#151824" />
       <text x="825" y="340" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">09</text>
-      <text x="854" y="340" font-size="12.6" font-weight="550" fill="#f2f1ec">AI Architect Self-Assessment</text>
+      <text x="854" y="340" font-size="12.6" font-weight="550" fill="#f2f1ec">Professional Path (6 Weeks)</text>
+    </g>
+  <g>
+      <rect x="40" y="376" width="362" height="58" rx="10" fill="#1b2032" stroke="#2d344d" />
+      <rect x="52" y="391" width="34" height="28" rx="7" fill="#151824" />
+      <text x="69" y="410" text-anchor="middle" class="mono" font-size="11.5" fill="#a9b8ff">10</text>
+      <text x="98" y="410" font-size="12.6" font-weight="550" fill="#f2f1ec">AI Architect Self-Assessment</text>
     </g>
 
   <g>
-    <rect x="40" y="438" width="1120" height="40" rx="10" fill="#151824" stroke="#2d344d" />
-    <text x="58" y="463" class="mono" font-size="11.5" fill="#9aa1b5">Source directory: 02-learning-paths · Measured from repository on 2026-09-15</text>
+    <rect x="40" y="464" width="1120" height="40" rx="10" fill="#151824" stroke="#2d344d" />
+    <text x="58" y="489" class="mono" font-size="11.5" fill="#9aa1b5">Source directory: 02-learning-paths · Measured from repository on 2026-11-14</text>
   </g>
 </svg>

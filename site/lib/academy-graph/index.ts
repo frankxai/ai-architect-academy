@@ -8,4 +8,21 @@ export {
   artifacts,
   evals,
   reviews,
+  labTrustBoundaryFirewall,
+  labEvalAdmissionGate,
 } from './production-agent-systems.ts'
+export {
+  WORKED_RUN_GATE_BINDINGS,
+  LAB_STAGE_BINDINGS,
+  mapLabReceiptToEvidence,
+  mergeLabReceiptsIntoLearner,
+  bridgeWorkedRunToLearner,
+  type WorkedRunGateId,
+  type WorkedRunDecisionId,
+  type WorkedRunInput,
+  type LabCompletionReceipt,
+  type MappedLabEvidence,
+  type WorkedRunBridgeOptions,
+  type WorkedRunBridgeProjection,
+  type StageBridgeSummary,
+} from './evidence-bridge.ts'
