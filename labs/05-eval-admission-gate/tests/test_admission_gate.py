@@ -345,6 +345,34 @@ class EvalAdmissionGateTests(unittest.TestCase):
             self.assertEqual(saved["schema"], RECEIPT_SCHEMA)
             self.assertTrue(saved["admitted"])
             self.assertTrue(saved["meta_audit_passed"])
+            saved_body = {k: v for k, v in saved.items() if k != "receipt_sha256"}
+            self.assertEqual(saved["receipt_sha256"], sha256_hex(canonical_json(saved_body)))
+
+    def test_13_calibration_requires_all_three_tiers_weak_borderline_strong(self) -> None:
+        strong_only_cal = copy.deepcopy(self.calibration)
+        strong_only_cal["anchors"] = [
+            copy.deepcopy(a) for a in strong_only_cal["anchors"] if a["tier"] == "strong"
+        ]
+        while len(strong_only_cal["anchors"]) < 3:
+            extra = copy.deepcopy(strong_only_cal["anchors"][0])
+            extra["anchor_id"] = f"strong-extra-{len(strong_only_cal['anchors']) + 1}"
+            strong_only_cal["anchors"].append(extra)
+
+        with self.assertRaises(SchemaValidationError) as ctx:
+            evaluate_calibration_drift(strong_only_cal, lambda _s: 0.95)
+        self.assertEqual(ctx.exception.code, "CALIBRATION_MISSING_TIER")
+
+        rubber_gate = EvalAdmissionGate(grader_fn=lambda _s: 0.95)
+        receipt = rubber_gate.evaluate_admission(
+            suite_doc=self.suite,
+            lock_doc=self.lock,
+            calibration_doc=strong_only_cal,
+            traces_doc=self.traces,
+        )
+        self.assertFalse(receipt["admitted"])
+        self.assertEqual(receipt["verdict"], "BLOCK")
+        self.assertIn("eval-run-invalid", receipt["refusal_codes"])
+        self.assertTrue(any("CALIBRATION_MISSING_TIER" in f for f in receipt["red_gate_failures"]))
 
 
 if __name__ == "__main__":

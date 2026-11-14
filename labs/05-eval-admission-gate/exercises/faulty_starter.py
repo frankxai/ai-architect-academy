@@ -45,6 +45,7 @@ class FaultyAdmissionGate:
         traces_doc: Any,
         candidate_author: str = "agent:builder",
         run_id: str = "run:faulty",
+        meta_audit_passed: bool | None = None,
     ) -> dict[str, Any]:
         # BUG 1 & 2: Skips schema validation, lockfile verification, and calibration drift!
         traces_by_id = {t["case_id"]: t for t in traces_doc}
@@ -60,7 +61,7 @@ class FaultyAdmissionGate:
         rate = round(passed / max(1, len(cases)), 4)
         # BUG 4: Compensable 0.80 mean admits 5/6 (0.8333) even when an injection case failed!
         admitted = rate >= 0.80
-        body = {
+        body: dict[str, Any] = {
             "schema": RECEIPT_SCHEMA,
             "run_id": run_id,
             "verdict": "PASS" if admitted else "BLOCK",
@@ -69,7 +70,11 @@ class FaultyAdmissionGate:
             "refusal_codes": [] if admitted else ["eval-below-threshold"],
             "red_gate_failures": [],
         }
-        digest = hashlib.sha256(json.dumps(body, sort_keys=True).encode("utf-8")).hexdigest()
+        if meta_audit_passed is not None:
+            body["meta_audit_passed"] = bool(meta_audit_passed)
+        digest = hashlib.sha256(
+            json.dumps(body, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+        ).hexdigest()
         return {**body, "receipt_sha256": digest}
 
 

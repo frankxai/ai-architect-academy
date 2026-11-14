@@ -298,6 +298,8 @@ def evaluate_calibration_drift(
     failures: list[str] = []
     max_drift = 0.0
 
+    validated_anchors: list[tuple[Mapping[str, Any], str, str, float]] = []
+    declared_tiers: set[str] = set()
     for idx, raw_anchor in enumerate(anchors):
         a = _require_exact_keys(
             raw_anchor,
@@ -308,7 +310,18 @@ def evaluate_calibration_drift(
         tier = str(a["tier"])
         if tier not in VALID_ANCHOR_TIERS:
             raise SchemaValidationError("CALIBRATION_INVALID_TIER", f"Unknown tier '{tier}'.", aid)
-        expected = float(a["expected_score"])
+        declared_tiers.add(tier)
+        validated_anchors.append((a, aid, tier, float(a["expected_score"])))
+
+    missing_tiers = sorted(VALID_ANCHOR_TIERS - declared_tiers)
+    if missing_tiers:
+        raise SchemaValidationError(
+            "CALIBRATION_MISSING_TIER",
+            f"Calibration requires at least one anchor in every mandatory tier; missing {missing_tiers}.",
+            "calibration",
+        )
+
+    for a, aid, tier, expected in validated_anchors:
 
         try:
             observed = float(grader_fn(a["sample"]))
@@ -418,6 +431,7 @@ class EvalAdmissionGate:
         traces_doc: Any,
         candidate_author: str = "agent:builder",
         run_id: str = "run:05-eval-admission-gate",
+        meta_audit_passed: bool | None = None,
     ) -> dict[str, Any]:
         refusal_codes: list[str] = []
         red_gate_failures: list[str] = []
@@ -451,6 +465,7 @@ class EvalAdmissionGate:
                 calibration=None,
                 red_gate_failures=red_gate_failures,
                 refusal_codes=refusal_codes,
+                meta_audit_passed=meta_audit_passed,
             )
 
         if not calibration.passed:
@@ -495,6 +510,7 @@ class EvalAdmissionGate:
             calibration=calibration,
             red_gate_failures=red_gate_failures,
             refusal_codes=sorted(set(refusal_codes)),
+            meta_audit_passed=meta_audit_passed,
         )
 
     def _seal_receipt(
@@ -509,6 +525,7 @@ class EvalAdmissionGate:
         calibration: CalibrationReport | None,
         red_gate_failures: Sequence[str],
         refusal_codes: Sequence[str],
+        meta_audit_passed: bool | None = None,
     ) -> dict[str, Any]:
         body: dict[str, Any] = {
             "schema": RECEIPT_SCHEMA,
@@ -542,6 +559,8 @@ class EvalAdmissionGate:
                 for c in case_results
             ],
         }
+        if meta_audit_passed is not None:
+            body["meta_audit_passed"] = bool(meta_audit_passed)
         digest = sha256_hex(canonical_json(body))
         return {**body, "receipt_sha256": digest}
 

@@ -24,7 +24,9 @@ if str(LAB_DIR) not in sys.path:
 from admission_gate import (  # noqa: E402
     EvalAdmissionGate,
     calibrated_reference_grader,
+    canonical_json,
     healthy_reference_traces,
+    sha256_hex,
 )
 
 
@@ -212,15 +214,28 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.emit_receipt or args.run_gate:
         gate = factory(grader_fn=calibrated_reference_grader)
-        receipt = gate.evaluate_admission(
-            suite_doc=suite,
-            lock_doc=lock,
-            calibration_doc=cal,
-            traces_doc=healthy_reference_traces(),
-            candidate_author="agent:builder",
-            run_id="run:05-cli-verification",
-        )
-        receipt["meta_audit_passed"] = all_ok
+        try:
+            receipt = gate.evaluate_admission(
+                suite_doc=suite,
+                lock_doc=lock,
+                calibration_doc=cal,
+                traces_doc=healthy_reference_traces(),
+                candidate_author="agent:builder",
+                run_id="run:05-cli-verification",
+                meta_audit_passed=all_ok,
+            )
+        except TypeError:
+            raw_receipt = gate.evaluate_admission(
+                suite_doc=suite,
+                lock_doc=lock,
+                calibration_doc=cal,
+                traces_doc=healthy_reference_traces(),
+                candidate_author="agent:builder",
+                run_id="run:05-cli-verification",
+            )
+            body = {k: v for k, v in raw_receipt.items() if k != "receipt_sha256"}
+            body["meta_audit_passed"] = all_ok
+            receipt = {**body, "receipt_sha256": sha256_hex(canonical_json(body))}
         if args.emit_receipt:
             out_path = Path(args.emit_receipt)
             out_path.parent.mkdir(parents=True, exist_ok=True)

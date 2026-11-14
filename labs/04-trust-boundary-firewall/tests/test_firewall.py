@@ -360,6 +360,101 @@ class TrustBoundaryFirewallTests(unittest.TestCase):
             persisted = json.loads(receipt_file.read_text(encoding="utf-8"))
             self.assertEqual(persisted["schema"], RECEIPT_SCHEMA)
             self.assertTrue(persisted["red_gate_admitted"])
+            persisted_body = {k: v for k, v in persisted.items() if k != "receipt_sha256"}
+            self.assertEqual(persisted["receipt_sha256"], sha256_hex(canonical_json(persisted_body)))
+
+    def test_13_utc_offset_expiry_malformed_timestamps_and_crashing_candidate(self) -> None:
+        args = {"account_id": "acct_13", "amount_cents": 400, "reason": "offset-check"}
+        digest = sha256_hex(canonical_json(args))
+
+        # 2026-11-14T13:00:00+02:00 converts to 11:00:00Z, which is expired relative to 12:00:00Z
+        offset_expired_token = HumanApprovalToken(
+            token_id="tok-offset-expired",
+            approver="human:finance-lead",
+            tool_name="issue_credit_note",
+            args_sha256=digest,
+            destination="billing:acct_13",
+            max_spend_cents=500,
+            issued_at="2026-11-14T10:00:00Z",
+            expires_at="2026-11-14T13:00:00+02:00",
+        )
+        with self.assertRaises(FirewallViolation) as exp_ctx:
+            self.firewall.authorize_tool_call(
+                ToolCallRequest(
+                    tool_name="issue_credit_note",
+                    args=args,
+                    spend_cents=400,
+                    destination="billing:acct_13",
+                    approval_token=offset_expired_token,
+                )
+            )
+        self.assertEqual(exp_ctx.exception.code, "APPROVAL_TOKEN_EXPIRED")
+
+        # Naive (timezone-less) timestamp must fail closed with INVALID_TIMESTAMP
+        naive_token = HumanApprovalToken(
+            token_id="tok-naive",
+            approver="human:finance-lead",
+            tool_name="issue_credit_note",
+            args_sha256=digest,
+            destination="billing:acct_13",
+            max_spend_cents=500,
+            issued_at="2026-11-14T11:00:00Z",
+            expires_at="2026-11-14T13:00:00",
+        )
+        with self.assertRaises(FirewallViolation) as naive_ctx:
+            self.firewall.authorize_tool_call(
+                ToolCallRequest(
+                    tool_name="issue_credit_note",
+                    args=args,
+                    spend_cents=400,
+                    destination="billing:acct_13",
+                    approval_token=naive_token,
+                )
+            )
+        self.assertEqual(naive_ctx.exception.code, "INVALID_TIMESTAMP")
+
+        # Valid positive offset (14:30:00+02:00 == 12:30:00Z > 12:00:00Z) succeeds
+        valid_offset_token = HumanApprovalToken(
+            token_id="tok-offset-valid",
+            approver="human:finance-lead",
+            tool_name="issue_credit_note",
+            args_sha256=digest,
+            destination="billing:acct_13",
+            max_spend_cents=500,
+            issued_at="2026-11-14T11:00:00Z",
+            expires_at="2026-11-14T14:30:00+02:00",
+        )
+        res = self.firewall.authorize_tool_call(
+            ToolCallRequest(
+                tool_name="issue_credit_note",
+                args=args,
+                spend_cents=400,
+                destination="billing:acct_13",
+                approval_token=valid_offset_token,
+            )
+        )
+        self.assertTrue(res["authorized"])
+
+        # Crashing candidate raising RuntimeError must FAIL all 5 fault scenarios, never count as blocked
+        class CrashingCandidate:
+            def __init__(self, **_kwargs: object) -> None:
+                pass
+
+            def assemble_messages(self, **_kwargs: object) -> list[dict[str, str]]:
+                raise RuntimeError("boom")
+
+            def authorize_tool_call(self, _req: object) -> dict[str, object]:
+                raise RuntimeError("boom")
+
+            def validate_workspace_path(self, _path: str) -> Path:
+                raise RuntimeError("boom")
+
+            def validate_outbound_url(self, _url: str) -> str:
+                raise RuntimeError("boom")
+
+        crashing_results = run_fault_scenarios(factory=lambda **kw: CrashingCandidate(**kw))
+        self.assertEqual(len(crashing_results), 5)
+        self.assertTrue(all(not r.passed for r in crashing_results))
 
 
 if __name__ == "__main__":

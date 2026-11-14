@@ -11,6 +11,7 @@ without touching the network, and emits deterministic SHA-256 audit receipts.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 import hashlib
 import ipaddress
 import json
@@ -265,6 +266,36 @@ def _escape_xml_body(value: str) -> str:
     return value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+def _parse_utc_instant(raw: str, *, field_name: str, subject: str) -> datetime:
+    if not isinstance(raw, str) or not raw.strip():
+        raise FirewallViolation(
+            code="INVALID_TIMESTAMP",
+            gate="write_spend_gate",
+            detail=f"Timestamp '{field_name}' must be a timezone-aware ISO-8601 string.",
+            subject=subject,
+        )
+    normalized = raw.strip()
+    if normalized.endswith(("Z", "z")):
+        normalized = normalized[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError as exc:
+        raise FirewallViolation(
+            code="INVALID_TIMESTAMP",
+            gate="write_spend_gate",
+            detail=f"Malformed ISO-8601 timestamp in '{field_name}': {raw}",
+            subject=subject,
+        ) from exc
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise FirewallViolation(
+            code="INVALID_TIMESTAMP",
+            gate="write_spend_gate",
+            detail=f"Timestamp '{field_name}' must include an explicit UTC or offset timezone: {raw}",
+            subject=subject,
+        )
+    return parsed.astimezone(timezone.utc)
+
+
 class TrustBoundaryFirewall:
     """
     Reference deterministic Trust-Boundary Firewall.
@@ -289,6 +320,7 @@ class TrustBoundaryFirewall:
         self._run_budget_cents = max(0, int(run_budget_cents))
         self._spent_cents = 0
         self._as_of = as_of
+        self._as_of_dt = _parse_utc_instant(as_of, field_name="as_of", subject="firewall")
         self._block_on_injection_signal = block_on_injection_signal
         self._consumed_tokens: set[str] = set()
         self._events: list[DecisionEvent] = []
@@ -552,7 +584,30 @@ class TrustBoundaryFirewall:
                     ),
                     subject=request.tool_name,
                 )
-            if token.expires_at < self._as_of:
+            try:
+                issued_dt = _parse_utc_instant(
+                    token.issued_at, field_name="issued_at", subject=request.tool_name
+                )
+                expires_dt = _parse_utc_instant(
+                    token.expires_at, field_name="expires_at", subject=request.tool_name
+                )
+            except FirewallViolation as exc:
+                self._record(
+                    gate=exc.gate,
+                    subject=exc.subject,
+                    verdict="BLOCK",
+                    code=exc.code,
+                    detail=exc.detail,
+                )
+                raise
+            if issued_dt > expires_dt:
+                raise self._fail(
+                    code="INVALID_TIMESTAMP",
+                    gate="write_spend_gate",
+                    detail=f"Token issued_at ({token.issued_at}) cannot be later than expires_at ({token.expires_at}).",
+                    subject=request.tool_name,
+                )
+            if expires_dt < self._as_of_dt:
                 raise self._fail(
                     code="APPROVAL_TOKEN_EXPIRED",
                     gate="write_spend_gate",
@@ -778,7 +833,12 @@ class TrustBoundaryFirewall:
 
     # --- 5. Deterministic Audit Receipt Emission -----------------------------
 
-    def emit_receipt(self, *, run_id: str = "run:04-trust-boundary-firewall") -> dict[str, Any]:
+    def emit_receipt(
+        self,
+        *,
+        run_id: str = "run:04-trust-boundary-firewall",
+        red_gate_admitted: bool | None = None,
+    ) -> dict[str, Any]:
         allowed = sum(1 for e in self._events if e.verdict == "ALLOW")
         blocked = sum(1 for e in self._events if e.verdict == "BLOCK")
         body: dict[str, Any] = {
@@ -807,6 +867,8 @@ class TrustBoundaryFirewall:
                 for e in self._events
             ],
         }
+        if red_gate_admitted is not None:
+            body["red_gate_admitted"] = bool(red_gate_admitted)
         digest = sha256_hex(canonical_json(body))
         return {**body, "receipt_sha256": digest}
 

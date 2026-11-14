@@ -25,7 +25,9 @@ if str(LAB_DIR) not in sys.path:
 from faults import FaultScenarioResult, run_fault_scenarios  # noqa: E402
 from firewall import (  # noqa: E402
     TrustBoundaryFirewall,
+    canonical_json,
     default_lab_registry,
+    sha256_hex,
 )
 
 
@@ -126,8 +128,16 @@ def main(argv: list[str] | None = None) -> int:
                 fw.validate_outbound_url("https://api.partner-contracts.example/v1/clauses")
             except Exception:
                 pass
-            receipt = fw.emit_receipt(run_id="run:04-cli-verification")
-            receipt["red_gate_admitted"] = admitted
+            try:
+                receipt = fw.emit_receipt(
+                    run_id="run:04-cli-verification",
+                    red_gate_admitted=admitted,
+                )
+            except TypeError:
+                raw_receipt = fw.emit_receipt(run_id="run:04-cli-verification")
+                body = {k: v for k, v in raw_receipt.items() if k != "receipt_sha256"}
+                body["red_gate_admitted"] = admitted
+                receipt = {**body, "receipt_sha256": sha256_hex(canonical_json(body))}
             out_path = Path(args.emit_receipt)
             out_path.parent.mkdir(parents=True, exist_ok=True)
             out_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")

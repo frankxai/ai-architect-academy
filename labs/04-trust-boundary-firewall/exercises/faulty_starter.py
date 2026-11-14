@@ -92,9 +92,18 @@ class FaultyTrustFirewall:
             return url
         raise RuntimeError("Invalid scheme")
 
-    def emit_receipt(self, *, run_id: str = "run:faulty") -> dict[str, Any]:
-        payload = {"schema": RECEIPT_SCHEMA, "run_id": run_id, "events": self._events}
-        digest = hashlib.sha256(json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()
+    def emit_receipt(
+        self,
+        *,
+        run_id: str = "run:faulty",
+        red_gate_admitted: bool | None = None,
+    ) -> dict[str, Any]:
+        payload: dict[str, Any] = {"schema": RECEIPT_SCHEMA, "run_id": run_id, "events": self._events}
+        if red_gate_admitted is not None:
+            payload["red_gate_admitted"] = bool(red_gate_admitted)
+        digest = hashlib.sha256(
+            json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+        ).hexdigest()
         return {**payload, "receipt_sha256": digest}
 
 
