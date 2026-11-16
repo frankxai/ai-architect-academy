@@ -464,7 +464,6 @@ export function mergeLabReceiptsIntoLearner(
   const submitted = new Set<ArtifactId>(baseLearner.submittedArtifacts)
   const nextEvidence = [...baseLearner.evidence]
   const nextEvalRuns = [...baseLearner.evalRuns]
-  const failedReceiptRuns = new WeakSet<EvalRun>()
 
   for (const receipt of receipts) {
     const binding = LAB_STAGE_BINDINGS[receipt.labId]
@@ -482,7 +481,6 @@ export function mergeLabReceiptsIntoLearner(
     const receiptInstant = Date.parse(receipt.ranAt)
 
     if (!cleanPass) {
-      failedReceiptRuns.add(mapped.evalRun)
       nextEvalRuns.push(mapped.evalRun)
       continue
     }
@@ -512,6 +510,13 @@ export function mergeLabReceiptsIntoLearner(
     }
 
     const priorLatestAt = Math.max(...priorRuns.map((r) => Date.parse(r.ranAt)))
+    if (priorLatestAt === receiptInstant) {
+      // Tied timestamps carry no ordering (advance.ts: any failure at the latest tied time blocks).
+      // A prior failed assertion the receipt also covers may be a genuine failure, not an
+      // incomplete complementary check, so never overwrite or merge it: keep both runs.
+      nextEvalRuns.push(mapped.evalRun)
+      continue
+    }
     const priorLatestRuns = priorRuns.filter((r) => Date.parse(r.ranAt) === priorLatestAt)
     const allValid = priorLatestRuns.every((r) => isValidEvalRunFor(r, mapped.artifact, allAssertionIds))
 
@@ -521,34 +526,13 @@ export function mergeLabReceiptsIntoLearner(
         : allValid && priorLatestRuns.every((r) => r.passedAssertions.includes(id)),
     )
     const combinedFailed = allAssertionIds.filter((id) => !combinedPassed.includes(id))
-    const combinedRun: EvalRun = {
+    nextEvalRuns.push({
       evalId: evalNode.id,
       artifact: mapped.artifact,
       ranAt: receipt.ranAt,
       passedAssertions: combinedPassed,
       failedAssertions: combinedFailed,
-    }
-
-    if (priorLatestAt === receiptInstant && !priorLatestRuns.some((r) => failedReceiptRuns.has(r))) {
-      let replaced = false
-      for (let i = 0; i < nextEvalRuns.length; i += 1) {
-        const candidate = nextEvalRuns[i]
-        if (
-          candidate.evalId === evalNode.id &&
-          candidate.artifact === mapped.artifact &&
-          Date.parse(candidate.ranAt) === priorLatestAt &&
-          candidate.failedAssertions.every((id) => verifiedSet.has(id))
-        ) {
-          nextEvalRuns[i] = combinedRun
-          replaced = true
-        }
-      }
-      if (!replaced) {
-        nextEvalRuns.push(combinedRun)
-      }
-    } else {
-      nextEvalRuns.push(combinedRun)
-    }
+    })
   }
 
   return {

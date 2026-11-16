@@ -253,6 +253,7 @@ test('evidence-bridge: Lab 04 firewall receipt only attests tool-results-untrust
         r.evalId === 'eval:threat-model-covers-tool-results'
           ? {
               ...r,
+              ranAt: '2026-08-24', // strictly earlier than the receipts: ties carry no ordering
               passedAssertions: ['accepted-risks-named'],
               failedAssertions: ['tool-results-untrusted'],
             }
@@ -790,4 +791,40 @@ test('evidence-bridge: RoleEntrySelector and SpineBlueprintGallery enforce acces
     assert.match(source, /Home/, `${rel} missing Home keyboard handler`)
     assert.match(source, /End/, `${rel} missing End keyboard handler`)
   }
+})
+
+test('evidence-bridge: a genuine failed eval at a tied timestamp is not overwritten by a passing lab receipt', () => {
+  const lab04Receipt: LabCompletionReceipt = {
+    labId: 'lab:04-trust-boundary-firewall',
+    schema: 'TrustFirewallReceipt.v1',
+    runId: 'run:04-verified',
+    ranAt: '2026-08-25',
+    admitted: true,
+    locator: 'https://fixture.invalid/runs/lab04-firewall-receipt.json',
+    verifiedBy: FIXTURE_REVIEWER_ID,
+    receiptSha256: 'a'.repeat(64),
+  }
+  const base = completeLearner()
+  // Genuine failure of tool-results-untrusted at the SAME instant as the passing receipt.
+  const failing = {
+    ...base,
+    evalRuns: base.evalRuns.map((r) =>
+      r.evalId === 'eval:threat-model-covers-tool-results'
+        ? { ...r, ranAt: '2026-08-25', passedAssertions: ['accepted-risks-named'], failedAssertions: ['tool-results-untrusted'] }
+        : r,
+    ),
+  }
+  assert.equal(advanceCapability(graph, failing, competencyShipProduction.id, FIXTURE_AS_OF).granted, false)
+
+  const merged = mergeLabReceiptsIntoLearner(graph, failing, [lab04Receipt])
+  assert.ok(
+    merged.evalRuns.some(
+      (r) =>
+        r.evalId === 'eval:threat-model-covers-tool-results' &&
+        r.ranAt === '2026-08-25' &&
+        r.failedAssertions.includes('tool-results-untrusted'),
+    ),
+    'the original failed run must survive the merge',
+  )
+  assert.equal(advanceCapability(graph, merged, competencyShipProduction.id, FIXTURE_AS_OF).granted, false)
 })
