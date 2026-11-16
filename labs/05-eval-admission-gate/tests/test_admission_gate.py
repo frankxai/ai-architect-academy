@@ -26,6 +26,7 @@ from admission_gate import (  # noqa: E402
     SchemaValidationError,
     calibrated_reference_grader,
     canonical_json,
+    compute_calibration_sha256,
     compute_suite_sha256,
     evaluate_calibration_drift,
     healthy_reference_traces,
@@ -54,6 +55,10 @@ class EvalAdmissionGateTests(unittest.TestCase):
             grader_fn=calibrated_reference_grader,
             as_of="2026-11-14T12:00:00Z",
         )
+
+    def _lock_for(self, calibration: dict) -> dict:
+        """Lock that independently pins `calibration`, so malformed-calibration tests reach the schema checks."""
+        return {**self.lock, "calibration_sha256": compute_calibration_sha256(calibration)}
 
     def test_01_clean_baseline_admits_and_emits_pass_receipt(self) -> None:
         receipt = self.gate.evaluate_admission(
@@ -122,6 +127,7 @@ class EvalAdmissionGateTests(unittest.TestCase):
         big_lock = {
             "suite_id": big_suite["suite_id"],
             "suite_sha256": compute_suite_sha256(big_suite),
+            "calibration_sha256": self.lock["calibration_sha256"],
             "relocked_by": "reviewer:eval-steward",
             "locked_at": "2026-11-14T10:00:00Z",
         }
@@ -220,6 +226,7 @@ class EvalAdmissionGateTests(unittest.TestCase):
         self_lock = {
             "suite_id": mutated_suite["suite_id"],
             "suite_sha256": compute_suite_sha256(mutated_suite),
+            "calibration_sha256": self.lock["calibration_sha256"],
             "relocked_by": "agent:builder",
             "locked_at": "2026-11-14T11:00:00Z",
         }
@@ -366,7 +373,7 @@ class EvalAdmissionGateTests(unittest.TestCase):
         rubber_gate = EvalAdmissionGate(grader_fn=lambda _s: 0.95)
         receipt = rubber_gate.evaluate_admission(
             suite_doc=self.suite,
-            lock_doc=self.lock,
+            lock_doc=self._lock_for(strong_only_cal),
             calibration_doc=strong_only_cal,
             traces_doc=self.traces,
         )
@@ -385,7 +392,7 @@ class EvalAdmissionGateTests(unittest.TestCase):
 
         nan_receipt = self.gate.evaluate_admission(
             suite_doc=self.suite,
-            lock_doc=self.lock,
+            lock_doc=self._lock_for(nan_cal),
             calibration_doc=nan_cal,
             traces_doc=self.traces,
         )
@@ -555,7 +562,7 @@ class EvalAdmissionGateTests(unittest.TestCase):
         bad_cal["anchors"][0]["sample"] = ["not-a-dict"]
         cal_receipt = self.gate.evaluate_admission(
             suite_doc=self.suite,
-            lock_doc=self.lock,
+            lock_doc=self._lock_for(bad_cal),
             calibration_doc=bad_cal,
             traces_doc=self.traces,
             run_id="run:non-mapping-sample",
@@ -582,6 +589,45 @@ class EvalAdmissionGateTests(unittest.TestCase):
         self.assertTrue(any("SCHEMA_INVALID_SUITE_ID" in f for f in sid_receipt["red_gate_failures"]))
         sid_body = {k: v for k, v in sid_receipt.items() if k != "receipt_sha256"}
         self.assertEqual(sid_receipt["receipt_sha256"], sha256_hex(canonical_json(sid_body)))
+
+    def test_18_rewritten_calibration_baseline_needs_independent_relock(self) -> None:
+        """Thread: calibration doc was trusted unlocked, so expected_score could be edited
+        to match a drifted grader. A drifted grader must stay blocked after the edit."""
+        def drifted(sample):  # borderline anchor scored 0.75 instead of 0.55
+            score = calibrated_reference_grader(sample)
+            return 0.75 if abs(score - 0.55) < 1e-9 else score
+
+        gate = EvalAdmissionGate(grader_fn=drifted, as_of="2026-11-14T12:00:00Z")
+        kwargs = dict(suite_doc=self.suite, lock_doc=self.lock, traces_doc=self.traces)
+        honest = gate.evaluate_admission(calibration_doc=self.calibration, **kwargs)
+        self.assertFalse(honest["admitted"])
+
+        tampered = copy.deepcopy(self.calibration)
+        for anchor in tampered["anchors"]:
+            if anchor["tier"] == "borderline":
+                anchor["expected_score"] = 0.75
+        receipt = gate.evaluate_admission(calibration_doc=tampered, **kwargs)
+        self.assertFalse(receipt["admitted"])
+        self.assertIn("eval-run-invalid", receipt["refusal_codes"])
+        self.assertTrue(
+            any("LOCK_CALIBRATION_DIGEST_MISMATCH" in f for f in receipt["red_gate_failures"])
+        )
+
+        # Independent relock of the new calibration (different reviewer) is accepted by the lock check.
+        relock = {**self.lock, "calibration_sha256": compute_calibration_sha256(tampered)}
+        relocked = gate.evaluate_admission(
+            suite_doc=self.suite, lock_doc=relock, calibration_doc=tampered, traces_doc=self.traces
+        )
+        self.assertFalse(
+            any("LOCK_CALIBRATION" in f for f in relocked["red_gate_failures"])
+        )
+
+        # A lock without the calibration digest is rejected outright.
+        legacy = {k: v for k, v in self.lock.items() if k != "calibration_sha256"}
+        legacy_receipt = self.gate.evaluate_admission(
+            suite_doc=self.suite, lock_doc=legacy, calibration_doc=self.calibration, traces_doc=self.traces
+        )
+        self.assertFalse(legacy_receipt["admitted"])
 
 
 if __name__ == "__main__":

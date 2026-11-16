@@ -56,6 +56,11 @@ def compute_suite_sha256(suite_doc: Mapping[str, Any]) -> str:
     return sha256_hex(canonical_json(dict(suite_doc)))
 
 
+def compute_calibration_sha256(calibration_doc: Mapping[str, Any]) -> str:
+    """Digest of the whole calibration pack: id, thresholds, anchors and expected scores."""
+    return sha256_hex(canonical_json(dict(calibration_doc)))
+
+
 class SchemaValidationError(Exception):
     """Raised when a suite, lockfile, calibration pack, or trace violates schema."""
 
@@ -245,10 +250,14 @@ def validate_fixture_lock(
     Guards against `failure:eval-rewritten-with-the-code`.
     The lockfile must match the exact canonical SHA-256 of `golden_trajectories.json`
     and carry a named `relocked_by` reviewer distinct from `candidate_author`.
+    The lock also pins `calibration_sha256` (checked by `validate_calibration_lock`)
+    so the calibration baseline cannot be rewritten to hide grader drift.
     """
     lock = _require_exact_keys(
         lock_doc,
-        frozenset({"suite_id", "suite_sha256", "relocked_by", "locked_at"}),
+        frozenset(
+            {"suite_id", "suite_sha256", "calibration_sha256", "relocked_by", "locked_at"}
+        ),
         "fixture_lock",
     )
     if (
@@ -258,10 +267,12 @@ def validate_fixture_lock(
         or not lock["suite_sha256"].strip()
         or not isinstance(lock["locked_at"], str)
         or not lock["locked_at"].strip()
+        or not isinstance(lock["calibration_sha256"], str)
+        or not lock["calibration_sha256"].strip()
     ):
         raise SchemaValidationError(
             "LOCK_INVALID_FIELD",
-            "Lock suite_id, suite_sha256, and locked_at must be non-empty strings.",
+            "Lock suite_id, suite_sha256, calibration_sha256, and locked_at must be non-empty strings.",
             "fixture_lock",
         )
     if lock["suite_id"] != suite_doc["suite_id"]:
@@ -295,6 +306,27 @@ def validate_fixture_lock(
         raise SchemaValidationError(
             "LOCK_DIGEST_MISMATCH",
             f"Golden suite SHA-256 {actual_sha[:12]}... diverges from lock {lock['suite_sha256'][:12]}...",
+            "fixture_lock",
+        )
+
+
+def validate_calibration_lock(*, calibration_doc: Any, lock_doc: Mapping[str, Any]) -> None:
+    """Fail closed when the calibration pack differs from the independently locked digest."""
+    if not isinstance(calibration_doc, Mapping):
+        raise SchemaValidationError(
+            "CALIBRATION_NOT_OBJECT", "Calibration pack must be a JSON object.", "calibration"
+        )
+    try:
+        actual = compute_calibration_sha256(calibration_doc)
+    except (TypeError, ValueError) as exc:
+        raise SchemaValidationError(
+            "CALIBRATION_NOT_HASHABLE", f"Calibration pack is not canonical JSON: {exc}", "calibration"
+        ) from exc
+    if lock_doc["calibration_sha256"] != actual:
+        raise SchemaValidationError(
+            "LOCK_CALIBRATION_DIGEST_MISMATCH",
+            f"Calibration SHA-256 {actual[:12]}... diverges from lock "
+            f"{lock_doc['calibration_sha256'][:12]}...; calibration changes need an independent relock.",
             "fixture_lock",
         )
 
@@ -545,6 +577,7 @@ class EvalAdmissionGate:
                 lock_doc=lock_doc,
                 candidate_author=candidate_author,
             )
+            validate_calibration_lock(calibration_doc=calibration_doc, lock_doc=lock_doc)
             case_ids = [str(c["case_id"]) for c in suite["cases"]]
             traces_by_id = validate_traces_schema(traces_doc, case_ids)
             calibration = evaluate_calibration_drift(calibration_doc, self._grader_fn)

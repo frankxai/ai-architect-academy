@@ -26,7 +26,7 @@ python cli.py --verify-candidate exercises/faulty_starter.py --inject-fault F1_P
 # 3. Verify the hardened reference solution and emit a SHA-256 receipt (exits 0)
 python cli.py --verify-candidate .lab/solution/firewall_solution.py --emit-receipt .lab/last-receipt.json
 
-# 4. Run the full offline unit test suite (12 stdlib unittest checks, 0 network calls)
+# 4. Run the full offline unit test suite (stdlib unittest, 0 network calls; the runner prints the count)
 python -m unittest discover -s tests -v
 ```
 
