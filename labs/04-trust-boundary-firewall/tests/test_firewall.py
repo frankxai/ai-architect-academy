@@ -692,5 +692,24 @@ class TrustBoundaryFirewallTests(unittest.TestCase):
         self.assertFalse(f1_results[0].passed)
 
 
+    def test_18_candidate_loader_accepts_dataclass_with_postponed_annotations(self) -> None:
+        """Thread: dynamically loaded candidate was not in sys.modules, so @dataclass crashed on import."""
+        source = (
+            "from __future__ import annotations\n"
+            "from dataclasses import dataclass\n"
+            "from firewall import TrustBoundaryFirewall\n"
+            "@dataclass\n"
+            "class Cfg:\n"
+            "    as_of: str = '2026-11-14T12:00:00Z'\n"
+            "def build_candidate_firewall(**kw):\n"
+            "    return TrustBoundaryFirewall(**{**kw, 'as_of': Cfg().as_of})\n"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "dc_candidate.py"
+            path.write_text(source, encoding="utf-8")
+            factory = cli._load_candidate_factory(path)
+        self.assertTrue(callable(factory))
+
+
 if __name__ == "__main__":
     unittest.main()

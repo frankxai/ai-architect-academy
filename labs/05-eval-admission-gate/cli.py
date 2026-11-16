@@ -47,7 +47,13 @@ def _load_candidate_factory(candidate_path: Path) -> Callable[..., Any]:
     if spec is None or spec.loader is None:
         raise RuntimeError(f"Cannot load module spec from {resolved}")
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    # Register before exec: dataclasses (with postponed annotations) look the module up in sys.modules.
+    sys.modules[spec.name] = module
+    try:
+        spec.loader.exec_module(module)
+    except BaseException:
+        sys.modules.pop(spec.name, None)
+        raise
     factory = getattr(module, "build_candidate_gate", None)
     if not callable(factory):
         raise AttributeError(f"{resolved.name} must define callable build_candidate_gate(...).")

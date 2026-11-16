@@ -39,7 +39,13 @@ def _load_candidate_factory(candidate_path: Path) -> Any:
     if spec is None or spec.loader is None:
         raise RuntimeError(f"Unable to load module spec from {resolved}")
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    # Register before exec: dataclasses (with postponed annotations) look the module up in sys.modules.
+    sys.modules[spec.name] = module
+    try:
+        spec.loader.exec_module(module)
+    except BaseException:
+        sys.modules.pop(spec.name, None)
+        raise
     factory = getattr(module, "build_candidate_firewall", None)
     if not callable(factory):
         raise AttributeError(
