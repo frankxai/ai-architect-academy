@@ -253,3 +253,5 @@ ai-architect-academy/
 ---
 
 *Built by FrankX. Powered by Claude Code. The medium is the message.*
+
+For portfolio UI, editorial and media work, read the **Portfolio experience review** section of the root `AGENTS.md` before making or reviewing the change. Use its pinned constitution and brand pack.

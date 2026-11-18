@@ -91,3 +91,6 @@ For product intelligence work, use the [existing delivery contract's cycle](docs
 
 Current quality implementation: https://github.com/frankxai/ai-architect-academy/issues/35. Reconcile historical instructions against accepted current decisions before changing product scope.
 
+## Portfolio experience review
+
+For interface, editorial and media changes, load the [Frontier Experience Constitution](https://github.com/Starlight-Intelligence/starlight-design-intelligence/blob/e25fab4c5a0dac2ea8c7b91e9397972f5af4b454/portfolio/frontier-experience-constitution.md) and the [ai-coe pack](https://github.com/Starlight-Intelligence/starlight-design-intelligence/blob/e25fab4c5a0dac2ea8c7b91e9397972f5af4b454/brand-packs/ai-coe/DESIGN.md). Follow a learning path into a lab and verify the learner can retain the resulting artifact. Attach the tested route, candidate revision and responsive evidence to the owning review. Keep scoped asset and release decisions with their existing owners.
