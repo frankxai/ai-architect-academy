@@ -12,6 +12,7 @@ import modules from '@/data/modules.json'
 export const metadata: Metadata = {
   title: 'The path: production agent systems',
   description: project.brief,
+  alternates: { canonical: '/path' },
 }
 
 const artifactOf = (id: string) => artifacts.find((a) => a.id === id)
