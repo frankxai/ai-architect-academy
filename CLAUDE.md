@@ -253,3 +253,5 @@ ai-architect-academy/
 ---
 
 *Built by FrankX. Powered by Claude Code. The medium is the message.*
+
+@./AGENTS.md
