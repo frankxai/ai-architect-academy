@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="1200" height="540" role="img" aria-labelledby="prog-title prog-desc">
+  <title id="prog-title">12-Week Production Architect Progression and Non-Compensable Eval Admission Gate</title>
+  <desc id="prog-desc">Maps the three four-week acts of the 12-week curriculum across Labs 01 to 05 and worked runs, culminating in the Lab 05 non-compensable eval admission gate and AcademyGraph.v1 portfolio proof.</desc>
+  <defs>
+    <linearGradient id="prog-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1017" />
+      <stop offset="100%" stop-color="#151824" />
+    </linearGradient>
+    <marker id="prog-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#8ea2ff" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="540" rx="16" fill="url(#prog-bg)" stroke="#262a3a" stroke-width="2" />
+
+  <text x="44" y="46" fill="#8b90a0" font-family="ui-monospace, Consolas, monospace" font-size="12" letter-spacing="2">12-WEEK PRODUCTION ARCHITECT PATH · LABS 01–05 + WORKED RUNS</text>
+  <text x="44" y="82" fill="#f2f1ec" font-family="Georgia, serif" font-size="27" font-weight="600">Three-Act Progression &amp; Non-Compensable Eval Admission Gate</text>
+  <line x1="44" y1="104" x2="1156" y2="104" stroke="#262a3a" stroke-width="1" />
+
+  <!-- Act I -->
+  <g transform="translate(44, 128)">
+    <rect width="346" height="194" rx="12" fill="#171b29" stroke="#4f67e8" stroke-width="1.5" />
+    <text x="20" y="30" fill="#a9b8ff" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">ACT I · WEEKS 01–04</text>
+    <text x="20" y="58" fill="#f2f1ec" font-family="Georgia, serif" font-size="20" font-weight="600">Frame, Retrieval &amp; Seams</text>
+    <text x="20" y="88" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W1: System brief &amp; kill criterion</text>
+    <text x="20" y="112" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W2: Retrieval grounding (Lab 01 RAG)</text>
+    <text x="20" y="136" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W3: Coordinator loops (Lab 02 Multi-Agent)</text>
+    <text x="20" y="160" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W4: Typed protocol seams (Lab 03 MCP)</text>
+    <text x="20" y="182" fill="#8b90a0" font-family="ui-monospace, Consolas, monospace" font-size="11">Worked run: support-triage (plane owner)</text>
+  </g>
+
+  <!-- Act II -->
+  <g transform="translate(427, 128)">
+    <rect width="346" height="194" rx="12" fill="#171b29" stroke="#5ee6cf" stroke-width="1.5" />
+    <text x="20" y="30" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">ACT II · WEEKS 05–08</text>
+    <text x="20" y="58" fill="#f2f1ec" font-family="Georgia, serif" font-size="20" font-weight="600">Trust, Authority &amp; Eval Gates</text>
+    <text x="20" y="88" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W5: Least-privilege matrix (Lab 05 Gate)</text>
+    <text x="20" y="112" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W6: Trust-boundary firewall (Lab 04 FW)</text>
+    <text x="20" y="136" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W7: Regression harness (Lab 04 Harness)</text>
+    <text x="20" y="160" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W8: Non-compensable gate (Lab 05 Eval)</text>
+    <text x="20" y="182" fill="#8b90a0" font-family="ui-monospace, Consolas, monospace" font-size="11">Worked run: contract-rag (T3 injection)</text>
+  </g>
+
+  <!-- Act III -->
+  <g transform="translate(810, 128)">
+    <rect width="346" height="194" rx="12" fill="#171b29" stroke="#a9b8ff" stroke-width="1.5" />
+    <text x="20" y="30" fill="#a9b8ff" font-family="ui-monospace, Consolas, monospace" font-size="11" font-weight="600">ACT III · WEEKS 09–12</text>
+    <text x="20" y="58" fill="#f2f1ec" font-family="Georgia, serif" font-size="20" font-weight="600">Operate, Drill &amp; Defend</text>
+    <text x="20" y="88" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W9: Unit economics &amp; runaway ceiling</text>
+    <text x="20" y="112" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W10: Live deployment &amp; rollback drill</text>
+    <text x="20" y="136" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W11: Witnessed incident simulation</text>
+    <text x="20" y="160" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13">• W12: Architecture defence &amp; portfolio</text>
+    <text x="20" y="182" fill="#8b90a0" font-family="ui-monospace, Consolas, monospace" font-size="11">Worked run: personal-ai-coe (restore 5r)</text>
+  </g>
+
+  <line x1="390" y1="225" x2="423" y2="225" stroke="#8ea2ff" stroke-width="2" marker-end="url(#prog-arrow)" />
+  <line x1="773" y1="225" x2="806" y2="225" stroke="#8ea2ff" stroke-width="2" marker-end="url(#prog-arrow)" />
+
+  <!-- Bottom Non-Compensable Admission Bar -->
+  <g transform="translate(44, 348)">
+    <rect width="1112" height="156" rx="12" fill="#121521" stroke="#2b3147" stroke-width="1.5" />
+    <text x="24" y="32" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="12" font-weight="600">LAB 05 · EVAL ADMISSION GATE &amp; ACADEMYGRAPH.V1 ADVANCEMENT</text>
+
+    <rect x="24" y="50" width="248" height="84" rx="8" fill="#171b29" stroke="#2b3147" />
+    <text x="38" y="74" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">1. Fixture Lock Integrity</text>
+    <text x="38" y="96" fill="#b9bccb" font-family="ui-monospace, Consolas, monospace" font-size="11">SHA-256 suite lock verified</text>
+    <text x="38" y="116" fill="#b9bccb" font-family="ui-monospace, Consolas, monospace" font-size="11">relocked_by != author</text>
+
+    <rect x="292" y="50" width="256" height="84" rx="8" fill="#171b29" stroke="#2b3147" />
+    <text x="306" y="74" fill="#f2f1ec" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">2. Calibration Drift Check</text>
+    <text x="306" y="96" fill="#b9bccb" font-family="ui-monospace, Consolas, monospace" font-size="11">weak &lt; borderline &lt; strong</text>
+    <text x="306" y="116" fill="#b9bccb" font-family="ui-monospace, Consolas, monospace" font-size="11">drift &lt;= 0.12 tolerance</text>
+
+    <rect x="568" y="50" width="268" height="84" rx="8" fill="#25161b" stroke="#f3b5a8" />
+    <text x="582" y="74" fill="#f3b5a8" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">3. Non-Compensable Red Gate</text>
+    <text x="582" y="96" fill="#f2f1ec" font-family="ui-monospace, Consolas, monospace" font-size="11">91% pass + 1 injection breach</text>
+    <text x="582" y="116" fill="#f3b5a8" font-family="ui-monospace, Consolas, monospace" font-size="11">=&gt; VERDICT: BLOCK (exit 1)</text>
+
+    <rect x="856" y="50" width="232" height="84" rx="8" fill="#142624" stroke="#5ee6cf" />
+    <text x="870" y="74" fill="#5ee6cf" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">4. Evidence Bridge</text>
+    <text x="870" y="96" fill="#f2f1ec" font-family="ui-monospace, Consolas, monospace" font-size="11">EvalAdmissionReceipt.v1</text>
+    <text x="870" y="116" fill="#5ee6cf" font-family="ui-monospace, Consolas, monospace" font-size="11">=&gt; advanceCapability()</text>
+  </g>
+</svg>

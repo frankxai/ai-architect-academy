@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { CurriculumVisualExplorer } from '@/components/CurriculumVisualExplorer'
+import { SpineBlueprintGallery } from '@/components/SpineBlueprintGallery'
 import curriculum from '@/data/curriculum.json'
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function CurriculumPage() {
       </p>
 
       <CurriculumVisualExplorer />
+      <SpineBlueprintGallery />
 
       <div className="mt-14 space-y-14">
         {curriculum.sections.map((s) => (

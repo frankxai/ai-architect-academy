@@ -314,6 +314,42 @@ export const labToolAuthorityGate: Lab = {
   teaches: ['pattern:bounded-tool-authority'],
 }
 
+export const labTrustBoundaryFirewall: Lab = {
+  id: 'lab:04-trust-boundary-firewall',
+  kind: 'Lab',
+  title: 'Enforce the agent trust-boundary firewall',
+  owner: OWNER,
+  version: V,
+  visibility: 'public',
+  provenance: { source: 'labs/04-trust-boundary-firewall', method: 'repo-scan', measuredAt: '2026-11-14' },
+  evaluationRule: {
+    kind: 'reference-only',
+    rationale: 'Labs build fluency. Only the flagship project grants competency.',
+  },
+  repoPath: 'labs/04-trust-boundary-firewall',
+  estimatedHours: 1.25,
+  produces: [],
+  teaches: ['pattern:bounded-tool-authority'],
+}
+
+export const labEvalAdmissionGate: Lab = {
+  id: 'lab:05-eval-admission-gate',
+  kind: 'Lab',
+  title: 'Build a non-compensable eval admission gate',
+  owner: OWNER,
+  version: V,
+  visibility: 'public',
+  provenance: { source: 'labs/05-eval-admission-gate', method: 'repo-scan', measuredAt: '2026-11-14' },
+  evaluationRule: {
+    kind: 'reference-only',
+    rationale: 'Labs build fluency. Only the flagship project grants competency.',
+  },
+  repoPath: 'labs/05-eval-admission-gate',
+  estimatedHours: 1.25,
+  produces: [],
+  teaches: ['pattern:eval-before-deploy'],
+}
+
 // --- Artifacts ---------------------------------------------------------------
 
 type ArtifactSeed = Pick<
@@ -930,6 +966,20 @@ export const edges: readonly AcademyEdge[] = [
     to: patternToolAuthority.id,
     ...edgeBase,
   },
+  {
+    id: 'edge:lab-trust-boundary-firewall-teaches-authority',
+    kind: 'teaches',
+    from: labTrustBoundaryFirewall.id,
+    to: patternToolAuthority.id,
+    ...edgeBase,
+  },
+  {
+    id: 'edge:lab-eval-admission-gate-teaches-eval',
+    kind: 'teaches',
+    from: labEvalAdmissionGate.id,
+    to: patternEvalHarness.id,
+    ...edgeBase,
+  },
   ...stages.map(
     (s): AcademyEdge => ({
       id: `edge:${s.id}-produces-${s.artifact}`,
@@ -977,6 +1027,8 @@ export const productionAgentSystemsGraph: AcademyGraph = {
     labMcpServer,
     labEvalHarness,
     labToolAuthorityGate,
+    labTrustBoundaryFirewall,
+    labEvalAdmissionGate,
     ...artifacts,
     ...evals,
     ...reviews,

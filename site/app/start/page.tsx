@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { RoleEntrySelector } from '@/components/RoleEntrySelector'
 import { Waitlist } from '@/components/Waitlist'
 import { projectProductionAgentSystems as project } from '@/lib/academy-graph'
 
@@ -20,6 +21,8 @@ export default function StartPage() {
         <a className="btn btn-primary" href="#human">I am building my judgment</a>
         <a className="btn btn-quiet" href="#agent">I am equipping an agent</a>
       </nav>
+
+      <RoleEntrySelector />
 
       <div className="entry-grid mt-16">
         <section id="human" className="entry-route" aria-labelledby="human-title">

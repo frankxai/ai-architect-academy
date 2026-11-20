@@ -1,0 +1,830 @@
+import test from 'node:test'
+import assert from 'node:assert/strict'
+import { existsSync, readFileSync } from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+import { advanceCapability, projectPortfolio, type Refusal } from './advance.ts'
+import {
+  FORBIDDEN_PUBLIC_TERMS,
+  LAB_STAGE_BINDINGS,
+  ROLE_ENTRY_TRACKS,
+  SPINE_BLUEPRINT_PLATES,
+  WORKED_RUN_GATE_BINDINGS,
+  assertVendorNeutralPublicText,
+  bridgeWorkedRunToLearner,
+  mapLabReceiptToEvidence,
+  mergeLabReceiptsIntoLearner,
+  resolveRoleEntryTrack,
+  type LabCompletionReceipt,
+  type RoleEntryTrackId,
+  type WorkedRunBridgeOptions,
+  type WorkedRunInput,
+} from './evidence-bridge.ts'
+import {
+  FIXTURE_AS_OF,
+  FIXTURE_LEARNER_ID,
+  FIXTURE_REVIEWER_ID,
+  completeLearner,
+} from './fixtures.ts'
+import {
+  competencyShipProduction,
+  productionAgentSystemsGraph as graph,
+  projectProductionAgentSystems,
+} from './production-agent-systems.ts'
+
+const workedRunData = JSON.parse(
+  readFileSync(new URL('../../data/worked-run.json', import.meta.url), 'utf8'),
+) as { runs: readonly WorkedRunInput[] }
+
+const runById = (id: string): WorkedRunInput => {
+  const found = workedRunData.runs.find((r) => r.id === id)
+  assert.ok(found, `missing worked run ${id}`)
+  return found
+}
+
+const codes = (refusals: readonly Refusal[]) => new Set(refusals.map((r) => r.code))
+
+test('evidence-bridge: worked-run gate bindings cover all nine flagship stages bijectively', () => {
+  assert.equal(WORKED_RUN_GATE_BINDINGS.length, projectProductionAgentSystems.stages.length)
+  assert.deepEqual(
+    WORKED_RUN_GATE_BINDINGS.map((b) => b.stageId),
+    projectProductionAgentSystems.stages.map((s) => s.id),
+  )
+  assert.deepEqual(
+    WORKED_RUN_GATE_BINDINGS.map((b) => b.artifactId),
+    projectProductionAgentSystems.stages.map((s) => s.artifact),
+  )
+})
+
+test('evidence-bridge: contract-rag worked run blocks on trust and evals red gates and fixture limits', () => {
+  const projection = bridgeWorkedRunToLearner(runById('contract-rag'), { asOf: '2026-09-02' })
+  assert.equal(projection.advance.granted, false)
+  assert.deepEqual(projection.blockedGates, ['trust', 'evals'])
+  assert.deepEqual(projection.openDecisions, ['trust'])
+
+  assert.ok(!projection.advance.granted)
+  const failedEvalSubjects = projection.advance.refusals
+    .filter((r) => r.code === 'eval-below-threshold')
+    .map((r) => r.subject)
+
+  assert.deepEqual(failedEvalSubjects, [
+    'eval:harness-fails-on-regression',
+    'eval:threat-model-covers-tool-results',
+    'eval:deployment-reachable',
+  ])
+  // Worked-run fixtures withhold non-stage artifacts (flows, runbooks, discovery, receipts),
+  // live deploy locators, full stage evals, and independent human reviews.
+  assert.ok(codes(projection.advance.refusals).has('artifact-not-submitted'))
+  assert.ok(codes(projection.advance.refusals).has('eval-never-run'))
+  assert.ok(codes(projection.advance.refusals).has('review-missing'))
+  assert.equal(projection.portfolio.entries.length, 0)
+
+  const withSubmittedDeploy = bridgeWorkedRunToLearner(runById('contract-rag'), {
+    asOf: '2026-09-02',
+    additionalSubmittedArtifacts: ['artifact:deployment-record'],
+  })
+  assert.ok(
+    !withSubmittedDeploy.advance.granted &&
+      withSubmittedDeploy.advance.refusals.some(
+        (r) => r.code === 'no-evidence' && r.subject === 'artifact:deployment-record',
+      ),
+  )
+})
+
+test('evidence-bridge: support-triage and personal-ai-coe isolate their distinct red gates', () => {
+  const triage = bridgeWorkedRunToLearner(runById('support-triage'), { asOf: '2026-09-02' })
+  assert.equal(triage.advance.granted, false)
+  assert.deepEqual(triage.blockedGates, ['decisions'])
+  assert.deepEqual(triage.openDecisions, ['model'])
+  assert.ok(!triage.advance.granted)
+  assert.deepEqual(
+    triage.advance.refusals.filter((r) => r.code === 'eval-below-threshold').map((r) => r.subject),
+    ['eval:adr-has-rejected-options', 'eval:threat-model-covers-tool-results', 'eval:deployment-reachable'],
+  )
+  // `flow` PASS checks failure branches in `02-user-flows.md`, never submitting or proving `artifact:tool-authority-matrix`.
+  assert.ok(!triage.learner.submittedArtifacts.includes('artifact:tool-authority-matrix'))
+  assert.equal(
+    triage.learner.evalRuns.some((r) => r.evalId === 'eval:authority-least-privilege'),
+    false,
+  )
+  assert.ok(
+    triage.advance.refusals.some(
+      (r) => r.code === 'eval-never-run' && r.subject === 'eval:authority-least-privilege',
+    ),
+  )
+  const baseComplete = completeLearner()
+  const splicedWithTriageAuthority = advanceCapability(
+    graph,
+    {
+      ...baseComplete,
+      evalRuns: [
+        ...baseComplete.evalRuns.filter((r) => r.evalId !== 'eval:authority-least-privilege'),
+        ...triage.learner.evalRuns.filter((r) => r.evalId === 'eval:authority-least-privilege'),
+      ],
+    },
+    competencyShipProduction.id,
+    '2026-09-02',
+  )
+  assert.equal(splicedWithTriageAuthority.granted, false)
+  assert.ok(
+    !splicedWithTriageAuthority.granted &&
+      splicedWithTriageAuthority.refusals.some(
+        (r) => r.code === 'eval-never-run' && r.subject === 'eval:authority-least-privilege',
+      ),
+  )
+  const triageDeployRun = triage.learner.evalRuns.find((r) => r.evalId === 'eval:deployment-reachable')
+  assert.deepEqual(triageDeployRun?.passedAssertions, ['rollback-exists'])
+  assert.deepEqual(triageDeployRun?.failedAssertions, ['responds-200'])
+
+  const coe = bridgeWorkedRunToLearner(runById('personal-ai-coe'), { asOf: '2026-09-02' })
+  assert.equal(coe.advance.granted, false)
+  assert.deepEqual(coe.blockedGates, ['operate'])
+  assert.deepEqual(coe.openDecisions, [])
+  assert.ok(!coe.advance.granted)
+  assert.deepEqual(
+    coe.advance.refusals.filter((r) => r.code === 'eval-below-threshold').map((r) => r.subject),
+    ['eval:threat-model-covers-tool-results', 'eval:deployment-reachable'],
+  )
+  const coeDeployRun = coe.learner.evalRuns.find((r) => r.evalId === 'eval:deployment-reachable')
+  assert.deepEqual(coeDeployRun?.passedAssertions, [])
+  assert.deepEqual(coeDeployRun?.failedAssertions, ['responds-200', 'rollback-exists'])
+})
+
+test('evidence-bridge: Lab 04 firewall receipt only attests tool-results-untrusted and requires written threat-model evidence for accepted-risks-named', () => {
+  const lab04Receipt: LabCompletionReceipt = {
+    labId: 'lab:04-trust-boundary-firewall',
+    schema: 'TrustFirewallReceipt.v1',
+    runId: 'run:04-verified',
+    ranAt: '2026-08-25',
+    admitted: true,
+    locator: 'https://fixture.invalid/runs/lab04-firewall-receipt.json',
+    verifiedBy: FIXTURE_REVIEWER_ID,
+    receiptSha256: 'a'.repeat(64),
+  }
+  const lab05Receipt: LabCompletionReceipt = {
+    labId: 'lab:05-eval-admission-gate',
+    schema: 'EvalAdmissionReceipt.v1',
+    runId: 'run:05-verified',
+    ranAt: '2026-08-25',
+    admitted: true,
+    locator: 'https://fixture.invalid/runs/lab05-admission-receipt.json',
+    verifiedBy: FIXTURE_REVIEWER_ID,
+    receiptSha256: 'b'.repeat(64),
+  }
+
+  // Standalone Lab 04 receipt only passes `tool-results-untrusted`; `accepted-risks-named` remains failed.
+  const mapped04 = mapLabReceiptToEvidence(graph, FIXTURE_LEARNER_ID, lab04Receipt)
+  assert.deepEqual(mapped04.evalRun.passedAssertions, ['tool-results-untrusted'])
+  assert.deepEqual(mapped04.evalRun.failedAssertions, ['accepted-risks-named'])
+
+  const base = completeLearner()
+
+  // Negative 1: Stripping `artifact:threat-model` from submittedArtifacts cannot be spoofed by a Lab 04 receipt.
+  const unsubmittedDoc = {
+    ...base,
+    submittedArtifacts: base.submittedArtifacts.filter((id) => id !== 'artifact:threat-model'),
+  }
+  const mergedUnsubmitted = mergeLabReceiptsIntoLearner(graph, unsubmittedDoc, [lab04Receipt, lab05Receipt])
+  const unsubmittedVerdict = advanceCapability(graph, mergedUnsubmitted, competencyShipProduction.id, FIXTURE_AS_OF)
+  assert.equal(unsubmittedVerdict.granted, false)
+  assert.ok(
+    !unsubmittedVerdict.granted &&
+      unsubmittedVerdict.refusals.some(
+        (r) => r.code === 'artifact-not-submitted' && r.subject === 'artifact:threat-model',
+      ),
+  )
+
+  // Negative 2: Stripping written threat-model document evidence leaves `accepted-risks-named` unfulfilled.
+  const noDocEvidence = {
+    ...base,
+    evidence: base.evidence.filter((e) => e.artifact !== 'artifact:threat-model'),
+  }
+  const mergedNoDocEvidence = mergeLabReceiptsIntoLearner(graph, noDocEvidence, [lab04Receipt, lab05Receipt])
+  const noDocVerdict = advanceCapability(graph, mergedNoDocEvidence, competencyShipProduction.id, FIXTURE_AS_OF)
+  assert.equal(noDocVerdict.granted, false)
+  assert.ok(
+    !noDocVerdict.granted &&
+      noDocVerdict.refusals.some(
+        (r) => r.code === 'eval-below-threshold' && r.subject === 'eval:threat-model-covers-tool-results',
+      ),
+  )
+
+  // Negative 3: Missing document check for `accepted-risks-named` cannot be bypassed by Lab 04 firewall receipt alone.
+  const missingDocAssertion = {
+    ...base,
+    evidence: base.evidence.filter((e) => e.id !== 'evidence:eval-harness-run'),
+    evalRuns: base.evalRuns.map((r) =>
+      r.evalId === 'eval:threat-model-covers-tool-results'
+        ? { ...r, passedAssertions: ['tool-results-untrusted'], failedAssertions: ['accepted-risks-named'] }
+        : r,
+    ),
+  }
+  const mergedMissingAcceptedRisks = mergeLabReceiptsIntoLearner(
+    graph,
+    missingDocAssertion,
+    [lab04Receipt, lab05Receipt],
+  )
+  const missingRisksVerdict = advanceCapability(
+    graph,
+    mergedMissingAcceptedRisks,
+    competencyShipProduction.id,
+    FIXTURE_AS_OF,
+  )
+  assert.equal(missingRisksVerdict.granted, false)
+  assert.ok(
+    !missingRisksVerdict.granted &&
+      missingRisksVerdict.refusals.some(
+        (r) =>
+          r.code === 'eval-below-threshold' &&
+          r.subject === 'eval:threat-model-covers-tool-results' &&
+          r.detail.includes('accepted-risks-named'),
+      ),
+  )
+
+  // Positive complementary case: submitted threat-model document + prior check for `accepted-risks-named`
+  // combines with Lab 04 (`tool-results-untrusted`) + Lab 05 (`eval:harness-fails-on-regression`) to grant competency.
+  const partialWithDocCheck = {
+    ...base,
+    evidence: base.evidence.filter((e) => e.id !== 'evidence:eval-harness-run'),
+    evalRuns: base.evalRuns
+      .filter((r) => r.evalId !== 'eval:harness-fails-on-regression')
+      .map((r) =>
+        r.evalId === 'eval:threat-model-covers-tool-results'
+          ? {
+              ...r,
+              ranAt: '2026-08-24', // strictly earlier than the receipts: ties carry no ordering
+              passedAssertions: ['accepted-risks-named'],
+              failedAssertions: ['tool-results-untrusted'],
+            }
+          : r,
+      ),
+  }
+
+  const before = advanceCapability(graph, partialWithDocCheck, competencyShipProduction.id, FIXTURE_AS_OF)
+  assert.equal(before.granted, false)
+
+  const merged = mergeLabReceiptsIntoLearner(graph, partialWithDocCheck, [lab04Receipt, lab05Receipt])
+  const after = advanceCapability(graph, merged, competencyShipProduction.id, FIXTURE_AS_OF)
+  assert.equal(after.granted, true, JSON.stringify(!after.granted && after.refusals, null, 2))
+
+  // Projecting portfolio preserves cohort-only redaction on Lab 04's threat-model evidence!
+  const grantedState = { ...merged, grantedCompetencies: [competencyShipProduction.id] }
+  const portfolio = projectPortfolio(graph, grantedState, FIXTURE_AS_OF)
+  assert.equal(portfolio.entries.length, 1)
+  assert.ok(!portfolio.entries[0].artifacts.includes('artifact:threat-model'))
+  assert.ok(
+    portfolio.entries[0].publicEvidence.includes(
+      'https://fixture.invalid/runs/lab05-admission-receipt.json',
+    ),
+  )
+  assert.ok(
+    !portfolio.entries[0].publicEvidence.includes(
+      'https://fixture.invalid/runs/lab04-firewall-receipt.json',
+    ),
+  )
+})
+
+test('evidence-bridge: blocked Lab 05 receipt or malformed SHA-256 fails closed', () => {
+  assert.throws(
+    () =>
+      mapLabReceiptToEvidence(graph, FIXTURE_LEARNER_ID, {
+        labId: 'lab:05-eval-admission-gate',
+        schema: 'EvalAdmissionReceipt.v1',
+        runId: 'run:bad-hash',
+        ranAt: '2026-08-26',
+        admitted: true,
+        locator: 'https://fixture.invalid/runs/bad',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+        receiptSha256: 'not-a-sha256',
+      }),
+    /SHA-256/,
+  )
+
+  const blockedLab05: LabCompletionReceipt = {
+    labId: 'lab:05-eval-admission-gate',
+    schema: 'EvalAdmissionReceipt.v1',
+    runId: 'run:05-blocked',
+    ranAt: '2026-08-29',
+    admitted: false,
+    locator: 'https://fixture.invalid/runs/lab05-blocked.json',
+    verifiedBy: FIXTURE_REVIEWER_ID,
+    receiptSha256: 'c'.repeat(64),
+    redGateFailures: ['NON_COMPENSABLE:injection-002:FORBIDDEN_TOOL_EXECUTED:post_customer_reply'],
+  }
+
+  // Merging a newer blocked Lab 05 run onto completeLearner() overrides the older 2026-08-20 pass and blocks!
+  const regressed = mergeLabReceiptsIntoLearner(graph, completeLearner(), [blockedLab05])
+  const verdict = advanceCapability(graph, regressed, competencyShipProduction.id, FIXTURE_AS_OF)
+  assert.equal(verdict.granted, false)
+  assert.ok(!verdict.granted && codes(verdict.refusals).has('eval-below-threshold'))
+})
+
+test('evidence-bridge: schema mismatch and empty verifier in lab receipt throw deterministically', () => {
+  assert.throws(
+    () =>
+      mapLabReceiptToEvidence(graph, FIXTURE_LEARNER_ID, {
+        labId: 'lab:04-trust-boundary-firewall',
+        schema: 'EvalAdmissionReceipt.v1',
+        runId: 'run:wrong-schema',
+        ranAt: '2026-08-26',
+        admitted: true,
+        locator: 'https://fixture.invalid/runs/wrong-schema',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+        receiptSha256: 'd'.repeat(64),
+      }),
+    /Schema mismatch/,
+  )
+
+  assert.throws(
+    () =>
+      mapLabReceiptToEvidence(graph, FIXTURE_LEARNER_ID, {
+        labId: 'lab:04-trust-boundary-firewall',
+        schema: 'TrustFirewallReceipt.v1',
+        runId: 'run:empty-verifier',
+        ranAt: '2026-08-26',
+        admitted: true,
+        locator: 'https://fixture.invalid/runs/ok',
+        verifiedBy: '   ',
+        receiptSha256: 'e'.repeat(64),
+      }),
+    /locator and verifiedBy/,
+  )
+})
+
+test('evidence-bridge: a remediated worked run with live deploy evidence, lab receipt, and independent reviews grants competency', () => {
+  const remediatedRun: WorkedRunInput = {
+    ...runById('personal-ai-coe'),
+    fixture: false,
+    gates: runById('personal-ai-coe').gates.map((g) => ({ ...g, status: 'PASS' })),
+  }
+
+  const baseBridgeOptions: WorkedRunBridgeOptions = {
+    learnerId: FIXTURE_LEARNER_ID,
+    verifierId: FIXTURE_REVIEWER_ID,
+    asOf: '2026-09-02',
+    labReceipts: [
+      {
+        labId: 'lab:05-eval-admission-gate',
+        schema: 'EvalAdmissionReceipt.v1',
+        runId: 'run:coe-eval-gate',
+        ranAt: '2026-08-25',
+        admitted: true,
+        locator: 'https://fixture.invalid/runs/coe-eval-gate.json',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+        receiptSha256: 'f'.repeat(64),
+      },
+    ],
+    additionalEvidence: [
+      {
+        id: 'evidence:coe-tool-authority',
+        kind: 'Evidence',
+        title: 'Tool and authority matrix document',
+        owner: FIXTURE_LEARNER_ID,
+        version: '1.0.0',
+        visibility: 'public',
+        provenance: { source: 'repo', method: 'learner-submitted', measuredAt: '2026-08-25' },
+        evaluationRule: { kind: 'reference-only', rationale: 'Verified by authority matrix assertions.' },
+        evidenceKind: 'repo-url',
+        artifact: 'artifact:tool-authority-matrix',
+        locator: 'https://fixture.invalid/repo/tool-authority-matrix.md',
+        verifiedAt: '2026-08-25',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+      },
+      {
+        id: 'evidence:coe-portfolio-proof',
+        kind: 'Evidence',
+        title: 'Public portfolio proof page',
+        owner: FIXTURE_LEARNER_ID,
+        version: '1.0.0',
+        visibility: 'public',
+        provenance: { source: 'repo', method: 'learner-submitted', measuredAt: '2026-08-25' },
+        evaluationRule: { kind: 'reference-only', rationale: 'Verified by logged-out link resolution and redaction checks.' },
+        evidenceKind: 'repo-url',
+        artifact: 'artifact:portfolio-proof',
+        locator: 'https://fixture.invalid/repo/portfolio-proof.md',
+        verifiedAt: '2026-08-25',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+      },
+      {
+        id: 'evidence:coe-live-deploy',
+        kind: 'Evidence',
+        title: 'Live deployment endpoint',
+        owner: FIXTURE_LEARNER_ID,
+        version: '1.0.0',
+        visibility: 'public',
+        provenance: { source: 'deploy', method: 'learner-submitted', measuredAt: '2026-08-25' },
+        evaluationRule: { kind: 'reference-only', rationale: 'Verified by HTTP 200 reachability.' },
+        evidenceKind: 'deploy-url',
+        artifact: 'artifact:deployment-record',
+        locator: 'https://fixture.invalid/live/coe-health',
+        verifiedAt: '2026-08-25',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+      },
+      {
+        id: 'evidence:coe-incident-deploy',
+        kind: 'Evidence',
+        title: 'Running system during incident drill',
+        owner: FIXTURE_LEARNER_ID,
+        version: '1.0.0',
+        visibility: 'cohort',
+        provenance: { source: 'deploy', method: 'learner-submitted', measuredAt: '2026-08-25' },
+        evaluationRule: { kind: 'reference-only', rationale: 'Verified by HTTP 200 reachability.' },
+        evidenceKind: 'deploy-url',
+        artifact: 'artifact:incident-report',
+        locator: 'https://fixture.invalid/live/coe-drill',
+        verifiedAt: '2026-08-25',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+      },
+      {
+        id: 'evidence:coe-incident-witness',
+        kind: 'Evidence',
+        title: 'Independent witness attestation',
+        owner: FIXTURE_REVIEWER_ID,
+        version: '1.0.0',
+        visibility: 'cohort',
+        provenance: { source: 'witness', method: 'reviewer-attested', measuredAt: '2026-08-25' },
+        evaluationRule: { kind: 'reference-only', rationale: 'Witnessed by independent peer.' },
+        evidenceKind: 'reviewer-attestation',
+        artifact: 'artifact:incident-report',
+        locator: 'https://fixture.invalid/attestations/coe-drill',
+        verifiedAt: '2026-08-25',
+        verifiedBy: FIXTURE_REVIEWER_ID,
+      },
+    ],
+    reviews: [
+      {
+        reviewId: 'review:architecture-defence',
+        artifact: 'artifact:architecture-decision',
+        reviewer: FIXTURE_REVIEWER_ID,
+        verdict: 'pass',
+        reviewedAt: '2026-08-26',
+      },
+      {
+        reviewId: 'review:incident-honesty',
+        artifact: 'artifact:incident-report',
+        reviewer: FIXTURE_REVIEWER_ID,
+        verdict: 'pass',
+        reviewedAt: '2026-08-26',
+      },
+    ],
+  }
+
+  const systemBriefEvalRun = {
+    evalId: 'eval:system-brief-complete' as const,
+    artifact: 'artifact:system-brief' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['has-out-of-scope', 'has-kill-criterion'],
+    failedAssertions: [],
+  }
+  const adrEvalRun = {
+    evalId: 'eval:adr-has-rejected-options' as const,
+    artifact: 'artifact:architecture-decision' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['two-options-minimum', 'reversal-condition'],
+    failedAssertions: [],
+  }
+  const authorityEvalRun = {
+    evalId: 'eval:authority-least-privilege' as const,
+    artifact: 'artifact:tool-authority-matrix' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['side-effecting-flagged', 'no-shared-principal-for-writes', 'revocation-documented'],
+    failedAssertions: [],
+  }
+  const threatModelEvalRun = {
+    evalId: 'eval:threat-model-covers-tool-results' as const,
+    artifact: 'artifact:threat-model' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['tool-results-untrusted', 'accepted-risks-named'],
+    failedAssertions: [],
+  }
+  const costModelEvalRun = {
+    evalId: 'eval:cost-model-has-ceiling' as const,
+    artifact: 'artifact:cost-model' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['unit-economics', 'runaway-guard'],
+    failedAssertions: [],
+  }
+  const deployEvalRun = {
+    evalId: 'eval:deployment-reachable' as const,
+    artifact: 'artifact:deployment-record' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['responds-200', 'rollback-exists'],
+    failedAssertions: [],
+  }
+  const incidentEvalRun = {
+    evalId: 'eval:incident-detected-by-telemetry' as const,
+    artifact: 'artifact:incident-report' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['injected-mode-named', 'detection-source-is-telemetry', 'guard-added'],
+    failedAssertions: [],
+  }
+  const portfolioEvalRun = {
+    evalId: 'eval:portfolio-links-resolve' as const,
+    artifact: 'artifact:portfolio-proof' as const,
+    ranAt: '2026-08-25',
+    passedAssertions: ['links-resolve', 'no-redacted-leakage'],
+    failedAssertions: [],
+  }
+
+  const allStageEvalRuns = [
+    systemBriefEvalRun,
+    adrEvalRun,
+    authorityEvalRun,
+    threatModelEvalRun,
+    costModelEvalRun,
+    deployEvalRun,
+    incidentEvalRun,
+    portfolioEvalRun,
+  ]
+
+  // Negative 0a: Omitting `eval:authority-least-privilege` fails closed even when `flow` PASSes.
+  const withoutAuthorityEval = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: allStageEvalRuns.filter((r) => r.evalId !== 'eval:authority-least-privilege'),
+  })
+  assert.equal(withoutAuthorityEval.advance.granted, false)
+  assert.ok(
+    !withoutAuthorityEval.advance.granted &&
+      withoutAuthorityEval.advance.refusals.some(
+        (r) => r.code === 'eval-never-run' && r.subject === 'eval:authority-least-privilege',
+      ),
+  )
+
+  // Negative 0b: Omitting `evidence:coe-tool-authority` leaves `artifact:tool-authority-matrix` unsubmitted.
+  const withoutAuthorityArtifact = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvidence: (baseBridgeOptions.additionalEvidence ?? []).filter(
+      (e) => e.id !== 'evidence:coe-tool-authority',
+    ),
+    additionalEvalRuns: allStageEvalRuns,
+  })
+  assert.equal(withoutAuthorityArtifact.advance.granted, false)
+  assert.ok(
+    !withoutAuthorityArtifact.advance.granted &&
+      withoutAuthorityArtifact.advance.refusals.some(
+        (r) => r.code === 'artifact-not-submitted' && r.subject === 'artifact:tool-authority-matrix',
+      ),
+  )
+
+  // Negative 1: Omitting deployment HTTP 2xx probe fails closed on `responds-200`.
+  const withoutDeployProbe = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: allStageEvalRuns.filter((r) => r.evalId !== 'eval:deployment-reachable'),
+  })
+  assert.equal(withoutDeployProbe.advance.granted, false)
+  assert.ok(
+    !withoutDeployProbe.advance.granted &&
+      withoutDeployProbe.advance.refusals.some(
+        (r) =>
+          r.code === 'eval-below-threshold' &&
+          r.subject === 'eval:deployment-reachable' &&
+          r.detail.includes('responds-200'),
+      ),
+  )
+
+  // Negative 2: Pre-build discovery PASS never unlocks `stage:incident-simulation` without an explicit incident eval run.
+  const withoutIncidentEval = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: allStageEvalRuns.filter((r) => r.evalId !== 'eval:incident-detected-by-telemetry'),
+  })
+  assert.equal(withoutIncidentEval.advance.granted, false)
+  assert.ok(
+    !withoutIncidentEval.advance.granted &&
+      withoutIncidentEval.advance.refusals.some(
+        (r) => r.code === 'eval-never-run' && r.subject === 'eval:incident-detected-by-telemetry',
+      ),
+  )
+
+  // Negative 3: Internal receipt verification never satisfies public portfolio HTTP link probes.
+  const withoutPortfolioEval = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: allStageEvalRuns.filter((r) => r.evalId !== 'eval:portfolio-links-resolve'),
+  })
+  assert.equal(withoutPortfolioEval.advance.granted, false)
+  assert.ok(
+    !withoutPortfolioEval.advance.granted &&
+      withoutPortfolioEval.advance.refusals.some(
+        (r) => r.code === 'eval-never-run' && r.subject === 'eval:portfolio-links-resolve',
+      ),
+  )
+
+  const projection = bridgeWorkedRunToLearner(remediatedRun, {
+    ...baseBridgeOptions,
+    additionalEvalRuns: allStageEvalRuns,
+  })
+
+  assert.equal(
+    projection.advance.granted,
+    true,
+    JSON.stringify(!projection.advance.granted && projection.advance.refusals, null, 2),
+  )
+  assert.ok(
+    !projection.learner.evidence.some(
+      (e) =>
+        e.evidenceKind === 'repo-url' &&
+        (e.artifact === 'artifact:deployment-record' || e.artifact === 'artifact:incident-report'),
+    ),
+  )
+})
+
+const siteDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
+const repoRoot = path.resolve(siteDir, '..')
+
+function relativeLuminance(hex: string): number {
+  const clean = hex.replace('#', '')
+  const full = clean.length === 3 ? clean.split('').map((c) => c + c).join('') : clean
+  const num = Number.parseInt(full, 16)
+  const channels = [(num >> 16) & 255, (num >> 8) & 255, num & 255].map((c) => {
+    const s = c / 255
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4
+  })
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
+}
+
+function contrastRatio(fg: string, bg: string): number {
+  const l1 = relativeLuminance(fg)
+  const l2 = relativeLuminance(bg)
+  return Number(((Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05)).toFixed(2))
+}
+
+function assertBalancedSvgXml(label: string, xml: string): void {
+  assert.match(xml, /^\s*<svg\b[^>]*xmlns="http:\/\/www\.w3\.org\/2000\/svg"/, `${label} missing <svg> root`)
+  assert.match(xml, /<title\b[^>]*>[^<]+<\/title>/, `${label} missing <title>`)
+  assert.match(xml, /<desc\b[^>]*>[^<]+<\/desc>/, `${label} missing <desc>`)
+  const stripped = xml.replace(/<!--[\s\S]*?-->/g, '')
+  const stack: string[] = []
+  const tagRe = /<\/?([a-zA-Z][a-zA-Z0-9:-]*)\b([^>]*?)(\/?)>/g
+  let match: RegExpExecArray | null
+  while ((match = tagRe.exec(stripped)) !== null) {
+    const [raw, tagName, , trailingSlash] = match
+    if (raw.startsWith('</')) {
+      const open = stack.pop()
+      assert.equal(open, tagName, `${label} mismatched closing tag </${tagName}> (expected </${open}>)`)
+    } else if (!trailingSlash) {
+      stack.push(tagName)
+    }
+  }
+  assert.deepEqual(stack, [], `${label} has unclosed XML tags: ${stack.join(', ')}`)
+}
+
+test('evidence-bridge: vendor-neutral guard blocks vendor tokens and admits neutral architecture prose', () => {
+  assert.doesNotThrow(() =>
+    assertVendorNeutralPublicText(
+      'clean-architecture-copy',
+      'Route model calls through one owned seam and enforce deterministic tool-authority gates.',
+    ),
+  )
+  const sampleVendor = ['clau', 'de'].join('')
+  assert.throws(
+    () => assertVendorNeutralPublicText('leaked-copy', `Configured ${sampleVendor} client directly`),
+    /Forbidden vendor term/i,
+  )
+})
+
+test('evidence-bridge: five Role Entry tracks resolve to valid flagship stages, runnable offline labs, and proof surfaces', () => {
+  assert.deepEqual(
+    ROLE_ENTRY_TRACKS.map((t) => t.label),
+    [
+      'Systems Architect',
+      'Agent Runtime Engineer',
+      'Technical Founder',
+      'Governance & Eval Lead',
+      'Delegated Coding Agent',
+    ],
+  )
+
+  const stageIds = new Set(projectProductionAgentSystems.stages.map((s) => s.id))
+  for (const track of ROLE_ENTRY_TRACKS) {
+    const resolved = resolveRoleEntryTrack(track.id)
+    assert.ok(stageIds.has(resolved.stageId), `missing stage ${resolved.stageId}`)
+    assert.equal(resolved.stagePath, `/path/${resolved.stageId.replace(/^stage:/, '')}`)
+    assert.ok(resolved.dayOneDecision.length >= 40, `${track.id} day-one decision too short`)
+    assert.ok(['/adr', '/worked-run'].includes(resolved.proofHref), `${track.id} invalid proofHref`)
+    assert.match(resolved.labCommand, /^python labs\/[a-z0-9-]+\/cli\.py\b/)
+
+    const cliRelPath = resolved.labCommand.split(/\s+/)[1]
+    assert.ok(
+      existsSync(path.join(repoRoot, cliRelPath)),
+      `missing offline lab CLI on disk: ${cliRelPath}`,
+    )
+  }
+
+  assert.throws(
+    () => resolveRoleEntryTrack('unknown-role' as RoleEntryTrackId),
+    /Unknown role entry track/,
+  )
+})
+
+test('evidence-bridge: spine blueprint plates resolve on disk with well-formed SVG XML, WCAG AA contrast, and zero vendor terms', () => {
+  assert.deepEqual(
+    SPINE_BLUEPRINT_PLATES.map((p) => p.id),
+    [
+      'four-plane-agent-runtime',
+      'trust-boundary-firewall-flow',
+      'twelve-week-progression-eval-gate',
+    ],
+  )
+
+  const stageIds = new Set(projectProductionAgentSystems.stages.map((s) => s.id))
+  const spineContrastPairs: readonly [string, string, string][] = [
+    ['muted header on stage', '#9aa1b5', '#151824'],
+    ['muted note on card', '#9aa1b5', '#171b29'],
+    ['primary ink on card', '#f2f1ec', '#171b29'],
+    ['secondary ink on card', '#cbd5e1', '#171b29'],
+    ['cobalt badge on pill', '#a9b8ff', '#20294a'],
+    ['mint badge on pill', '#5ee6cf', '#163331'],
+    ['coral red-gate ink on dark box', '#f3b5a8', '#29181c'],
+  ]
+
+  for (const [pairLabel, fg, bg] of spineContrastPairs) {
+    const ratio = contrastRatio(fg, bg)
+    assert.ok(ratio >= 4.5, `WCAG AA contrast failed for ${pairLabel}: ${ratio}:1`)
+  }
+
+  for (const plate of SPINE_BLUEPRINT_PLATES) {
+    assertVendorNeutralPublicText(
+      `SPINE_BLUEPRINT_PLATES[${plate.id}]`,
+      [
+        plate.shortLabel,
+        plate.eyebrow,
+        plate.title,
+        plate.alt,
+        plate.summary,
+        ...plate.invariants,
+        ...plate.proofLinks.map((l) => l.label),
+      ].join('\n'),
+    )
+    assert.ok(plate.invariants.length >= 3, `${plate.id} requires architectural invariants`)
+    for (const stageId of plate.stageIds) {
+      assert.ok(stageIds.has(stageId), `${plate.id} references unknown stage ${stageId}`)
+    }
+    for (const labId of plate.labIds) {
+      assert.ok(LAB_STAGE_BINDINGS[labId], `${plate.id} references unsupported lab ${labId}`)
+    }
+    const proofHrefs = new Set(plate.proofLinks.map((l) => l.href))
+    assert.ok(proofHrefs.has('/adr') && proofHrefs.has('/worked-run'), `${plate.id} must link /adr and /worked-run`)
+
+    const svgAbsPath = path.join(repoRoot, plate.publicFile)
+    assert.ok(existsSync(svgAbsPath), `missing public spine SVG: ${plate.publicFile}`)
+    const svgBytes = readFileSync(svgAbsPath)
+    assert.ok(svgBytes.length > 500 && svgBytes.length < 512 * 1024, `${plate.publicFile} invalid byte size`)
+    const svgText = svgBytes.toString('utf8')
+    assertBalancedSvgXml(plate.publicFile, svgText)
+    assert.doesNotMatch(svgText, FORBIDDEN_PUBLIC_TERMS, `${plate.publicFile} contains forbidden vendor term`)
+    assert.doesNotMatch(svgText, /\p{Extended_Pictographic}/u, `${plate.publicFile} contains emoji`)
+    assert.match(svgText, new RegExp(`width="${plate.width}"`))
+    assert.match(svgText, new RegExp(`height="${plate.height}"`))
+  }
+})
+
+test('evidence-bridge: RoleEntrySelector and SpineBlueprintGallery enforce accessible tablists and vendor neutrality', () => {
+  for (const rel of ['components/RoleEntrySelector.tsx', 'components/SpineBlueprintGallery.tsx']) {
+    const abs = path.join(siteDir, rel)
+    assert.ok(existsSync(abs), `missing component ${rel}`)
+    const source = readFileSync(abs, 'utf8')
+    assertVendorNeutralPublicText(rel, source)
+    assert.doesNotMatch(source, /you will (?:learn|be able to)/i, `${rel} violates capability claim rule`)
+    assert.match(source, /role="tablist"/, `${rel} missing role="tablist"`)
+    assert.match(source, /ArrowLeft/, `${rel} missing ArrowLeft keyboard handler`)
+    assert.match(source, /ArrowRight/, `${rel} missing ArrowRight keyboard handler`)
+    assert.match(source, /Home/, `${rel} missing Home keyboard handler`)
+    assert.match(source, /End/, `${rel} missing End keyboard handler`)
+  }
+})
+
+test('evidence-bridge: a genuine failed eval at a tied timestamp is not overwritten by a passing lab receipt', () => {
+  const lab04Receipt: LabCompletionReceipt = {
+    labId: 'lab:04-trust-boundary-firewall',
+    schema: 'TrustFirewallReceipt.v1',
+    runId: 'run:04-verified',
+    ranAt: '2026-08-25',
+    admitted: true,
+    locator: 'https://fixture.invalid/runs/lab04-firewall-receipt.json',
+    verifiedBy: FIXTURE_REVIEWER_ID,
+    receiptSha256: 'a'.repeat(64),
+  }
+  const base = completeLearner()
+  // Genuine failure of tool-results-untrusted at the SAME instant as the passing receipt.
+  const failing = {
+    ...base,
+    evalRuns: base.evalRuns.map((r) =>
+      r.evalId === 'eval:threat-model-covers-tool-results'
+        ? { ...r, ranAt: '2026-08-25', passedAssertions: ['accepted-risks-named'], failedAssertions: ['tool-results-untrusted'] }
+        : r,
+    ),
+  }
+  assert.equal(advanceCapability(graph, failing, competencyShipProduction.id, FIXTURE_AS_OF).granted, false)
+
+  const merged = mergeLabReceiptsIntoLearner(graph, failing, [lab04Receipt])
+  assert.ok(
+    merged.evalRuns.some(
+      (r) =>
+        r.evalId === 'eval:threat-model-covers-tool-results' &&
+        r.ranAt === '2026-08-25' &&
+        r.failedAssertions.includes('tool-results-untrusted'),
+    ),
+    'the original failed run must survive the merge',
+  )
+  assert.equal(advanceCapability(graph, merged, competencyShipProduction.id, FIXTURE_AS_OF).granted, false)
+})
