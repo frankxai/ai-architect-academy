@@ -23,7 +23,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ stage: string }> }): Promise<Metadata> {
   const stage = stageBySlug((await params).stage)
   if (!stage) return {}
-  return { title: `Stage ${String(stage.ordinal).padStart(2, '0')}: ${stage.title}`, description: stage.decision }
+  return {
+    title: `Stage ${String(stage.ordinal).padStart(2, '0')}: ${stage.title}`,
+    description: stage.decision,
+    alternates: { canonical: `/path/${stageSlug(stage.id)}` },
+  }
 }
 
 export default async function StagePage({ params }: { params: Promise<{ stage: string }> }) {
