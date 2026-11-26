@@ -62,3 +62,5 @@ Assistance used and revision after critique:
 ## Keep the cards current
 
 Technical provider notes were checked on 26 November 2026. When a cited guide changes a model name, lifecycle stage, permitted region, pricing assumption or runtime behavior, reopen the relevant card in a pull request. Preserve the old decision and add the date, upstream link, changed recommendation and affected test. Review before the next taught edition; a recent retrieval date alone supplies no new evidence. A framework reference documents alignment with a named principle. Deployment status, compliance and vendor credentials each need their own evidence.
+
+The [Academy source register](../site/data/knowledge-sources.json) supplies the review dates and maps each source to its decision stage. From the repository root, run `node site/scripts/check-source-review.mjs` to list due reviews across the register. To check one reading, append its ID, for example `azure-foundry-model-router`. Exit 0 means no selected review is due, 1 means a source needs review, and 2 means invalid input. A passing date check says nothing about an upstream change since the last reading.
