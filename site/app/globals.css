@@ -879,3 +879,207 @@ body:has(.studio-bleed) { overflow-x: clip; }
   .room-next { gap: 1.2rem; }
 }
 @media(prefers-reduced-motion: reduce) { .rooms-experience * { scroll-behavior: auto; transition: none; } }
+
+/* ---------- DecisionPipelineDiagram & WorkedRunSwitcher ---------- */
+.dp-shell {
+  border: 1px solid var(--rule);
+  border-radius: 0.85rem;
+  background: #fcfaf5;
+  padding: 1.35rem;
+}
+
+.dp-grid-decisions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (max-width: 56rem) {
+  .dp-grid-decisions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 36rem) {
+  .dp-grid-decisions {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dp-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.dp-card:hover {
+  border-color: var(--ink);
+}
+
+.dp-card[aria-pressed='true'] {
+  border-color: var(--cobalt);
+  background: #edf0fb;
+  box-shadow: inset 0 0 0 1px var(--cobalt);
+}
+
+.dp-card.is-related:not([aria-pressed='true']) {
+  border-color: var(--cobalt-ink);
+  background: #f4f6fc;
+}
+
+.dp-card.is-red {
+  border-left: 3px solid #9b2c1f;
+}
+
+.dp-stages-rail {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+@media (max-width: 64rem) {
+  .dp-stages-rail {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 34rem) {
+  .dp-stages-rail {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dp-stage-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.35rem;
+  min-height: 44px;
+  padding: 0.65rem 0.7rem;
+  border-radius: 0.55rem;
+  border: 1px solid var(--rule);
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.dp-stage-pill:hover {
+  border-color: var(--ink);
+}
+
+.dp-stage-pill[aria-pressed='true'] {
+  border-color: var(--cobalt);
+  background: #edf0fb;
+  box-shadow: inset 0 0 0 1px var(--cobalt);
+}
+
+.dp-stage-pill.is-related:not([aria-pressed='true']) {
+  border-color: var(--cobalt-ink);
+  background: #f4f6fc;
+}
+
+.dp-stage-pill.is-fail {
+  border-left: 3px solid #9b2c1f;
+}
+
+.dp-inspector {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+}
+
+.wr-switcher-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (max-width: 52rem) {
+  .wr-switcher-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wr-run-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 1rem 1.1rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--rule);
+  background: #fcfaf5;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.wr-run-tab:hover {
+  border-color: var(--ink);
+}
+
+.wr-run-tab[aria-pressed='true'] {
+  border-color: var(--ink);
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.wr-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wr-chip {
+  min-height: 40px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: #fcfaf5;
+  color: var(--ink-2);
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
+}
+
+.wr-chip:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.wr-chip[aria-pressed='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.wr-bridge-box {
+  border: 1px solid var(--rule);
+  border-radius: 0.75rem;
+  background: #fcfaf5;
+  padding: 1.15rem 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dp-card,
+  .dp-stage-pill,
+  .wr-run-tab,
+  .wr-chip {
+    transition: none;
+  }
+}

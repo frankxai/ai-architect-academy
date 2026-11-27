@@ -6,8 +6,9 @@ import { spawnSync } from 'node:child_process'
 import { mkdtempSync, writeFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const checker = new URL('./check-authority-matrix.mjs', import.meta.url)
+const checker = fileURLToPath(new URL('./check-authority-matrix.mjs', import.meta.url))
 const matrix = () => ({
   tools: [
     { name: 'read_ticket', authority: 'read', sideEffecting: false, principal: 'reader' },
@@ -29,7 +30,7 @@ function run(doc) {
   try {
     const path = join(dir, 'matrix.json')
     writeFileSync(path, JSON.stringify(doc))
-    const result = spawnSync(process.execPath, [checker.pathname, path], { encoding: 'utf8' })
+    const result = spawnSync(process.execPath, [checker, path], { encoding: 'utf8' })
     const start = result.stdout.indexOf('{\n  "evalId"')
     const end = result.stdout.indexOf('\n}\n', start) + 2
     return { code: result.status, stdout: result.stdout, ...JSON.parse(result.stdout.slice(start, end)) }

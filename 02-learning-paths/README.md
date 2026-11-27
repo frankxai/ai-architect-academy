@@ -5,6 +5,7 @@ Structured study tracks and micro-module progressions across the AI Architect Ac
 ## Study Tracks in This Directory
 
 - [Self-Assessment](./self-assessment.md) — baseline architecture diagnostic before choosing a track
+- [12-Week Production AI Architect Path](./12-week-production-architect.md) — flagship twelve-week progression mapping runnable labs, worked runs, and non-compensable evaluation gates
 - [Beginner Track](./beginner.md) — core model, retrieval, and system boundary fundamentals
 - [Bootcamp Track](./bootcamp.md) — intensive implementation milestones with runnable labs
 - [100-Hour AI Architect](./100-hour-ai-architect.md) — structured long-horizon study plan

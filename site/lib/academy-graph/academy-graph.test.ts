@@ -383,3 +383,5 @@ test('a claimed grant with invalid or expired evidence cannot publish a portfoli
   assert.equal(projectPortfolio(graph, learner, FIXTURE_AS_OF).entries.length, 0)
   assert.equal(projectPortfolio(graph, grantedLearner(), '2027-03-01').entries.length, 0)
 })
+
+import './evidence-bridge.test.ts'
