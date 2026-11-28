@@ -14,6 +14,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Check the Academy Pages social card and crawler URLs
+        run: python3 scripts/tests/pages-social-card.py
       - name: Select changed documentation
         id: changed-docs
         shell: bash
