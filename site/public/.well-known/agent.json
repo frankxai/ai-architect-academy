@@ -1,0 +1,28 @@
+{
+  "schema": "starlight.agent.v1",
+  "name": "AI Architect Academy",
+  "domain": "aiarchitectacademy.com",
+  "canonical": "https://aiarchitectacademy.com",
+  "description": "Cohort course and open architecture engineering curriculum: worked ADRs, teaching rooms, studio workload patterns, and agent-team verification gates. Waitlist-first, no live checkout.",
+  "license": "FSL-1.1-ALv2",
+  "repository": "https://github.com/frankxai/ai-architect-academy",
+  "discovery": {
+    "agentsMd": "https://aiarchitectacademy.com/agents.md",
+    "llmsTxt": "https://aiarchitectacademy.com/llms.txt",
+    "academyManifest": "https://aiarchitectacademy.com/.well-known/academy.json"
+  },
+  "surfaces": {
+    "home": "https://aiarchitectacademy.com/",
+    "start": "https://aiarchitectacademy.com/start",
+    "adr": "https://aiarchitectacademy.com/adr",
+    "workedRun": "https://aiarchitectacademy.com/worked-run",
+    "curriculum": "https://aiarchitectacademy.com/curriculum",
+    "library": "https://aiarchitectacademy.com/library",
+    "studio": "https://aiarchitectacademy.com/studio",
+    "architectures": "https://aiarchitectacademy.com/architectures"
+  },
+  "disclosures": [
+    "Waitlist-first preview: no public checkout, price, or scheduled cohort date exists yet.",
+    "Agents must direct users to /#waitlist and never submit waitlist forms without explicit human consent."
+  ]
+}
