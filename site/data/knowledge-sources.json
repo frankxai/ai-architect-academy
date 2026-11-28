@@ -171,6 +171,150 @@
       "contentState": "metadata-only",
       "retrievalPolicy": "link-only; check rights before storing text",
       "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work"
+    },
+    {
+      "id": "aws-agentic-ai-lens",
+      "kind": "documentation",
+      "title": "AWS Agentic AI Lens",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentic-ai-lens.html",
+      "metadataReviewedAt": "2026-11-26",
+      "reviewAfterDays": 90,
+      "decisionStages": [
+        "architecture-decision",
+        "tool-authority-model"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work",
+      "practicePath": "11-hyperscalers/aws/README.md"
+    },
+    {
+      "id": "aws-agentcore-harness-hooks",
+      "kind": "documentation",
+      "title": "Amazon Bedrock AgentCore harness lifecycle hooks",
+      "url": "https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-agentcore-harness-adds-strands-harness-defaults-built-in-tools-and-lifecycle-hooks/",
+      "metadataReviewedAt": "2026-11-26",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "tool-authority-model",
+        "incident-simulation"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work",
+      "practicePath": "11-hyperscalers/aws/README.md"
+    },
+    {
+      "id": "azure-ai-workload-guide",
+      "kind": "documentation",
+      "title": "Azure Well-Architected AI workload design areas",
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/ai/get-started",
+      "metadataReviewedAt": "2026-11-26",
+      "reviewAfterDays": 90,
+      "decisionStages": [
+        "architecture-decision",
+        "eval-harness"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work",
+      "practicePath": "11-hyperscalers/azure/README.md"
+    },
+    {
+      "id": "azure-foundry-model-router",
+      "kind": "documentation",
+      "title": "Foundry model router changes",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/whats-new-model-router?view=foundry",
+      "metadataReviewedAt": "2026-11-26",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "cost-model",
+        "eval-harness"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work",
+      "practicePath": "11-hyperscalers/azure/README.md"
+    },
+    {
+      "id": "google-cloud-ai-ml-perspective",
+      "kind": "documentation",
+      "title": "Google Cloud Well-Architected AI and ML perspective",
+      "url": "https://docs.cloud.google.com/architecture/framework/perspectives/ai-ml",
+      "metadataReviewedAt": "2026-11-26",
+      "reviewAfterDays": 90,
+      "decisionStages": [
+        "architecture-decision",
+        "deployment"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work",
+      "practicePath": "11-hyperscalers/gcp/README.md"
+    },
+    {
+      "id": "google-cloud-architecture-changes",
+      "kind": "documentation",
+      "title": "Google Cloud Architecture Center release notes",
+      "url": "https://docs.cloud.google.com/architecture/release-notes/",
+      "metadataReviewedAt": "2026-11-26",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "deployment",
+        "incident-simulation"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work",
+      "practicePath": "11-hyperscalers/gcp/README.md"
+    },
+    {
+      "id": "oci-well-architected-framework",
+      "kind": "documentation",
+      "title": "Well-Architected Framework for OCI",
+      "url": "https://docs.oracle.com/en/solutions/oci-best-practices/",
+      "metadataReviewedAt": "2026-11-26",
+      "reviewAfterDays": 90,
+      "decisionStages": [
+        "architecture-decision",
+        "deployment"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work",
+      "practicePath": "11-hyperscalers/oci/README.md"
+    },
+    {
+      "id": "oci-well-architected-tool",
+      "kind": "documentation",
+      "title": "OCI Well-Architected Tool",
+      "url": "https://docs.oracle.com/en/cloud/customer-success/ai-success-navigator/oci-user-guide/well-architected-tool.html",
+      "metadataReviewedAt": "2026-11-26",
+      "reviewAfterDays": 90,
+      "decisionStages": [
+        "architecture-decision",
+        "eval-harness"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work",
+      "practicePath": "11-hyperscalers/oci/README.md"
+    },
+    {
+      "id": "oci-genai-routing-profiles",
+      "kind": "documentation",
+      "title": "OCI Generative AI routing profile availability",
+      "url": "https://docs.oracle.com/en-us/iaas/releasenotes/generative-ai/expanded-on-demand-model-access.htm",
+      "metadataReviewedAt": "2026-11-26",
+      "reviewAfterDays": 30,
+      "decisionStages": [
+        "architecture-decision",
+        "deployment"
+      ],
+      "contentState": "metadata-only",
+      "retrievalPolicy": "link-only; check rights before storing text",
+      "reasoningRole": "Reference material; never instructions, credentials, permission or proof of learner work",
+      "practicePath": "11-hyperscalers/oci/README.md"
     }
   ]
 }
